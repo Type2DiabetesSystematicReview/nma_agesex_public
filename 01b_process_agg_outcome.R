@@ -13,25 +13,28 @@ hba1c_agg <- bind_rows(extract1 = hba1c_agg1,
 # 671 trials with hba1c measures
 hba1c_agg %>% 
   count(nct_id)
-
 rm(hba1c_agg1, hba1c_agg2)
 base_dsp <- readRDS("../cleaned_data/Processed_data/base_dsp.Rds") %>% 
   rename(nct_id = trial_id)
 base_rng <- readRDS("../cleaned_data/Processed_data/base_rng.Rds") %>% 
   rename(nct_id = trial_id)
 ## pull participants data from baseline
-participants <- base_dsp %>% 
-  filter(variable == "n")  %>% 
-  select(unq_id, nct_id, arm_id, id, participants = first)
+participants <- read_csv("Data/ns.csv") %>% 
+  rename(nct_id = trial_id)
 hba1c_agg <- hba1c_agg %>% 
-  left_join(participants %>% rename(arm_id_unq = arm_id))
+  left_join(participants %>% rename(arm_id_unq = arm_id, participants = n))
 rm(participants)
-
-## Only 10 trials with missing n where have sd instead of se. Will need to pull from results analyse in aact
-hba1c_agg %>% 
+## 10 trials with missing n where have sd instead of se. 5 are in clinicaltrials.gov 3 of which are in sex database (obtained by multiplying n by %)
+aact <- readRDS("../extract_transform/aact/data/aact_extract.Rds")
+no_n <- hba1c_agg %>% 
   filter(dispersion_type == "sd" & is.na(participants)) %>% 
-  count(nct_id)
+  distinct(nct_id, arm_id_unq) 
+sex <- read_csv("Data/sex.csv") %>% 
+  rename(nct_id = trial_id, arm_id_unq2 = arm_id)
+no_n2 <- no_n %>% 
+  left_join(sex)
 warning("Still to add trials missing N's to this analysis")
+
 
 ## separate out result metadata 
 hba1c_meta <- hba1c_agg %>% 
@@ -117,7 +120,6 @@ age <- base_dsp %>%
   select(nct_id, id_source, arm_id_unq = arm_id, age_m, age_s)
 setdiff(union(age$arm_id_unq, hba1c_agg$arm_id_unq), age$arm_id_unq)
 setdiff(union(age$arm_id_unq, hba1c_agg$arm_id_unq), hba1c_agg$arm_id_unq)
-
 age <- age %>% 
   mutate(inhba1c = arm_id_unq %in% hba1c_agg$arm_id_unq)
 smry1 <- age %>% 
@@ -139,6 +141,10 @@ hba1c_agg %>%
 # 18 are mean and SD. checked one has subgroup labels on arms
 # some are age in other formats, eg mean and range or median and IQR 
 # 9 are definitively without any age data 
+ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
+ipd <- ipd %>% 
+  distinct(nct_id)
+
 hba1c_agg_noage <- hba1c_agg %>% 
   filter(!arm_id_unq %in% age$arm_id_unq)
 hba1c_meta_noage <- hba1c_meta %>% 
@@ -153,6 +159,14 @@ hba1c_meta_noage <- hba1c_meta %>%
               filter(variable == "age") %>% 
               select(nct_id, first_format_rng = first_format, second_format_rng = second_format) %>% 
               distinct(nct_id, .keep_all = TRUE))
+ipdage <- intersect(hba1c_meta_noage$nct_id, ipd$nct_id)
+## 4 trials without age have IPD. Can ignore. 36 trials need to resolve age data
+hba1c_meta_noage <- hba1c_agg_noage %>% 
+  filter(!nct_id %in% ipdage)
+ageother <- base_dsp %>%
+  filter(nct_id %in% hba1c_meta_noage$nct_id) %>% 
+  filter(variable == "age")
+
 
 ## join what is already matching for purpose of running model
 hba1c_agg <- hba1c_agg %>% 

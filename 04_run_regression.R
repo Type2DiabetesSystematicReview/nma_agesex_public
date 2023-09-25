@@ -102,9 +102,10 @@ dev.off()
 dm_net <- add_integration(dm_net,
                           age = distr(qnorm, mean = age_m, sd = age_s),
                           n_int = 100)
-dm_net_fe <- nma(dm_net,
+dm_net_fe <- nma(dm_net, 
+                 regression = ~ age*.trt,
                  trt_effects = "fixed", link = "identity", likelihood = "normal", 
                  init_r = 0.1,
-                 QR = TRUE, cores = 4)
-
+                 QR = TRUE, cores = 8)
+dm_net_fe$code <- rstan::get_stancode(dm_net_fe$object)
 saveRDS(dm_net_fe, "Scratch_data/fe_model.Rds")
