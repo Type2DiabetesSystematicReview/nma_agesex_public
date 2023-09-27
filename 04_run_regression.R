@@ -4,6 +4,8 @@ library(tidyverse)
 # install_github("git@github.com:dmcalli2/multinma.git")
 library(multinma)
 
+## read in network characterisation ----
+whichnwork <- read_csv("../cleaned_data/Data/ancillary_drugs_data_all_cleaned.csv")
 ## read in simulated IPD
 ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
 ## read in agg
@@ -11,10 +13,9 @@ agg <- read_csv("Data/agg.csv")
 ## read in arm drug names, doses, regiments
 drug <- readRDS("Scratch_data/drug_names_doses_regimen.Rds")
 ## read in arm assignment
-arm_assign <- readRDS("Scratch_data/arm_labels_final.Rds")
+arm_assign <-  read_csv("Data/arm_labels_hba1c.csv")
 
 ## correct the IPD arm label in one IPD trial uaa10735 instead of uaa10734
-
 ## Add arm label to IPD only one not in is where set to placebo
 # One trial dropped as both amrs are the same drug
 sum(!duplicated(ipd$nct_id))
@@ -85,7 +86,6 @@ agg %>%
 agg %>% 
   filter(is.na(male)) %>% 
   count(nct_id)
-
 aggsd <- agg %>% 
   mutate(sd = se*n^0.5) %>% 
   pull(sd)
@@ -100,6 +100,25 @@ agg <- agg %>%
                      n,
                      (0.93/se)^2) %>% round(),
          n = pmax(1, n))
+
+## split into networks and plot ----
+whichnwork <- whichnwork %>% 
+  mutate(drug_regime_smpl = case_when(
+    drug_regime %in% c("triple+", "dual|triple+", "mono|dual|triple+") ~ "triple",
+    drug_regime %in% c("dual", "mono|dual") ~ "dual",
+    drug_regime %in% "mono" ~ "mono",
+    TRUE ~ "unclear or missing"
+  )) %>% 
+  rename(nct_id = trial_id)
+whichnwork <- whichnwork %>% 
+  filter(nct_id %in% c(agg$nct_id,
+                       ipd$nct_id))
+whichnwork <- whichnwork %>% 
+  select(nct_id, drug_regime_smpl) %>% 
+  nest(nct_id = nct_id)
+whichnwork_lst <- whichnwork$nct_id
+names(whichnwork_lst) <- whichnwork$drug_regime_smpl
+whichnwork_lst <- map(whichnwork_lst, pull)
 
 RptNetwork <- function(ipd_choose, agg_choose){
   combine_network(
@@ -126,9 +145,13 @@ RptNetwork <- function(ipd_choose, agg_choose){
                      sample_size = n))  
 }
 
-dm_net <- RptNetwork(ipd, agg)
+dm_nets <- map(whichnwork_lst[1:3], ~ RptNetwork(ipd %>% 
+                                              filter(nct_id %in% .x),
+                                            agg %>% 
+                                              filter(nct_id %in% .x)))
 pdf("Outputs/Initial_network.pdf", height = 20, width = 20)
-plot(dm_net, layout = "auto")
+map2(dm_nets, names(dm_nets), ~ plot(.x, layout = "auto") +
+       ggtitle(.y))
 dev.off()
 
 # NCT02477865 and NCT02477969 have placebo arms but no data for these
@@ -136,24 +159,52 @@ agg <- agg %>%
   filter(!nct_id %in% c("NCT04196231",
                         "NCT02477969",
                         "NCT02477865"))
-
-dm_net <- RptNetwork(ipd, agg)
+dm_nets <- map(whichnwork_lst[1:3], ~ RptNetwork(ipd %>% 
+                                                   filter(nct_id %in% .x),
+                                                 agg %>% 
+                                                   filter(nct_id %in% .x)))
 pdf("Outputs/Connected_network.pdf", height = 20, width = 20)
-plot(dm_net, layout = "auto")
+map2(dm_nets, names(dm_nets), ~ plot(.x, layout = "auto") +
+       ggtitle(.y))
 dev.off()
 
-## drop missing age and sex
-agg2 <- agg %>% 
+
+print(dm_nets)
+
+## "UMIN000030514", "IRSCTN 2013L01573" and "NCT01032629" have missing age data but not missing for all
+## ask ELB to review
+warning("Some missing arm age data")
+agg %>% 
+  filter(nct_id %in% c("UMIN000030514", "IRSCTN 2013L01573", "NCT01032629" ))
+# UMIN000030514,updac0207,53.6,11.7
+# 62.3(7.94)	62.2(8)	62.8(8.13)
+agg_msng_age <- agg %>% 
+  filter(nct_id %in% c("UMIN000030514", "IRSCTN 2013L01573", "NCT01032629" )) %>% 
+  group_by(nct_id) %>% 
+  mutate(male = mean(male, na.rm = TRUE),
+         age_m = mean(age_m, na.rm = TRUE),
+         age_sd = mean(age_sd, na.rm = TRUE)) %>% 
+  ungroup()
+agg <- bind_rows(agg %>% 
+                   filter(!nct_id %in% c("UMIN000030514", "IRSCTN 2013L01573", "NCT01032629" )),
+                 agg_msng_age)
+agg <- agg %>% 
   filter(!is.na(age_m),
          !is.na(age_sd))
-dm_net <- RptNetwork(ipd, agg2)
-dm_net <- add_integration(dm_net,
-                          age = distr(qnorm, mean = age_m, sd = age_sd),
-                          n_int = 10)
-dm_net_fe <- nma(dm_net, 
+dm_nets <- map(whichnwork_lst[1:3], ~ RptNetwork(ipd %>% 
+                                                   filter(nct_id %in% .x),
+                                                 agg %>% 
+                                                   filter(nct_id %in% .x)))
+dm_nets <- map(dm_nets, ~ add_integration(.x,
+                                        age = distr(qnorm, mean = age_m, sd = age_sd),
+                                        n_int = 10))
+dm_net_fe <- map(dm_nets, ~ nma(.x, 
                  regression = ~ age*.trt,
                  trt_effects = "fixed", link = "identity", likelihood = "normal", 
                  init_r = 0.1,
-                 QR = TRUE, cores = 8)
-dm_net_fe$code <- rstan::get_stancode(dm_net_fe$object)
+                 QR = TRUE, cores = 8))
+dm_net_fe <- map(dm_net_fe, ~ {
+  .x$code <-  rstan::get_stancode(.x$object)
+  .x
+})
 saveRDS(dm_net_fe, "Scratch_data/fe_model.Rds")

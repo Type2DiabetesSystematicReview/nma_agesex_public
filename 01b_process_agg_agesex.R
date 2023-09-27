@@ -47,10 +47,11 @@ arm_lkp <- arm %>%
   distinct(arm_id_unq, arm_id_subgroup, subgroup_name, subgroup_name2)
 arm_lkp_vct1 <- arm_lkp$arm_id_unq
 names(arm_lkp_vct1) <- arm_lkp$arm_id_subgroup
-arm_lkp_vct2 <- setdiff(c(base_dsp$arm_id, base_rng$arm_id, arm$arm_id_unq), names(arm_lkp_vct1))
+arm_lkp_vct2 <- setdiff(c(base_dsp$arm_id, base_rng$arm_id, arm_in$arm_id), names(arm_lkp_vct1))
 names(arm_lkp_vct2) <- arm_lkp_vct2
 arm_lkp_vct <- c(arm_lkp_vct1, arm_lkp_vct2)
 sum(duplicated(names(arm_lkp_vct)))
+sum(is.na(arm_lkp_vct))
 rm(arm, arm_lkp_vct1, arm_lkp_vct2)
 write_csv(arm_lkp, "Data/arm2_armsg.csv")
 
@@ -206,7 +207,6 @@ basedata2$race %>%
   anti_join(arm_in)
 basedata2$ns %>% 
   anti_join(arm_in)
-
 
 
 

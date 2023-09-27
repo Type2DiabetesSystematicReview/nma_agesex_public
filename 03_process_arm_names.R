@@ -180,4 +180,4 @@ arm_assign <- arm_assign %>%
 map_int(arm_assign, ~ sum(!duplicated(.x)))
 # nct_id arm_id_unq  drug_code    trtcls5    trtcls4 
 # 759       1860        114         49         14 
-saveRDS(arm_assign,  "Scratch_data/arm_labels_final.Rds")
+write_csv(arm_assign, "Data/arm_labels_hba1c.csv")
