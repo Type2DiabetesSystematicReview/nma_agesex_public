@@ -39,7 +39,7 @@ cor2cov <- function(term, vr, r) {
 ## read in vivli agesex results ----
 allvivli <- list.files("../from_vivli/Data/agesex/", patt = "csv$")
 read_lines("../from_vivli/Data/00_readme.txt") 
-res <- map(allvivli, ~ read_csv(paste0("../from_vivli/Data/", .x)))
+res <- map(allvivli, ~ read_csv(paste0("../from_vivli/Data/agesex/", .x)))
 names(res) <- allvivli %>% str_sub(1, -5)
 list2env(res, envir = .GlobalEnv)
 rm(res, allvivli)

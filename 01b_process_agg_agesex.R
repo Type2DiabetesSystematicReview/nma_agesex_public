@@ -47,7 +47,7 @@ arm_lkp <- arm %>%
   distinct(arm_id_unq, arm_id_subgroup, subgroup_name, subgroup_name2)
 arm_lkp_vct1 <- arm_lkp$arm_id_unq
 names(arm_lkp_vct1) <- arm_lkp$arm_id_subgroup
-arm_lkp_vct2 <- setdiff(c(base_dsp$arm_id, base_rng$arm_id), names(arm_lkp_vct1))
+arm_lkp_vct2 <- setdiff(c(base_dsp$arm_id, base_rng$arm_id, arm$arm_id_unq), names(arm_lkp_vct1))
 names(arm_lkp_vct2) <- arm_lkp_vct2
 arm_lkp_vct <- c(arm_lkp_vct1, arm_lkp_vct2)
 sum(duplicated(names(arm_lkp_vct)))
@@ -176,6 +176,7 @@ basedata <- list(
   summarise(n = sum(n),
             x = sum(x)) %>% 
   ungroup(), 
+ ns_sg = ns,
  ns = ns %>% 
   mutate(arm_id = arm_lkp_vct[arm_id]) %>% 
   group_by(trial_id, arm_id) %>% 
@@ -206,194 +207,6 @@ basedata2$race %>%
 basedata2$ns %>% 
   anti_join(arm_in)
 
-## pull participants data from baseline with subgroups for merging across ----
-participants <- read_csv("Data/ns_by_sg.csv") %>% 
-  rename(nct_id = trial_id,
-         arm_id_unq = arm_id,
-         participants = n)
-
-## reviewed missing ones manually ----
-function() {
-  ## 5 trials without N data where have SD rather than SE. Following code helps extract and map these across
-  se_present <- hba1c_agg %>% 
-    filter(dispersion_type %in% c("se", "95% ci", "95%ci", "ci")) %>% 
-    distinct(nct_id)
-  mnl <- read_delim("nct_id;arm1;arm2;arm3
-  100-IRMI/PRI 16/6/2 (007/2017);DAPA (n = 36);Placebo (n = 36);
-  Hawler Medical University records of the clinical trials: No.276;Group A Glimepride (n = 26); Group B Sitagliptin (n = 28); Group C Canagliflozin (n = 24)
-  NCT02730377;liraglutide, (n = 996); OAD, (n = 995);
-  Netherlands Trial Register NTR6709;Alirocumab (n = 6); Placebo (n = 6);
-  UMIN000022953;Linagliptin group (n = 21);Metformin group (n = 22);", delim = ";")
-  mnl2 <- mnl %>%
-    gather("arm", "value", -nct_id, na.rm = TRUE) %>%
-    mutate(value = str_trim(value)) %>%
-    separate(value, into = c("drug_name", "n"), sep = "n = ")  %>%
-    mutate(drug_name = str_remove(drug_name, "\\(") %>%
-             str_trim(),
-           n = str_remove(n, "\\)") %>%
-             str_trim() %>%
-             as.integer()) %>%
-    arrange(nct_id, drug_name) %>%
-    select(nct_id, drug_name, n)
-  ## none lost by merge
-  addmnl <- hba1c_agg %>%
-    semi_join(mnl2) %>%
-    distinct(nct_id, arm_id_unq)
-  armmnl <- arm %>%
-    rename(nct_id = trial_id) %>%
-    semi_join(addmnl) %>%
-    select(nct_id, arm_id_unq, arm_id_subgroup, arm_label) %>%
-    arrange(nct_id, arm_id_unq)
-  write_csv(mnl2, "Scratch_data/manual_ns_missing.csv")
-}
 
 
-# mnln2 <- 
-
-## review arm mean ----
-## drop ones with se and ones with existing participant data
-xmn <- hba1c_agg$arm$meta %>% 
-  unnest(result_id) %>% 
-  inner_join(hba1c_agg$arm$data) %>% 
-  filter(is.na(participants)) 
-se_present <- xmn %>%
-  filter(dispersion_type %in% c("se", "95% ci", "95%ci", "ci")) %>%
-  distinct(nct_id) %>% 
-  pull()
-
-# xmn <- xmn %>% 
-#   filter(!dispersion_type %in% )
-xmn <- xmn %>% 
-  select(-participants) %>% 
-  anti_join(participants)
-# arm <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv")
-
-hba1c_agg <- hba1c_agg %>% 
-  mutate(arm_id_lnk = if_else(!is.na(arm_id_subgroup), arm_id_subgroup, arm_id_unq)) %>% 
-  left_join(participants %>% rename(arm_id_lnk = arm_id_unq))
-rm(participants)
-## 10 trials with missing n where have sd instead of se. 5 are in clinicaltrials.gov 3 of which are in sex database (obtained by multiplying n by %)
-
-no_n <- hba1c_agg %>% 
-  filter(!nct_id %in% se_present, dispersion_type == "sd" & is.na(participants))
-
-
-warning("Still to add trials missing N's to this analysis")
-
-
-## calculate standard errors
-hba1c_dsp <- hba1c_agg %>% 
-  inner_join(hba1c_meta %>% 
-               filter(dispersion_type %in% c("se", "sd")) %>% 
-               select(dispersion_type, result_id) %>% 
-               unnest(result_id))
-## Note. 10 trials without standard error without participant number. Need to find
-hba1c_dsp <- hba1c_dsp %>% 
-  mutate(se = case_when(
-    dispersion_type == "se" ~ as.double(dispersion),
-    dispersion_type == "sd" & !is.na(participants) ~ as.double(dispersion)/participants^0.5,
-    TRUE ~ NA_real_
-  )) %>% 
-  select(-dispersion, -dispersion_type) 
-
-hba1c_rng <- hba1c_agg %>% 
-  inner_join(hba1c_meta %>% 
-               filter(dispersion_type %in% c("95%ci", "95% ci")) %>% 
-               select(dispersion_type, result_id) %>% 
-               unnest(result_id)) %>% 
-  separate(dispersion, into = c("ll", "ul"), sep = ",|\\;")
-warning("Need to fix trials with missing ll/ul")
-## where no missing UL and LL seems fine.
-## where is missing seems to be a pasting (or similar) error I need to correct
-hba1c_rng %>% filter(is.na(ll) | is.na(ul))
-# NCT00813995 looking at CTG result is correct but dispersion is wrong
-# NCT00837577 looking at CTG result is correct but dispersion is wrong
-# NCT00885352 ditto and for other in this set
-hba1c_rng <- hba1c_rng %>% 
-  filter(!is.na(ul), !is.na(ll)) %>% 
-  mutate(across(c(ul, ll), as.double)) %>% 
-  mutate(se = (ul-ll)/(2*1.96))
-
-hba1c_agg <- bind_rows(dsp = hba1c_dsp,
-                       rng = hba1c_rng %>%  select(-ll, -ul, -dispersion_type), .id = "dsp_rng")
-
-## Pull age data for model ----
-## almost all mean and sd
-warning("Need to process other (non mean and sd)")
-age <- base_dsp %>% 
-  filter(variable == "age", first_format == "mean", second_format == "sd") %>% 
-  mutate(age_m = first,
-         age_s = second) %>% 
-  select(nct_id, id_source, arm_id_unq = arm_id, age_m, age_s)
-setdiff(union(age$arm_id_unq, hba1c_agg$arm_id_unq), age$arm_id_unq)
-setdiff(union(age$arm_id_unq, hba1c_agg$arm_id_unq), hba1c_agg$arm_id_unq)
-age <- age %>% 
-  mutate(inhba1c = arm_id_unq %in% hba1c_agg$arm_id_unq)
-smry1 <- age %>% 
-  group_by(id_source, nct_id) %>% 
-  summarise(inhba1c = if_else(any(inhba1c), "got", "not")) %>% 
-  ungroup() %>% 
-  count(id_source, inhba1c) %>% 
-  spread(inhba1c, n, fill = 0L) 
-bind_rows(smry1,
-          smry1 %>% 
-            mutate(id_source = "total") %>% 
-            group_by(id_source) %>% 
-            summarise(across(c(got, not), sum)) %>% 
-            ungroup())
-hba1c_agg %>% 
-  count(nct_id)
-# 543 trials with hba1c in current set; so 36 of these mismatching
-# 40 trials where age is not merged in
-# 18 are mean and SD. checked one has subgroup labels on arms
-# some are age in other formats, eg mean and range or median and IQR 
-# 9 are definitively without any age data 
-ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
-ipd <- ipd %>% 
-  distinct(nct_id)
-
-hba1c_agg_noage <- hba1c_agg %>% 
-  filter(!arm_id_unq %in% age$arm_id_unq)
-hba1c_meta_noage <- hba1c_meta %>% 
-  unnest(result_id) %>% 
-  semi_join(hba1c_agg_noage %>% select(result_id)) %>% 
-  nest(data = c(result_id)) %>% 
-  left_join(base_dsp %>% 
-              filter(variable == "age") %>% 
-              select(nct_id, first_format, second_format) %>% 
-              distinct(nct_id, .keep_all = TRUE)) %>% 
-  left_join(base_rng %>% 
-              filter(variable == "age") %>% 
-              select(nct_id, first_format_rng = first_format, second_format_rng = second_format) %>% 
-              distinct(nct_id, .keep_all = TRUE))
-ipdage <- intersect(hba1c_meta_noage$nct_id, ipd$nct_id)
-## 4 trials without age have IPD. Can ignore. 36 trials need to resolve age data
-hba1c_meta_noage <- hba1c_agg_noage %>% 
-  filter(!nct_id %in% ipdage)
-ageother <- base_dsp %>%
-  filter(nct_id %in% hba1c_meta_noage$nct_id) %>% 
-  filter(variable == "age")
-
-
-## join what is already matching for purpose of running model
-hba1c_agg <- hba1c_agg %>% 
-  inner_join(age)
-# 513 trials
-hba1c_agg <- hba1c_agg %>% 
-  select(nct_id, arm_id_unq, participants, result, se, age_m, age_s) %>% 
-  distinct()
-dups <- hba1c_agg %>% 
-  select(nct_id, arm_id_unq) %>% 
-  duplicated()
-dups <-  hba1c_agg %>% 
-  select(nct_id, arm_id_unq) %>% 
-  filter(dups) %>% 
-  distinct()
-## 14 rows with duplicates. Will need to resolve. Appears that issue is presence of subgroups. for now. drop
-## need to deal with 
-dups <- hba1c_agg %>% 
-  semi_join(dups)
-hba1c_agg <- hba1c_agg %>% 
-  filter(!arm_id_unq %in% dups$arm_id_unq)
-saveRDS(hba1c_agg, "Scratch_data/agg_hba1c.Rds")
 

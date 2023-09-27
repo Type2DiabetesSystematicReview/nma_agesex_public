@@ -1,24 +1,18 @@
 library(tidyverse)
 library(multinma)
 
+## read data ----
 ## read in simulated IPD
 ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
 ## read in agg
-agg <- readRDS("Scratch_data/agg_hba1c.Rds")
-
-## drop agg where have ipd - 49 trials
-agg %>% 
-  semi_join(ipd %>% select(nct_id)) %>% 
-  count(nct_id)
-agg <- agg %>% 
-  filter(!nct_id %in% ipd$nct_id)
-
+agg <- read_csv("Data/agg.csv")
 # read in arm metadata
 # as uploaded to vivli
 arm_meta_orig <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv") %>% 
   rename(nct_id = trial_id)
-# additions made within vivli
-arm_meta_new<- read_csv("../from_vivli/Data/reference_arm_data_all_cleaned.csv")
+
+# additions to trial metadata made within vivli ----
+arm_meta_new <- read_csv("../from_vivli/Data/agesex/reference_arm_data_all_cleaned.csv")
 arm_meta_new %>% anti_join(arm_meta_orig)
 arm_meta_orig %>% anti_join(arm_meta_new)
 arm_meta <- bind_rows(arm_meta_orig,
@@ -32,7 +26,8 @@ arm_meta <- bind_rows(arm_meta_orig,
                                  arm_id_unq %in% c("ipd00003") ~ "10"))
                         )
 rm(arm_meta_orig, arm_meta_new)
-## Add placebo as a drug name when it is only listed as a lable
+
+## Add placebo as a drug name when it is only listed as a label ----
 arm_meta <- arm_meta %>% 
   mutate(drug_name = if_else(str_sub(arm_label) %>% str_to_lower() == "placebo" & 
                                (is.na(drug_name) | drug_name == ""), "placebo", drug_name))
@@ -55,12 +50,23 @@ arm_meta <- arm_meta %>%
                              "placebo",
                              drug_name))
 saveRDS(arm_meta, "Scratch_data/drug_names_doses_regimen.Rds")
-forcode <- arm_meta %>% 
+
+## Drop arms which are common to all groups and label arms uniquely ----
+# note that where a single drug is present in multiple arms,
+# and where one arm has only that drug, we need to add the name "control" or else the whole arm
+# will be dropped from the data (When it is in fact a control arm)
+# eg:-
+# arm 1 metformin + SGLT2
+# arm 2 metformin
+# becomes:-
+# arm 1 SGLT2
+# arm 2 control
+re_arm <- arm_meta %>% 
   select(nct_id, arm_id_unq, drug_name, drug2_name) %>% 
   gather("drug_order", "drug_name", drug_name, drug2_name, na.rm = TRUE)
 ## Split out where have pipe separator
-forcode$drug_name <- map(forcode$drug_name, ~ str_split(.x, "\\|")[[1]])
-forcode <- forcode %>% 
+re_arm$drug_name <- map(re_arm$drug_name, ~ str_split(.x, "\\|")[[1]])
+re_arm <- re_arm %>% 
   unnest(drug_name) %>% 
   mutate(drug_name = drug_name %>% 
            str_remove("�") %>% 
@@ -69,8 +75,9 @@ forcode <- forcode %>%
            str_to_lower()) %>% 
   filter(!is.na(drug_name), !drug_name == "")
 rename_drug <- readxl::read_excel("Created_metadata/non_atc_drugs.xlsx", sheet = 1)
+
 ## note this increases rows as some drugs were separated using underscores not pipes in data
-forcode <- forcode %>% 
+re_arm <- re_arm %>% 
   left_join(rename_drug, relationship = "many-to-many") %>% 
   mutate(drug_name = if_else(!is.na(rename), rename, drug_name)) %>% 
   select(-rename)
@@ -93,12 +100,13 @@ whoatc <- bind_rows(whoatc,
   distinct()
 whoatc_lkp <- whoatc$atc_code
 names(whoatc_lkp) <- whoatc$nm
-forcode <- forcode %>% 
-  mutate(drug_code  = whoatc_lkp[drug_name]) %>% 
+setdiff(str_to_lower(re_arm$drug_name), names(whoatc_lkp))
+re_arm <- re_arm %>% 
+  mutate(drug_code  = whoatc_lkp[drug_name %>% str_to_lower()]) %>% 
   distinct(nct_id, arm_id_unq, drug_code)
 
 ## drop any where same drug in every arm
-forcode_drp <- forcode %>% 
+re_arm_drp <- re_arm %>% 
   group_by(nct_id) %>% 
   nest() %>% 
   ungroup()
@@ -112,14 +120,13 @@ IdentifyCrossArms <- function(arm_drug){
   x <- unlist(x)
   names(x[x])  
 }
-forcode_drp$sameacross <- map(forcode_drp$data, IdentifyCrossArms)
-# forcode_drp$data <- NULL
-forcode_drp$n <- map_int(forcode_drp$sameacross, length)
-forcode_drp <- forcode_drp %>% 
+re_arm_drp$sameacross <- map(re_arm_drp$data, IdentifyCrossArms)
+re_arm_drp$n <- map_int(re_arm_drp$sameacross, length)
+re_arm_drp <- re_arm_drp %>% 
   filter(n >0) %>% 
   unnest(sameacross)
 ## idetify implict controls and where present add a placevo
-forcode_drp$impcntrl <- map(forcode_drp$data, function(a) {
+re_arm_drp$impcntrl <- map(re_arm_drp$data, function(a) {
   a %>% 
     mutate(v = 1L) %>% 
     spread(drug_code, v, fill = 0L) %>% 
@@ -128,35 +135,35 @@ forcode_drp$impcntrl <- map(forcode_drp$data, function(a) {
                                "implicit_control",
                                drug_code))
 })
-forcode_drp$sameacross2 <- map(forcode_drp$impcntrl, IdentifyCrossArms)
-forcode_drp$retain <- map2(forcode_drp$impcntrl, forcode_drp$sameacross2, ~ {(  
+re_arm_drp$sameacross2 <- map(re_arm_drp$impcntrl, IdentifyCrossArms)
+re_arm_drp$retain <- map2(re_arm_drp$impcntrl, re_arm_drp$sameacross2, ~ {(  
   .x %>% 
     filter(!drug_code %in% .y))
 })
-forcode_drp$retained <- map_int(forcode_drp$retain, nrow) 
-forcode_keep <- forcode_drp %>% 
+re_arm_drp$retained <- map_int(re_arm_drp$retain, nrow) 
+re_arm_keep <- re_arm_drp %>% 
   filter(!retained ==0)
-forcode_drp <- forcode_drp %>% 
+re_arm_drp <- re_arm_drp %>% 
   filter(retained ==0)
-forcode_drp <- forcode_drp %>% 
+re_arm_drp <- re_arm_drp %>% 
   select(nct_id, sameacross, data) %>% 
   unnest(data) 
 ## 5 trials with implicit controls
-forcode_keep <- forcode_keep %>% 
+re_arm_keep <- re_arm_keep %>% 
   select(nct_id, sameacross, retain) %>% 
   unnest(retain) %>% 
   select(-cntrl) 
 
-forcode2 <- bind_rows(forcode %>% 
-                        filter(!nct_id %in% forcode_keep$nct_id,
-                               !nct_id %in% forcode_drp$nct_id) %>% 
+re_arm2 <- bind_rows(re_arm %>% 
+                        filter(!nct_id %in% re_arm_keep$nct_id,
+                               !nct_id %in% re_arm_drp$nct_id) %>% 
                         mutate(sameacross = "nil here see ancillary"),
-                      forcode_keep)
+                      re_arm_keep)
 
-saveRDS(list(keep = forcode2, drop = forcode_drp), 
+saveRDS(list(keep = re_arm2, drop = re_arm_drp), 
         "Scratch_data/arm_codes_sameacross_retain.Rds")
 
-arm_assign <- forcode2 %>% 
+arm_assign <- re_arm2 %>% 
   select(nct_id, arm_id_unq, drug_code) %>% 
   mutate(drug_code = if_else(drug_code == "implicit_control",
                              "placebo",
@@ -172,6 +179,5 @@ arm_assign <- arm_assign %>%
   ungroup()
 map_int(arm_assign, ~ sum(!duplicated(.x)))
 # nct_id arm_id_unq  drug_code    trtcls5    trtcls4 
-# 782       1899        116         51         17 
+# 759       1860        114         49         14 
 saveRDS(arm_assign,  "Scratch_data/arm_labels_final.Rds")
-

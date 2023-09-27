@@ -50,9 +50,26 @@ hba1c_agg <- hba1c_agg %>%
   semi_join(arm %>% select(nct_id = trial_id,
                            arm_id_unq = value))
 
+## identify problem ones shown as single arm later. all are from new extract
+problem <- c("NCT03387683", "ChiCTR1800015296", "jRCTs031180159", "NCT02875821", "TCTR20170511001", "UMIN000021177", "UMIN000031451", "IRCT20200722048176N1","NCT03313752")
+setdiff(problem, hba1c_agg$nct_id)
+## these are all single arms. Not clear why. Check with ELB
+hba1c_agg %>% 
+  filter(nct_id %in% problem) %>% 
+  select(nct_id, arm_id_unq)
+# hba1c_agg %>% 
+#   filter(nct_id %in% problem) %>% 
+#   View()
+
 ## correct errors
 hba1c_agg <- hba1c_agg %>% 
   mutate(result_type = if_else(nct_id == "NCT00509262" & result_description == "change from baseline", "mean", result_type))
+# cant use if_else here or drops dispersion where arm_id_unq is missing. so use case_when
+hba1c_agg <- hba1c_agg %>% 
+  mutate(dispersion = case_when(
+    arm_id_unq == "unq_updaa10037" ~ "0,0.5",
+    TRUE ~ dispersion))
+
 # drop trials not in 
 hba1c_agg %>% 
   count(nct_id)
@@ -86,6 +103,30 @@ result_type_per_trial <- hba1c_meta %>%
 ## 524 mean change, 56 mean change calculate, 15 between arm means, 23 "others"
 result_type_per_trial %>% 
   count(result_type_best)
+
+## errors in result determination
+## note is not error in processing but difference in way CTG data translated to aact. New extract performed to address this
+hba1c_agg <- hba1c_agg %>% 
+  mutate(dispersion = if_else(nct_id == "NCT02973477" & dispersion == "0.01-0.08",
+                              "0.01;0.08", dispersion))
+ci_error <- hba1c_meta %>% 
+  filter(dispersion_type %in% c("95%ci", "95% ci")) %>% 
+  unnest(result_id) %>% 
+  inner_join(hba1c_agg) %>% 
+  filter(!str_detect(dispersion, ",|\\;"))
+
+ci_corr <- read_csv("../extract_transform/data/aact_hba1c_outcome_data_correct_aact_difference.csv")
+ci_error2 <- ci_error %>% 
+  inner_join(ci_corr %>% 
+               select(nct_id, result = param_value, dispersion_lower_limit, dispersion_upper_limit))
+ci_error2 <- ci_error2 %>% 
+  mutate(dispersion = paste(dispersion_lower_limit, dispersion_upper_limit, sep = ";")) %>% 
+  select(-dispersion_lower_limit, -dispersion_upper_limit)
+hba1c_agg <- bind_rows(hba1c_agg %>% 
+                         anti_join(ci_error %>% select(result_id)),
+                        ci_error2 %>% 
+                          select(nct_id, result_id, arm_id_unq, comp_id, ancova, result, dispersion, units_label, timepoint, arm_id_subgroup))
+rm(ci_error, ci_corr, ci_error2)
 
 ### Add in number of participants where available based on result_id ----
 ## pull other missing ns from results  note the IDs are extract specific
@@ -153,14 +194,6 @@ hba1c_agg_mean <- hba1c_agg %>%
 hba1c_meta <- hba1c_meta %>% 
   filter(!nct_id %in% hba1c_meta_mean$nct_id)
 
-# Next take contrast in mean change
-hba1c_meta_comp <- hba1c_meta %>% 
-  filter(result_type_smry == "between_arm_mean") 
-hba1c_agg_comp <- hba1c_agg %>% 
-  semi_join(hba1c_meta_comp %>% unnest(result_id))
-hba1c_meta <- hba1c_meta %>% 
-  filter(!nct_id %in% hba1c_meta_comp$nct_id)
-
 ## Next take endpoint-measure
 hba1c_meta_end <- hba1c_meta %>% 
   filter(result_type_smry %in% c("mean_end"))
@@ -168,6 +201,15 @@ hba1c_agg_end <- hba1c_agg %>%
   semi_join(hba1c_meta_end %>% unnest(result_id))
 hba1c_meta <- hba1c_meta %>% 
   filter(!nct_id %in% hba1c_meta_end$nct_id)
+
+
+# Next take contrast in mean change
+hba1c_meta_comp <- hba1c_meta %>% 
+  filter(result_type_smry == "between_arm_mean") 
+hba1c_agg_comp <- hba1c_agg %>% 
+  semi_join(hba1c_meta_comp %>% unnest(result_id))
+hba1c_meta <- hba1c_meta %>% 
+  filter(!nct_id %in% hba1c_meta_comp$nct_id)
 
 ## leaves 17 trials with medians and percentage change. Will need to drop these
 
