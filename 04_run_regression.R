@@ -78,7 +78,7 @@ agg <- agg %>%
 agg %>% 
   filter(is.na(n)) %>% 
   count(nct_id)
-# 31 trials without age
+# 25 trials without age
 agg %>% 
   filter(is.na(age_m)) %>% 
   count(nct_id)

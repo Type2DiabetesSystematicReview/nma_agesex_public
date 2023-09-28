@@ -38,19 +38,27 @@ cor2cov <- function(term, vr, r) {
 
 ## read in vivli agesex results ----
 allvivli <- list.files("../from_vivli/Data/agesex/", patt = "csv$")
-read_lines("../from_vivli/Data/00_readme.txt") 
-res <- map(allvivli, ~ read_csv(paste0("../from_vivli/Data/agesex/", .x)))
-names(res) <- allvivli %>% str_sub(1, -5)
+read_lines("../from_vivli/Data/agesex/00_readme.txt") 
+res1 <- map(allvivli, ~ read_csv(paste0("../from_vivli/Data/agesex/", .x)))
+names(res1) <- allvivli %>% str_sub(1, -5)
+# bind categorical and continuous age data together. Only have continuous for gsk
+res1$age_distribution_baseline_continuous <- bind_rows(res1$age_distribution_baseline_continuous,
+                       res1$age_distribution_baseline_categorical) 
+## read in gsk agesex results ----
+allgsk <- list.files("../from_gsk//Data/agesex/", patt = "csv$")
+read_lines("../from_gsk/README.md") 
+res2 <- map(allgsk, ~ read_csv(paste0("../from_gsk/Data/agesex/", .x)))
+names(res2) <- allgsk %>% str_sub(1, -5)
+res1 <- res1[names(res2)]
+res <- map2(res1, res2, ~ bind_rows(.x, .y))
 list2env(res, envir = .GlobalEnv)
-rm(res, allvivli)
+rm(res, res1, res2, allvivli, allgsk)
 
 ## simulate age and sex data ----
-age_distr <- bind_rows(age_distribution_baseline_continuous,
-                       age_distribution_baseline_categorical) %>% 
-  select(nct_id:sd)
-rm(age_distribution_baseline_continuous,
-   age_distribution_baseline_categorical)
 ## crude simulation, can improve using ecdf
+age_distr <- age_distribution_baseline_continuous %>% 
+  select(nct_id:sd)
+rm(age_distribution_baseline_continuous)
 age_distr$sim <- pmap(list(age_distr$participants, age_distr$mean, age_distr$sd), function(p, m, s) rnorm(p, m, s))
 age_distr <- age_distr %>% 
   select(nct_id, arm_id_unq, sex, sim) %>% 
