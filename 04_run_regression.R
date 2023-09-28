@@ -120,16 +120,21 @@ whichnwork_lst <- whichnwork$nct_id
 names(whichnwork_lst) <- whichnwork$drug_regime_smpl
 whichnwork_lst <- map(whichnwork_lst, pull)
 
+## add in list of YODA trials to see further IPD, need to check if this is full YODA
+yoda <- c("NCT00968812", "NCT01032629", "NCT01081834", "NCT01106625", 
+  "NCT01106651", "NCT01106677", "NCT01106690", "NCT01137812", "NCT01381900", 
+  "NCT01809327", "NCT01989754")
+
 whichnwork <- whichnwork %>% 
   unnest(nct_id)
 whichnwork_smry <- whichnwork %>% 
-  mutate(triallvl = if_else(nct_id %in% ipd$nct_id, "ipd", "agg")) %>% 
+  mutate(triallvl = if_else(nct_id %in% c(ipd$nct_id, yoda), "ipd", "agg")) 
+
+whichnwork_smry1 <- whichnwork_smry %>% 
   count(drug_regime_smpl, triallvl) %>% 
   spread(triallvl, n, fill = 0L)
-write_csv(whichnwork_smry, "Outputs/ipd_agg_trial_count_by_line.csv")
-
-whichnwork_smry2 <- whichnwork %>% 
-  mutate(triallvl = if_else(nct_id %in% ipd$nct_id, "ipd", "agg")) %>% 
+write_csv(whichnwork_smry1, "Outputs/ipd_agg_trial_count_by_line.csv")
+whichnwork_smry2 <- whichnwork_smry %>% 
   filter(triallvl == "ipd") %>% 
   inner_join(arm_assign %>% distinct(nct_id, trtcls5)) %>% 
   count(drug_regime_smpl, trtcls5) %>% 
