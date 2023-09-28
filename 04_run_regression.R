@@ -120,6 +120,23 @@ whichnwork_lst <- whichnwork$nct_id
 names(whichnwork_lst) <- whichnwork$drug_regime_smpl
 whichnwork_lst <- map(whichnwork_lst, pull)
 
+whichnwork <- whichnwork %>% 
+  unnest(nct_id)
+whichnwork_smry <- whichnwork %>% 
+  mutate(triallvl = if_else(nct_id %in% ipd$nct_id, "ipd", "agg")) %>% 
+  count(drug_regime_smpl, triallvl) %>% 
+  spread(triallvl, n, fill = 0L)
+write_csv(whichnwork_smry, "Outputs/ipd_agg_trial_count_by_line.csv")
+
+whichnwork_smry2 <- whichnwork %>% 
+  mutate(triallvl = if_else(nct_id %in% ipd$nct_id, "ipd", "agg")) %>% 
+  filter(triallvl == "ipd") %>% 
+  inner_join(arm_assign %>% distinct(nct_id, trtcls5)) %>% 
+  count(drug_regime_smpl, trtcls5) %>% 
+  spread(drug_regime_smpl, n, fill = 0L)
+write_csv(whichnwork_smry2, "Outputs/ipd_trial_count_by_class_and_line.csv")
+
+  
 RptNetwork <- function(ipd_choose, agg_choose){
   combine_network(
     set_ipd(ipd_choose,
@@ -207,4 +224,7 @@ dm_net_fe <- map(dm_net_fe, ~ {
   .x$code <-  rstan::get_stancode(.x$object)
   .x
 })
+
+
+
 saveRDS(dm_net_fe, "Scratch_data/fe_model.Rds")
