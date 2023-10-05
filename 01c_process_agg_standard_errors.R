@@ -173,7 +173,7 @@ comp4 <- comp3 %>%
 #equal to the standard error of the mean outcome on the reference arm (this
 #determines the covariance of the relative effects, when expressed as # only one
 #trial has three or more arms - NCT03159052 
-# assume standard error arm same as median for other trials wiht a placebo arm
+# assume standard error arm same as median for other trials with a placebo arm
 ## note drop double reference for this trial
 comp4 <- comp4 %>% 
   filter(!(nct_id == "NCT03159052" & unique_id == "0058"))

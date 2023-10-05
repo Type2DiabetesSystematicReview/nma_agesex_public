@@ -53,7 +53,8 @@ hba1c_agg <- hba1c_agg %>%
                            arm_id_unq = value))
 
 ## identify problem ones shown as single arm later. all are from new extract
-problem <- c("NCT03387683", "ChiCTR1800015296", "jRCTs031180159", "NCT02875821", "TCTR20170511001", "UMIN000021177", "UMIN000031451", "IRCT20200722048176N1","NCT03313752")
+problem <- c("NCT03387683", "ChiCTR1800015296", "jRCTs031180159", "NCT02875821", "TCTR20170511001", 
+             "UMIN000021177", "UMIN000031451", "IRCT20200722048176N1","NCT03313752")
 setdiff(problem, hba1c_agg$nct_id)
 ## these are all single arms. Not clear why. Check with ELB
 hba1c_agg %>% 
@@ -203,7 +204,6 @@ hba1c_agg_end <- hba1c_agg %>%
   semi_join(hba1c_meta_end %>% unnest(result_id))
 hba1c_meta <- hba1c_meta %>% 
   filter(!nct_id %in% hba1c_meta_end$nct_id)
-
 
 # Next take contrast in mean change
 hba1c_meta_comp <- hba1c_meta %>% 
