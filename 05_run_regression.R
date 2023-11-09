@@ -158,7 +158,6 @@ combi <- combi %>%
          arms_f = factor(arms)) %>% 
   ungroup()
 
-
 write_csv(whichnwork_smry2, "Outputs/ipd_trial_count_by_class_and_line.csv")
 
   

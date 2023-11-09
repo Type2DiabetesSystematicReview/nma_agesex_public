@@ -10,6 +10,9 @@ agg <- read_csv("Data/agg.csv")
 # as uploaded to vivli
 arm_meta_orig <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv") %>% 
   rename(nct_id = trial_id)
+arm_meta_orig <- arm_meta_orig %>% 
+  semi_join(bind_rows(agg %>% select(nct_id, arm_id_unq),
+                      ipd %>% select(nct_id, arm_id_unq)))
 
 # additions to trial metadata made within vivli ----
 arm_meta_new <- read_csv("../from_vivli/Data/agesex/reference_arm_data_all_cleaned.csv")
@@ -105,6 +108,22 @@ re_arm <- re_arm %>%
   mutate(drug_code  = whoatc_lkp[drug_name %>% str_to_lower()]) %>% 
   distinct(nct_id, arm_id_unq, drug_code)
 
+## Simplify insulins to a single code A10A; all are single drugs
+re_arm <- re_arm %>% 
+  mutate(drug_code = if_else(str_detect(drug_code, "^A10A"), "A10A", drug_code))
+re_arm <- re_arm %>% 
+  distinct()
+
+## Where class is specified rather than drug (ie multiple drugs in the same class in an arm)
+## simplify the drug code to the class. eg multiple glp1s
+re_arm <- re_arm %>% 
+  mutate(trtcls5 = str_sub(drug_code, 1, 5)) %>% 
+  group_by(nct_id, arm_id_unq, trtcls5) %>% 
+  mutate(appears = length(trtcls5),
+         drug_code = if_else(appears >=2, trtcls5, drug_code)) %>% 
+  ungroup()  %>% 
+  distinct(nct_id, arm_id_unq, drug_code)
+
 ## drop any where same drug in every arm
 re_arm_drp <- re_arm %>% 
   group_by(nct_id) %>% 
@@ -175,8 +194,9 @@ arm_assign <- arm_assign %>%
   arrange(nct_id, arm_id_unq, drug_code) %>% 
   group_by(nct_id, arm_id_unq) %>% 
   summarise(across(c(drug_code, trtcls5, trtcls4), ~
-              paste(.x, collapse = "_"))) %>% 
+              paste(.x %>% unique(), collapse = "_"))) %>% 
   ungroup()
+
 map_int(arm_assign, ~ sum(!duplicated(.x)))
 # nct_id arm_id_unq  drug_code    trtcls5    trtcls4 
 # 759       1860        114         49         14 
