@@ -49,7 +49,6 @@ ipd <- ipd %>%
   rename(result = value_2, base = value_1) %>% 
   select(-age10)
 
-
 ## One IPD trial did not pull out "open label" comparison from IPD. Exct design of this trial unclear
 rmv1 <- c("NCT01368081")
 ipd <- ipd %>%
@@ -69,7 +68,8 @@ agg <- agg %>%
     arm_id_unq == "uaa10381" ~ 0.065,
     TRUE ~ se
   ))
-# drop one trial with no standard errors (was a trial registered on a Japanese register. presented mean and SD, no participant count at all. No P-value found)
+# drop one trial with no standard errors (was a trial registered on a Japanese register. presented mean and SD, 
+# no participant count at all. No P-value found)
 # drop another trial with no standard errors - NCT00101673 - not available anywhere
 agg <- agg %>% 
   filter(!nct_id %in% c("NCT00101673", "UMIN000019022") )
@@ -139,6 +139,26 @@ whichnwork_smry2 <- whichnwork_smry %>%
   inner_join(arm_assign %>% distinct(nct_id, trtcls5)) %>% 
   count(drug_regime_smpl, trtcls5) %>% 
   spread(drug_regime_smpl, n, fill = 0L)
+
+whichnwork_smry_dual <- whichnwork_smry %>% 
+  filter(drug_regime_smpl == "dual") %>% 
+  inner_join(arm_assign %>% distinct(nct_id, trtcls5)) %>% 
+  count(triallvl, trtcls5) %>% 
+  pivot_wider(names_from = c(triallvl), values_from = n, values_fill = 0L) %>% 
+  arrange(str_length(trtcls5))
+
+combi <- arm_assign %>% 
+  filter(str_detect(trtcls5, "_")) %>% 
+  pull(nct_id)
+combi <- arm_assign %>% 
+  filter(nct_id %in% combi)
+combi <- combi %>% 
+  group_by(nct_id) %>% 
+  mutate(arms = length(nct_id),
+         arms_f = factor(arms)) %>% 
+  ungroup()
+
+
 write_csv(whichnwork_smry2, "Outputs/ipd_trial_count_by_class_and_line.csv")
 
   

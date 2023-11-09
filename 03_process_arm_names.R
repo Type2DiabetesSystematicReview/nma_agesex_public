@@ -125,7 +125,7 @@ re_arm_drp$n <- map_int(re_arm_drp$sameacross, length)
 re_arm_drp <- re_arm_drp %>% 
   filter(n >0) %>% 
   unnest(sameacross)
-## idetify implict controls and where present add a placevo
+## identify implicit controls and where present add a placebo
 re_arm_drp$impcntrl <- map(re_arm_drp$data, function(a) {
   a %>% 
     mutate(v = 1L) %>% 
