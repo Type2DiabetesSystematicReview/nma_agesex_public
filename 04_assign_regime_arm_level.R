@@ -61,4 +61,60 @@ combo <- combo %>%
   left_join(combo)
 # write_csv(combo, "Created_metadata/to_simplify_combination_trials.csv")
 ## note renamed to "simplify_combination_trials.csv" so do not accidentally overwrite
+rm(combo, combo_smry)
+combo <- read_csv("Created_metadata/simplify_combination_trials.csv")
+whichnwork_simple <- whichnwork %>% 
+  rename(nct_id = trial_id) %>% 
+  anti_join(combo %>% select(nct_id))
+whichnwork_multi <- whichnwork %>% 
+  rename(nct_id = trial_id) %>% 
+  semi_join(combo %>% select(nct_id))
+arm_assign_simple <- arm_assign %>% 
+  anti_join(combo %>% select(nct_id))
 
+
+## add which network to arms with one drug per arm
+arm_assign_simple <- arm_assign_simple %>% 
+  inner_join(whichnwork_simple %>% select(nct_id, drug_regime))
+
+## add which network to arms with more than one drug per arm. need to select dual and triple separately
+dual <- combo %>% 
+  filter(!is.na(dual)) %>% 
+  select(nct_id, arm_id_unq, drug_code) %>% 
+  mutate(drug_regime = "dual")
+triple <- combo %>% 
+  filter(!is.na(triple)) %>% 
+  select(nct_id, arm_id_unq, drug_code) %>% 
+  mutate(drug_regime = "triple")
+arm_assign_multi <- bind_rows(dual, triple) %>% 
+  mutate(trtcls5  = str_sub(drug_code, 1, 5),
+         trtcls4 = str_sub(drug_code, 1, 4))
+arm_assign_final <- bind_rows(arm_assign_simple,
+                              arm_assign_multi)
+## simplify regime names
+arm_assign_final <- arm_assign_final %>% 
+  mutate(drug_regime_smpl = case_when(
+  drug_regime %in% c("triple", "triple+", "dual|triple+", "mono|dual|triple+") ~ "triple",
+  drug_regime %in% c("dual", "mono|dual") ~ "dual",
+  drug_regime %in% "mono" ~ "mono",
+  TRUE ~ "unclear or missing"))
+
+arm_assign_final %>% 
+  summarise(trials = sum(!duplicated(nct_id)),
+            arms = length(arm_id_unq),
+            dups = sum(duplicated(arm_id_unq)))
+arm_assign_final %>% 
+  group_by(drug_regime_smpl) %>% 
+  summarise(trials = sum(!duplicated(nct_id)),
+            arms = length(arm_id_unq),
+            dups = sum(duplicated(arm_id_unq)))
+rv_trls <- arm_assign_final %>% 
+  distinct(nct_id, drug_regime_smpl) %>% 
+  arrange(drug_regime_smpl) %>% 
+  group_by(nct_id) %>% 
+  summarise(trl_type = paste(drug_regime_smpl, collapse = ",")) %>% 
+  ungroup() 
+rv_trls %>% 
+  count(trl_type)
+## note that trials (and arms) can appear in more than one network
+saveRDS(arm_assign_final, "Scratch_data/arms_assign_drug_regime.Rds")
