@@ -6,6 +6,8 @@ library(multinma)
 
 ## read in network characterisation ----
 arm_regime <- readRDS("Scratch_data/arms_assign_drug_regime.Rds")
+write_csv(arm_regime, "Outputs/arms_drugs_regimes.csv")
+
 ## read in simulated IPD
 ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
 ## read in agg
