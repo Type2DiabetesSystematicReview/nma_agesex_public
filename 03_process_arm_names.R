@@ -1,6 +1,7 @@
 library(tidyverse)
 library(multinma)
 
+source("Scripts/00_functions.R")
 ## read data ----
 ## read in simulated IPD
 ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
@@ -124,67 +125,13 @@ re_arm <- re_arm %>%
   ungroup()  %>% 
   distinct(nct_id, arm_id_unq, drug_code)
 
-## drop any where same drug in every arm
-re_arm_drp <- re_arm %>% 
-  group_by(nct_id) %>% 
-  nest() %>% 
-  ungroup()
-IdentifyCrossArms <- function(arm_drug){
-  x <- arm_drug %>% 
-    select(arm_id_unq, drug_code) %>%
-    mutate(v = 1L) %>% 
-    spread(drug_code, v, fill = 0L) %>% 
-    select(-arm_id_unq) %>% 
-    summarise_all(all)
-  x <- unlist(x)
-  names(x[x])  
-}
-re_arm_drp$sameacross <- map(re_arm_drp$data, IdentifyCrossArms)
-re_arm_drp$n <- map_int(re_arm_drp$sameacross, length)
-re_arm_drp <- re_arm_drp %>% 
-  filter(n >0) %>% 
-  unnest(sameacross)
-## identify implicit controls and where present add a placebo
-re_arm_drp$impcntrl <- map(re_arm_drp$data, function(a) {
-  a %>% 
-    mutate(v = 1L) %>% 
-    spread(drug_code, v, fill = 0L) %>% 
-    gather(key = "drug_code", cntrl, -arm_id_unq) %>% 
-    mutate(drug_code = if_else(cntrl == 0L, 
-                               "implicit_control",
-                               drug_code))
-})
-re_arm_drp$sameacross2 <- map(re_arm_drp$impcntrl, IdentifyCrossArms)
-re_arm_drp$retain <- map2(re_arm_drp$impcntrl, re_arm_drp$sameacross2, ~ {(  
-  .x %>% 
-    filter(!drug_code %in% .y))
-})
-re_arm_drp$retained <- map_int(re_arm_drp$retain, nrow) 
-re_arm_keep <- re_arm_drp %>% 
-  filter(!retained ==0)
-re_arm_drp <- re_arm_drp %>% 
-  filter(retained ==0)
-re_arm_drp <- re_arm_drp %>% 
-  select(nct_id, sameacross, data) %>% 
-  unnest(data) 
-## 5 trials with implicit controls
-re_arm_keep <- re_arm_keep %>% 
-  select(nct_id, sameacross, retain) %>% 
-  unnest(retain) %>% 
-  select(-cntrl) 
-
-re_arm2 <- bind_rows(re_arm %>% 
-                        filter(!nct_id %in% re_arm_keep$nct_id,
-                               !nct_id %in% re_arm_drp$nct_id) %>% 
-                        mutate(sameacross = "nil here see ancillary"),
-                      re_arm_keep)
+mylst <- SimplifyDrugs(re_arm)
 ## Reviewed ancillary drugs detected wiht comparison in code versus the manual assignment with ELB.
 ## 9th November 2023
 ## Consistent results. No need to change designation (eg mono, dual triple etc)
-
-
-saveRDS(list(keep = re_arm2, drop = re_arm_drp), 
+saveRDS(mylst, 
         "Scratch_data/arm_codes_sameacross_retain.Rds")
+
 
 arm_assign <- re_arm2 %>% 
   select(nct_id, arm_id_unq, drug_code) %>% 
@@ -203,5 +150,5 @@ arm_assign <- arm_assign %>%
 
 map_int(arm_assign, ~ sum(!duplicated(.x)))
 # nct_id arm_id_unq  drug_code    trtcls5    trtcls4 
-# 759       1860        114         49         14 
+# 602       1489         84         26          5 
 write_csv(arm_assign, "Data/arm_labels_hba1c.csv")

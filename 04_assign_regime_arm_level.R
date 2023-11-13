@@ -1,6 +1,7 @@
 library(tidyverse)
 ## deal with combo trials
 ## sometimes these are dual or mono depending which arems we choose I think we should split the networks accordingly
+source("Scripts/00_functions.R")
 
 arm_assign <- read_csv("Data/arm_labels_hba1c.csv")
 whichnwork <- read_csv("../cleaned_data/Data/ancillary_drugs_data_all_cleaned.csv")
@@ -80,13 +81,53 @@ arm_assign_simple <- arm_assign_simple %>%
 ## add which network to arms with more than one drug per arm. need to select dual and triple separately
 dual <- combo %>% 
   filter(!is.na(dual)) %>% 
-  select(nct_id, arm_id_unq, drug_code) %>% 
-  mutate(drug_regime = "dual")
+  select(nct_id, arm_id_unq, drug_code) 
+## get rid of double underscore as can cause problems
+dual <- dual %>% 
+  mutate(drug_code = str_replace_all(drug_code, "__", "$$"))
+## simplify dual and combo
+dual$drug_codes <- map(dual$drug_code, ~ str_split(.x, "_") %>% unlist())
+dual <- dual %>% 
+  select(-drug_code) %>% 
+  rename(drug_code = drug_codes) %>% 
+  unnest(drug_code)
+dual2 <- SimplifyDrugs(dual)$keep
+dual_cmpr <- dual %>% 
+  anti_join(dual2) %>% 
+  inner_join(dual2 %>% rename(drug_code2 = drug_code))
+rm(dual, dual_cmpr)
+dual <- dual2 %>% 
+  mutate(drug_code = str_replace_all(drug_code, fixed("$$"), "__"),
+         drug_code = if_else(drug_code == "implicit_control", "placebo", drug_code)) %>% 
+  select(-sameacross)
+rm(dual2)
+
 triple <- combo %>% 
   filter(!is.na(triple)) %>% 
-  select(nct_id, arm_id_unq, drug_code) %>% 
-  mutate(drug_regime = "triple")
-arm_assign_multi <- bind_rows(dual, triple) %>% 
+  select(nct_id, arm_id_unq, drug_code) 
+triple <- triple %>% 
+  mutate(drug_code = str_replace_all(drug_code, "__", "$$"))
+## simplify triple and combo
+triple$drug_codes <- map(triple$drug_code, ~ str_split(.x, "_") %>% unlist())
+triple <- triple %>% 
+  select(-drug_code) %>% 
+  rename(drug_code = drug_codes) %>% 
+  unnest(drug_code)
+triple2 <- SimplifyDrugs(triple)$keep
+triple_cmpr <- triple %>% 
+  anti_join(triple2) %>% 
+  inner_join(triple2 %>% rename(drug_code2 = drug_code))
+rm(triple, triple_cmpr)
+triple <- triple2 %>% 
+  mutate(drug_code = str_replace_all(drug_code, fixed("$$"), "__"),
+         drug_code = if_else(drug_code == "implicit_control", "placebo", drug_code)) %>% 
+  select(-sameacross)
+rm(triple2)
+
+arm_assign_multi <- bind_rows(dual %>% 
+                                mutate(drug_regime = "dual"),
+                              triple %>% 
+                                mutate(drug_regime = "triple")) %>% 
   mutate(trtcls5  = str_sub(drug_code, 1, 5),
          trtcls4 = str_sub(drug_code, 1, 4))
 arm_assign_final <- bind_rows(arm_assign_simple,

@@ -36,6 +36,14 @@ cor2cov <- function(term, vr, r) {
   vr %*% r %*% t(vr)
 }
 
+## read in IDs where have IPD ----
+ipd1 <- read_csv("../from_vivli/Data/agesex/hba1c_base_change_overall.csv")
+ipd2 <- read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv")
+ipd3 <- read.csv("../from_vivli_second/Data/agesex/hba1c_base_change_overall.csv")
+ipd_nct_id <- bind_rows(ipd1, ipd2, ipd3) %>% 
+  distinct(nct_id) %>% 
+  pull()
+
 ## read in vivli agesex results ----
 allvivli <- list.files("../from_vivli/Data/agesex/", patt = "csv$")
 read_lines("../from_vivli/Data/agesex/00_readme.txt") 
@@ -50,7 +58,15 @@ read_lines("../from_gsk/README.md")
 res2 <- map(allgsk, ~ read_csv(paste0("../from_gsk/Data/agesex/", .x)))
 names(res2) <- allgsk %>% str_sub(1, -5)
 res1 <- res1[names(res2)]
-res <- map2(res1, res2, ~ bind_rows(.x, .y))
+
+## read in vivli agesex results from second vivli repository ----
+allvivli <- list.files("../from_vivli_second/Data/agesex/", patt = "csv$")
+read_lines("../from_vivli_second//Data/agesex/readme.txt") 
+res3 <- map(allvivli, ~ read_csv(paste0("../from_vivli_second/Data/agesex/", .x)))
+names(res3) <- allvivli %>% str_sub(1, -5)
+# drop csv only in second_vivli
+res3$reference_trial_arm_to_arm_data_all_cleaned <- NULL
+res <- pmap(list(res1, res2, res3), function(x, y, z) bind_rows(vivli1 = x, gsk = y, vivli2 = z))
 list2env(res, envir = .GlobalEnv)
 rm(res, res1, res2, allvivli, allgsk)
 
