@@ -178,6 +178,10 @@ re_arm2 <- bind_rows(re_arm %>%
                                !nct_id %in% re_arm_drp$nct_id) %>% 
                         mutate(sameacross = "nil here see ancillary"),
                       re_arm_keep)
+## Reviewed ancillary drugs detected wiht comparison in code versus the manual assignment with ELB.
+## 9th November 2023
+## Consistent results. No need to change designation (eg mono, dual triple etc)
+
 
 saveRDS(list(keep = re_arm2, drop = re_arm_drp), 
         "Scratch_data/arm_codes_sameacross_retain.Rds")
