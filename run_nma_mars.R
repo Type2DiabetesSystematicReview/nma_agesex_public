@@ -27,10 +27,11 @@ RptNetwork <- function(ipd_choose, agg_choose){
 }
 
 
-install.packages("multinma", repos = c("https://dmphillippo.r-universe.dev", 
-                                       "https://cloud.r-project.org/"))
+# install.packages("multinma", repos = c("https://dmphillippo.r-universe.dev", 
+#                                        "https://cloud.r-project.org/"))
 library(multinma)
-
+library(dplyr)
+library(tibble)
 tot <- readRDS("data_for_mars.Rds")
 
 ipd <- tot$ipd[[1]]

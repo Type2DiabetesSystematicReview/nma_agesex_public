@@ -55,7 +55,7 @@ arm_meta <- arm_meta %>%
                              drug_name))
 saveRDS(arm_meta, "Scratch_data/drug_names_doses_regimen.Rds")
 
-## Drop arms which are common to all groups and label arms uniquely ----
+## Drop drugs which are common to all groups and label arms uniquely ----
 # note that where a single drug is present in multiple arms,
 # and where one arm has only that drug, we need to add the name "control" or else the whole arm
 # will be dropped from the data (When it is in fact a control arm)

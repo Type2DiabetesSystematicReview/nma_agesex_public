@@ -78,7 +78,46 @@ arm_assign_simple <- arm_assign %>%
 arm_assign_simple <- arm_assign_simple %>% 
   inner_join(whichnwork_simple %>% select(nct_id, drug_regime))
 
+## ELB selected only one arm where was same drug in multiple arms (eg at different doses)
+## want to select all of these
+unassigned <- combo %>% 
+  filter(is.na(mono), is.na(dual), is.na(triple)) %>% 
+  pull(nct_id) %>% 
+  unique()
+combo2 <- combo %>% 
+  group_by(nct_id, drug_code) %>% 
+  mutate(across(c(mono, dual, triple), ~ if_else(is.na(.x), 
+                                                 max(.x, na.rm = TRUE),
+                                                 .x))) %>% 
+  ungroup()
+combo_cmpr <- combo %>% 
+  select(nct_id, arm_id_unq, drug_code, mono, dual, triple) %>% 
+  inner_join(combo2 %>% 
+               select(nct_id, arm_id_unq, drug_code, mono2 = mono, dual2 = dual, triple2 = triple))  %>% 
+  filter(nct_id %in% unassigned)
+combo <- combo %>% 
+  group_by(nct_id, drug_code) %>% 
+  mutate(across(c(mono, dual, triple), ~ if_else(is.na(.x), 
+                                                 max(.x, na.rm = TRUE),
+                                                 .x))) %>% 
+  ungroup()
+rm(combo2, combo_cmpr)
+
 ## add which network to arms with more than one drug per arm. need to select dual and triple separately
+mono <- combo %>% 
+  filter(!is.na(mono)) %>% 
+  select(nct_id, arm_id_unq, drug_code) 
+## get rid of double underscore as can cause problems
+mono <- mono %>% 
+  mutate(drug_code = str_replace_all(drug_code, "__", "$$"))
+## simplify mono and combo
+mono$drug_codes <- map(mono$drug_code, ~ str_split(.x, "_") %>% unlist())
+mono <- mono %>% 
+  select(-drug_code) %>% 
+  rename(drug_code = drug_codes) %>% 
+  unnest(drug_code)
+## no multi-drugs for monotherapy so no need to simplify
+
 dual <- combo %>% 
   filter(!is.na(dual)) %>% 
   select(nct_id, arm_id_unq, drug_code) 
@@ -124,7 +163,9 @@ triple <- triple2 %>%
   select(-sameacross)
 rm(triple2)
 
-arm_assign_multi <- bind_rows(dual %>% 
+arm_assign_multi <- bind_rows(mono %>% 
+                                mutate(drug_regime = "dual"),
+                              dual %>% 
                                 mutate(drug_regime = "dual"),
                               triple %>% 
                                 mutate(drug_regime = "triple")) %>% 
@@ -159,3 +200,4 @@ rv_trls %>%
   count(trl_type)
 ## note that trials (and arms) can appear in more than one network
 saveRDS(arm_assign_final, "Scratch_data/arms_assign_drug_regime.Rds")
+write_csv(arm_assign_final, "Outputs/arms_drugs_regimes.csv")
