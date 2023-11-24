@@ -8,6 +8,12 @@ bas <- map(bas, ~ .x %>%
              rename(nct_id = trial_id, arm_id_unq  = arm_id))
 comp <- read_csv("../cleaned_data/Data/example_comparisons.csv")
 arm <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv")
+
+
+## NCT01541956  is actually a standard deviation not a standard error. checked paper
+out$arm$meta <- out$arm$meta %>% 
+  mutate(dispersion_type = if_else(nct_id == "NCT01541956", "sd", dispersion_type))
+
 ## calculate standard errors for arm data (change and end) ----
 out$unav <- NULL
 out <- transpose(out)
@@ -119,7 +125,7 @@ rm(hba1c_arm_sg)
 
 hba1c_arm <- hba1c_arm %>% 
   left_join(bas$ns) %>% 
-  left_join(bas$sex) %>% 
+  left_join(bas$sex %>% select(-n)) %>% 
   left_join(bas$age)
 hba1c_arm <- hba1c_arm %>% 
   mutate(participants = if_else(!is.na(participants), participants, n),
@@ -147,7 +153,7 @@ comp2 <- comp %>%
   left_join(bas$age)
 ## ONe trial missing data. Add
 comp_msng <- read_csv(
-"arm_id_unq,arm_label,n,male,age_sd,age_m
+"arm_id_unq,arm_label,n,male,age_m,age_sd
 unq_updaa10055,dapagliflozin,12,7,63,4.7
 unq_updaa10057,placebo,14,13,64.6,4.7")
 comp_msng_meta <- comp2 %>% 
@@ -190,12 +196,40 @@ placebo_arms <- hba1c_arm %>%
 comp4 <- comp4 %>% 
   mutate(se = if_else(treat_or_ref == "reference", placebo_arms, se))
 
-## set final datasets for saving as csv files
+## convert all onto common units
+## note error  in assinging unit label to one trial - Netherlands Trial Register NTR6709
+## Need to add N for a trial as well updac0148 arm 15 participants, updac0149  arm 18 participants (from https://doi.org/10.1111/dom.12936)
 comp5 <- comp4 %>% 
-  select(nct_id, arm_id_unq, treat_or_ref, result, se, n, male, age_m, age_sd)
+  mutate(result = if_else(units_label == "mmol/mol", 
+                          result * 0.09148 + 2.152,
+                          result),
+         ## note that conversion needs to happen at level of se
+         se     = if_else(units_label == "mmol/mol", 
+                          (0.09148*(se*n^0.5) + 2.152)/n^0.5,
+                          se),
+         units_label = if_else(units_label == "mmol/mol", "percentage_converted", units_label))
 hba1c_arm2 <- hba1c_arm %>% 
+  mutate(n = case_when(
+    arm_id_unq == "updac0148" ~ 15L,
+    arm_id_unq == "updac0149" ~ 18L,
+    TRUE ~ n),
+    result = if_else(units_label == "mmol/mol", 
+                          result * 0.09148 + 2.152,
+                          result),
+         ## note that conversion needs to happen at level of se
+         se     = if_else(units_label == "mmol/mol", 
+                          (0.09148*(se*n^0.5) + 2.152)/n^0.5,
+                          se),
+         units_label = if_else(units_label == "mmol/mol", "percentage_converted", units_label))
+
+## set final datasets for saving as csv files
+comp6 <- comp5 %>% 
+  select(nct_id, arm_id_unq, treat_or_ref, result, se, n, male, age_m, age_sd)
+hba1c_arm3 <- hba1c_arm2 %>% 
   select(nct_id, arm_id_unq, result, se, n, male, age_m, age_sd) %>% 
   mutate(treat_or_ref = "arm_level_outcome")
+
 final <- bind_rows(comp5,
-                   hba1c_arm2)
+                   hba1c_arm3)
 write_csv(final, "Data/agg.csv")
+

@@ -60,3 +60,53 @@ SimplifyDrugs <- function(re_arm) {
                        re_arm_keep)
   list(keep = re_arm2, drop = re_arm_drp)
 }
+
+RptNetwork <- function(ipd_choose, agg_choose){
+  combine_network(
+    set_ipd(ipd_choose,
+            study = nct_id2,
+            trt = drug_code,
+            y = result,
+            trt_class = trtcls5),
+    set_agd_arm(agg_choose %>% 
+                  filter(treat_or_ref == "arm_level_outcome"),
+                study = nct_id,
+                trt = drug_code,
+                y = result, 
+                se = se,
+                trt_class = trtcls5,
+                sample_size = n),
+    set_agd_contrast(agg_choose %>% 
+                       filter(!treat_or_ref == "arm_level_outcome"),
+                     study = nct_id,
+                     trt = drug_code,
+                     y = result, 
+                     se = se,
+                     trt_class = trtcls5,
+                     sample_size = n))  
+}
+
+RptNetworkClass <- function(ipd_choose, agg_choose){
+  combine_network(
+    set_ipd(ipd_choose,
+            study = nct_id2,
+            trt = trtcls5,
+            y = result,
+            trt_class = trtcls4),
+    set_agd_arm(agg_choose %>% 
+                  filter(treat_or_ref == "arm_level_outcome"),
+                study = nct_id,
+                trt = trtcls5,
+                y = result, 
+                se = se,
+                trt_class = trtcls4,
+                sample_size = n),
+    set_agd_contrast(agg_choose %>% 
+                       filter(!treat_or_ref == "arm_level_outcome"),
+                     study = nct_id,
+                     trt = trtcls5,
+                     y = result, 
+                     se = se,
+                     trt_class = trtcls4,
+                     sample_size = n))  
+}

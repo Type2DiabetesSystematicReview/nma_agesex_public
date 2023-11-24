@@ -64,6 +64,10 @@ combo <- combo %>%
 ## note renamed to "simplify_combination_trials.csv" so do not accidentally overwrite
 rm(combo, combo_smry)
 combo <- read_csv("Created_metadata/simplify_combination_trials.csv")
+## example 
+# combo %>% filter(nct_id == "NCT00655863") %>% 
+#   select(nct_id, mono, dual, drug_name, drug2_name, drug_code) %>% 
+#   write_csv("Outputs/example_multi_nwork.csv", na = "")
 whichnwork_simple <- whichnwork %>% 
   rename(nct_id = trial_id) %>% 
   anti_join(combo %>% select(nct_id))
@@ -116,12 +120,19 @@ mono <- mono %>%
   select(-drug_code) %>% 
   rename(drug_code = drug_codes) %>% 
   unnest(drug_code)
-## no multi-drugs for monotherapy so no need to simplify
+## one mono trial with different drug code across same arm. treat as any OAD
+mono_dups <- mono %>% 
+  filter(nct_id %in% mono$nct_id[duplicated(mono$arm_id_unq)])
+# reviewed trials register with UMIN000010871, sitagliptin trial recode ac0160 arm to OAD as the comparator is "any other oad" and drop 2 of the arms
+mono <- mono %>% 
+  filter(! (drug_code %in% c("A10BF", "A10BX") & nct_id == "UMIN000010871")) %>% 
+  mutate(drug_code = if_else(nct_id == "UMIN000010871" & arm_id_unq == "ac0160", "OAD", drug_code))
+rm(mono_dups)
 
 dual <- combo %>% 
   filter(!is.na(dual)) %>% 
   select(nct_id, arm_id_unq, drug_code) 
-## get rid of double underscore as can cause problems
+## get rid of double underscore as can cause problems with separate function
 dual <- dual %>% 
   mutate(drug_code = str_replace_all(drug_code, "__", "$$"))
 ## simplify dual and combo
@@ -140,6 +151,11 @@ dual <- dual2 %>%
          drug_code = if_else(drug_code == "implicit_control", "placebo", drug_code)) %>% 
   select(-sameacross)
 rm(dual2)
+## re collapse drugs into the same arm
+dual <- dual %>% 
+  group_by(nct_id, arm_id_unq) %>% 
+  summarise(drug_code = paste(drug_code, collapse = "#")) %>% 
+  ungroup()
 
 triple <- combo %>% 
   filter(!is.na(triple)) %>% 
@@ -161,16 +177,24 @@ triple <- triple2 %>%
   mutate(drug_code = str_replace_all(drug_code, fixed("$$"), "__"),
          drug_code = if_else(drug_code == "implicit_control", "placebo", drug_code)) %>% 
   select(-sameacross)
+## re collapse drugs into the same arm
+triple <- triple %>% 
+  group_by(nct_id, arm_id_unq) %>% 
+  summarise(drug_code = paste(drug_code, collapse = "#")) %>% 
+  ungroup()
 rm(triple2)
 
 arm_assign_multi <- bind_rows(mono %>% 
-                                mutate(drug_regime = "dual"),
+                                mutate(drug_regime = "mono"),
                               dual %>% 
                                 mutate(drug_regime = "dual"),
                               triple %>% 
                                 mutate(drug_regime = "triple")) %>% 
   mutate(trtcls5  = str_sub(drug_code, 1, 5),
-         trtcls4 = str_sub(drug_code, 1, 4))
+         trtcls4 = str_sub(drug_code, 1, 4)) %>% 
+  mutate(across(c(trtcls5, trtcls4), ~ if_else(str_detect(drug_code, "#"),
+                                               "combin",
+                                               .x)))
 arm_assign_final <- bind_rows(arm_assign_simple,
                               arm_assign_multi)
 ## simplify regime names
@@ -180,16 +204,19 @@ arm_assign_final <- arm_assign_final %>%
   drug_regime %in% c("dual", "mono|dual") ~ "dual",
   drug_regime %in% "mono" ~ "mono",
   TRUE ~ "unclear or missing"))
-
+## 37 arms coming from 31 trials are duplicated across the whole analysis
 arm_assign_final %>% 
   summarise(trials = sum(!duplicated(nct_id)),
             arms = length(arm_id_unq),
-            dups = sum(duplicated(arm_id_unq)))
+            dup_arms = sum(duplicated(arm_id_unq)),
+            dup_trials = sum(!duplicated(nct_id[duplicated(arm_id_unq)])))
+## no arms are duplicated from individual networks
 arm_assign_final %>% 
   group_by(drug_regime_smpl) %>% 
   summarise(trials = sum(!duplicated(nct_id)),
             arms = length(arm_id_unq),
-            dups = sum(duplicated(arm_id_unq)))
+            dup_arms = sum(duplicated(arm_id_unq)),
+            dup_trials = sum(!duplicated(nct_id[duplicated(arm_id_unq)])))
 rv_trls <- arm_assign_final %>% 
   distinct(nct_id, drug_regime_smpl) %>% 
   arrange(drug_regime_smpl) %>% 

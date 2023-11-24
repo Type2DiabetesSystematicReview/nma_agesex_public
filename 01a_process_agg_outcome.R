@@ -99,14 +99,15 @@ result_determination_rv <- hba1c_meta %>%
 result_type_per_trial <- hba1c_meta %>% 
   group_by(nct_id) %>% 
   summarise(result_type_best = case_when(
-    any(result_type_smry == "mean_change") ~ "mean_change",
     any(result_type_smry == "mean_base") & any(result_type_smry == "mean_end") ~ "mean_change_calculate",
+    any(result_type_smry == "mean_change") ~ "mean_change",
     any(result_type_smry == "between_arm_mean") ~ "between_arm_mean",
     TRUE ~ "other"
   ))
 ## 524 mean change, 56 mean change calculate, 15 between arm means, 23 "others"
 result_type_per_trial %>% 
-  count(result_type_best)
+  count(result_type_best) %>% 
+  write_csv("Outputs/Types of Hba1c result in each trial.csv")
 
 ## errors in result determination
 ## note is not error in processing but difference in way CTG data translated to aact. New extract performed to address this

@@ -1,7 +1,7 @@
 library(tidyverse)
 
 source("../common_functions/Scripts/combine_sd.R")
-rm(a, ab, b, mean_res, means, mymeans, myns, mysds, sd_res, sds)
+# rm(a, ab, b, mean_res, means, mymeans, myns, mysds, sd_res, sds)
 source("../common_functions/Scripts/convert_iqr_to_sd.R")
 
 base_dsp <- readRDS("../cleaned_data/Processed_data/base_dsp.Rds")
@@ -195,6 +195,7 @@ basedata2 <- map(basedata, ~ .x %>%
 map_int(basedata, nrow)
 map_int(basedata2, nrow)
 
+
 saveRDS(basedata2, "Scratch_data/agg_hba1c_base.Rds")
 ## Addressing missing ones n's where are using se's ----
 
@@ -207,6 +208,5 @@ basedata2$race %>%
   anti_join(arm_in)
 basedata2$ns %>% 
   anti_join(arm_in)
-
 
 

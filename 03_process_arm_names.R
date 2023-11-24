@@ -131,9 +131,7 @@ mylst <- SimplifyDrugs(re_arm)
 ## Consistent results. No need to change designation (eg mono, dual triple etc)
 saveRDS(mylst, 
         "Scratch_data/arm_codes_sameacross_retain.Rds")
-
-
-arm_assign <- re_arm2 %>% 
+arm_assign <- re_arm %>% 
   select(nct_id, arm_id_unq, drug_code) %>% 
   mutate(drug_code = if_else(drug_code == "implicit_control",
                              "placebo",

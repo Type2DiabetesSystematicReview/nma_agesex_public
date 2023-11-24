@@ -1,0 +1,7 @@
+ArrayTaskID   Nwork        Sharing
+1             triple       common
+2             dual         common
+3             mono         common
+4             triple       independent
+5             dual         independent
+6             mono         independent

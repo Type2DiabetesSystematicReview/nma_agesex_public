@@ -72,6 +72,7 @@ rm(res, res1, res2, allvivli, allgsk)
 
 ## simulate age and sex data ----
 ## crude simulation, can improve using ecdf
+saveRDS(age_distribution_baseline_continuous, "Scratch_data/ipd_age_sex.Rds")
 age_distr <- age_distribution_baseline_continuous %>% 
   select(nct_id:sd)
 rm(age_distribution_baseline_continuous)
@@ -129,10 +130,28 @@ age_sex_model_vcov$vcv <- map2(age_sex_model_vcov$data, age_sex_model_vcov$r, ~ 
 res
 })
 age_sex_model_vcov$r <- NULL
+saveRDS(age_sex_model_vcov, "Scratch_data/combined_cfs_vcov.Rds" )
+
+## plot outputs of simpler age-sex treatment models ----
+ast <- age_sex_model_vcov %>% 
+  filter(models == "f2")
+ast <- ast %>% 
+  unnest(data) 
+ast <- ast %>% 
+  mutate(term = case_when(
+    str_detect(term, "age\\:") ~ "age_interaction",
+    str_detect(term, "\\:sex") ~ "sex_interaction",
+    str_detect(term, "arm") ~ "arm",
+    TRUE ~ term))
+ast <- ast %>% 
+  select(nct_id, nct_id2, term, estimate, std.error) %>% 
+  gather("var", "value", estimate, std.error)
+saveRDS(ast, "Scratch_data/ipd_raw_coefs.Rds")
 
 ##sample from distribution to get set of sampled coefficients. Sample same number as observations for convenience
 age_sex_model_vcov <- age_sex_model_vcov %>% 
   left_join(age_sex_model_diags %>% select(nct_id, nct_id2, models, nobs)) 
+
 age_sex_model_vcov$sim <- pmap(list(age_sex_model_vcov$data, age_sex_model_vcov$vcv, age_sex_model_vcov$nobs), function(.x, .y, .z) {
   # browser()
                                  vcv <- .y
