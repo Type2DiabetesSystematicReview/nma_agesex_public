@@ -8,6 +8,16 @@ ipd <- tot %>%
   unnest(ipd)
 rm(tot)
 
+## pseudo IPD summaries in format of aggregate level data
+ipd_arm <- ipd %>% 
+  group_by(nct_id, nct_id2, arm_id_unq) %>% 
+  summarise(malep  = mean(sex),
+            across(c(result, base, age), .fns = c(m = mean, s = sd))) %>% 
+  ungroup() 
+
+
+
+
 
 ipd_nst <- ipd %>% 
   group_by(drug_regime_smpl, nct_id, nct_id2, arm_id_unq, arm_f, trtcls4, reference_arm, trtcls5) %>% 

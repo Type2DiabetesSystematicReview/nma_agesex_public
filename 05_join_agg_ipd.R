@@ -196,6 +196,20 @@ tot$agg <- map(tot$agg, ~ .x %>%
 saveRDS(tot, "data_for_mars.Rds")
 saveRDS(tot, "Scratch_data/agg_ipd_hba1c.Rds")
 
+## generate stancode and standata
+tot$mdl <- map(tot$dm_nets, ~ nma(.x, 
+                                # regression = ~ base + age*.trt + sex*.trt,
+                                trt_effects = "random", 
+                                link = "identity", 
+                                likelihood = "normal",
+                                class_interactions = "common",
+                                prior_intercept = normal(scale = 20),
+                                prior_trt = normal(scale = 10),
+                                prior_reg = normal(scale = 10),
+                                QR = TRUE, 
+                                cores = 4))
+
+
 ## create network plot just showing classes
 tot$cls_nets <- map2(tot$ipd, tot$agg, ~ {
   x <- .x %>% 
