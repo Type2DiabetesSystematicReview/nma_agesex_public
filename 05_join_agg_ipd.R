@@ -193,6 +193,16 @@ dev.off()
 
 tot$agg <- map(tot$agg, ~ .x %>% 
                  filter(!nct_id %in% c("NCT02752113", "NCT04196231", "NCT02787551")))
+
+## collapse all combinations into a single category
+tot$agg <- map(tot$agg, ~ .x %>% 
+                 mutate(trtcls5 = if_else(trtcls5 %in% c("A10A_A10BJ",
+                                                         "OAD",
+                                                         "combin",
+                                                         "A10BH_A10BK",
+                                                         "A10BX"),
+                                          "combin",
+                                          trtcls5)))
 saveRDS(tot, "data_for_mars.Rds")
 saveRDS(tot, "Scratch_data/agg_ipd_hba1c.Rds")
 
