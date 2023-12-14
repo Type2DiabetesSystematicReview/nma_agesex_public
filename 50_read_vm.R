@@ -18,7 +18,7 @@ ReadSummary <- function(choosedir = "mono_common_random_20231116_045721_417484")
 
 ## Get timings ----
 fldrs <- c("dual_common_fixed_20231121_022309_581732/dualcomf-12528.out", 
-             "dual_common_random_20231117_143718_465782/dualcommon-12044.out", 
+             "dual_common_random_20231125_221635_266035/dualcomr-14651.out", 
              "dual_independent_random_20231117_213609_237076/dualindep-12047.out", 
              "mono_common_fixed_20231120_163959_242145/monocomf-12530.out", 
              "mono_common_random_20231116_045721_417484/monocommon-12043.out", 
@@ -66,7 +66,7 @@ timings_wide <- timings %>%
 write_csv(timings_wide, "Outputs/Model_timings.csv")
 rm(timings, timings_wide)
 
-### results. Common models
+### results. Common models ----
 common <- list.files("FromVM/", patt = "common")
 res <- map(common, ReadSummary)
 res <- tibble(fldrs = common, res = res)
@@ -169,7 +169,7 @@ res_nst <- res_nst %>%
 res_nst2 <- res_nst %>% 
   select(fixran, plotset, plot) %>% 
   nest(data = plot)
-## fixed
+## fixed ----
 fixed <- res_nst2 %>% 
   filter(fixran == "fixed")
 random <- res_nst2 %>% 
@@ -195,14 +195,14 @@ dic <- dic %>%
 write_csv(dic, "Outputs/dics.csv")
 
 ## Independent plots ----
-folci<- c("dual_common_random_20231117_143718_465782", 
+folci<- c("dual_common_random_20231125_221635_266035", 
             "dual_independent_random_20231117_213609_237076", 
              "mono_common_random_20231116_045721_417484", 
              "mono_independent_random_20231116_145814_243569")
 ci <- map(folci, ~ readRDS(paste0("FromVM/", .x, "/summary.Rds"))$summary)
 names(ci) <- folci
-onlycommon <- setdiff(ci$dual_common_random_20231117_143718_465782$parameter, ci$dual_independent_random_20231117_213609_237076$parameter)
-onlyindep <- setdiff(ci$dual_independent_random_20231117_213609_237076$parameter, ci$dual_common_random_20231117_143718_465782$parameter)
+onlycommon <- setdiff(ci$dual_common_random_20231125_221635_266035$parameter, ci$dual_independent_random_20231117_213609_237076$parameter)
+onlyindep <- setdiff(ci$dual_independent_random_20231117_213609_237076$parameter, ci$dual_common_random_20231125_221635_266035$parameter)
 ci <- ci %>% 
   bind_rows(.id = "model")
 ci <- ci %>% 
@@ -240,7 +240,7 @@ plot_ci
 saveRDS(plot_ci, "Scratch_data/plot_independent_vs_common.Rds")
 
 ## Model fit statistics that are available from summary ----
-fldrs <- c("dual_common_fixed_20231121_022309_581732/summary.Rds", "dual_common_random_20231117_143718_465782/summary.Rds", 
+fldrs <- c("dual_common_fixed_20231121_022309_581732/summary.Rds", "dual_common_random_20231125_221635_266035/summary.Rds", 
            "dual_independent_random_20231117_213609_237076/summary.Rds", 
            "mono_common_fixed_20231120_163959_242145/summary.Rds", "mono_common_random_20231116_045721_417484/summary.Rds", 
            "mono_independent_random_20231116_145814_243569/summary.Rds", 
@@ -263,8 +263,16 @@ bulk_ess <- ggplot(ss, aes(x = trunc,
   geom_violin() +
   facet_wrap(~nwork + fixed_rand, scales = "free_y") +
   coord_flip()
-tail_ess <- bulk_ess + geom_violin(mapping = aes(y = Rhat))
-rhat <-bulk_ess + geom_violin(mapping = aes(y = Rhat))
+tail_ess <- ggplot(ss, aes(x = trunc, 
+                           y = Tail_ESS, fill = sharing, colour = sharing)) +
+  geom_violin() +
+  facet_wrap(~nwork + fixed_rand, scales = "free_y") +
+  coord_flip()
+rhat <- ggplot(ss, aes(x = trunc, 
+                       y = Rhat, fill = sharing, colour = sharing)) +
+  geom_violin() +
+  facet_wrap(~nwork + fixed_rand, scales = "free_y") +
+  coord_flip()
 saveRDS(list(bulk_ess = bulk_ess, tail_ess = tail_ess, rhat= rhat, ss_table = ss_table), "Scratch_data/diagnostic_summaries.Rds")
 
-
+# NCT02681094

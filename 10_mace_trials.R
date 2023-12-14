@@ -365,4 +365,16 @@ percentage2 <- percentage %>%
 mace %>% 
   filter(!nct_id %in% c(events$nct_id, percentage$nct_id))
 
+## Note canvas and canvas-R both stratified according to prev CVD versus CV risk
+## analysis stratified by trial (both trials together) and CVD/CVrisk
+#NCT01032629 - CVD/CVrisk 
+# NCT01131676 - stratified according to the glycated
+#  hemoglobin level at screening (<8.5% or ≥8.5%), body-mass index at
+#  randomization (<30 or ≥30), renal function at screening (eGFR, 30 to 59 ml, 60
+#  to 89 ml, or ≥90 ml per minute per 1.73 m2), and geographic region (North
+#  America [plus Australia and New Zealand], Latin America, Europe, Africa, or
+#  Asia).
+# NCT01989754 - CVD/CVrisk 
+# NCT02065791 category of estimated GFR (30 to <45 ml, 45 to <60 ml, or 60 to <90 ml per minute per 1.73 m2) at screening
+# NCT02465515 - no stratification
 
