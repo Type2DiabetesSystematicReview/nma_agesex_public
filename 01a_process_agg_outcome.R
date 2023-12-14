@@ -3,9 +3,9 @@ library(tidyverse)
 
 ## read in all data ----
 ## read in ipd so can drop from aggregate
-ipd1 <- read_csv("../from_vivli/Data/agesex/hba1c_base_change_overall.csv")
+ipd1 <- read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
 ipd2 <- read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv")
-ipd3 <- read.csv("../from_vivli_second/Data/agesex/hba1c_base_change_overall.csv")
+ipd3 <- read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")
 ipd <- bind_rows(ipd1, ipd2, ipd3)
 ## read in aggregate level data for each hba1c trials and baseline data
 hba1c_agg1 <- read_csv("../cleaned_data/Data/hba1c_outcome_data_2019.csv") %>% 

@@ -3,6 +3,8 @@
 library(tidyverse)
 library(multinma)
 
+new_mace <- read_csv("")
+
 a <- read_csv("../cleaned_data/Data/example_trial_level_info.csv")
 arm_regime <- readRDS("Scratch_data/arms_assign_drug_regime.Rds")
 whichnwork <- read_csv("../cleaned_data/Data/ancillary_drugs_data_all_cleaned.csv")

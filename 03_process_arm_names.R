@@ -16,7 +16,7 @@ arm_meta_orig <- arm_meta_orig %>%
                       ipd %>% select(nct_id, arm_id_unq)))
 
 # additions to trial metadata made within vivli ----
-arm_meta_new <- read_csv("../from_vivli/Data/agesex/reference_arm_data_all_cleaned.csv")
+arm_meta_new <- read_csv("../from_vivli/Data/agesexhba1c_6115/reference_arm_data_all_cleaned.csv")
 arm_meta_new %>% anti_join(arm_meta_orig)
 arm_meta_orig %>% anti_join(arm_meta_new)
 arm_meta <- bind_rows(arm_meta_orig,
