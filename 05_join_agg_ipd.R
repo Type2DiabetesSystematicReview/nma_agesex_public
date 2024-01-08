@@ -12,25 +12,54 @@ arm_regime <- readRDS("Scratch_data/arms_assign_drug_regime.Rds")
 
 ## read in simulated IPD
 ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
+## read in reg
+reg <- readRDS("Scratch_data/ipd_coefs_frmttd.Rds") %>% 
+  rename(arm_id_unq = trt)
 ## read in agg
 agg <- read_csv("Data/agg.csv")
+
+## check same in ipd and reg
+ipd %>% count(nct_id, nct_id2, arm_id_unq, arm_f)
+reg %>% filter(!is.na(arm_id_unq)) %>% count(nct_id, nct_id2, arm_id_unq, arm_f)
+
 ## note this is used for examining readon for exclusions only
 drug <- readRDS("Scratch_data/drug_names_doses_regimen.Rds")
 ## correct the IPD arm label in one IPD trial uaa10735 instead of uaa10734
 ## Add arm label to IPD only one not in is where set to placebo
 ipd <- ipd %>% 
   filter(!nct_id %in% c("NCT00306384", "NCT01368081"))
+reg <- reg %>% 
+  filter(!nct_id %in% c("NCT00306384", "NCT01368081"))
+
 # One trial dropped as both arms are the same drug, other dropped as same drug (empa) against an open label extension
 sum(!duplicated(ipd$nct_id))
+sum(!duplicated(reg$nct_id))
 ipd %>% 
   anti_join(arm_regime %>% select(nct_id)) %>% 
   count(nct_id, arm_id_unq)
+reg %>% 
+  anti_join(arm_regime %>% select(nct_id)) %>% 
+  count(nct_id, arm_id_unq)
 ## note, many to many expected as same trial can appear across multiple arms
+## all consistent in IPD and ipd reg
+## note expect to see NAs in reg as these are for non-treatment covariates (ie not treatmetn effects or treamtnet covariate interactions)
+ipd_out <- ipd %>% 
+  anti_join(arm_regime)
 ipd <- ipd %>% 
   inner_join(arm_regime, relationship = "many-to-many")
 sum(!duplicated(ipd$nct_id))
+reg_out <- reg %>% 
+  filter(!is.na(arm_id_unq)) %>% 
+  anti_join(arm_regime)
+reg <- reg %>% 
+  left_join(arm_regime, relationship = "many-to-many") %>% 
+  filter(is.na(arm_id_unq) | !is.na(drug_code))
+sum(!duplicated(ipd$nct_id))
+sum(!duplicated(reg$nct_id))
+setdiff(ipd$arm_id_unq, reg$arm_id_unq)
+setdiff(reg$arm_id_unq, ipd$arm_id_unq)
 
-## add arm label to aggregate - 29 trials dropped need to review again. Talk with ELB
+## add arm label to aggregate
 sum(!duplicated(agg$nct_id))
 agg %>% 
   mutate(in_arm_regime = arm_id_unq %in% arm_regime$arm_id_unq) %>%
@@ -70,7 +99,7 @@ agg %>%
 agg %>% 
   filter(is.na(age_m)) %>% 
   count(nct_id)
-# 38 trials without sex
+# 33 trials without sex
 agg %>% 
   filter(is.na(male)) %>% 
   count(nct_id)
@@ -168,12 +197,34 @@ single_rv <- arm_regime %>%
 agg <- agg %>% 
   filter(n_arms >=2)
 ## split into networks and plot ----
-
 ipd <- ipd %>% 
   group_by(drug_regime_smpl) %>% 
   nest() %>% 
   ungroup() %>% 
   rename(ipd = data)
+
+## following code needed to deal with main effects not having a drug regime drug code etc
+reg2 <- map(reg$drug_regime_smpl %>% unique(), ~
+          reg %>% 
+            filter(is.na(drug_regime_smpl) | drug_regime_smpl == .x) %>% 
+            select(-drug_regime_smpl) %>% 
+            nest() %>% 
+            mutate(drug_regime_smpl = .x) %>% 
+            group_by(drug_regime_smpl))
+reg2 <- bind_rows(reg2)
+reg2 <- reg2 %>% 
+  filter(!is.na(drug_regime_smpl))
+reg2 <- reg2 %>% 
+  rename(reg = data)
+## drop main effects which are not for the drug regime smpl models
+reg2$reg <- map(reg2$reg, ~ .x %>% 
+                 group_by(nct_id, nct_id2, models) %>% 
+                 mutate(anytreat = any(!is.na(arm_id_unq))) %>% 
+                 ungroup() %>% 
+                 filter(anytreat) %>% 
+                 select(-anytreat))
+reg <- reg2
+rm(reg2)
 agg <- agg %>% 
   group_by(drug_regime_smpl) %>% 
   nest() %>% 
@@ -182,8 +233,10 @@ agg <- agg %>%
 agg <- agg %>% 
   filter(!drug_regime_smpl == "unclear or missing")
 tot <- agg %>% 
-  inner_join(ipd)
+  inner_join(ipd) %>% 
+  inner_join(reg)
 rm(ipd, agg)
+# tot$reg_f4 <- map(tot$reg, ~ .x %>% filter(models == "f4"))
 
 tot$dm_nets <- map2(tot$ipd, tot$agg, ~ RptNetwork(.x, .y))
 pdf("Outputs/disconnected_network.pdf", height = 20, width = 20)
@@ -203,7 +256,6 @@ tot$agg <- map(tot$agg, ~ .x %>%
                                                          "A10BX"),
                                           "combin",
                                           trtcls5)))
-saveRDS(tot, "data_for_mars.Rds")
 saveRDS(tot, "Scratch_data/agg_ipd_hba1c.Rds")
 
 ## generate stancode and standata

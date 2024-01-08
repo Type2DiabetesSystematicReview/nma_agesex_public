@@ -19,10 +19,10 @@ oc_orig <- readRDS("../extract_transform/aact/data/aact_extract.Rds")$outcome_co
 oc_new <- readRDS("../extract_transform/aact/data/April2023_extract/aact_extract_April_2023.Rds")$outcome_counts 
 ## read in IDs for mapping counts onto outcomes
 ## the first file is all hba1c
-hba1c_ids_orig <- read_csv("../t2dm_nma_data_extract/Created_metadata/hba1c_continuous_aact.csv") %>% 
+hba1c_ids_orig <- read_csv("../extract_transform/Created_metadata/hba1c_continuous_aact.csv") %>% 
   distinct(nct_id, id, outcome_id, result_group_id, ctgov_group_code)
 ## note lacking IDs. Need to add from aact
-hba1c_ids_new <- read_csv("../t2dm_nma_data_extract/aact/2022_update/Created_metadata/unique_outcomes_for_harmonisation_RVd_EB.csv") %>%
+hba1c_ids_new <- read_csv("../extract_transform/aact/2022_update/Created_metadata/unique_outcomes_for_harmonisation_RVd_EB.csv") %>%
   filter(variable == "hba1c") 
 hba1c_ids_new2 <- readRDS("../extract_transform/aact/data/April2023_extract/aact_extract_April_2023.Rds")$outcome_measurements
 hba1c_ids_new <- hba1c_ids_new %>% 

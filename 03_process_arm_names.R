@@ -5,6 +5,8 @@ source("Scripts/00_functions.R")
 ## read data ----
 ## read in simulated IPD
 ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
+## read in reg
+reg <- readRDS("Scratch_data/ipd_coefs_frmttd.Rds")
 ## read in agg
 agg <- read_csv("Data/agg.csv")
 # read in arm metadata
@@ -87,7 +89,11 @@ re_arm <- re_arm %>%
   select(-rename)
 
 ## new arm labels in WHO database and own manual lookup
-whoatc <- readxl::read_excel("../../../Medications_resources/WHO_ATC/2018 ATC index with DDDs.xlsx", sheet = 1)
+if(sessionInfo()$platform == "x86_64-pc-linux-gnu (64-bit)") {
+  whoatc <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx", sheet = 1) 
+  } else {
+  whoatc <- readxl::read_excel("../../../Medications_resources/WHO_ATC/2018 ATC index with DDDs.xlsx", sheet = 1)
+  }
 whoatc <- whoatc %>% 
   select(nm = `ATC level name`,
          atc_code = `ATC code`) %>% 

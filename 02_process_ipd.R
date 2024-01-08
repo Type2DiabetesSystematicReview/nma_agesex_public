@@ -129,7 +129,9 @@ age_sex_model_vcov$vcv <- map2(age_sex_model_vcov$data, age_sex_model_vcov$r, ~ 
  rownames(res) <- term
 res
 })
-age_sex_model_vcov$r <- NULL
+## want R as well as can use to run set_aged_regression
+# age_sex_model_vcov$r <- NULL
+## note that this is the same as the count at the end
 saveRDS(age_sex_model_vcov, "Scratch_data/combined_cfs_vcov.Rds" )
 
 ## plot outputs of simpler age-sex treatment models ----
@@ -212,3 +214,88 @@ age_distr_lng <- age_distr %>%
   select(nct_id, nct_id2, data) %>% 
   unnest(data)
 saveRDS(age_distr_lng, "Scratch_data/simulated_ipd.Rds")
+
+## check same with correlation/covariance data and append arms
+cfs_cors <- readRDS("Scratch_data/combined_cfs_vcov.Rds")
+all(age_distr_lng$nct_id %in% cfs_cors$nct_id) && all(cfs_cors$nct_id %in% age_distr_lng$nct_id)
+age_distr_lng <- age_distr_lng %>% 
+  distinct(nct_id, nct_id2, arm_id_unq, arm_f, reference_arm)
+age_distr_lng <- age_distr_lng %>% 
+  group_by(nct_id, nct_id2) %>% 
+  nest() %>% 
+  ungroup()
+cfs_cors <- cfs_cors %>% 
+  inner_join(age_distr_lng %>% rename(arm_lkp = data))
+
+## reformat for correct shape for set_agd_regression ----
+## a bit slow but code easy to follow
+reg_frmt <- pmap(
+  list(cfs_cors$nct_id,
+       cfs_cors$nct_id2,
+       cfs_cors$models,
+       cfs_cors$data,
+       cfs_cors$arm_lkp,
+       cfs_cors$vcv,
+       cfs_cors$r),
+  function(nct_id, nct_id2, models, cfs, lkp, vcv, crl) {
+    # cfs <- cfs_cors$data[[1]]
+    # lkp <- cfs_cors$arm_lkp[[1]]
+    # vcv <- cfs_cors$vcv[[1]]
+    # crl <- cfs_cors$r[[1]]
+    ## add treatment variable
+  
+  ## arrange covariance and correlation matrix to match terms
+  crl <- crl[cfs$term, cfs$term]
+  vcv <- vcv[cfs$term, cfs$term]
+  
+  ## add NA row for no treatments (note the correlation for this is set to NULL)
+  cfs <- cfs %>% 
+    mutate(trt = NA_character_)
+  for (i in lkp$arm_id_unq) {
+    cfs <- cfs %>% 
+      mutate(trt = case_when(
+        !is.na(trt) ~ trt,
+        str_detect(term, i) ~ i,
+        TRUE ~ trt))
+  }
+  addref <- setdiff(lkp$arm_id_unq, cfs$trt)
+  cfs <- bind_rows(tibble(trt = addref),
+                   cfs)
+  cfs <- cfs %>% 
+    left_join(lkp %>% rename(trt = arm_id_unq))
+  
+  ## add covariate columns
+  ## Note than manual sugests listing as NA but example data has zeros and ones.
+  cfs <- cfs %>% 
+    mutate(sex = case_when(
+      str_detect(term, "sex") ~ TRUE,
+      reference_arm ==1 ~ FALSE,
+      TRUE ~ NA))
+  
+  ## add covariate columns
+  cfs <- cfs %>% 
+    mutate(age10 = case_when(
+      str_detect(term, "age10") ~ 1,
+      reference_arm ==1 ~ 0,
+      TRUE ~ NA_real_))
+  
+  tibble(nct_id = nct_id,
+         nct_id2 = nct_id2,
+         models = models,
+         cfs = list(cfs),
+         crl = list(crl),
+         vcv = list(vcv))
+})
+reg_frmt <- bind_rows(reg_frmt)
+reg_frmt <- reg_frmt %>% 
+  unnest(cfs)
+## following not necessary based on way correlations are related to studies
+# reg_frmt$vcv <- map2(reg_frmt$reference_arm, reg_frmt$vcv, ~ {
+#                        if (is.na(.x)) {
+#                          .y } else if (.x == 1) {
+#                            NULL } else {
+#                              .y }
+#                          })
+# reg_frmt$crl <- map2(reg_frmt$vcv, reg_frmt$crl, ~ if (is.null(.x)) {NULL} else {.y})
+saveRDS(reg_frmt, "Scratch_data/ipd_coefs_frmttd.Rds")
+
