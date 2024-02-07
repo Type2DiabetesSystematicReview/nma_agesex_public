@@ -94,3 +94,6 @@ res <- nma(mynet,
     prior_reg = normal(scale = 10))
 
 ## Next attempt to fit using regression data and aggregate data ----
+cfs <- cfs %>% 
+  filter(models == "f5")
+## map names to names in 
