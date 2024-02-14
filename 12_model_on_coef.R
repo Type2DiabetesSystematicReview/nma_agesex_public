@@ -54,10 +54,13 @@ cfs_no_r <- cfs %>%
 cfs <- cfs %>% 
   semi_join(vcv %>% select(-data))
 cfs$r <- map(vcv$data, CnvrtCorrMatrix)
+cors <- cfs %>% 
+  select(repo, nct_id, models, r)
+cfs$r <- NULL
 
 ## transform data ----
 pseudo <- pseudo %>% 
-  mutate(age = age/15,
+  mutate(age15 = age/15,
          male = if_else(sex == "M", 1L, 0L),
          ltime = log(time + 1))
 mace_agg <- mace_agg %>% 
@@ -78,22 +81,117 @@ mynet <- combine_network(
   set_ipd(data = pseudo, study = nct_id, trt = drug_mdl, r = event,
           trt_ref = "placebo", trt_class = trtcl5))
 mynet <- add_integration(mynet,
-                         age = distr(qnorm, mean = age_m, sd = age_s),
+                         age15 = distr(qnorm, mean = age_m, sd = age_s),
                          male = distr(qbern, prob = male_p),
                          ltime = distr(qnorm, ltime, 0))
-
+pseudocor <- mynet$int_cor
 plot(mynet, layout = "kk")
 
-res <- nma(mynet,
-    trt_effects = "fixed",
-    link = "cloglog",
-    regression = ~ (age + male)*.trt + offset(ltime),
-    class_interactions = "common",
-    prior_intercept = normal(scale = 10),
-    prior_trt = normal(scale = 10),
-    prior_reg = normal(scale = 10))
+# res <- nma(mynet,
+#     trt_effects = "fixed",
+#     link = "cloglog",
+#     regression = ~ (age15 + male)*.trt + offset(ltime),
+#     class_interactions = "common",
+#     prior_intercept = normal(scale = 10),
+#     prior_trt = normal(scale = 10),
+#     prior_reg = normal(scale = 10))
 
 ## Next attempt to fit using regression data and aggregate data ----
 cfs <- cfs %>% 
   filter(models == "f5")
-## map names to names in 
+cfs <- cfs %>% 
+  unnest(data)
+## set up names as per set_agd_regression
+cfs <- cfs %>% 
+  mutate(age15 = if_else(str_detect(term, "age15"), 1, NA_real_),
+         male = if_else(str_detect(term, "sexM"), TRUE, NA),
+         trt = term %>% 
+           str_remove("\\:") %>% 
+           str_remove("age15") %>% 
+           str_remove("sexMALE") %>% 
+           str_remove("sexM") %>% 
+           str_remove("arm_f"))
+## check treatment arms
+cfs %>% 
+  filter(!trt == "") %>% 
+  count(trt) %>% 
+  left_join(mace_arms %>% 
+              rename(trt = ipd_arm) %>% 
+              select(nct_id, trt, drug_mdl, trtcl5))
+## Note all reference arms are placebo so can simplify joining by assigning reference treatment to "placebo"
+cfs <- cfs %>% 
+  left_join(mace_arms %>% 
+              rename(trt = ipd_arm) %>% 
+              select(nct_id, trt, drug_mdl, trtcl5)) %>% 
+  group_by(nct_id) %>% 
+  nest() %>% 
+  ungroup()
+cfs$reference <- map(cfs$data, ~ .x %>% 
+                        slice(1) %>% 
+                        mutate(estimate = NA_real_, std.error = NA_real_,
+                               term = NA_character_, age15 = 0, male = FALSE,
+                               trt = "placebo", drug_mdl = "placebo", trtcl5 = "place"))
+cfs$data <- map2(cfs$data, cfs$reference, ~ bind_rows(ref = .y, notref = .x, .id = "reference"))
+cfs$reference <- NULL
+cfs <- cfs %>% 
+  unnest(data)
+cors <- cors %>% 
+  filter(models == "f5")
+cors_lst <- cors$r
+names(cors_lst) <- cors$nct_id
+cors_lst[[1]]
+cfs %>% 
+  filter(nct_id == names(cors_lst)[1])
+cfs <- cfs %>% 
+  mutate(ltime = 0)
+
+reg_net <- combine_network(
+  set_agd_arm(data = mace_agg, 
+              study = nct_id, trt = drug_mdl, r = r, n = participants, 
+              trt_ref = "placebo", trt_class = trtcl5),
+  set_agd_regression(cfs,
+                     study = nct_id,
+                     trt = drug_mdl,
+                     estimate = estimate,
+                     se = std.error,
+                     cor = cors_lst,
+                     trt_ref = "placebo",
+                     trt_class = trtcl5,
+                     regression = ~ (male + age15)*.trt))
+plot(reg_net)
+
+# Example data (replace with your actual datasets)
+# # Combine all datasets into a list
+# covariate_lst <- pseudo %>% 
+#   select(nct_id, age15, male, ltime) %>% 
+#   nest(data = c(age15, male, ltime))
+# covariate_lst <-covariate_lst$data
+# all_datasets <- covariate_lst  # Add more datasets here
+# # Calculate weighted means (based on row counts)
+# weights <- map_dbl(all_datasets, ~ nrow(.x))
+# weighted_means <- map_dbl(all_datasets, ~ colMeans(.x) * weights / sum(weights))
+# # Calculate weighted covariance
+# weighted_cov <- cov.wt(do.call(rbind, all_datasets), weights = weights)
+# # Calculate weighted variance for each variable
+# weighted_vars <- map(all_datasets, ~ var.wt(.x$var1, weights = weights))
+# # Calculate weighted correlation
+# weighted_corr <- weighted_cov / sqrt(prod(weighted_vars))
+
+
+
+
+cor_integrate <- cor(pseudo %>% select(age15, male, ltime))
+
+reg_net <- add_integration(reg_net,
+                age15 = distr(qnorm, mean = age_m, sd = age_s),
+                male = distr(qbern, prob = male_p),
+                ltime = distr(qnorm, ltime, 0), cor = cor_integrate)
+
+mace_FE <- nma(reg_net,
+               trt_effects = "fixed",
+               regression = ~ (male + age15)*.trt,
+               class_interactions = "common",
+               prior_intercept = normal(scale = 10),
+               prior_trt = normal(scale = 10),
+               prior_reg = normal(scale = 10))
+
