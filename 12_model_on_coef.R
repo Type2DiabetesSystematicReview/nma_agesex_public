@@ -142,8 +142,19 @@ names(cors_lst) <- cors$nct_id
 cors_lst[[1]]
 cfs %>% 
   filter(nct_id == names(cors_lst)[1])
-cfs <- cfs %>% 
+cfs <- cfs %>%
   mutate(ltime = 0)
+
+## take inverse cloglog of estimate
+cloglog <- function(p) {
+  log(-log(1-p))
+}
+icloglog <- function(y) {
+  1 - exp(-exp(y))
+}
+cfs <- cfs %>%
+  mutate(estimate_tform = icloglog(estimate),
+         std.error_tform = icloglog(std.error))
 
 reg_net <- combine_network(
   set_agd_arm(data = mace_agg, 
@@ -152,46 +163,25 @@ reg_net <- combine_network(
   set_agd_regression(cfs,
                      study = nct_id,
                      trt = drug_mdl,
-                     estimate = estimate,
-                     se = std.error,
+                     estimate = estimate_tform,
+                     se = std.error_tform,
                      cor = cors_lst,
                      trt_ref = "placebo",
                      trt_class = trtcl5,
-                     regression = ~ (male + age15)*.trt))
+                     regression = ~ (male + age15)*.trt + offset(ltime)))
 plot(reg_net)
-
-# Example data (replace with your actual datasets)
-# # Combine all datasets into a list
-# covariate_lst <- pseudo %>% 
-#   select(nct_id, age15, male, ltime) %>% 
-#   nest(data = c(age15, male, ltime))
-# covariate_lst <-covariate_lst$data
-# all_datasets <- covariate_lst  # Add more datasets here
-# # Calculate weighted means (based on row counts)
-# weights <- map_dbl(all_datasets, ~ nrow(.x))
-# weighted_means <- map_dbl(all_datasets, ~ colMeans(.x) * weights / sum(weights))
-# # Calculate weighted covariance
-# weighted_cov <- cov.wt(do.call(rbind, all_datasets), weights = weights)
-# # Calculate weighted variance for each variable
-# weighted_vars <- map(all_datasets, ~ var.wt(.x$var1, weights = weights))
-# # Calculate weighted correlation
-# weighted_corr <- weighted_cov / sqrt(prod(weighted_vars))
-
-
-
-
-cor_integrate <- cor(pseudo %>% select(age15, male, ltime))
 
 reg_net <- add_integration(reg_net,
                 age15 = distr(qnorm, mean = age_m, sd = age_s),
                 male = distr(qbern, prob = male_p),
-                ltime = distr(qnorm, ltime, 0), cor = cor_integrate)
+                ltime = distr(qnorm, ltime, 0), cor = pseudocor)
 
 mace_FE <- nma(reg_net,
                trt_effects = "fixed",
-               regression = ~ (male + age15)*.trt,
+               link = "cloglog",
+               regression = ~ (male + age15)*.trt + offset(ltime),
                class_interactions = "common",
                prior_intercept = normal(scale = 10),
                prior_trt = normal(scale = 10),
-               prior_reg = normal(scale = 10))
+               prior_reg = normal(scale = 10), iter = 100, chains = 2)
 

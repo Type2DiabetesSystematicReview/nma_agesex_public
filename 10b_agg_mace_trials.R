@@ -85,7 +85,13 @@ maceout_outcome <- maceout %>%
   summarise(outcome_definition = paste(outcome_definition[!is.na(outcome_definition)], collapse = ";")) %>% 
   ungroup()
 maceout_cmpr <- maceout %>% 
-  filter(!is.na(comparison_id))
+  filter(!is.na(comparison_id)) %>% 
+  select(-arm_id_unq, -arm_description, -timepoint_unit)
+## all have these. No multiples
+maceout_cmpr <- maceout_cmpr  %>% 
+  filter(outcome %in% c("MACE occurrence", 
+                        "Percentage of participants with MACE outcome", 
+                        "Time to first occurrence of MACE"))
 maceout <- maceout %>% 
   filter(!is.na(arm_id_unq))
 maceout %>% count(result_type, nct_id)  %>% spread(result_type, n)
@@ -104,7 +110,7 @@ maceout <- maceout %>%
     timepoint_unit == "months" ~ median_follow_up * 30,
     timepoint_unit == "weeks" ~ median_follow_up * 7)) %>% 
   select(-median_follow_up)
-rm(maceout_cmpr, maceout_outcome)
+rm(maceout_outcome)
 
 ## read in baseline data for aggregate trials ----
 base_dsp <- readRDS("../cleaned_data/Processed_data/base_dsp.Rds") %>% 
@@ -501,9 +507,36 @@ mace2 <- mace %>%
   inner_join(bth_arm %>% 
     select(nct_id, drug_name, arm_id, drug_dose, drug_unit, drug_freq, drug_mdl, atc, trtcl5, dc, note))
 
+
+## add in treatment comparison data from aggregate ----
+maceout_cmpr2 <- maceout_cmpr %>% 
+  mutate(comparison_label = if_else(comparison_label == "saxaliptin_placebo", "saxagliptin_placebo", comparison_label)) %>% 
+  separate(comparison_label, into = c("treat", "control"), sep = "_") %>% 
+  select(nct_id, treat, control, hr = result, ci = dispersion) %>% 
+  mutate(ci = if_else(ci == "0.57:1.11", "0.57;1.11", ci)) %>% 
+  separate(ci, into = c("l", "u"), sep = ";", remove = FALSE) %>% 
+  mutate(across(c(l, u), as.double),
+         across(c(hr, l, u), log),
+         se = (u-l)/(2*1.96)) %>% 
+  select(nct_id, treat, control, loghr = hr, se = se) %>% 
+  gather("treat_cmpr", "drug_name", treat, control) %>% 
+  mutate(across(c(loghr, se), ~ if_else(treat_cmpr == "control", NA_real_, .x))) %>% 
+  arrange(nct_id, drug_name) %>% 
+  select(nct_id, drug_name, treat_cmpr, loghr, se)
+maceout_cmpr2_add <- mace2 %>% 
+  anti_join(maceout_cmpr2) %>%
+  mutate(treat_cmpr = if_else(drug_name == "luseogliflozin", "treat", "control")) %>% 
+  select(nct_id, drug_name, treat_cmpr)
+maceout_cmpr2 <- bind_rows(maceout_cmpr2,
+                           maceout_cmpr2_add)
+## note none not joining
+mace3 <- mace2 %>% 
+  inner_join(maceout_cmpr2) %>% 
+  select(nct_id:mean_fu_days, loghr, se, everything())
+
 ### save for subsequent analysis ----
 ## note there is some redundancy here as have merged some variables from mace_arms into the aggregate
 ## data for mace. But did so for clarity as there are multiple arm IDs
 saveRDS(list(mace_arms = bth_arm,
-             mace_agg = mace2,
+             mace_agg = mace3,
              mace_agg_trial_level = maceout_trl), "Scratch_data/mace_arms_agg_data.Rds")
