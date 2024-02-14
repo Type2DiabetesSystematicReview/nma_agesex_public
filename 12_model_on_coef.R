@@ -26,6 +26,18 @@ CnvrtCorrMatrix <- function(a){
 readRDS("Scratch_data/mace_arms_agg_data.Rds") %>% 
   list2env(envir = .GlobalEnv)
 
+## check hrs in agg model against calculated (approx as using rate ratio) ----
+mace_agg <- mace_agg %>% 
+  mutate(rate = r/pt,
+         hr = exp(loghr)) %>% 
+  arrange(treat_cmpr) %>% 
+  group_by(nct_id) %>% 
+  mutate(rr = rate/rate[1],
+         lrr = log(rr)) %>% 
+  ungroup() %>% 
+  arrange(nct_id, treat_cmpr)
+## all are very similar
+
 ## read in pseudo ipd ----
 pseudo <- readRDS("Scratch_data/ipd_age_sex_mace.Rds")
 pseudo <- pseudo %>% 
@@ -58,45 +70,7 @@ cors <- cfs %>%
   select(repo, nct_id, models, r)
 cfs$r <- NULL
 
-## transform data ----
-pseudo <- pseudo %>% 
-  mutate(age15 = age/15,
-         male = if_else(sex == "M", 1L, 0L),
-         ltime = log(time + 1))
-mace_agg <- mace_agg %>% 
-  mutate(age_m = age_m/15,
-         age_s = age_s/15,
-         male_p = male_prcnt/100,
-         time = mean_fu_days,
-         ltime = log(time))
-
-mace_agg <- mace_agg %>% 
-  filter(!nct_id == "UMIN000018395")
-
-## first attempt to fit pseudo-ipd and aggregate data ----
-mynet <- combine_network(
-  set_agd_arm(data = mace_agg, 
-              study = nct_id, trt = drug_mdl, r = r, n = participants, 
-              trt_ref = "placebo", trt_class = trtcl5),
-  set_ipd(data = pseudo, study = nct_id, trt = drug_mdl, r = event,
-          trt_ref = "placebo", trt_class = trtcl5))
-mynet <- add_integration(mynet,
-                         age15 = distr(qnorm, mean = age_m, sd = age_s),
-                         male = distr(qbern, prob = male_p),
-                         ltime = distr(qnorm, ltime, 0))
-pseudocor <- mynet$int_cor
-plot(mynet, layout = "kk")
-
-# res <- nma(mynet,
-#     trt_effects = "fixed",
-#     link = "cloglog",
-#     regression = ~ (age15 + male)*.trt + offset(ltime),
-#     class_interactions = "common",
-#     prior_intercept = normal(scale = 10),
-#     prior_trt = normal(scale = 10),
-#     prior_reg = normal(scale = 10))
-
-## Next attempt to fit using regression data and aggregate data ----
+## Convert regression data ----
 cfs <- cfs %>% 
   filter(models == "f5")
 cfs <- cfs %>% 
@@ -127,10 +101,10 @@ cfs <- cfs %>%
   nest() %>% 
   ungroup()
 cfs$reference <- map(cfs$data, ~ .x %>% 
-                        slice(1) %>% 
-                        mutate(estimate = NA_real_, std.error = NA_real_,
-                               term = NA_character_, age15 = 0, male = FALSE,
-                               trt = "placebo", drug_mdl = "placebo", trtcl5 = "place"))
+                       slice(1) %>% 
+                       mutate(estimate = NA_real_, std.error = NA_real_,
+                              term = NA_character_, age15 = 0, male = FALSE,
+                              trt = "placebo", drug_mdl = "placebo", trtcl5 = "place"))
 cfs$data <- map2(cfs$data, cfs$reference, ~ bind_rows(ref = .y, notref = .x, .id = "reference"))
 cfs$reference <- NULL
 cfs <- cfs %>% 
@@ -144,44 +118,96 @@ cfs %>%
   filter(nct_id == names(cors_lst)[1])
 cfs <- cfs %>%
   mutate(ltime = 0)
+rm(cfs_no_r, cors, vcv)
 
-## take inverse cloglog of estimate
-cloglog <- function(p) {
-  log(-log(1-p))
+## transform aggregate data and pseudo IPD ----
+pseudo <- pseudo %>% 
+  mutate(age15 = age/15,
+         male = if_else(sex == "M", 1L, 0L),
+         time = time/365,
+         ltime = log(time + 1))
+mace_agg <- mace_agg %>% 
+  mutate(age_m = age_m/15,
+         age_s = age_s/15,
+         male_p = male_prcnt/100,
+         time = mean_fu_days*participants,
+         time = time/365,
+         ltime = log(time))
+mace_agg <- mace_agg %>% 
+  filter(!nct_id == "UMIN000018395")
+
+## Set-up aggregate and IPD data in different formats ----
+agg_events <- set_agd_arm(data = mace_agg, 
+                          study = nct_id, trt = drug_mdl, r = r, n = participants, 
+                          trt_ref = "placebo", trt_class = trtcl5)
+agg_hrs    <- set_agd_contrast(data = mace_agg,
+                          study = nct_id, trt = drug_mdl, y = loghr, se = se, 
+                          trt_ref = "placebo", trt_class = trtcl5, sample_size = participants)
+ipd_pseudo <- set_ipd(data = pseudo, study = nct_id, trt = drug_mdl, r = event,
+                      trt_ref = "placebo", trt_class = trtcl5)
+ipd_regres_w_events <- set_agd_regression(cfs,
+                                 study = nct_id,
+                                 trt = drug_mdl,
+                                 estimate = estimate,
+                                 se = std.error,
+                                 cor = cors_lst,
+                                 trt_ref = "placebo",
+                                 trt_class = trtcl5,
+                                 regression = ~ (male + age15)*.trt + offset(ltime))
+ipd_regres_w_coef <- set_agd_regression(cfs,
+                                          study = nct_id,
+                                          trt = drug_mdl,
+                                          estimate = estimate,
+                                          se = std.error,
+                                          cor = cors_lst,
+                                          trt_ref = "placebo",
+                                          trt_class = trtcl5,
+                                          regression = ~ (male + age15)*.trt)
+
+## Create networks with 2x2 different combinations (aggregate = event/hr, IPD = pseudo/coefs) ----
+net_lst <- list(
+  e_p = combine_network(agg_events, ipd_pseudo),
+  e_c = combine_network(agg_events, ipd_regres_w_events),
+  h_p = combine_network(agg_hrs, ipd_pseudo),
+  h_c = combine_network(agg_hrs, ipd_regres_w_coef)
+)
+map(net_lst, plot, layout = "kk")
+pseudos <- c("e_p", "h_p")
+regs <- c("e_c", "h_c")
+net_lst[pseudos] <- map(net_lst[pseudos], ~ add_integration(.x,
+                         age15 = distr(qnorm, mean = age_m, sd = age_s),
+                         male = distr(qbern, prob = male_p),
+                         ltime = distr(qnorm, ltime, 0)))
+net_lst[regs] <- map2(net_lst[regs], net_lst[pseudos], ~ add_integration(.x,
+                           age15 = distr(qnorm, mean = age_m, sd = age_s),
+                           male = distr(qbern, prob = male_p),
+                           ltime = distr(qnorm, ltime, 0), 
+                           cor = .y$int_cor))
+
+## Run models ----
+MyNMA <- function(mynet, mylink, myreg) {
+  nma(mynet,
+      trt_effects = "fixed",
+      link = mylink,
+      regression = myreg,
+      class_interactions = "common",
+      prior_intercept = normal(scale = 10),
+      prior_trt = normal(scale = 10),
+      prior_reg = normal(scale = 10), chains = 4, cores = 4)
 }
-icloglog <- function(y) {
-  1 - exp(-exp(y))
-}
-cfs <- cfs %>%
-  mutate(estimate_tform = icloglog(estimate),
-         std.error_tform = icloglog(std.error))
+## Commented out ones won't run
+# h_p <- MyNMA(net_lst$h_p, 
+#              mylink = "cloglog", 
+#              myreg = ~ (male + age15)*.trt + offset(ltime))
+h_c <- MyNMA(net_lst$h_c, 
+             mylink = "identity", 
+             myreg = ~ (male + age15)*.trt)
+# e_c <- MyNMA(net_lst$e_c, 
+#              mylink = "cloglog", 
+#              myreg = ~ (male + age15)*.trt + offset(ltime))
+# e_p <- MyNMA(net_lst$e_p, 
+#              mylink = "cloglog", 
+#              myreg = ~ (male + age15)*.trt + offset(ltime))
 
-reg_net <- combine_network(
-  set_agd_arm(data = mace_agg, 
-              study = nct_id, trt = drug_mdl, r = r, n = participants, 
-              trt_ref = "placebo", trt_class = trtcl5),
-  set_agd_regression(cfs,
-                     study = nct_id,
-                     trt = drug_mdl,
-                     estimate = estimate_tform,
-                     se = std.error_tform,
-                     cor = cors_lst,
-                     trt_ref = "placebo",
-                     trt_class = trtcl5,
-                     regression = ~ (male + age15)*.trt + offset(ltime)))
-plot(reg_net)
-
-reg_net <- add_integration(reg_net,
-                age15 = distr(qnorm, mean = age_m, sd = age_s),
-                male = distr(qbern, prob = male_p),
-                ltime = distr(qnorm, ltime, 0), cor = pseudocor)
-
-mace_FE <- nma(reg_net,
-               trt_effects = "fixed",
-               link = "cloglog",
-               regression = ~ (male + age15)*.trt + offset(ltime),
-               class_interactions = "common",
-               prior_intercept = normal(scale = 10),
-               prior_trt = normal(scale = 10),
-               prior_reg = normal(scale = 10), iter = 100, chains = 2)
-
+## Model runs fast. No divergent transitions. Rhat low. ESS high
+saveRDS(h_c, "Scratch_data/mace_h_c_model.Rds")
