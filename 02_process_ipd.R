@@ -101,12 +101,12 @@ age_distr <- age_distr %>%
               mutate(reference_arm = 1)) %>% 
   mutate(reference_arm = if_else(is.na(reference_arm), 2L, reference_arm),
          arm_f = paste0("_", reference_arm, "_", arm_id_unq)) 
-
-## Recover variance-covariance matrix ----
+## Obtain coefficients -----
 age_sex_model_coefs <- age_sex_model_coefs %>% 
   group_by(nct_id, nct_id2, models) %>% 
   nest() %>% 
   ungroup()
+## Recover variance-covariance matrix ----
 age_sex_model_vcov <- age_sex_model_vcov %>% 
   group_by(nct_id, nct_id2, models) %>% 
   nest() %>% 
@@ -129,7 +129,7 @@ age_sex_model_vcov$vcv <- map2(age_sex_model_vcov$data, age_sex_model_vcov$r, ~ 
  rownames(res) <- term
 res
 })
-## want R as well as can use to run set_aged_regression
+## want R as well as can use to run set_agd_regression
 # age_sex_model_vcov$r <- NULL
 ## note that this is the same as the count at the end
 saveRDS(age_sex_model_vcov, "Scratch_data/combined_cfs_vcov.Rds" )
@@ -150,11 +150,16 @@ ast <- ast %>%
   gather("var", "value", estimate, std.error)
 saveRDS(ast, "Scratch_data/ipd_raw_coefs.Rds")
 
-##sample from distribution to get set of sampled coefficients. Sample same number as observations for convenience
+##sample from distribution to get set of sampled coefficients based on vcov. 
+## Sample same number as observations for convenience
+age_sex_model_diags <- age_sex_model_diags %>% 
+  mutate(rsd = (deviance/(nobs-1))^0.5)
 age_sex_model_vcov <- age_sex_model_vcov %>% 
-  left_join(age_sex_model_diags %>% select(nct_id, nct_id2, models, nobs)) 
-
-age_sex_model_vcov$sim <- pmap(list(age_sex_model_vcov$data, age_sex_model_vcov$vcv, age_sex_model_vcov$nobs), function(.x, .y, .z) {
+  left_join(age_sex_model_diags %>% select(nct_id, nct_id2, models, nobs, rsd)) 
+age_sex_model_vcov$sim <- pmap(list(age_sex_model_vcov$data, 
+                                    age_sex_model_vcov$vcv, 
+                                    age_sex_model_vcov$nobs), 
+                               function(.x, .y, .z) {
   # browser()
                                  vcv <- .y
                                  cf <- .x$estimate
@@ -164,9 +169,26 @@ age_sex_model_vcov$sim <- pmap(list(age_sex_model_vcov$data, age_sex_model_vcov$
                                  colnames(res) <- term
                                  res
 })
+## Repeat mean coefficient across the range of the data. 
+## Not efficient in terms of computing but re-uses code from simulation
+age_sex_model_vcov$sngl_cf <- pmap(list(age_sex_model_vcov$data, 
+                                    age_sex_model_vcov$vcv, 
+                                    age_sex_model_vcov$nobs), 
+                               function(.x, .y, .z) {
+                                 # browser()
+                                 vcv <- .y
+                                 vcv[] <- 0
+                                 cf <- .x$estimate
+                                 term <- .x$term
+                                 if(!all(term == rownames(vcv))) stop("Matrix and coefficients dont match")
+                                 res <- mvtnorm::rmvnorm(.z, cf, vcv)
+                                 colnames(res) <- term
+                                 res
+                               })
+
 age_sex_smpl_cfs <- age_sex_model_vcov %>% 
-  select(nct_id, nct_id2, models, sim) 
-rm(age_sex_model_coefs, age_sex_model_diags, age_sex_model_vcov)
+  select(nct_id, nct_id2, models, sim, sngl_cf, rsd) 
+rm(age_sex_model_coefs, age_sex_model_vcov, age_sex_model_diags)
 
 age_distr <- age_distr %>% 
   mutate(sex = if_else(sex == "male", 1L, 0L),
@@ -174,45 +196,73 @@ age_distr <- age_distr %>%
   group_by(nct_id, nct_id2) %>% 
   nest() %>% 
   ungroup()
-age_distr <- age_distr %>% 
-  inner_join(age_sex_smpl_cfs %>% 
-               filter(models == "b1"))
+
 age_distr$mm <- map(age_distr$data, ~ model.matrix(~ sex*age10*arm_f, data = .x))
 a <- age_distr$mm[[1]] %>% head(2)
 b <- age_distr$sim[[1]] %>% head(2)
 all(colnames(a) == colnames(b))
 
-age_distr$data <- pmap(list(age_distr$data, age_distr$mm, age_distr$sim), function(df, mm, cf) {
+## adds in residual standard deviation
+# In R's lm output "deviance" (obtainable from broom::glance) is the sum of squares of the residuals
+# Therefore you can calculate the standard deviation of the residuals by (dev/(n-1))^0.5. This is identical to sd(residuals)
+
+warning("Fix here")
+age_distr <- age_distr %>% 
+  inner_join(age_sex_smpl_cfs %>% 
+               filter(models == "b1"))
+## Note that value_1 and value_1_sngl are the estimated baseline hba1c where the variation is
+## based on the standard errors and residual standard deviation respectively. Both should have the same mean
+## allowing for sampling errors
+age_distr$data <- pmap(list(age_distr$data, age_distr$mm, 
+                            age_distr$sim, age_distr$sngl_cf,
+                            age_distr$rsd), function(df, mm, cf, cf_sngl, rsd) {
   ## deal with lower number of observation in model than in data
   chsrows <- sample(1:nrow(mm), size = nrow(cf))
   df <- df[chsrows,]
   mm <- mm[chsrows,]
   # calculate base
   df$value_1 <- rowSums(mm * cf)
+  df$value_1_sngl <- rowSums(mm * cf_sngl)
+  df$value_1_sngl <- rnorm(length(df$value_1_sngl),
+                           mean = df$value_1_sngl,
+                           sd = rsd)
   df
 })
 
 age_distr <- age_distr %>% 
-  select(-models, -sim) %>% 
+  select(-models, -sim, -sngl_cf, -rsd) %>% 
   inner_join(age_sex_smpl_cfs %>% 
                filter(models == "f8"))
 age_distr$mm <- map(age_distr$data, ~ model.matrix(~ value_1 + age10 + arm_f + sex + age10:arm_f + arm_f:sex + value_1:arm_f, data = .x))
 a <- age_distr$mm[[1]] %>% head(2)
 b <- age_distr$sim[[1]] %>% head(2)
 all(colnames(a) == colnames(b))
-age_distr$data <- pmap(list(age_distr$data, age_distr$mm, age_distr$sim), function(df, mm, cf) {
+
+age_distr$data <- pmap(list(age_distr$data, 
+                            age_distr$mm, age_distr$sim,
+                            age_distr$sngl_cf,
+                            age_distr$rsd), function(df, mm, cf, cf_sngl, rsd) {
   ## deal with lower number of observation in model than in data
   chsrows <- sample(1:nrow(mm), size = nrow(cf))
   df <- df[chsrows,]
   mm <- mm[chsrows,]
   # calculate base
   df$value_2 <- rowSums(mm * cf)
+  df$value_2_sngl <- rowSums(mm * cf_sngl)
+  df$value_2_sngl <- rnorm(length(df$value_2_sngl),
+                           mean = df$value_2_sngl,
+                           sd = rsd)
   df
 })
 
 age_distr_lng <- age_distr %>% 
   select(nct_id, nct_id2, data) %>% 
   unnest(data)
+age_distr_lng <- age_distr_lng %>% 
+  rename(value_1_se = value_1,
+         value_1_rsd = value_1_sngl,
+         value_2_se = value_2,
+         value_2_rsd = value_2_sngl)
 saveRDS(age_distr_lng, "Scratch_data/simulated_ipd.Rds")
 
 ## check same with correlation/covariance data and append arms

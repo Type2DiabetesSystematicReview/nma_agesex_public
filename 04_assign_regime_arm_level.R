@@ -12,6 +12,7 @@ ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
 ## read in agg
 agg <- read_csv("Data/agg.csv")
 
+## Pull out combination arms to review these individually 
 ## re-run ancillary algorithm after dropping combination arms
 ## drops 2 trials only
 combo <- arm_assign %>% 
@@ -23,7 +24,6 @@ drop_combo <- agg %>%
   anti_join(arm_assign %>% 
                      filter(str_detect(trtcls5, "_")) %>% 
                      distinct(nct_id, arm_id_unq))
-
 rv_drop_combo <- agg %>% 
   filter(is.na(comparison_label)) %>% 
   distinct(nct_id, arm_id_unq) %>% 
@@ -35,8 +35,6 @@ rv_drop_combo <- agg %>%
       count(nct_id) %>% 
       count(n) %>% 
       rename(trial_arms = n, trials_no_combo = nn))
-
-
 combo <- arm_assign %>% 
   semi_join(combo)
 ## assign format , placebo, drug class as A, B, A+B
@@ -85,26 +83,18 @@ combo <- combo %>%
 ## note renamed to "simplify_combination_trials.csv" so do not accidentally overwrite
 rm(combo, combo_smry)
 combo <- read_csv("Created_metadata/simplify_combination_trials.csv")
-## example 
-# combo %>% filter(nct_id == "NCT00655863") %>% 
-#   select(nct_id, mono, dual, drug_name, drug2_name, drug_code) %>% 
-#   write_csv("Outputs/example_multi_nwork.csv", na = "")
+
+## add which network to arms with one drug per arm
+arm_assign_simple <- arm_assign %>% 
+  anti_join(combo %>% select(nct_id))
 whichnwork_simple <- whichnwork %>% 
   rename(nct_id = trial_id) %>% 
   anti_join(combo %>% select(nct_id))
-whichnwork_multi <- whichnwork %>% 
-  rename(nct_id = trial_id) %>% 
-  semi_join(combo %>% select(nct_id))
-arm_assign_simple <- arm_assign %>% 
-  anti_join(combo %>% select(nct_id))
-
-
-## add which network to arms with one drug per arm
 arm_assign_simple <- arm_assign_simple %>% 
   inner_join(whichnwork_simple %>% select(nct_id, drug_regime))
 
-## ELB selected only one arm where was same drug in multiple arms (eg at different doses)
-## want to select all of these
+## In spreadsheet ELB selected only one arm where was same drug in multiple arms 
+## (eg at different doses) ## want to select all of these
 unassigned <- combo %>% 
   filter(is.na(mono), is.na(dual), is.na(triple)) %>% 
   pull(nct_id) %>% 
@@ -128,9 +118,11 @@ combo <- combo %>%
   ungroup()
 rm(combo2, combo_cmpr)
 
-## add which network to arms with more than one drug per arm. need to select dual and triple separately
+## add which network to arms with more than one drug per arm. 
+## need to select dual and triple separately
+## Include trial only once in whole analysis based on ELB assessed status mono/dual/triple
 mono <- combo %>% 
-  filter(!is.na(mono)) %>% 
+  filter(drug_regime_simplify == "mono", !is.na(mono)) %>% 
   select(nct_id, arm_id_unq, drug_code) 
 ## get rid of double underscore as can cause problems
 mono <- mono %>% 
@@ -141,17 +133,8 @@ mono <- mono %>%
   select(-drug_code) %>% 
   rename(drug_code = drug_codes) %>% 
   unnest(drug_code)
-## one mono trial with different drug code across same arm. treat as any OAD
-mono_dups <- mono %>% 
-  filter(nct_id %in% mono$nct_id[duplicated(mono$arm_id_unq)])
-# reviewed trials register with UMIN000010871, sitagliptin trial recode ac0160 arm to OAD as the comparator is "any other oad" and drop 2 of the arms
-mono <- mono %>% 
-  filter(! (drug_code %in% c("A10BF", "A10BX") & nct_id == "UMIN000010871")) %>% 
-  mutate(drug_code = if_else(nct_id == "UMIN000010871" & arm_id_unq == "ac0160", "OAD", drug_code))
-rm(mono_dups)
-
 dual <- combo %>% 
-  filter(!is.na(dual)) %>% 
+  filter(drug_regime_simplify == "dual", !is.na(dual)) %>% 
   select(nct_id, arm_id_unq, drug_code) 
 ## get rid of double underscore as can cause problems with separate function
 dual <- dual %>% 
@@ -177,9 +160,8 @@ dual <- dual %>%
   group_by(nct_id, arm_id_unq) %>% 
   summarise(drug_code = paste(drug_code, collapse = "#")) %>% 
   ungroup()
-
 triple <- combo %>% 
-  filter(!is.na(triple)) %>% 
+  filter(drug_regime_simplify == "triple", !is.na(triple)) %>% 
   select(nct_id, arm_id_unq, drug_code) 
 triple <- triple %>% 
   mutate(drug_code = str_replace_all(drug_code, "__", "$$"))
@@ -225,15 +207,8 @@ arm_assign_final <- arm_assign_final %>%
   drug_regime %in% c("dual", "mono|dual") ~ "dual",
   drug_regime %in% "mono" ~ "mono",
   TRUE ~ "unclear or missing"))
-## 37 arms coming from 31 trials are duplicated across the whole analysis
+## No arms and no trials are duplicated across the analysis
 arm_assign_final %>% 
-  summarise(trials = sum(!duplicated(nct_id)),
-            arms = length(arm_id_unq),
-            dup_arms = sum(duplicated(arm_id_unq)),
-            dup_trials = sum(!duplicated(nct_id[duplicated(arm_id_unq)])))
-## no arms are duplicated from individual networks
-arm_assign_final %>% 
-  group_by(drug_regime_smpl) %>% 
   summarise(trials = sum(!duplicated(nct_id)),
             arms = length(arm_id_unq),
             dup_arms = sum(duplicated(arm_id_unq)),
@@ -246,6 +221,5 @@ rv_trls <- arm_assign_final %>%
   ungroup() 
 rv_trls %>% 
   count(trl_type)
-## note that trials (and arms) can appear in more than one network
 saveRDS(arm_assign_final, "Scratch_data/arms_assign_drug_regime.Rds")
 write_csv(arm_assign_final, "Outputs/arms_drugs_regimes.csv")
