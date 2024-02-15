@@ -2,13 +2,22 @@
 library(tidyverse)
 
 ## read data -----
+droptrial <- read_csv("../cleaned_data/Data/excluded_trials_look_up.csv")
 out <- readRDS("Scratch_data/agg_hba1c.Rds")
 bas <- readRDS("Scratch_data/agg_hba1c_base.Rds")
 bas <- map(bas, ~ .x %>% 
              rename(nct_id = trial_id, arm_id_unq  = arm_id))
-comp <- read_csv("../cleaned_data/Data/example_comparisons.csv")
+comporig <- read_csv("../cleaned_data/Data/example_comparisons.csv")
+comp2019 <- read_csv("../cleaned_data/Data/comparisons_2019.csv")
+comp2022 <- read_csv("../cleaned_data/Data/comparisons_2022_update.csv")
+comp <- bind_rows(comporig = comporig,
+                      comp2019 = comp2019 %>% mutate(unique_id = as.character(unique_id)),
+                      comp2022 = comp2022 %>% mutate(unique_id = as.character(unique_id)), .id = "type")
+comp %>% 
+  distinct(type, comp_id, arm_id)
+comp <- comp %>% 
+  distinct(comp_id, arm_id, .keep_all = TRUE)
 arm <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv")
-
 
 ## NCT01541956  is actually a standard deviation not a standard error. checked paper
 out$arm$meta <- out$arm$meta %>% 
@@ -95,7 +104,7 @@ nodisp <- dt %>%
 nodisp %>% 
   filter(is.na(dispersion_type)) %>% 
   count(nct_id)
-## two trials with inconvertible dispersion information
+## two trials with nonconvertible dispersion information
 nodisp %>% 
   filter(!is.na(dispersion))
 ## so 21 trials in total dropped
@@ -131,7 +140,8 @@ hba1c_arm <- hba1c_arm %>%
   mutate(participants = if_else(!is.na(participants), participants, n),
          n = if_else(!is.na(n), n, participants))
 ## identify where has trial, but not arm with baseline data
-## One trial has data for two arms but not two arms (these are called "ignore_diet" remaining 5 tials missing for all trials in set)
+## One trial has data for two arms but not two arms (these are called "ignore_diet" 
+## remaining 5 trials missing for all trials in set)
 xmn <- hba1c_arm %>% filter(is.na(n)) %>% pull(nct_id) %>% unique()
 hba1c_arm %>% filter(nct_id %in% xmn) %>% inner_join(arm %>% select(arm_id_unq, arm_label))
 hba1c_arm %>% filter(nct_id %in% xmn)  %>% count(nct_id)
@@ -141,9 +151,6 @@ hba1c_arm %>% filter(nct_id %in% xmn)  %>% count(nct_id)
 # age and sex over treatment comparisons, to create a single row per comparison
 hba1c_comp <- hba1c %>% 
   filter(stat_type == "comp")
-## 1 in comp lookup, 7 not ask ELB
-warning("Some comparison to arm lookups missing")
-table(hba1c_comp$comp_id %in% comp$comp_id)
 comp <- comp %>% 
   filter(comp_id %in% hba1c_comp$comp_id)
 comp2 <- comp %>% 
@@ -151,17 +158,19 @@ comp2 <- comp %>%
   left_join(bas$ns) %>% 
   left_join(bas$sex) %>% 
   left_join(bas$age)
-## ONe trial missing data. Add
+## Two trial missing data. Add. age_sd missing for the latter
 comp_msng <- read_csv(
 "arm_id_unq,arm_label,n,male,age_m,age_sd
 unq_updaa10055,dapagliflozin,12,7,63,4.7
-unq_updaa10057,placebo,14,13,64.6,4.7")
+unq_updaa10057,placebo,14,13,64.6,4.7
+noarmid1,placebo,87,44,52,
+noarmid2,gemigliptin,87,57,54,")
 comp_msng_meta <- comp2 %>% 
   semi_join(comp_msng %>% select(arm_id_unq)) %>% 
   select(unique_id:treat_or_ref) %>% 
   inner_join(comp_msng)
 comp3 <- bind_rows(comp2 %>% 
-                     filter(!nct_id == "NCT03338855"),
+                     filter(!nct_id %in% comp_msng_meta$nct_id),
                    comp_msng_meta)
 
 #differences in mean outcomes between arms)."
@@ -179,26 +188,15 @@ comp4 <- comp3 %>%
 #equal to the standard error of the mean outcome on the reference arm (this
 #determines the covariance of the relative effects, when expressed as # only one
 #trial has three or more arms - NCT03159052 
-# assume standard error arm same as median for other trials with a placebo arm
+# assume standard deviation arm same as median for other trials with a placebo arm
 ## note drop double reference for this trial
 comp4 <- comp4 %>% 
   filter(!(nct_id == "NCT03159052" & unique_id == "0058"))
-placebo_arms <- arm %>% 
-  filter(arm_label == "placebo") %>% 
-  pull(arm_id_unq) %>% 
-  unique()
-placebo_arms <- hba1c_arm %>% 
-  filter(arm_id_unq %in% placebo_arms) %>% 
-  select(nct_id, se) %>% 
-  distinct(nct_id, .keep_all = TRUE) %>% 
-  summarise(se = median(se)) %>% 
-  pull(se)
-comp4 <- comp4 %>% 
-  mutate(se = if_else(treat_or_ref == "reference", placebo_arms, se))
 
 ## convert all onto common units
-## note error  in assinging unit label to one trial - Netherlands Trial Register NTR6709
-## Need to add N for a trial as well updac0148 arm 15 participants, updac0149  arm 18 participants (from https://doi.org/10.1111/dom.12936)
+## note error  in assigning unit label to one trial - Netherlands Trial Register NTR6709
+## Need to add N for a trial as well updac0148 arm 
+# 15 participants, updac0149  arm 18 participants (from https://doi.org/10.1111/dom.12936)
 comp5 <- comp4 %>% 
   mutate(result = if_else(units_label == "mmol/mol", 
                           result * 0.09148 + 2.152,
@@ -221,6 +219,20 @@ hba1c_arm2 <- hba1c_arm %>%
                           (0.09148*(se*n^0.5) + 2.152)/n^0.5,
                           se),
          units_label = if_else(units_label == "mmol/mol", "percentage_converted", units_label))
+
+placebo_arms <- arm %>% 
+  filter(arm_label == "placebo") %>% 
+  pull(arm_id_unq) %>% 
+  unique()
+placebo_arms <- hba1c_arm2 %>% 
+  filter(arm_id_unq %in% placebo_arms) %>% 
+  select(nct_id, se, n) %>% 
+  distinct(nct_id, .keep_all = TRUE) %>% 
+  mutate(sd = se*n^0.5) %>% 
+  summarise(sd = median(sd, na.rm = TRUE)) %>% 
+  pull(sd)
+comp5 <- comp5 %>% 
+  mutate(se = if_else(treat_or_ref == "reference", placebo_arms/n^0.5, se))
 
 ## set final datasets for saving as csv files
 comp6 <- comp5 %>% 

@@ -132,7 +132,7 @@ re_arm <- re_arm %>%
   distinct(nct_id, arm_id_unq, drug_code)
 
 mylst <- SimplifyDrugs(re_arm)
-## Reviewed ancillary drugs detected wiht comparison in code versus the manual assignment with ELB.
+## Reviewed ancillary drugs detected with comparison in code versus the manual assignment with ELB.
 ## 9th November 2023
 ## Consistent results. No need to change designation (eg mono, dual triple etc)
 saveRDS(mylst, 
@@ -154,5 +154,5 @@ arm_assign <- arm_assign %>%
 
 map_int(arm_assign, ~ sum(!duplicated(.x)))
 # nct_id arm_id_unq  drug_code    trtcls5    trtcls4 
-# 602       1489         84         26          5 
+# 643       1564         87         27          5 
 write_csv(arm_assign, "Data/arm_labels_hba1c.csv")

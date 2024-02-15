@@ -2,7 +2,9 @@
 library(tidyverse)
 
 ## read in all data ----
-## read in ipd so can drop from aggregate
+## read in drop trial list ----
+droplist <- read_csv("../cleaned_data/Data/excluded_trials_look_up.csv")
+## read in ipd so can drop from aggregate ----
 ipd1 <- read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
 ipd2 <- read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv")
 ipd3 <- read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")
@@ -12,7 +14,17 @@ hba1c_agg1 <- read_csv("../cleaned_data/Data/hba1c_outcome_data_2019.csv") %>%
   rename(nct_id = trial_id)
 hba1c_agg2 <- read_csv("../cleaned_data/Data/hba1c_outcome_data_2022.csv") %>% 
   rename(nct_id = trial_id)
+hba1c_agg3 <- read_csv("../cleaned_data/Data/hba1c_outcome_data_2024.csv") %>% 
+  rename(nct_id = trial_id)
 arm <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv")
+
+## clean arm data 
+arm <- arm %>% 
+  mutate(nct_id = trial_id,
+         drug_name = case_when(
+    arm_label == "placebo" & is.na(drug_name) ~ "placebo",
+    TRUE ~ drug_name
+  ))
 
 ## read in outcome counts
 oc_orig <- readRDS("../extract_transform/aact/data/aact_extract.Rds")$outcome_counts
@@ -37,14 +49,22 @@ result_determination <- read_csv("Created_metadata/resolve_result_type.csv")
 ## initial cleaning ----
 hba1c_agg <- bind_rows(extract1 = hba1c_agg1,
                        extract2 = hba1c_agg2,
+                       extract3 = hba1c_agg3,
                        .id = "extract")
-rm(hba1c_agg1, hba1c_agg2)
-# drop ipd
+rm(hba1c_agg1, hba1c_agg2, hba1c_agg3)
+
+# drop ipd trials from agg
 hba1c_agg <- hba1c_agg %>% 
   filter(!nct_id %in% ipd$nct_id)
+# drop if on excluded list - one trial
+hba1c_agg %>% 
+  filter(nct_id %in% droplist$trial_id)
+hba1c_agg <- hba1c_agg %>% 
+  filter(!nct_id %in% droplist$trial_id)
 # drop if not a selected arm
+arm_orig <- arm
 arm <- arm %>% 
-  filter(!arm_label == "total") %>% 
+  filter(is.na(arm_label) | arm_label != "total") %>% 
   select(trial_id, arm_id_unq, arm_id_subgroup, arm_id) %>% 
   gather("armids", "value", -trial_id) %>% 
   select(-armids) %>% 
@@ -53,19 +73,9 @@ hba1c_agg <- hba1c_agg %>%
   semi_join(arm %>% select(nct_id = trial_id,
                            arm_id_unq = value))
 
-## identify problem ones shown as single arm later. all are from new extract
-problem <- c("NCT03387683", "ChiCTR1800015296", "jRCTs031180159", "NCT02875821", "TCTR20170511001", 
-             "UMIN000021177", "UMIN000031451", "IRCT20200722048176N1","NCT03313752")
-setdiff(problem, hba1c_agg$nct_id)
-## these are all single arms. Not clear why. Check with ELB
-hba1c_agg %>% 
-  filter(nct_id %in% problem) %>% 
-  select(nct_id, arm_id_unq)
-# hba1c_agg %>% 
-#   filter(nct_id %in% problem) %>% 
-#   View()
+## There are now no single arms
 
-## correct errors
+## correct errors where result type missing
 hba1c_agg <- hba1c_agg %>% 
   mutate(result_type = if_else(nct_id == "NCT00509262" & result_description == "change from baseline", "mean", result_type))
 # cant use if_else here or drops dispersion where arm_id_unq is missing. so use case_when
@@ -73,10 +83,6 @@ hba1c_agg <- hba1c_agg %>%
   mutate(dispersion = case_when(
     arm_id_unq == "unq_updaa10037" ~ "0,0.5",
     TRUE ~ dispersion))
-
-# drop trials not in 
-hba1c_agg %>% 
-  count(nct_id)
 
 ## separate out result metadata ----
 hba1c_meta <- hba1c_agg %>% 
@@ -95,7 +101,6 @@ hba1c_meta <- hba1c_meta %>%
 result_determination_rv <- hba1c_meta %>% 
   count(nct_id, result_type_smry) %>% 
   spread(result_type_smry, n, fill = 0L)
-## 633 have mean change or mean base and end. 38 do not. 
 result_type_per_trial <- hba1c_meta %>% 
   group_by(nct_id) %>% 
   summarise(result_type_best = case_when(
@@ -104,7 +109,6 @@ result_type_per_trial <- hba1c_meta %>%
     any(result_type_smry == "between_arm_mean") ~ "between_arm_mean",
     TRUE ~ "other"
   ))
-## 524 mean change, 56 mean change calculate, 15 between arm means, 23 "others"
 result_type_per_trial %>% 
   count(result_type_best) %>% 
   write_csv("Outputs/Types of Hba1c result in each trial.csv")

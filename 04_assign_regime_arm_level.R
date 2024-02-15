@@ -1,6 +1,7 @@
 library(tidyverse)
 ## deal with combo trials
-## sometimes these are dual or mono depending which arems we choose I think we should split the networks accordingly
+## sometimes these are dual or mono depending which arms we choose
+## Should choose ones to fit in with ELB designation on reviewing trials
 source("Scripts/00_functions.R")
 
 arm_assign <- read_csv("Data/arm_labels_hba1c.csv")
@@ -16,6 +17,26 @@ agg <- read_csv("Data/agg.csv")
 combo <- arm_assign %>% 
   filter(str_detect(trtcls5, "_")) %>% 
   distinct(nct_id)
+drop_combo <- agg %>% 
+  filter(is.na(comparison_label)) %>% 
+  distinct(nct_id, arm_id_unq) %>% 
+  anti_join(arm_assign %>% 
+                     filter(str_detect(trtcls5, "_")) %>% 
+                     distinct(nct_id, arm_id_unq))
+
+rv_drop_combo <- agg %>% 
+  filter(is.na(comparison_label)) %>% 
+  distinct(nct_id, arm_id_unq) %>% 
+  count(nct_id) %>% 
+  count(n) %>%
+  rename(trial_arms = n, trials = nn) %>% 
+  inner_join(
+    drop_combo %>% 
+      count(nct_id) %>% 
+      count(n) %>% 
+      rename(trial_arms = n, trials_no_combo = nn))
+
+
 combo <- arm_assign %>% 
   semi_join(combo)
 ## assign format , placebo, drug class as A, B, A+B

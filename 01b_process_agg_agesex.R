@@ -7,7 +7,17 @@ source("../common_functions/Scripts/convert_iqr_to_sd.R")
 base_dsp <- readRDS("../cleaned_data/Processed_data/base_dsp.Rds")
 base_rng <- readRDS("../cleaned_data/Processed_data/base_rng.Rds")
 hba1c_agg <- readRDS("Scratch_data/agg_hba1c.Rds")
-comp2arm <- read_csv("../cleaned_data/Data/example_comparisons.csv")
+comporig <- read_csv("../cleaned_data/Data/example_comparisons.csv")
+comp2019 <- read_csv("../cleaned_data/Data/comparisons_2019.csv")
+comp2022 <- read_csv("../cleaned_data/Data/comparisons_2022_update.csv")
+comp <- bind_rows(comporig = comporig,
+                  comp2019 = comp2019 %>% mutate(unique_id = as.character(unique_id)),
+                  comp2022 = comp2022 %>% mutate(unique_id = as.character(unique_id)), .id = "type")
+comp %>% 
+  distinct(type, comp_id, arm_id)
+comp2arm <- comp %>% 
+  distinct(comp_id, arm_id, .keep_all = TRUE)
+rm(comporig, comp2019, comp2022)
 
 mnl_n <- read_csv("trial_id,drug_name,n,arm_id
 100-IRMI/PRI 16/6/2 (007/2017),DAPA,36,updac0091
