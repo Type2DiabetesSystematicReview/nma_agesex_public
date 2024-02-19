@@ -46,7 +46,7 @@ reg <- readRDS("Scratch_data/ipd_coefs_frmttd.Rds")
 sum(!duplicated(reg$nct_id))
 reg <- reg %>% 
   rename(arm_id_unq = trt) %>% 
-  semi_join(ipd %>% select(nct_id, arm_id_unq))
+  semi_join(ipd %>% select(nct_id))
 sum(!duplicated(reg$nct_id))
 
 ## check same in ipd and reg
@@ -59,7 +59,9 @@ ipd <- ipd %>%
   inner_join(arm_meta)
 sum(!duplicated(ipd$nct_id))
 reg <- reg %>% 
-  inner_join(arm_meta) 
+  semi_join(arm_meta %>% select(nct_id)) 
+reg <- reg %>% 
+  left_join(arm_meta %>% select(nct_id, arm_id_unq, arm_lvl, trtcls5, trtcls4, drug_regime_smpl))
 sum(!duplicated(ipd$nct_id))
 sum(!duplicated(reg$nct_id))
 setdiff(ipd$arm_id_unq, reg$arm_id_unq)
@@ -121,13 +123,15 @@ agg <- agg %>%
   ungroup() %>% 
   mutate(across(c(age_m, age_sd), function(x) if_else(is.na(x),
                                                       mean(x, na.rm = TRUE), 
-                                                      x)))
+                                                      x))) 
+
 ## repeat this imputation for sex
 agg <- agg %>% 
   group_by(nct_id) %>% 
   mutate(male = if_else(is.na(male), n*mean(male/n, na.rm = TRUE), male)) %>%
   ungroup() %>% 
-  mutate(male = if_else(is.na(male), n*mean(male/n, na.rm = TRUE), male))
+  mutate(male = if_else(is.na(male), n*mean(male/n, na.rm = TRUE), male)) 
+
 
 ## Aggregate arms where have multiple arms with same drug or drug and dose in case of metformin and novel antidiabetics) or class in case of insulin
 ## but not where results were supplied as subgroups as this was done in earlier script. Use Cochrane formula
@@ -180,27 +184,38 @@ ipd <- ipd %>%
   rename(ipd = data)
 
 ## following code needed to deal with main effects not having a drug regime drug code etc
-reg2 <- map(reg$drug_regime_smpl %>% unique(), ~
-          reg %>% 
-            filter(is.na(drug_regime_smpl) | drug_regime_smpl == .x) %>% 
-            select(-drug_regime_smpl) %>% 
-            nest() %>% 
-            mutate(drug_regime_smpl = .x) %>% 
-            group_by(drug_regime_smpl))
-reg2 <- bind_rows(reg2)
-reg2 <- reg2 %>% 
-  filter(!is.na(drug_regime_smpl))
-reg2 <- reg2 %>% 
-  rename(reg = data)
+reg2 <- reg %>% 
+  group_by(nct_id) %>% 
+  mutate(drug_regime_smpl = drug_regime_smpl[!is.na(drug_regime_smpl)][1]) %>% 
+  ungroup
+
 ## drop main effects which are not for the drug regime smpl models
-reg2$reg <- map(reg2$reg, ~ .x %>% 
+## None dropped
+reg2 <- reg2 %>% 
                  group_by(nct_id, nct_id2, models) %>% 
                  mutate(anytreat = any(!is.na(arm_id_unq))) %>% 
                  ungroup() %>% 
                  filter(anytreat) %>% 
-                 select(-anytreat))
+                 select(-anytreat)
+## drop contrasts which are not in the main models. Both from correlation
+## and from terms
+reg2_arm_drp <- reg2 %>% 
+  filter(models == "f1", !is.na(arm_id_unq)) %>% 
+  distinct(nct_id, term, arm_id_unq, arm_f, arm_lvl)
+reg2_arm_drp <- reg2_arm_drp %>% 
+  filter(is.na(arm_lvl)) %>% 
+  pull(arm_f) %>% 
+  paste(collapse = "|")
+reg2 <- reg2 %>% 
+  filter(is.na(term) | !str_detect(term, reg2_arm_drp))
+reg2$crl<- map(reg2$crl, ~ .x[!str_detect(colnames(.x), reg2_arm_drp),
+                              !str_detect(rownames(.x), reg2_arm_drp)])
 reg <- reg2
 rm(reg2)
+reg <- reg %>% 
+  group_by(drug_regime_smpl) %>% 
+  nest() %>% 
+  ungroup()
 agg <- agg %>% 
   group_by(drug_regime_smpl) %>% 
   nest() %>% 
@@ -210,7 +225,7 @@ agg <- agg %>%
   filter(!drug_regime_smpl == "unclear or missing")
 tot <- agg %>% 
   inner_join(ipd) %>% 
-  inner_join(reg)
+  inner_join(reg %>% rename(reg = data))
 rm(ipd, agg)
 
 saveRDS(tot, "Scratch_data/agg_ipd_hba1c.Rds")

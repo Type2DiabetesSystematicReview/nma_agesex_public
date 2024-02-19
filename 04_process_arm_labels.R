@@ -141,11 +141,11 @@ liraglutide| lixisenatide | glulisine,A10BJ
 canagliflozin| dapagliflozin |empagliflozin,A10BK
 mitiglinide|nateglinide,A10BX
 voglibose|miglitol,A10BF
-sitagliptin|tenegliptin|linagliptin|alogliptin,A10BD
+sitagliptin|tenegliptin|linagliptin|alogliptin,A10BH
 glimperide| gliclazide,A10BB
 metformin|glinide|alpha glucosidase inh,A10B
-sitagliptin|linagliptin|alogliptin|vildagliptin|saxagliptin |teneligliptin,A10BD
-sitagliptin|vildagliptin|alogliptin|linagliptin|teneligliptin|anagliptin|saxagliptin,A10BD")
+sitagliptin|linagliptin|alogliptin|vildagliptin|saxagliptin |teneligliptin,A10BH
+sitagliptin|vildagliptin|alogliptin|linagliptin|teneligliptin|anagliptin|saxagliptin,A10BH")
 
 whoatc <- bind_rows(whoatc,
                     nonwho,
