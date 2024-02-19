@@ -29,7 +29,7 @@ SimplifyDrugs <- function(re_arm) {
     a %>% 
       mutate(v = 1L) %>% 
       spread(drug_code, v, fill = 0L) %>% 
-      gather(key = "drug_code", cntrl, -arm_id_unq) %>% 
+      gather(key = "drug_code", "cntrl", -arm_id_unq) %>% 
       mutate(drug_code = if_else(cntrl == 0L, 
                                  "implicit_control",
                                  drug_code))
@@ -50,9 +50,7 @@ SimplifyDrugs <- function(re_arm) {
   ## 5 trials with implicit controls
   re_arm_keep <- re_arm_keep %>% 
     select(nct_id, sameacross, retain) %>% 
-    unnest(retain) %>% 
-    select(-cntrl) 
-  
+    unnest(retain) 
   re_arm2 <- bind_rows(re_arm %>% 
                          filter(!nct_id %in% re_arm_keep$nct_id,
                                 !nct_id %in% re_arm_drp$nct_id) %>% 
@@ -60,6 +58,7 @@ SimplifyDrugs <- function(re_arm) {
                        re_arm_keep)
   list(keep = re_arm2, drop = re_arm_drp)
 }
+
 
 RptNetwork <- function(ipd_choose, agg_choose){
   combine_network(

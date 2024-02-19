@@ -236,12 +236,11 @@ comp5 <- comp5 %>%
 
 ## set final datasets for saving as csv files
 comp6 <- comp5 %>% 
-  select(nct_id, arm_id_unq, treat_or_ref, result, se, n, male, age_m, age_sd)
+  select(nct_id, arm_id_unq, treat_or_ref, result, se, n, male, age_m, age_sd, arm_id_subgroup)
 hba1c_arm3 <- hba1c_arm2 %>% 
-  select(nct_id, arm_id_unq, result, se, n, male, age_m, age_sd) %>% 
+  select(nct_id, arm_id_unq, result, se, n, male, age_m, age_sd, arm_id_subgroup) %>% 
   mutate(treat_or_ref = "arm_level_outcome")
 
 final <- bind_rows(comp5,
                    hba1c_arm3)
 write_csv(final, "Data/agg.csv")
-

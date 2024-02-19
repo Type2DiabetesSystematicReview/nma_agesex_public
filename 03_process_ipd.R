@@ -205,8 +205,6 @@ all(colnames(a) == colnames(b))
 ## adds in residual standard deviation
 # In R's lm output "deviance" (obtainable from broom::glance) is the sum of squares of the residuals
 # Therefore you can calculate the standard deviation of the residuals by (dev/(n-1))^0.5. This is identical to sd(residuals)
-
-warning("Fix here")
 age_distr <- age_distr %>% 
   inner_join(age_sex_smpl_cfs %>% 
                filter(models == "b1"))
