@@ -9,8 +9,6 @@ source("../common_functions/Scripts/combine_sd.R")
 med_mean <- read_csv("Outputs/association_between_median_mean_fu.csv")
 
 ## read in arm data ----
-## this cleaned one is for HbA1c trials only
-arm_regime <- readRDS("Scratch_data/arms_assign_drug_regime.Rds")
 arm_meta <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv") %>% 
   rename(nct_id = trial_id)
 
@@ -369,7 +367,7 @@ bth_arm %>%
   arrange(nct_id, drug_name)
 
 bth_arm <- bth_arm %>% 
-  mutate(drug_mdl = 
+  mutate(arm_lvl = 
            case_when(
              drug_name == "Efpeglenatide 4 mg+6 mg" ~ "efpeglenatide_4_6",
              drug_name == "ITCA_650" ~ "ITCA",
@@ -384,9 +382,9 @@ bth_arm <- bth_arm %>%
              drug_name == "placebo" ~ "placebo")) 
 bth_arm <- bth_arm %>% 
   mutate(drug_dose = if_else(
-           drug_mdl == "efpeglenatide_4_6", "4_6", drug_dose),
+           arm_lvl == "efpeglenatide_4_6", "4_6", drug_dose),
          drug_name = if_else(
-           drug_mdl == "efpeglenatide_4_6", "efpeglenatide", drug_name))
+           arm_lvl == "efpeglenatide_4_6", "efpeglenatide", drug_name))
 
 # new arm labels in WHO database and own manual lookup ----
 whoatc <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx", sheet = 1)
@@ -410,14 +408,14 @@ setdiff(str_to_lower(bth_arm$drug_name), names(whoatc_lkp))
 bth_arm <- bth_arm %>% 
   mutate(atc = whoatc_lkp[drug_name %>% str_to_lower()])
 bth_arm <- bth_arm %>% 
-  mutate(trtcl5 = str_sub(atc, 1, 5))
+  mutate(trtcls5 = str_sub(atc, 1, 5))
 bth_arm <- bth_arm %>% 
   left_join(whoatc %>% 
                distinct(atc_code, .keep_all = TRUE) %>% 
-               rename(trtcl5 = atc_code)) %>% 
-  mutate(dc = if_else(trtcl5 == "place", 
+               rename(trtcls5 = atc_code)) %>% 
+  mutate(dc = if_else(trtcls5 == "place", 
                       "placebo",
-                      paste(trtcl5, nm, sep = " "))) %>% 
+                      paste(trtcls5, nm, sep = " "))) %>% 
   distinct()
 
 ## Estimate mean fu from median ----
@@ -505,7 +503,7 @@ bth_arm <- bth_arm %>%
 ## all arm_id_unq are NA for agg but present for IPD
 mace2 <- mace %>% 
   inner_join(bth_arm %>% 
-    select(nct_id, drug_name, arm_id, drug_dose, drug_unit, drug_freq, drug_mdl, atc, trtcl5, dc, note))
+    select(nct_id, drug_name, arm_id, drug_dose, drug_unit, drug_freq, arm_lvl, atc, trtcls5, dc, note))
 
 
 ## add in treatment comparison data from aggregate ----

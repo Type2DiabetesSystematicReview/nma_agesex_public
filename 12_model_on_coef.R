@@ -1,6 +1,6 @@
 library(tidyverse)
 library(multinma)
-
+library(truncnorm)
 ## Functions ----
 CnvrtCorrMatrix <- function(a){
   ## recovery whole matrix by duplication
@@ -42,7 +42,7 @@ mace_agg <- mace_agg %>%
 pseudo <- readRDS("Scratch_data/ipd_age_sex_mace.Rds")
 pseudo <- pseudo %>% 
   mutate(ipd_arm = str_to_lower(arm)) %>% 
-  inner_join(mace_arms %>% select(nct_id, ipd_arm, drug_mdl, trtcl5))
+  inner_join(mace_arms %>% select(nct_id, ipd_arm, arm_lvl, trtcls5))
 
 ## read in coefficients and variance/covariance matrix ----
 cfs <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/age_sex_model_coefs.csv"),
@@ -91,12 +91,12 @@ cfs %>%
   count(trt) %>% 
   left_join(mace_arms %>% 
               rename(trt = ipd_arm) %>% 
-              select(nct_id, trt, drug_mdl, trtcl5))
+              select(nct_id, trt, arm_lvl, trtcls5))
 ## Note all reference arms are placebo so can simplify joining by assigning reference treatment to "placebo"
 cfs <- cfs %>% 
   left_join(mace_arms %>% 
               rename(trt = ipd_arm) %>% 
-              select(nct_id, trt, drug_mdl, trtcl5)) %>% 
+              select(nct_id, trt, arm_lvl, trtcls5)) %>% 
   group_by(nct_id) %>% 
   nest() %>% 
   ungroup()
@@ -104,7 +104,7 @@ cfs$reference <- map(cfs$data, ~ .x %>%
                        slice(1) %>% 
                        mutate(estimate = NA_real_, std.error = NA_real_,
                               term = NA_character_, age15 = 0, male = FALSE,
-                              trt = "placebo", drug_mdl = "placebo", trtcl5 = "place"))
+                              trt = "placebo", arm_lvl = "placebo", trtcls5 = "place"))
 cfs$data <- map2(cfs$data, cfs$reference, ~ bind_rows(ref = .y, notref = .x, .id = "reference"))
 cfs$reference <- NULL
 cfs <- cfs %>% 
@@ -138,30 +138,30 @@ mace_agg <- mace_agg %>%
 
 ## Set-up aggregate and IPD data in different formats ----
 agg_events <- set_agd_arm(data = mace_agg, 
-                          study = nct_id, trt = drug_mdl, r = r, n = participants, 
-                          trt_ref = "placebo", trt_class = trtcl5)
+                          study = nct_id, trt = arm_lvl, r = r, n = participants, 
+                          trt_ref = "placebo", trt_class = trtcls5)
 agg_hrs    <- set_agd_contrast(data = mace_agg,
-                          study = nct_id, trt = drug_mdl, y = loghr, se = se, 
-                          trt_ref = "placebo", trt_class = trtcl5, sample_size = participants)
-ipd_pseudo <- set_ipd(data = pseudo, study = nct_id, trt = drug_mdl, r = event,
-                      trt_ref = "placebo", trt_class = trtcl5)
+                          study = nct_id, trt = arm_lvl, y = loghr, se = se, 
+                          trt_ref = "placebo", trt_class = trtcls5, sample_size = participants)
+ipd_pseudo <- set_ipd(data = pseudo, study = nct_id, trt = arm_lvl, r = event,
+                      trt_ref = "placebo", trt_class = trtcls5)
 ipd_regres_w_events <- set_agd_regression(cfs,
                                  study = nct_id,
-                                 trt = drug_mdl,
+                                 trt = arm_lvl,
                                  estimate = estimate,
                                  se = std.error,
                                  cor = cors_lst,
                                  trt_ref = "placebo",
-                                 trt_class = trtcl5,
+                                 trt_class = trtcls5,
                                  regression = ~ (male + age15)*.trt + offset(ltime))
 ipd_regres_w_coef <- set_agd_regression(cfs,
                                           study = nct_id,
-                                          trt = drug_mdl,
+                                          trt = arm_lvl,
                                           estimate = estimate,
                                           se = std.error,
                                           cor = cors_lst,
                                           trt_ref = "placebo",
-                                          trt_class = trtcl5,
+                                          trt_class = trtcls5,
                                           regression = ~ (male + age15)*.trt)
 
 ## Create networks with 2x2 different combinations (aggregate = event/hr, IPD = pseudo/coefs) ----
@@ -175,11 +175,11 @@ map(net_lst, plot, layout = "kk")
 pseudos <- c("e_p", "h_p")
 regs <- c("e_c", "h_c")
 net_lst[pseudos] <- map(net_lst[pseudos], ~ add_integration(.x,
-                         age15 = distr(qnorm, mean = age_m, sd = age_s),
+                         age15 = distr(qtruncnorm, a = -Inf, b = Inf, mean = age_m, sd = age_s),
                          male = distr(qbern, prob = male_p),
                          ltime = distr(qnorm, ltime, 0)))
 net_lst[regs] <- map2(net_lst[regs], net_lst[pseudos], ~ add_integration(.x,
-                           age15 = distr(qnorm, mean = age_m, sd = age_s),
+                           age15 = distr(qtruncnorm,  a = -Inf, b = Inf, mean = age_m, sd = age_s),
                            male = distr(qbern, prob = male_p),
                            ltime = distr(qnorm, ltime, 0), 
                            cor = .y$int_cor))

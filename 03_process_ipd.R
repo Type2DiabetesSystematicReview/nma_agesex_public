@@ -71,14 +71,49 @@ list2env(res, envir = .GlobalEnv)
 rm(res, res1, res2, allvivli, allgsk)
 
 ## simulate age and sex data ----
-## crude simulation, can improve using ecdf
+## crude simulation, can improve using ecdf. 6 trials still require mean and sd as these were too small for repo
 saveRDS(age_distribution_baseline_continuous, "Scratch_data/ipd_age_sex.Rds")
+
+ColnamesPipe <- function(x, vct){
+  colnames(x) <- vct
+  x
+}
+# Add zero to two trials where not age zero. Set as same age as next value as same as earlier age NCT01381900 and NCT02065791 
+age_distribution_baseline_continuous$splt <-  str_split(age_distribution_baseline_continuous$`Age (years) at quantiles (%)`, pattern = "\\,")
+age_distribution_baseline_continuous$splt <- map(age_distribution_baseline_continuous$splt, ~ str_split_fixed(.x, "\\=", n = 2) %>% ColnamesPipe(c("x", "y")) %>% 
+                                     as_tibble() %>% 
+                                     mutate(across(everything(), ~ str_trim(.x) %>% as.integer()),
+                                            x = x/100))
+age_distribution_baseline_continuous$nozero <- map_lgl(age_distribution_baseline_continuous$splt, ~ ! any(.x$x ==0))
+age_distribution_baseline_continuous$splt <- map2(age_distribution_baseline_continuous$nozero,
+                                                  age_distribution_baseline_continuous$splt, function(condition, mydf){
+                                                    if(is.na(condition) | !condition) mydf else {
+                                                      a <- mydf %>% 
+                                                        slice(1) %>% 
+                                                        mutate(x = 0)
+                                                      bind_rows(a, mydf)
+                                                    }
+                                                  })
+age_distribution_baseline_continuous$ecdf_version <- map_lgl(age_distribution_baseline_continuous$splt, ~ !nrow(.x) ==1)
+age_distribution_baseline_continuous$sim <- pmap(list(
+  age_distribution_baseline_continuous$ecdf_version,
+  age_distribution_baseline_continuous$splt, 
+  age_distribution_baseline_continuous$participants,
+  age_distribution_baseline_continuous$mean, 
+  age_distribution_baseline_continuous$sd),
+  function(ecdf_version, a, p, m, s) {
+    if(ecdf_version) {
+      fromdec <- approx(x = a$x, y =a$y, xout = seq(0, 1, 1/(p-1))) %>% 
+        as_tibble() 
+      result <- fromdec$y
+    } else {
+      result <- rnorm(p, m, s)
+    }
+    result
+})
+age_distribution_baseline_continuous$splt <- NULL
 age_distr <- age_distribution_baseline_continuous %>% 
-  select(nct_id:sd)
-rm(age_distribution_baseline_continuous)
-age_distr$sim <- pmap(list(age_distr$participants, age_distr$mean, age_distr$sd), function(p, m, s) rnorm(p, m, s))
-age_distr <- age_distr %>% 
-  select(nct_id, arm_id_unq, sex, sim) %>% 
+  select(nct_id, arm_id_unq, sex, participants, sim) %>% 
   unnest(sim) %>% 
   rename(age = sim) 
 # deal with NCT01778049 population a and population b
@@ -151,21 +186,22 @@ ast <- ast %>%
 saveRDS(ast, "Scratch_data/ipd_raw_coefs.Rds")
 
 ##sample from distribution to get set of sampled coefficients based on vcov. 
-## Sample same number as observations for convenience
+## Sample from nobs *1.5 for convenience
 age_sex_model_diags <- age_sex_model_diags %>% 
   mutate(rsd = (deviance/(nobs-1))^0.5)
 age_sex_model_vcov <- age_sex_model_vcov %>% 
-  left_join(age_sex_model_diags %>% select(nct_id, nct_id2, models, nobs, rsd)) 
+  left_join(age_sex_model_diags %>% select(nct_id, nct_id2, models, nobs, rsd))
 age_sex_model_vcov$sim <- pmap(list(age_sex_model_vcov$data, 
                                     age_sex_model_vcov$vcv, 
                                     age_sex_model_vcov$nobs), 
                                function(.x, .y, .z) {
   # browser()
+                                 smpls <- round(.z*1.5)
                                  vcv <- .y
                                  cf <- .x$estimate
                                  term <- .x$term
                                  if(!all(term == rownames(vcv))) stop("Matrix and coefficients dont match")
-                                 res <- mvtnorm::rmvnorm(.z, cf, vcv)
+                                 res <- mvtnorm::rmvnorm(smpls, cf, vcv)
                                  colnames(res) <- term
                                  res
 })
@@ -176,12 +212,14 @@ age_sex_model_vcov$sngl_cf <- pmap(list(age_sex_model_vcov$data,
                                     age_sex_model_vcov$nobs), 
                                function(.x, .y, .z) {
                                  # browser()
+                                 smpls <- round(.z*1.5)
+                                 
                                  vcv <- .y
                                  vcv[] <- 0
                                  cf <- .x$estimate
                                  term <- .x$term
                                  if(!all(term == rownames(vcv))) stop("Matrix and coefficients dont match")
-                                 res <- mvtnorm::rmvnorm(.z, cf, vcv)
+                                 res <- mvtnorm::rmvnorm(smpls, cf, vcv)
                                  colnames(res) <- term
                                  res
                                })
@@ -191,16 +229,14 @@ age_sex_smpl_cfs <- age_sex_model_vcov %>%
 rm(age_sex_model_coefs, age_sex_model_vcov, age_sex_model_diags)
 
 age_distr <- age_distr %>% 
+  select(-participants) %>% 
   mutate(sex = if_else(sex == "male", 1L, 0L),
          age10 = age/10) %>% 
   group_by(nct_id, nct_id2) %>% 
   nest() %>% 
   ungroup()
 
-age_distr$mm <- map(age_distr$data, ~ model.matrix(~ sex*age10*arm_f, data = .x))
-a <- age_distr$mm[[1]] %>% head(2)
-b <- age_distr$sim[[1]] %>% head(2)
-all(colnames(a) == colnames(b))
+age_distr$mm <- map(age_distr$data, ~ model.matrix(~ sex*age10*arm_f, data = .x, ))
 
 ## adds in residual standard deviation
 # In R's lm output "deviance" (obtainable from broom::glance) is the sum of squares of the residuals
@@ -208,16 +244,25 @@ all(colnames(a) == colnames(b))
 age_distr <- age_distr %>% 
   inner_join(age_sex_smpl_cfs %>% 
                filter(models == "b1"))
+a <- age_distr$mm[[1]] %>% head(2)
+b <- age_distr$sim[[1]] %>% head(2)
+all(colnames(a) == colnames(b))
+
 ## Note that value_1 and value_1_sngl are the estimated baseline hba1c where the variation is
 ## based on the standard errors and residual standard deviation respectively. Both should have the same mean
 ## allowing for sampling errors
-age_distr$data <- pmap(list(age_distr$data, age_distr$mm, 
-                            age_distr$sim, age_distr$sngl_cf,
+i <- 0
+age_distr$data <- pmap(list(age_distr$data, 
+                            age_distr$mm, 
+                            age_distr$sim, 
+                            age_distr$sngl_cf,
                             age_distr$rsd), function(df, mm, cf, cf_sngl, rsd) {
-  ## deal with lower number of observation in model than in data
-  chsrows <- sample(1:nrow(mm), size = nrow(cf))
-  df <- df[chsrows,]
-  mm <- mm[chsrows,]
+                              i <<- i + 1
+  ## deal with lower number of observations in data than sampled
+                              # if(i == 75) browser()
+  cf <- cf[sample(1:nrow(cf), nrow(mm)), ]
+  cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm)), ]
+  
   # calculate base
   df$value_1 <- rowSums(mm * cf)
   df$value_1_sngl <- rowSums(mm * cf_sngl)
@@ -241,9 +286,9 @@ age_distr$data <- pmap(list(age_distr$data,
                             age_distr$sngl_cf,
                             age_distr$rsd), function(df, mm, cf, cf_sngl, rsd) {
   ## deal with lower number of observation in model than in data
-  chsrows <- sample(1:nrow(mm), size = nrow(cf))
-  df <- df[chsrows,]
-  mm <- mm[chsrows,]
+  cf <- cf[sample(1:nrow(cf), nrow(mm)), ]
+  cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm)), ]
+  
   # calculate base
   df$value_2 <- rowSums(mm * cf)
   df$value_2_sngl <- rowSums(mm * cf_sngl)
@@ -346,4 +391,3 @@ reg_frmt <- reg_frmt %>%
 #                          })
 # reg_frmt$crl <- map2(reg_frmt$vcv, reg_frmt$crl, ~ if (is.null(.x)) {NULL} else {.y})
 saveRDS(reg_frmt, "Scratch_data/ipd_coefs_frmttd.Rds")
-
