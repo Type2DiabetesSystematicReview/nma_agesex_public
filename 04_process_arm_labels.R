@@ -14,6 +14,7 @@ whichnwork <- read_csv("../cleaned_data/Data/ancillary_drugs_data_all_cleaned.cs
 # as uploaded to vivli
 arm_meta_orig <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv") %>% 
   rename(nct_id = trial_id)
+
 arm_meta_orig <- arm_meta_orig %>% 
   semi_join(bind_rows(agg %>% select(nct_id, arm_id_unq),
                       ipd %>% select(nct_id, arm_id_unq)))
@@ -287,5 +288,10 @@ dups <- dups %>%
 arm_meta <- arm_meta %>% 
   anti_join(dups %>% select(nct_id, arm_id_unq)) %>% 
   bind_rows(dups)
+
+## Note. Need to address tirzepatide currently under ATC code A10BX16 change to A10BJ
+## as it is a type of GLP1 (sort of) "Tirzepatide is a GIP-analogue that activates both the GLP-1 and GIP receptors"
+arm_meta <- arm_meta %>% 
+  mutate(trtcls5 = if_else(drug_name == "tirzepatide", "A10BJ", trtcls5))
 
 write_csv(arm_meta, "Data/arm_labels_hba1c.csv")
