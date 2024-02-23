@@ -500,6 +500,12 @@ mace_age <- mace_age %>%
 ## One trial has additional rows without information. Drop
 mace_age <- mace_age %>% 
   filter(!(nct_id == "NCT03496298" & is.na(n)))
+## One trial has additional rows now collapsed Drop
+mace_age <- mace_age %>%  
+  filter(!(nct_id == "NCT01986881" & arm_id_unq_ph %in% c("uaa10990", "uaa10991")),
+         !(nct_id == "NCT03496298" & arm_id_unq_ph == "unq_updaa10067" & is.na(n)))
+mace_age %>% 
+  filter(nct_id == "NCT01243424")
 mace_age <- mace_age %>% 
   rename(drug_name = arm_label) %>% 
   inner_join(mace %>% select(nct_id, drug_name, arm_id, male_prcnt, age_m, age_s, age_mu, age_sigma, max_age, min_age, n_overall = participants))
@@ -512,7 +518,7 @@ mace_age <- mace_age %>%
   mutate(pfrom = ptruncnorm(level_min-1, a = min_age, b = max_age, age_mu, age_sigma),
          pto   = ptruncnorm(level_max, a = min_age, b = max_age, age_mu, age_sigma),
          pin = pto - pfrom,
-         n_impute = n_overall * pin) %>% 
+         n_impute = round(n_overall * pin)) %>% 
   select(-pfrom, -pto)
 ## all sum to one
 mace_age %>% 
@@ -588,7 +594,8 @@ plot_percentage_check <- ggplot(mace %>%
 plot_percentage_check
 ## note all aggregate data trials are two arm analyses (some arms collapsed before we extracted data)
 mace <- mace %>% 
-  select(nct_id, drug_name, participants, age_m, age_s, male_prcnt, outcome, r, pt, mean_fu_days)
+  select(nct_id, drug_name, participants, age_m, age_s, male_prcnt, outcome, r, pt, mean_fu_days,
+         min_age, max_age, age_mu, age_sigma)
 ## drop arm label as no additional information
 bth_arm <- bth_arm %>% 
   mutate(drug_name = if_else(drug_name == "ITCA_650", "itca650", drug_name)) %>% 
@@ -628,16 +635,30 @@ mace3 <- mace2 %>%
   inner_join(maceout_cmpr2) %>% 
   select(nct_id:mean_fu_days, loghr, se, everything())
 
-### save for subsequent analysis ----
-## note there is some redundancy here as have merged some variables from mace_arms into the aggregate
-## data for mace. But did so for clarity as there are multiple arm IDs
+## conver hr to log-scale for subgroup data----
 mace_age2 <- mace_age %>% 
   inner_join(mace3 %>% select(nct_id, drug_name, trtcls5))
 mace_sex2 <- mace_sex %>% 
   inner_join(mace3 %>% select(nct_id, drug_name, trtcls5))
 
+mace_age2 <- mace_age2  %>% 
+  mutate(across(c(hr_lci, hr_uci ), as.double),
+         across(c(hr, hr_lci, hr_uci), log),
+         se = (hr_uci-hr_lci)/(2*1.96)) %>% 
+  rename(loghr = hr, se = se) %>% 
+  select(-hr_lci, -hr_uci)
+mace_sex2 <- mace_sex2  %>% 
+  mutate(across(c(hr_lci, hr_uci ), as.double),
+         across(c(hr, hr_lci, hr_uci), log),
+         se = (hr_uci-hr_lci)/(2*1.96)) %>% 
+  rename(loghr = hr, se = se) %>% 
+  select(-hr_lci, -hr_uci)
+
+### save for subsequent analysis ----
+## note there is some redundancy here as have merged some variables from mace_arms into the aggregate
+## data for mace. But did so for clarity as there are multiple arm IDs
 saveRDS(list(mace_arms = bth_arm,
              mace_agg = mace3,
-             mace_agg_age = mace_age2,
-             mace_agg_sex = mace_sex2,
+             mace_agg_age = mace_age2 %>% rename(arm_lvl = drug_name, participants = n),
+             mace_agg_sex = mace_sex2 %>% rename(arm_lvl = drug_name, participants = n),
              mace_agg_trial_level = maceout_trl), "Scratch_data/mace_arms_agg_data.Rds")

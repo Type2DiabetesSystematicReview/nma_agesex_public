@@ -21,7 +21,6 @@ CnvrtCorrMatrix <- function(a){
   a
 }
 
-
 ## read in aggregate data and arm metadata ----
 readRDS("Scratch_data/mace_arms_agg_data.Rds") %>% 
   list2env(envir = .GlobalEnv)
@@ -127,12 +126,24 @@ pseudo <- pseudo %>%
          time = time/365,
          ltime = log(time + 1))
 mace_agg <- mace_agg %>% 
-  mutate(age_m = age_m/15,
-         age_s = age_s/15,
+  mutate(age_mu = age_mu/15,
+         age_sigma = age_sigma/15,
          male_p = male_prcnt/100,
          time = mean_fu_days*participants,
          time = time/365,
          ltime = log(time))
+mace_agg_age <- mace_agg_age %>% 
+  mutate(age_mu = age_mu/15,
+         age_sigma = age_sigma/15,
+         male_p = male_prcnt/100) %>% 
+  inner_join(mace_agg %>% 
+              distinct(arm_id, ltime))
+mace_agg_sex <- mace_agg_sex %>% 
+  mutate(age_mu = age_mu/15,
+         age_sigma = age_sigma/15,
+         male_p = male_prcnt/100) %>% 
+  inner_join(mace_agg %>% 
+               distinct(arm_id, ltime))
 mace_agg <- mace_agg %>% 
   filter(!nct_id == "UMIN000018395")
 
@@ -143,6 +154,19 @@ agg_events <- set_agd_arm(data = mace_agg,
 agg_hrs    <- set_agd_contrast(data = mace_agg,
                           study = nct_id, trt = arm_lvl, y = loghr, se = se, 
                           trt_ref = "placebo", trt_class = trtcls5, sample_size = participants)
+agg_hrs_age   <- set_agd_contrast(data = mace_agg_age,
+                               study = paste0(nct_id, "_", level_min, "_", level_max), trt = arm_lvl, y = loghr, se = se, 
+                               trt_ref = "placebo", trt_class = trtcls5, sample_size = participants)
+agg_hrs_noage <- set_agd_contrast(data = mace_agg %>% filter(!nct_id %in% mace_agg_age$nct_id),
+                              study = nct_id, trt = arm_lvl, y = loghr, se = se, 
+                              trt_ref = "placebo", trt_class = trtcls5, sample_size = participants)
+agg_hrs_sex   <- set_agd_contrast(data = mace_agg_sex,
+                                  study = paste0(nct_id, "_", level_cat), trt = arm_lvl, y = loghr, se = se, 
+                                  trt_ref = "placebo", trt_class = trtcls5, sample_size = participants)
+agg_hrs_nosex <- set_agd_contrast(data = mace_agg %>% filter(!nct_id %in% mace_agg_sex$nct_id),
+                                  study = nct_id, trt = arm_lvl, y = loghr, se = se, 
+                                  trt_ref = "placebo", trt_class = trtcls5, sample_size = participants)
+
 ipd_pseudo <- set_ipd(data = pseudo, study = nct_id, trt = arm_lvl, r = event,
                       trt_ref = "placebo", trt_class = trtcls5)
 ipd_regres_w_events <- set_agd_regression(cfs,
@@ -169,25 +193,27 @@ net_lst <- list(
   e_p = combine_network(agg_events, ipd_pseudo),
   e_c = combine_network(agg_events, ipd_regres_w_events),
   h_p = combine_network(agg_hrs, ipd_pseudo),
-  h_c = combine_network(agg_hrs, ipd_regres_w_coef)
+  h_c = combine_network(agg_hrs, ipd_regres_w_coef),
+  h_c_age = combine_network(agg_hrs_age, agg_hrs_noage, ipd_regres_w_coef),
+  h_c_sex = combine_network(agg_hrs_sex, agg_hrs_nosex, ipd_regres_w_coef)
 )
 map(net_lst, plot, layout = "kk")
 pseudos <- c("e_p", "h_p")
-regs <- c("e_c", "h_c")
+regs <- c("e_c", "h_c", "h_c_age", "h_c_sex")
 net_lst[pseudos] <- map(net_lst[pseudos], ~ add_integration(.x,
-                         age15 = distr(qtruncnorm, a = -Inf, b = Inf, mean = age_m, sd = age_s),
+                         age15 = distr(qtruncnorm, a = min_age, b = max_age, mean = age_mu, sd = age_sigma),
                          male = distr(qbern, prob = male_p),
                          ltime = distr(qnorm, ltime, 0)))
-net_lst[regs] <- map2(net_lst[regs], net_lst[pseudos], ~ add_integration(.x,
-                           age15 = distr(qtruncnorm,  a = -Inf, b = Inf, mean = age_m, sd = age_s),
+net_lst[regs] <- map2(net_lst[regs], net_lst[pseudos[c(1, 2, 2, 2)]], ~ add_integration(.x,
+                           age15 = distr(qtruncnorm,  a = min_age, b = max_age, mean = age_mu, sd = age_sigma),
                            male = distr(qbern, prob = male_p),
                            ltime = distr(qnorm, ltime, 0), 
                            cor = .y$int_cor))
 
 ## Run models ----
-MyNMA <- function(mynet, mylink, myreg) {
+MyNMA <- function(mynet, mylink, myreg, fe_re = "fixed", ...) {
   nma(mynet,
-      trt_effects = "fixed",
+      trt_effects = fe_re,
       link = mylink,
       regression = myreg,
       class_interactions = "common",
@@ -202,6 +228,15 @@ MyNMA <- function(mynet, mylink, myreg) {
 h_c <- MyNMA(net_lst$h_c, 
              mylink = "identity", 
              myreg = ~ (male + age15)*.trt)
+h_c_age <- MyNMA(net_lst$h_c_age, 
+             mylink = "identity", 
+             myreg = ~ (male + age15)*.trt)
+h_c_sex <- MyNMA(net_lst$h_c_sex, 
+                 mylink = "identity", 
+                 myreg = ~ (male + age15)*.trt)
+# h_c_re <- MyNMA(net_lst$h_c, 
+#              mylink = "identity", 
+#              myreg = ~ (male + age15)*.trt, fe_re = "random")
 # e_c <- MyNMA(net_lst$e_c, 
 #              mylink = "cloglog", 
 #              myreg = ~ (male + age15)*.trt + offset(ltime))
@@ -210,4 +245,16 @@ h_c <- MyNMA(net_lst$h_c,
 #              myreg = ~ (male + age15)*.trt + offset(ltime))
 
 ## Model runs fast. No divergent transitions. Rhat low. ESS high
+saveRDS(h_c_sex, "Scratch_data/macesex_h_c_model.Rds")
 saveRDS(h_c, "Scratch_data/mace_h_c_model.Rds")
+saveRDS(h_c_age, "Scratch_data/maceage_h_c_model.Rds")
+
+## For random effects model
+saveRDS(h_c_re, "Scratch_data/macerand_h_c_model.Rds")
+# The following variables have undefined values:  delta[18],The following
+# variables have undefined values:  delta[19],The following variables have
+# undefined values:  delta[20],The following variables have undefined values:
+# delta[21],The following variables have undefined values:  delta[22],The
+# following variables have undefined values:  delta[23],The following variables
+# have undefined values:  delta[24],The following variables have undefined
+# values:  delta[25].
