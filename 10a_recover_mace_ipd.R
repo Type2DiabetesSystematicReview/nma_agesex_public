@@ -106,6 +106,13 @@ seed <- c(1111)
                                                event_time_distribution_fp$age_s), function(n, m, s) rnorm(n, m, s))
   event_time_distribution_fp <- event_time_distribution_fp %>% 
     inner_join(cnsr_max)
+  
+  ## Only 2-years difference in mean age between women and men
+  event_time_distribution_fp %>%
+    select(nct_id, arm, sex, age_m) %>% 
+    spread(sex, age_m) %>% 
+    mutate(sex_diff = F-M) %>% 
+    write_csv("Outputs/mean_age_difference_men_women.csv")
   ## simulate 
   # mydf <- mydf %>%
   #   mutate(age1 = MP1(age/mod_fp$scale, mod_fp$power1),

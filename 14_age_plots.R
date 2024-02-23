@@ -1,27 +1,36 @@
 library(tidyverse)
 library(truncnorm)
+source("../common_functions/Scripts/truncated_normal.R")
 
 ## read and transform data ----
 who <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx") 
 tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 mace_agg <- readRDS("Scratch_data/mace_arms_agg_data.Rds")$mace_agg
-eliga <- 
-  readRDS("../extract_transform/aact/data/April2023_extract/aact_extract_April_2023.Rds")$eligibilities %>% 
-  mutate(across(c(minimum_age, maximum_age), ~ if_else(.x == "N/A", "NA Years", .x))) %>% 
-  separate(minimum_age, into = c("min_age", "min_age_unit"), sep = "\\s") %>% 
-  separate(maximum_age, into = c("max_age", "max_age_unit"), sep = "\\s") %>% 
-  select(nct_id, min_age, max_age, min_age_unit, max_age_unit)
-eligb <- read_csv("Data/elig_cri_all_tr.csv") %>% 
-  select(nct_id = trial_id, 
-         min_age = less_than_age_excluded, 
-         min_age_unit = minimum_age_unit, 
-         max_age = more_than_age_excluded, 
-         max_age_unit = maximum_age_unit) %>% 
-  mutate(across(c(min_age, max_age), as.character))
-elig <- bind_rows(eliga,
-                  eligb) %>% 
-  distinct(nct_id, .keep_all = TRUE)
-rm(eliga, eligb)
+# eliga <- 
+#   readRDS("../extract_transform/aact/data/April2023_extract/aact_extract_April_2023.Rds")$eligibilities %>% 
+#   mutate(across(c(minimum_age, maximum_age), ~ if_else(.x == "N/A", "NA Years", .x))) %>% 
+#   separate(minimum_age, into = c("min_age", "min_age_unit"), sep = "\\s") %>% 
+#   separate(maximum_age, into = c("max_age", "max_age_unit"), sep = "\\s") %>% 
+#   select(nct_id, min_age, max_age, min_age_unit, max_age_unit)
+# eligb <- read_csv("Data/elig_cri_all_tr.csv") %>% 
+#   select(nct_id = trial_id, 
+#          min_age = less_than_age_excluded, 
+#          min_age_unit = minimum_age_unit, 
+#          max_age = more_than_age_excluded, 
+#          max_age_unit = maximum_age_unit) %>% 
+#   mutate(across(c(min_age, max_age), as.character))
+# elig <- bind_rows(eliga,
+#                   eligb) %>% 
+#   distinct(nct_id, .keep_all = TRUE)
+# rm(eliga, eligb)
+## need to move this into an earlier script inside extract_transform
+# write_csv(elig %>% 
+#             select(nct_id, min_age, max_age, age_unit = max_age_unit) %>% 
+#             mutate(max_age = if_else(is.na(as.integer(max_age)), 150L, as.integer(max_age)),
+#                    min_age = if_else(is.na(as.integer(min_age)), 0L, as.integer(min_age))), "../cleaned_data/Data/age_max_min_elig.csv")
+elig <- read_csv("../cleaned_data/Data/age_max_min_elig.csv")
+
+
 source("../common_functions/Scripts/combine_sd.R")
 agg <- tot %>% 
   select(drug_regime_smpl, agg) %>% 
@@ -96,9 +105,7 @@ bth <- bth %>%
   ungroup() %>% 
   rename(age_m = age_m2, age_sd = age_sd2)
 # Note includes 5 more trials with nonoe of the three novel anti-diabetics. Leave in in case helps connect network
-elig <- elig %>% 
-  mutate(max_age = if_else(is.na(as.integer(max_age)), 150L, as.integer(max_age)),
-         min_age = if_else(is.na(as.integer(min_age)), 10L, as.integer(min_age)))
+
 bth <- bth %>% 
   left_join(elig) %>% 
   mutate(max_age = if_else(is.na(as.integer(max_age)), 150L, as.integer(max_age)),
@@ -107,66 +114,11 @@ bth <- bth %>%
 ## Obtain mu and dispersion parameter ----
 # Functions for truncted normal distributions
 # https://www.r-bloggers.com/truncated-normal-distribution/
-mean.tnorm<-function(mu,sd,lower,upper){
-  ##return the expectation of a truncated normal distribution
-  lower.std=(lower-mu)/sd
-  upper.std=(upper-mu)/sd
-  mean=mu+sd*(dnorm(lower.std)-dnorm(upper.std))/
-    (pnorm(upper.std)-pnorm(lower.std))
-  return(mean)
-}
-var.tnorm<-function(mu,sd,lower,upper){
-  ##return the variance of a truncated normal distribution
-  lower.std=(lower-mu)/sd
-  upper.std=(upper-mu)/sd
-  variance=sd^2*(1+(lower.std*dnorm(lower.std)-upper.std*dnorm(upper.std))/
-                   (pnorm(upper.std)-pnorm(lower.std))-((dnorm(lower.std)-dnorm(upper.std))/
-                                                          (pnorm(upper.std)-pnorm(lower.std)))^2)
-  return(variance)
-}
 
 ## Find mu and s from truncated normal distributions
 bth <- bth %>% 
   mutate(bythis = paste0(for_ipd_chk, "__", nct_id))
-siml_estimates <- by(bth, bth$bythis, function (x) {
-  # Loop through trials
-  if(str_sub(x$nct_id, -1) == 1) print(x$nct_id)
-  
-  lower <- x$min_age
-  upper <- x$max_age
-  trial_mean <- x$age_m
-  trial_sd <- x$age_sd
-  trial_var <- x$age_sd^2
-  
-  ## Create grid
-  mu_x <- seq(lower, upper, 0.5)
-  sd_x <- seq(1, upper-lower, 0.5)
-  full_grid <- expand.grid(mu_x = mu_x, sd_x = sd_x)
-  
-  ## Calculate for all values of grid, is vectorised so is fast, is faster than one in truncnorm package
-  full_grid$mean_x <- mean.tnorm(full_grid$mu_x, full_grid$sd_x, lower, upper)
-  full_grid$var_x <- var.tnorm(full_grid$mu_x, full_grid$sd_x, lower, upper)
-  
-  # print(nrow(full_grid))
-  # browser()  
-  ## Identify closest values
-  full_grid <- full_grid %>%
-    as_tibble() %>%
-    mutate(mean_diff = abs(trial_mean - mean_x),
-           var_diff = abs(trial_var - var_x),
-           total_diff = mean_diff + var_diff) %>%
-    arrange(total_diff, mean_diff, var_diff)
-  ## Append original parameters
-  estimate <- full_grid %>%
-    slice(1:10) %>%
-    mutate(trial_mean = trial_mean,
-           trial_var = trial_var,
-           trial_lower = lower,
-           trial_upper = upper,
-           trial_sd = trial_sd) %>%
-    select(trial_mean, mean_x, trial_var, var_x, mu_x, sd_x, trial_sd, everything())
-  estimate 
-})
+siml_estimates <- by(bth, bth$bythis, EstimateMuDispAge)
 
 ## Extract and convert to list
 siml_estimates <- map(siml_estimates, identity)
@@ -178,7 +130,7 @@ siml_estimates <- siml_estimates %>%
   separate(bythis, into = c("for_ipd_chk", "nct_id"), sep = "__")
 bth <- bth %>% 
   inner_join(siml_estimates %>% 
-               select(for_ipd_chk, nct_id, mu_x, var_x))
+               select(for_ipd_chk, nct_id, mu_x, sd_x))
 ## Sample from truncated normal distributions
 # bth$sim <- pmap(list(bth$min_age, 
 #                      bth$max_age,
@@ -194,10 +146,10 @@ bth$sim <- pmap(list(bth$n,
                      bth$min_age,
                      bth$max_age,
                      bth$mu_x,
-                     bth$var_x),
-                function(n, a, b, m, v) {
+                     bth$sd_x),
+                function(n, a, b, m, s) {
                   x <- truncnorm::rtruncnorm(n = n,
-                                        a = a, b = b, mean = m, sd = v^0.5)
+                                        a = a, b = b, mean = m, sd = s)
                   x
                   })
 

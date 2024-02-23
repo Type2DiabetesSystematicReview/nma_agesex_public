@@ -4,7 +4,12 @@ library(tidyverse)
 library(multinma)
 source("../common_functions/Scripts/convert_iqr_to_sd.R")
 source("../common_functions/Scripts/combine_sd.R")
-
+source("../common_functions/Scripts/truncated_normal.R")
+## read in age criteria ----
+age_elig <- read_csv("../cleaned_data/Data/age_max_min_elig.csv")
+## assume no limits for unusual trial with minimal information (dropped later anyway as no outcomes)
+age_elig <- bind_rows(age_elig,
+                      tibble(nct_id ="UMIN000018395", min_age = 10L, max_age = 150L, age_unit = "Years"))
 ## read in association between median and mean fu (in days) ----
 med_mean <- read_csv("Outputs/association_between_median_mean_fu.csv")
 
@@ -325,13 +330,31 @@ base_out <- base_out %>%
 ## Note no arms with same drug, all 18 are placebo controlled, all are two arm trials (in this analysis)
 base_out %>% count(arm_description, nct_id) %>% filter(n >2)
 
+base_out <- base_out %>% 
+  mutate(bythis = paste(nct_id, arm_id, sep = "__"))
+base_out <- base_out %>% 
+  inner_join(age_elig %>% select(-age_unit))
+siml_estimates <- by(base_out %>% rename(age_sd = age_s), base_out$bythis, EstimateMuDispAge)
+## Extract and convert to list
+siml_estimates <- map(siml_estimates, identity)
+siml_estimates <- map(siml_estimates, ~ .x %>% mutate(pick = seq_along(trial_mean)))
+siml_estimates <- bind_rows(siml_estimates, .id = "bythis")
+siml_estimates <- siml_estimates %>% 
+  filter(pick ==1)
+siml_estimates <- siml_estimates %>% 
+  select(bythis, mu_x, sd_x) 
+base_out <- base_out %>% 
+  inner_join(siml_estimates) %>% 
+  select(-bythis) %>% 
+  rename(age_mu = mu_x,
+         age_sigma = sd_x)
+
 ## count aggregate and IPD trials ----
 mace <- base_out
 rm(base_out)
 mace <- mace %>% 
   rename(drug_name = arm_description)
 mace %>% count(drug_name, nct_id) %>% spread(nct_id, n)
-
 agg_arms <- mace %>% 
   select(nct_id, arm_id, drug_name_current = drug_name) %>% 
   left_join(arm_meta %>% 
@@ -450,6 +473,79 @@ mace <- mace %>%
   mutate(mean_fu_days = med_mean$estimate[med_mean$term == "(Intercept)"] +
            med_mean$estimate[med_mean$term == "fu_median"] * median_fu_days)
 
+
+## Read in subgroup data for age and sex ----
+## Note. In IPD similar age between men and women (around 2 years different) so treat as independent in subgroup data
+## ie assume mean age is same in both sexes. assume percent male is same in all age categories
+mace_sg <- read_csv("../cleaned_data/Data/mace_subgroups_age_sex.csv")
+## drop IPD ones
+mace_sg <- mace_sg %>% 
+  filter(!nct_id %in% ipd$nct_id)
+# split into main, age and sex
+mace_main <- mace_sg %>% 
+  filter(subgroup == "main")
+mace_age <- mace_sg %>% 
+  filter(subgroup == "age")
+mace_sex <- mace_sg %>% 
+  filter(subgroup == "sex")
+## merge on nct_id and treatment arm (not same arm_unq_id)
+## resolve age. Drop total as no useful information
+mace_age <- mace_age %>% 
+  filter(!arm_label == "total") %>% 
+  select(nct_id, arm_id_unq_ph = arm_id_unq, arm_label, outcome, subgroup, level_min, level_max, n, hr, hr_lci, hr_uci) 
+setdiff(mace_age$arm_label, mace$drug_name)
+## one trial has two different cut-points. one at 65 and one at 75. Choose the latter
+mace_age <- mace_age %>% 
+  filter(!(nct_id == "NCT01144338" & (level_max == 64 | level_min == 65) ))
+## One trial has additional rows without information. Drop
+mace_age <- mace_age %>% 
+  filter(!(nct_id == "NCT03496298" & is.na(n)))
+mace_age <- mace_age %>% 
+  rename(drug_name = arm_label) %>% 
+  inner_join(mace %>% select(nct_id, drug_name, arm_id, male_prcnt, age_m, age_s, age_mu, age_sigma, max_age, min_age, n_overall = participants))
+## of 10 trials with age subgroups, only 2 have a maximum age in the eligibility criteria
+mace_age <- mace_age %>% 
+  mutate(level_min = if_else(level_min == "min", min_age, as.double(level_min)),
+         level_max = if_else(level_max == "max", max_age, as.double(level_max)))
+## calculate number in each age group where this is missing
+mace_age <- mace_age %>% 
+  mutate(pfrom = ptruncnorm(level_min-1, a = min_age, b = max_age, age_mu, age_sigma),
+         pto   = ptruncnorm(level_max, a = min_age, b = max_age, age_mu, age_sigma),
+         pin = pto - pfrom,
+         n_impute = n_overall * pin) %>% 
+  select(-pfrom, -pto)
+## all sum to one
+mace_age %>% 
+  group_by(nct_id, arm_id_unq_ph) %>% 
+  summarise(pin = sum(pin)) %>% 
+  ungroup() %>% 
+  filter(pin != 1)
+## all imputed n's reasonably close to real N's (where these are not missing)
+mace_age <- mace_age %>% 
+  mutate(n = if_else(is.na(n), n_impute, n)) %>% 
+  select(-n_impute)
+mace_sex <- mace_sex %>% 
+  filter(!arm_label == "total") %>% 
+  select(nct_id, arm_id_unq_ph = arm_id_unq, arm_label, outcome, subgroup, 
+         level_cat, n, hr, hr_lci, hr_uci) 
+mace_sex <- mace_sex %>% 
+  filter(!(nct_id == "NCT01986881" & arm_id_unq_ph %in% c("uaa10990", "uaa10991")),
+         !(nct_id == "NCT03496298" & arm_id_unq_ph == "unq_updaa10067" & is.na(n)))
+setdiff(mace_sex$arm_label, mace$drug_name)
+mace_sex <- mace_sex %>% 
+  rename(drug_name = arm_label) %>% 
+  inner_join(mace %>% select(nct_id, drug_name, arm_id, male_prcnt, n_overall = participants,
+                             age_m, age_s, age_mu, age_sigma, max_age, min_age)) 
+mace_sex <- mace_sex %>% 
+  mutate(male_prpn = male_prcnt/100,
+         n = case_when(
+    !is.na(n) ~ n,
+    level_cat == "male" ~ n_overall*male_prpn,
+    level_cat == "female" ~  n_overall*(1-male_prpn)),
+    n = round(n)) %>% 
+  select(-n_overall, -male_prpn) %>% 
+  mutate(male_prcnt = if_else(level_cat == "male", 100, 0))
+rm(mace_sg)
 ## estimate events from mean FU ----
 ## Note not appropriate to correct for events here as the mean is the mean time in the arm in those with and without events
 mace <- mace %>% 
@@ -535,6 +631,13 @@ mace3 <- mace2 %>%
 ### save for subsequent analysis ----
 ## note there is some redundancy here as have merged some variables from mace_arms into the aggregate
 ## data for mace. But did so for clarity as there are multiple arm IDs
+mace_age2 <- mace_age %>% 
+  inner_join(mace3 %>% select(nct_id, drug_name, trtcls5))
+mace_sex2 <- mace_sex %>% 
+  inner_join(mace3 %>% select(nct_id, drug_name, trtcls5))
+
 saveRDS(list(mace_arms = bth_arm,
              mace_agg = mace3,
+             mace_agg_age = mace_age2,
+             mace_agg_sex = mace_sex2,
              mace_agg_trial_level = maceout_trl), "Scratch_data/mace_arms_agg_data.Rds")
