@@ -8,7 +8,7 @@ tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 tot <- tot %>% 
   slice(3, 1:2)
 
-for(mdl_type in c("fe", "re")){
+for(mdl_type in c("fixed", "random")){
   print(mdl_type)
 for(chsn in tot$drug_regime_smpl) {
   print(chsn)
@@ -109,21 +109,16 @@ chsn_net <- add_integration(chsn_net,
                 value_1 = distr(qnorm, 0, 0), n_int = 1L, cor = mycor)
 # plot(chsn_net, layout= "kk")
 
-# mdl <- nma(chsn_net,
-#                   trt_effects = "fixed",
-#                   regression = ~ value_1 + (male + age10)*.trt,
-#                   class_interactions = "common",
-#                   prior_intercept = normal(scale = 10),
-#                   prior_trt = normal(scale = 10),
-#                   prior_reg = normal(scale = 10), chains = 4, cores = 4)
-# 
-# saveRDS(mdl, paste0(mdl_type,"_model_", chsn, ".Rds"))
-# rm(mdl)
-# gc()
-}
-}
+mdl <- nma(chsn_net,
+                  trt_effects = mdl_type,
+                  regression = ~ value_1 + (male + age10)*.trt,
+                  class_interactions = "common",
+                  prior_intercept = normal(scale = 10),
+                  prior_trt = normal(scale = 10),
+                  prior_reg = normal(scale = 10), chains = 4, cores = 4)
 
-## Note for double, not sure. Allow 4 times triple. Run overnight on VM.
-## Check what is going on in 
-## Note for triple 200 iterations took 8 minutes
-## Note for mono 200 iterations took < 1 minute. for 2000 iterations took 6 minutes. 
+saveRDS(mdl, paste0(mdl_type,"_model_", chsn, ".Rds"))
+rm(mdl)
+gc()
+}
+}
