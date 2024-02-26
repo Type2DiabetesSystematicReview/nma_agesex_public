@@ -2,6 +2,7 @@ library(tidyverse)
 library(multinma)
 
 source("Scripts/00_functions.R")
+source("../common_functions/Scripts/misc.R")
 ## read data ----
 ## read in simulated IPD
 ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
@@ -49,7 +50,7 @@ arm_meta_new_cmpr$new <- map_chr(arm_meta_new_cmpr$new, ~ unique(.x))
 arm_meta_new_cmpr <- arm_meta_new_cmpr %>% 
   select(-orig, -identical) %>% 
   spread(var, new)
-# note that one drug has an unspecified dose but will be dropping anyway as has multiple drugs
+# note that one drug has an unspecified dose but will be dropped anyway as has multiple drugs
 arm_meta_new_cmpr <- arm_meta_new_cmpr %>% 
   mutate(drug_name = case_when(
                       drug_name == "linagliptinOL" ~ "linagliptin",
@@ -76,6 +77,13 @@ combo_drop <- combo_drop %>%
   mutate(other_arms = if_else(is.na(other_arms), 0L, other_arms))
 ## drops only 17 trials as 40 have two or more other arms
 write_csv(combo_drop, "Outputs/Trials_arm_dropped_combination.csv")
+exclude <- combo_drop$nct_id[combo_drop$other_arms <2] %>% unique()
+exclude <- tibble(reason = "Fewer than two arms remaining after drop combination arms.",
+                  trials = length(exclude),
+                  nct_ids = exclude %>% PasteAnd(),
+                  level = "IPD or AGG")
+write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
+
 ## drop (17) TRIALS with one or fewer arms left after dropping combinations - already dropped arms
 arm_meta <- arm_meta %>% 
   filter(!nct_id %in% combo_drop$nct_id[combo_drop$other_arms <2])
@@ -94,7 +102,12 @@ arm_meta <- arm_meta %>%
 ## drop where an IPD trial is against an open label extension only
 arm_meta <- arm_meta %>% 
   filter(!nct_id == "NCT00306384")
-
+exclude <- "NCT00306384"
+exclude <- tibble(reason = "Open label extension study data only.",
+                  trials = length(exclude),
+                  nct_ids = exclude %>% PasteAnd(),
+                  level = "IPD")
+write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
 ## Add placebo as a drug name when it is only listed as an arm label ----
 arm_meta <- arm_meta %>% 
   mutate(drug_name = case_when(

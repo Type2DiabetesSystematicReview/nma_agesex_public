@@ -1,6 +1,7 @@
 # 01c_process_to_standard_errors
 library(tidyverse)
-
+source("../common_functions/Scripts/misc.R")
+source("Scripts/00_functions.R")
 ## read data -----
 droptrial <- read_csv("../cleaned_data/Data/excluded_trials_look_up.csv")
 out <- readRDS("Scratch_data/agg_hba1c.Rds")
@@ -22,6 +23,11 @@ arm <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv")
 ## NCT01541956  is actually a standard deviation not a standard error. checked paper
 out$arm$meta <- out$arm$meta %>% 
   mutate(dispersion_type = if_else(nct_id == "NCT01541956", "sd", dispersion_type))
+
+# 2004-004559-21 is a standard error not a standard deviation (based on CTR from EUDRACT)  file:///C:/Users/David%20A%20McAllister/Downloads/CLAF237A2308_NovCTR.pdf
+out$arm$meta <- out$arm$meta %>% 
+  mutate(dispersion_type = if_else(nct_id == "2004-004559-21", "se", dispersion_type))
+
 
 ## calculate standard errors for arm data (change and end) ----
 out$unav <- NULL
@@ -100,14 +106,19 @@ nodisp <- dt %>%
   filter(!dispersion_type %in% c("se", "sd", "95%ci", "95% ci", "ci", "sem")) %>% 
     unnest(result_id) %>% 
     select(stat_type, nct_id, result_id, dispersion_type))
-## 19 trials with no dispersion information
+## 19 trials with no dispersion information. Note not even a count of participants
 nodisp %>% 
   filter(is.na(dispersion_type)) %>% 
   count(nct_id)
 ## two trials with nonconvertible dispersion information
 nodisp %>% 
   filter(!is.na(dispersion))
-## so 21 trials in total dropped
+exclude <- nodisp$nct_id %>% unique() 
+exclude <- tibble(reason = "No dispersion statistics.",
+                  trials = length(exclude),
+                  nct_ids = exclude %>% PasteAnd(),
+                  level = "Aggregate")
+write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
 
 ## Join all data together as same structure baseline characteristics
 hba1c <- bind_rows(rng = hba1c_rng,
@@ -145,6 +156,38 @@ hba1c_arm <- hba1c_arm %>%
 xmn <- hba1c_arm %>% filter(is.na(n)) %>% pull(nct_id) %>% unique()
 hba1c_arm %>% filter(nct_id %in% xmn) %>% inner_join(arm %>% select(arm_id_unq, arm_label))
 hba1c_arm %>% filter(nct_id %in% xmn)  %>% count(nct_id)
+
+## Convert convert mmol/mol to percentage
+hba1c_arm <- hba1c_arm %>% 
+    mutate(n = case_when(
+      arm_id_unq == "updac0148" ~ 15L,
+      arm_id_unq == "updac0149" ~ 18L,
+      TRUE ~ n)) %>%
+  mutate(across(c(value_1, value_1_disp), as.double),
+         across(c(result, value_1), ~ if_else(units_label == "mmol/mol", ConvertHba1c(.x), .x)),
+         #     ## note that conversion needs to happen at level of sd not at se
+         across(c(se, value_1_disp), ~ if_else(units_label == "mmol/mol", ConvertHba1c(.x*n^0.5)/n^0.5, .x)),
+         across(c(units_label, value_1_units), ~ if_else(units_label == "mmol/mol", "percentage_converted", .x)))
+
+## Impute missing baseline hba1c measures from other trials. Use SD for dispersion
+## set to zero where it is a change measure already
+## set stat_type to end
+## one trial is clearly an absolute value rather than an end as much clear difference on histogram
+hba1c_arm <- hba1c_arm %>% 
+  mutate(stat_type = if_else(nct_id == "NCT02194595", "end", stat_type))
+
+hba1c_arm <- hba1c_arm %>% 
+  mutate(value_1 = 
+           case_when(
+             stat_type == "arm" ~ 0,
+             stat_type == "end" & is.na(value_1) ~ mean(value_1, na.rm = TRUE), 
+             stat_type == "end" & !is.na(value_1) ~ value_1),
+         value_1_disp = 
+           case_when(
+             stat_type == "arm" ~ 0,
+             stat_type == "end" & is.na(value_1_disp) ~mean(value_1_disp*n^0.5, na.rm = TRUE)/n^0.5, 
+             stat_type == "end" & !is.na(value_1) ~ value_1)) %>% 
+  mutate(stat_type == "end")
 
 ## create structures with arm-level for baseline characteristics and arm-level style for comparison, where
 ## the result for one arm (the reference arm) is NA
@@ -199,24 +242,12 @@ comp4 <- comp4 %>%
 # 15 participants, updac0149  arm 18 participants (from https://doi.org/10.1111/dom.12936)
 comp5 <- comp4 %>% 
   mutate(result = if_else(units_label == "mmol/mol", 
-                          result * 0.09148 + 2.152,
+                          ConvertHba1c(result),
                           result),
          ## note that conversion needs to happen at level of se
          se     = if_else(units_label == "mmol/mol", 
-                          (0.09148*(se*n^0.5) + 2.152)/n^0.5,
-                          se),
-         units_label = if_else(units_label == "mmol/mol", "percentage_converted", units_label))
-hba1c_arm2 <- hba1c_arm %>% 
-  mutate(n = case_when(
-    arm_id_unq == "updac0148" ~ 15L,
-    arm_id_unq == "updac0149" ~ 18L,
-    TRUE ~ n),
-    result = if_else(units_label == "mmol/mol", 
-                          result * 0.09148 + 2.152,
-                          result),
-         ## note that conversion needs to happen at level of se
-         se     = if_else(units_label == "mmol/mol", 
-                          (0.09148*(se*n^0.5) + 2.152)/n^0.5,
+                          ConvertHba1c(se*n^0.5)/n^0.5,
+                          # (0.09148*(se*n^0.5) + 2.152)/n^0.5,
                           se),
          units_label = if_else(units_label == "mmol/mol", "percentage_converted", units_label))
 
@@ -224,7 +255,7 @@ placebo_arms <- arm %>%
   filter(arm_label == "placebo") %>% 
   pull(arm_id_unq) %>% 
   unique()
-placebo_arms <- hba1c_arm2 %>% 
+placebo_arms <- hba1c_arm %>% 
   filter(arm_id_unq %in% placebo_arms) %>% 
   select(nct_id, se, n) %>% 
   distinct(nct_id, .keep_all = TRUE) %>% 
@@ -236,11 +267,14 @@ comp5 <- comp5 %>%
 
 ## set final datasets for saving as csv files
 comp6 <- comp5 %>% 
-  select(nct_id, arm_id_unq, treat_or_ref, result, se, n, male, age_m, age_sd, arm_id_subgroup)
-hba1c_arm3 <- hba1c_arm2 %>% 
-  select(nct_id, arm_id_unq, result, se, n, male, age_m, age_sd, arm_id_subgroup) %>% 
+  mutate(value_1 = 0,
+         value_1_disp = 0) %>% 
+  select(nct_id, arm_id_unq, treat_or_ref, result, se, n, male, age_m, age_sd, arm_id_subgroup,
+         value_1, value_1_disp)
+hba1c_arm2 <- hba1c_arm %>% 
+  select(nct_id, arm_id_unq, result, se, n, male, age_m, age_sd, arm_id_subgroup, value_1, value_1_disp) %>% 
   mutate(treat_or_ref = "arm_level_outcome")
 
-final <- bind_rows(comp5,
-                   hba1c_arm3)
+final <- bind_rows(comp6,
+                   hba1c_arm2)
 write_csv(final, "Data/agg.csv")

@@ -25,7 +25,8 @@ CnvrtCorrMatrix <- function(a){
 readRDS("Scratch_data/mace_arms_agg_data.Rds") %>% 
   list2env(envir = .GlobalEnv)
 
-## check hrs in agg model against calculated (approx as using rate ratio) ----
+## check HRs in agg model against calculated (approx as using rate ratio) ----
+## all are very similar
 mace_agg <- mace_agg %>% 
   mutate(rate = r/pt,
          hr = exp(loghr)) %>% 
@@ -35,9 +36,8 @@ mace_agg <- mace_agg %>%
          lrr = log(rr)) %>% 
   ungroup() %>% 
   arrange(nct_id, treat_cmpr)
-## all are very similar
 
-## read in pseudo ipd ----
+## read in pseudo ipd. Use for estimating correlations between covariates ----
 pseudo <- readRDS("Scratch_data/ipd_age_sex_mace.Rds")
 pseudo <- pseudo %>% 
   mutate(ipd_arm = str_to_lower(arm)) %>% 
@@ -50,8 +50,9 @@ cfs <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/age_sex_m
 vcv <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/age_sex_model_vcov.csv"),
                  `8697` = read_csv("../from_vivli/Data/agesexmace_8697/age_sex_model_vcov.csv"),
                  .id = "repo")
-## note 4 more coefficients tables than VCV as one model (4 trials) with only the treatment effect.
-## The two trials where we have 3 arms still have a vcv
+## note 4 more coefficients trials than VCV. Reason for this is that in one model (for 4 trials) 
+## there is only a single parameter. For the other two trials there are 3 arms 
+## so still have a vcv
 cfs <- cfs %>% 
   group_by(repo, nct_id, models) %>% 
   nest() %>% 
@@ -69,7 +70,7 @@ cors <- cfs %>%
   select(repo, nct_id, models, r)
 cfs$r <- NULL
 
-## Convert regression data ----
+## Convert regression data in multinma format ----
 cfs <- cfs %>% 
   filter(models == "f5")
 cfs <- cfs %>% 
@@ -91,7 +92,8 @@ cfs %>%
   left_join(mace_arms %>% 
               rename(trt = ipd_arm) %>% 
               select(nct_id, trt, arm_lvl, trtcls5))
-## Note all reference arms are placebo so can simplify joining by assigning reference treatment to "placebo"
+## Note all reference arms for IPD trials are placebo so can simplify joining by assigning
+## reference treatment to "placebo"
 cfs <- cfs %>% 
   left_join(mace_arms %>% 
               rename(trt = ipd_arm) %>% 
@@ -119,7 +121,7 @@ cfs <- cfs %>%
   mutate(ltime = 0)
 rm(cfs_no_r, cors, vcv)
 
-## transform aggregate data and pseudo IPD ----
+## transform aggregate data and pseudo IPD into correct format for multinma ----
 pseudo <- pseudo %>% 
   mutate(age15 = age/15,
          male = if_else(sex == "M", 1L, 0L),
@@ -147,13 +149,16 @@ mace_agg_sex <- mace_agg_sex %>%
 mace_agg <- mace_agg %>% 
   filter(!nct_id == "UMIN000018395")
 
-## Set-up aggregate and IPD data in different formats ----
+## Set-up aggregate and IPD data in different formatsfor combining into networks ----
+## event and person-time data
 agg_events <- set_agd_arm(data = mace_agg, 
                           study = nct_id, trt = arm_lvl, r = r, n = participants, 
                           trt_ref = "placebo", trt_class = trtcls5)
+## HR data
 agg_hrs    <- set_agd_contrast(data = mace_agg,
                           study = nct_id, trt = arm_lvl, y = loghr, se = se, 
                           trt_ref = "placebo", trt_class = trtcls5, sample_size = participants)
+## Age and sex subgroups (HRs only)
 agg_hrs_age   <- set_agd_contrast(data = mace_agg_age,
                                study = paste0(nct_id, "_", level_min, "_", level_max), trt = arm_lvl, y = loghr, se = se, 
                                trt_ref = "placebo", trt_class = trtcls5, sample_size = participants)
@@ -166,9 +171,10 @@ agg_hrs_sex   <- set_agd_contrast(data = mace_agg_sex,
 agg_hrs_nosex <- set_agd_contrast(data = mace_agg %>% filter(!nct_id %in% mace_agg_sex$nct_id),
                                   study = nct_id, trt = arm_lvl, y = loghr, se = se, 
                                   trt_ref = "placebo", trt_class = trtcls5, sample_size = participants)
-
+## Pseudo IPD
 ipd_pseudo <- set_ipd(data = pseudo, study = nct_id, trt = arm_lvl, r = event,
                       trt_ref = "placebo", trt_class = trtcls5)
+## Regression coefficients for use with event aggregate data (added persontime)
 ipd_regres_w_events <- set_agd_regression(cfs,
                                  study = nct_id,
                                  trt = arm_lvl,
@@ -178,6 +184,7 @@ ipd_regres_w_events <- set_agd_regression(cfs,
                                  trt_ref = "placebo",
                                  trt_class = trtcls5,
                                  regression = ~ (male + age15)*.trt + offset(ltime))
+## Regression coefficients for use with HR aggregate data (no persontime)
 ipd_regres_w_coef <- set_agd_regression(cfs,
                                           study = nct_id,
                                           trt = arm_lvl,
@@ -188,7 +195,7 @@ ipd_regres_w_coef <- set_agd_regression(cfs,
                                           trt_class = trtcls5,
                                           regression = ~ (male + age15)*.trt)
 
-## Create networks with 2x2 different combinations (aggregate = event/hr, IPD = pseudo/coefs) ----
+## Create networks with different combinations (aggregate = event/hr, main/sg, IPD = pseudo/coefs) ----
 net_lst <- list(
   e_p = combine_network(agg_events, ipd_pseudo),
   e_c = combine_network(agg_events, ipd_regres_w_events),
@@ -197,7 +204,10 @@ net_lst <- list(
   h_c_age = combine_network(agg_hrs_age, agg_hrs_noage, ipd_regres_w_coef),
   h_c_sex = combine_network(agg_hrs_sex, agg_hrs_nosex, ipd_regres_w_coef)
 )
+## plot networks ----
 map(net_lst, plot, layout = "kk")
+
+## Add integration points. Note taking correlations from pseudo IPD networks
 pseudos <- c("e_p", "h_p")
 regs <- c("e_c", "h_c", "h_c_age", "h_c_sex")
 net_lst[pseudos] <- map(net_lst[pseudos], ~ add_integration(.x,
@@ -209,8 +219,8 @@ net_lst[regs] <- map2(net_lst[regs], net_lst[pseudos[c(1, 2, 2, 2)]], ~ add_inte
                            male = distr(qbern, prob = male_p),
                            ltime = distr(qnorm, ltime, 0), 
                            cor = .y$int_cor))
-
 ## Run models ----
+## Model running function
 MyNMA <- function(mynet, mylink, myreg, fe_re = "fixed", ...) {
   nma(mynet,
       trt_effects = fe_re,
@@ -221,7 +231,7 @@ MyNMA <- function(mynet, mylink, myreg, fe_re = "fixed", ...) {
       prior_trt = normal(scale = 10),
       prior_reg = normal(scale = 10), chains = 4, cores = 4)
 }
-## Commented out ones won't run
+## Commented out ones that won't run
 # h_p <- MyNMA(net_lst$h_p, 
 #              mylink = "cloglog", 
 #              myreg = ~ (male + age15)*.trt + offset(ltime))
@@ -244,12 +254,12 @@ h_c_sex <- MyNMA(net_lst$h_c_sex,
 #              mylink = "cloglog", 
 #              myreg = ~ (male + age15)*.trt + offset(ltime))
 
-## Model runs fast. No divergent transitions. Rhat low. ESS high
+## Fixed effect models run fast. No divergent transitions. Rhat low. ESS high
 saveRDS(h_c_sex, "Scratch_data/macesex_h_c_model.Rds")
 saveRDS(h_c, "Scratch_data/mace_h_c_model.Rds")
 saveRDS(h_c_age, "Scratch_data/maceage_h_c_model.Rds")
 
-## For random effects model
+## Rrandom effects model
 saveRDS(h_c_re, "Scratch_data/macerand_h_c_model.Rds")
 # The following variables have undefined values:  delta[18],The following
 # variables have undefined values:  delta[19],The following variables have

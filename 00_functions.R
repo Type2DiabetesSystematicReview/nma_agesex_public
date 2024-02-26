@@ -109,3 +109,7 @@ RptNetworkClass <- function(ipd_choose, agg_choose){
                      trt_class = trtcls4,
                      sample_size = n))  
 }
+
+ConvertHba1c <- function(x) {
+  (0.09148*(x) + 2.152)
+}

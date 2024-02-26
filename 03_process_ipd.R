@@ -71,7 +71,7 @@ list2env(res, envir = .GlobalEnv)
 rm(res, res1, res2, allvivli, allgsk)
 
 ## simulate age and sex data ----
-## crude simulation, can improve using ecdf. 6 trials still require mean and sd as these were too small for repo
+## Used ECDF. 6 trials still required sampling from normal distribution using mean and sd as these were too small to do so without compromising privacy
 saveRDS(age_distribution_baseline_continuous, "Scratch_data/ipd_age_sex.Rds")
 
 ColnamesPipe <- function(x, vct){
@@ -195,7 +195,6 @@ age_sex_model_vcov$sim <- pmap(list(age_sex_model_vcov$data,
                                     age_sex_model_vcov$vcv, 
                                     age_sex_model_vcov$nobs), 
                                function(.x, .y, .z) {
-  # browser()
                                  smpls <- round(.z*1.5)
                                  vcv <- .y
                                  cf <- .x$estimate
@@ -206,7 +205,7 @@ age_sex_model_vcov$sim <- pmap(list(age_sex_model_vcov$data,
                                  res
 })
 ## Repeat mean coefficient across the range of the data. 
-## Not efficient in terms of computing but re-uses code from simulation
+## Not efficient in terms of computing but re-uses code from simulation so easier to implement
 age_sex_model_vcov$sngl_cf <- pmap(list(age_sex_model_vcov$data, 
                                     age_sex_model_vcov$vcv, 
                                     age_sex_model_vcov$nobs), 
@@ -239,7 +238,7 @@ age_distr <- age_distr %>%
 age_distr$mm <- map(age_distr$data, ~ model.matrix(~ sex*age10*arm_f, data = .x, ))
 
 ## adds in residual standard deviation
-# In R's lm output "deviance" (obtainable from broom::glance) is the sum of squares of the residuals
+# In R's lm output "deviance" (as obtained from broom::glance) is the sum of squared residuals
 # Therefore you can calculate the standard deviation of the residuals by (dev/(n-1))^0.5. This is identical to sd(residuals)
 age_distr <- age_distr %>% 
   inner_join(age_sex_smpl_cfs %>% 
@@ -250,16 +249,12 @@ all(colnames(a) == colnames(b))
 
 ## Note that value_1 and value_1_sngl are the estimated baseline hba1c where the variation is
 ## based on the standard errors and residual standard deviation respectively. Both should have the same mean
-## allowing for sampling errors
-i <- 0
+## allowing for sampling variation
 age_distr$data <- pmap(list(age_distr$data, 
                             age_distr$mm, 
                             age_distr$sim, 
                             age_distr$sngl_cf,
                             age_distr$rsd), function(df, mm, cf, cf_sngl, rsd) {
-                              i <<- i + 1
-  ## deal with lower number of observations in data than sampled
-                              # if(i == 75) browser()
   cf <- cf[sample(1:nrow(cf), nrow(mm)), ]
   cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm)), ]
   
@@ -382,12 +377,4 @@ reg_frmt <- pmap(
 reg_frmt <- bind_rows(reg_frmt)
 reg_frmt <- reg_frmt %>% 
   unnest(cfs)
-## following not necessary based on way correlations are related to studies
-# reg_frmt$vcv <- map2(reg_frmt$reference_arm, reg_frmt$vcv, ~ {
-#                        if (is.na(.x)) {
-#                          .y } else if (.x == 1) {
-#                            NULL } else {
-#                              .y }
-#                          })
-# reg_frmt$crl <- map2(reg_frmt$vcv, reg_frmt$crl, ~ if (is.null(.x)) {NULL} else {.y})
 saveRDS(reg_frmt, "Scratch_data/ipd_coefs_frmttd.Rds")

@@ -3,32 +3,24 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 library(multinma)
-library(tidyverse)
 
 testrun <- FALSE
-datatype <- "ipdagg3"
 mdl_type <- "random"
-nwork <- "dual"
+chsn <- "dual"
 sens <- "full"
+datatype <- "temp"
+# dual model fits fine in ipdagg6 when-
+# - exclude classes NOT in ipd
+# - also exclude A10BB - sulphonylureas
+
+# note cannot use names chains, cores or iter here as variacle names since nma passes to rstan using ...
+mychains <- 2
+myiter <- 800
 
 dropdisconnect <- c("NCT02477865", "JapicCTI-101351",
                     "NCT02477969", "JapicCTI-101352", "NCT03508323",
                     "UMIN000007051")
-exclude <- dropdisconnect
-PasteAnd <- function(x) {
-  if(length(x) == 1) return(x)
-  x1 <- x[-length(x)]
-  x2 <- x[length(x)]
-  x1 <- paste(x1, sep = ", ")
-  paste0(x1, " and ", x2)
-}
-exclude <- tibble(reason = "Disconnected from network.",
-                  trials = length(exclude),
-                  nct_ids = exclude %>% PasteAnd(),
-                  level = "Aggregate")
-write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
 
-        
 ## For running on VM use conditional statements to read/write from top-level folder
 ## note want to read in data at lowest point in each loop
 if(dir.exists("Scratch_data/")){
@@ -37,21 +29,9 @@ if(dir.exists("Scratch_data/")){
   tot <- readRDS("agg_ipd_hba1c.Rds")
 }
 
-print(paste(datatype, mdl_type, nwork, sens, sep = ":"))
-## Run once after excluding trials from dual with a high Rhat
-if(sens == "exclude") {
-  if(mdl_type == "random" & nwork == "dual") {
-  problem_trials <- c(
-    "NCT00622284", "NCT00856284", "NCT00968812", "NCT01167881", 
-    "NCT01289119","NCT01624259", "NCT01644500")
-  tot$agg[] <- lapply(tot$agg, function(x) x %>% filter(!nct_id %in% problem_trials))
-  tot$ipd[] <- lapply(tot$ipd, function(x) x %>% filter(!nct_id %in% problem_trials))
-  tot$reg[] <- lapply(tot$reg, function(x) x %>% filter(!nct_id %in% problem_trials)) } else {
-    next()
-  }
-}
+print(paste(sens, mdl_type, chsn, datatype, sep = ":"))
 print(tot)
-chsn_reg <- tot$reg[tot$drug_regime_smpl == nwork][[1]]
+chsn_reg <- tot$reg[tot$drug_regime_smpl == chsn][[1]]
 chsn_reg <- chsn_reg %>% 
   mutate(value_1 = case_when(
     is.na(term) ~ 0,
@@ -59,7 +39,7 @@ chsn_reg <- chsn_reg %>%
     TRUE ~ NA_real_))
 chsn_reg <- chsn_reg %>% 
   filter(models == "f4")
-chsn_agg <- tot$agg[tot$drug_regime_smpl == nwork][[1]]
+chsn_agg <- tot$agg[tot$drug_regime_smpl == chsn][[1]]
 chsn_agg <- chsn_agg %>% 
   mutate(nct_id2 = nct_id) %>% 
   mutate(male_p = male/n) %>% 
@@ -76,7 +56,6 @@ chsn_reg <- chsn_reg %>%
     sex == FALSE ~ 0L,
     TRUE ~ NA_integer_))
 
-
 ## For dual drop two disconnected trials for aggregate NCT02477969 and JapicCTI-101352
 ## and one for contrast NCT03508323
 ## For triple one for aggregate - UMIN000007051
@@ -87,11 +66,35 @@ chsn_agg <- chsn_agg %>%
   group_by(nct_id) %>% 
   mutate(cntrst = any(is.na(result))) %>% 
   ungroup()
+
+if(datatype == "ipdagg7"){
+  ## restrict aggregate trials to classes found in IPD
+  ipd_cls <- unique(chsn_reg$trtcls5)
+  ipd_cls <- ipd_cls[!is.na(ipd_cls)]
+  setdiff(chsn_agg$trtcls5, ipd_cls)
+  chsn_agg <- chsn_agg %>%
+    group_by(nct_id) %>%
+    mutate(allclsipd = all(trtcls5 %in% ipd_cls)) %>%
+    ungroup() %>%
+    filter(allclsipd) %>%
+    select(-allclsipd)
+  ## drop so only placebo and three classes of interest
+  chsn_agg <- chsn_agg %>% 
+    # filter(! (trtcls5 %in% c("A10BB") & n >= 494 )) # "A10BA",
+    # filter(!nct_id %in% c("NCT02145611",
+    #                       "Hawler Medical University records of the clinical trials: No.276"))
+    filter(!nct_id == "2004-004559-21")  
+  chsn_agg <- chsn_agg %>% 
+    group_by(nct_id) %>% 
+    mutate(n_arms = length(arm_lvl)) %>% 
+    ungroup() %>% 
+    filter(n_arms >=2)
+}
+
 chsn_cntrst <- chsn_agg %>% 
   filter(cntrst)
 chsn_agg <- chsn_agg %>% 
   filter(!cntrst)
-
 sd_plac <- chsn_agg %>% 
   filter(arm_lvl == "placebo") %>% 
   mutate(sd = se*n^0.5) %>% 
@@ -145,11 +148,14 @@ if(testrun) {
                class_interactions = "common",
                prior_intercept = normal(scale = 10),
                prior_trt = normal(scale = 10),
-               prior_reg = normal(scale = 10), chains = 4, cores = 4)
+               prior_reg = normal(scale = 10), 
+               chains = mychains, 
+               cores = mychains,
+               iter = myiter)
   }
 
 
-filename <- paste(datatype, mdl_type, "hba1c", nwork, sens, sep = "_")
+filename <- paste(datatype, mdl_type, "hba1c", chsn, sens, sep = "_")
 if(dir.exists("Scratch_data/")) {
   saveRDS(mdl, paste0("Scratch_data/", filename, ".Rds"))
 } else {
@@ -157,3 +163,4 @@ if(dir.exists("Scratch_data/")) {
 }
 rm(mdl)
 gc()
+

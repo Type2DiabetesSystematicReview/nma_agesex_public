@@ -1,6 +1,7 @@
 #01a_process_hba1c_initial
 library(tidyverse)
-
+source("../common_functions/Scripts/misc.R")
+source("Scripts/00_functions.R")
 ## read in all data ----
 ## read in drop trial list ----
 droplist <- read_csv("../cleaned_data/Data/excluded_trials_look_up.csv")
@@ -73,8 +74,6 @@ hba1c_agg <- hba1c_agg %>%
   semi_join(arm %>% select(nct_id = trial_id,
                            arm_id_unq = value))
 
-## There are now no single arms
-
 ## correct errors where result type missing
 hba1c_agg <- hba1c_agg %>% 
   mutate(result_type = if_else(nct_id == "NCT00509262" & result_description == "change from baseline", "mean", result_type))
@@ -138,7 +137,7 @@ hba1c_agg <- bind_rows(hba1c_agg %>%
 rm(ci_error, ci_corr, ci_error2)
 
 ### Add in number of participants where available based on result_id ----
-## pull other missing ns from results  note the IDs are extract specific
+## pull other missing ns from results  note the IDs are AACT-extract specific
 oc_orig <- oc_orig %>% 
   semi_join(hba1c_ids_orig %>% select(nct_id))
 oc_orig <- oc_orig %>% 
@@ -203,14 +202,21 @@ hba1c_agg_mean <- hba1c_agg %>%
 hba1c_meta <- hba1c_meta %>% 
   filter(!nct_id %in% hba1c_meta_mean$nct_id)
 
-## Next take endpoint-measure
+## Next take endpoint-measure and if available start. Note that 
+## Store the baseline as the value 1
 hba1c_meta_end <- hba1c_meta %>% 
   filter(result_type_smry %in% c("mean_end"))
+hba1c_meta_strt <- hba1c_meta %>% 
+  filter(result_type_smry %in% c("mean_base"))
 hba1c_agg_end <- hba1c_agg %>% 
   semi_join(hba1c_meta_end %>% unnest(result_id))
+hba1c_agg_strt <- hba1c_agg %>% 
+  semi_join(hba1c_meta_strt %>% unnest(result_id))
+## Note will later need to impute and convert value_1
+hba1c_agg_end <- hba1c_agg_end %>% 
+  left_join(hba1c_agg_strt %>% select(arm_id_unq, value_1 = result, value_1_disp = dispersion, value_1_units = units_label))
 hba1c_meta <- hba1c_meta %>% 
   filter(!nct_id %in% hba1c_meta_end$nct_id)
-
 # Next take contrast in mean change
 hba1c_meta_comp <- hba1c_meta %>% 
   filter(result_type_smry == "between_arm_mean") 
@@ -220,7 +226,12 @@ hba1c_meta <- hba1c_meta %>%
   filter(!nct_id %in% hba1c_meta_comp$nct_id)
 
 ## leaves 17 trials with medians and percentage change. Will need to drop these
-
+exclude <- hba1c_meta$nct_id %>% unique() 
+exclude <- tibble(reason = "Median statistics and percentage change only.",
+                  trials = length(exclude),
+                  nct_ids = exclude %>% PasteAnd(),
+                  level = "Aggregate")
+write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = FALSE)
 saveRDS(list(arm  = list(data = hba1c_agg_mean,
                         meta = hba1c_meta_mean),
              comp = list(data = hba1c_agg_comp,

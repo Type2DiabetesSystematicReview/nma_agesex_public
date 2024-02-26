@@ -2,6 +2,12 @@
 
 library(tidyverse)
 library(multinma)
+library(rstan)
+
+## read in data
+tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
+tot <- tot %>% 
+  slice(3, 1:2)
 
 if(sessionInfo()$platform == "x86_64-pc-linux-gnu (64-bit)") {
   whoatc <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx", sheet = 1) 
@@ -16,17 +22,44 @@ whoatc <- whoatc %>%
 mdl_names <- list.files("FromVM/", patt = "Rds$")
 res <- map(mdl_names, ~ readRDS(paste0("FromVM/", .x)))
 names(res) <- mdl_names %>% str_sub(1, -5)
-res$mace <- readRDS("Scratch_data/mace_h_c_model.Rds")
+res$aggipd_fixed_mace_main_full <- readRDS("Scratch_data/mace_h_c_model.Rds")
+res$aggipd_rand_mace_main_full <- readRDS("Scratch_data/macerand_h_c_model.Rds")
+res$aggipd_fixed_mace_age_full <- readRDS("Scratch_data/maceage_h_c_model.Rds")
+res$aggipd_fixed_mace_sex_full <- readRDS("Scratch_data/macesex_h_c_model.Rds")
+beta <- map(res, ~ summary(.x$stanfit)$summary %>% 
+  as_tibble(rownames = "params")) %>% 
+  bind_rows(.id = "tosep")
+names(beta) <- str_to_lower(names(beta))
+## Not sure what these missing deltas mean
+missings <- beta %>% 
+  filter(is.na(rhat)) %>% 
+  count(tosep, params)
+write_csv(missings, "Outputs/nma_results_missing_delta_values.csv")
+beta <- beta %>% 
+  filter(!is.na(rhat))
+high_rhat <- beta %>% 
+  filter(rhat > 1.05)
+write_csv(high_rhat, "Outputs/nma_results_high_rhats.csv")
+trialidstring <- "NCT[0-9]{8,8}"
+high_rhat_nct_ids <- str_extract(high_rhat$params[str_detect(high_rhat$params, trialidstring) &
+                                                    high_rhat$tosep == "aggipd_random_hba1c_dual_full"], trialidstring) %>% 
+  unique()
+write_lines(high_rhat_nct_ids, "Outputs/trials_with_high_rhats.txt")
+agg_high = map2(tot$drug_regime_smpl, tot$agg, ~ .y %>% 
+                  filter(nct_id %in% high_rhat_nct_ids) %>% 
+                  bind_cols(drug_regime_smpl = .x))  %>% 
+  bind_rows()
+ipd_high = map2(tot$drug_regime_smpl, tot$reg , ~ .y %>% 
+                  filter(models == "f4") %>% 
+                  filter(nct_id %in% high_rhat_nct_ids) %>% 
+                  bind_cols(drug_regime_smpl = .x)) %>% 
+  bind_rows()
 
-beta <- map(res, ~ summary(.x$stanfit, pars = "beta"))
-beta <- map(beta, ~ .x$summary)
-beta <- map(beta, ~ as_tibble(.x, rownames = "params"))
-beta <- bind_rows(beta, .id = "tosep")
 beta <- beta %>% 
-  mutate(tosep = if_else(tosep == "mace", "fe_model_mace", tosep))
-beta <- beta %>% 
-  separate(tosep, into = c("fixedrand", "model", "network"), sep = "_")
-write_csv(beta, "Outputs/hba1c_meta_analysis.csv")
+  separate(tosep, into = c("ipdagg","fixedrand", "outcome", "network", "sg"),
+           sep = "_")
+
+write_csv(beta %>% filter(str_detect(params, "^beta")), "Outputs/hba1c_meta_analysis.csv")
 divergent <- map(res, ~ get_sampler_params(.x$stanfit, inc_warmup = FALSE))
 divergent <- map(divergent, ~ map_int(.x, ~ sum(.x[, "divergent__"])))
 ## no divergent transitions

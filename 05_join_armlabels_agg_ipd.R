@@ -5,6 +5,7 @@ ipd_method <- "rsd"
 
 source("Scripts/00_functions.R")
 source("../common_functions/Scripts/combine_sd.R")
+source("../common_functions/Scripts/misc.R")
 
 ## read in arm labels ----
 arm_meta <- read_csv("Data/arm_labels_hba1c.csv") 
@@ -146,11 +147,14 @@ arm_pre <- agg %>%
 write_csv(arm_pre, "Outputs/aggregate_arms_collapsed.csv")
 rm(arm_pre)
 agg <- agg %>% 
-  mutate(sd = se*n^0.5) %>% 
+  mutate(sd = se*n^0.5,
+         value_1_sd = value_1_disp*n^0.5) %>% 
   group_by(nct_id, arm_lvl, trtcls5, trtcls4, drug_regime_smpl) %>% 
   summarise(pooled_arm = length(n),
             sd = CombSdVectorised(n = n, m = result, s = sd),
+            value_1_sd = CombSdVectorised(n = n, m = value_1, s = value_1_sd),
             result = weighted.mean(result, n),
+            value_1 = weighted.mean(value_1, n),
             age_sd = CombSdVectorised(n = n, m = age_m, s = age_sd),
             age_m = weighted.mean(age_m, n),
             male = sum(male),
@@ -172,6 +176,14 @@ agg %>%
 ## Note are 3 single arm trials now. Drop
 single <- agg %>% 
   filter(n_arms ==1)
+exclude <- single$nct_id %>% unique() 
+exclude <- tibble(reason = "Fewer than 2 arms after collapsing arms as follows:- Simplify insulins to a single code A10A. Keep dose for metformin, SGLT2, GLP1 and DPP4. drop dose for drug class level comparisons and drugs not in key classes. Reduce to drug (ie remove dose and regimen) for the trials in these remaining classes.",
+                  trials = length(exclude),
+                  nct_ids = exclude %>% PasteAnd(),
+                  level = "Aggregate")
+write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
+
+
 write_csv(single, "Outputs/Trials_arms_dropped_single_after_aggregation.csv")
 agg <- agg %>% 
   filter(n_arms >=2)
