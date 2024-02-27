@@ -44,6 +44,7 @@ ipd <- ipd %>%
 sum(!duplicated(ipd$nct_id))
 ## read in reg
 reg <- readRDS("Scratch_data/ipd_coefs_frmttd.Rds")
+
 sum(!duplicated(reg$nct_id))
 reg <- reg %>% 
   rename(arm_id_unq = trt) %>% 
@@ -212,11 +213,12 @@ reg2 <- reg2 %>%
 ## drop contrasts which are not in the main models. Both from correlation
 ## and from terms
 reg2_arm_drp <- reg2 %>% 
-  filter(models == "f1", !is.na(arm_id_unq)) %>% 
+  filter(!is.na(arm_id_unq)) %>% 
   distinct(nct_id, term, arm_id_unq, arm_f, arm_lvl)
 reg2_arm_drp <- reg2_arm_drp %>% 
   filter(is.na(arm_lvl)) %>% 
   pull(arm_f) %>% 
+  unique() %>% 
   paste(collapse = "|")
 reg2 <- reg2 %>% 
   filter(is.na(term) | !str_detect(term, reg2_arm_drp))
@@ -235,11 +237,11 @@ agg <- agg %>%
   rename(agg = data)
 agg <- agg %>% 
   filter(!drug_regime_smpl == "unclear or missing")
+
 tot <- agg %>% 
   inner_join(ipd) %>% 
   inner_join(reg %>% rename(reg = data))
 rm(ipd, agg)
-
 saveRDS(tot, "Scratch_data/agg_ipd_hba1c.Rds")
 
                        
