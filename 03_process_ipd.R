@@ -5,13 +5,13 @@ library(tidyverse)
 CnvrtCorrMatrix <- function(a){
   ## recovery whole matrix by duplication
   allnames <- union(a$row, a$col)
-  a <- bind_rows(a, 
-                 a %>% 
+  a <- bind_rows(a,
+                 a %>%
                    rename(row = col, col = row),
-                 tibble(row = allnames, col = allnames, r = 1)) %>% 
+                 tibble(row = allnames, col = allnames, r = 1)) %>%
     distinct()
   # convert into matrix format
-  a <- a %>% 
+  a <- a %>%
     spread(col, r)
   a_row <- a$row
   a$row <- NULL
@@ -21,20 +21,17 @@ CnvrtCorrMatrix <- function(a){
   a
 }
 
-
-cor2cov <- function(term, vr, r) {
-  r_nm <- rownames(r)
-  c_nm <- colnames(r)
-  if (! all(r_nm == c_nm)) stop("rownames and column names of matrix dont match")
-  if (! all(term %in% r_nm)) stop ("Have standard errors without matching terms in matrix")
-  if (! all(r_nm %in% term)) stop ("Terms in matrix for which dont have standard errors/variances")
-  # arrange matrix to match term
-  if (! all(term == r_nm)) 
-    { warning("Rearranging matrix so same order as standard error terms")
-    r <- r[term, term]
-  }
-  vr %*% r %*% t(vr)
+cor2cov <- function(V, sigma) {
+  p <- (d <- dim(V))[1L]
+  if (!is.numeric(V) || length(d) != 2L || p != d[2L])
+    stop("'V' is not a square numeric matrix")
+  if (length(sigma) != p)
+    stop("'sigma' is not a vector comformable as the standard deviations of 'V'")
+  if (any(diag(V) != 1))
+    warning("diag(.) contained non 1 entries.  Did you pass a correlation matrix?")
+  sigma * V * rep(sigma, each = p)
 }
+
 
 ## read in IDs where have IPD ----
 ipd1 <- read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
@@ -151,19 +148,42 @@ age_sex_model_vcov$data <- NULL
 age_sex_model_vcov <- age_sex_model_vcov %>% 
   inner_join(age_sex_model_coefs)
 
+## rearrange terms so matches r in ordering
+age_sex_model_vcov$data <- map2(age_sex_model_vcov$data, age_sex_model_vcov$r, ~ {
+  term_order <- colnames(.y)
+  .x %>% 
+    arrange(match(term, term_order))
+})
+
 ## convert to variance-covariance matrix
 age_sex_model_vcov$vcv <- map2(age_sex_model_vcov$data, age_sex_model_vcov$r, ~ {
-  term <- .x$term
-  vr <- diag(.x$std.error^2)
   r <- .y
-  res <- cor2cov(term = term, vr = vr, r = r)
-  print(round(res, 3))
-  
- res <- Matrix::nearPD(res, ensureSymmetry = TRUE, base.matrix = TRUE)$mat
- colnames(res) <- term
- rownames(res) <- term
-res
+  cfs <- .x
+  if(! all(colnames(r) == cfs$term)) stop("Coefficient terms do not match correlation matrix")
+  se <- cfs$std.error
+  a <- cov.mat <- sweep(sweep(r, 1L, se, "*"), 2L, se, "*")
+  a
+  })
+
+## Convert both R and vcv to positive definite (not currently due to rounding when exported)
+age_sex_model_vcov$vcv_pd <- map(age_sex_model_vcov$vcv, ~ {
+  as.matrix(Matrix::nearPD(.x)$mat)
 })
+age_sex_model_vcov$r_pd <- map(age_sex_model_vcov$r, ~ {
+  as.matrix(Matrix::nearPD(.x, corr = TRUE)$mat)
+})
+
+## compare original and converted pd, very small differences
+age_sex_model_vcov$vcv_diff <- map2_dbl(age_sex_model_vcov$vcv_pd, age_sex_model_vcov$vcv, ~ sum(abs(.x-.y)))
+age_sex_model_vcov$r_diff <- map2_dbl(age_sex_model_vcov$r_pd, age_sex_model_vcov$r, ~ sum(abs(.x-.y)))
+age_sex_model_vcov$vcv_diff %>% hist(breaks = 100)
+age_sex_model_vcov$r_diff %>% hist(breaks = 100)
+
+age_sex_model_vcov <- age_sex_model_vcov %>% 
+  select(-c(r, vcv, r_diff, vcv_diff)) %>% 
+  rename(vcv = vcv_pd,
+         r = r_pd)
+
 ## want R as well as can use to run set_agd_regression
 # age_sex_model_vcov$r <- NULL
 ## note that this is the same as the count at the end
@@ -243,9 +263,9 @@ age_distr$mm <- map(age_distr$data, ~ model.matrix(~ sex*age10*arm_f, data = .x,
 age_distr <- age_distr %>% 
   inner_join(age_sex_smpl_cfs %>% 
                filter(models == "b1"))
-a <- age_distr$mm[[1]] %>% head(2)
-b <- age_distr$sim[[1]] %>% head(2)
-all(colnames(a) == colnames(b))
+# a <- age_distr$mm[[1]] %>% head(2)
+# b <- age_distr$sim[[1]] %>% head(2)
+# all(colnames(a) == colnames(b))
 
 ## Note that value_1 and value_1_sngl are the estimated baseline hba1c where the variation is
 ## based on the standard errors and residual standard deviation respectively. Both should have the same mean
@@ -255,8 +275,8 @@ age_distr$data <- pmap(list(age_distr$data,
                             age_distr$sim, 
                             age_distr$sngl_cf,
                             age_distr$rsd), function(df, mm, cf, cf_sngl, rsd) {
-  cf <- cf[sample(1:nrow(cf), nrow(mm)), ]
-  cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm)), ]
+  cf <- cf[sample(1:nrow(cf), nrow(mm)), colnames(mm)]
+  cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm)), colnames(mm)]
   
   # calculate base
   df$value_1 <- rowSums(mm * cf)
@@ -281,8 +301,8 @@ age_distr$data <- pmap(list(age_distr$data,
                             age_distr$sngl_cf,
                             age_distr$rsd), function(df, mm, cf, cf_sngl, rsd) {
   ## deal with lower number of observation in model than in data
-  cf <- cf[sample(1:nrow(cf), nrow(mm)), ]
-  cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm)), ]
+  cf <- cf[sample(1:nrow(cf), nrow(mm)), colnames(mm)]
+  cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm)), colnames(mm)]
   
   # calculate base
   df$value_2 <- rowSums(mm * cf)
@@ -333,8 +353,11 @@ reg_frmt <- pmap(
     ## add treatment variable
   
   ## arrange covariance and correlation matrix to match terms
-  crl <- crl[cfs$term, cfs$term]
-  vcv <- vcv[cfs$term, cfs$term]
+  if(!all(colnames(crl) == cfs$term )) stop("coefficient terms and correlation matrix do not match")
+  if(!all(colnames(vcv) == cfs$term )) stop("coefficient terms and correlation matrix do not match")
+    
+  # crl <- crl[cfs$term, cfs$term]
+  # vcv <- vcv[cfs$term, cfs$term]
   
   ## add NA row for no treatments (note the correlation for this is set to NULL)
   cfs <- cfs %>% 
@@ -353,7 +376,7 @@ reg_frmt <- pmap(
     left_join(lkp %>% rename(trt = arm_id_unq))
   
   ## add covariate columns
-  ## Note than manual sugests listing as NA but example data has zeros and ones.
+  ## Note than manual suggests listing as NA but example data has zeros and ones.
   cfs <- cfs %>% 
     mutate(sex = case_when(
       str_detect(term, "sex") ~ TRUE,
