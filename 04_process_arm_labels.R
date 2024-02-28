@@ -168,6 +168,7 @@ whoatc <- bind_rows(whoatc,
 whoatc_lkp <- whoatc$atc_code
 names(whoatc_lkp) <- whoatc$nm
 setdiff(str_to_lower(arm_meta$drug_name), names(whoatc_lkp))
+saveRDS(whoatc_lkp, "Scratch_data/who_atc_lkp.Rds")
 arm_meta <- arm_meta %>% 
   mutate(drug_code  = whoatc_lkp[drug_name %>% str_to_lower()]) 
 
