@@ -6,24 +6,9 @@ library(multinma)
 library(truncnorm)
 library(purrr)
 
-args <- commandArgs(trailingOnly=TRUE)
-if(length(args) ==0) model <- "f1" else {
-  model <- args[[1]]
-}
-
-print(model)
-
-if(model == "f5"){
-  list2env(readRDS("Scratch_data/for_mace_regression_inter.Rds"), envir = .GlobalEnv)
-  myregl <- ~ (male + age15)*.trt + offset(ltime)
-  myreg <- ~ (male + age15)*.trt 
-}
-
-if(model == "f1"){
-  list2env(readRDS("Scratch_data/for_mace_regression_nointer.Rds"), envir = .GlobalEnv)
-  myregl <- ~ .trt + offset(ltime)
-  myreg <- ~ .trt 
-}
+list2env(readRDS("Scratch_data/for_mace_regression_inter.Rds"), envir = .GlobalEnv)
+myregl <- ~ (male + age15)*.trt + offset(ltime)
+myreg <- ~ (male + age15)*.trt 
 
 
 ## Set-up aggregate and IPD data in different formatsfor combining into networks ----
@@ -94,8 +79,8 @@ net_lst[pseudos] <- map(net_lst[pseudos], ~ add_integration(.x,
 net_lst[regs] <- map2(net_lst[regs], net_lst[pseudos[c(1, 2, 2, 2)]], ~ add_integration(.x,
                                                                                         age15 = distr(qtruncnorm,  a = min_age, b = max_age, mean = age_mu, sd = age_sigma),
                                                                                         male = distr(qbern, prob = male_p),
-                                                                                        ltime = distr(qnorm, ltime, 0), 
-                                                                                        cor = .y$int_cor))
+                                                                                        # ltime = distr(qnorm, ltime, 0), 
+                                                                                        cor = .y$int_cor[-3,-3]))
 ## Model running function
 MyNMA <- function(mynet, mylink, myreg, fe_re = "fixed", ...) {
   nma(mynet,
@@ -110,20 +95,7 @@ MyNMA <- function(mynet, mylink, myreg, fe_re = "fixed", ...) {
 
 net_lst <- net_lst[c("h_c", "h_c_age", "h_c_sex")]
 
-if(model == "f1") {
-  fe <- MyNMA(net_lst[[1]], 
-              mylink = "identity", 
-              myreg = myreg, 
-              fe_re = "fixed")
-  re <- MyNMA(net_lst[[1]],
-              mylink = "identity",
-              myreg = myreg,
-              fe_re = "random")
-  saveRDS(list(fe = fe,
-               re = re),
-          "Scratch_data/mace_nointer.Rds")
-} else {
-  for(chs in 1:3){
+for(chs in 1:3){
     print(chs)
     nwork <- net_lst[[chs]]
     fe <- MyNMA(nwork, 
@@ -136,5 +108,5 @@ if(model == "f1") {
                 fe_re = "random")
     saveRDS(list(fe = fe,
                  re = re),
-            paste0("Scratch_data/mace_", model, "_", chs, ".Rds"))
-}}
+            paste0("Scratch_data/mace_", "agesex", "_", chs, ".Rds"))
+}

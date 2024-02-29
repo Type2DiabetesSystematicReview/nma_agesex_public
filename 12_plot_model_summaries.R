@@ -1,6 +1,40 @@
 library(tidyverse)
 
 beta <- read_csv("Outputs/betas_meta_analysis.csv")
+## relabel outputs for subsequent plotting ----
+hba1c <- beta %>% 
+  filter(str_detect(tosep, "^hba1c")) %>% 
+  separate(tosep, into = c("outcome",
+                           "mainorinter",
+                           "modelnum",
+                           "datalevel",
+                           "fixedrand",
+                           "network"),
+           sep = "_")  %>% 
+  mutate(sg = "main")
+mace <- beta %>% 
+  filter(str_detect(tosep, "mace")) %>% 
+  mutate(modelnum = paste0("m", cumsum(!duplicated(tosep))+1),
+         network = "triple",
+         # mainorinter = "agesex",
+         datalevel = "aggipd") %>% 
+  separate(tosep, into = c("fixedrand",
+                           "outcome",
+                           "mainorinter",
+                           "sg"),
+           sep = "_|\\.")  
+x <- names(mace)
+y <- names(hba1c)
+setdiff(union(x, y), intersect(x, y))
+cmpr <- map2(hba1c %>% select(outcome, mainorinter, modelnum, datalevel, fixedrand, network, sg),
+     mace  %>% select(outcome, mainorinter, modelnum, datalevel, fixedrand, network, sg), ~ {
+       list(hba1conly = setdiff(.x, .y),
+            maceonly  = setdiff(.y, .x))
+     })
+beta <- bind_rows(hba1c, mace)
+rm(hba1c, mace, x, y, cmpr)
+
+
 if(sessionInfo()$platform == "x86_64-pc-linux-gnu (64-bit)") {
   whoatc <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx", sheet = 1) 
 } else {
@@ -13,7 +47,10 @@ whoatc <- whoatc %>%
 
 ## interaction plots hba1c ----
 beta_age_sex <- beta %>% 
-  filter(params %>% str_detect("age|male"),
+  filter(mainorinter == "agesex",
+         datalevel == "aggipd",
+         # sg == "main",
+         params %>% str_detect("age|male"),
          params %>% str_detect("\\:")) %>% 
   mutate(params = params %>% 
            str_remove("^beta\\[") %>% 
@@ -38,8 +75,8 @@ beta_age_sex <- beta_age_sex %>%
       TRUE ~ .x))) %>% 
   mutate(covariate = if_else(covariate %in% c("age10", "age15"), "age30", covariate))
 
-plotbeta <- ggplot(beta_age_sex %>% 
-                     filter(!is.na(network), outcome == "hba1c") %>% 
+interhba1cplotappen <- ggplot(beta_age_sex %>% 
+                     filter(outcome == "hba1c") %>% 
                      mutate(datalevel = factor(datalevel,
                                                levels = c("aggipd", "ipd"),
                                                labels = c("All data", "IPD only"))), 
@@ -58,11 +95,10 @@ plotbeta <- ggplot(beta_age_sex %>%
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
   theme_bw() +
   scale_y_continuous("HbA1c (%)")
-plotbeta
+# interhba1cplotappen
 
-plotbetapaper <- ggplot(beta_age_sex %>% 
-                          filter(!is.na(network), outcome == "hba1c",
-                                 datalevel == "aggipd",
+interhba1cplot <- ggplot(beta_age_sex %>% 
+                          filter(outcome == "hba1c",
                                  trtclass %in% paste0("A10B", c("A", "B", "H", "J", "K")),
                                  !(network == "triple" & trtclass == "A10BA")) %>% 
                           mutate(datalevel = factor(datalevel,
@@ -89,17 +125,17 @@ plotbetapaper <- ggplot(beta_age_sex %>%
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
   theme_bw() +
   scale_y_continuous("HbA1c (%)")
-plotbetapaper
+# interhba1cplot
 
 ## interaction plots mace ----
-plotmace <- ggplot(beta_age_sex %>% 
+intermaceplotappen <- ggplot(beta_age_sex %>% 
                      filter(outcome == "mace") %>% 
                      mutate(datalevel = factor(datalevel,
                                                levels = c("aggipd", "ipd"),
                                                labels = c("All data", "IPD only")),
                             sg = factor(sg,
-                                        levels = c("main", "age", "sex"),
-                                        labels = c("None", "Age", "Sex")),
+                                        levels = c("main", "age", "sex", "sens"),
+                                        labels = c("None", "Age", "Sex", "sens")),
                             covariate = factor(covariate,
                                                levels = c("age30", "male"),
                                                labels = c("Age per 30 years",
@@ -117,9 +153,9 @@ plotmace <- ggplot(beta_age_sex %>%
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
   theme_bw() +
   scale_y_continuous("Hazard ratio (log-scale)")
-plotmace
+# intermaceplotappen
 
-plotmacepaper <- ggplot(beta_age_sex %>% 
+intermaceplot <- ggplot(beta_age_sex %>% 
                           filter(outcome == "mace", sg == "main",
                                  trtclass %in% c("A10BH", "A10BJ", "A10BK")) %>% 
                           mutate(covariate = factor(covariate,
@@ -139,7 +175,7 @@ plotmacepaper <- ggplot(beta_age_sex %>%
   scale_y_continuous("Hazard ratio", 
                      breaks = seq(-0.5, 0.5, 0.25), 
                      labels = round(exp(seq(-0.5, 0.5, 0.25)),2))
-plotmacepaper
+intermaceplot
 
 ## main effects hba1c ----
 main_hba1c <- beta %>% 
@@ -195,13 +231,59 @@ mainhba1cplot <- ggplot(main_hba1c %>%
   scale_y_continuous("HbA1c (%)") +
   coord_flip() +
   facet_wrap( ~ network, scales = "free_y", ncol = 3)
-mainhba1cplot
+# mainhba1cplot
 
-
+## main effects hba1c ----
+main_mace <- beta %>% 
+  filter(mainorinter == "nointer", 
+         outcome == "mace",
+         sg == "main",
+         !str_detect(params, "^delta"),
+         str_detect(params, "^d")) 
+main_mace <- main_mace %>% 
+  mutate(params = str_sub(params, 3, -2)) %>% 
+  separate_wider_delim(params, names = c("drug", "dose"), delim = "_", too_few = "align_start", too_many = "merge") %>% 
+  mutate(cls = str_sub(drug, 1, 5))
+who_lkp_rev <- c(who_lkp_rev,
+                 c("A10BJ01" = "ITCA",
+                   "A10BH" = "omarigliptin"))
+who_lkp_rev2 <- names(who_lkp_rev)
+names(who_lkp_rev2) <- who_lkp_rev
+main_mace <- main_mace %>% 
+  mutate(atc = who_lkp_rev2[drug])
+main_mace <- main_mace %>% 
+  separate_wider_delim(atc, names = c("atc2", "todrop"), delim = "_", too_many = "merge", too_few = "align_start") %>% 
+  mutate(lbl= if_else(!is.na(dose),
+                      paste0(atc2, "-", str_to_sentence(drug), " ", dose),
+                      paste0(atc2, "-", str_to_sentence(drug))))
+main_mace <- main_mace %>% 
+  janitor::clean_names() 
+main_mace <- main_mace %>% 
+  mutate(cls = str_sub(atc2, 1, 5))
+main_mace <- main_mace %>% 
+  mutate(cls_lbl = who_lkp_rev[cls],
+         cls_lbl = paste0(cls, "-", cls_lbl))
+mainmacecplot <- ggplot(main_mace, 
+                        aes(x = lbl, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
+                            colour = fixedrand)) +
+  geom_point(position = position_dodge(0.5)) +
+  geom_linerange(position = position_dodge(0.5)) +
+  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
+  scale_x_discrete("", limits = rev) +
+  scale_color_discrete("") +
+  theme_bw() +
+  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
+  scale_y_continuous("Hazard ratio", 
+                     breaks = seq(-0.5, 0.5, 0.25), 
+                     labels = round(exp(seq(-0.5, 0.5, 0.25)),2)) +
+  coord_flip(ylim = c(-1, 1)) +
+  facet_wrap(~cls_lbl, scales = "free_y", ncol = 1)
+mainmacecplot
 pdf("Outputs/hba1c_mace.pdf", height = 10, width = 20)
-mainhba1cplot + ggtitle("HbA1c meta-analysis main effects for paper")
-plotbetapaper  + ggtitle("HbA1c meta-analysis for paper")
-plotmacepaper  + ggtitle("MACE meta-analysis for paper")
-plotbeta + ggtitle("HbA1c meta-analysis additional information")
-plotmace + ggtitle("MACE meta-analysisadditional information")
+mainhba1cplot + ggtitle("HbA1c main effects meta-analysis for paper")
+interhba1cplot  + ggtitle("HbA1c interactions meta-analysis for paper")
+interhba1cplotappen + ggtitle("HbA1c interactions meta-analysis for appendix")
+mainmacecplot + ggtitle("MACE main effects meta-analysis for paper")
+intermaceplot  + ggtitle("MACE interactions meta-analysis for paper")
+intermaceplotappen + ggtitle("MACE interactions meta-analysis for appendix")
 dev.off()
