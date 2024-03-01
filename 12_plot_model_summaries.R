@@ -1,6 +1,6 @@
 library(tidyverse)
-
 beta <- read_csv("Outputs/betas_meta_analysis.csv")
+source("Scripts/04b_arm_label_reverse.R")
 ## relabel outputs for subsequent plotting ----
 hba1c <- beta %>% 
   filter(str_detect(tosep, "^hba1c")) %>% 
@@ -35,16 +35,6 @@ beta <- bind_rows(hba1c, mace)
 rm(hba1c, mace, x, y, cmpr)
 
 
-if(sessionInfo()$platform == "x86_64-pc-linux-gnu (64-bit)") {
-  whoatc <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx", sheet = 1) 
-} else {
-  whoatc <- readxl::read_excel("../../../Medications_resources/WHO_ATC/2018 ATC index with DDDs.xlsx", sheet = 1)
-}
-whoatc <- whoatc %>% 
-  select(trtclass = `ATC code`,
-         cls = `ATC level name`) %>% 
-  distinct()
-
 ## interaction plots hba1c ----
 beta_age_sex <- beta %>% 
   filter(mainorinter == "agesex",
@@ -58,7 +48,10 @@ beta_age_sex <- beta %>%
            str_remove("\\.trtclass")) %>% 
   separate(params, into = c("covariate", "trtclass"), sep = "\\:")
 beta_age_sex <- beta_age_sex %>% 
-  inner_join(whoatc) %>% 
+  inner_join(who_atc %>% 
+               select(trtclass = `ATC code`,
+                      cls = `ATC level name`) %>% 
+               distinct()) %>% 
   mutate(cls = paste0(trtclass, ":", cls))
 beta_age_sex <- beta_age_sex %>% 
   janitor::clean_names() %>% 
@@ -135,7 +128,7 @@ intermaceplotappen <- ggplot(beta_age_sex %>%
                                                labels = c("All data", "IPD only")),
                             sg = factor(sg,
                                         levels = c("main", "age", "sex", "sens"),
-                                        labels = c("None", "Age", "Sex", "sens")),
+                                        labels = c("None (full set)", "Age", "Sex", "None (one trial excluded)")),
                             covariate = factor(covariate,
                                                levels = c("age30", "male"),
                                                labels = c("Age per 30 years",
@@ -148,7 +141,7 @@ intermaceplotappen <- ggplot(beta_age_sex %>%
   geom_linerange(position = position_dodge(0.5)) +
   facet_grid(~ covariate) + 
   scale_x_discrete(limits = rev) +
-  scale_color_discrete("Subgroup data") +
+  scale_color_discrete("Subgroup data/ Sensitivity analysis") +
   coord_flip(ylim = c(-1, 1)) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
   theme_bw() +
@@ -187,19 +180,7 @@ main_hba1c <- main_hba1c %>%
   mutate(params = str_sub(params, 3, -2)) %>% 
   separate_wider_delim(params, names = c("drug", "dose"), delim = "_d",too_few = "align_start" ) %>% 
   mutate(cls = str_sub(drug, 1, 5))
-who_atc <- readxl::read_excel("../2018 ATC index with DDDs.xlsx")
-who_lkp_rev1 <- who_atc$`ATC level name`
-names(who_lkp_rev1) <- who_atc$`ATC code`
-who_lkp <- readRDS("Scratch_data/who_atc_lkp.Rds")
-who_lkp_rev2 <- names(who_lkp)
-names(who_lkp_rev2) <- who_lkp
-rm(who_atc, who_lkp)
-who_lkp_rev <- c(who_lkp_rev1, who_lkp_rev2)
-who_lkp_rev <- who_lkp_rev[!duplicated(names(who_lkp_rev))]
-who_lkp_rev <- who_lkp_rev[!str_detect(who_lkp_rev, "\\|")]
-who_lkp_rev <- who_lkp_rev[!duplicated(who_lkp_rev)]
-setdiff(main_hba1c$drug, names(who_lkp_rev))
-rm(who_lkp_rev1, who_lkp_rev2)
+
 main_hba1c <- main_hba1c %>% 
   mutate(atc = drug,
          drug = who_lkp_rev[drug])
@@ -244,13 +225,9 @@ main_mace <- main_mace %>%
   mutate(params = str_sub(params, 3, -2)) %>% 
   separate_wider_delim(params, names = c("drug", "dose"), delim = "_", too_few = "align_start", too_many = "merge") %>% 
   mutate(cls = str_sub(drug, 1, 5))
-who_lkp_rev <- c(who_lkp_rev,
-                 c("A10BJ01" = "ITCA",
-                   "A10BH" = "omarigliptin"))
-who_lkp_rev2 <- names(who_lkp_rev)
-names(who_lkp_rev2) <- who_lkp_rev
+
 main_mace <- main_mace %>% 
-  mutate(atc = who_lkp_rev2[drug])
+  mutate(atc = who_lkp_mace[drug])
 main_mace <- main_mace %>% 
   separate_wider_delim(atc, names = c("atc2", "todrop"), delim = "_", too_many = "merge", too_few = "align_start") %>% 
   mutate(lbl= if_else(!is.na(dose),
@@ -276,9 +253,9 @@ mainmacecplot <- ggplot(main_mace,
   scale_y_continuous("Hazard ratio", 
                      breaks = seq(-0.5, 0.5, 0.25), 
                      labels = round(exp(seq(-0.5, 0.5, 0.25)),2)) +
-  coord_flip(ylim = c(-1, 1)) +
+  coord_flip(ylim = c(-0.61, 0.61)) +
   facet_wrap(~cls_lbl, scales = "free_y", ncol = 1)
-mainmacecplot
+
 pdf("Outputs/hba1c_mace.pdf", height = 10, width = 20)
 mainhba1cplot + ggtitle("HbA1c main effects meta-analysis for paper")
 interhba1cplot  + ggtitle("HbA1c interactions meta-analysis for paper")

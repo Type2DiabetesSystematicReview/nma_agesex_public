@@ -49,16 +49,16 @@ pseudo_hba1c <- pseudo_hba1c %>%
 ipd <- bind_rows(hba1c = pseudo_hba1c %>% select(nct_id, sex, age, arm_lvl, trtcls5),
                  mace = pseudo_mace %>% select(nct_id, sex, age, arm_lvl, trtcls5),
                  .id = "outcome")
-ipd <- ipd %>% 
-  group_by(nct_id) %>% 
-  mutate(trtcls5_trial = 
-           case_when(
-             any(trtcls5 == "A10BK") ~ "A10BK",
-             any(trtcls5 == "A10BJ") ~ "A10BJ",
-             any(trtcls5 == "A10BH") ~ "A10BH",
-             TRUE ~ "Other"
-               )) %>% 
-  ungroup()
+# ipd <- ipd %>% 
+#   group_by(nct_id) %>% 
+#   mutate(trtcls5_trial = 
+#            case_when(
+#              any(trtcls5 == "A10BK") ~ "A10BK",
+#              any(trtcls5 == "A10BJ") ~ "A10BJ",
+#              any(trtcls5 == "A10BH") ~ "A10BH",
+#              TRUE ~ "Other"
+#                )) %>% 
+#   ungroup()
 rm(tot)
 
 ### Pull in aggregate age Hba1c and MACE data
@@ -108,7 +108,8 @@ bth <- bth %>%
 
 bth <- bth %>% 
   left_join(elig) %>% 
-  mutate(max_age = if_else(is.na(as.integer(max_age)), 150L, as.integer(max_age)),
+  mutate(max_imp = if_else(is.na(max_age), "imp", "known"),
+         max_age = if_else(is.na(as.integer(max_age)), 150L, as.integer(max_age)),
          min_age = if_else(is.na(as.integer(min_age)), 10L, as.integer(min_age)))
 
 ## Obtain mu and dispersion parameter ----
@@ -162,7 +163,7 @@ names(bth)
 ages <- bind_rows(agg = bth %>% 
                           select(outcome, nct_id, 
                                  age = sim, 
-                                 trtcls5_trial, for_ipd_chk),
+                                 trtcls5_trial, for_ipd_chk, max_imp),
                   ipd = ipd %>% 
                           select(outcome, nct_id, age,
                                  trtcls5_trial) %>% 
@@ -192,11 +193,6 @@ theme_minimal2 <- function (base_size = 11, base_family = "", base_line_size = b
 }
 
 ## Plot age distribution for ipd
-agg_trials <- ages %>% 
-  filter(data_lvl == "agg", outcome == "hba1c") %>%
-  pull(nct_id) %>% 
-  unique()
-agg_trials_smpl <- sample(agg_trials %>% unique(), size = 0.3*length(agg_trials))
 ages <- ages %>% 
   mutate(category = 
            case_when(data_lvl == "agg" & outcome == "mace" ~ "MACE, aggregate",
@@ -207,13 +203,19 @@ who <- who %>%
   filter(`ATC code` %in% ages$trtcls5_trial)
 who_vct <- who$`ATC level name`
 names(who_vct) <- who$`ATC code`
-
 ages <- ages %>% 
   mutate(trl_lbl = who_vct[trtcls5_trial])
+agg_trials <- ages %>% 
+  filter(data_lvl == "agg", outcome == "hba1c", max_imp == "known") %>%
+  distinct(trl_lbl, nct_id) %>% 
+  group_by(trl_lbl) %>% 
+  sample_frac(0.3) %>% 
+  ungroup() %>% 
+  pull(nct_id)
 
 age_plot <- ggplot(ages %>% 
                      filter(!trtcls5_trial == "Other",
-                            nct_id %in% agg_trials_smpl |
+                            nct_id %in% agg_trials |
                               data_lvl == "ipd" |
                               outcome == "mace"),
                        aes(x = interaction(nct_id, category), y = age, 
@@ -225,7 +227,7 @@ age_plot <- ggplot(ages %>%
   facet_wrap(~trl_lbl, ncol = 1, scales = "free_x") +
   scale_color_discrete("")  + 
   ggtitle("Age distribution by trial") +
-  geom_hline(yintercept = 80, linetype = "dashed", colour = "grey")
+  geom_hline(yintercept = c(40, 80), linetype = "dashed", colour = "grey")
 age_plot
 
 ipd_chk <- bind_rows(ipd_chk %>% 
@@ -253,3 +255,8 @@ pdf("Outputs/age_plots.pdf", height = 10, width = 20)
 age_plot
 chk_sim
 dev.off()
+
+## Summarise ages by trial class and ipd or agg
+ages_smry <- ages %>% 
+  group_by(trl_lbl, )
+
