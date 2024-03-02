@@ -5,17 +5,14 @@ source("Scripts/04b_arm_label_reverse.R")
 source("../common_functions/Scripts/misc.R")
 
 ## arrange into same format as summaries
-ages <- read_csv("Outputs/age_summary.csv")
-ages <- ages %>% 
-  filter(outcome == "hba1c") %>% 
-  select(-outcome)
+ages <- read_csv("Outputs/age_summary_hba1c.csv")
 trials <- ages %>% 
   select(trl_lbl, data_lvl, res = trials) %>% 
   mutate(measure = "count",
          var = "trials")
 ages <- ages %>% 
   select(-trials) %>% 
-  gather("measure", "res", -trl_lbl, -data_lvl) %>% 
+  gather("measure", "res", -trl_lbl, -data_lvl, -cls) %>% 
   mutate(var = "age")
 
 ## Hba1c tables
@@ -93,11 +90,12 @@ tbl_lng <- bind_rows(trials,
                      n_arms,
                      comparisons,
                      male,
-                     ages %>% filter(!measure == "n"),
+                     ages ,
                      .id = "orig_tbl") %>% 
   select(var, trl_lbl, data_lvl, lvls, measure, res, res_chr)
 
 tbl_wide <- tbl_lng %>% 
+  filter(!measure == "n") %>% 
   mutate(res_chr = case_when(
     measure == "description_n" ~ res_chr,
     measure %in% "count" ~ round(res) %>% formatC(digits = 0, format = "f"),
@@ -115,5 +113,5 @@ tbl_wide_char <- bind_rows(tbl_lbl1,
                       tbl_lbl2,
                       tbl_wide)
 
-write_csv(tbl_wide, "Outputs/manuscript_table1a.csv", na = "", col_names = FALSE)
+write_csv(tbl_wide_char, "Outputs/manuscript_table1a.csv", na = "", col_names = FALSE)
 

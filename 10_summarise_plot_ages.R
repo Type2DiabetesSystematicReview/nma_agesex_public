@@ -8,7 +8,8 @@ tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 mace_agg <- readRDS("Scratch_data/mace_arms_agg_data.Rds")$mace_agg
 elig <- read_csv("../cleaned_data/Data/age_max_min_elig.csv")
 source("../common_functions/Scripts/combine_sd.R")
-agg <- tot %>% 
+
+hba1c_agg <- tot %>% 
   select(drug_regime_smpl, agg) %>% 
   unnest(agg)
 pseudo_hba1c <- tot %>% 
@@ -23,8 +24,8 @@ pseudo_mace <- pseudo_mace %>%
 maceinhba1c_ipd <- intersect(pseudo_mace$nct_id, pseudo_hba1c$nct_id)
 pseudo_hba1c <- pseudo_hba1c %>% 
   anti_join(pseudo_mace %>% select(nct_id))
-ipd <- bind_rows(hba1c = pseudo_hba1c %>% select(nct_id, sex, age, arm_lvl, trtcls5),
-                 mace = pseudo_mace %>% select(nct_id, sex, age, arm_lvl, trtcls5),
+ipd_ecdf <- bind_rows(hba1c = pseudo_hba1c %>% select(nct_id, sex, age, arm_lvl, trtcls5, arm_lvl),
+                 mace = pseudo_mace %>% select(nct_id, sex, age, arm_lvl, trtcls5, arm_lvl),
                  .id = "outcome")
 rm(tot)
 
@@ -33,49 +34,28 @@ mace_agg <- mace_agg %>%
   select(nct_id, age_m, age_sd = age_s, n = participants,
          trtcls5,
          arm_lvl = arm_lvl)
-maceinhba1c_agg <- intersect(mace_agg$nct_id, agg$nct_id)
+maceinhba1c_agg <- intersect(mace_agg$nct_id, hba1c_agg$nct_id)
 maceinhba1c <- union(maceinhba1c_agg, maceinhba1c_ipd)
-agg <- agg %>% 
+hba1c_agg <- hba1c_agg %>% 
   anti_join(mace_agg %>% select(nct_id))
-bth <- bind_rows(hba1c = agg[,names(mace_agg)],
+bth <- bind_rows(hba1c = hba1c_agg[,names(mace_agg)],
                  mace = mace_agg,
                  .id = "outcome") 
-bth <- bth %>% 
-  filter(!nct_id %in% ipd$nct_id)
-ipd_cls <- ipd %>% 
-  select(nct_id, trtcls5) %>% 
-  distinct()
-ipd <- ipd %>% 
-  select(-trtcls5)
-ipd_agg <- ipd %>% 
-  group_by(nct_id, outcome, arm_lvl) %>% 
+ipd_agg <- ipd_ecdf %>% 
+  group_by(nct_id, outcome, arm_lvl, trtcls5) %>% 
   summarise(age_m = mean(age),
             age_sd = sd(age),
             n = length(age)) %>% 
   ungroup()
-bth_cls <- bth %>% 
-  distinct(nct_id, trtcls5)
-bth <- bth %>% 
-  select(-trtcls5)
-bth <- bind_rows(yes = ipd_agg, 
-                no = bth, .id = "for_ipd_chk")
-ipd_agg$age_rnorm <- pmap(list(ipd_agg$n, ipd_agg$age_m, ipd_agg$age_sd), function(n, m, s) rnorm(n, m, s))
-ipd_agg <- ipd_agg %>% 
-  unnest(age_rnorm)
+bth <- bind_rows(ipd = ipd_agg, 
+                 agg = bth, 
+                 .id = "orig_data_lvl")
 elig <- elig %>% 
   semi_join(bth)
 ## 56 trials without age eligibility data. All are non NCT
 bth %>% 
   anti_join(elig) %>% 
   distinct(nct_id)
-bth <- bth %>% 
-  group_by(for_ipd_chk, outcome, nct_id) %>% 
-  summarise(age_sd2 = CombSdVectorised(n = n, m = age_m, s = age_sd),
-            age_m2 = weighted.mean(age_m, n),
-            n = sum(n)) %>% 
-  ungroup() %>% 
-  rename(age_m = age_m2, age_sd = age_sd2)
-
 bth <- bth %>% 
   left_join(elig) %>% 
   mutate(max_imp = if_else(is.na(max_age), "imp", "known"),
@@ -87,50 +67,110 @@ bth <- bth %>%
 # https://www.r-bloggers.com/truncated-normal-distribution/
 
 ## Find mu and s from truncated normal distributions
+# siml_estimates <- by(bth, bth$nct_id, EstimateMuDispAge)
+SafeMuSigmaCalc <- safely(MuSigmaCalc)
+bth$res <- pmap( list(bth$min_age, bth$max_age, bth$age_m, bth$age_sd),
+                          function(min_age, max_age, age_m, age_sd) {
+                            ## If no age limits return mean and SD
+                          if(max_age >= 100 & min_age <= 20) {
+                            b <- tibble(mu = age_m, 
+                                        sigma = age_sd, 
+                                        convergence = 999, 
+                                        value = 0,
+                                        method = "ignore_limits")
+                            return(b)  
+                          } 
+                            ## If age limits first try L-BFGS note this sometimes fails so need to run safely 
+                            a <- SafeMuSigmaCalc(min_age, max_age, age_m, age_sd, mymethod = "L-BFGS-B")
+                          if(is.null(a$error)) {
+                            ## double if statement here as this object is only present if it runs
+                            if(a$result$convergence[[1]] == 0) {
+                            a <- a$result
+                            b <- tibble(mu = a$par[1],
+                                        sigma = a$par[2],
+                                        convergence = a$convergence[[1]],
+                                        value = a$value[[1]],
+                                        method = "L-BFGS-B")
+                            return(b) 
+                          } ## end condition only if converges
+                          } ## end condition only if not null
+                            ## If L-BFGS-B fails or does not converge run Nelder-Mead Nelder-Mead
+                          a <- SafeMuSigmaCalc(min_age, max_age, age_m, age_sd, mymethod = "CG")
+                          if(is.null(a$error)) {
+                            a <- a$result
+                            b <- tibble(mu = a$par[1],
+                                        sigma = a$par[2],
+                                        convergence = a$convergence[[1]],
+                                        value = a$value[[1]],
+                                        method = "CG")
+                            return(b) 
+                          } 
+                         })
 bth <- bth %>% 
-  mutate(bythis = paste0(for_ipd_chk, "__", nct_id))
-siml_estimates <- by(bth, bth$bythis, EstimateMuDispAge)
-
-## Extract and convert to list
-siml_estimates <- map(siml_estimates, identity)
-siml_estimates <- map(siml_estimates, ~ .x %>% mutate(pick = seq_along(trial_mean)))
-siml_estimates <- bind_rows(siml_estimates, .id = "bythis")
-siml_estimates <- siml_estimates %>% 
-  filter(pick ==1)
-siml_estimates <- siml_estimates %>% 
-  separate(bythis, into = c("for_ipd_chk", "nct_id"), sep = "__")
-bth <- bth %>% 
-  inner_join(siml_estimates %>% 
-               select(for_ipd_chk, nct_id, mu_x, sd_x))
+  unnest(res)
 ## Sample from truncated normal distributions
 bth$sim <- pmap(list(bth$n,
                      bth$min_age,
                      bth$max_age,
-                     bth$mu_x,
-                     bth$sd_x),
-                function(n, a, b, m, s) {
+                     bth$mu,
+                     bth$sigma),
+                function(n, a, b, mu, sigma) {
                   x <- truncnorm::rtruncnorm(n = n,
-                                        a = a, b = b, mean = m, sd = s)
+                                        a = a, b = b, mean = mu, sd = sigma)
                   x
                   })
 bth <- bth %>% 
   unnest(sim)
-names(ipd)
-names(bth)
- 
+
+## For plotting ages, select ecdf from ipd (npte fpr MACE IPD is actually normal distribution, but checked this with plots inside vivli)
 ages <- bind_rows(agg = bth %>% 
-                          select(outcome, nct_id, 
+                    filter(orig_data_lvl == "agg") %>% 
+                          select(outcome,
+                                 nct_id, 
                                  age = sim, 
-                                 for_ipd_chk, max_imp),
-                  ipd = ipd %>% 
-                          select(outcome, nct_id, age) %>% 
-                    mutate(for_ipd_chk = "both"),
+                                 max_imp,
+                                 arm_lvl,
+                                 trtcls5),
+                  ipd = ipd_ecdf %>% 
+                    select(outcome,
+                           nct_id, 
+                           age = age, 
+                           # max_imp,
+                           arm_lvl,
+                           trtcls5),
                   .id = "data_lvl")
-rm(ipd, bth, elig, mace_agg, mace_arms, pseudo_hba1c, pseudo_mace, agg, siml_estimates)
-ipd_chk <- ages %>% 
-  filter(for_ipd_chk %in% c("both", "yes"))
-ages <- ages %>% 
-  filter(for_ipd_chk %in% c("both", "no"))
+
+## Using IPD compare normal, truncnormal and ECDF
+## sample from normal distribution (wihtout truncation) for later comparison
+ipd_agg$age_rnorm <- pmap(list(ipd_agg$n, ipd_agg$age_m, ipd_agg$age_sd), function(n, m, s) rnorm(n, m, s))
+ipd_agg <- ipd_agg %>% 
+  unnest(age_rnorm)
+
+ipd_chk <- bind_rows(truncnorm = bth %>% 
+                       filter(orig_data_lvl == "ipd") %>% 
+                       select(outcome,
+                              nct_id, 
+                              age = sim, 
+                              max_imp,
+                              arm_lvl,
+                              trtcls5),
+                     ecdf = ipd_ecdf %>% 
+                       select(outcome,
+                              nct_id, 
+                              age = age, 
+                              # max_imp,
+                              arm_lvl,
+                              trtcls5),
+                     normal = ipd_agg %>% 
+                       select(outcome,
+                              nct_id, 
+                              age = age_rnorm, 
+                              # max_imp,
+                              arm_lvl,
+                              trtcls5),
+                     .id = "age_method")
+rm(bth, elig, hba1c_agg, ipd_agg, ipd_ecdf, mace_agg, mace_arms, pseudo_hba1c,
+   pseudo_mace)
 
 ## plot age distributions where have mean, sd and (for Hba1c trials) truncations ----
 theme_minimal2 <- function (base_size = 11, base_family = "", base_line_size = base_size/22, 
@@ -149,39 +189,42 @@ theme_minimal2 <- function (base_size = 11, base_family = "", base_line_size = b
           complete = TRUE)
 }
 
-## Plot age distribution for ipd
+## Replicate trials to allow for fact that some trials are in multiple classes
 ages <- ages %>% 
   mutate(category = 
            case_when(data_lvl == "agg" & outcome == "mace" ~ "MACE, aggregate",
                      data_lvl == "agg" & outcome == "hba1c" ~ "HbA1c, aggregate (random sample)",
                      data_lvl == "ipd" & outcome == "mace" ~ "MACE, IPD",
                      data_lvl == "ipd" & outcome == "hba1c" ~ "HbA1c, IPD"))
-
-cls <- bind_rows(ipd_cls,
-                 bth_cls) %>% 
-  distinct(nct_id, trtcls5) %>% 
-  filter(trtcls5 %in% c("A10BH", "A10BJ", "A10BK"))
-ages2 <- ages %>% 
-  left_join(cls, relationship =
-              "many-to-many")
+novel <- c("A10BK", "A10BH", "A10BJ")
+ages_cls <- map(novel, ~ {
+  ages %>% 
+    group_by(nct_id) %>% 
+    mutate(cls = if_else(any(trtcls5 == .x),
+                         .x,
+                         ""))  %>% 
+    ungroup()
+}) 
+ages_cls <- bind_rows(ages_cls) %>% 
+  filter(!cls == "")
 who <- who %>% 
-  filter(`ATC code` %in% ages2$trtcls5)
+  filter(`ATC code` %in% ages_cls$cls)
 who_vct <- who$`ATC level name`
 names(who_vct) <- who$`ATC code`
-ages2 <- ages2 %>% 
-  mutate(trl_lbl = who_vct[trtcls5])
-agg_trials <- ages2 %>% 
+ages_cls <- ages_cls %>% 
+  mutate(trl_lbl = who_vct[cls])
+## Take random sample of aggregte level trials for plot
+agg_trials <- ages_cls %>% 
   filter(data_lvl == "agg", outcome == "hba1c", max_imp == "known") %>%
   distinct(trl_lbl, trtcls5, nct_id) %>% 
   group_by(trl_lbl, trtcls5) %>% 
   sample_frac(0.3) %>% 
   ungroup() %>% 
   pull(nct_id)
-
-age_plot <- ggplot(ages2 %>% 
-                     filter(nct_id %in% agg_trials |
-                              data_lvl == "ipd" |
-                              outcome == "mace"),
+age_plot <- ggplot(ages_cls %>% 
+                      filter(nct_id %in% agg_trials |
+                               data_lvl == "ipd" |
+                               outcome == "mace"),
                        aes(x = interaction(nct_id, category), y = age, 
                            colour = category)) +
   geom_violin(draw_quantiles = c(0.025,0.975), scale = "width") +
@@ -195,18 +238,13 @@ age_plot <- ggplot(ages2 %>%
   geom_hline(yintercept = c(40, 80), linetype = "dashed", colour = "grey")
 age_plot
 
-ipd_chk <- bind_rows(ipd_chk %>% 
-                        select(data_lvl, outcome, nct_id, age),
-                      ipd_agg %>% mutate(data_lvl = "normal") %>% 
-                        select(data_lvl, outcome, nct_id, age = age_rnorm)) 
-
 ## Drop trial with categorical age
 # NCT02065791
 ipd_chk <- ipd_chk %>% 
   mutate(distrb = case_when(
-    data_lvl == "normal" ~ "normal",
-    data_lvl == "agg" ~ "truncated normal",
-    data_lvl == "ipd" ~ "empirical"),
+    age_method == "normal" ~ "normal",
+    age_method == "truncnorm" ~ "truncated normal",
+    age_method == "ecdf" ~ "empirical"),
     distrb = factor(distrb,
                     levels = c("normal", "truncated normal", "empirical")))
 chk_sim <- ggplot(ipd_chk %>% 
@@ -222,16 +260,21 @@ chk_sim
 dev.off()
 
 ## Summarise ages by trial class and ipd or agg
-ages3 <- ages2 %>% 
-  filter(nct_id %in% maceinhba1c) %>% 
-  mutate(outcome = "hba1c",
-         trl_lbl = str_replace(trl_lbl, "MACE", "HbA1c"))
-ages3 <- ages2 %>% 
-  bind_rows(ages3)
-## Check on coding as quite complex against CTG website 
+ages_cls2 <- bind_rows(ages_cls,
+                       ages %>% mutate(cls = "Any",
+                                       trl_lbl = "Total trials")) 
+ages_cls2 <- ages_cls2 %>% 
+  mutate(outcome = if_else(nct_id %in% maceinhba1c,
+                           "hba1c",
+                           outcome),
+         trl_lbl = if_else(nct_id %in% maceinhba1c,
+                           str_replace(trl_lbl, "MACE", "HbA1c"),
+                           trl_lbl))%>% 
+  filter(outcome == "hba1c")
+
+## Generate age summaries
 ## n's all match, m and sd all match
-ages_smry_chk <- ages2 %>% 
-  bind_rows(ages3) %>% 
+ages_smry_chk <- ages_cls2 %>% 
   group_by(nct_id) %>% 
   summarise(n = length(nct_id),
             m = mean(age),
@@ -241,8 +284,8 @@ ages_smry_chk <- ages2 %>%
   ungroup() %>%
   filter(str_detect(nct_id, "^N")) %>% sample_n(3)
 
-ages_smry <- ages3 %>% 
-  group_by(outcome, trl_lbl, data_lvl) %>% 
+ages_smry <- ages_cls2 %>% 
+  group_by(cls, trl_lbl, data_lvl) %>% 
   summarise(trials = sum(!duplicated(nct_id)),
             n = length(nct_id),
             m = mean(age),
@@ -250,14 +293,30 @@ ages_smry <- ages3 %>%
             q05 = quantile(age, probs = 0.05),
             q95 = quantile(age, probs = 0.95)) %>% 
   ungroup()
-ages3_trl_grp <- ages3 %>% 
-  distinct(nct_id, trl_lbl) %>% 
-  distinct(nct_id, .keep_all = TRUE)
-ages4 <- ages3 %>% 
-  semi_join(ages3_trl_grp) %>% 
-  select(-trl_lbl)
-ages_smry_tot <- ages4 %>% 
-  group_by(outcome, data_lvl) %>% 
+write_csv(ages_smry, "Outputs/age_summary_hba1c.csv")
+## note that MACE novel antidiabetic trials are all against non novel antidiabetic comparators
+## spo easier to code (all mutually exclusive)
+mace <- ages %>% 
+  filter(outcome == "mace")
+mace <- mace %>% 
+  group_by(nct_id) %>% 
+  mutate(trtcls5 = case_when(
+    any(trtcls5 %in% novel[1]) ~ novel[1],
+    any(trtcls5 %in% novel[2]) ~ novel[2],
+    any(trtcls5 %in% novel[3]) ~ novel[3],
+  )) %>% 
+  ungroup()
+mace_smry1 <- mace %>% 
+  group_by(trtcls5, data_lvl) %>% 
+  summarise(trials = sum(!duplicated(nct_id)),
+            n = length(nct_id),
+            m = mean(age),
+            s = sd(age),
+            q05 = quantile(age, probs = 0.05),
+            q95 = quantile(age, probs = 0.95)) %>% 
+  ungroup()
+mace_smry2 <- mace %>% 
+  group_by(data_lvl) %>% 
   summarise(trials = sum(!duplicated(nct_id)),
             n = length(nct_id),
             m = mean(age),
@@ -265,8 +324,10 @@ ages_smry_tot <- ages4 %>%
             q05 = quantile(age, probs = 0.05),
             q95 = quantile(age, probs = 0.95)) %>% 
   ungroup() %>% 
-  mutate(trl_lbl = "Total trials")
-ages_smry_final <- bind_rows(ages_smry,
-                       ages_smry_tot) %>% 
-  arrange(outcome, trl_lbl, data_lvl)
-write_csv(ages_smry_final, "Outputs/age_summary.csv")
+  mutate(trtcls5 = "Any")
+mace_smry <- bind_rows(mace_smry1,
+                       mace_smry2) %>% 
+  rename(cls = trtcls5) %>% 
+  left_join(ages_smry %>% distinct(cls, trl_lbl))
+mace_smry <- mace_smry[, names(ages_smry)]
+write_csv(mace_smry, "Outputs/age_summary_mace.csv")
