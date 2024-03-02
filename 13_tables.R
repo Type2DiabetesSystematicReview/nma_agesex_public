@@ -78,7 +78,7 @@ male <- hba1c_cls  %>%
   ungroup() %>% 
   gather("cmplx", "res", male, participants, male_prcnt) %>% 
   mutate(measure = if_else(cmplx %in% c("male", "participants"), "count", "percent"),
-         var = if_else(cmplx %in% c("male", "male_prcnt"), "male", "participants")) %>% 
+         var = if_else(cmplx %in% c("male", "male_prcnt"), "male", "participants")) %>%
   select(-cmplx)
 n_arms <- hba1c_cls %>% 
   mutate(n_arms = if_else(n_arms %in% 2:3, as.character(n_arms), "4 or 5")) %>% 
@@ -105,7 +105,15 @@ tbl_wide <- tbl_lng %>%
   )) %>% 
   select(-res) %>% 
   pivot_wider(names_from = c(trl_lbl, data_lvl), values_from = res_chr) %>% 
-  arrange(match(var, c("trials", "participants", "arms","comparisons",
-                       "male", "male_prcnt", "age")))
-write_csv(tbl_wide, "Outputs/manuscript_table1a.csv", na = "")
+  arrange(match(var, c("trials",  "arms","comparisons",
+                       "participants","male", "age")))
+tbl_lbl1 <- tbl_wide %>% slice(1)
+tbl_lbl1[] <- map(names(tbl_wide), ~ str_remove(.x, "_ipd|_agg") )
+tbl_lbl2 <- tbl_wide %>%slice(1)
+tbl_lbl2[] <- map(names(tbl_wide), ~ str_extract(.x, "ipd|agg") )
+tbl_wide_char <- bind_rows(tbl_lbl1,
+                      tbl_lbl2,
+                      tbl_wide)
+
+write_csv(tbl_wide, "Outputs/manuscript_table1a.csv", na = "", col_names = FALSE)
 
