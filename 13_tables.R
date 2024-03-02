@@ -31,9 +31,7 @@ cmpr_arms <- agg %>%
   summarise(cmpr_arms = length(nct_id)) %>% 
   ungroup() %>% 
   count(cls_slct,
-        cmpr_arms) %>% 
-  spread(cls_slct, n, fill = 0L)
-
+        cmpr_arms)
 ## organise comparison arms
 agg %>% 
   count(trtcls5)
