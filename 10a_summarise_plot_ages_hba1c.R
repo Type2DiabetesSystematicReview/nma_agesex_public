@@ -89,6 +89,7 @@ bth$res <- pmap( list(bth$min_age, bth$max_age, bth$age_m, bth$age_sd),
                          })
 bth <- bth %>% 
   unnest(res)
+if(any(!bth$convergence %in% c(0, 999))) warning ("Optim did not converge for at least one row")
 ## Sample from truncated normal distributions
 bth$sim <- pmap(list(bth$n,
                      bth$min_age,
@@ -207,23 +208,6 @@ saveRDS(ages_cls %>%
                    outcome == "mace"),
         "Scratch_data/for_age_violin_hba1c_add_mace.Rds")
 
-age_plot <- ggplot(ages_cls %>% 
-                      filter(nct_id %in% agg_trials |
-                               data_lvl == "ipd" |
-                               outcome == "mace"),
-                       aes(x = interaction(nct_id, category), y = age, 
-                           colour = category)) +
-  geom_violin(draw_quantiles = c(0.025,0.975), scale = "width") +
-  scale_x_discrete("Trials") +
-  scale_y_continuous("Age (years) density plots with 2.5th and 97.5th centiles", 
-                     breaks = seq(20, 100, 20)) +
-  theme_minimal2() +
-  facet_wrap(~trl_lbl, ncol = 1, scales = "free_x") +
-  scale_color_discrete("")  + 
-  ggtitle("Age distribution by trial") +
-  geom_hline(yintercept = c(40, 80), linetype = "dashed", colour = "grey")
-age_plot
-
 ## Drop trial with categorical age
 # NCT02065791
 ipd_chk <- ipd_chk %>% 
@@ -240,8 +224,7 @@ chk_sim <- ggplot(ipd_chk %>%
   scale_x_discrete(guide = "none") +
   ggtitle("For IPD compare normal, truncated normal and empirical distributions")
 chk_sim
-pdf("Outputs/age_plots.pdf", height = 10, width = 20)
-age_plot
+pdf("Outputs/age_plots_check_simulation.pdf", height = 10, width = 20)
 chk_sim
 dev.off()
 
