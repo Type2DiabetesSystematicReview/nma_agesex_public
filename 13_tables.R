@@ -3,57 +3,106 @@ library(tidyverse)
 tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 source("Scripts/04b_arm_label_reverse.R")
 source("../common_functions/Scripts/misc.R")
+
+## arrange into same format as summaries
+ages <- read_csv("Outputs/age_summary.csv")
+ages <- ages %>% 
+  filter(outcome == "hba1c") %>% 
+  select(-outcome)
+trials <- ages %>% 
+  select(trl_lbl, data_lvl, res = trials) %>% 
+  mutate(measure = "count",
+         var = "trials")
+ages <- ages %>% 
+  select(-trials) %>% 
+  gather("measure", "res", -trl_lbl, -data_lvl) %>% 
+  mutate(var = "age")
+
 ## Hba1c tables
 agg <- tot %>% 
   select(drug_regime_smpl, agg) %>% 
-  unnest(agg)
-
-## Count trials with each novel class (no double counting for simplicity and consistency of reporting)
-agg <- agg %>% 
-  group_by(nct_id) %>% 
-  mutate(cls_slct = case_when(
-    any(trtcls5 == "A10BK") ~ "A10BK",
-    any(trtcls5 == "A10BH") ~ "A10BH",
-    any(trtcls5 == "A10BJ") ~ "A10BJ",
-  )) %>% 
+  unnest(agg) %>% 
+  select(drug_regime_smpl, nct_id, arm_lvl, trtcls5, participants = n, n_arms, male)
+ipd <- tot %>% 
+  select(drug_regime_smpl, ipd) %>% 
+  unnest(ipd) %>% 
+  select(drug_regime_smpl, nct_id, arm_lvl, trtcls5, sex) %>% 
+  group_by(drug_regime_smpl, nct_id, trtcls5, arm_lvl) %>% 
+  summarise(participants = length(sex),
+            male = sum(sex)) %>% 
+  group_by(drug_regime_smpl, nct_id) %>% 
+  mutate(n_arms = sum(!duplicated(arm_lvl))) %>% 
   ungroup()
-## drop treatment arm (other than in cls slct)
-agg <- agg %>% 
-  filter(!trtcls5 == cls_slct)
-## count trials per arm
-trials <- agg %>% 
-  distinct(cls_slct, nct_id) %>% 
-  count(cls_slct) 
+hba1c <- bind_rows(agg = agg,
+                   ipd = ipd, .id = "data_lvl")
+rm(agg, ipd)
 
-## Count number of comparison arms
-cmpr_arms <- agg %>% 
-  group_by(cls_slct, nct_id) %>% 
-  summarise(cmpr_arms = length(nct_id)) %>% 
-  ungroup() %>% 
-  count(cls_slct,
-        cmpr_arms)
-## organise comparison arms
-agg %>% 
-  count(trtcls5)
-comparisons <- agg %>% 
-  group_by(cls_slct, trtcls5) %>% 
-  summarise(n = sum(!duplicated(nct_id))) %>% 
-  ungroup() %>% 
+## Separate each into classes
+hba1c_cls <- map(c("A10BK", "A10BH", "A10BJ"), ~ {
+              hba1c %>% 
+                 group_by(nct_id) %>% 
+                 mutate(cls = if_else(any(trtcls5 == .x),
+                                      .x,
+                                      ""))  %>% 
+    ungroup()
+              }) 
+hba1c_cls <- bind_rows(hba1c_cls) %>% 
+  filter(!cls == "")
+hba1c_cls <- bind_rows(hba1c_cls, 
+                       hba1c %>% 
+                         mutate(cls = "Any"))
+
+## Add labels for treatment and comparison arms
+hba1c_cls <- hba1c_cls %>% 
+  left_join(who_atc %>% select(cls = `ATC code`, trl_lbl = `ATC level name`)) %>% 
+  mutate(trl_lbl = if_else(is.na(trl_lbl), "Total trials", trl_lbl)) %>% 
   left_join(who_atc %>% select(trtcls5 = `ATC code`, nm = `ATC level name`)) %>% 
-  arrange(cls_slct, desc(n)) %>% 
-  mutate(nm = if_else(trtcls5 == "place", "Placebo", nm)) %>% 
-  mutate(res = paste0(nm, " (", n, ")")) %>% 
-  select(cls_slct, res) %>% 
-  group_by(cls_slct) %>% 
-  summarise(res = PasteAnd(res)) %>% 
-  mutate(Comparisons = "") %>% 
-  spread(cls_slct, res)
+  mutate(nm = if_else(trtcls5 == "place", "Placebo", nm)) 
+comparisons <- hba1c_cls %>%
+  count(trl_lbl, data_lvl, nm) %>% 
+  mutate(res = paste0(nm, " (", n, ")")) %>%
+  arrange(trl_lbl, desc(n)) %>% 
+  group_by(trl_lbl, data_lvl) %>%
+  summarise(res_chr = PasteAnd(res)) %>% 
+  ungroup() %>% 
+  mutate(var = "comparisons",
+         measure = "description_n")
+male <- hba1c_cls  %>% 
+  group_by(trl_lbl, data_lvl) %>% 
+  summarise(male = round(sum(male)),
+            participants = sum(participants),
+            male_prcnt = round(100*male/participants, 1)) %>% 
+  ungroup() %>% 
+  gather("cmplx", "res", male, participants, male_prcnt) %>% 
+  mutate(measure = if_else(cmplx %in% c("male", "participants"), "count", "percent"),
+         var = if_else(cmplx %in% c("male", "male_prcnt"), "male", "participants")) %>% 
+  select(-cmplx)
+n_arms <- hba1c_cls %>% 
+  mutate(n_arms = if_else(n_arms %in% 2:3, as.character(n_arms), "4 or 5")) %>% 
+  group_by(trl_lbl, data_lvl, n_arms) %>% 
+  summarise(res = sum(!duplicated(nct_id))) %>% 
+  ungroup() %>% 
+  rename(lvls =n_arms) %>% 
+  mutate(measure = "count",
+         var = "arms")
 
-NewBindRows <- function(x) {
-  map(x, ~ {
-      .x[1,1] <- names(.x)[1]
-      names(.x)[1] <- "col1"
-  }) %>% 
-    bind_rows()
-}
+tbl_lng <- bind_rows(trials,
+                     n_arms,
+                     comparisons,
+                     male,
+                     ages %>% filter(!measure == "n"),
+                     .id = "orig_tbl") %>% 
+  select(var, trl_lbl, data_lvl, lvls, measure, res, res_chr)
+
+tbl_wide <- tbl_lng %>% 
+  mutate(res_chr = case_when(
+    measure == "description_n" ~ res_chr,
+    measure %in% "count" ~ round(res) %>% formatC(digits = 0, format = "f"),
+    measure %in% c("m", "s", "q05", "q95", "percent") ~ round(res, 1)  %>% formatC(digits = 1, format = "f")
+  )) %>% 
+  select(-res) %>% 
+  pivot_wider(names_from = c(trl_lbl, data_lvl), values_from = res_chr) %>% 
+  arrange(match(var, c("trials", "participants", "arms","comparisons",
+                       "male", "male_prcnt", "age")))
+write_csv(tbl_wide, "Outputs/manuscript_table1a.csv")
 
