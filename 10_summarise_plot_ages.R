@@ -5,7 +5,6 @@ source("../common_functions/Scripts/truncated_normal.R")
 ## read and transform data ----
 who <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx") 
 tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
-mace_agg <- readRDS("Scratch_data/mace_arms_agg_data.Rds")$mace_agg
 elig <- read_csv("../cleaned_data/Data/age_max_min_elig.csv")
 source("../common_functions/Scripts/combine_sd.R")
 
@@ -16,30 +15,12 @@ pseudo_hba1c <- tot %>%
   select(drug_regime_smpl, ipd) %>% 
   unnest(ipd) %>% 
   mutate(sex = if_else(sex == 1L, "M", "F"))
-pseudo_mace <- readRDS("Scratch_data/ipd_age_sex_mace.Rds")
-mace_arms <- readRDS("Scratch_data/mace_arms_agg_data.Rds")$mace_arms
-pseudo_mace <- pseudo_mace %>% 
-  mutate(ipd_arm = str_to_lower(arm)) %>% 
-  inner_join(mace_arms %>% select(nct_id, ipd_arm, arm_lvl, trtcls5))
-maceinhba1c_ipd <- intersect(pseudo_mace$nct_id, pseudo_hba1c$nct_id)
-pseudo_hba1c <- pseudo_hba1c %>% 
-  anti_join(pseudo_mace %>% select(nct_id))
 ipd_ecdf <- bind_rows(hba1c = pseudo_hba1c %>% select(nct_id, sex, age, arm_lvl, trtcls5, arm_lvl),
-                 mace = pseudo_mace %>% select(nct_id, sex, age, arm_lvl, trtcls5, arm_lvl),
                  .id = "outcome")
 rm(tot)
 
 ### Pull in aggregate age Hba1c and MACE data
-mace_agg <- mace_agg %>% 
-  select(nct_id, age_m, age_sd = age_s, n = participants,
-         trtcls5,
-         arm_lvl = arm_lvl)
-maceinhba1c_agg <- intersect(mace_agg$nct_id, hba1c_agg$nct_id)
-maceinhba1c <- union(maceinhba1c_agg, maceinhba1c_ipd)
-hba1c_agg <- hba1c_agg %>% 
-  anti_join(mace_agg %>% select(nct_id))
-bth <- bind_rows(hba1c = hba1c_agg[,names(mace_agg)],
-                 mace = mace_agg,
+bth <- bind_rows(hba1c = hba1c_agg,
                  .id = "outcome") 
 ipd_agg <- ipd_ecdf %>% 
   group_by(nct_id, outcome, arm_lvl, trtcls5) %>% 
@@ -48,11 +29,11 @@ ipd_agg <- ipd_ecdf %>%
             n = length(age)) %>% 
   ungroup()
 bth <- bind_rows(ipd = ipd_agg, 
-                 agg = bth, 
+                 agg = bth[, names(ipd_agg)], 
                  .id = "orig_data_lvl")
 elig <- elig %>% 
   semi_join(bth)
-## 56 trials without age eligibility data. All are non NCT
+## 55 trials without age eligibility data. All are non NCT
 bth %>% 
   anti_join(elig) %>% 
   distinct(nct_id)
@@ -169,8 +150,7 @@ ipd_chk <- bind_rows(truncnorm = bth %>%
                               arm_lvl,
                               trtcls5),
                      .id = "age_method")
-rm(bth, elig, hba1c_agg, ipd_agg, ipd_ecdf, mace_agg, mace_arms, pseudo_hba1c,
-   pseudo_mace)
+rm(bth, elig, hba1c_agg, ipd_agg, ipd_ecdf, pseudo_hba1c)
 
 ## plot age distributions where have mean, sd and (for Hba1c trials) truncations ----
 theme_minimal2 <- function (base_size = 11, base_family = "", base_line_size = base_size/22, 
@@ -221,6 +201,12 @@ agg_trials <- ages_cls %>%
   sample_frac(0.3) %>% 
   ungroup() %>% 
   pull(nct_id)
+saveRDS(ages_cls %>% 
+          filter(nct_id %in% agg_trials |
+                   data_lvl == "ipd" |
+                   outcome == "mace"),
+        "Scratch_data/for_age_violin_hba1c_add_mace.Rds")
+
 age_plot <- ggplot(ages_cls %>% 
                       filter(nct_id %in% agg_trials |
                                data_lvl == "ipd" |
@@ -263,15 +249,6 @@ dev.off()
 ages_cls2 <- bind_rows(ages_cls,
                        ages %>% mutate(cls = "Any",
                                        trl_lbl = "Total trials")) 
-ages_cls2 <- ages_cls2 %>% 
-  mutate(outcome = if_else(nct_id %in% maceinhba1c,
-                           "hba1c",
-                           outcome),
-         trl_lbl = if_else(nct_id %in% maceinhba1c,
-                           str_replace(trl_lbl, "MACE", "HbA1c"),
-                           trl_lbl))%>% 
-  filter(outcome == "hba1c")
-
 ## Generate age summaries
 ## n's all match, m and sd all match
 ages_smry_chk <- ages_cls2 %>% 
@@ -294,40 +271,4 @@ ages_smry <- ages_cls2 %>%
             q95 = quantile(age, probs = 0.95)) %>% 
   ungroup()
 write_csv(ages_smry, "Outputs/age_summary_hba1c.csv")
-## note that MACE novel antidiabetic trials are all against non novel antidiabetic comparators
-## spo easier to code (all mutually exclusive)
-mace <- ages %>% 
-  filter(outcome == "mace")
-mace <- mace %>% 
-  group_by(nct_id) %>% 
-  mutate(trtcls5 = case_when(
-    any(trtcls5 %in% novel[1]) ~ novel[1],
-    any(trtcls5 %in% novel[2]) ~ novel[2],
-    any(trtcls5 %in% novel[3]) ~ novel[3],
-  )) %>% 
-  ungroup()
-mace_smry1 <- mace %>% 
-  group_by(trtcls5, data_lvl) %>% 
-  summarise(trials = sum(!duplicated(nct_id)),
-            n = length(nct_id),
-            m = mean(age),
-            s = sd(age),
-            q05 = quantile(age, probs = 0.05),
-            q95 = quantile(age, probs = 0.95)) %>% 
-  ungroup()
-mace_smry2 <- mace %>% 
-  group_by(data_lvl) %>% 
-  summarise(trials = sum(!duplicated(nct_id)),
-            n = length(nct_id),
-            m = mean(age),
-            s = sd(age),
-            q05 = quantile(age, probs = 0.05),
-            q95 = quantile(age, probs = 0.95)) %>% 
-  ungroup() %>% 
-  mutate(trtcls5 = "Any")
-mace_smry <- bind_rows(mace_smry1,
-                       mace_smry2) %>% 
-  rename(cls = trtcls5) %>% 
-  left_join(ages_smry %>% distinct(cls, trl_lbl))
-mace_smry <- mace_smry[, names(ages_smry)]
-write_csv(mace_smry, "Outputs/age_summary_mace.csv")
+

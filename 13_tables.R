@@ -93,6 +93,10 @@ tbl_lng <- bind_rows(trials,
                      ages ,
                      .id = "orig_tbl") %>% 
   select(var, trl_lbl, data_lvl, lvls, measure, res, res_chr)
+write_csv(tbl_lng, "Outputs/manuscript_table1a_machine_readable.csv", na = "", col_names = FALSE)
+
+## Note participant count from ages summary and male summary are, as expected, identical
+tbl_lng %>% filter(var == "age" & measure == "n" | var == "participants")
 
 tbl_wide <- tbl_lng %>% 
   filter(!measure == "n") %>% 
