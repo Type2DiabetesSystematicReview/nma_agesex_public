@@ -59,7 +59,10 @@ hba1c_cls <- hba1c_cls %>%
   left_join(who_atc %>% select(trtcls5 = `ATC code`, nm = `ATC level name`)) %>% 
   mutate(nm = if_else(trtcls5 == "place", "Placebo", nm)) 
 comparisons <- hba1c_cls %>%
-  count(trl_lbl, data_lvl, nm) %>% 
+  filter(!cls == trtcls5) %>% 
+  group_by(trl_lbl, data_lvl, nm) %>% 
+  summarise(n = sum(!duplicated(nct_id))) %>% 
+  ungroup() %>% 
   mutate(res = paste0(nm, " (", n, ")")) %>%
   arrange(trl_lbl, desc(n)) %>% 
   group_by(trl_lbl, data_lvl) %>%
@@ -104,5 +107,5 @@ tbl_wide <- tbl_lng %>%
   pivot_wider(names_from = c(trl_lbl, data_lvl), values_from = res_chr) %>% 
   arrange(match(var, c("trials", "participants", "arms","comparisons",
                        "male", "male_prcnt", "age")))
-write_csv(tbl_wide, "Outputs/manuscript_table1a.csv")
+write_csv(tbl_wide, "Outputs/manuscript_table1a.csv", na = "")
 
