@@ -67,6 +67,7 @@ maceout <- bind_rows(`19` = read_csv("../cleaned_data/Data/mace_2019_results.csv
                      .id = "srch_round")
 maceout <- maceout %>% 
   rename(nct_id = trial_id)
+
 ## arm ID flipped for NCT01897532. Label is correct but arm id is wrong
 maceout <- maceout %>% 
   mutate(arm_id_unq = case_when(
@@ -75,6 +76,9 @@ maceout <- maceout %>%
     TRUE ~ arm_id_unq))
 
 ## drop trials when have IPD - now down to 18 instead of 24
+maceout_ipd <- maceout %>% 
+  filter(nct_id %in% ipd$nct_id) %>% 
+  distinct(srch_round, nct_id, trial_name, max_follow_up, timepoint_unit)
 maceout <- maceout %>% 
   filter(!nct_id %in% ipd$nct_id)
 maceout_trl <- map_int(maceout, ~ sum(!duplicated(paste0(maceout$nct_id, .x))))
@@ -661,4 +665,5 @@ saveRDS(list(mace_arms = bth_arm,
              mace_agg = mace3,
              mace_agg_age = mace_age2 %>% rename(arm_lvl = drug_name, participants = n),
              mace_agg_sex = mace_sex2 %>% rename(arm_lvl = drug_name, participants = n),
-             mace_agg_trial_level = maceout_trl), "Scratch_data/mace_arms_agg_data.Rds")
+             mace_agg_trial_level = maceout_trl,
+             mace_ipd_trial_level = maceout_ipd), "Scratch_data/mace_arms_agg_data.Rds")

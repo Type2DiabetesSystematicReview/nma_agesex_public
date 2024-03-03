@@ -24,7 +24,7 @@ CnvrtCorrMatrix <- function(a){
 ## read in aggregate data and arm metadata ----
 readRDS("Scratch_data/mace_arms_agg_data.Rds") %>% 
   list2env(envir = .GlobalEnv)
-
+mace_tbl_age <- read_csv("Outputs/age_summary_trials_mace.csv")
 ## check HRs in agg model against calculated (approx as using rate ratio) ----
 ## all are very similar
 mace_agg <- mace_agg %>% 
@@ -42,6 +42,73 @@ pseudo <- readRDS("Scratch_data/ipd_age_sex_mace.Rds")
 pseudo <- pseudo %>% 
   mutate(ipd_arm = str_to_lower(arm)) %>% 
   inner_join(mace_arms %>% select(nct_id, ipd_arm, arm_lvl, trtcls5))
+
+## Create table 1a wiht a full listing of MACE trials ----
+mace_tbl_name <- bind_rows(agg = mace_agg_trial_level,
+                      ipd = mace_ipd_trial_level,
+                      .id = "data_lvl") 
+mace_tbl_name <- mace_tbl_name %>% 
+  mutate(fu_years = case_when(
+    timepoint_unit == "months" ~ max_follow_up/12,
+    timepoint_unit == "weeks" ~ max_follow_up/52,
+    timepoint_unit == "years" ~ max_follow_up
+  )) %>% 
+  select(data_lvl, nct_id, trial_name, fu_years)
+mace_tbl_dc <- mace_arms %>% 
+  filter(trtcls5 %in% c("A10BH","A10BJ","A10BK")) %>% 
+  distinct(dc, nct_id)
+mace_tbl_plac <- mace_arms %>% 
+  group_by(nct_id) %>% 
+  summarise(placebo = if_else(any(drug_name == "placebo"), 1L, 0L)) %>% 
+  ungroup()
+
+mace_tbl_arm <- mace_arms %>% 
+  filter(!atc == "placebo") %>% 
+  mutate(drug_tot = paste(drug_name, drug_dose, drug_unit)) %>% 
+  group_by(nct_id) %>% 
+  summarise(drug_tot = paste(drug_tot, collapse = " vs ")) %>% 
+  ungroup() %>% 
+  mutate(drug_tot = str_replace(drug_tot, "\\|", "/"))
+mace_tbl_age
+mace_tbl_sex_agg <- mace_agg %>% 
+  group_by(nct_id) %>% 
+  summarise(male_prcnt = weighted.mean(male_prcnt, participants),
+            participants = sum(participants)) %>% 
+  ungroup()
+mace_tbl_sex_ipd <- pseudo %>% 
+  group_by(nct_id) %>% 
+  summarise(male_prcnt = 100* mean(sex == "M")) %>% 
+  ungroup()
+mace_tbl_sex <- bind_rows(mace_tbl_sex_agg,
+                          mace_tbl_sex_ipd)
+rm(mace_tbl_sex_agg,
+   mace_tbl_sex_ipd)
+names(mace_tbl_age)[-(1:2)] <- paste0("age_", names(mace_tbl_age)[-(1:2)])
+mace_tbl <- mace_tbl_name %>% 
+  inner_join(mace_tbl_dc) %>% 
+  inner_join(mace_tbl_arm) %>% 
+  inner_join(mace_tbl_plac) %>%
+  inner_join(mace_tbl_age) %>% 
+  inner_join(mace_tbl_sex) %>% 
+  ## note participants is same as n
+  select(-participants) %>% 
+  rename(activ_tx = drug_tot,
+         participants = n) %>% 
+  select(dc, nct_id, trial_name, data_lvl, activ_tx, placebo, participants, fu_years, everything()) %>% 
+  arrange(dc, data_lvl, nct_id) 
+write_csv(mace_tbl, "Outputs/manuscript_table1b_machine_readable.csv", na = "", col_names = FALSE)
+
+mace_tbl_neat <- mace_tbl %>% 
+  mutate(across(starts_with("age"), ~ round(.x, 1) %>% formatC(digits = 1, format = "f")),
+        age = paste0(age_m , " (", age_s, ") [", age_q05, "-", age_q95, "]"),
+        data_lvl = str_to_upper(data_lvl),
+        dc = dc %>% 
+          str_replace("dpp-4", "DPP-4") %>% 
+          str_replace("sglt-2", "SGLT2") %>% 
+          str_replace("glp-1", "GLP-1")) %>% 
+  select(-starts_with("age_"))
+write_csv(mace_tbl_neat, "Outputs/manuscript_table1b.csv", na = "", col_names = FALSE)
+
 
 ## read in coefficients and variance/covariance matrix ----
 cfs <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/age_sex_model_coefs.csv"),

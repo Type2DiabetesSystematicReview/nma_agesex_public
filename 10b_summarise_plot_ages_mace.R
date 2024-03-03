@@ -21,7 +21,7 @@ mace_agg <- mace_agg %>%
          trtcls5,
          arm_lvl = arm_lvl)
 
-## one trial without amce eligibility
+## one trial without mace eligibility
 mace_agg <- mace_agg %>% 
   left_join(elig) %>% 
   mutate(max_imp = if_else(is.na(max_age), "imp", "known"),
@@ -130,6 +130,15 @@ mace_smry2 <- mace %>%
             q95 = quantile(age, probs = 0.95)) %>% 
   ungroup() %>% 
   mutate(trtcls5 = "Any")
+mace_smry_trial <- mace %>% 
+  group_by(nct_id) %>% 
+  summarise(trials = sum(!duplicated(nct_id)),
+            n = length(nct_id),
+            m = mean(age),
+            s = sd(age),
+            q05 = quantile(age, probs = 0.05),
+            q95 = quantile(age, probs = 0.95)) 
+write_csv(mace_smry_trial %>% select(-trials), "Outputs/age_summary_trials_mace.csv")
 hba1c_smry <- read_csv("Outputs/age_summary_hba1c.csv")
 mace_smry <- bind_rows(mace_smry1,
                        mace_smry2) %>% 
@@ -163,15 +172,19 @@ cls_lbl <- hba1c %>%
   distinct(cls, trl_lbl)
 mace <- mace %>% 
   inner_join(cls_lbl)
-bth <- bind_rows(hba1c[, names(mace)], 
-                 mace)
-bth <- bth  %>% 
+hba1c <- hba1c[, names(mace)]
+hba1c <- hba1c %>% 
+  filter(!nct_id %in% mace$nct_id)
+## Drop mace trials from hba1c set to prevent double counting in plot
+forplot <- bind_rows(hba1c, 
+                     mace)
+forplot <- forplot  %>% 
   mutate(category = 
            case_when(data_lvl == "agg" & outcome == "mace" ~ "MACE, aggregate",
                      data_lvl == "agg" & outcome == "hba1c" ~ "HbA1c, aggregate (random sample)",
                      data_lvl == "ipd" & outcome == "mace" ~ "MACE, IPD",
                      data_lvl == "ipd" & outcome == "hba1c" ~ "HbA1c, IPD"))
-age_plot <- ggplot(bth,
+age_plot <- ggplot(forplot,
                    aes(x = interaction(nct_id, category), y = age, 
                        colour = category)) +
   geom_violin(draw_quantiles = c(0.025,0.975), scale = "width") +
