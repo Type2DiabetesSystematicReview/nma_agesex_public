@@ -87,6 +87,7 @@ bth$res <- pmap( list(bth$min_age, bth$max_age, bth$age_m, bth$age_sd),
                             return(b) 
                           } 
                          })
+if(any(map_lgl(bth$res, is_null))) warning ("Cycled through 3 algorithms without running succesfully")
 bth <- bth %>% 
   unnest(res)
 if(any(!bth$convergence %in% c(0, 999))) warning ("Optim did not converge for at least one row")

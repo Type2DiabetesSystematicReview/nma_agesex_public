@@ -68,6 +68,7 @@ mace_agg$res <- pmap( list(mace_agg$min_age, mace_agg$max_age, mace_agg$age_m, m
                    } 
                  })
 ## all converge (as with HbA1c)
+if(any(map_lgl(mace_agg$res, is_null))) warning ("Cycled through 3 algorithms without running succesfully")
 mace_agg <- mace_agg %>% 
   unnest(res)
 if(any(!mace_agg$convergence %in% c(0, 999))) warning ("Optim did not converge for at least one row")

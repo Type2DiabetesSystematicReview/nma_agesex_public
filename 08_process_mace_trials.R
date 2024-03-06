@@ -347,12 +347,70 @@ siml_estimates <- siml_estimates %>%
   filter(pick ==1)
 siml_estimates <- siml_estimates %>% 
   select(bythis, mu_x, sd_x) 
+
+## update simulation
+SafeMuSigmaCalc <- safely(MuSigmaCalc)
+
+base_out$res <- pmap( list(base_out$min_age, base_out$max_age, base_out$age_m, base_out$age_s),
+                          function(min_age, max_age, age_m, age_sd) {
+                            # browser()
+                            ## If no age limits return mean and SD
+                            if(max_age >=100 & min_age <= 20) {
+                              b <- tibble(mu = age_m, 
+                                          sigma = age_sd, 
+                                          convergence = 999, 
+                                          value = 0,
+                                          method = "ignore_limits")
+                              return(b)  
+                            } 
+                            ## If age limits first try L-BFGS note this sometimes fails so need to run safely 
+                            a <- SafeMuSigmaCalc(min_age, max_age, age_m, age_sd, mymethod = "L-BFGS-B", sigma_ranges = c(5, 20), mu_range = c(40,70))
+                            if(is.null(a$error)) {
+                              ## double if statement here as this object is only present if it runs
+                              if(a$result$convergence[[1]] == 0) {
+                                a <- a$result
+                                b <- tibble(mu = a$par[1],
+                                            sigma = a$par[2],
+                                            convergence = a$convergence[[1]],
+                                            value = a$value[[1]],
+                                            method = "L-BFGS-B")
+                                return(b) 
+                              } ## end condition only if converges
+                            } ## end condition only if not null
+                            ## If L-BFGS-B fails or does not converge run Nelder-Mead Nelder-Mead
+                            a <- SafeMuSigmaCalc(min_age, max_age, age_m, age_sd, mymethod = "CG")
+                            if(is.null(a$error)) {
+                              a <- a$result
+                              b <- tibble(mu = a$par[1],
+                                          sigma = a$par[2],
+                                          convergence = a$convergence[[1]],
+                                          value = a$value[[1]],
+                                          method = "CG")
+                              return(b) 
+                            } 
+                          })
+if(any(map_lgl(base_out$res, is_null))) warning ("Cycled through 3 algorithms without running succesfully")
+base_out <- base_out %>% 
+  unnest(res)
+if(any(!base_out$convergence %in% c(0, 999))) warning ("Optim did not converge for at least one row")
+## very similar results with both approaches. Use optim preferentially
 base_out <- base_out %>% 
   inner_join(siml_estimates) %>% 
-  select(-bythis) %>% 
-  rename(age_mu = mu_x,
-         age_sigma = sd_x)
+  select(-bythis)  
+## Compare grid approach with one of the optimisation algorithms
+base_out %>%
+  select(mu, mu_x) %>% 
+  mutate(mu_diff = abs(mu - mu_x)) %>% 
+  arrange(desc(mu_diff))
+base_out %>% 
+  select(sigma, sd_x) %>% 
+  mutate(sigma_diff = abs(sigma - sd_x)) %>%
+  arrange(desc(sigma_diff))
 
+base_out <- base_out %>% 
+  rename(age_mu = mu,
+          age_sigma = sigma) %>% 
+  select(-mu_x, -sd_x)
 ## count aggregate and IPD trials ----
 mace <- base_out
 rm(base_out)
@@ -374,7 +432,6 @@ mace %>%
 ## arm meta data
 arm_meta %>% 
   filter(nct_id == "NCT01897532")
-
 agg_arms %>% filter(!drug_name_current == arm_label)
 
 agg_arms <- agg_arms %>% 
