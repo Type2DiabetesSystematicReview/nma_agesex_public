@@ -492,6 +492,7 @@ mace_age <- mace_sg %>%
   filter(subgroup == "age")
 mace_sex <- mace_sg %>% 
   filter(subgroup == "sex")
+
 ## merge on nct_id and treatment arm (not same arm_unq_id)
 ## resolve age. Drop total as no useful information
 mace_age <- mace_age %>% 
@@ -556,6 +557,7 @@ mace_sex <- mace_sex %>%
   select(-n_overall, -male_prpn) %>% 
   mutate(male_prcnt = if_else(level_cat == "male", 100, 0))
 rm(mace_sg)
+
 ## estimate events from mean FU ----
 ## Note not appropriate to correct for events here as the mean is the mean time in the arm in those with and without events
 mace <- mace %>% 
@@ -658,12 +660,19 @@ mace_sex2 <- mace_sex2  %>%
   rename(loghr = hr, se = se) %>% 
   select(-hr_lci, -hr_uci)
 
+
 ### save for subsequent analysis ----
 ## note there is some redundancy here as have merged some variables from mace_arms into the aggregate
 ## data for mace. But did so for clarity as there are multiple arm IDs
-saveRDS(list(mace_arms = bth_arm,
-             mace_agg = mace3,
-             mace_agg_age = mace_age2 %>% rename(arm_lvl = drug_name, participants = n),
-             mace_agg_sex = mace_sex2 %>% rename(arm_lvl = drug_name, participants = n),
-             mace_agg_trial_level = maceout_trl,
-             mace_ipd_trial_level = maceout_ipd), "Scratch_data/mace_arms_agg_data.Rds")
+
+lst <- list(mace_arms = bth_arm,
+            mace_agg = mace3,
+            mace_agg_age = mace_age2 %>% 
+              rename(participants = n) %>% 
+              inner_join(mace3 %>% distinct(nct_id, drug_name, arm_lvl)),
+            mace_agg_sex = mace_sex2 %>% 
+              rename(participants = n) %>% 
+              inner_join(mace3 %>% distinct(nct_id, drug_name, arm_lvl)),
+            mace_agg_trial_level = maceout_trl,
+            mace_ipd_trial_level = maceout_ipd)
+saveRDS(lst, "Scratch_data/mace_arms_agg_data.Rds")

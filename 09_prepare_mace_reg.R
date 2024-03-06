@@ -107,8 +107,89 @@ mace_tbl_neat <- mace_tbl %>%
           str_replace("sglt-2", "SGLT2") %>% 
           str_replace("glp-1", "GLP-1")) %>% 
   select(-starts_with("age_"))
-write_csv(mace_tbl_neat, "Outputs/manuscript_table1b.csv", na = "", col_names = FALSE)
+write_csv(mace_tbl_neat, "Outputs/manuscript_table1b.csv", na = "")
 
+## Make plots of "raw" coefficeints ----
+mace_agg_plt_df <- mace_agg %>% 
+  mutate(
+         active = !is.na(loghr),
+         noveldc = trtcls5 %in% c("A10BH", "A10BJ", "A10BK")) %>% 
+  group_by(nct_id) %>% 
+  mutate(drug_lbl = paste0(arm_lvl[active], " vs ", arm_lvl[!active]),
+         trtcls_trt = intersect(dc, c(
+           "A10BH dipeptidyl peptidase 4 (dpp-4) inhibitors", 
+           "A10BJ glucagon-like peptide-1 (glp-1) analogues",  
+           "A10BK sodium-glucose co-transporter 2 (sglt2) inhibitors"))) %>% 
+  ungroup()
+mace_agg_plt <- ggplot(mace_agg_plt_df,
+                    aes(y = loghr,
+                        ymin = loghr -2*se,
+                        ymax = loghr + 2*se,
+                        x = paste0(nct_id, ":", drug_lbl),
+                        shape = noveldc))
+mace_agg_dc <- mace_agg %>% 
+  distinct(nct_id, arm_lvl, dc)
+mace_agg_sex_plt_df <- mace_agg_sex %>% 
+  inner_join(mace_agg_dc) %>% 
+  mutate(
+    active = !is.na(loghr),
+    noveldc = trtcls5 %in% c("A10BH", "A10BJ", "A10BK")) %>% 
+  group_by(nct_id, subgroup, level_cat) %>% 
+  mutate(drug_lbl = paste0(arm_lvl[active], " vs ", arm_lvl[!active]),
+         trtcls_trt = intersect(dc, c(
+           "A10BH dipeptidyl peptidase 4 (dpp-4) inhibitors", 
+           "A10BJ glucagon-like peptide-1 (glp-1) analogues",  
+           "A10BK sodium-glucose co-transporter 2 (sglt2) inhibitors"))) %>% 
+  ungroup()  
+mace_agg_sex_plt <- ggplot(mace_agg_sex_plt_df,
+       aes(y = loghr,
+           ymin = loghr -2*se,
+           ymax = loghr + 2*se,
+           x = paste0(nct_id, ":", drug_lbl),
+           shape = noveldc,
+           colour = level_cat))  
+mace_agg_age_plt_df <- mace_agg_age %>% 
+  inner_join(mace_agg_dc) %>% 
+  mutate(active = !is.na(loghr),
+         noveldc = trtcls5 %in% c("A10BH", "A10BJ", "A10BK"),
+         level_max = if_else(level_max == 150, "-", as.character(level_max))) %>% 
+  group_by(nct_id, arm_lvl) %>% 
+  mutate(age_rdr = rev(order(level_min)) %>% as.character()) %>% 
+  ungroup() %>% 
+  group_by(nct_id, subgroup, level_min, level_max) %>% 
+  mutate(drug_lbl = paste0(arm_lvl[active], " vs ", arm_lvl[!active]),
+         trtcls_trt = intersect(dc, c(
+           "A10BH dipeptidyl peptidase 4 (dpp-4) inhibitors", 
+           "A10BJ glucagon-like peptide-1 (glp-1) analogues",  
+           "A10BK sodium-glucose co-transporter 2 (sglt2) inhibitors"))) %>% 
+  ungroup()
+mace_agg_age_plt <- ggplot(mace_agg_age_plt_df,
+                           aes(y = loghr,
+                               ymin = loghr -2*se,
+                               ymax = loghr + 2*se,
+                               x = paste0(nct_id, ":", drug_lbl),
+                               shape = noveldc,
+                               colour = age_rdr)) 
+plotlst <- list(main = mace_agg_plt,
+                age = mace_agg_age_plt,
+                sex = mace_agg_sex_plt)
+plotlst <- map(plotlst, ~ .x + 
+                 geom_hline(yintercept = 0, linetype = "dashed") +
+                 geom_point(position = position_dodge(0.5)) +
+                 geom_linerange(position = position_dodge(0.5)) + 
+                 coord_flip() +
+                 scale_x_discrete("")  +
+                 facet_wrap(~trtcls_trt, scales = "free_y", ncol = 1) )
+saveRDS(plotlst, "Scratch_data/raw_hrs_mace_plot.Rds")
+pdf("Outputs/raw_mace_hrs_plots.pdf", width = 30, height = 10)
+plotlst[[1]] 
+plotlst[[1]] <- plotlst[[1]] %+% (mace_agg_plt_df %>% filter(nct_id %in% 
+                                                               c(mace_agg_age_plt_df$nct_id,
+                                                                 mace_agg_sex_plt_df$nct_id)))
+cowplot::plot_grid(plotlist = plotlst, nrow = 1)
+dev.off()
+rm(mace_agg_plt, mace_agg_sex_plt, mace_agg_age_plt, plotlst,
+   mace_agg_plt_df, mace_agg_sex_plt_df, mace_agg_age_plt_df)
 
 ## read in coefficients and variance/covariance matrix ----
 cfs <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/age_sex_model_coefs.csv"),
@@ -238,5 +319,54 @@ MakeMaceData <- function(modeln) {
 f5 <- MakeMaceData("f5")
 f1 <- MakeMaceData("f1")
 
+## make plots of "raw" coefficients for main effects and each interaction from IPD ----
+cfsf5 <- f5$cfs %>% 
+  filter(!is.na(term)) %>% 
+  mutate(term_lbl = case_when(
+    str_detect(term, "arm") & str_detect(term, "\\:") & male == TRUE ~ "arm_male_inter",
+    str_detect(term, "arm") & str_detect(term, "\\:") & age15 == 1L ~ "arm_age_inter",
+    str_detect(term, "arm") ~ "arm_main_age0_female",
+    male == TRUE ~ "male",
+    age15 == 1L ~ "age")) %>%
+  group_by(nct_id) %>% 
+  mutate(trtcls5 = intersect(trtcls5, c("A10BH", "A10BJ", "A10BK"))) %>% 
+  ungroup() %>% 
+  inner_join(mace_agg %>% distinct(trtcls5, dc)) %>% 
+  mutate(arm_lvl = if_else(is.na(arm_lvl), "None", arm_lvl))
+plotcfsf5 <- ggplot(cfsf5,
+                  aes(x = paste0(trtcls5, ":",nct_id), y = estimate,
+                      ymin = estimate - 2*std.error,
+                      ymax = estimate + 2*std.error,
+                      colour = arm_lvl,
+                      shape = dc)) +
+  geom_point(position = position_dodge(0.25)) +
+  geom_linerange(position = position_dodge(0.25)) +
+  facet_wrap(~term_lbl, scales = "free_y") +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  ggtitle("Coefficients, full models")
+plotcfsf5
+
+cfsf1 <- f1$cfs %>% 
+  filter(!is.na(term)) %>% 
+  inner_join(mace_agg %>% distinct(trtcls5, dc)) 
+plotcfsf1 <- ggplot(cfsf1,
+       aes(x = paste0(trtcls5, ":",nct_id), y = estimate,
+           ymin = estimate - 2*std.error,
+           ymax = estimate + 2*std.error,
+           shape = dc,
+           colour =term)) +
+  geom_point(position = position_dodge(0.25)) +
+  geom_linerange(position = position_dodge(0.25)) +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  ggtitle("Coefficients, Treatment effect only models")
+plotcfsf1 
+
+saveRDS( list(simple = plotcfsf1, full = plotcfsf5), "Scratch_data/raw_coefs_mace_plot.Rds")
+pdf("Outputs/raw_coefs_mace_plot.pdf", width = 20, height = 10)
+plotcfsf1
+plotcfsf5
+dev.off()
 saveRDS(f5, "Scratch_data/for_mace_regression_inter.Rds")
 saveRDS(f1, "Scratch_data/for_mace_regression_nointer.Rds")

@@ -197,6 +197,7 @@ age_plot <- ggplot(forplot,
   ggtitle("Age distribution by trial") +
   geom_hline(yintercept = c(40, 80), linetype = "dashed", colour = "grey")
 age_plot
+saveRDS(age_plot, "Scratch_data/age_plots.Rds")
 pdf("Outputs/age_plots.pdf", height = 10, width = 20)
 age_plot
 dev.off()
