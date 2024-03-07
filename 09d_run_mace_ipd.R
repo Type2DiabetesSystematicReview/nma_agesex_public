@@ -38,17 +38,3 @@ mdl_ipd <- nma(nwork,
            prior_trt = normal(scale = 10),
            prior_reg = normal(scale = 10), 
            chains = 2, cores = 4)
-           # control = list(max_treedepth = 15))
-
-## Review SGLT2 to see why random and fixed give such different results.
-sglt2_ipd <- cfs %>% filter(any(trtcls5 == "A10BK"), term %>% str_detect("age15\\:"))
-sglt2_agg_age   <- mace_agg_age %>% group_by(nct_id) %>% 
-  filter(any(trtcls5 == "A10BK"), !is.na(loghr)) %>%
-  ungroup()
-sglt2_agg_noage <- mace_agg %>% 
-  filter(!nct_id %in% sglt2_agg_age$nct_id, !is.na(loghr)) %>% 
-  group_by(nct_id) %>% 
-  filter(any(trtcls5 == "A10BK")) %>% 
-  ungroup()
-# NCT01131676  has the largest interaction of -0.395. Try dropping and see what results are given with RE model
-## NIl else clear as to what would be driving this difference

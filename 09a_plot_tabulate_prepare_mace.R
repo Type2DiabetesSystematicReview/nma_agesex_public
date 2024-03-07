@@ -288,21 +288,22 @@ MakeMaceData <- function(modeln) {
            time = time/365,
            ltime = log(time + 1))
   mace_agg <- mace_agg %>% 
-    mutate(age_mu = age_mu/15,
-           age_sigma = age_sigma/15,
+    mutate(across(c(age_mu, age_sigma, min_age, max_age), ~ .x/15),
            male_p = male_prcnt/100,
            time = mean_fu_days*participants,
            time = time/365,
            ltime = log(time))
+
+  ## differs from mace_agg and mace_agg_sex because age subgroup cut-points
   mace_agg_age <- mace_agg_age %>% 
-    mutate(age_mu = age_mu/15,
-           age_sigma = age_sigma/15,
+    select(-min_age, -max_age) %>% 
+    rename(min_age = level_min, max_age = level_max) %>% 
+    mutate(across(c(age_mu, age_sigma, min_age, max_age), ~ .x/15),
            male_p = male_prcnt/100) %>% 
     inner_join(mace_agg %>% 
                  distinct(arm_id, ltime))
   mace_agg_sex <- mace_agg_sex %>% 
-    mutate(age_mu = age_mu/15,
-           age_sigma = age_sigma/15,
+    mutate(across(c(age_mu, age_sigma, min_age, max_age), ~ .x/15),
            male_p = male_prcnt/100) %>% 
     inner_join(mace_agg %>% 
                  distinct(arm_id, ltime))

@@ -6,6 +6,11 @@ library(multinma)
 library(truncnorm)
 library(purrr)
 
+args <- commandArgs(trailingOnly=TRUE)
+refe <- args[[1]]
+filename <- paste0(refe, "_mace_", "nointer", ".Rds")
+print(filename)
+
 list2env(readRDS("Scratch_data/for_mace_regression_nointer.Rds"), envir = .GlobalEnv)
 myregl <- ~ .trt + offset(ltime)
 myreg <- ~ .trt 
@@ -25,23 +30,13 @@ nwork <- combine_network(set_agd_contrast(data = mace_agg,
                                             regression = myreg))
 
 ## Model running function
-fe <-   nma(nwork,
-      trt_effects = "fixed",
+mdl <-   nma(nwork,
+      trt_effects = refe,
       link = "identity",
       regression = myreg,
       class_interactions = "common",
       prior_intercept = normal(scale = 10),
       prior_trt = normal(scale = 10),
       prior_reg = normal(scale = 10), chains = 4, cores = 4)
-re <-   nma(nwork,
-            trt_effects = "fixed",
-            link = "identity",
-            regression = myreg,
-            class_interactions = "common",
-            prior_intercept = normal(scale = 10),
-            prior_trt = normal(scale = 10),
-            prior_reg = normal(scale = 10), chains = 4, cores = 4)
-saveRDS(list(fe = fe,
-               re = re),
-          paste0("Scratch_data/mace_", "nointer", ".Rds"))
+saveRDS(mdl, filename)
 
