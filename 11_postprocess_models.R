@@ -22,9 +22,11 @@ names(res2) <- str_replace(names(res2), "no_inter", "nointer")
 mdl_names <- list.files("FromVM/mace_agesex/", patt = "Rds$")
 res3 <-  map(mdl_names, ~ readRDS(paste0("FromVM/mace_agesex/", .x)))
 names(res3) <- mdl_names %>% str_sub(1, -5)
-res4 <- readRDS("Scratch_data/mace_nointer.Rds")
-names(res4) <- c("fixed", "random")
-names(res4) <- paste0(names(res4), "_mace_nointer_main")
+
+mdl_names <- list.files("FromVM/mace_nointer/", patt = "Rds$")
+res4 <- map(mdl_names, ~ readRDS(paste0("FromVM/mace_nointer/", .x)))
+names(res4) <- mdl_names %>% str_sub(1, -5)
+
 res <- c(res1, res2, res3, res4)
 rm(res1, res2, res3, res4)
 beta <- map(res, ~ summary(.x$stanfit)$summary %>% 

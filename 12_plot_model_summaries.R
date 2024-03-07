@@ -154,12 +154,13 @@ intermaceplot <- ggplot(beta_age_sex %>%
                           mutate(covariate = factor(covariate,
                                                     levels = c("age30", "male"),
                                                     labels = c("Age per 30 years",
-                                                               "Male sex"))), 
+                                                               "Male sex")),
+                         top = "Triple therapy"), 
                         aes(x = cls, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
                             colour = fixedrand)) +
   geom_point(position = position_dodge(0.5)) +
   geom_linerange(position = position_dodge(0.5)) +
-  facet_grid(~ covariate) + 
+  facet_grid(covariate ~ top) + 
   scale_x_discrete("", limits = rev) +
   scale_color_discrete("") +
   coord_flip(ylim = c(-0.7, 0.7)) +
@@ -168,7 +169,7 @@ intermaceplot <- ggplot(beta_age_sex %>%
   scale_y_continuous("Hazard ratio", 
                      breaks = seq(-0.5, 0.5, 0.25), 
                      labels = round(exp(seq(-0.5, 0.5, 0.25)),2))
-intermaceplot
+
 
 ## main effects hba1c ----
 main_hba1c <- beta %>% 
@@ -216,6 +217,7 @@ mainhba1cplot <- ggplot(main_hba1c %>%
 
 ## main effects hba1c ----
 main_mace <- beta %>% 
+  mutate(sg = if_else(is.na(sg), "main", sg)) %>% 
   filter(mainorinter == "nointer", 
          outcome == "mace",
          sg == "main",
@@ -257,6 +259,13 @@ mainmacecplot <- ggplot(main_mace,
   facet_wrap(~cls_lbl, scales = "free_y", ncol = 1)
 
 pdf("Outputs/hba1c_mace.pdf", height = 10, width = 20)
+cowplot::plot_grid(interhba1cplot + 
+                     scale_color_discrete(guide = "none") + 
+                     ggtitle("Hba1c"), 
+                   intermaceplot + 
+                     ggtitle("MACE") + 
+                     scale_color_discrete(guide = "none"), 
+                   nrow = 1, rel_widths = c(3, 1.9))
 mainhba1cplot + ggtitle("HbA1c main effects meta-analysis for paper")
 interhba1cplot  + ggtitle("HbA1c interactions meta-analysis for paper")
 interhba1cplotappen + ggtitle("HbA1c interactions meta-analysis for appendix")
