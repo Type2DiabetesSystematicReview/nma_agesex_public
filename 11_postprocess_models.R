@@ -29,6 +29,25 @@ names(res4) <- mdl_names %>% str_sub(1, -5)
 
 res <- c(res1, res2, res3, res4)
 rm(res1, res2, res3, res4)
+
+smpls <- map(res, ~ as.data.frame(.x$stanfit))
+betas <- map(smpls, ~ .x[str_detect(names(.x), "beta")])
+smpls <- map(smpls, ~ .x[!str_detect(names(.x), "beta")])
+ds <- map(smpls, ~ .x[!str_detect(names(.x), "^delta") & str_detect(names(.x), "^d")])
+smpls <- map(smpls, ~ .x[!str_detect(names(.x), "^d")])
+## the following drops all columns
+# smpls <- map(smpls, ~ .x[!str_detect(names(.x), "^mu")])
+# smpls <- map(smpls, ~ .x[!str_detect(names(.x), "^res")])
+# smpls <- map(smpls, ~ .x[!str_detect(names(.x), "^fitted")])
+# smpls <- map(smpls, ~ .x[!str_detect(names(.x), "^log_lik")])
+# smpls <- map(smpls, ~ .x[!str_detect(names(.x), "^lp__")])
+# smpls <- map(smpls, ~ .x[!str_detect(names(.x), "^tau")])
+# map(smpls, colnames)
+rm(smpls)
+saveRDS(ds, "Scratch_data/tx_samples.Rds")
+saveRDS(betas, "Scratch_data/cov_nter_samples.Rds")
+
+
 beta <- map(res, ~ summary(.x$stanfit)$summary %>% 
   as_tibble(rownames = "params")) %>% 
   bind_rows(.id = "tosep")

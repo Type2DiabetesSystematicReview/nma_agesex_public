@@ -55,6 +55,22 @@ if(sg == "sens") {
                                               regression = myreg))
 }
 
+if(sg == "sens2") {
+  nwork <- combine_network(set_agd_contrast(data = mace_agg,
+                                            study = nct_id, trt = arm_lvl, y = loghr, se = se, 
+                                            trt_ref = "placebo", trt_class = trtcls5, sample_size = participants), 
+                           set_agd_regression(cfs %>% filter(!nct_id == "NCT00968708"),
+                                              study = nct_id,
+                                              trt = arm_lvl,
+                                              estimate = estimate,
+                                              se = std.error,
+                                              cor = cors_lst,
+                                              trt_ref = "placebo",
+                                              trt_class = trtcls5,
+                                              regression = myreg))
+}
+
+
 if(sg == "age") {
   nwork <- combine_network(set_agd_contrast(data = mace_agg_age,
                                            study = paste0(nct_id, "_", level_min, "_", level_max), trt = arm_lvl, y = loghr, se = se, 

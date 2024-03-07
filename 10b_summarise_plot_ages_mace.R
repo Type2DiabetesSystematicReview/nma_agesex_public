@@ -194,11 +194,10 @@ age_plot <- ggplot(forplot,
                      breaks = seq(20, 100, 20)) +
   theme_minimal2() +
   facet_wrap(~trl_lbl, ncol = 1, scales = "free_x") +
-  scale_color_discrete("")  + 
-  ggtitle("Age distribution by trial") +
+  scale_color_discrete("")  +
   geom_hline(yintercept = c(40, 80), linetype = "dashed", colour = "grey")
 age_plot
 saveRDS(age_plot, "Scratch_data/age_plots.Rds")
 pdf("Outputs/age_plots.pdf", height = 10, width = 20)
-age_plot
+age_plot  +   ggtitle("Age distribution by trial")
 dev.off()

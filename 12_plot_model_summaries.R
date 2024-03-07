@@ -10,7 +10,7 @@ hba1c <- beta %>%
                            "datalevel",
                            "fixedrand",
                            "network"),
-           sep = "_")  %>% 
+           sep = "_", remove = FALSE)  %>% 
   mutate(sg = "main")
 mace <- beta %>% 
   filter(str_detect(tosep, "mace")) %>% 
@@ -22,7 +22,8 @@ mace <- beta %>%
                            "outcome",
                            "mainorinter",
                            "sg"),
-           sep = "_|\\.")  
+           sep = "_|\\.", remove = FALSE)  
+
 x <- names(mace)
 y <- names(hba1c)
 setdiff(union(x, y), intersect(x, y))
@@ -33,7 +34,7 @@ cmpr <- map2(hba1c %>% select(outcome, mainorinter, modelnum, datalevel, fixedra
      })
 beta <- bind_rows(hba1c, mace)
 rm(hba1c, mace, x, y, cmpr)
-
+write_csv(beta %>% select(tosep:network, sg) %>% distinct(), "Scratch_data/modelname_content_lkp.csv")
 
 ## interaction plots hba1c ----
 beta_age_sex <- beta %>% 
@@ -127,8 +128,10 @@ intermaceplotappen <- ggplot(beta_age_sex %>%
                                                levels = c("aggipd", "ipd"),
                                                labels = c("All data", "IPD only")),
                             sg = factor(sg,
-                                        levels = c("main", "age", "sex", "sens"),
-                                        labels = c("None (full set)", "Age", "Sex", "None (one trial excluded)")),
+                                        levels = c("main", "age", "sex", "sens", "sens2"),
+                                        labels = c("None (full set)", "Age", "Sex", 
+                                                   "None (one SGLT2 IPD trial excluded)",
+                                                   "None (one DPP-4 IPD trial excluded)")),
                             covariate = factor(covariate,
                                                levels = c("age30", "male"),
                                                labels = c("Age per 30 years",
@@ -273,3 +276,23 @@ mainmacecplot + ggtitle("MACE main effects meta-analysis for paper")
 intermaceplot  + ggtitle("MACE interactions meta-analysis for paper")
 intermaceplotappen + ggtitle("MACE interactions meta-analysis for appendix")
 dev.off()
+
+regplots <- list(interhba1cmaceplot = cowplot::plot_grid(interhba1cplot + 
+                                      scale_color_discrete(guide = "none") + 
+                                      ggtitle("Hba1c"), 
+                                    intermaceplot + 
+                                      ggtitle("MACE") + 
+                                      scale_color_discrete(guide = "none"), 
+                                    nrow = 1, rel_widths = c(3, 1.9)),
+                 mainhba1cplot = mainhba1cplot,
+                 interhba1cplot = interhba1cplot,
+                 interhba1cplotappen = interhba1cplotappen,
+                 mainmaceplot = mainmacecplot,
+                 intermaceplot = intermaceplot,
+                 intermaceplotappen = intermaceplotappen)
+names(regplots) <- names(regplots) %>% str_remove("plot$") %>% 
+  str_replace("^main", "m") %>% 
+  str_replace("^inter", "nt") %>% 
+  str_replace("^hba1c", "hb")%>% 
+  str_replace("^mace", "mc")
+saveRDS(regplots, "Scratch_data/regplots.Rds")

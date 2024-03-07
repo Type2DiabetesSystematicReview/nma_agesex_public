@@ -96,6 +96,8 @@ mace_tbl <- mace_tbl_name %>%
          participants = n) %>% 
   select(dc, nct_id, trial_name, data_lvl, activ_tx, placebo, participants, fu_years, everything()) %>% 
   arrange(dc, data_lvl, nct_id) 
+mace_tbl <- mace_tbl %>% 
+  mutate(data_lvl = if_else(nct_id %in% mace_agg_age$nct_id, "sg", data_lvl))
 write_csv(mace_tbl, "Outputs/manuscript_table1b_machine_readable.csv", na = "", col_names = FALSE)
 
 mace_tbl_neat <- mace_tbl %>% 
