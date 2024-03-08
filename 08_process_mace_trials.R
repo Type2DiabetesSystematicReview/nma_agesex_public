@@ -75,6 +75,8 @@ maceout <- maceout %>%
     arm_id_unq == "uaa10963" & arm_description == "linagliptin" ~ "uaa10962",
     TRUE ~ arm_id_unq))
 
+## compare IPD and aggregate
+
 ## drop trials when have IPD - now down to 18 instead of 24
 maceout_ipd <- maceout %>% 
   filter(nct_id %in% ipd$nct_id) %>% 
