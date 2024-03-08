@@ -78,4 +78,6 @@ hba1c_novel <- smry_hba1c %>%
   mutate(d = str_sub(d, 3, -2))  %>% 
   separate(d, into = c("drug", "dose"), sep = "_d", extra = "merge", fill = "right", remove = FALSE) %>% 
   mutate(drug = who_lkp_rev[drug])
+rm(mtrx)
+gc()
 

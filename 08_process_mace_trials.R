@@ -75,14 +75,12 @@ maceout <- maceout %>%
     arm_id_unq == "uaa10963" & arm_description == "linagliptin" ~ "uaa10962",
     TRUE ~ arm_id_unq))
 
-## compare IPD and aggregate
-
-## drop trials when have IPD - now down to 18 instead of 24
+## Do not YET drop trials when have IPD - WILL BE down to 18 instead of 24
 maceout_ipd <- maceout %>% 
   filter(nct_id %in% ipd$nct_id) %>% 
   distinct(srch_round, nct_id, trial_name, max_follow_up, timepoint_unit)
-maceout <- maceout %>% 
-  filter(!nct_id %in% ipd$nct_id)
+# maceout <- maceout %>% 
+#   filter(!nct_id %in% ipd$nct_id)
 maceout_trl <- map_int(maceout, ~ sum(!duplicated(paste0(maceout$nct_id, .x))))
 maceout_trl <- maceout_trl[maceout_trl == sum(!duplicated(maceout$nct_id))]
 maceout_trl <- maceout[ , names(maceout_trl)] %>% 
@@ -579,8 +577,8 @@ mace_age <- mace_age %>%
          level_max = if_else(level_max == "max", max_age, as.double(level_max)))
 ## calculate number in each age group where this is missing
 mace_age <- mace_age %>% 
-  mutate(pfrom = ptruncnorm(level_min-1, a = min_age, b = max_age, age_mu, age_sigma),
-         pto   = ptruncnorm(level_max, a = min_age, b = max_age, age_mu, age_sigma),
+  mutate(pfrom = truncnorm::ptruncnorm(level_min-1, a = min_age, b = max_age, age_mu, age_sigma),
+         pto   = truncnorm::ptruncnorm(level_max, a = min_age, b = max_age, age_mu, age_sigma),
          pin = pto - pfrom,
          n_impute = round(n_overall * pin)) %>% 
   select(-pfrom, -pto)
@@ -637,21 +635,21 @@ mace %>%
   select(nct_id, drug_name, outcome, participants, result, result_type, result_description, median_fu_days, mean_fu_days, pt, r, 
          percentage_check, rate_check) 
 ## One trial stands out considerably, the one that was stopped early
-plot_rate_check <- ggplot(mace %>% 
-                            filter(!nct_id == "UMIN000018395") %>% 
-                      group_by(nct_id) %>% 
-                      mutate(arm = c("a", "b")) %>% 
-                      ungroup()%>% 
+mace_plot_check_data <- mace %>% 
+  filter(!nct_id %in% c("UMIN000018395", "NCT01131676")) %>% 
+  group_by(nct_id) %>% 
+  mutate(arm = c("a", "b")) %>% 
+  ungroup()
+mace %>% 
+  filter(nct_id %in% c("UMIN000018395", "NCT01131676"))
+
+plot_rate_check <- ggplot(mace_plot_check_data %>% 
                       mutate(mydiff = nct_id == "NCT03521934"), aes(x = nct_id, y = rate_check, colour = arm, shape = arm)) +
   geom_point(position = position_dodge(width = 0.1)) +
   coord_flip()+
   facet_wrap(~mydiff, scales = "free")
 plot_rate_check
-plot_percentage_check <- ggplot(mace %>% 
-                            filter(!nct_id == "UMIN000018395") %>% 
-                            group_by(nct_id) %>% 
-                            mutate(arm = c("a", "b")) %>% 
-                            ungroup() %>% 
+plot_percentage_check <- ggplot(mace_plot_check_data %>% 
                             mutate(mydiff = nct_id == "NCT03521934"), aes(x = nct_id, y = percentage_check, colour = arm, shape = arm)) +
   geom_point(position = position_dodge(width = 0.1)) +
   coord_flip() +
@@ -719,11 +717,28 @@ mace_sex2 <- mace_sex2  %>%
   rename(loghr = hr, se = se) %>% 
   select(-hr_lci, -hr_uci)
 
+## review where have aggregate and IPD
+# maceout_cmpr_ipd
+ipd_cmpr_agg <- ipd %>% 
+  filter(models == "f1") %>% 
+  select(repo, nct_id, term, f1_est = estimate, f1_se = std.error) %>% 
+  mutate(term = str_sub(term, 6)) %>% 
+  inner_join(ipd_arms %>% select(nct_id, term = arm, drug_name, drug_dose))
+mace3_cmpr_ipd_agg <- maceout_cmpr2 %>% 
+  filter(nct_id %in% ipd_cmpr_agg$nct_id) %>% 
+  select(nct_id, drug_name, treat_cmpr, loghr, se) %>% 
+  distinct()
+## allowing for collapsing of trial arms in aggregate data, results HIGLY CONSISTENT BETWEEN IPD and aggregate data
+ipd_cmpr_agg <- ipd_cmpr_agg %>% arrange(nct_id) %>% 
+  left_join( mace3_cmpr_ipd_agg %>% filter(!treat_cmpr == "control")) %>% 
+  mutate(note = "Some arms collapsed for aggregate hence identical") %>% 
+  rename(agg_est = loghr,
+         agg_se = se)
+write_csv(ipd_cmpr_agg, "Outputs/similar_results_ipd_agg_hrs.csv")
 
 ### save for subsequent analysis ----
 ## note there is some redundancy here as have merged some variables from mace_arms into the aggregate
 ## data for mace. But did so for clarity as there are multiple arm IDs
-
 lst <- list(mace_arms = bth_arm,
             mace_agg = mace3,
             mace_agg_age = mace_age2 %>% 
@@ -734,4 +749,18 @@ lst <- list(mace_arms = bth_arm,
               inner_join(mace3 %>% distinct(nct_id, drug_name, arm_lvl)),
             mace_agg_trial_level = maceout_trl,
             mace_ipd_trial_level = maceout_ipd)
+## drop trials with IPD from aggregate data
+map(lst, ~ intersect(.x$nct_id, ipd$nct_id))
+lst$mace_agg <- lst$mace_agg %>% 
+  filter(!nct_id %in% ipd$nct_id)
+lst$mace_agg_trial_level <- lst$mace_agg_trial_level %>% 
+  filter(!nct_id %in% ipd$nct_id)
+## The following drops aggregate arms from metadata where we already have IPD
+ipdandagg <- lst$mace_arms %>% 
+  distinct(nct_id, data_lvl) %>% 
+  arrange(desc(data_lvl)) %>% 
+  distinct(nct_id, .keep_all = TRUE)
+lst$mace_arms <- lst$mace_arms  %>% 
+  semi_join(ipdandagg)
 saveRDS(lst, "Scratch_data/mace_arms_agg_data.Rds")
+

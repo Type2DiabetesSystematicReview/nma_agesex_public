@@ -321,6 +321,7 @@ MakeMaceData <- function(modeln) {
 }
 f5 <- MakeMaceData("f5")
 f1 <- MakeMaceData("f1")
+f2 <- MakeMaceData("f2")
 
 ## make plots of "raw" coefficients for main effects and each interaction from IPD ----
 cfsf5 <- f5$cfs %>% 
@@ -373,3 +374,4 @@ plotcfsf5
 dev.off()
 saveRDS(f5, "Scratch_data/for_mace_regression_inter.Rds")
 saveRDS(f1, "Scratch_data/for_mace_regression_nointer.Rds")
+saveRDS(f2, "Scratch_data/for_mace_regression_nointercovs.Rds")
