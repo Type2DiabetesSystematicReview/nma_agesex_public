@@ -386,7 +386,7 @@ reg_frmt <- pmap(
   ## add covariate columns
   cfs <- cfs %>% 
     mutate(age10 = case_when(
-      str_detect(term, "age10") ~ 1,
+      str_detect(term, "age10") ~ 10,
       reference_arm ==1 ~ 0,
       TRUE ~ NA_real_))
   

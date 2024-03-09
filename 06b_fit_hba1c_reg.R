@@ -13,24 +13,13 @@ dropdisconnect <- c("NCT02477865", "JapicCTI-101351",
                     "NCT02477969", "JapicCTI-101352", "NCT03508323",
                     "UMIN000007051")
 
-## For running on VM use conditional statements to read/write from top-level folder
-## note want to read in data at lowest point in each loop
-if(dir.exists("Outputs/")){
-  mdl_order <- read.csv("Outputs/model_order.csv", stringsAsFactors = FALSE)
-} else {
-  mdl_order <- read.csv("model_order.csv", stringsAsFactors = FALSE)
-}
-
+mdl_order <- read.csv("Outputs/model_order.csv", stringsAsFactors = FALSE)
 mdl_chs <- mdl_order[rowchoose,] %>% 
   as.list()
 
 ## For running on VM use conditional statements to read/write from top-level folder
 ## note want to read in data at lowest point in each loop
-if(dir.exists("Scratch_data/")){
-  tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
-} else {
-  tot <- readRDS("agg_ipd_hba1c.Rds")
-}
+tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 
 print(paste(as.vector(mdl_chs), collapse = ":"))
 
@@ -116,7 +105,7 @@ if(mdl_chs$data_lvl == "aggipd") {
   mycor <- matrix(rep(0, 9), nrow = 3)
   diag(mycor) <- 1
   chsn_net <- add_integration(chsn_net,
-                              age10 = distr(qnorm, mean = age_m/10, sd = age_sd/10),
+                              age10 = distr(qnorm, mean = age_m, sd = age_sd),
                               male = distr(qbern, prob = male_p),
                               value_1 = distr(qnorm, value_1, value_1_sd), n_int = 1L, cor = mycor)
   
@@ -140,10 +129,6 @@ if(testrun) {
 
 
 filename <- paste0("hba1c_m", paste(mdl_chs, collapse = "_"))
-if(dir.exists("Scratch_data/")) {
-  saveRDS(mdl, paste0("Scratch_data/", filename, ".Rds"))
-} else {
-  saveRDS(mdl, paste0(filename, ".Rds"))
-}
+saveRDS(mdl, paste0(filename, ".Rds"))
 rm(mdl)
 gc()

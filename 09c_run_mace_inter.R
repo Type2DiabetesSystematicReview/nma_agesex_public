@@ -75,7 +75,7 @@ if(sg == "sens2") {
 
 if(sg == "age") {
   nwork <- combine_network(set_agd_contrast(data = mace_agg_age,
-                                           study = paste0(nct_id, "_", level_min, "_", level_max), trt = arm_lvl, y = loghr, se = se, 
+                                           study = paste0(nct_id, "_", min_age, "_", max_age), trt = arm_lvl, y = loghr, se = se, 
                                            trt_ref = "placebo", trt_class = trtcls5, sample_size = participants), 
                           set_agd_contrast(data = mace_agg %>% filter(!nct_id %in% mace_agg_age$nct_id),
                                            study = nct_id, trt = arm_lvl, y = loghr, se = se, 
@@ -120,8 +120,7 @@ mdl <- nma(nwork,
            prior_intercept = normal(scale = 10),
            prior_trt = normal(scale = 10),
            prior_reg = normal(scale = 10), 
-           chains = 2, cores = 2,
-           iter = 1000,
+           chains = 4, cores = 4,
            control = list(max_treedepth = 15))
 saveRDS(mdl, filename)
 
