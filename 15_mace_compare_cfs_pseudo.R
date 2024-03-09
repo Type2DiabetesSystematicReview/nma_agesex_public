@@ -25,7 +25,7 @@ rm(f1, f2, f5)
 ## note that IPD arm corresponds to cfs "trt" which was used to create arm_f
 pseudo <- pseudo %>% 
   mutate(arm_f = if_else(str_sub(ipd_arm) == "placebo", paste0("a_", ipd_arm), ipd_arm),
-         age15 = age/15,
+         age10c = (age-60)/10,
          sex = if_else(male ==1, "M", "F")) %>% 
   group_by(nct_id) %>% 
   nest() %>% 
@@ -35,8 +35,8 @@ pseudo$data <- map(pseudo$data, ~ .x %>%
 
 ## create formulas ----
 fs <- list(f1 =  Surv(time, event) ~ arm_f,
-     f2 = Surv(time, event) ~ arm_f + age15 + sex,
-     f5 = Surv(time, event) ~ age15*arm_f + sex*arm_f)
+     f2 = Surv(time, event) ~ arm_f + age10c + sex,
+     f5 = Surv(time, event) ~ age10c*arm_f + sex*arm_f)
 
 ## Run models on pseudodata and obtain coefficeints ----
 res <- map(fs, function(frm) {
@@ -70,11 +70,11 @@ for (i in seq_along(cleanup$trt)) {
 }
 pseudo <- pseudo %>% 
   mutate(term = str_remove(term, "arm_f"))
-## flip so that age15 in interaction comes after arm for plotting
+## flip so that age10c in interaction comes after arm for plotting
 pseudo <- pseudo %>% 
   mutate(term = 
-           if_else(str_detect(term, "^age15\\:"),
-                   paste0(str_remove(term, "^age15\\:"), ":age15"),
+           if_else(str_detect(term, "^age10c\\:"),
+                   paste0(str_remove(term, "^age10c\\:"), ":age10c"),
                    term))
 ## plot differences ----
 pseudo_lng <- pseudo %>% 
@@ -94,3 +94,5 @@ psd_cfs_plt
 pdf("Outputs/compare_hr_pseudo_cfs.pdf", width = 20, height = 15)
 psd_cfs_plt
 dev.off()
+
+## review correlations

@@ -78,10 +78,17 @@ combo_drop <- combo_drop %>%
 ## drops only 17 trials as 40 have two or more other arms
 write_csv(combo_drop, "Outputs/Trials_arm_dropped_combination.csv")
 exclude <- combo_drop$nct_id[combo_drop$other_arms <2] %>% unique()
+ipd_nct <- bind_rows(
+  read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
+  read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv"),
+  read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
+  pull(nct_id) %>% 
+  unique()
 exclude <- tibble(reason = "Fewer than two arms remaining after drop combination arms.",
                   trials = length(exclude),
-                  nct_ids = exclude %>% PasteAnd(),
-                  level = "IPD or AGG")
+                  trials_ipd = length(exclude),
+                  nct_ids = exclude %>% paste(collapse = ";"),
+                  nct_ids_ipd = intersect(exclude, ipd_nct) %>% paste(collapse = ";"))
 write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
 
 ## drop (17) TRIALS with one or fewer arms left after dropping combinations - already dropped arms
@@ -103,10 +110,12 @@ arm_meta <- arm_meta %>%
 arm_meta <- arm_meta %>% 
   filter(!nct_id == "NCT00306384")
 exclude <- "NCT00306384"
+
 exclude <- tibble(reason = "Open label extension study data only.",
-                  trials = length(exclude),
-                  nct_ids = exclude %>% PasteAnd(),
-                  level = "IPD")
+                  trials = "",
+                  trials_ipd = 1,
+                  nct_ids = "",
+                  nct_ids_ipd = "NCT00306384")
 write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
 ## Add placebo as a drug name when it is only listed as an arm label ----
 arm_meta <- arm_meta %>% 

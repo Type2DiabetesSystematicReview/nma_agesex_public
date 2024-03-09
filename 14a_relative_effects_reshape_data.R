@@ -63,7 +63,7 @@ rm(mace_arms, hba1c_arms)
 
 ## Pull whole model level coefficients unrelated to drug or drug class (value_1, age, and sex) ----
 ## and drop from other betas
-wholemodel <- c("beta[male]", "beta[value_1]", "beta[age10]", "beta[age15]")
+wholemodel <- c("beta[male]", "beta[value_1]", "beta[age10]", "beta[age10c]")
 beta_agesexvalue <- betas %>% 
   filter(param %in% wholemodel)
 betas <-  betas %>% 
@@ -113,23 +113,23 @@ ds_mace <- ds %>%
               filter(outcome == "mace") %>%
               select(tosep))
 ds_mace <- ds_mace %>% 
-  left_join(bth_dist %>% select(param, trtcls5, age15, male))
+  left_join(bth_dist %>% select(param, trtcls5, age10c, male))
 beta_mace <- betas %>% 
   semi_join(lkp %>% 
               filter(outcome == "mace") %>%
               select(tosep)) 
 ds_mace <- ds_mace %>% 
   rename(d_value = value) %>% 
-  left_join(beta_mace %>% rename(age15 = param, age15_inter = value)) %>% 
+  left_join(beta_mace %>% rename(age10c = param, age10c_inter = value)) %>% 
   left_join(beta_mace %>% rename(male = param, male_inter = value)) %>% 
-  left_join(beta_agesexvalue %>% select(tosep, smpls, age15_main = age15, male_main = male)) %>% 
-  select(tosep, trtcls5, d = param, age15, male, smpls, d_value, age15_inter, male_inter, age15_main, male_main)
+  left_join(beta_agesexvalue %>% select(tosep, smpls, age10c_main = age10c, male_main = male)) %>% 
+  select(tosep, trtcls5, d = param, age10c, male, smpls, d_value, age10c_inter, male_inter, age10c_main, male_main)
 rm(beta_mace)
 
 ## drop mace models and columns from overall effects
 beta_agesexvalue <- beta_agesexvalue %>% 
   filter(tosep != "random_mace_agesex_main") %>% 
-  select(-age15)
+  select(-age10c)
 ds_hba1c <- ds %>% 
   semi_join(lkp %>% 
               filter(outcome == "hba1c") %>%
@@ -148,13 +148,9 @@ ds_hba1c <- ds_hba1c %>%
   select(tosep, trtcls5, d = param, age10, male, smpls, d_value, age10_inter, male_inter, age10_main, male_main)
 rm(betas, ds)
 
-## rescale age so same for both ----
+## do not rescale age to avoid a later mistake in combining with covariate only centred for MACE models ----
 ds_mace <- ds_mace %>% 
-  rename(modelname = tosep) %>% 
-  mutate(age10_inter = 10 * age15_inter/15,
-         age10_main  = 10 * age15_main/15,
-         age10 = age15) %>% 
-  select(-age15, -age15_inter, -age15_main)
+  rename(modelname = tosep) 
 ds_hba1c <- ds_hba1c %>% 
   rename(modelname = tosep)
 ds_tot <- bind_rows(hba1c = ds_hba1c,

@@ -65,9 +65,9 @@ beta_age_sex <- beta_age_sex %>%
     TRUE ~ 1),
     across(mean:x97_5_percent, ~ case_when(
       covariate == "age10" ~ .x*3,
-      covariate == "age15" ~ .x*2,
+      covariate == "age10c" ~ .x*3,
       TRUE ~ .x))) %>% 
-  mutate(covariate = if_else(covariate %in% c("age10", "age15"), "age30", covariate))
+  mutate(covariate = if_else(covariate %in% c("age10", "age10c"), "age30", covariate))
 
 interhba1cplotappen <- ggplot(beta_age_sex %>% 
                      filter(outcome == "hba1c") %>% 

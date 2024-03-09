@@ -178,10 +178,18 @@ agg %>%
 single <- agg %>% 
   filter(n_arms ==1)
 exclude <- single$nct_id %>% unique() 
+ipd_nct <- bind_rows(
+  read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
+  read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv"),
+  read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
+  pull(nct_id) %>% 
+  unique()
+
 exclude <- tibble(reason = "Fewer than 2 arms after collapsing arms as follows:- Simplify insulins to a single code A10A. Keep dose for metformin, SGLT2, GLP1 and DPP4. drop dose for drug class level comparisons and drugs not in key classes. Reduce to drug (ie remove dose and regimen) for the trials in these remaining classes.",
                   trials = length(exclude),
-                  nct_ids = exclude %>% PasteAnd(),
-                  level = "Aggregate")
+                  trials_ipd = length(intersect(exclude, ipd_nct)),
+                  nct_ids = exclude %>% paste(collapse = ";"),
+                  nct_ids_ipd = intersect(exclude, ipd_nct) %>% paste(collapse = ";"))
 write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
 
 

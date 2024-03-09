@@ -229,8 +229,9 @@ hba1c_meta <- hba1c_meta %>%
 exclude <- hba1c_meta$nct_id %>% unique() 
 exclude <- tibble(reason = "Median statistics and percentage change only.",
                   trials = length(exclude),
-                  nct_ids = exclude %>% PasteAnd(),
-                  level = "Aggregate")
+                  trials_ipd = length(intersect(exclude, ipd$nct_id)),
+                  nct_ids = exclude %>% paste(collapse = ";"),
+                  nct_ids_ipd = intersect(exclude, ipd$nct_id) %>% paste(collapse = ";"))
 write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = FALSE)
 saveRDS(list(arm  = list(data = hba1c_agg_mean,
                         meta = hba1c_meta_mean),

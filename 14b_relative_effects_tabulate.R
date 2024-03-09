@@ -81,3 +81,5 @@ hba1c_novel <- smry_hba1c %>%
 rm(mtrx)
 gc()
 
+write_csv(hba1c_novel, "Outputs/hba1c_relative_effects.csv")
+write_csv(mace_novel, "Outputs/mace_relative_effects.csv")

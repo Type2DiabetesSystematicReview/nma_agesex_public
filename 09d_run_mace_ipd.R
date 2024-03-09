@@ -7,8 +7,8 @@ library(truncnorm)
 library(purrr)
 
 list2env(readRDS("Scratch_data/for_mace_regression_inter.Rds"), envir = .GlobalEnv)
-myregl <- ~ (male + age15)*.trt + offset(ltime)
-myreg <- ~ (male + age15)*.trt 
+myregl <- ~ (male + age10c)*.trt + offset(ltime)
+myreg <- ~ (male + age10c)*.trt 
 
 
 ## Set-up aggregate and IPD data in different formatsfor combining into networks ----
