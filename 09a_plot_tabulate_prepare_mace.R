@@ -194,11 +194,11 @@ rm(mace_agg_plt, mace_agg_sex_plt, mace_agg_age_plt, plotlst,
    mace_agg_plt_df, mace_agg_sex_plt_df, mace_agg_age_plt_df)
 
 ## read in coefficients and variance/covariance matrix ----
-cfs <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/age_sex_model_coefs.csv"),
-                 `8697` = read_csv("../from_vivli/Data/agesexmace_8697/age_sex_model_coefs.csv"),
+cfs <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmacecentred_6115/age_sex_model_coefs.csv"),
+                 `8697` = read_csv("../from_vivli/Data/agesexmacecentred_8697/age_sex_model_coefs.csv"),
                  .id = "repo")
-vcv <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/age_sex_model_vcov.csv"),
-                 `8697` = read_csv("../from_vivli/Data/agesexmace_8697/age_sex_model_vcov.csv"),
+vcv <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmacecentred_6115/age_sex_model_vcov.csv"),
+                 `8697` = read_csv("../from_vivli/Data/agesexmacecentred_8697/age_sex_model_vcov.csv"),
                  .id = "repo")
 ## note 4 more coefficients trials than VCV. Reason for this is that in one model (for 4 trials) 
 ## there is only a single parameter. For the other two trials there are 3 arms 
@@ -240,11 +240,11 @@ MakeMaceData <- function(modeln) {
     unnest(data)
   ## set up names as per set_agd_regression
   cfs <- cfs %>% 
-    mutate(age15 = if_else(str_detect(term, "age15"), 1, NA_real_),
+    mutate(age10c = if_else(str_detect(term, "age10c"), 10L, NA_integer_),
            male = if_else(str_detect(term, "sexM"), TRUE, NA),
            trt = term %>% 
              str_remove("\\:") %>% 
-             str_remove("age15") %>% 
+             str_remove("age10c") %>% 
              str_remove("sexMALE") %>% 
              str_remove("sexM") %>% 
              str_remove("arm_f"))
@@ -267,7 +267,7 @@ MakeMaceData <- function(modeln) {
   cfs$reference <- map(cfs$data, ~ .x %>% 
                          slice(1) %>% 
                          mutate(estimate = NA_real_, std.error = NA_real_,
-                                term = NA_character_, age15 = 0, male = FALSE,
+                                term = NA_character_, age10c = 0L, male = FALSE,
                                 trt = "placebo", arm_lvl = "placebo", trtcls5 = "place"))
   cfs$data <- map2(cfs$data, cfs$reference, ~ bind_rows(ref = .y, notref = .x, .id = "reference"))
   cfs$reference <- NULL
@@ -285,13 +285,11 @@ MakeMaceData <- function(modeln) {
 
   ## transform aggregate data and pseudo IPD into correct format for multinma ----
   pseudo <- pseudo %>% 
-    mutate(age15 = age/15,
-           male = if_else(sex == "M", 1L, 0L),
+    mutate(male = if_else(sex == "M", 1L, 0L),
            time = time/365,
            ltime = log(time + 1))
   mace_agg <- mace_agg %>% 
-    mutate(across(c(age_mu, age_sigma, min_age, max_age), ~ .x/15),
-           male_p = male_prcnt/100,
+    mutate(male_p = male_prcnt/100,
            time = mean_fu_days*participants,
            time = time/365,
            ltime = log(time))
@@ -300,13 +298,11 @@ MakeMaceData <- function(modeln) {
   mace_agg_age <- mace_agg_age %>% 
     select(-min_age, -max_age) %>% 
     rename(min_age = level_min, max_age = level_max) %>% 
-    mutate(across(c(age_mu, age_sigma, min_age, max_age), ~ .x/15),
-           male_p = male_prcnt/100) %>% 
+    mutate(male_p = male_prcnt/100) %>% 
     inner_join(mace_agg %>% 
                  distinct(arm_id, ltime))
   mace_agg_sex <- mace_agg_sex %>% 
-    mutate(across(c(age_mu, age_sigma, min_age, max_age), ~ .x/15),
-           male_p = male_prcnt/100) %>% 
+    mutate(male_p = male_prcnt/100) %>% 
     inner_join(mace_agg %>% 
                  distinct(arm_id, ltime))
   mace_agg <- mace_agg %>% 
@@ -328,10 +324,10 @@ cfsf5 <- f5$cfs %>%
   filter(!is.na(term)) %>% 
   mutate(term_lbl = case_when(
     str_detect(term, "arm") & str_detect(term, "\\:") & male == TRUE ~ "arm_male_inter",
-    str_detect(term, "arm") & str_detect(term, "\\:") & age15 == 1L ~ "arm_age_inter",
-    str_detect(term, "arm") ~ "arm_main_age0_female",
+    str_detect(term, "arm") & str_detect(term, "\\:") & age10c == 10L ~ "arm_age_inter",
+    str_detect(term, "arm") ~ "arm_main_age60_female",
     male == TRUE ~ "male",
-    age15 == 1L ~ "age")) %>%
+    age10c == 10L ~ "age")) %>%
   group_by(nct_id) %>% 
   mutate(trtcls5 = intersect(trtcls5, c("A10BH", "A10BJ", "A10BK"))) %>% 
   ungroup() %>% 

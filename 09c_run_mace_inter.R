@@ -11,8 +11,10 @@ filename <- paste0(refe, "_mace_", "agesex", "_", sg, ".Rds")
 print(filename)
 
 list2env(readRDS("Scratch_data/for_mace_regression_inter.Rds"), envir = .GlobalEnv)
-myreg <- ~ (male + age10c)*.trt 
+myreg <- ~ (male + age)*.trt 
 
+cfs <- cfs %>% 
+  rename(age = age10c)
 
 ## Create networks with different combinations (aggregate = event/hr, main/sg, IPD = pseudo/coefs) ----
 pseudo <- combine_network(set_agd_contrast(data = mace_agg,
@@ -21,7 +23,7 @@ pseudo <- combine_network(set_agd_contrast(data = mace_agg,
                          set_ipd(data = pseudo, study = nct_id, trt = arm_lvl, r = event,
                                  trt_ref = "placebo", trt_class = trtcls5))
 pseudo <- pseudo %>%  add_integration(
-                                 age10c = distr(qtruncnorm, a = min_age, b = max_age, mean = age_mu, sd = age_sigma),
+                                 age = distr(qtruncnorm, a = min_age, b = max_age, mean = age_mu, sd = age_sigma),
                                  male = distr(qbern, prob = male_p))
 mycor <- pseudo$int_cor
 rm(pseudo)
@@ -107,7 +109,7 @@ if(sg == "sex") {
 }
 ## Add integration points. Note taking correlations from pseudo IPD networks
 nwork <-  add_integration(nwork,
-                                age10c = distr(qtruncnorm,  a = min_age, b = max_age, mean = age_mu, sd = age_sigma),
+                                age = distr(qtruncnorm,  a = min_age, b = max_age, mean = age_mu, sd = age_sigma),
                                 male = distr(qbern, prob = male_p),
                                cor = mycor)
 mdl <- nma(nwork,
@@ -118,7 +120,8 @@ mdl <- nma(nwork,
            prior_intercept = normal(scale = 10),
            prior_trt = normal(scale = 10),
            prior_reg = normal(scale = 10), 
-           chains = 4, cores = 4,
+           chains = 2, cores = 2,
+           iter = 1000,
            control = list(max_treedepth = 15))
 saveRDS(mdl, filename)
 
