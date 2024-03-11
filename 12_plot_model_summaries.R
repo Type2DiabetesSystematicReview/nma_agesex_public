@@ -12,6 +12,9 @@ hba1c <- beta %>%
                            "network"),
            sep = "_", remove = FALSE)  %>% 
   mutate(sg = "main")
+hba1c <- hba1c %>% 
+  mutate(params = str_replace(params, "age10", "age"))
+
 mace <- beta %>% 
   filter(str_detect(tosep, "mace")) %>% 
   mutate(modelnum = paste0("m", cumsum(!duplicated(tosep))+1),
@@ -64,10 +67,9 @@ beta_age_sex <- beta_age_sex %>%
     (trtclass %in% c("A10BX", "A10BA") & network == "triple") ~ 0.2,
     TRUE ~ 1),
     across(mean:x97_5_percent, ~ case_when(
-      covariate == "age10" ~ .x*3,
-      covariate == "age10c" ~ .x*3,
+      covariate %in% c("age") ~ .x*30,
       TRUE ~ .x))) %>% 
-  mutate(covariate = if_else(covariate %in% c("age10", "age10c"), "age30", covariate))
+  mutate(covariate = if_else(covariate %in% c("age"), "age30", covariate))
 
 interhba1cplotappen <- ggplot(beta_age_sex %>% 
                      filter(outcome == "hba1c") %>% 
@@ -119,7 +121,7 @@ interhba1cplot <- ggplot(beta_age_sex %>%
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
   theme_bw() +
   scale_y_continuous("HbA1c (%)")
-# interhba1cplot
+interhba1cplot
 
 ## interaction plots mace ----
 intermaceplotappen <- ggplot(beta_age_sex %>% 
