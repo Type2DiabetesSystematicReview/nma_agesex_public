@@ -84,6 +84,28 @@ mace <- mace %>%
   select(-data) %>% 
   unnest(smry)
 
+mace_plot <- ggplot(mace %>% 
+                      filter(trtcls5 %in% c("A10BH", "A10BJ", "A10BK")) %>% 
+                             mutate(sex = if_else(male_predict ==0, "Female", "Male"),
+                                    dc = case_when(
+                                      trtcls5 == "A10BH" ~ "A10BH - DPP4",
+                                      trtcls5 == "A10BJ" ~ "A10BJ - GLP1",
+                                      trtcls5 == "A10BK" ~ "A10BK - SGLT2")) %>% 
+                      group_by(dc) %>% 
+                      mutate(d_recode = cumsum(!duplicated(d)) %>% as.character()) %>% 
+                      ungroup(),
+                    aes(x = age_predict, y = m, ymin = q2_5, ymax = q97_5, 
+                              group = interaction(sex, d), linetype = sex, colour = d)) +
+  geom_point(position = position_dodge(10)) +
+  geom_linerange(position = position_dodge(10)) +
+  facet_wrap(~dc) +
+  coord_flip(ylim = c(-1, 1)) +
+  geom_hline(yintercept = 0, linetype = "dashed") 
+mace_plot
+pdf("Outputs/relative_mace.pdf")
+mace_plot
+dev.off()
+
 hba1c <- hba1c %>% 
   mutate(across(c(m, s, q2_5, q97_5), ~ round(.x, 1) %>% formatC(digits = 1, format = "f")),
          res = paste0(m, " (", q2_5, " to ", q97_5, ")")) %>% 
