@@ -1,19 +1,19 @@
 library(tidyverse)
 ## Code designed to link estimates for classes to drugs within those classes
+## for simplicity run separately for MACE and hba1c
 
 ds <- readRDS("Scratch_data/tx_samples.Rds")
 betas <- readRDS("Scratch_data/cov_nter_samples.Rds")
 lkp <- read_csv("Scratch_data/modelname_content_lkp.csv")
 
-
 ## select only models of interest - 4 models. HbA1c for mono, dual and triple ----
-lkp2 <- lkp %>% 
+lkp <- lkp %>% 
   filter(mainorinter == "agesex",
          datalevel == "aggipd",
          fixedrand == "random",
          sg == "main")
-ds <- ds[lkp2$tosep]
-betas <- betas[lkp2$tosep]
+ds <- ds[lkp$tosep]
+betas <- betas[lkp$tosep]
 
 ds <- map(ds, function(a) {
   a %>% 
@@ -29,6 +29,24 @@ betas <- map(betas, function(a) {
 })
 betas <- bind_rows(betas, .id = "tosep") %>% 
   as_tibble()
+
+## split inot hba1c and mace as differnt names ----
+## ## three trials
+lkp_hba1c <- lkp %>% 
+  filter(outcome == "hba1c")
+## Single trial
+lkp_mace <- lkp %>% 
+  filter(outcome == "mace")
+betas_mace <- betas %>% 
+  filter(tosep %in% lkp_mace$tosep)
+betas_hba1c <- betas %>% 
+  filter(tosep %in% lkp_hba1c$tosep)
+rm(betas)
+ds_mace <- ds %>% 
+  filter(tosep %in% lkp_mace$tosep)
+ds_hba1c <- ds %>% 
+  filter(tosep %in% lkp_hba1c$tosep)
+rm(ds)
 
 ## pull in arm names to link ----
 mace_arms <- readRDS("Scratch_data/mace_arms_agg_data.Rds")$mace_arms
@@ -54,21 +72,26 @@ hba1c_arms <- hba1c_arms %>%
   separate(arm_lvl, into = c("atc"), sep = "_", extra = "drop", remove = FALSE) %>% 
   select(-drug_dose_orig, -drug_dose_simplify)
 rm(hba1c_arms_nomis)
-arms <- bind_rows(mace = mace_arms,
-                  hba1c = hba1c_arms, .id = "outcome")
-arms <- arms %>% 
-  select(-outcome) %>% 
-  distinct()
-rm(mace_arms, hba1c_arms)
 
 ## Pull whole model level coefficients unrelated to drug or drug class (value_1, age, and sex) ----
 ## and drop from other betas
-wholemodel <- c("beta[male]", "beta[value_1]", "beta[age10]", "beta[age10c]")
-beta_agesexvalue <- betas %>% 
+wholemodel <- c("beta[male]", "beta[value_1]", "beta[age]", "beta[age10]")
+
+beta_agesexvalue_mace <- betas_mace %>% 
   filter(param %in% wholemodel)
-betas <-  betas %>% 
+betas_mace <-  betas_mace %>% 
   filter(!param %in% wholemodel)
-beta_agesexvalue <- beta_agesexvalue %>% 
+beta_agesexvalue_hba1c <- betas_hba1c %>% 
+  filter(param %in% wholemodel)
+betas_hba1c <-  betas_hba1c %>% 
+  filter(!param %in% wholemodel)
+
+beta_agesexvalue_mace <- beta_agesexvalue_mace %>% 
+  separate(param, into = c("beta", "main_term"), sep = "\\[") %>% 
+  mutate(main_term = str_sub(main_term, 1, -2)) %>% 
+  spread(main_term, value) %>% 
+  select(-beta)
+beta_agesexvalue_hba1c <- beta_agesexvalue_hba1c %>% 
   separate(param, into = c("beta", "main_term"), sep = "\\[") %>% 
   mutate(main_term = str_sub(main_term, 1, -2)) %>% 
   spread(main_term, value) %>% 
@@ -76,79 +99,91 @@ beta_agesexvalue <- beta_agesexvalue %>%
 
 ## separate betas and ds params into covariate treatment etc and link ds to betas using a distinct table ----
 ## Then map bacross to raw data
-betas_dist <- betas %>% 
+betas_dist_hba1c <- betas_hba1c %>% 
   distinct(param)
-betas_dist <- betas_dist %>% 
+betas_dist_mace <- betas_mace %>% 
+  distinct(param)
+betas_dist_hba1c <- betas_dist_hba1c %>% 
   mutate(param_new = param %>% 
           str_remove("^beta\\[") %>% 
           str_remove("\\]") %>%
           str_remove("\\.trtclass")) %>% 
   separate(param_new, into = c("covariate", "trtclass"), sep = "\\:")
+betas_dist_mace <- betas_dist_mace %>% 
+  mutate(param_new = param %>% 
+           str_remove("^beta\\[") %>% 
+           str_remove("\\]") %>%
+           str_remove("\\.trtclass")) %>% 
+  separate(param_new, into = c("covariate", "trtclass"), sep = "\\:")
+
 ## repeat for ds
-ds_dist <- ds %>% 
+ds_dist_hba1c <- ds_hba1c %>% 
   distinct(param)
-ds_dist <- ds_dist %>% 
+ds_dist_mace <- ds_mace %>% 
+  distinct(param)
+ds_dist_hba1c <- ds_dist_hba1c %>% 
+  separate(param, into = c("d", "trt"), sep = "\\[", remove = FALSE) %>% 
+  mutate(trt = str_sub(trt, 1, -2))
+ds_dist_mace <- ds_dist_mace %>% 
   separate(param, into = c("d", "trt"), sep = "\\[", remove = FALSE) %>% 
   mutate(trt = str_sub(trt, 1, -2))
 ## chekd dups in arm, just where simplified semaglutide dose etc
-ds_dist <- ds_dist %>% 
-  left_join(arms %>% 
+ds_dist_hba1c <- ds_dist_hba1c %>% 
+  left_join(mace_arms %>% 
               distinct(arm_lvl, trtcls5, atc, .keep_all = TRUE) %>% 
               mutate(trt = arm_lvl))
+ds_dist_mace <- ds_dist_mace %>% 
+  left_join(mace_arms %>% 
+              distinct(arm_lvl, trtcls5, atc, .keep_all = TRUE) %>% 
+              mutate(trt = arm_lvl))
+
 ## reviewed where trtcls5 missing, all ATC codes for hba1c. paste across. Deal with arm labelling later
-ds_dist <- ds_dist %>% 
+ds_dist_hba1c <- ds_dist_hba1c %>% 
   mutate(trtcls5 = if_else(is.na(trtcls5), str_sub(trt, 1, 5), trtcls5)) %>% 
   select(param, d, trt, trtcls5)
+ds_dist_mace <- ds_dist_mace %>% 
+  select(param, d, trt, trtcls5)
+
 ## rearrange betas so wide format, this is mapping between class and parameterss
-betas_dist_wide <- betas_dist %>% 
+betas_dist_wide_hba1c <- betas_dist_hba1c %>% 
   rename(trtcls5 = trtclass) %>% 
   spread(covariate, param)
-bth_dist <- ds_dist %>% 
-  left_join(betas_dist_wide) 
-rm(ds_dist)
+betas_dist_wide_mace <- betas_dist_mace %>% 
+  rename(trtcls5 = trtclass) %>% 
+  spread(covariate, param)
+bth_dist_hba1c <- ds_dist_hba1c %>% 
+  left_join(betas_dist_wide_hba1c) 
+bth_dist_mace <- ds_dist_mace %>% 
+  left_join(betas_dist_wide_mace) 
+rm(ds_dist_hba1c, ds_dist_mace)
 
 ## separate ds and betas into mace and hba1c and join  onto drug effects ----
-ds_mace <- ds %>% 
-  semi_join(lkp %>% 
-              filter(outcome == "mace") %>%
-              select(tosep))
 ds_mace <- ds_mace %>% 
-  left_join(bth_dist %>% select(param, trtcls5, age10c, male))
-beta_mace <- betas %>% 
-  semi_join(lkp %>% 
-              filter(outcome == "mace") %>%
-              select(tosep)) 
+  left_join(bth_dist_mace %>% select(param, trtcls5, age, male))
+ds_hba1c <- ds_hba1c %>% 
+  left_join(bth_dist_hba1c %>% select(param, trtcls5, age10, male))
+
 ds_mace <- ds_mace %>% 
   rename(d_value = value) %>% 
-  left_join(beta_mace %>% rename(age10c = param, age10c_inter = value)) %>% 
-  left_join(beta_mace %>% rename(male = param, male_inter = value)) %>% 
-  left_join(beta_agesexvalue %>% select(tosep, smpls, age10c_main = age10c, male_main = male)) %>% 
-  select(tosep, trtcls5, d = param, age10c, male, smpls, d_value, age10c_inter, male_inter, age10c_main, male_main)
-rm(beta_mace)
+  left_join(betas_mace %>% rename(age = param, age_inter = value)) %>% 
+  left_join(betas_mace %>% rename(male = param, male_inter = value)) %>% 
+  left_join(beta_agesexvalue_mace %>% select(tosep, smpls, age_main = age, male_main = male)) %>% 
+  select(tosep, trtcls5, d = param, age, male, smpls, d_value, age_inter, male_inter, age_main, male_main)
+rm(betas_mace)
 
-## drop mace models and columns from overall effects
-beta_agesexvalue <- beta_agesexvalue %>% 
-  filter(tosep != "random_mace_agesex_main") %>% 
-  select(-age10c)
-ds_hba1c <- ds %>% 
-  semi_join(lkp %>% 
-              filter(outcome == "hba1c") %>%
-              select(tosep)) 
-ds_hba1c <- ds_hba1c %>% 
-  left_join(bth_dist %>% select(param, trtcls5, age10, male))
-beta_hba1c <- betas %>% 
-  semi_join(lkp %>% 
-              filter(outcome == "hba1c") %>%
-              select(tosep))
 ds_hba1c <- ds_hba1c %>% 
   rename(d_value = value) %>% 
-  left_join(beta_hba1c %>% rename(age10 = param, age10_inter = value)) %>% 
-  left_join(beta_hba1c %>% rename(male = param, male_inter = value)) %>% 
-  left_join(beta_agesexvalue %>% select(tosep, smpls, age10_main = age10, male_main = male)) %>% 
-  select(tosep, trtcls5, d = param, age10, male, smpls, d_value, age10_inter, male_inter, age10_main, male_main)
-rm(betas, ds)
+  left_join(betas_hba1c %>% rename(age10 = param, age_inter = value)) %>% 
+  left_join(betas_hba1c %>% rename(male = param, male_inter = value)) %>% 
+  left_join(beta_agesexvalue_hba1c %>% select(tosep, smpls, age_main = age10, male_main = male, bline_hba1c = value_1)) %>% 
+  select(tosep, trtcls5, d = param, age = age10, male, smpls, d_value, age_inter, male_inter, age_main, male_main, bline_hba1c)
+rm(betas_hba1c)
 
-## do not rescale age to avoid a later mistake in combining with covariate only centred for MACE models ----
+## drop a10bx from triple therapy as does not fit
+ds_hba1c <- ds_hba1c %>% 
+  filter(! (tosep == "hba1c_agesex_m6_aggipd_random_triple" & trtcls5 == "A10BX"))
+
+## save objects ----
 ds_mace <- ds_mace %>% 
   rename(modelname = tosep) 
 ds_hba1c <- ds_hba1c %>% 
@@ -156,7 +191,7 @@ ds_hba1c <- ds_hba1c %>%
 ds_tot <- bind_rows(hba1c = ds_hba1c,
                     mace = ds_mace,
                     .id = "outcome_rel") 
-rm(ds_mace, ds_hba1c, beta_hba1c, beta_agesexvalue)
+rm(ds_mace, ds_hba1c)
 ds_tot <- inner_join(lkp %>% rename(modelname = tosep),
                       ds_tot)
 ## save objects ----

@@ -55,19 +55,19 @@ hba1c_cls <- hba1c_cls %>%
   mutate(trl_lbl = if_else(is.na(trl_lbl), "Total trials", trl_lbl)) %>% 
   left_join(who_atc %>% select(trtcls5 = `ATC code`, nm = `ATC level name`)) %>% 
   mutate(nm = if_else(trtcls5 == "place", "Placebo", nm)) 
-
-comparisons <- hba1c_cls %>%
-  filter(!cls == trtcls5) %>% 
-  group_by(trl_lbl, data_lvl, nm) %>% 
-  summarise(n = sum(!duplicated(nct_id))) %>% 
-  ungroup() %>% 
-  mutate(res = paste0(nm, " (", n, ")")) %>%
-  arrange(trl_lbl, desc(n)) %>% 
-  group_by(trl_lbl, data_lvl) %>%
-  summarise(res_chr = PasteAnd(res)) %>% 
-  ungroup() %>% 
-  mutate(var = "comparisons",
-         measure = "description_n")
+comparisons <- hba1c_cls %>% 
+  count(trl_lbl, nm, data_lvl) %>%
+  mutate(n = if_else(trl_lbl == nm, "-", as.character(n))) %>% 
+  pivot_wider(names_from = c(trl_lbl, data_lvl), values_from = n, values_fill = "0")   %>% 
+  arrange(desc(as.integer(`Total trials_agg`)))
+comparisons2 <- hba1c_cls %>% 
+  distinct(nct_id, trl_lbl, data_lvl) %>% 
+  count(trl_lbl, data_lvl) %>%
+  mutate(n = as.character(n)) %>% 
+  pivot_wider(names_from = c(trl_lbl, data_lvl), values_from = n, values_fill = "0")  %>% 
+  mutate(nm = "Total")
+comparisons <- bind_rows(comparisons2[, names(comparisons)],
+                         comparisons)
 male <- hba1c_cls  %>% 
   group_by(trl_lbl, data_lvl) %>% 
   summarise(male = round(sum(male)),
@@ -89,53 +89,39 @@ n_arms <- hba1c_cls %>%
 
 tbl_lng <- bind_rows(trials,
                      n_arms,
-                     comparisons,
                      male,
                      ages ,
                      .id = "orig_tbl") %>% 
-  select(var, trl_lbl, data_lvl, lvls, measure, res, res_chr)
+  select(var, trl_lbl, data_lvl, lvls, measure, res)
 write_csv(tbl_lng, "Outputs/manuscript_table1a_machine_readable.csv", na = "")
 
 ## Note participant count from ages summary and male summary are, as expected, identical
 tbl_lng %>% filter(var == "age" & measure == "n" | var == "participants")
 
-prt1 <- tbl_lng %>% 
-  filter(var %in% c("trials", "arms", "comparisons")) %>% 
-  mutate(lvls = if_else(is.na(lvls), var, lvls)) %>% 
-  mutate(res_chr  =if_else(is.na(res_chr), res %>% as.character(), res_chr)) %>% 
-  select(-res, -measure, -var)  %>% 
-  spread(lvls, res_chr) %>% 
-  select(trl_lbl, data_lvl, trials, everything())
-
-
+## produce "Nice" format for report/paper
 tbl_lng2 <- tbl_lng %>% 
   filter(!measure == "n") %>% 
-  mutate(res_chr = case_when(
-    measure == "description_n" ~ res_chr,
+  mutate(res = case_when(
     measure %in% "count" ~ round(res) %>% formatC(digits = 0, format = "f"),
     measure %in% c("m", "s", "q05", "q95", "percent") ~ round(res, 1)  %>% formatC(digits = 1, format = "f")
   ))
 age <- tbl_lng2 %>% 
   filter(var == "age") %>%
-  select(-res) %>% 
-  spread(measure, res_chr) %>% 
-  mutate(res_chr = paste0(m, " (",s, ")", " [",q05, "-", q95, "]")) %>% 
-  select(var, trl_lbl, data_lvl, res_chr)
+  spread(measure, res) %>% 
+  mutate(res = paste0(m, " (",s, ")", " [",q05, "-", q95, "]")) %>% 
+  select(var, trl_lbl, data_lvl, res)
 male <- tbl_lng2 %>% 
   filter(var == "male") %>%
-  select(-res) %>% 
-  spread(measure, res_chr) %>% 
-  mutate(res_chr = paste0(count, " (", percent, "%)")) %>% 
-  select(var, trl_lbl, data_lvl, res_chr)
+  spread(measure, res) %>% 
+  mutate(res = paste0(count, " (", percent, "%)")) %>% 
+  select(var, trl_lbl, data_lvl, res)
 tbl_lng3 <- bind_rows(tbl_lng2 %>% 
-                        filter(var %in% c("trials", "arms", "comparisons", "participants")),
+                        filter(var %in% c("trials", "arms", "participants")),
                       age,
-                      male) %>% 
-  select(-res)
-
+                      male) 
 tbl_wide <- tbl_lng3 %>% 
-  pivot_wider(names_from = c(trl_lbl, data_lvl), values_from = res_chr) %>% 
-  arrange(match(var, c("trials",  "arms","comparisons",
+  pivot_wider(names_from = c(trl_lbl, data_lvl), values_from = res) %>% 
+  arrange(match(var, c("trials",  "arms",
                        "participants","male", "age")))
 
 tbl_wide2 <- tbl_wide %>% 
@@ -146,16 +132,6 @@ tbl_wide2 <- tbl_wide %>%
   select(-var, -lvls, -measure) %>% 
   select(collbl, everything())
 
-compar <- tbl_wide2 %>% slice(5) %>% t %>% 
-  as_tibble(rownames = "cls_ipdagg") %>% 
-  separate(cls_ipdagg, into = c("Drug class", "Data level"), sep = "_")
-compar <- compar %>% 
-  slice(-1) 
-compar <- compar %>% 
-  mutate(`Data level` = if_else(`Data level` == "agg", "Aggregate", "IPD"),
-         `Drug class` = if_else(duplicated(`Drug class`), "", `Drug class`))
-
-write_csv(tbl_wide2 %>% 
-            slice(-5), "Outputs/manuscript_table1a.csv", na = "")
-write_csv(compar, "Outputs/manuscript_hba1c_comparisons.csv", na = "")
+write_csv(tbl_wide2, "Outputs/manuscript_table1a.csv", na = "")
+write_csv(comparisons, "Outputs/manuscript_hba1c_comparisons.csv", na = "")
 

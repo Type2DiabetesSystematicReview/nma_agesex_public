@@ -22,8 +22,9 @@ pseudo <- combine_network(set_agd_contrast(data = mace_agg,
                                           trt_ref = "placebo", trt_class = trtcls5, sample_size = participants), 
                          set_ipd(data = pseudo, study = nct_id, trt = arm_lvl, r = event,
                                  trt_ref = "placebo", trt_class = trtcls5))
+# Note - approximately centre but do not scale age by subtracting 60
 pseudo <- pseudo %>%  add_integration(
-                                 age = distr(qtruncnorm, a = min_age, b = max_age, mean = age_mu, sd = age_sigma),
+                                 age = distr(qtruncnorm, a = min_age-60, b = max_age-60, mean = age_mu-60, sd = age_sigma),
                                  male = distr(qbern, prob = male_p))
 mycor <- pseudo$int_cor
 rm(pseudo)
@@ -108,8 +109,9 @@ if(sg == "sex") {
                                              regression = myreg))
 }
 ## Add integration points. Note taking correlations from pseudo IPD networks
+# Note - approximately centre but do not scale age by subtracting 60
 nwork <-  add_integration(nwork,
-                                age = distr(qtruncnorm,  a = min_age, b = max_age, mean = age_mu, sd = age_sigma),
+                                age = distr(qtruncnorm,  a = min_age-60, b = max_age-60, mean = age_mu-60, sd = age_sigma),
                                 male = distr(qbern, prob = male_p),
                                cor = mycor)
 mdl <- nma(nwork,
