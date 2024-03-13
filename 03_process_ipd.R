@@ -142,9 +142,10 @@ age_sex_plot <- ggplot(age_distr_smry,
   geom_point(position = position_dodge(0.5)) +
   geom_linerange(position = position_dodge(0.5)) +
   scale_x_discrete(guide = "none") +
+  scale_y_continuous("Age (years)") +
   coord_flip() +
   theme_minimal()
-
+saveRDS(age_sex_plot, "Scratch_data/age_comparison_by_sex_hba1c.Rds")
 
 ## Obtain coefficients -----
 age_sex_model_coefs <- age_sex_model_coefs %>% 
