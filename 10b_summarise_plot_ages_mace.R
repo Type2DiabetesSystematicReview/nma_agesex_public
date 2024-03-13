@@ -1,12 +1,12 @@
 # summarise age for mace separately
 library(tidyverse)
 library(truncnorm)
-source("../common_functions/Scripts/truncated_normal.R")
+source("Scripts/common_functions/Scripts/truncated_normal.R")
 
 ## read and transform data ----
-who <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx") 
-elig <- read_csv("../cleaned_data/Data/age_max_min_elig.csv")
-source("../common_functions/Scripts/combine_sd.R")
+who <- read_csv("Data/whoatcdiabetesnodose.csv")
+elig <- read_csv("Data/cleaned_data/Data/age_max_min_elig.csv")
+source("Scripts/common_functions/Scripts/combine_sd.R")
 
 mace_agg <- readRDS("Scratch_data/mace_arms_agg_data.Rds")$mace_agg
 pseudo_mace <- readRDS("Scratch_data/ipd_age_sex_mace.Rds")

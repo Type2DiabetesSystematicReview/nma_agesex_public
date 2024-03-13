@@ -34,32 +34,32 @@ cor2cov <- function(V, sigma) {
 
 
 ## read in IDs where have IPD ----
-ipd1 <- read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
-ipd2 <- read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv")
-ipd3 <- read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")
+ipd1 <- read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
+ipd2 <- read.csv("Data/gsk/hba1c_base_change_overall.csv")
+ipd3 <- read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")
 ipd_nct_id <- bind_rows(ipd1, ipd2, ipd3) %>% 
   distinct(nct_id) %>% 
   pull()
 
 ## read in vivli agesex results ----
-allvivli <- list.files("../from_vivli/Data/agesexhba1c_6115/", patt = "csv$")
-read_lines("../from_vivli/Data/agesexhba1c_6115/00_readme.txt") 
-res1 <- map(allvivli, ~ read_csv(paste0("../from_vivli/Data/agesexhba1c_6115/", .x)))
+allvivli <- list.files("Data/agesexhba1c_6115/", patt = "csv$")
+read_lines("Data/agesexhba1c_6115/00_readme.txt") 
+res1 <- map(allvivli, ~ read_csv(paste0("Data/agesexhba1c_6115/", .x)))
 names(res1) <- allvivli %>% str_sub(1, -5)
 # bind categorical and continuous age data together. Only have continuous for gsk
 res1$age_distribution_baseline_continuous <- bind_rows(res1$age_distribution_baseline_continuous,
                        res1$age_distribution_baseline_categorical) 
 ## read in gsk agesex results ----
-allgsk <- list.files("../from_gsk//Data/agesex/", patt = "csv$")
-read_lines("../from_gsk/README.md") 
-res2 <- map(allgsk, ~ read_csv(paste0("../from_gsk/Data/agesex/", .x)))
+allgsk <- list.files("Data/gsk/", patt = "csv$")
+read_lines("Data/gsk/README.md") 
+res2 <- map(allgsk, ~ read_csv(paste0("Data/gsk/", .x)))
 names(res2) <- allgsk %>% str_sub(1, -5)
 res1 <- res1[names(res2)]
 
 ## read in vivli agesex results from second vivli repository ----
-allvivli <- list.files("../from_vivli/Data/agesexhba1c_8697/", patt = "csv$")
-read_lines("../from_vivli/Data/agesexhba1c_8697/readme.txt") 
-res3 <- map(allvivli, ~ read_csv(paste0("../from_vivli/Data/agesexhba1c_8697/", .x)))
+allvivli <- list.files("Data/agesexhba1c_8697/", patt = "csv$")
+read_lines("Data/agesexhba1c_8697/readme.txt") 
+res3 <- map(allvivli, ~ read_csv(paste0("Data/agesexhba1c_8697/", .x)))
 names(res3) <- allvivli %>% str_sub(1, -5)
 # drop csv only in second_vivli
 res3$reference_trial_arm_to_arm_data_all_cleaned <- NULL

@@ -2,7 +2,7 @@
 library(tidyverse)
 tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 source("Scripts/04b_arm_label_reverse.R")
-source("../common_functions/Scripts/misc.R")
+source("Scripts/common_functions/Scripts/misc.R")
 
 ## arrange into same format as summaries
 ages <- read_csv("Outputs/age_summary_hba1c.csv")

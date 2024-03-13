@@ -2,11 +2,11 @@
 
 library(tidyverse)
 library(multinma)
-source("../common_functions/Scripts/convert_iqr_to_sd.R")
-source("../common_functions/Scripts/combine_sd.R")
-source("../common_functions/Scripts/truncated_normal.R")
+source("Scripts/common_functions/Scripts/convert_iqr_to_sd.R")
+source("Scripts/common_functions/Scripts/combine_sd.R")
+source("Scripts/common_functions/Scripts/truncated_normal.R")
 ## read in age criteria ----
-age_elig <- read_csv("../cleaned_data/Data/age_max_min_elig.csv")
+age_elig <- read_csv("Data/cleaned_data/Data/age_max_min_elig.csv")
 ## assume no limits for unusual trial with minimal information (dropped later anyway as no outcomes)
 age_elig <- bind_rows(age_elig,
                       tibble(nct_id ="UMIN000018395", min_age = 10L, max_age = 150L, age_unit = "Years"))
@@ -14,14 +14,12 @@ age_elig <- bind_rows(age_elig,
 med_mean <- read_csv("Outputs/association_between_median_mean_fu.csv")
 
 ## read in arm data ----
-arm_meta <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv") %>% 
+arm_meta <- read_csv("Data/cleaned_data/Data/arm_data_all_cleaned.csv") %>% 
   rename(nct_id = trial_id)
 
 ## read in IPD regression outputs ----
-ipd_meta <- read_csv("../ipd_overview/Outputs/MACE_trials.csv")
-ipd <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/age_sex_model_coefs.csv"),
-                 `8697` = read_csv("../from_vivli/Data/agesexmace_8697/age_sex_model_coefs.csv"),
-                 .id = "repo")
+ipd_meta <- read_csv("Data/vivli_mace/Overview_MACE_trials.csv")
+ipd <- read_csv("Data/vivli_mace/model_coefficients.csv")
 ipd %>% group_by(repo, nct_id) %>% summarise(n = length(term), arms = sum(!duplicated(term[str_detect(term, "^arm")])))
 
 ## read in IPD arms mapped across to ctg labelled in database ----
@@ -44,15 +42,7 @@ ipd_arms <- ipd_arms %>%
   inner_join(arm_meta %>% select(-arm_id_subgroup, -(drug2_name:design_group_id), -(n_rand:source)))
 
 ## read in IPD trial-level information ----
-ipd_cnsr <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/censoring_distribution_fp.csv") %>% 
-                        rename(arm = arm_label,
-                               sex = sex_decoded),
-                      `8697a` = read_csv("../from_vivli/Data/agesexmace_8697/censoring_distribution.csv"),
-                      `8697b` = read_csv("../from_vivli/Data/agesexmace_8697/censoring_distribution_single_trial.csv"),
-                      .id = "repo") %>% 
-  mutate(male = if_else(sex %in% c("F", "Female"), 0L, 1L)) %>% 
-  select(-sex)   %>% 
-  mutate(arm = str_to_lower(arm))
+ipd_cnsr <- read_csv("Data/vivli_mace/ipd_cnsr.csv")
 
 ipd_cnsr %>% 
   distinct(nct_id, arm) %>% 
@@ -62,8 +52,8 @@ ipd_cnsr %>%
 ## recover trial follow-up
 
 ## read in aggregate-level outcome data and arrange into canonical format ----
-maceout <- bind_rows(`19` = read_csv("../cleaned_data/Data/mace_2019_results.csv"),
-                     `22` = read_csv("../cleaned_data/Data/mace_2022_results.csv"),
+maceout <- bind_rows(`19` = read_csv("Data/cleaned_data/Data/mace_2019_results.csv"),
+                     `22` = read_csv("Data/cleaned_data/Data/mace_2022_results.csv"),
                      .id = "srch_round")
 maceout <- maceout %>% 
   rename(nct_id = trial_id)
@@ -120,35 +110,20 @@ maceout <- maceout %>%
 rm(maceout_outcome)
 
 ## read in baseline data for aggregate trials ----
-base_dsp <- readRDS("../cleaned_data/Processed_data/base_dsp.Rds") %>% 
+base_dsp <- read_csv("Data/cleaned_data/base_dsp.csv") %>% 
   rename(nct_id = trial_id) %>% 
   semi_join(maceout) %>% 
   filter(variable %in% c("age", "male", "n"))
-base_rng <- readRDS("../cleaned_data/Processed_data/base_rng.Rds") %>% 
+base_rng <- read_csv("Data/cleaned_data/base_rng.csv") %>% 
   rename(nct_id = trial_id)%>% 
   semi_join(maceout) %>% 
   filter(variable %in% c("age"))
 base_rng <- base_rng %>% 
   inner_join(maceout %>% select(arm_id = arm_id_unq, arm_description) %>% distinct())
 ## pull mean age and STD from aact if present
-aact_age <- 
-  readRDS("../extract_transform/aact/data/April2023_extract/aact_extract_April_2023.Rds")$baseline_measurements
-aact_age <- aact_age %>% 
-  semi_join(base_rng %>% select(nct_id)) %>% 
-  filter(title == "Age, Continuous",
-         param_type == "Mean",
-         dispersion_type == "Standard Deviation",
-         units %in% c("years", "Years")) %>% 
-  select(nct_id, result_group_id, ctgov_group_code, 
-         param_value_num, dispersion_value_num, number_analyzed)
-DoNotDeleteDoNotRun <- function () {aact_result_groups <- 
-  readRDS("../extract_transform/aact/data/April2023_extract/aact_extract_April_2023.Rds")$result_groups  %>% 
-  semi_join(aact_age %>% select(nct_id, ctgov_group_code)) 
-aact_result_groups %>% 
-  distinct(nct_id, ctgov_group_code, title) %>% 
-  mutate(arm_id = "") %>% 
-  arrange(nct_id, arm_description) %>% 
-  write_csv("temp.csv") }
+aact_age <- read_csv("Data/aact/age.csv") %>% 
+  semi_join(base_rng %>% 
+              select(nct_id)) 
 arm_lkp <- read_csv("nct_id,ctgov_group_code,title,arm_id
 NCT03315143,BG000,Sotagliflozin,unq_updaa10053
 NCT03315143,BG001,Placebo,unq_updaa10052
@@ -156,6 +131,7 @@ NCT03521934,BG000,Sotagliflozin,unq_updaa10073
 NCT03521934,BG001,Placebo,unq_updaa10072
 NCT01144338,BG000,Placebo,uaa10618
 NCT01144338,BG001,Exenatide Once Weekly,uaa10617")
+
 aact_age <- aact_age %>% 
   inner_join(arm_lkp)
 base_rng <- base_rng %>% 
@@ -250,13 +226,7 @@ base_agg <- base_agg %>%
   filter(!nct_id == "NCT01986881") %>% 
   bind_rows(NCT01986881_base %>% mutate(nct_id = "NCT01986881"))
 ## NCT03496298  can't figure out from data. Pull again from aact for BOTH outcome and base
-NCT03496298 <- readRDS("../extract_transform/aact/data/April2023_extract/aact_extract_April_2023.Rds")
-NCT03496298 <- map(NCT03496298, ~{
-  if("nct_id" %in% names(.x)) {
-    .x %>% 
-      filter(nct_id == "NCT03496298")
-  } else .x
-})
+NCT03496298 <- readRDS("Data/aact/NCT03496298.Rds")
 male <- NCT03496298$baseline_measurements %>% 
   filter(title == "Sex: Female, Male") %>% 
   select(id, nct_id, result_group_id, ctgov_group_code, category, param_value_num) 
@@ -471,7 +441,7 @@ bth_arm <- bth_arm %>%
            arm_lvl == "efpeglenatide_4_6", "efpeglenatide", drug_name))
 
 # new arm labels in WHO database and own manual lookup ----
-whoatc <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx", sheet = 1)
+whoatc <- read_csv("Data/whoatcdiabetesnodose.csv")
 whoatc <- whoatc %>% 
   select(nm = `ATC level name`,
          atc_code = `ATC code`) %>% 
@@ -538,7 +508,7 @@ mace <- mace %>%
 ## Read in subgroup data for age and sex ----
 ## Note. In IPD similar age between men and women (around 2 years different) so treat as independent in subgroup data
 ## ie assume mean age is same in both sexes. assume percent male is same in all age categories
-mace_sg <- read_csv("../cleaned_data/Data/mace_subgroups_age_sex.csv")
+mace_sg <- read_csv("Data/cleaned_data/Data/mace_subgroups_age_sex.csv")
 ## drop IPD ones
 mace_sg <- mace_sg %>% 
   filter(!nct_id %in% ipd$nct_id)

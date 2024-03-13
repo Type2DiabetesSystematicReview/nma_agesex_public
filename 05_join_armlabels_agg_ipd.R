@@ -4,8 +4,8 @@ library(multinma)
 ipd_method <- "rsd"
 
 source("Scripts/00_functions.R")
-source("../common_functions/Scripts/combine_sd.R")
-source("../common_functions/Scripts/misc.R")
+source("Scripts/common_functions/Scripts/combine_sd.R")
+source("Scripts/common_functions/Scripts/misc.R")
 
 ## read in arm labels ----
 arm_meta <- read_csv("Data/arm_labels_hba1c.csv") 
@@ -14,7 +14,7 @@ arm_meta <- arm_meta %>%
   rename(arm_id_subgroup_ordering = arm_id_subgroup)
 
 ## read in agg data - drop those not in arm label metadata ---
-agg <- read_csv("Data/agg.csv") 
+agg <- read_csv("Scratch_data/agg.csv") 
 agg_orig <- agg 
 sum(!duplicated(agg$nct_id))
 agg <- agg %>% 
@@ -113,7 +113,7 @@ msng <- agg %>%
   ungroup() %>% 
   filter(some_missing)
 # these are also missing from the raw data so not a coding error
-msng <- msng %>% left_join(readRDS("../cleaned_data/Processed_data/base_dsp.Rds") %>% 
+msng <- msng %>% left_join(read_csv("Data/cleaned_data/base_dsp.csv") %>% 
                              select(nct_id = trial_id, arm_id_unq = arm_id, first, second, variable) %>% filter( variable == "male") )
 
 ## impute first within trial, then across trials for age. taking the mean
@@ -179,9 +179,9 @@ single <- agg %>%
   filter(n_arms ==1)
 exclude <- single$nct_id %>% unique() 
 ipd_nct <- bind_rows(
-  read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
-  read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv"),
-  read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
+  read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
+  read.csv("Data/gsk/hba1c_base_change_overall.csv"),
+  read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
   pull(nct_id) %>% 
   unique()
 

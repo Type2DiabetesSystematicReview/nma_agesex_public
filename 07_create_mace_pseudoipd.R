@@ -1,41 +1,13 @@
 # Recover mace IPD
 library(tidyverse)
 source("Scripts/00_functions.R")
-source("../common_functions/Scripts/fractional_polynomial.R")
-## event times separate for single trial and other 4. Censoring times brought together early because sample with sd = 0 for categorical age
-## trials on new vivli repository - 8697
-fls <- c(
-  # "event_time_distribution_linear.csv",
-  "event_time_distribution_fp.csv",
-  "event_time_distribution_single_trial.csv",
-  "censoring_distribution.csv",
-  "censoring_distribution_single_trial.csv")
-res <- map(fls, ~ read_csv(paste0("../from_vivli/Data/agesexmace_8697/", .x)))
-names(res) <- str_sub(fls, 1, -5)
-list2env(res, envir = .GlobalEnv)
-rm(res)
-## trials on new previous repository - 6115
-censoring_distribution_fp_6115 <- read_csv("../from_vivli/Data/agesexmace_6115/censoring_distribution_fp.csv")
-event_time_distribution_fp_6115 <- read_csv("../from_vivli/Data/agesexmace_6115/event_time_distribution_fp.csv")
-censoring_distribution_fp_6115 <- censoring_distribution_fp_6115 %>% 
-  rename(arm = arm_label,
-         sex = sex_decoded) %>% 
-  mutate(sex = if_else(sex == "female", "F", "M"),
-         `Number of quantiles` = str_count(`Censored at quantiles (%)`, "\\="))
-censoring_distribution <- bind_rows(censoring_distribution,
-                                    censoring_distribution_fp_6115)
-rm(censoring_distribution_fp_6115)
-event_time_distribution_fp_6115 <- event_time_distribution_fp_6115 %>% 
-  rename(arm = arm_label,
-         sex = sex_decoded) %>% 
-  mutate(sex = if_else(sex == "female", "F", "M")) %>% 
-  select(-fu_m, -fu_t) %>% 
-  mutate(est_age2 = 0,
-         se_age2 = 0)
-event_time_distribution_fp <- bind_rows(event_time_distribution_fp,
-                                     event_time_distribution_fp_6115 %>% mutate(r = as.character(r)))
-rm(event_time_distribution_fp_6115)
+source("Scripts/common_functions/Scripts/fractional_polynomial.R")
+
 ## note there was no need to export both linear and FP as gave same result
+censoring_distribution <- read_csv("Data/vivli_mace/censoring_distribution.csv")
+censoring_distribution_single_trial <- read_csv( "Data/vivli_mace/censoring_distribution_single_trial.csv")
+event_time_distribution_fp <- read_csv( "Data/vivli_mace/event_time_distribution_fp.csv")
+event_time_distribution_single_trial <- read_csv("Data/vivli_mace/event_time_distribution_single_trial.csv")
 
 ## sample from censoring distributions (not dependent on age - 5 trials) ----
 ColnamesPipe <- function(x, vct){
@@ -113,14 +85,6 @@ seed <- c(1111)
     spread(sex, age_m) %>% 
     mutate(sex_diff = F-M) %>% 
     write_csv("Outputs/mean_age_difference_men_women.csv")
-  ## simulate 
-  # mydf <- mydf %>%
-  #   mutate(age1 = MP1(age/mod_fp$scale, mod_fp$power1),
-  #          age2 = MP2(age/mod_fp$scale, mod_fp$power1, mod_fp$power2))
-  # time_sim <- rnorm(nrow(mydf), mod_fp$est_cept +
-  #                     mod_fp$est_age1*mydf$age1 +
-  #                     mod_fp$est_age2*mydf$age2,
-  # mod_fp$residsd)
   
   event_time_distribution_fp$time <- pmap(list(
     age = event_time_distribution_fp$age, 

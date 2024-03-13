@@ -2,18 +2,18 @@ library(tidyverse)
 library(multinma)
 
 source("Scripts/00_functions.R")
-source("../common_functions/Scripts/misc.R")
+source("Scripts/common_functions/Scripts/misc.R")
 ## read data ----
 ## read in simulated IPD
 ipd <- readRDS("Scratch_data/simulated_ipd.Rds")
 ## read in reg
 reg <- readRDS("Scratch_data/ipd_coefs_frmttd.Rds")
 ## read in agg
-agg <- read_csv("Data/agg.csv")
+agg <- read_csv("Scratch_data/agg.csv")
 # read in arm metadata
-whichnwork <- read_csv("../cleaned_data/Data/ancillary_drugs_data_all_cleaned.csv")
+whichnwork <- read_csv("Data/cleaned_data/Data/ancillary_drugs_data_all_cleaned.csv")
 # as uploaded to vivli
-arm_meta_orig <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv") %>% 
+arm_meta_orig <- read_csv("Data/cleaned_data/Data/arm_data_all_cleaned.csv") %>% 
   rename(nct_id = trial_id)
 
 arm_meta_orig <- arm_meta_orig %>% 
@@ -26,7 +26,7 @@ arm_meta_orig <- arm_meta_orig %>%
   ))
 
 # additions to trial metadata made within vivli ----
-arm_meta_new <- read_csv("../from_vivli/Data/agesexhba1c_6115/reference_arm_data_all_cleaned.csv")
+arm_meta_new <- read_csv("Data/agesexhba1c_6115/reference_arm_data_all_cleaned.csv")
 arm_meta_new_ipd <- arm_meta_new %>% 
   semi_join(ipd %>% select(nct_id))
 arm_meta_new_ipd <- arm_meta_new_ipd %>% 
@@ -79,9 +79,9 @@ combo_drop <- combo_drop %>%
 write_csv(combo_drop, "Outputs/Trials_arm_dropped_combination.csv")
 exclude <- combo_drop$nct_id[combo_drop$other_arms <2] %>% unique()
 ipd_nct <- bind_rows(
-  read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
-  read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv"),
-  read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
+  read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
+  read.csv("Data/gsk/hba1c_base_change_overall.csv"),
+  read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
   pull(nct_id) %>% 
   unique()
 exclude <- tibble(reason = "Fewer than two arms remaining after drop combination arms.",
@@ -138,11 +138,7 @@ arm_meta <- arm_meta %>%
   select(-rename)
 
 ## new arm labels in WHO database and own manual lookup
-if(sessionInfo()$platform == "x86_64-pc-linux-gnu (64-bit)") {
-  whoatc <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx", sheet = 1) 
-  } else {
-  whoatc <- readxl::read_excel("../../../Medications_resources/WHO_ATC/2018 ATC index with DDDs.xlsx", sheet = 1)
-  }
+whoatc <- read_csv("Data/whoatcdiabetesnodose.csv")
 whoatc <- whoatc %>% 
   select(nm = `ATC level name`,
          atc_code = `ATC code`) %>% 
@@ -317,4 +313,4 @@ arm_meta <- arm_meta %>%
 arm_meta <- arm_meta %>% 
   mutate(trtcls5 = if_else(drug_name == "tirzepatide", "A10BJ", trtcls5))
 
-write_csv(arm_meta, "Data/arm_labels_hba1c.csv")
+write_csv(arm_meta, "Scratch_data/arm_labels_hba1c.csv")

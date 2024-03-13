@@ -1,23 +1,23 @@
 #01a_process_hba1c_initial
 library(tidyverse)
-source("../common_functions/Scripts/misc.R")
+source("Scripts/common_functions/Scripts/misc.R")
 source("Scripts/00_functions.R")
 ## read in all data ----
 ## read in drop trial list ----
-droplist <- read_csv("../cleaned_data/Data/excluded_trials_look_up.csv")
+droplist <- read_csv("Data/cleaned_data/Data/excluded_trials_look_up.csv")
 ## read in ipd so can drop from aggregate ----
-ipd1 <- read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
-ipd2 <- read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv")
-ipd3 <- read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")
+ipd1 <- read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
+ipd2 <- read.csv("Data/gsk/hba1c_base_change_overall.csv")
+ipd3 <- read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")
 ipd <- bind_rows(ipd1, ipd2, ipd3)
 ## read in aggregate level data for each hba1c trials and baseline data
-hba1c_agg1 <- read_csv("../cleaned_data/Data/hba1c_outcome_data_2019.csv") %>% 
+hba1c_agg1 <- read_csv("Data/cleaned_data/Data/hba1c_outcome_data_2019.csv") %>% 
   rename(nct_id = trial_id)
-hba1c_agg2 <- read_csv("../cleaned_data/Data/hba1c_outcome_data_2022.csv") %>% 
+hba1c_agg2 <- read_csv("Data/cleaned_data/Data/hba1c_outcome_data_2022.csv") %>% 
   rename(nct_id = trial_id)
-hba1c_agg3 <- read_csv("../cleaned_data/Data/hba1c_outcome_data_2024.csv") %>% 
+hba1c_agg3 <- read_csv("Data/cleaned_data/Data/hba1c_outcome_data_2024.csv") %>% 
   rename(nct_id = trial_id)
-arm <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv")
+arm <- read_csv("Data/cleaned_data/Data/arm_data_all_cleaned.csv")
 
 ## clean arm data 
 arm <- arm %>% 
@@ -28,21 +28,10 @@ arm <- arm %>%
   ))
 
 ## read in outcome counts
-oc_orig <- readRDS("../extract_transform/aact/data/aact_extract.Rds")$outcome_counts
-oc_new <- readRDS("../extract_transform/aact/data/April2023_extract/aact_extract_April_2023.Rds")$outcome_counts 
+oc_orig <- read_csv("Data/aact/oc_orig.csv")
+oc_new <- read_csv("Data/aact/oc_new.csv")
 ## read in IDs for mapping counts onto outcomes
-## the first file is all hba1c
-hba1c_ids_orig <- read_csv("../extract_transform/Created_metadata/hba1c_continuous_aact.csv") %>% 
-  distinct(nct_id, id, outcome_id, result_group_id, ctgov_group_code)
-## note lacking IDs. Need to add from aact
-hba1c_ids_new <- read_csv("../extract_transform/aact/2022_update/Created_metadata/unique_outcomes_for_harmonisation_RVd_EB.csv") %>%
-  filter(variable == "hba1c") 
-hba1c_ids_new2 <- readRDS("../extract_transform/aact/data/April2023_extract/aact_extract_April_2023.Rds")$outcome_measurements
-hba1c_ids_new <- hba1c_ids_new %>% 
-  inner_join(hba1c_ids_new2 %>% 
-              select(nct_id, title, description, outcome_id, units, id, result_group_id, ctgov_group_code) %>% 
-               distinct())
-rm(hba1c_ids_new2)
+hba1c_ids_new <- read_csv("Data/extract_transform/hba1c_ids_new.csv")
 
 # assign each type of outcome to a wider category. Eg mean change, baseline etc
 result_determination <- read_csv("Created_metadata/resolve_result_type.csv")
@@ -123,7 +112,7 @@ ci_error <- hba1c_meta %>%
   inner_join(hba1c_agg) %>% 
   filter(!str_detect(dispersion, ",|\\;"))
 
-ci_corr <- read_csv("../extract_transform/data/aact_hba1c_outcome_data_correct_aact_difference.csv")
+ci_corr <- read_csv("Data/extract_transform/ci_corr.csv")
 ci_error2 <- ci_error %>% 
   inner_join(ci_corr %>% 
                select(nct_id, result = param_value, dispersion_lower_limit, dispersion_upper_limit))

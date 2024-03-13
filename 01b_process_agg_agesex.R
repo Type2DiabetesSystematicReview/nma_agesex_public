@@ -1,15 +1,15 @@
 library(tidyverse)
 
-source("../common_functions/Scripts/combine_sd.R")
+source("Scripts/common_functions/Scripts/combine_sd.R")
 # rm(a, ab, b, mean_res, means, mymeans, myns, mysds, sd_res, sds)
-source("../common_functions/Scripts/convert_iqr_to_sd.R")
+source("Scripts/common_functions/Scripts/convert_iqr_to_sd.R")
 
-base_dsp <- readRDS("../cleaned_data/Processed_data/base_dsp.Rds")
-base_rng <- readRDS("../cleaned_data/Processed_data/base_rng.Rds")
+base_dsp <- read_csv("Data/cleaned_data/base_dsp.csv")
+base_rng <-  read_csv("Data/cleaned_data/base_rng.csv")
 hba1c_agg <- readRDS("Scratch_data/agg_hba1c.Rds")
-comporig <- read_csv("../cleaned_data/Data/example_comparisons.csv")
-comp2019 <- read_csv("../cleaned_data/Data/comparisons_2019.csv")
-comp2022 <- read_csv("../cleaned_data/Data/comparisons_2022_update.csv")
+comporig <- read_csv("Data/cleaned_data/Data/example_comparisons.csv")
+comp2019 <- read_csv("Data/cleaned_data/Data/comparisons_2019.csv")
+comp2022 <- read_csv("Data/cleaned_data/Data/comparisons_2022_update.csv")
 comp <- bind_rows(comporig = comporig,
                   comp2019 = comp2019 %>% mutate(unique_id = as.character(unique_id)),
                   comp2022 = comp2022 %>% mutate(unique_id = as.character(unique_id)), .id = "type")
@@ -46,7 +46,7 @@ arm_in <- bind_rows(arm_in1, arm_in2) %>%
 rm(arm_in1, arm_in2)
 
 ## read in arm data to allow to drop subgroups (to allow aggregating over these)
-arm <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv")
+arm <- read_csv("Data/cleaned_data/Data/arm_data_all_cleaned.csv")
 arm_ctg <- arm %>% 
   filter(!is.na(ctgov_group_code)) %>% 
   rename(nct_id = trial_id) %>% 
@@ -63,7 +63,7 @@ arm_lkp_vct <- c(arm_lkp_vct1, arm_lkp_vct2)
 sum(duplicated(names(arm_lkp_vct)))
 sum(is.na(arm_lkp_vct))
 rm(arm, arm_lkp_vct1, arm_lkp_vct2)
-write_csv(arm_lkp, "Data/arm2_armsg.csv")
+write_csv(arm_lkp, "Scratch_data/arm2_armsg.csv")
 
 ## pull number in each arm for linking
 ## use number linked to outcome as first preference, note may not have subgroups

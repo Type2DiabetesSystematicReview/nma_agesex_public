@@ -194,12 +194,8 @@ rm(mace_agg_plt, mace_agg_sex_plt, mace_agg_age_plt, plotlst,
    mace_agg_plt_df, mace_agg_sex_plt_df, mace_agg_age_plt_df)
 
 ## read in coefficients and variance/covariance matrix ----
-cfs <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmacecentred_6115/age_sex_model_coefs.csv"),
-                 `8697` = read_csv("../from_vivli/Data/agesexmacecentred_8697/age_sex_model_coefs.csv"),
-                 .id = "repo")
-vcv <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmacecentred_6115/age_sex_model_vcov.csv"),
-                 `8697` = read_csv("../from_vivli/Data/agesexmacecentred_8697/age_sex_model_vcov.csv"),
-                 .id = "repo")
+cfs <- read_csv("Data/vivli_mace/model_coefficients.csv")
+vcv <- read_csv("Data/vivli_mace/model_vcv.csv")
 ## note 4 more coefficients trials than VCV. Reason for this is that in one model (for 4 trials) 
 ## there is only a single parameter. For the other two trials there are 3 arms 
 ## create vcov with a single value of 1 for this

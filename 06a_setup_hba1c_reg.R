@@ -1,5 +1,5 @@
 library(tidyverse)
-source("../common_functions/Scripts/misc.R")
+source("Scripts//common_functions/Scripts/misc.R")
 a <- expand_grid(data_lvl = c("aggipd", "ipd"),
                  fe_re = c("fixed", "random"),
                  nwork = c("mono", "dual", "triple")) 
@@ -15,9 +15,9 @@ dropdisconnect <- c("NCT02477865", "JapicCTI-101351",
 exclude <- dropdisconnect
 
 ipd_nct <- bind_rows(
-  read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
-  read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv"),
-  read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
+  read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
+  read.csv("Data/gsk/hba1c_base_change_overall.csv"),
+  read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
   pull(nct_id) %>% 
   unique()
 

@@ -1,16 +1,16 @@
 # 01c_process_to_standard_errors
 library(tidyverse)
-source("../common_functions/Scripts/misc.R")
+source("Scripts/common_functions/Scripts/misc.R")
 source("Scripts/00_functions.R")
 ## read data -----
-droptrial <- read_csv("../cleaned_data/Data/excluded_trials_look_up.csv")
+droptrial <- read_csv("Data/cleaned_data/Data/excluded_trials_look_up.csv")
 out <- readRDS("Scratch_data/agg_hba1c.Rds")
 bas <- readRDS("Scratch_data/agg_hba1c_base.Rds")
 bas <- map(bas, ~ .x %>% 
              rename(nct_id = trial_id, arm_id_unq  = arm_id))
-comporig <- read_csv("../cleaned_data/Data/example_comparisons.csv")
-comp2019 <- read_csv("../cleaned_data/Data/comparisons_2019.csv")
-comp2022 <- read_csv("../cleaned_data/Data/comparisons_2022_update.csv")
+comporig <- read_csv("Data/cleaned_data/Data/example_comparisons.csv")
+comp2019 <- read_csv("Data/cleaned_data/Data/comparisons_2019.csv")
+comp2022 <- read_csv("Data/cleaned_data/Data/comparisons_2022_update.csv")
 comp <- bind_rows(comporig = comporig,
                       comp2019 = comp2019 %>% mutate(unique_id = as.character(unique_id)),
                       comp2022 = comp2022 %>% mutate(unique_id = as.character(unique_id)), .id = "type")
@@ -18,7 +18,7 @@ comp %>%
   distinct(type, comp_id, arm_id)
 comp <- comp %>% 
   distinct(comp_id, arm_id, .keep_all = TRUE)
-arm <- read_csv("../cleaned_data/Data/arm_data_all_cleaned.csv")
+arm <- read_csv("Data/cleaned_data/Data/arm_data_all_cleaned.csv")
 
 ## NCT01541956  is actually a standard deviation not a standard error. checked paper
 out$arm$meta <- out$arm$meta %>% 
@@ -115,9 +115,9 @@ nodisp %>%
   filter(!is.na(dispersion))
 exclude <- nodisp$nct_id %>% unique() 
 ipd_nct <- bind_rows(
-  read_csv("../from_vivli/Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
-  read.csv("../from_gsk/Data/agesex/hba1c_base_change_overall.csv"),
-  read.csv("../from_vivli/Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
+  read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
+  read.csv("Data/gsk/hba1c_base_change_overall.csv"),
+  read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
   pull(nct_id) %>% 
   unique()
 
@@ -286,4 +286,4 @@ hba1c_arm2 <- hba1c_arm %>%
 
 final <- bind_rows(comp6,
                    hba1c_arm2)
-write_csv(final, "Data/agg.csv")
+write_csv(final, "Scratch_data/agg.csv")

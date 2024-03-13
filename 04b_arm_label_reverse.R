@@ -1,7 +1,7 @@
 #04b_arm_label_reverse
 ## ciode to reverse who_atc lookups back to drug names
 library(tidyverse)
-who_atc <- readxl::read_excel("../2018 ATC index with DDDs.xlsx")
+who_atc <- read_csv("Data/whoatcdiabetesnodose.csv")
 who_lkp <- readRDS("Scratch_data/who_atc_lkp.Rds")
 
 who_lkp_rev1 <- who_atc$`ATC level name`

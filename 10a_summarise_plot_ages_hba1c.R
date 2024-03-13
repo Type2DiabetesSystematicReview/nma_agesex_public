@@ -1,12 +1,12 @@
 library(tidyverse)
 library(truncnorm)
-source("../common_functions/Scripts/truncated_normal.R")
+source("Scripts/common_functions/Scripts/truncated_normal.R")
 
 ## read and transform data ----
-who <- readxl::read_excel("~/2018 ATC index with DDDs.xlsx") 
+who <- read_csv("Data/whoatcdiabetesnodose.csv")
 tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
-elig <- read_csv("../cleaned_data/Data/age_max_min_elig.csv")
-source("../common_functions/Scripts/combine_sd.R")
+elig <- read_csv("Data/cleaned_data/Data/age_max_min_elig.csv")
+source("Scripts/common_functions/Scripts/combine_sd.R")
 
 hba1c_agg <- tot %>% 
   select(drug_regime_smpl, agg) %>% 
