@@ -222,11 +222,11 @@ chk_sim <- ggplot(ipd_chk %>%
                     filter(!nct_id == "NCT02065791"), aes(x = distrb, y = age, fill = distrb)) +
   geom_violin() +
   facet_wrap(~nct_id) +
-  scale_x_discrete(guide = "none") +
-  ggtitle("For IPD compare normal, truncated normal and empirical distributions")
-chk_sim
+  scale_x_discrete(guide = "none") 
+saveRDS(chk_sim, "Scratch_data/chk_sim.Rds")
 pdf("Outputs/age_plots_check_simulation.pdf", height = 10, width = 20)
-chk_sim
+chk_sim+
+  ggtitle("For IPD compare normal, truncated normal and empirical distributions")
 dev.off()
 
 ## Summarise ages by trial class and ipd or agg

@@ -98,7 +98,7 @@ mace_tbl <- mace_tbl_name %>%
   arrange(dc, data_lvl, nct_id) 
 mace_tbl <- mace_tbl %>% 
   mutate(data_lvl = if_else(nct_id %in% mace_agg_age$nct_id, "sg", data_lvl))
-write_csv(mace_tbl, "Outputs/manuscript_table1b_machine_readable.csv", na = "", col_names = FALSE)
+write_csv(mace_tbl, "Outputs/manuscript_table1b_machine_readable.csv", na = "")
 
 mace_tbl_neat <- mace_tbl %>% 
   mutate(across(starts_with("age"), ~ round(.x, 1) %>% formatC(digits = 1, format = "f")),

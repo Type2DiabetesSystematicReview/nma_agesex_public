@@ -130,6 +130,22 @@ age_distr <- age_distr %>%
               mutate(reference_arm = 1)) %>% 
   mutate(reference_arm = if_else(is.na(reference_arm), 2L, reference_arm),
          arm_f = paste0("_", reference_arm, "_", arm_id_unq)) 
+age_distr_smry <- age_distr %>% 
+  group_by(nct_id, sex) %>% 
+  summarise(m = mean(age),
+            q5 = quantile(age, probs = 0.05),
+            q95 = quantile(age, probs = 0.95)) %>% 
+  ungroup()
+age_sex_plot <- ggplot(age_distr_smry,
+                       aes(x = nct_id, 
+                           y = m, ymin = q5, ymax = q95, colour = sex)) +
+  geom_point(position = position_dodge(0.5)) +
+  geom_linerange(position = position_dodge(0.5)) +
+  scale_x_discrete(guide = "none") +
+  coord_flip() +
+  theme_minimal()
+
+
 ## Obtain coefficients -----
 age_sex_model_coefs <- age_sex_model_coefs %>% 
   group_by(nct_id, nct_id2, models) %>% 
