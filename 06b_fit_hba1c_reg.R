@@ -1,4 +1,5 @@
 # 06_fit_hba1c_reg
+## Designed to run inside virtual machine for speed using Rscript with arguments
 library(dplyr)
 library(tidyr)
 library(stringr)

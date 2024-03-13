@@ -127,6 +127,8 @@ rm(ci_error, ci_corr, ci_error2)
 
 ### Add in number of participants where available based on result_id ----
 ## pull other missing ns from results  note the IDs are AACT-extract specific
+# hba1c_continuous_aact.csv
+hba1c_ids_orig <-  read_csv("Data/extract_transform/hba1c_continuous_aact.csv")
 oc_orig <- oc_orig %>% 
   semi_join(hba1c_ids_orig %>% select(nct_id))
 oc_orig <- oc_orig %>% 

@@ -123,7 +123,8 @@ saveRDS(NCT03496298, "Data/aact/NCT03496298.Rds")
 
 ## Read in from extract_transform data cleaning of raw data and data from AACT ----
 hba1c_ids_orig <- read_csv("../extract_transform/Created_metadata/hba1c_continuous_aact.csv") %>% 
-  distinct(nct_id, id, outcome_id, result_group_id, ctgov_group_code)
+   distinct(nct_id, id, outcome_id, result_group_id, ctgov_group_code)
+write_csv(hba1c_ids_orig, "Data/extract_transform/hba1c_continuous_aact.csv")
 ## note lacking IDs. Need to add from aact
 hba1c_ids_new <- read_csv("../extract_transform/aact/2022_update/Created_metadata/unique_outcomes_for_harmonisation_RVd_EB.csv") %>%
   filter(variable == "hba1c") 
@@ -145,7 +146,7 @@ cleaned <- cleaned %>%
 dir.create("Data/cleaned_data/")
 ## processed data
 base_dsp <- readRDS("../cleaned_data/Processed_data/base_dsp.Rds") %>% 
-  filter(variable %in% c("n", "age", "male"))
+  filter(variable %in% c("n", "age", "male", "race", "ethnicity"))
 write_csv(base_dsp, "Data/cleaned_data/base_dsp.csv")
 base_rng <- readRDS("../cleaned_data/Processed_data/base_rng.Rds") %>% 
   filter(variable %in% c("age"))
@@ -176,3 +177,17 @@ whoatc <- whoatc %>%
   filter(str_detect(`ATC code`, "^A10")) %>% 
   select(1:2)
 write_csv(whoatc, "Data/whoatcdiabetesnodose.csv")
+
+## copy across readmes
+file.copy("../from_vivli/Data/agesexhba1c_6115/00_readme.txt",
+          "Data/agesexhba1c_6115/00_readme.txt")
+file.copy("../from_vivli/Data/agesexhba1c_8697/readme.txt",
+          "Data/agesexhba1c_8697/readme.txt")
+file.copy("../from_vivli/Data/agesexmace_6115/00_readme.txt",
+          "Data/vivli_mace/6115_00_readme.txt")
+file.copy("../from_vivli/Data/agesexmace_8697/00_readme.txt",
+          "Data/vivli_mace/8697_readme.txt")
+file.copy("../from_vivli/Data/agesexmacecentred_6115/00_readme.txt",
+          "Data/vivli_mace/6115_centred_readme.txt", overwrite = TRUE)
+file.copy("../from_vivli/Data/agesexmacecentred_8697/00_readme.txt",
+          "Data/vivli_mace/8697_centred_readme.txt", overwrite = TRUE)

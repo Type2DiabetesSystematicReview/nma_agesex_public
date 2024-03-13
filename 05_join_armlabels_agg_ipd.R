@@ -8,7 +8,7 @@ source("Scripts/common_functions/Scripts/combine_sd.R")
 source("Scripts/common_functions/Scripts/misc.R")
 
 ## read in arm labels ----
-arm_meta <- read_csv("Data/arm_labels_hba1c.csv") 
+arm_meta <- read_csv("Scratch_data/arm_labels_hba1c.csv") 
 ## arm_id_subgroup has mismatched ordering between arm meta and agg so rename
 arm_meta <- arm_meta %>% 
   rename(arm_id_subgroup_ordering = arm_id_subgroup)

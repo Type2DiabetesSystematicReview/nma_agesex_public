@@ -69,7 +69,6 @@ beta <- beta %>%
 high_rhat <- beta %>% 
   filter(rhat > 1.05)
 write_csv(high_rhat, "Outputs/nma_results_high_rhats.csv")
-write_lines("", "Outputs/trials_with_high_rhats.txt")
 write_csv(beta, "Outputs/betas_meta_analysis.csv")
 
 ## Divergent transitions for random mace no inter. Nothing else concerning. Reviewed all models interactively with shinystan

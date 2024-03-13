@@ -204,8 +204,6 @@ basedata2 <- map(basedata, ~ .x %>%
                    semi_join(arm_in))
 map_int(basedata, nrow)
 map_int(basedata2, nrow)
-
-
 saveRDS(basedata2, "Scratch_data/agg_hba1c_base.Rds")
 ## Addressing missing ones n's where are using se's ----
 
