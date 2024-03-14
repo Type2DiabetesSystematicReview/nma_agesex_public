@@ -35,6 +35,8 @@ map(res, names)
 res <- map(res, ~ .x %>% 
              select(starts_with("d"), contains("male"), contains("age")) %>% 
              as.matrix())
+map(res, colnames)
+map(res, colMeans)
 lpfx <- function(trt, male, age10, mymtrx) {
   as.vector(mymtrx %*% c(trt, male, age10))
 }
@@ -77,10 +79,10 @@ plot_dc <- ggplot(smry %>%
   geom_linerange(position = position_dodge(5)) +
   facet_wrap(~cls) +
   geom_hline(yintercept = 0, linetype = "dashed") +
-  coord_cartesian(ylim = c(-1, 1)) +
+  # coord_cartesian(ylim = c(-1, 1)) +
   scale_y_continuous(name = "Treatment efficacy by age and sex (hazard ratio)",
-                     breaks = seq(-0.5, 1, 0.5),
-                     labels = round(exp(seq(-0.5, 1, 0.5)), 2)) +
+                     breaks = log(c(0.6, 0.8, 1, 1.25, 1.67)) ,
+                     labels = c(0.6, 0.8, 1, 1.25, 1.67)) +
   scale_x_continuous("Age (years)") +
   scale_color_discrete("") +
   theme_minimal()

@@ -129,3 +129,17 @@ theme_minimal2 <- function (base_size = 11, base_family = "", base_line_size = b
           legend.position = 'bottom',
           complete = TRUE)
 }
+
+theme_minimal3 <- function (base_size = 11, base_family = "", base_line_size = base_size/22, 
+                            base_rect_size = base_size/22) 
+{
+  theme_bw(base_size = base_size, base_family = base_family, 
+           base_line_size = base_line_size, base_rect_size = base_rect_size) %+replace% 
+    theme(panel.background = element_blank(), 
+          plot.background = element_blank(),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          legend.position = 'bottom',
+          complete = TRUE)
+}
+

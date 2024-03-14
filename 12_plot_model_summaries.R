@@ -1,6 +1,26 @@
 library(tidyverse)
 beta <- read_csv("Outputs/betas_meta_analysis.csv")
 source("Scripts/04b_arm_label_reverse.R")
+source("Scripts/00_functions.R")
+## read in data to label trials ----
+tot <- readRDS("Scratch_data/for_mace_regression_inter.Rds")
+cfs <- tot$cfs %>% 
+  distinct(nct_id, trtcls5)
+mace_agg_sex <- tot$mace_agg_sex %>% 
+  distinct(nct_id, trtcls5)
+mace_agg_age <- tot$mace_agg_age %>% 
+  distinct(nct_id, trtcls5)
+mace_agg <- tot$mace_agg %>% 
+  distinct(nct_id, trtcls5)
+nct_id_lkp <- bind_rows(ipd = cfs,
+                        sg = mace_agg_age,
+                        sg = mace_agg_sex,
+                        agg = mace_agg, 
+                        .id = "data_lvl") %>% 
+  filter(trtcls5 %in% c("A10BH", "A10BJ", "A10BK")) %>% 
+  distinct(nct_id, trtcls5, .keep_all = TRUE)
+rm(tot, cfs, mace_agg_age, mace_agg_sex, mace_agg)
+
 ## relabel outputs for subsequent plotting ----
 hba1c <- beta %>% 
   filter(str_detect(tosep, "^hba1c")) %>% 
@@ -11,7 +31,8 @@ hba1c <- beta %>%
                            "fixedrand",
                            "network"),
            sep = "_", remove = FALSE)  %>% 
-  mutate(sg = "main")
+  mutate(sg = "main",
+         nct_id = "none")
 hba1c <- hba1c %>% 
   mutate(params = str_replace(params, "age10", "age"))
 
@@ -24,8 +45,10 @@ mace <- beta %>%
   separate(tosep, into = c("fixedrand",
                            "outcome",
                            "mainorinter",
-                           "sg"),
-           sep = "_|\\.", remove = FALSE)  
+                           "sg",
+                           "nct_id"),
+           sep = "_|\\.", remove = FALSE)  %>% 
+  mutate(nct_id = if_else(is.na(nct_id), "none", nct_id))
 
 x <- names(mace)
 y <- names(hba1c)
@@ -127,78 +150,9 @@ interhba1cplot
 # "sens", "sens2"
 # "None (one SGLT2 IPD trial excluded)",
 # "None (one DPP-4 IPD trial excluded)"
-
-intermaceplotappen_age <- ggplot(beta_age_sex %>% 
-                     filter(cls %in% c("A10BH:Dipeptidyl peptidase 4 (DPP-4) inhibitors", 
-                                       "A10BJ:Glucagon-like peptide-1 (GLP-1) analogues", 
-                                       "A10BK:Sodium-glucose co-transporter 2 (SGLT2) inhibitors"),
-                            outcome == "mace",
-                            sg %in% c("main", "sensdrph", "sensdrpj", "sensdrpk",
-                                      "age", "agedrph", "agedrpj", "agedrpk"),
-                            covariate == "age30",
-                            datalevel == "aggipd",
-                            fixedrand == "fixed") %>% 
-                     mutate(datalevel = factor(datalevel,
-                                               levels = c("aggipd", "ipd"),
-                                               labels = c("All data", "IPD only")),
-                            sg_facet = if_else(sg %in% c("age", "agedrph", "agedrpj", "agedrpk"),
-                                         "Subgroup data",
-                                         "No subgroup data"),
-                            dc_last = str_sub(sg, -1) %>% str_to_upper(),
-                            cls_facet = if_else(dc_last %in% c("H", "J", "K"),
-                                                paste0("Dropped one A10B", dc_last),
-                                                "All included")), 
-                   aes(x = cls_facet, y = mean, ymin = x2_5_percent, 
-                       ymax = x97_5_percent,
-                       colour = sg_facet)) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_linerange(position = position_dodge(0.5)) +
-  facet_wrap( ~ cls, ncol = 2) + 
-  scale_x_discrete(limits = rev) +
-  scale_color_discrete("Subgroup data") +
-  coord_flip(ylim = c(-1, 1)) +
-  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
-  theme_bw() +
-  scale_y_continuous("Hazard ratio (log-scale)")
-intermaceplotappen_age
-
-intermaceplotappen_sex <- ggplot(beta_age_sex %>% 
-                                   filter(cls %in% c("A10BH:Dipeptidyl peptidase 4 (DPP-4) inhibitors", 
-                                                     "A10BJ:Glucagon-like peptide-1 (GLP-1) analogues", 
-                                                     "A10BK:Sodium-glucose co-transporter 2 (SGLT2) inhibitors"),
-                                          outcome == "mace",
-                                          sg %in% c("main", "sensdrph", "sensdrpj", "sensdrpk",
-                                                    "sex", "sexdrph", "sexdrpj", "sexdrpk"),
-                                          covariate == "male",
-                                          datalevel == "aggipd",
-                                          fixedrand == "fixed") %>% 
-                                   mutate(datalevel = factor(datalevel,
-                                                             levels = c("aggipd", "ipd"),
-                                                             labels = c("All data", "IPD only")),
-                                          sg_facet = if_else(sg %in% c("sex", "sexdrph", "sexdrpj", "sexdrpk"),
-                                                             "Subgroup data",
-                                                             "No subgroup data"),
-                                          dc_last = str_sub(sg, -1) %>% str_to_upper(),
-                                          cls_facet = if_else(dc_last %in% c("H", "J", "K"),
-                                                              paste0("Dropped one A10B", dc_last),
-                                                              "All included")), 
-                                 aes(x = cls_facet, y = mean, ymin = x2_5_percent, 
-                                     ymax = x97_5_percent,
-                                     colour = sg_facet)) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_linerange(position = position_dodge(0.5)) +
-  facet_wrap( ~ cls, ncol = 2) + 
-  scale_x_discrete(limits = rev) +
-  scale_color_discrete("Subgroup data") +
-  coord_flip(ylim = c(-1, 1)) +
-  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
-  theme_bw() +
-  scale_y_continuous("Hazard ratio (log-scale)")
-intermaceplotappen_sex
-
-
 intermaceplot <- ggplot(beta_age_sex %>% 
-                          filter(outcome == "mace", sg == "main",
+                          filter(outcome == "mace", sg == "sex",
+                                 nct_id == "none",
                                  trtclass %in% c("A10BH", "A10BJ", "A10BK")) %>% 
                           mutate(covariate = factor(covariate,
                                                     levels = c("age30", "male"),
@@ -219,6 +173,82 @@ intermaceplot <- ggplot(beta_age_sex %>%
                      breaks = seq(-0.5, 0.5, 0.25), 
                      labels = round(exp(seq(-0.5, 0.5, 0.25)),2))
 
+## sensitivity analyses for MACE ----
+nct_id_lkp <- nct_id_lkp %>% 
+  mutate(trtcls5 = case_when(
+    trtcls5 == "A10BH" ~ "DPP-4",
+    trtcls5 == "A10BJ" ~ "GLP-1",
+    trtcls5 == "A10BK" ~ "SGLT-2",
+  ))
+macesens <- beta_age_sex %>% 
+  filter(fixedrand == "fixed",
+         outcome == "mace",
+         trtclass %in% c("A10BH", "A10BJ", "A10BK")) %>% 
+  mutate(trtclass = case_when(
+    trtclass == "A10BH" ~ "DPP-4",
+    trtclass == "A10BJ" ~ "GLP-1",
+    trtclass == "A10BK" ~ "SGLT-2",
+  )) %>% 
+  left_join(nct_id_lkp) %>% 
+  mutate(sg_lbl = if_else(sg %in% c("age", "sex"), "Yes", "No"),
+         sg_lbl = factor(sg_lbl, levels = c("Yes", "No")),
+         data_lvl = if_else(is.na(data_lvl), 
+                            "na", data_lvl),
+         data_lvl = factor(data_lvl,
+                           levels = c("na",
+                                      "agg",
+                                      "sg",
+                                      "ipd"),
+                           labels = c("Non-applicable",
+                                      "Aggregate only",
+                                      "Subgroup",
+                                      "IPD")),
+         xvar = case_when(
+          nct_id == "none" ~ "All trials included",
+          TRUE ~ paste0(trtcls5, ": ", nct_id)
+         ))
+macesensage <- macesens %>% 
+  filter(sg %in% c("main", "age"),
+         covariate == "age30")
+macesenssex <- macesens %>% 
+  filter(sg %in% c("main", "sex"),
+         covariate == "male")
+## examine impact of using sex-subgroup on age analysis
+macesensage_contra <- macesens %>% 
+  filter(sg %in% c("main", "sex"),
+         covariate == "age30")
+## examine impact of using age-subgroup on sex analysis
+macesenssex_contra  <- macesens %>% 
+  filter(sg %in% c("main", "age"),
+         covariate == "male")
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+macesensageplt <- ggplot(macesensage,
+                         aes(x = xvar,
+                             y = mean, 
+                             ymin = x2_5_percent, 
+                             ymax = x97_5_percent, 
+                             shape = sg_lbl,
+                             linetype = sg_lbl,
+                             colour = data_lvl)) +
+  geom_point(position = position_dodge(0.5)) +
+  geom_linerange(position = position_dodge(0.5)) +
+  facet_wrap(~trtclass) + 
+  scale_x_discrete("", limits = rev) +
+  scale_color_manual("Trial data type", 
+                     values = cbbPalette[1:4]) +
+  coord_flip(ylim = c(-0.7, 0.7)) +
+  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
+  theme_minimal3() +
+  scale_y_continuous("Hazard ratio", 
+                     breaks = seq(-0.5, 0.5, 0.25), 
+                     labels = round(exp(seq(-0.5, 0.5, 0.25)),2)) +
+  scale_shape("Subgroup data included") +
+  scale_linetype("Subgroup data included")
+macesensageplt
+macesenssexplt <- macesensageplt %+% macesenssex
+macesensageplt_contra <- macesensageplt %+% macesensage_contra
+macesenssexplt_contra <- macesenssexplt %+% macesenssex_contra
 
 ## main effects hba1c ----
 main_hba1c <- beta %>% 
@@ -307,39 +337,22 @@ mainmacecplot <- ggplot(main_mace,
   coord_flip(ylim = c(-0.61, 0.61)) +
   facet_wrap(~cls_lbl, scales = "free_y", ncol = 1)
 
-pdf("Outputs/hba1c_mace.pdf", height = 10, width = 20)
-cowplot::plot_grid(interhba1cplot + 
-                     scale_color_discrete(guide = "none") + 
-                     ggtitle("Hba1c"), 
-                   intermaceplot + 
-                     ggtitle("MACE") + 
-                     scale_color_discrete(guide = "none"), 
-                   nrow = 1, rel_widths = c(3, 1.9))
-mainhba1cplot + ggtitle("HbA1c main effects meta-analysis for paper")
-interhba1cplot  + ggtitle("HbA1c interactions meta-analysis for paper")
-interhba1cplotappen + ggtitle("HbA1c interactions meta-analysis for appendix")
-mainmacecplot + ggtitle("MACE main effects meta-analysis for paper")
-intermaceplot  + ggtitle("MACE interactions meta-analysis for paper")
-intermaceplotappen + ggtitle("MACE interactions meta-analysis for appendix")
-dev.off()
-
-regplots <- list(interhba1cmaceplot = cowplot::plot_grid(interhba1cplot + 
-                                      scale_color_discrete(guide = "none") + 
-                                      ggtitle("Hba1c"), 
-                                    intermaceplot + 
-                                      ggtitle("MACE") + 
-                                      scale_color_discrete(guide = "none"), 
-                                    nrow = 1, rel_widths = c(3, 1.9)),
-                 mainhba1cplot = mainhba1cplot,
-                 intermaceplotappen1 = intermaceplotappen1,
-                 intermaceplotappen2 = intermaceplotappen2,
+regplots <- list(interhba1cplot = interhba1cplot,
                  interhba1cplotappen = interhba1cplotappen,
-                 mainmaceplot = mainmacecplot,
                  intermaceplot = intermaceplot,
-                 intermaceplotappen = intermaceplotappen)
+                 macesensageplt = macesensageplt,
+                 macesenssexplt = macesenssexplt,
+                 macesensageplt_contra = macesensageplt_contra,
+                 macesenssexplt_contra = macesenssexplt_contra,
+                 mainhba1cplot = mainhba1cplot,
+                 mainmacecplot = mainmacecplot)
 names(regplots) <- names(regplots) %>% str_remove("plot$") %>% 
   str_replace("^main", "m") %>% 
   str_replace("^inter", "nt") %>% 
   str_replace("^hba1c", "hb")%>% 
-  str_replace("^mace", "mc")
+  str_replace("^mace", "mc") %>% 
+  str_replace("plot", "plt")
+pdf("Outputs/hba1c_mace.pdf", height = 10, width = 20)
+regplots
+dev.off()
 saveRDS(regplots, "Scratch_data/regplots.Rds")

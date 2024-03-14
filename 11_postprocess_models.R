@@ -27,8 +27,12 @@ mdl_names <- list.files("FromVM/mace_nointer/", patt = "Rds$")
 res4 <- map(mdl_names, ~ readRDS(paste0("FromVM/mace_nointer/", .x)))
 names(res4) <- mdl_names %>% str_sub(1, -5)
 
-res <- c(res1, res2, res3, res4)
-rm(res1, res2, res3, res4)
+mdl_names <- list.files("FromVM/mace_sensitivity/", patt = "Rds$")
+res5 <- map(mdl_names, ~ readRDS(paste0("FromVM/mace_sensitivity/", .x)))
+names(res5) <- mdl_names %>% str_sub(1, -5)
+
+res <- c(res1, res2, res3, res4, res5)
+rm(res1, res2, res3, res4, res5)
 
 smpls <- map(res, ~ as.data.frame(.x$stanfit))
 betas <- map(smpls, ~ .x[str_detect(names(.x), "beta")])
