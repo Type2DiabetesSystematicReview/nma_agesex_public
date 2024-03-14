@@ -135,17 +135,33 @@ age_distr_smry <- age_distr %>%
   summarise(m = mean(age),
             q5 = quantile(age, probs = 0.05),
             q95 = quantile(age, probs = 0.95)) %>% 
-  ungroup()
-age_sex_plot <- ggplot(age_distr_smry,
+  ungroup() 
+age_distr_smry2 <- age_distr_smry %>% 
+  arrange(sex) %>% 
+  group_by(nct_id) %>% 
+  summarise(across(c(m, q5, q95), ~ .x[1] - .x[2])) %>% 
+  ungroup() %>% 
+  gather("measure", "value", -nct_id) %>% 
+  arrange(nct_id)
+
+age_sex_plot <- ggplot(age_distr %>% 
+                         filter(nct_id %in% sample(age_distr$nct_id %>% unique(), size = 20)),
                        aes(x = nct_id, 
-                           y = m, ymin = q5, ymax = q95, colour = sex)) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_linerange(position = position_dodge(0.5)) +
-  scale_x_discrete(guide = "none") +
+                           y = age, fill = sex)) +
+  geom_violin() +
+  scale_fill_discrete("") +
+  scale_x_discrete("Trial",guide = "none") +
   scale_y_continuous("Age (years)") +
-  coord_flip() +
   theme_minimal()
+age_sex_plot2 <- ggplot(age_distr_smry2,
+                    aes(x = measure, y = value)) +
+  geom_violin() +
+  scale_x_discrete("Mean, upper 5th and 95th centiles for age") +
+  scale_y_continuous("Difference in age summary statistic women - men, in years")
+
 saveRDS(age_sex_plot, "Scratch_data/age_comparison_by_sex_hba1c.Rds")
+saveRDS(age_sex_plot2, "Scratch_data/age_comparison_by_sex_hba1c_smry.Rds")
+
 
 ## Obtain coefficients -----
 age_sex_model_coefs <- age_sex_model_coefs %>% 

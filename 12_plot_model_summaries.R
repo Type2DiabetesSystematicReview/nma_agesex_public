@@ -124,34 +124,78 @@ interhba1cplot <- ggplot(beta_age_sex %>%
 interhba1cplot
 
 ## interaction plots mace ----
-intermaceplotappen <- ggplot(beta_age_sex %>% 
-                     filter(outcome == "mace") %>% 
+# "sens", "sens2"
+# "None (one SGLT2 IPD trial excluded)",
+# "None (one DPP-4 IPD trial excluded)"
+
+intermaceplotappen_age <- ggplot(beta_age_sex %>% 
+                     filter(cls %in% c("A10BH:Dipeptidyl peptidase 4 (DPP-4) inhibitors", 
+                                       "A10BJ:Glucagon-like peptide-1 (GLP-1) analogues", 
+                                       "A10BK:Sodium-glucose co-transporter 2 (SGLT2) inhibitors"),
+                            outcome == "mace",
+                            sg %in% c("main", "sensdrph", "sensdrpj", "sensdrpk",
+                                      "age", "agedrph", "agedrpj", "agedrpk"),
+                            covariate == "age30",
+                            datalevel == "aggipd",
+                            fixedrand == "fixed") %>% 
                      mutate(datalevel = factor(datalevel,
                                                levels = c("aggipd", "ipd"),
                                                labels = c("All data", "IPD only")),
-                            sg = factor(sg,
-                                        levels = c("main", "age", "sex", "sens", "sens2"),
-                                        labels = c("None (full set)", "Age", "Sex", 
-                                                   "None (one SGLT2 IPD trial excluded)",
-                                                   "None (one DPP-4 IPD trial excluded)")),
-                            covariate = factor(covariate,
-                                               levels = c("age30", "male"),
-                                               labels = c("Age per 30 years",
-                                                          "Male sex"))), 
-                   aes(x = cls, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
-                       colour = sg,
-                       shape = fixedrand,
-                       linetype = fixedrand)) +
+                            sg_facet = if_else(sg %in% c("age", "agedrph", "agedrpj", "agedrpk"),
+                                         "Subgroup data",
+                                         "No subgroup data"),
+                            dc_last = str_sub(sg, -1) %>% str_to_upper(),
+                            cls_facet = if_else(dc_last %in% c("H", "J", "K"),
+                                                paste0("Dropped one A10B", dc_last),
+                                                "All included")), 
+                   aes(x = cls_facet, y = mean, ymin = x2_5_percent, 
+                       ymax = x97_5_percent,
+                       colour = sg_facet)) +
   geom_point(position = position_dodge(0.5)) +
   geom_linerange(position = position_dodge(0.5)) +
-  facet_grid(~ covariate) + 
+  facet_wrap( ~ cls, ncol = 2) + 
   scale_x_discrete(limits = rev) +
-  scale_color_discrete("Subgroup data/ Sensitivity analysis") +
+  scale_color_discrete("Subgroup data") +
   coord_flip(ylim = c(-1, 1)) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
   theme_bw() +
   scale_y_continuous("Hazard ratio (log-scale)")
-# intermaceplotappen
+intermaceplotappen_age
+
+intermaceplotappen_sex <- ggplot(beta_age_sex %>% 
+                                   filter(cls %in% c("A10BH:Dipeptidyl peptidase 4 (DPP-4) inhibitors", 
+                                                     "A10BJ:Glucagon-like peptide-1 (GLP-1) analogues", 
+                                                     "A10BK:Sodium-glucose co-transporter 2 (SGLT2) inhibitors"),
+                                          outcome == "mace",
+                                          sg %in% c("main", "sensdrph", "sensdrpj", "sensdrpk",
+                                                    "sex", "sexdrph", "sexdrpj", "sexdrpk"),
+                                          covariate == "male",
+                                          datalevel == "aggipd",
+                                          fixedrand == "fixed") %>% 
+                                   mutate(datalevel = factor(datalevel,
+                                                             levels = c("aggipd", "ipd"),
+                                                             labels = c("All data", "IPD only")),
+                                          sg_facet = if_else(sg %in% c("sex", "sexdrph", "sexdrpj", "sexdrpk"),
+                                                             "Subgroup data",
+                                                             "No subgroup data"),
+                                          dc_last = str_sub(sg, -1) %>% str_to_upper(),
+                                          cls_facet = if_else(dc_last %in% c("H", "J", "K"),
+                                                              paste0("Dropped one A10B", dc_last),
+                                                              "All included")), 
+                                 aes(x = cls_facet, y = mean, ymin = x2_5_percent, 
+                                     ymax = x97_5_percent,
+                                     colour = sg_facet)) +
+  geom_point(position = position_dodge(0.5)) +
+  geom_linerange(position = position_dodge(0.5)) +
+  facet_wrap( ~ cls, ncol = 2) + 
+  scale_x_discrete(limits = rev) +
+  scale_color_discrete("Subgroup data") +
+  coord_flip(ylim = c(-1, 1)) +
+  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
+  theme_bw() +
+  scale_y_continuous("Hazard ratio (log-scale)")
+intermaceplotappen_sex
+
 
 intermaceplot <- ggplot(beta_age_sex %>% 
                           filter(outcome == "mace", sg == "main",
@@ -287,7 +331,8 @@ regplots <- list(interhba1cmaceplot = cowplot::plot_grid(interhba1cplot +
                                       scale_color_discrete(guide = "none"), 
                                     nrow = 1, rel_widths = c(3, 1.9)),
                  mainhba1cplot = mainhba1cplot,
-                 interhba1cplot = interhba1cplot,
+                 intermaceplotappen1 = intermaceplotappen1,
+                 intermaceplotappen2 = intermaceplotappen2,
                  interhba1cplotappen = interhba1cplotappen,
                  mainmaceplot = mainmacecplot,
                  intermaceplot = intermaceplot,

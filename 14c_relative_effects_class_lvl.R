@@ -2,6 +2,8 @@ library(tidyverse)
 library(rstan)
 library(multinma)
 
+source("Scripts/00_functions.R")
+
 mdl <- readRDS("FromVM/mace_classlvl/fixed_mace_classoverall.Rds")
 smpl <- as.data.frame(mdl$stanfit)
 rm(mdl)
@@ -58,12 +60,12 @@ smry <- predictfor %>%
     q2_5 = quantile(value, probs = 0.025),
     q97_5 = quantile(value, probs = 0.975)) %>% 
   ungroup()
-
+whoatc <- read_csv("Data/whoatcdiabetesnodose.csv")
+whoatclkp <- whoatc$`ATC level name`
+names(whoatclkp) <- whoatc$`ATC code`
+smry <- smry %>% 
+  mutate(cls = whoatclkp[cls])
 plot_dc <- ggplot(smry %>% 
-                    mutate(cls = case_when(
-                      cls == "A10BH" ~ "A10BH - DPP4",
-                      cls == "A10BJ" ~ "A10BJ - GLP1",
-                      cls == "A10BK" ~ "A10BK - SGLT2")) %>% 
                     mutate(sex = factor(male, levels = 0:1, 
                                         labels = c("Female", "Male"))),
                         aes(x = age, 
@@ -79,8 +81,11 @@ plot_dc <- ggplot(smry %>%
   scale_y_continuous(name = "Treatment efficacy by age and sex (hazard ratio)",
                      breaks = seq(-0.5, 1, 0.5),
                      labels = round(exp(seq(-0.5, 1, 0.5)), 2)) +
-  scale_x_continuous("Age (years)")
+  scale_x_continuous("Age (years)") +
+  scale_color_discrete("") +
+  theme_minimal()
 plot_dc
+saveRDS(plot_dc, "Scratch_data/relative_mace_class_level.Rds")
 
 pdf("Outputs/relative_mace_class_level.pdf")
 plot_dc

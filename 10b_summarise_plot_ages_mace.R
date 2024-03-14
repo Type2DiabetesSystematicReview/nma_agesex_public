@@ -112,6 +112,7 @@ mace <- mace %>%
     any(trtcls5 %in% novel[3]) ~ novel[3],
   )) %>% 
   ungroup()
+
 mace_smry1 <- mace %>% 
   group_by(trtcls5, data_lvl) %>% 
   summarise(trials = sum(!duplicated(nct_id)),
@@ -141,6 +142,8 @@ mace_smry_trial <- mace %>%
             q95 = quantile(age, probs = 0.95)) 
 write_csv(mace_smry_trial %>% select(-trials), "Outputs/age_summary_trials_mace.csv")
 hba1c_smry <- read_csv("Outputs/age_summary_hba1c.csv")
+
+
 mace_smry <- bind_rows(mace_smry1,
                        mace_smry2) %>% 
   rename(cls = trtcls5) %>% 
