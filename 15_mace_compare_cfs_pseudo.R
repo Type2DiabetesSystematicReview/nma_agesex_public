@@ -94,5 +94,3 @@ psd_cfs_plt
 pdf("Outputs/compare_hr_pseudo_cfs.pdf", width = 20, height = 15)
 psd_cfs_plt
 dev.off()
-
-## review correlations

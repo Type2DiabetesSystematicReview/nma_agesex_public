@@ -63,8 +63,8 @@ write_csv(censoring_distribution_single_trial, "Data/vivli_mace/censoring_distri
 write_csv(event_time_distribution_fp, "Data/vivli_mace/event_time_distribution_fp.csv")
 write_csv(event_time_distribution_single_trial, "Data/vivli_mace/event_time_distribution_single_trial.csv")
 
-cfs <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmace_6115/age_sex_model_coefs.csv"),
-                 `8697` = read_csv("../from_vivli/Data/agesexmace_8697/age_sex_model_coefs.csv"),
+cfs <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmacecentred_6115/age_sex_model_coefs.csv"),
+                 `8697` = read_csv("../from_vivli/Data/agesexmacecentred_8697/age_sex_model_coefs.csv"),
                  .id = "repo")
 write_csv(cfs, "Data/vivli_mace/model_coefficients.csv")
 vcv <- bind_rows(`6115` = read_csv("../from_vivli/Data/agesexmacecentred_6115/age_sex_model_vcov.csv"),

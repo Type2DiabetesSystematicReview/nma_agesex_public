@@ -11,7 +11,7 @@ lkp <- lkp %>%
   filter(mainorinter == "agesex",
          datalevel == "aggipd",
          fixedrand == "random",
-         sg == "main")
+         sg %in% c("main", "sex"))
 ds <- ds[lkp$tosep]
 betas <- betas[lkp$tosep]
 
@@ -30,13 +30,13 @@ betas <- map(betas, function(a) {
 betas <- bind_rows(betas, .id = "tosep") %>% 
   as_tibble()
 
-## split inot hba1c and mace as differnt names ----
+## split into hba1c and mace as differnt names ----
 ## ## three trials
 lkp_hba1c <- lkp %>% 
   filter(outcome == "hba1c")
 ## Single trial
 lkp_mace <- lkp %>% 
-  filter(outcome == "mace")
+  filter(outcome == "mace", sg == "sex")
 betas_mace <- betas %>% 
   filter(tosep %in% lkp_mace$tosep)
 betas_hba1c <- betas %>% 
