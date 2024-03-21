@@ -291,22 +291,38 @@ MakeMaceData <- function(modeln) {
            ltime = log(time))
 
   ## differs from mace_agg and mace_agg_sex because age subgroup cut-points
+  # browser()
   mace_agg_age <- mace_agg_age %>% 
     select(-min_age, -max_age) %>% 
     rename(min_age = level_min, max_age = level_max) %>% 
     mutate(male_p = male_prcnt/100) %>% 
     inner_join(mace_agg %>% 
                  distinct(arm_id, ltime))
+
+  mace_agg_age_sens <- mace_agg_age_sens %>%
+    select(-min_age, -max_age) %>%
+    rename(min_age = level_min, max_age = level_max) %>%
+    mutate(male_p = male_prcnt/100) %>%
+    left_join(mace_agg %>%
+                 distinct(arm_id, ltime))
+  
   mace_agg_sex <- mace_agg_sex %>% 
     mutate(male_p = male_prcnt/100) %>% 
     inner_join(mace_agg %>% 
                  distinct(arm_id, ltime))
+  mace_agg_sex_sens <- mace_agg_sex_sens %>% 
+    mutate(male_p = male_prcnt/100) %>% 
+    left_join(mace_agg %>% 
+                 distinct(arm_id, ltime))
+  
   mace_agg <- mace_agg %>% 
     filter(!nct_id == "UMIN000018395")
   
   list(mace_agg = mace_agg,
                mace_agg_age = mace_agg_age,
                mace_agg_sex = mace_agg_sex,
+       mace_agg_age_sens = mace_agg_age_sens,
+       mace_agg_sex_sens = mace_agg_sex_sens,
                pseudo = pseudo,
                cors_lst = cors_lst,
                cfs = cfs)

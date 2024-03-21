@@ -159,7 +159,7 @@ tocopy <- cleaned %>%
 dir.create("Data/cleaned_data/Data/")
 tocopy <- tocopy %>% 
   mutate(newname = paste0("Data/cleaned_data/Data/", filename))
-file.copy(tocopy$within, tocopy$newname)
+file.copy(tocopy$within, tocopy$newname, overwrite = TRUE)
 
 ## read in scripts from "common_functions" that we use in analysis
 common <- read_csv("Data/table_for_copying_files_into_directory.csv")

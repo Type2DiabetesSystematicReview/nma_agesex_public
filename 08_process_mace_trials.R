@@ -279,9 +279,26 @@ base_out <- base_agg %>%
   filter(!nct_id == "NCT03496298")
 maceout <- maceout %>% 
   filter(!nct_id == "NCT03496298")
-## all appear to match
+## all appear to match apart from NCT01131676. This is because the subgroup data has two arms
+## and the baseline data is individual arms. Create an aggregate one for merging
+base_out2 <- base_out %>% 
+  filter(nct_id == "NCT01131676", arm_id %in% c("uaa10604", "uaa10606")) %>% 
+  group_by(age_source, nct_id) %>% 
+  summarise(age_s = CombSdVectorised(participants, age_m, age_s),
+            age_m = weighted.mean(age_m, participants),
+            male_prcnt = weighted.mean(male_prcnt, participants),
+            participants = sum(participants),
+            across(c(id, male_id, unq_id, arm_description), ~ paste(.x, collapse = ";"))) %>% 
+  ungroup() %>% 
+  mutate(arm_id = "uaa10605")
+base_out <- bind_rows(base_out %>% 
+                        filter(!arm_id %in% c("uaa10604", "uaa10606")),
+                      base_out2)
+
+rm(base_out2)
 base_out %>% 
   anti_join(maceout %>% rename(arm_id = arm_id_unq) %>% select(-arm_description))
+
 base_out <- base_out %>% 
   select(-arm_description) %>% 
   inner_join(maceout %>% rename(arm_id = arm_id_unq))
@@ -510,8 +527,8 @@ mace <- mace %>%
 ## ie assume mean age is same in both sexes. assume percent male is same in all age categories
 mace_sg <- read_csv("Data/cleaned_data/Data/mace_subgroups_age_sex.csv")
 ## drop IPD ones
-mace_sg <- mace_sg %>% 
-  filter(!nct_id %in% ipd$nct_id)
+# mace_sg <- mace_sg %>% 
+#   filter(!nct_id %in% ipd$nct_id)
 # split into main, age and sex
 mace_main <- mace_sg %>% 
   filter(subgroup == "main")
@@ -524,7 +541,8 @@ mace_sex <- mace_sg %>%
 ## resolve age. Drop total as no useful information
 mace_age <- mace_age %>% 
   filter(!arm_label == "total") %>% 
-  select(nct_id, arm_id_unq_ph = arm_id_unq, arm_label, outcome, subgroup, level_min, level_max, n, hr, hr_lci, hr_uci) 
+  select(nct_id, arm_id_unq_ph = arm_id_unq, 
+         arm_label, outcome, subgroup, level_min, level_max, n, hr, hr_lci, hr_uci) 
 setdiff(mace_age$arm_label, mace$drug_name)
 ## one trial has two different cut-points. one at 65 and one at 75. Choose the latter
 mace_age <- mace_age %>% 
@@ -540,7 +558,9 @@ mace_age %>%
   filter(nct_id == "NCT01243424")
 mace_age <- mace_age %>% 
   rename(drug_name = arm_label) %>% 
-  inner_join(mace %>% select(nct_id, drug_name, arm_id, male_prcnt, age_m, age_s, age_mu, age_sigma, max_age, min_age, n_overall = participants))
+  inner_join(mace %>% 
+               select(nct_id, drug_name, arm_id, male_prcnt, 
+                      age_m, age_s, age_mu, age_sigma, max_age, min_age, n_overall = participants))
 ## of 10 trials with age subgroups, only 2 have a maximum age in the eligibility criteria
 mace_age <- mace_age %>% 
   mutate(level_min = if_else(level_min == "min", min_age, as.double(level_min)),
@@ -625,6 +645,7 @@ plot_percentage_check <- ggplot(mace_plot_check_data %>%
   coord_flip() +
   facet_wrap(~mydiff, scales = "free")
 plot_percentage_check
+
 ## note all aggregate data trials are two arm analyses (some arms collapsed before we extracted data)
 mace <- mace %>% 
   select(nct_id, drug_name, participants, age_m, age_s, male_prcnt, outcome, r, pt, mean_fu_days,
@@ -669,10 +690,11 @@ mace3 <- mace2 %>%
   select(nct_id:mean_fu_days, loghr, se, everything())
 
 ## conver hr to log-scale for subgroup data----
+## when add IPD trials back in needs distinct rather than select statement. Not an issue for non-IPD aggregate subgroup trials (checked)
 mace_age2 <- mace_age %>% 
-  inner_join(mace3 %>% select(nct_id, drug_name, trtcls5))
+  inner_join(mace3 %>% distinct(nct_id, drug_name, trtcls5))
 mace_sex2 <- mace_sex %>% 
-  inner_join(mace3 %>% select(nct_id, drug_name, trtcls5))
+  inner_join(mace3 %>% distinct(nct_id, drug_name, trtcls5))
 
 mace_age2 <- mace_age2  %>% 
   mutate(across(c(hr_lci, hr_uci ), as.double),
@@ -709,14 +731,17 @@ write_csv(ipd_cmpr_agg, "Outputs/similar_results_ipd_agg_hrs.csv")
 ### save for subsequent analysis ----
 ## note there is some redundancy here as have merged some variables from mace_arms into the aggregate
 ## data for mace. But did so for clarity as there are multiple arm IDs
+mace4 <- mace3 %>% 
+  filter(! (nct_id == "NCT01131676" & arm_lvl %in% c("empagliflozin_10", "empagliflozin_25"))) %>% 
+  distinct(nct_id, drug_name, arm_lvl)
 lst <- list(mace_arms = bth_arm,
             mace_agg = mace3,
             mace_agg_age = mace_age2 %>% 
               rename(participants = n) %>% 
-              inner_join(mace3 %>% distinct(nct_id, drug_name, arm_lvl)),
+              inner_join(mace4),
             mace_agg_sex = mace_sex2 %>% 
               rename(participants = n) %>% 
-              inner_join(mace3 %>% distinct(nct_id, drug_name, arm_lvl)),
+              inner_join(mace4),
             mace_agg_trial_level = maceout_trl,
             mace_ipd_trial_level = maceout_ipd)
 ## drop trials with IPD from aggregate data
@@ -725,12 +750,34 @@ lst$mace_agg <- lst$mace_agg %>%
   filter(!nct_id %in% ipd$nct_id)
 lst$mace_agg_trial_level <- lst$mace_agg_trial_level %>% 
   filter(!nct_id %in% ipd$nct_id)
-## The following drops aggregate arms from metadata where we already have IPD
+## The following drops aggregate arms from metadata where we already have IPD as these are duplicates
 ipdandagg <- lst$mace_arms %>% 
   distinct(nct_id, data_lvl) %>% 
   arrange(desc(data_lvl)) %>% 
   distinct(nct_id, .keep_all = TRUE)
 lst$mace_arms <- lst$mace_arms  %>% 
   semi_join(ipdandagg)
+## checked no change in exiting subgroup data when update code to include two trials with SG data that also have IPD
+ipdwsggot <- c("NCT00968708", "NCT02465515", "NCT01131676")
+ xmn <- readRDS("Scratch_data/mace_arms_agg_data.Rds")
+ identical(lst$mace_agg_age %>% filter(!nct_id %in% ipdwsggot) ,xmn$mace_agg_age)
+ identical(lst$mace_agg_sex %>% filter(!nct_id %in% ipdwsggot) ,xmn$mace_agg_sex)
+ # separate subgroup data into separate table when there is IPD
+
+lst$mace_agg_age_sens <- lst$mace_agg_age 
+lst$mace_agg_age <- lst$mace_agg_age %>% 
+  filter(!nct_id %in% ipdwsggot)
+lst$mace_agg_sex_sens <- lst$mace_agg_sex 
+lst$mace_agg_sex <- lst$mace_agg_sex %>% 
+  filter(!nct_id %in% ipdwsggot)
+identical(lst$mace_agg_age, xmn$mace_agg_age)
+identical(lst$mace_agg_sex, xmn$mace_agg_sex)
+
+## set HR in placebo to NA rather than 1 (so consistent with other trials)
+lst$mace_agg_sex_sens <- lst$mace_agg_sex_sens  %>% 
+  mutate(loghr = if_else(nct_id == "NCT01131676" & drug_name == "placebo", NA_real_, loghr))
+lst$mace_agg_age_sens <- lst$mace_agg_age_sens  %>% 
+  mutate(loghr = if_else(nct_id == "NCT01131676" & drug_name == "placebo", NA_real_, loghr))
+
 saveRDS(lst, "Scratch_data/mace_arms_agg_data.Rds")
 

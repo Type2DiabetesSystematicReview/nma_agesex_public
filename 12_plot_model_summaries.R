@@ -180,8 +180,12 @@ nct_id_lkp <- nct_id_lkp %>%
     trtcls5 == "A10BJ" ~ "GLP-1",
     trtcls5 == "A10BK" ~ "SGLT-2",
   ))
+
 macesens <- beta_age_sex %>% 
-  filter(fixedrand == "fixed",
+  mutate(issg = str_sub(nct_id, 12),
+         nct_id = str_sub(nct_id, 1, 11)) %>% 
+  filter(!(sg == "main" & issg == "issg"),
+         fixedrand == "fixed",
          outcome == "mace",
          trtclass %in% c("A10BH", "A10BJ", "A10BK")) %>% 
   mutate(trtclass = case_when(
@@ -190,8 +194,11 @@ macesens <- beta_age_sex %>%
     trtclass == "A10BK" ~ "SGLT-2",
   )) %>% 
   left_join(nct_id_lkp) %>% 
-  mutate(sg_lbl = if_else(sg %in% c("age", "sex"), "Yes", "No"),
-         sg_lbl = factor(sg_lbl, levels = c("Yes", "No")),
+  mutate(sg_lbl = case_when(
+    sg %in% c("age", "sex") & issg == "issg" ~ "Yes, ipdreplace",
+    sg %in% c("age", "sex") ~ "Yes, noipdreplace",
+    TRUE ~ "No"),
+         sg_lbl = factor(sg_lbl, levels = c("Yes, ipdreplace", "Yes, noipdreplace", "No")),
          data_lvl = if_else(is.na(data_lvl), 
                             "na", data_lvl),
          data_lvl = factor(data_lvl,
@@ -249,6 +256,40 @@ macesensageplt
 macesenssexplt <- macesensageplt %+% macesenssex
 macesensageplt_contra <- macesensageplt %+% macesensage_contra
 macesenssexplt_contra <- macesenssexplt %+% macesenssex_contra
+ipdwsggot <- c("NCT00968708", "NCT02465515", "NCT01131676")
+
+macesensageplt_paper <- macesensageplt %+% 
+  (macesensage %>% 
+     filter( (nct_id %in% ipdwsggot & trtclass == trtcls5) |
+     nct_id == "none") %>% 
+     mutate(sg_lbl = case_when(
+       sg_lbl == "Yes, ipdreplace" ~ "IPD, AGG and SG data, including SG for this trial",
+       sg_lbl == "Yes, noipdreplace" ~ "IPD, AGG and SG data, SG only for dropped/downgraded trials",
+       sg_lbl == "No" ~ "IPD and AGG data only"),
+       xvar = if_else(nct_id == "none", 
+                      xvar,
+                      paste0(xvar, " dropped/downgraded")))) +
+  aes(colour = sg_lbl, linetype = NULL, shape = NULL) +
+  theme_minimal4() 
+macesensageplt_paper
+macesenssexplt_paper <- macesenssexplt %+% 
+  (macesenssex %>% 
+     filter( (nct_id %in% ipdwsggot & trtclass == trtcls5) |
+               nct_id == "none") %>% 
+     mutate(sg_lbl = case_when(
+       sg_lbl == "Yes, ipdreplace" ~ "IPD, AGG and SG data, no data (IPD or SG) for this trial",
+       sg_lbl == "Yes, noipdreplace" ~ "IPD, AGG and SG data, SG only for dropped/downgraded trials",
+       sg_lbl == "No" ~ "IPD and AGG data only"),
+       xvar = if_else(nct_id == "none", 
+                      xvar,
+                      paste0(xvar, " dropped/downgraded")))) +
+  aes(colour = sg_lbl, linetype = NULL, shape = NULL) +
+  theme_minimal4() 
+macesenssexplt_paper
+pdf("Outputs/sens_onetrial.pdf", width = 15, height = 8)
+macesenssexplt_paper + ggtitle("Sex-treatment interaction with/without sex subgroup data")
+macesensageplt_paper + ggtitle("Age-treatment interaction with/without age subgroup data")
+dev.off()
 
 ## main effects hba1c ----
 main_hba1c <- beta %>% 
