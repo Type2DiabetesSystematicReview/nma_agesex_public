@@ -3,6 +3,9 @@ library(tidyverse)
 source("Scripts/00_functions.R")
 source("Scripts/common_functions/Scripts/fractional_polynomial.R")
 
+## read in exclusions
+exclusions <- read_csv("Data/exclusions_update.csv")
+
 ## note there was no need to export both linear and FP as gave same result
 censoring_distribution <- read_csv("Data/vivli_mace/censoring_distribution.csv")
 censoring_distribution_single_trial <- read_csv( "Data/vivli_mace/censoring_distribution_single_trial.csv")

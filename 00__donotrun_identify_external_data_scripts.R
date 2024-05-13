@@ -193,3 +193,6 @@ file.copy("../from_vivli/Data/agesexmacecentred_8697/00_readme.txt",
 ## read in metadata
 file.copy("../cleaned_data/Data/example_trial_level_info.csv",
           "Data/retrieval/trial_level_info_orig_srch.csv")
+
+file.copy("../cleaned_data/Data/exclusions.csv",
+          "Data/exclusions.csv", overwrite = TRUE)

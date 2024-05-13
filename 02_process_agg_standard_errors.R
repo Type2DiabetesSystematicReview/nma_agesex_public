@@ -3,7 +3,10 @@ library(tidyverse)
 source("Scripts/common_functions/Scripts/misc.R")
 source("Scripts/00_functions.R")
 ## read data -----
-droptrial <- read_csv("Data/cleaned_data/Data/excluded_trials_look_up.csv")
+exclusions <- read_csv("Data/exclusions_update.csv")
+droptrial <- exclusions %>% 
+  filter(exclude ==1L) %>% 
+  select(trial_id)
 out <- readRDS("Scratch_data/agg_hba1c.Rds")
 bas <- readRDS("Scratch_data/agg_hba1c_base.Rds")
 bas <- map(bas, ~ .x %>% 
@@ -113,21 +116,11 @@ nodisp %>%
 ## two trials with nonconvertible dispersion information
 nodisp %>% 
   filter(!is.na(dispersion))
-exclude <- nodisp$nct_id %>% unique() 
-ipd_nct <- bind_rows(
-  read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
-  read.csv("Data/gsk/hba1c_base_change_overall.csv"),
-  read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
-  pull(nct_id) %>% 
-  unique()
-
-exclude <- tibble(reason = "No dispersion statistics.",
-                  trials = length(exclude),
-                  trials_ipd = length(intersect(exclude, ipd_nct)),
-                  nct_ids = exclude %>% paste(collapse = ";"),
-                  nct_ids_ipd = intersect(exclude, ipd_nct) %>% paste(collapse = ";"))
-
-write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
+exclusions %>%
+  count(exclusion_reason)
+exclude <- tibble(trial_id = nodisp$nct_id %>% unique() ,
+                  exclusion_reason2 = "no dispersion statistics reported")
+exclusions <- ExcludeRun(exclude = exclude, saveexclusion = TRUE)
 
 ## Join all data together as same structure baseline characteristics
 hba1c <- bind_rows(rng = hba1c_rng,
@@ -210,6 +203,7 @@ comp2 <- comp %>%
   left_join(bas$ns) %>% 
   left_join(bas$sex) %>% 
   left_join(bas$age)
+
 ## Two trial missing data. Add. age_sd missing for the latter
 comp_msng <- read_csv(
 "arm_id_unq,arm_label,n,male,age_m,age_sd
@@ -286,4 +280,9 @@ hba1c_arm2 <- hba1c_arm %>%
 
 final <- bind_rows(comp6,
                    hba1c_arm2)
+## 22 with age not in final
+bas$age %>% 
+  anti_join(final %>% select(nct_id)) %>% 
+  count(nct_id)
+
 write_csv(final, "Scratch_data/agg.csv")

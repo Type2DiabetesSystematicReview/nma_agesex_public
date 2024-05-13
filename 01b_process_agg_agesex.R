@@ -4,6 +4,8 @@ source("Scripts/common_functions/Scripts/combine_sd.R")
 # rm(a, ab, b, mean_res, means, mymeans, myns, mysds, sd_res, sds)
 source("Scripts/common_functions/Scripts/convert_iqr_to_sd.R")
 
+exclusions <- read_csv("Data/exclusions_update.csv")
+
 base_dsp <- read_csv("Data/cleaned_data/base_dsp.csv")
 base_rng <-  read_csv("Data/cleaned_data/base_rng.csv")
 hba1c_agg <- readRDS("Scratch_data/agg_hba1c.Rds")

@@ -4,7 +4,12 @@ source("Scripts/common_functions/Scripts/misc.R")
 source("Scripts/00_functions.R")
 ## read in all data ----
 ## read in drop trial list ----
-droplist <- read_csv("Data/cleaned_data/Data/excluded_trials_look_up.csv")
+# droplist <- read_csv("Data/cleaned_data/Data/excluded_trials_look_up.csv")
+## Read in exclusions table so can add to within data
+exclusions <- read_csv("Data/exclusions.csv")
+droplist <- exclusions %>% 
+  filter(exclude == 1L)
+
 ## read in ipd so can drop from aggregate ----
 ipd1 <- read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
 ipd2 <- read.csv("Data/gsk/hba1c_base_change_overall.csv")
@@ -216,14 +221,11 @@ hba1c_agg_comp <- hba1c_agg %>%
 hba1c_meta <- hba1c_meta %>% 
   filter(!nct_id %in% hba1c_meta_comp$nct_id)
 
-## leaves 17 trials with medians and percentage change. Will need to drop these
-exclude <- hba1c_meta$nct_id %>% unique() 
-exclude <- tibble(reason = "Median statistics and percentage change only.",
-                  trials = length(exclude),
-                  trials_ipd = length(intersect(exclude, ipd$nct_id)),
-                  nct_ids = exclude %>% paste(collapse = ";"),
-                  nct_ids_ipd = intersect(exclude, ipd$nct_id) %>% paste(collapse = ";"))
-write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = FALSE)
+## leaves some trials with medians and percentage change. Will need to drop these
+exclude <- tibble(trial_id =  hba1c_meta$nct_id %>% unique() ,
+                  exclusion_reason2 = "only reported outcomes as medians or percentage change")
+exclusions <- ExcludeRun(exclude = exclude)
+
 saveRDS(list(arm  = list(data = hba1c_agg_mean,
                         meta = hba1c_meta_mean),
              comp = list(data = hba1c_agg_comp,

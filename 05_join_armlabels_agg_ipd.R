@@ -7,6 +7,9 @@ source("Scripts/00_functions.R")
 source("Scripts/common_functions/Scripts/combine_sd.R")
 source("Scripts/common_functions/Scripts/misc.R")
 
+## read in exclusions
+exclusions <- read_csv("Data/exclusions_update.csv")
+
 ## read in arm labels ----
 arm_meta <- read_csv("Scratch_data/arm_labels_hba1c.csv") 
 ## arm_id_subgroup has mismatched ordering between arm meta and agg so rename
@@ -174,26 +177,18 @@ agg %>%
   group_by(n_arms) %>% 
   summarise(trials = sum(!duplicated(nct_id)),
             arms = length(nct_id))
-## Note are 3 single arm trials now. Drop
+## Note some are single arm trials now. Drop
 single <- agg %>% 
   filter(n_arms ==1)
-exclude <- single$nct_id %>% unique() 
-ipd_nct <- bind_rows(
-  read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv"),
-  read.csv("Data/gsk/hba1c_base_change_overall.csv"),
-  read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")) %>% 
-  pull(nct_id) %>% 
-  unique()
+exclude <- tibble(trial_id = single$nct_id %>% unique(),
+                  exclusion_reason2 = "single arm trial after collapsing by drug or drug and dose")
+exclusions <- ExcludeRun(exclude)
+exclusions <- exclusions %>% 
+  mutate(exclusion_note = if_else(exclusion_reason == "single arm trial after collapsing by drug or drug and dose",
+                                  "Fewer than 2 arms after collapsing arms as follows:- Simplify insulins to a single code A10A. Keep dose for metformin, SGLT2, GLP1 and DPP4. drop dose for drug class level comparisons and drugs not in key classes. Reduce to drug (ie remove dose and regimen) for the trials in these remaining classes.",
+                                  exclusion_note))
+write_csv(exclusions, "Data/exclusions_update.csv")
 
-exclude <- tibble(reason = "Fewer than 2 arms after collapsing arms as follows:- Simplify insulins to a single code A10A. Keep dose for metformin, SGLT2, GLP1 and DPP4. drop dose for drug class level comparisons and drugs not in key classes. Reduce to drug (ie remove dose and regimen) for the trials in these remaining classes.",
-                  trials = length(exclude),
-                  trials_ipd = length(intersect(exclude, ipd_nct)),
-                  nct_ids = exclude %>% paste(collapse = ";"),
-                  nct_ids_ipd = intersect(exclude, ipd_nct) %>% paste(collapse = ";"))
-write_tsv(exclude, "Outputs/Trial_exclusion_during_cleaning.txt", append = TRUE)
-
-
-write_csv(single, "Outputs/Trials_arms_dropped_single_after_aggregation.csv")
 agg <- agg %>% 
   filter(n_arms >=2)
 
@@ -243,6 +238,14 @@ agg <- agg %>%
   nest() %>% 
   ungroup() %>% 
   rename(agg = data)
+unclearormissing <- agg %>% 
+  filter(drug_regime_smpl == "unclear or missing") %>% 
+  unnest(agg) %>% 
+  distinct(nct_id) 
+exclude <- unclearormissing %>% 
+  rename(trial_id = nct_id) %>% 
+  mutate(exclusion_reason2 = "unclear which treatment regime level (mono, dual or triple")
+exclusions <- ExcludeRun(exclude = exclude, TRUE)
 agg <- agg %>% 
   filter(!drug_regime_smpl == "unclear or missing")
 
@@ -250,6 +253,22 @@ tot <- agg %>%
   inner_join(ipd) %>% 
   inner_join(reg %>% rename(reg = data))
 rm(ipd, agg)
+totchk <- tot %>% 
+  gather("datatype", "value", -drug_regime_smpl)
+totchk$value <- map(totchk$value, ~ .x %>% distinct(nct_id) %>% pull())
+totchk <- totchk %>% 
+  unnest(value) %>% 
+  distinct(datatype, value) %>% 
+  rename(trial_id = value)
+totchk <- totchk %>% 
+  group_by(trial_id) %>% 
+  summarise(datatype = paste(datatype %>% unique() %>% sort(), collapse = ";")) %>% 
+  ungroup()
+exclusions_rv <- exclusions %>% 
+  left_join(totchk)
+exclusions_rv %>% 
+  filter(any_hba1c ==1L, exclude == 0L, is.na(datatype))
+## none missing
 saveRDS(tot, "Scratch_data/agg_ipd_hba1c.Rds")
 
                        

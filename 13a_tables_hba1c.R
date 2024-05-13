@@ -4,6 +4,11 @@ tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 source("Scripts/04b_arm_label_reverse.R")
 source("Scripts/common_functions/Scripts/misc.R")
 
+exclusions <- read_csv("Data/exclusions_update.csv")
+keephba1c <- exclusions %>% 
+  filter(any_hba1c ==1L, exclude ==0L) %>% 
+  rename(nct_id = trial_id)
+
 ## arrange into same format as summaries
 ages <- read_csv("Outputs/age_summary_hba1c.csv")
 trials <- ages %>% 
@@ -33,6 +38,8 @@ ipd <- tot %>%
 hba1c <- bind_rows(agg = agg,
                    ipd = ipd, .id = "data_lvl")
 rm(agg, ipd)
+hba1c <- hba1c %>% 
+  semi_join(keephba1c)
 
 ## Separate each into classes
 hba1c_cls <- map(c("A10BK", "A10BH", "A10BJ"), ~ {
@@ -133,5 +140,7 @@ tbl_wide2 <- tbl_wide %>%
   select(collbl, everything())
 
 write_csv(tbl_wide2, "Outputs/manuscript_table1a.csv", na = "")
+write_lines("13 HbA1c trials are also MACE trials", "Outputs/manuscript_table1a_footnote.txt")
+
 write_csv(comparisons, "Outputs/manuscript_hba1c_comparisons.csv", na = "")
 

@@ -8,6 +8,18 @@ tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 elig <- read_csv("Data/cleaned_data/Data/age_max_min_elig.csv")
 source("Scripts/common_functions/Scripts/combine_sd.R")
 
+## Set exclusion to hba1c for ones with dispersion /percentage issues
+exclusions <- read_csv("Data/exclusions_update.csv")
+exclusions <- exclusions %>% 
+  mutate(across(c(agg_hba1c, any_hba1c), ~ if_else(exclusion_reason %in% c(
+    "only reported outcomes as medians or percentage change",
+    "no dispersion statistics reported"), 1L, .x)))
+write_csv(exclusions, "Data/exclusions_update.csv")
+
+exclusions <- read_csv("Data/exclusions_update.csv")
+keephba1c <- exclusions %>% 
+  filter(any_hba1c ==1L | any_mace ==1L, exclude ==0L)
+
 hba1c_agg <- tot %>% 
   select(drug_regime_smpl, agg) %>% 
   unnest(agg)
@@ -42,6 +54,8 @@ bth <- bth %>%
   mutate(max_imp = if_else(is.na(max_age), "imp", "known"),
          max_age = if_else(is.na(as.integer(max_age)), 150L, as.integer(max_age)),
          min_age = if_else(is.na(as.integer(min_age)), 10L, as.integer(min_age)))
+bth <- bth %>% 
+  semi_join(keephba1c %>% rename(nct_id = trial_id))
 
 ## Obtain mu and dispersion parameter ----
 # Functions for truncted normal distributions
@@ -242,3 +256,21 @@ ages_smry <- ages_cls2 %>%
   ungroup()
 write_csv(ages_smry, "Outputs/age_summary_hba1c.csv")
 
+## examine with missing ages - 10 (9 IPD and one aggregate) of the 12 are mace trials so adding later
+rv_msng <- exclusions %>% 
+  filter(exclude ==0) %>% 
+  filter(!trial_id %in% ages_cls2$nct_id)
+rv_msng %>% 
+  count(any_mace, ipd_mace)
+
+## review remainder, two are our "add not sure why left outs
+basedata <- readRDS("Scratch_data/agg_hba1c_base.Rds")$age
+rv_msng_nomace <- rv_msng %>% 
+  filter(!any_mace ==1L)
+rv_msng_nomace %>% 
+  left_join(basedata %>% distinct(trial_id, .keep_all = TRUE))
+
+## examine with got ages but in exclusions; none
+exclusions %>% 
+  filter(exclude == 1L) %>% 
+  filter(trial_id %in% ages_cls2$nct_id)

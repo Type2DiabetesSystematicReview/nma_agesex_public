@@ -32,6 +32,8 @@ cor2cov <- function(V, sigma) {
   sigma * V * rep(sigma, each = p)
 }
 
+## read in exclusions ----
+exclusions <- read_csv("Data/exclusions_update.csv")
 
 ## read in IDs where have IPD ----
 ipd1 <- read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv")

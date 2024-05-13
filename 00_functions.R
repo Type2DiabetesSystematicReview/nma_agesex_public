@@ -156,3 +156,17 @@ theme_minimal4 <- function (base_size = 11, base_family = "", base_line_size = b
           complete = TRUE)
 }
 
+## Exclusions function
+ExcludeRun <- function(exclude, saveexclusion = TRUE) {
+  exclusions <- exclusions %>% 
+    left_join(exclude %>% select(trial_id, exclusion_reason2)) %>% 
+    mutate(exclusion_reason = if_else(!is.na(exclusion_reason2), exclusion_reason2, exclusion_reason),
+           exclude = if_else(!is.na(exclusion_reason2), 1L, exclude)) %>% 
+    select(-exclusion_reason2)
+  if (saveexclusion) {
+    savename <- "Data/exclusions_update.csv"
+    print(paste0("saving to ", savename))
+    write_csv(exclusions, savename)
+  }
+  exclusions
+}

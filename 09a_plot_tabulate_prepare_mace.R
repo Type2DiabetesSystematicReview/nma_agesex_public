@@ -21,6 +21,13 @@ CnvrtCorrMatrix <- function(a){
   a
 }
 
+exclusions <- read_csv("Data/exclusions_update.csv")
+exclusions <- exclusions %>% 
+  mutate(exclusion_reason = if_else(trial_id == "UMIN000018395",
+                                  paste0(exclusion_reason, ". MACE no events"),
+                                  exclusion_reason))
+write_csv(exclusions, "Data/exclusions_update.csv")
+
 ## read in aggregate data and arm metadata ----
 readRDS("Scratch_data/mace_arms_agg_data.Rds") %>% 
   list2env(envir = .GlobalEnv)
@@ -317,7 +324,6 @@ MakeMaceData <- function(modeln) {
   
   mace_agg <- mace_agg %>% 
     filter(!nct_id == "UMIN000018395")
-  
   list(mace_agg = mace_agg,
                mace_agg_age = mace_agg_age,
                mace_agg_sex = mace_agg_sex,

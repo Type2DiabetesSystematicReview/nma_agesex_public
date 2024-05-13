@@ -143,7 +143,6 @@ mace_smry_trial <- mace %>%
 write_csv(mace_smry_trial %>% select(-trials), "Outputs/age_summary_trials_mace.csv")
 hba1c_smry <- read_csv("Outputs/age_summary_hba1c.csv")
 
-
 mace_smry <- bind_rows(mace_smry1,
                        mace_smry2) %>% 
   rename(cls = trtcls5) %>% 
