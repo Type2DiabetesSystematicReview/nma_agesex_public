@@ -270,7 +270,8 @@ macesensageplt_paper <- macesensageplt %+%
                       xvar,
                       paste0(xvar, " dropped/downgraded")))) +
   aes(colour = sg_lbl, linetype = NULL, shape = NULL) +
-  theme_minimal4() 
+  theme_minimal4()  +
+  theme(legend.position="bottom")
 macesensageplt_paper
 macesenssexplt_paper <- macesenssexplt %+% 
   (macesenssex %>% 
@@ -284,12 +285,16 @@ macesenssexplt_paper <- macesenssexplt %+%
                       xvar,
                       paste0(xvar, " dropped/downgraded")))) +
   aes(colour = sg_lbl, linetype = NULL, shape = NULL) +
-  theme_minimal4() 
+  theme_minimal4() +
+  theme(legend.position="bottom")
 macesenssexplt_paper
 pdf("Outputs/sens_onetrial.pdf", width = 15, height = 8)
 macesenssexplt_paper + ggtitle("Sex-treatment interaction with/without sex subgroup data")
 macesensageplt_paper + ggtitle("Age-treatment interaction with/without age subgroup data")
 dev.off()
+
+saveRDS(macesenssexplt_paper, "Scratch_data/macesenssexplt_supp.Rds")
+saveRDS(macesensageplt_paper, "Scratch_data/macesensageplt_supp.Rds")
 
 ## main effects hba1c ----
 main_hba1c <- beta %>% 
@@ -333,6 +338,29 @@ mainhba1cplot <- ggplot(main_hba1c %>%
   scale_y_continuous("HbA1c (%)") +
   coord_flip() +
   facet_wrap( ~ network, scales = "free_y", ncol = 3)
+main_hba1c_nst <- main_hba1c %>% 
+  mutate(grp = network) %>% 
+  group_by(grp) %>% 
+  nest() %>% 
+  ungroup()
+mainhba1cplot_lst <- map(main_hba1c_nst$data, ~ {ggplot(.x %>% 
+                           filter(datalevel == "aggipd") %>% 
+                           mutate(network = factor(network,
+                                                   levels = c("mono", "dual", "triple"),
+                                                   labels = c("Monotherapy", "Dual therapy", "Triple therapy"))),
+                         aes(x = lbl, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
+                             colour = fixedrand)) +
+  geom_point(position = position_dodge(0.5)) +
+  geom_linerange(position = position_dodge(0.5)) +
+  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
+  scale_x_discrete("", limits = rev) +
+  scale_color_discrete("") +
+  theme_bw() +
+  scale_y_continuous("HbA1c (%)") +
+  coord_flip() +
+  facet_wrap( ~ network, scales = "free_y", ncol = 1)})
+saveRDS(mainhba1cplot_lst, "Scratch_data/main_eff_lst.Rds")
+
 # mainhba1cplot
 
 ## main effects hba1c ----
