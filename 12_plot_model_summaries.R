@@ -235,15 +235,12 @@ macesensageplt <- ggplot(macesensage,
                              y = mean, 
                              ymin = x2_5_percent, 
                              ymax = x97_5_percent, 
-                             shape = sg_lbl,
-                             linetype = sg_lbl,
-                             colour = data_lvl)) +
+                             colour = sg_lbl)) +
   geom_point(position = position_dodge(0.5)) +
   geom_linerange(position = position_dodge(0.5)) +
-  facet_wrap(~trtclass) + 
+  facet_wrap(~trtclass, scales = "free_y", ncol = 3) + 
   scale_x_discrete("", limits = rev) +
-  scale_color_manual("Trial data type", 
-                     values = cbbPalette[1:4]) +
+  scale_color_manual("", values = cbbPalette[1:4]) +
   coord_flip(ylim = c(-0.7, 0.7)) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
   theme_minimal3() +
@@ -258,32 +255,28 @@ macesensageplt_contra <- macesensageplt %+% macesensage_contra
 macesenssexplt_contra <- macesenssexplt %+% macesenssex_contra
 ipdwsggot <- c("NCT00968708", "NCT02465515", "NCT01131676")
 
+macesensage_forplot <- macesensage %>% 
+  filter( (nct_id %in% ipdwsggot & trtclass == trtcls5) |
+            nct_id == "none") %>% 
+  mutate(sg_lbl = case_when(
+  sg_lbl == "Yes, ipdreplace" ~ "SG data rather than IPD for dropped/downgraded trial
+SG data where available for other trials",
+sg_lbl == "Yes, noipdreplace" ~ "No data for dropped/downgraded trial
+SG data where available for other trials",
+sg_lbl == "No" ~ "No data for dropped/downgraded trial
+No SG data for any trial"),
+    xvar = if_else(nct_id == "none", 
+                   xvar,
+                   paste0(xvar, "\ndropped/downgraded")))
+
 macesensageplt_paper <- macesensageplt %+% 
-  (macesensage %>% 
-     filter( (nct_id %in% ipdwsggot & trtclass == trtcls5) |
-     nct_id == "none") %>% 
-     mutate(sg_lbl = case_when(
-       sg_lbl == "Yes, ipdreplace" ~ "IPD, AGG and SG data, including SG for this trial",
-       sg_lbl == "Yes, noipdreplace" ~ "IPD, AGG and SG data, SG only for dropped/downgraded trials",
-       sg_lbl == "No" ~ "IPD and AGG data only"),
-       xvar = if_else(nct_id == "none", 
-                      xvar,
-                      paste0(xvar, " dropped/downgraded")))) +
+  macesensage_forplot +
   aes(colour = sg_lbl, linetype = NULL, shape = NULL) +
   theme_minimal4()  +
   theme(legend.position="bottom")
 macesensageplt_paper
-macesenssexplt_paper <- macesenssexplt %+% 
-  (macesenssex %>% 
-     filter( (nct_id %in% ipdwsggot & trtclass == trtcls5) |
-               nct_id == "none") %>% 
-     mutate(sg_lbl = case_when(
-       sg_lbl == "Yes, ipdreplace" ~ "IPD, AGG and SG data, no data (IPD or SG) for this trial",
-       sg_lbl == "Yes, noipdreplace" ~ "IPD, AGG and SG data, SG only for dropped/downgraded trials",
-       sg_lbl == "No" ~ "IPD and AGG data only"),
-       xvar = if_else(nct_id == "none", 
-                      xvar,
-                      paste0(xvar, " dropped/downgraded")))) +
+macesenssexplt_paper <- macesenssexplt %+%  
+  macesensage_forplot +
   aes(colour = sg_lbl, linetype = NULL, shape = NULL) +
   theme_minimal4() +
   theme(legend.position="bottom")

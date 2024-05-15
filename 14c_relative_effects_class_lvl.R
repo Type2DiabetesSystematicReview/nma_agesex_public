@@ -77,14 +77,14 @@ plot_dc <- ggplot(smry %>%
                             colour = sex)) +
   geom_point(position = position_dodge(5)) +
   geom_linerange(position = position_dodge(5)) +
-  facet_wrap(~cls) +
+  facet_wrap(~cls, ncol = 2) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   # coord_cartesian(ylim = c(-1, 1)) +
   scale_y_continuous(name = "Treatment efficacy by age and sex (hazard ratio)",
                      breaks = log(c(0.6, 0.8, 1, 1.25, 1.67)) ,
                      labels = c(0.6, 0.8, 1, 1.25, 1.67)) +
   scale_x_continuous("Age (years)") +
-  scale_color_discrete("") +
+  # scale_color_discrete(guide = "none") +
   theme_minimal()
 plot_dc
 saveRDS(plot_dc, "Scratch_data/relative_mace_class_level.Rds")
@@ -92,3 +92,32 @@ saveRDS(plot_dc, "Scratch_data/relative_mace_class_level.Rds")
 pdf("Outputs/relative_mace_class_level.pdf")
 plot_dc
 dev.off()
+
+## make components
+smry_cls <- smry %>% 
+  mutate(cls2 = cls) %>% 
+  group_by(cls2) %>% 
+  nest() %>% 
+  ungroup()
+plot_dc_lst <- map(smry_cls$data, ~ ggplot(.x %>% 
+                    mutate(sex = factor(male, levels = 0:1, 
+                                        labels = c("Female", "Male"))),
+                  aes(x = age, 
+                      y = m, 
+                      ymin = q2_5, 
+                      ymax =  q97_5, 
+                      colour = sex)) +
+  geom_point(position = position_dodge(5)) +
+  geom_linerange(position = position_dodge(5)) +
+  facet_wrap(~cls, ncol = 2) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  # coord_cartesian(ylim = c(-1, 1)) +
+  scale_y_continuous(name = "Treatment efficacy by age and sex (hazard ratio)",
+                     breaks = log(c(0.6, 0.8, 1, 1.25, 1.67)) ,
+                     labels = c(0.6, 0.8, 1, 1.25, 1.67),
+                     limits = log(c(0.50, 1.77))) +
+  scale_x_continuous("Age (years)") +
+  scale_color_manual("Sex", values = c("#E69F00", "#56B4E9")) +
+  theme_minimal())
+saveRDS(plot_dc_lst, "Scratch_data/relative_mace_class_level_components.Rds")
+
