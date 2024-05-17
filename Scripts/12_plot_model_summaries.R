@@ -54,10 +54,10 @@ x <- names(mace)
 y <- names(hba1c)
 setdiff(union(x, y), intersect(x, y))
 cmpr <- map2(hba1c %>% select(outcome, mainorinter, modelnum, datalevel, fixedrand, network, sg),
-     mace  %>% select(outcome, mainorinter, modelnum, datalevel, fixedrand, network, sg), ~ {
-       list(hba1conly = setdiff(.x, .y),
-            maceonly  = setdiff(.y, .x))
-     })
+             mace  %>% select(outcome, mainorinter, modelnum, datalevel, fixedrand, network, sg), ~ {
+               list(hba1conly = setdiff(.x, .y),
+                    maceonly  = setdiff(.y, .x))
+             })
 beta <- bind_rows(hba1c, mace)
 rm(hba1c, mace, x, y, cmpr)
 write_csv(beta %>% select(tosep:network, sg) %>% distinct(), "Scratch_data/modelname_content_lkp.csv")
@@ -95,15 +95,15 @@ beta_age_sex <- beta_age_sex %>%
   mutate(covariate = if_else(covariate %in% c("age"), "age30", covariate))
 
 interhba1cplotappen <- ggplot(beta_age_sex %>% 
-                     filter(outcome == "hba1c") %>% 
-                     mutate(datalevel = factor(datalevel,
-                                               levels = c("aggipd", "ipd"),
-                                               labels = c("All data", "IPD only"))), 
-                   aes(x = cls, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
-                       colour = fixedrand, 
-                       shape = datalevel, 
-                       linetype = datalevel,
-                       alpha = myalpha)) +
+                                filter(outcome == "hba1c") %>% 
+                                mutate(datalevel = factor(datalevel,
+                                                          levels = c("aggipd", "ipd"),
+                                                          labels = c("All data", "IPD only"))), 
+                              aes(x = cls, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
+                                  colour = fixedrand, 
+                                  shape = datalevel, 
+                                  linetype = datalevel,
+                                  alpha = myalpha)) +
   geom_point(position = position_dodge(0.5)) +
   geom_linerange(position = position_dodge(0.5)) +
   facet_grid(covariate ~ network) + 
@@ -117,22 +117,22 @@ interhba1cplotappen <- ggplot(beta_age_sex %>%
 # interhba1cplotappen
 
 interhba1cplot <- ggplot(beta_age_sex %>% 
-                          filter(outcome == "hba1c",
-                                 trtclass %in% paste0("A10B", c("A", "B", "H", "J", "K")),
-                                 !(network == "triple" & trtclass == "A10BA")) %>% 
-                          mutate(datalevel = factor(datalevel,
-                                                    levels = c("aggipd", "ipd"),
-                                                    labels = c("All data", "IPD only")),
-                                 covariate = factor(covariate,
-                                                    levels = c("age30", "male"),
-                                                    labels = c("Age per 30 years",
-                                                               "Male sex")),
-                                 network = factor(network,
-                                                  levels = c("mono", "dual", "triple"),
-                                                  labels = c("Monotherapy", "Dual therapy", "Triple therapy"))), 
-                        aes(x = cls, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
-                            colour = fixedrand, 
-                            alpha = myalpha)) +
+                           filter(outcome == "hba1c",
+                                  trtclass %in% paste0("A10B", c("A", "B", "H", "J", "K")),
+                                  !(network == "triple" & trtclass == "A10BA")) %>% 
+                           mutate(datalevel = factor(datalevel,
+                                                     levels = c("aggipd", "ipd"),
+                                                     labels = c("All data", "IPD only")),
+                                  covariate = factor(covariate,
+                                                     levels = c("age30", "male"),
+                                                     labels = c("Age per 30 years",
+                                                                "Male sex")),
+                                  network = factor(network,
+                                                   levels = c("mono", "dual", "triple"),
+                                                   labels = c("Monotherapy", "Dual therapy", "Triple therapy"))), 
+                         aes(x = cls, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
+                             colour = fixedrand, 
+                             alpha = myalpha)) +
   geom_point(position = position_dodge(0.5)) +
   geom_linerange(position = position_dodge(0.5)) +
   facet_grid(covariate ~ network) + 
@@ -158,7 +158,7 @@ intermaceplot <- ggplot(beta_age_sex %>%
                                                     levels = c("age30", "male"),
                                                     labels = c("Age per 30 years",
                                                                "Male sex")),
-                         top = "Triple therapy"), 
+                                 top = "Triple therapy"), 
                         aes(x = cls, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
                             colour = fixedrand)) +
   geom_point(position = position_dodge(0.5)) +
@@ -198,22 +198,22 @@ macesens <- beta_age_sex %>%
     sg %in% c("age", "sex") & issg == "issg" ~ "Yes, ipdreplace",
     sg %in% c("age", "sex") ~ "Yes, noipdreplace",
     TRUE ~ "No"),
-         sg_lbl = factor(sg_lbl, levels = c("Yes, ipdreplace", "Yes, noipdreplace", "No")),
-         data_lvl = if_else(is.na(data_lvl), 
-                            "na", data_lvl),
-         data_lvl = factor(data_lvl,
-                           levels = c("na",
-                                      "agg",
-                                      "sg",
-                                      "ipd"),
-                           labels = c("Non-applicable",
-                                      "Aggregate only",
-                                      "Subgroup",
-                                      "IPD")),
-         xvar = case_when(
-          nct_id == "none" ~ "All trials included",
-          TRUE ~ paste0(trtcls5, ": ", nct_id)
-         ))
+    sg_lbl = factor(sg_lbl, levels = c("Yes, ipdreplace", "Yes, noipdreplace", "No")),
+    data_lvl = if_else(is.na(data_lvl), 
+                       "na", data_lvl),
+    data_lvl = factor(data_lvl,
+                      levels = c("na",
+                                 "agg",
+                                 "sg",
+                                 "ipd"),
+                      labels = c("Non-applicable",
+                                 "Aggregate only",
+                                 "Subgroup",
+                                 "IPD")),
+    xvar = case_when(
+      nct_id == "none" ~ "All trials included",
+      TRUE ~ paste0(trtcls5, ": ", nct_id)
+    ))
 macesensage <- macesens %>% 
   filter(sg %in% c("main", "age"),
          covariate == "age30")
@@ -259,11 +259,24 @@ macesensage_forplot <- macesensage %>%
   filter( (nct_id %in% ipdwsggot & trtclass == trtcls5) |
             nct_id == "none") %>% 
   mutate(sg_lbl = case_when(
-  sg_lbl == "Yes, ipdreplace" ~ "SG data rather than IPD for dropped/downgraded trial
+    sg_lbl == "Yes, ipdreplace" ~ "SG data rather than IPD for dropped/downgraded trial
 SG data where available for other trials",
-sg_lbl == "Yes, noipdreplace" ~ "No data for dropped/downgraded trial
+    sg_lbl == "Yes, noipdreplace" ~ "No data for dropped/downgraded trial
 SG data where available for other trials",
-sg_lbl == "No" ~ "No data for dropped/downgraded trial
+    sg_lbl == "No" ~ "No data for dropped/downgraded trial
+No SG data for any trial"),
+    xvar = if_else(nct_id == "none", 
+                   xvar,
+                   paste0(xvar, "\ndropped/downgraded")))
+macesenssex_forplot  <- macesenssex %>% 
+  filter( (nct_id %in% ipdwsggot & trtclass == trtcls5) |
+            nct_id == "none") %>% 
+  mutate(sg_lbl = case_when(
+    sg_lbl == "Yes, ipdreplace" ~ "SG data rather than IPD for dropped/downgraded trial
+SG data where available for other trials",
+    sg_lbl == "Yes, noipdreplace" ~ "No data for dropped/downgraded trial
+SG data where available for other trials",
+    sg_lbl == "No" ~ "No data for dropped/downgraded trial
 No SG data for any trial"),
     xvar = if_else(nct_id == "none", 
                    xvar,
@@ -276,14 +289,14 @@ macesensageplt_paper <- macesensageplt %+%
   theme(legend.position="bottom")
 macesensageplt_paper
 macesenssexplt_paper <- macesenssexplt %+%  
-  macesensage_forplot +
+  macesenssex_forplot +
   aes(colour = sg_lbl, linetype = NULL, shape = NULL) +
   theme_minimal4() +
   theme(legend.position="bottom")
 macesenssexplt_paper
 pdf("Outputs/sens_onetrial.pdf", width = 15, height = 8)
-macesenssexplt_paper + ggtitle("Sex-treatment interaction with/without sex subgroup data")
 macesensageplt_paper + ggtitle("Age-treatment interaction with/without age subgroup data")
+macesenssexplt_paper + ggtitle("Sex-treatment interaction with/without sex subgroup data")
 dev.off()
 
 saveRDS(macesenssexplt_paper, "Scratch_data/macesenssexplt_supp.Rds")
@@ -316,12 +329,12 @@ main_hba1c <- main_hba1c %>%
     TRUE ~ "Other"
   ))
 mainhba1cplot <- ggplot(main_hba1c %>% 
-                     filter(datalevel == "aggipd") %>% 
-                     mutate(network = factor(network,
-                                             levels = c("mono", "dual", "triple"),
-                                             labels = c("Monotherapy", "Dual therapy", "Triple therapy"))),
-                   aes(x = lbl, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
-                             colour = fixedrand)) +
+                          filter(datalevel == "aggipd") %>% 
+                          mutate(network = factor(network,
+                                                  levels = c("mono", "dual", "triple"),
+                                                  labels = c("Monotherapy", "Dual therapy", "Triple therapy"))),
+                        aes(x = lbl, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
+                            colour = fixedrand)) +
   geom_point(position = position_dodge(0.5)) +
   geom_linerange(position = position_dodge(0.5)) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
@@ -337,21 +350,21 @@ main_hba1c_nst <- main_hba1c %>%
   nest() %>% 
   ungroup()
 mainhba1cplot_lst <- map(main_hba1c_nst$data, ~ {ggplot(.x %>% 
-                           filter(datalevel == "aggipd") %>% 
-                           mutate(network = factor(network,
-                                                   levels = c("mono", "dual", "triple"),
-                                                   labels = c("Monotherapy", "Dual therapy", "Triple therapy"))),
-                         aes(x = lbl, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
-                             colour = fixedrand)) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_linerange(position = position_dodge(0.5)) +
-  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
-  scale_x_discrete("", limits = rev) +
-  scale_color_discrete("") +
-  theme_bw() +
-  scale_y_continuous("HbA1c (%)") +
-  coord_flip() +
-  facet_wrap( ~ network, scales = "free_y", ncol = 1)})
+                                                          filter(datalevel == "aggipd") %>% 
+                                                          mutate(network = factor(network,
+                                                                                  levels = c("mono", "dual", "triple"),
+                                                                                  labels = c("Monotherapy", "Dual therapy", "Triple therapy"))),
+                                                        aes(x = lbl, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
+                                                            colour = fixedrand)) +
+    geom_point(position = position_dodge(0.5)) +
+    geom_linerange(position = position_dodge(0.5)) +
+    geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
+    scale_x_discrete("", limits = rev) +
+    scale_color_discrete("") +
+    theme_bw() +
+    scale_y_continuous("HbA1c (%)") +
+    coord_flip() +
+    facet_wrap( ~ network, scales = "free_y", ncol = 1)})
 saveRDS(mainhba1cplot_lst, "Scratch_data/main_eff_lst.Rds")
 
 # mainhba1cplot
