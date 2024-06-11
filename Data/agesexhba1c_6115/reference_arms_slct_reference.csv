@@ -1,0 +1,59 @@
+nct_id,trial_lbl,arm_id_unq,arm_label,dc
+NCT00306384,25 mg SYR110322 (Completed Double-blind Study),uaa10089,alogliptin,dpp4
+NCT01422876,AL005,uaa10772,linagliptin,dpp4
+NCT01606007,SAXA + MET,uaa10814,saxagliptin,dpp4
+NCT02284893,SITA + MET,uaa11105,sitagliptin,dpp4
+NCT02681094,Saxagliptin 5mg + dapagliflozin placebo + metformin,uaa11199,saxagliptin,dpp4
+NCT01624259,Dula 1.5,uaa10829,dulaglutide,glp1
+NCT00915772,MET 1000MG,uaa10430,metformin,mtf
+NCT01708902,MET 500MG,uaa10877,metformin,mtf
+NCT02489968,(DB) EMPA 10MG + PLACEBO,uaa11145,empagliflozin,sglt2
+NCT00622284,GLIME,uaa10246,glimepiride,su
+NCT00707993,Glipizide,uaa10321,glipizide,su
+NCT00856284,Glipizide,uaa10405,glipizide,su
+NCT02471404,Glimepiride 1mg/2mg/4mg,uaa11143,glimepiride,su
+NCT01368081,EMPA 10MG,uaa10733,empagliflozin,sglt2
+NCT01167881,GLIME,uaa10636,glimepiride,su
+NCT01075282,Insulin Glargine,uaa10536,insulin_glargine,insulin
+NCT01191268,Glargine,uaa10669,insulin_glargine,insulin
+NCT01126580,Metformin,uaa10596,metformin,mtf
+NCT01204294,SU + MET,uaa10687,metformin_su,mtf_su
+NCT01438814,MET,uaa10775,metformin,mtf
+NCT01621178,Glargine,uaa10827,insulin_glargine,insulin
+NCT01719003,MET 500MG,uaa10889,metformin,mtf
+NCT00286429,Placebo,uaa10055,placebo,placebo
+NCT00286442,Placebo,uaa10059,placebo,placebo
+NCT00286455,Placebo,uaa10063,placebo,placebo
+NCT00286468,Placebo,uaa10067,placebo,placebo
+NCT00286494,Placebo,uaa10071,placebo,placebo
+NCT00601250,PLACEBO,uaa10223,placebo,placebo
+NCT00602472,PLACEBO,uaa10226,placebo,placebo
+NCT00621140,PLACEBO,uaa10244,placebo,placebo
+NCT00641043,PIO + PLACEBO,uaa10254,placebo,placebo
+NCT00798161,PLACEBO,uaa10366,placebo,placebo
+NCT00954447,PLACEBO,uaa10444,placebo,placebo
+NCT00968708,Placebo,uaa10454,placebo,placebo
+NCT00968708,placebo,uaa10454,placebo,placebo
+NCT01023581,PLACEBO,uaa10497,placebo,placebo
+NCT01064687,Placebo,uaa10531,placebo,placebo
+NCT01159600,PLACEBO,uaa10629,placebo,placebo
+NCT01164501,PLACEBO,uaa10633,placebo,placebo
+NCT01177813,PLACEBO,uaa10646,placebo,placebo
+NCT01210001,PLACEBO,uaa10691,placebo,placebo
+NCT01214239,PLACEBO,uaa10694,placebo,placebo
+NCT01215097,PLACEBO,uaa10697,placebo,placebo
+NCT01217892,Placebo + Metformin,uaa10702,placebo,placebo
+NCT01289119,Placebo,uaa10716,placebo,placebo
+NCT01306214,PLACEBO,uaa10727,placebo,placebo
+NCT01370005,PLACEBO,uaa10739,placebo,placebo
+NCT01734785,(OL) LINA 5MG + (DB) PLACEBO,uaa10907,placebo,placebo
+NCT01769378,Placebo,uaa10920,placebo,placebo
+NCT01778049,(DB) PLACEBO 25MG,ipd00002,placebo,placebo
+NCT01778049,(DB) PLACEBO 10MG,ipd00004,placebo,placebo
+NCT01792518,PLACEBO,uaa10928,placebo,placebo
+NCT01890122,Placebo BID,uaa10960,placebo,placebo
+NCT02152371,TR2_PLACEBO,uaa11061,placebo,placebo
+NCT02597049,TR3_PLACEBO,uaa11177,placebo,placebo
+NCT00654381,PLACEBO - LINA 5MG - LINA 5MG,uaa10265,placebo,placebo
+NCT01064687,Placebo/LY2189265 0.75 mg,uaa10531,placebo,placebo
+NCT01064687,Placebo/LY2189265 1.5 mg,uaa10531,placebo,placebo

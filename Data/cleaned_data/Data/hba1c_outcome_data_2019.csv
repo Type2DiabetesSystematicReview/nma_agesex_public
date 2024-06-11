@@ -1,0 +1,1483 @@
+result_id,trial_id,analysis_population,arm_id_unq,comp_id,outcome_harm_label,result_description,result_type,ancova,result,dispersion_type,dispersion,units_label,timepoint,timepoint_units,source,arm_id_subgroup
+resb0232,NCT00390520,completers,ac0093,NA,hba1c,change from baseline,mean change,n,-0.2,sd,0.1,percentage,4,weeks,manual,NA
+resb0233,NCT00390520,completers,ac0092,NA,hba1c,change from baseline,mean change,n,0.1,sd,0.1,percentage,4,weeks,manual,NA
+resb0065,NCT00101673,primary itt,ac0048,NA,hba1c,change from baseline,adjusted mean change,y,-1.13,se,NA,percentage,12,weeks,manual,NA
+resb0066,NCT00101673,primary itt,ac0049,NA,hba1c,change from baseline,adjusted mean change,y,-1.56,se,NA,percentage,12,weeks,manual,NA
+resb0170,NCT00325117,fas,ac0079,NA,hba1c,change from baseline,adjusted mean change,y,-1,se,0.06,percentage,12,weeks,manual,NA
+resb0171,NCT00325117,fas,ac0078,NA,hba1c,change from baseline,adjusted mean change,y,-0.06,se,0.06,percentage,12,weeks,manual,NA
+resb0202,NCT00363519,fas,ab0039,NA,hba1c,change from baseline,LS mean change,y,-0.5,95%ci,"-0.7,-0.3",percentage,12,weeks,manual,NA
+resb0203,NCT00363519,fas,ab0038,NA,hba1c,change from baseline,LS mean change,y,0.3,95%ci,"0.1,0.5",percentage,12,weeks,manual,NA
+resb0205,NCT00363948,fas,ab0041,NA,hba1c,change from baseline,LS mean change,y,-0.4,95%ci,"-0.6,-0.2",percentage,12,weeks,manual,NA
+resb0206,NCT00363948,fas,ab0040,NA,hba1c,change from baseline,LS mean change,y,0.3,95%ci,"0.1,0.5",percentage,12,weeks,manual,NA
+resb0210,NCT00368134,fas,ac0090,NA,hba1c,change from baseline,adjusted mean change,y,-0.95,se,0.04,percentage,12,weeks,manual,NA
+resb0211,NCT00368134,fas,ac0091,NA,hba1c,change from baseline,adjusted mean change,y,-0.38,se,0.04,percentage,12,weeks,manual,NA
+resb0234,NCT00396227,itt,ab0052,NA,hba1c,change from baseline,adjusted mean change,y,-0.68,se,0.02,percentage,12,weeks,manual,NA
+resb0235,NCT00396227,itt,ab0051,NA,hba1c,change from baseline,adjusted mean change,y,-0.57,se,0.03,percentage,12,weeks,manual,NA
+resb0426,NCT01497522,fas,ab0145,NA,hba1c,change from baseline,adjusted mean change,y,-1.1,se,0.06,percentage,12,weeks,manual,NA
+resb0427,NCT01497522,fas,ab0144,NA,hba1c,change from baseline,adjusted mean change,y,-0.1,se,0.06,percentage,12,weeks,manual,NA
+resb0437,NCT01517321,fas,ab0149,NA,hba1c,change from baseline,LS mean change,n,-0.7,95%ci,"-0.9,-0.5",percentage,12,weeks,manual,NA
+resb0438,NCT01517321,fas,ab0148,NA,hba1c,change from baseline,LS mean change,n,0.4,95%ci,"0.1,0.6",percentage,12,weeks,manual,NA
+resb0442,NCT01518101,fas,ab0150,NA,hba1c,change from baseline,mean change,n,-0.5,sd,0.61,percentage,12,weeks,manual,NA
+resb0443,NCT01518101,fas,ab0151,NA,hba1c,change from baseline,mean change,n,-0.3,sd,0.65,percentage,12,weeks,manual,NA
+resb0448,NCT01521962,fas,ab0152,NA,hba1c,change from baseline,LS mean change,y,-0.96,NA,NA,percentage,12,weeks,manual,NA
+resb0449,NCT01521962,fas,ab0153,NA,hba1c,change from baseline,LS mean change,y,-0.29,NA,NA,percentage,12,weeks,manual,NA
+resb0459,NCT01547104,fas,ab0162,NA,hba1c,change from baseline,mean change,n,-6,sd,6,mmol/mol,12,weeks,manual,NA
+resb0460,NCT01547104,fas,ab0161,NA,hba1c,change from baseline,mean change,n,-8.2,sd,5.1,mmol/mol,12,weeks,manual,NA
+resb0521,NCT01968044,fas,ab0201,NA,hba1c,change from baseline,adjusted mean change,y,-0.82,se,0.4,percentage,12,weeks,manual,NA
+resb0522,NCT01968044,fas,ab0202,NA,hba1c,change from baseline,adjusted mean change,y,0.38,se,0.14,percentage,12,weeks,manual,NA
+resb0571,NCT02176681,itt,ab0218,NA,hba1c,change from baseline,mean change,n,-0.6,95%ci,"-1.19,-0.1",percentage,12,weeks,manual,NA
+resb0572,NCT02176681,itt,ab0217,NA,hba1c,change from baseline,mean change,n,0,95%ci,"-0.5,0.6",percentage,12,weeks,manual,NA
+resb0609,NCT02459353,per protocol,ab0242,NA,hba1c,change from baseline,mean change,n,-0.74,sd,0.66,percentage,12,weeks,manual,NA
+resb0610,NCT02459353,per protocol,ab0243,NA,hba1c,change from baseline,mean change,n,0.01,sd,0.65,percentage,12,weeks,manual,NA
+resb0643,NCT02794792,fas,ab0258,NA,hba1c,change from baseline,mean change,y,-1,sd,0.9,percentage,12,weeks,manual,NA
+resb0644,NCT02794792,fas,ab0259,NA,hba1c,change from baseline,mean change,y,-0.8,sd,1.1,percentage,12,weeks,manual,NA
+resb0660,NCT02925559,itt,ab0268,NA,hba1c,change from baseline,mean change,y,-1,95%ci,"-1.2,-0.8",percentage,12,weeks,manual,NA
+resb0661,NCT02925559,itt,ab0269,NA,hba1c,change from baseline,mean change,y,-1.3,95%ci,"-1.4,-1.1",percentage,12,weeks,manual,NA
+resb0671,NCT02956811,itt,ab0274,NA,hba1c,change from baseline,mean change,n,-6.28,sd,8.25,mmol/mol,12,months,manual,NA
+resb0672,NCT02956811,itt,ab0275,NA,hba1c,change from baseline,mean change,n,-0.79,sd,10.89,mmol/mol,12,months,manual,NA
+resb0709,NCT03202563,fas,ab0291,NA,hba1c,change from baseline,adjusted mean change,y,-1,se,0.1,percentage,12,weeks,manual,NA
+resb0710,NCT03202563,fas,ab0292,NA,hba1c,change from baseline,adjusted mean change,y,-1.3,se,0.1,percentage,12,weeks,manual,NA
+resb0713,TCTR20180424002,unclear,ac0096,NA,hba1c,change from baseline,mean change,n,-0.75,se,0.21,percentage,12,weeks,manual,NA
+resb0714,TCTR20180424002,unclear,ac0097,NA,hba1c,change from baseline,mean change,n,-0.7,se,0.25,percentage,12,weeks,manual,NA
+resb0717,UMIN000003479,per protocol,ac0098,NA,hba1c,change from baseline,LS mean change,y,-0.25,95% ci,"-0.37,-0.13",percentage,12,weeks,manual,NA
+resb0718,UMIN000003479,per protocol,ac0099,NA,hba1c,change from baseline,LS mean change,y,-0.05,95% ci,"-0.16,0.07",percentage,12,weeks,manual,NA
+resb0723,UMIN000003503,fas,ac0100,NA,hba1c,change from baseline,mean change,n,-0.78,sd,0.69,percentage,12,weeks,manual,NA
+resb0724,UMIN000003503,fas,ac0101,NA,hba1c,change from baseline,mean change,n,-0.3,sd,0.78,percentage,12,weeks,manual,NA
+resb0733,UMIN000003951,unclear,ac0104,NA,hba1c,change from baseline,mean change,n,-0.39,sd,0.6,percentage,12,weeks,manual,NA
+resb0734,UMIN000003951,unclear,ac0105,NA,hba1c,change from baseline,mean change,n,-0.35,sd,0.39,percentage,12,weeks,manual,NA
+resb0741,UMIN000004674,itt,ac0110,NA,hba1c,change from baseline,adjusted mean change,y,-0.72,95% ci,"-0.86,-0.57",percentage,12,weeks,manual,NA
+resb0742,UMIN000004674,itt,ac0111,NA,hba1c,change from baseline,adjusted mean change,y,-0.28,95% ci,"-0.43,-0.12",percentage,12,weeks,manual,NA
+resb0745,UMIN000004675,fas,ac0112,NA,hba1c,change from baseline,adjusted mean change,y,-0.7,95% ci,"-0.83,-0.58",percentage,12,weeks,manual,NA
+resb0746,UMIN000004675,fas,ac0113,NA,hba1c,change from baseline,adjusted mean change,y,-0.21,95% ci,"-0.34,-0.097",percentage,12,weeks,manual,NA
+resb0776,UMIN000004953,complete case,ac0122,NA,hba1c,change from baseline,mean change,n,-0.36,sd,0.53,percentage,12,weeks,manual,NA
+resb0777,UMIN000004953,complete case,ac0123,NA,hba1c,change from baseline,mean change,n,-0.67,sd,0.12,percentage,12,weeks,manual,NA
+resb0808,UMIN000006986,per protocol,ac0134,NA,hba1c,change from baseline,mean change,n,-0.74,95% ci,"-1.38,-0.11",percentage,12,weeks,manual,NA
+resb0809,UMIN000006986,per protocol,ac0135,NA,hba1c,change from baseline,mean change,n,-0.68,95% ci,"-0.91,-0.44",percentage,12,weeks,manual,NA
+resb0810,UMIN000006986,per protocol,ac0137,NA,hba1c,change from baseline,mean change,n,-0.49,95% ci,"-0.79,-0.20",percentage,12,weeks,manual,NA
+resb0811,UMIN000006986,per protocol,ac0136,NA,hba1c,change from baseline,mean change,n,-0.74,95% ci,"-1.05,-0.42",percentage,12,weeks,manual,NA
+resb0830,UMIN000007635,fas,ac0144,NA,hba1c,change from baseline,LS mean change,y,-0.6,NA,NA,percentage,12,weeks,manual,NA
+resb0831,UMIN000007635,fas,ac0145,NA,hba1c,change from baseline,LS mean change,y,-0.2,NA,NA,percentage,12,weeks,manual,NA
+resb0833,UMIN000008155,unclear,ac0146,NA,hba1c,change from baseline,mean change,n,-0.76,sd,0.18,percentage,12,weeks,manual,NA
+resb0834,UMIN000008155,unclear,ac0147,NA,hba1c,change from baseline,mean change,n,-0.77,sd,0.17,percentage,12,weeks,manual,NA
+resb0835,UMIN000009544,fas,ac0150,NA,hba1c,change from baseline,mean change,n,-0.3,sd,4.8,percentage,12,weeks,manual,NA
+resb0836,UMIN000009544,fas,ac0151,NA,hba1c,change from baseline,mean change,n,-3,sd,5.3,percentage,12,weeks,manual,NA
+resb0845,UMIN000010769,per protocol,ac0158,NA,hba1c,change from baseline,mean change,n,-0.6,sd,0.7,percentage,12,weeks,manual,NA
+resb0846,UMIN000010769,per protocol,ac0159,NA,hba1c,change from baseline,mean change,n,-0.6,sd,1.2,percentage,12,weeks,manual,NA
+resb0869,UMIN000014422,unclear,ac0168,NA,hba1c,change from baseline,mean change,n,-0.61,sd,0.52,percentage,12,weeks,manual,NA
+resb0870,UMIN000014422,unclear,ac0169,NA,hba1c,change from baseline,mean change,n,0.52,sd,0.74,percentage,12,weeks,manual,NA
+resb0873,UMIN000014738,fas,ac0170,NA,hba1c,change from baseline,mean change,n,-1.1,95% ci,"-1.3,-0.84",percentage,12,weeks,manual,NA
+resb0874,UMIN000014738,fas,ac0171,NA,hba1c,change from baseline,mean change,n,-0.81,95% ci,"-1.0,-0.59",percentage,12,weeks,manual,NA
+resb0929,UMIN000021658,completers,ac0190,NA,hba1c,change from baseline,mean change,n,-2.94,sd,1.17,percentage,12,weeks,manual,NA
+resb0930,UMIN000021658,completers,ac0191,NA,hba1c,change from baseline,mean change,n,-1.81,sd,1.52,percentage,12,weeks,manual,NA
+resb0949,UMIN000022858,unclear,ac0196,NA,hba1c,change from baseline,mean change,n,0.2,NA,NA,percentage,12,weeks,manual,NA
+resb0950,UMIN000022858,unclear,ac0197,NA,hba1c,change from baseline,mean change,n,0.1,NA,NA,percentage,12,weeks,manual,NA
+resb1040,CTRI/2017/06/008891,per protocol,ac0024,NA,hba1c,change from baseline,mean change,n,-0.37,sd,1.06,percentage,12,weeks,manual,NA
+resb1041,CTRI/2017/06/008891,per protocol,ac0025,NA,hba1c,change from baseline,mean change,n,-0.32,sd,1.14,percentage,12,weeks,manual,NA
+resb1073,NCT00351832,fas,ac0087,NA,hba1c,change from baseline,LS mean change,y,-0.78,sd,0.07,percentage,12,weeks,manual,NA
+resb1074,NCT00351832,fas,ac0088,NA,hba1c,change from baseline,LS mean change,y,-0.86,sd,0.07,percentage,12,weeks,manual,NA
+resb1075,NCT00351832,fas,ac0089,NA,hba1c,change from baseline,LS mean change,y,-0.86,sd,0.07,percentage,12,weeks,manual,NA
+resb1076,NCT00351832,fas,ac0086,NA,hba1c,change from baseline,LS mean change,y,0.13,sd,0.07,percentage,12,weeks,manual,NA
+resb0786,UMIN000005331,fas,ac0212,NA,hba1c,change from baseline,mean change,n,-1.2,95% ci,"-1.54,-0.86",percentage,14,weeks,manual,NA
+resb0787,UMIN000005331,fas,ac0213,NA,hba1c,change from baseline,mean change,n,-0.65,95% ci,"-1.34,0.03",percentage,14,weeks,manual,NA
+resb0165,NCT00324363,fas,ab0033,NA,hba1c,change from baseline,mean change,y,-1.2,95%ci,"-1.3,-1.1",percentage,16,weeks,manual,NA
+resb0166,NCT00324363,fas,ab0034,NA,hba1c,change from baseline,mean change,y,-0.4,95%ci,"-0.5,-0.2",percentage,16,weeks,manual,NA
+resb0307,NCT00854035,fas (with one dose and one measurement),ab0088,NA,hba1c,change from baseline,adjusted mean change,n,-0.6,95%ci,"-0.8,-0.4",percentage,16,weeks,manual,NA
+resb0308,NCT00854035,fas (with one dose and one measurement),ab0087,NA,hba1c,change from baseline,adjusted mean change,n,0.3,95%ci,"0.1,0.5",percentage,16,weeks,manual,NA
+resb0312,NCT00894868,itt,ab0090,NA,hba1c,change from baseline,adjusted mean change,y,-0.45,se,0.12,percentage,16,weeks,manual,NA
+resb0313,NCT00894868,itt,ab0089,NA,hba1c,change from baseline,adjusted mean change,y,0.17,se,0.12,percentage,16,weeks,manual,NA
+resb0331,NCT01057628,fas,ab0100,NA,hba1c,change from baseline,mean change,y,-0.76,sd,0.7,percentage,16,weeks,manual,NA
+resb0332,NCT01057628,fas,ab0101,NA,hba1c,change from baseline,mean change,y,0.54,sd,1,percentage,16,weeks,manual,NA
+resb0518,NCT01805830,fas,ab0198,NA,hba1c,change from baseline,adjusted mean change,y,-0.9,se,0.07,percentage,16,weeks,manual,NA
+resb0519,NCT01805830,fas,ab0197,NA,hba1c,change from baseline,adjusted mean change,y,-0.12,se,0.09,percentage,16,weeks,manual,NA
+resb0565,NCT02175784,fas,ab0215,NA,hba1c,change from baseline,mean change,y,-0.79,sd,0.66,percentage,16,weeks,manual,NA
+resb0566,NCT02175784,fas,ab0216,NA,hba1c,change from baseline,mean change,y,0.27,sd,0.65,percentage,16,weeks,manual,NA
+resb0573,NCT02201004,mitt,ab0220,NA,hba1c,change from baseline,LS mean change,n,-0.59,sd,0.069,percentage,16,weeks,manual,NA
+resb0574,NCT02201004,mitt,ab0219,NA,hba1c,change from baseline,LS mean change,n,0.48,sd,0.089,percentage,16,weeks,manual,NA
+resb0586,NCT02325960,fas,ab0232,NA,hba1c,change from baseline,adjusted mean change,y,-1.21,95%ci,"-1.57,-0.85",percentage,16,weeks,manual,NA
+resb0587,NCT02325960,fas,ab0233,NA,hba1c,change from baseline,adjusted mean change,y,-1.05,95%ci,"-1.41,-0.69",percentage,16,weeks,manual,NA
+resb0597,NCT02449603,fas,ab0238,NA,hba1c,change from baseline,LS mean change,y,-1.38,95%ci,"-1.89,-0.86",percentage,16,weeks,manual,NA
+resb0598,NCT02449603,fas,ab0239,NA,hba1c,change from baseline,LS mean change,y,-1.74,95%ci,"-2.2,-1.28",percentage,16,weeks,manual,NA
+resb0893,UMIN000018754,fas,ac0178,NA,hba1c,change from baseline,mean change,n,-0.2,sd,0.4,percentage,16,weeks,manual,NA
+resb0894,UMIN000018754,fas,ac0179,NA,hba1c,change from baseline,mean change,n,-0.4,sd,0.3,percentage,16,weeks,manual,NA
+resb0990,NCT00099320,itt,ab0013,NA,hba1c,change from baseline,mean change,n,-0.89,sd,0.09,percentage,16,weeks,manual,NA
+resb0991,NCT00099320,itt,ab0014,NA,hba1c,change from baseline,mean change,n,0.09,sd,0.1,percentage,16,weeks,manual,NA
+resb1032,ChiCTR-TRC-12002676,per protocol,ac0018,NA,hba1c,change from baseline,mean change,n,-0.94,NA,NA,percentage,16,weeks,manual,NA
+resb1033,ChiCTR-TRC-12002676,per protocol,ac0019,NA,hba1c,change from baseline,mean change,n,-1.4,NA,NA,percentage,16,weeks,manual,NA
+resb1066,JapicCTI-132348,fas,ac0034,NA,hba1c,change from baseline,LS mean change,y,0.51,NA,NA,percentage,16,weeks,manual,NA
+resb1067,JapicCTI-132348,fas,ac0035,NA,hba1c,change from baseline,LS mean change,y,-0.4,NA,NA,percentage,16,weeks,manual,NA
+resb0026,NCT00099892,primary itt,ac0038,NA,hba1c,change from baseline,adjusted mean change,y,-0.9,se,0.1,percentage,24,weeks,manual,NA
+resb0027,NCT00099892,primary itt,ac0037,NA,hba1c,change from baseline,adjusted mean change,y,-0.5,se,0.1,percentage,24,weeks,manual,NA
+resb0028,NCT00099892,primary itt,ac0036,NA,hba1c,change from baseline,adjusted mean change,y,0.2,se,0.1,percentage,24,weeks,manual,NA
+resb0035,NCT00099905,primary itt,ac0040,NA,hba1c,change from baseline,adjusted mean change,y,-0.8,se,0.1,percentage,24,weeks,manual,NA
+resb0036,NCT00099905,primary itt,ac0041,NA,hba1c,change from baseline,adjusted mean change,y,-0.8,se,0.1,percentage,24,weeks,manual,NA
+resb0037,NCT00099905,primary itt,ac0042,NA,hba1c,change from baseline,adjusted mean change,y,-0.9,se,0.1,percentage,24,weeks,manual,NA
+resb0038,NCT00099905,primary itt,ac0039,NA,hba1c,change from baseline,adjusted mean change,y,-0.3,se,0.1,percentage,24,weeks,manual,NA
+resb0046,NCT00099918,primary itt,ac0044,NA,hba1c,change from baseline,adjusted mean change,y,-1.1,se,0.1,percentage,24,weeks,manual,NA
+resb0047,NCT00099918,primary itt,ac0043,NA,hba1c,change from baseline,adjusted mean change,y,-1.3,se,0.1,percentage,24,weeks,manual,NA
+resb0051,NCT00099931,itt,ac0046,NA,hba1c,change from baseline,adjusted mean change,y,-0.5,se,0.1,percentage,24,weeks,manual,NA
+resb0052,NCT00099931,itt,ac0045,NA,hba1c,change from baseline,adjusted mean change,y,-0.2,se,0.1,percentage,24,weeks,manual,NA
+resb0057,NCT00099944,primary itt,ab0024,NA,hba1c,change from baseline,adjusted mean change,y,-0.58,se,0.1,percentage,24,weeks,manual,NA
+resb0058,NCT00099944,primary itt,ab0023,NA,hba1c,change from baseline,adjusted mean change,y,-0.63,se,0.09,percentage,24,weeks,manual,NA
+resb0059,NCT00099944,primary itt,ab0022,NA,hba1c,change from baseline,adjusted mean change,y,0.07,se,0.09,percentage,24,weeks,manual,NA
+resb0071,NCT00101712,fas,ab0026,NA,hba1c,change from baseline,adjusted mean change,y,-0.2,se,0.1,percentage,24,weeks,manual,NA
+resb0072,NCT00101712,fas,ab0025,NA,hba1c,change from baseline,adjusted mean change,y,0.1,se,0.1,percentage,24,weeks,manual,NA
+resb0077,NCT00101803,itt,ac0050,NA,hba1c,change from baseline,adjusted mean change,y,-1.4,se,0.1,percentage,24,weeks,manual,NA
+resb0078,NCT00101803,itt,ac0051,NA,hba1c,change from baseline,adjusted mean change,y,-1.7,se,0.1,percentage,24,weeks,manual,NA
+resb0079,NCT00101803,itt,ac0052,NA,hba1c,change from baseline,adjusted mean change,y,-1.9,se,0.1,percentage,24,weeks,manual,NA
+resb0080,NCT00101803,itt,ac0053,NA,hba1c,change from baseline,adjusted mean change,y,-1.1,se,0.1,percentage,24,weeks,manual,NA
+resb0101,NCT00110240,itt,ac0055,NA,hba1c,change from baseline,adjusted mean change,y,-1.4,se,0.1,percentage,24,weeks,manual,NA
+resb0102,NCT00110240,itt,ac0054,NA,hba1c,change from baseline,adjusted mean change,y,-1.3,se,0.1,percentage,24,weeks,manual,NA
+resb0107,NCT00120536,itt,ac0057,NA,hba1c,change from baseline,adjusted mean change,y,-0.5,se,0.1,percentage,24,weeks,manual,NA
+resb0108,NCT00120536,itt,ac0058,NA,hba1c,change from baseline,adjusted mean change,y,-0.7,se,0.1,percentage,24,weeks,manual,NA
+resb0109,NCT00120536,itt,ac0059,NA,hba1c,change from baseline,adjusted mean change,y,-0.8,se,0.1,percentage,24,weeks,manual,NA
+resb0110,NCT00120536,itt,ac0056,NA,hba1c,change from baseline,adjusted mean change,y,0,se,0.1,percentage,24,weeks,manual,NA
+resb0134,NCT00237237,per protocol,ac0067,NA,hba1c,change from baseline,adjusted mean change,y,-0.88,se,0.5,percentage,24,weeks,manual,NA
+resb0135,NCT00237237,per protocol,ac0066,NA,hba1c,change from baseline,adjusted mean change,y,-0.98,se,0.06,percentage,24,weeks,manual,NA
+resb0145,NCT00313001,per protocol,ac0070,NA,hba1c,change from baseline,mean change,NA,-1.75,sd,1.57,percentage,24,weeks,manual,NA
+resb0146,NCT00313001,per protocol,ac0071,NA,hba1c,change from baseline,mean change,NA,-2.76,sd,1.79,percentage,24,weeks,manual,NA
+resb0147,NCT00313001,per protocol,ac0072,NA,hba1c,change from baseline,mean change,NA,-2.34,sd,1.51,percentage,24,weeks,manual,NA
+resb0194,NCT00351884,itt,ab0036,NA,hba1c,change from baseline,adjusted mean change,y,-0.66,se,0.11,percentage,24,weeks,manual,NA
+resb0195,NCT00351884,itt,ab0037,NA,hba1c,change from baseline,adjusted mean change,y,-0.53,se,0.11,percentage,24,weeks,manual,NA
+resb0196,NCT00351884,itt,ab0035,NA,hba1c,change from baseline,adjusted mean change,y,0.17,se,0.11,percentage,24,weeks,manual,NA
+resb0213,NCT00381342,itt,ab0043,NA,hba1c,change from baseline,LS mean change,y,-0.7,se,0.1,percentage,24,weeks,manual,NA
+resb0214,NCT00381342,itt,ab0042,NA,hba1c,change from baseline,LS mean change,y,-0.9,se,0.1,percentage,24,weeks,manual,NA
+resb0215,NCT00381342,itt,ab0044,NA,hba1c,change from baseline,LS mean change,y,-0.2,se,0.1,percentage,24,weeks,manual,NA
+resb0219,NCT00382096,itt,ab0048,NA,hba1c,change from baseline,adjusted mean change,y,-1.6,se,0.06,percentage,24,weeks,manual,NA
+resb0220,NCT00382096,itt,ab0047,NA,hba1c,change from baseline,adjusted mean change,y,-1.8,se,0.06,percentage,24,weeks,manual,NA
+resb0221,NCT00382096,itt,ab0046,NA,hba1c,change from baseline,adjusted mean change,y,-1.1,se,0.06,percentage,24,weeks,manual,NA
+resb0222,NCT00382096,itt,ab0045,NA,hba1c,change from baseline,adjusted mean change,y,-1.4,se,0.06,percentage,24,weeks,manual,NA
+resb0227,NCT00383578,itt,ab0050,NA,hba1c,change from baseline,adjusted mean change,y,-0.64,se,0.07,percentage,24,weeks,manual,NA
+resb0228,NCT00383578,itt,ab0049,NA,hba1c,change from baseline,adjusted mean change,y,-0.75,se,0.07,percentage,24,weeks,manual,NA
+resb0239,NCT00396357,itt,ab0054,NA,hba1c,change from baseline,adjusted mean change,y,-0.51,NA,NA,percentage,24,weeks,manual,NA
+resb0240,NCT00396357,itt,ab0053,NA,hba1c,change from baseline,adjusted mean change,y,-0.37,NA,NA,percentage,24,weeks,manual,NA
+resb0244,NCT00494884,itt,ac0095,NA,hba1c,change from baseline,adjusted mean change,y,-0.4,NA,NA,percentage,24,weeks,manual,NA
+resb0245,NCT00494884,itt,ac0094,NA,hba1c,change from baseline,adjusted mean change,y,0.2,NA,NA,percentage,24,weeks,manual,NA
+resb0247,NCT00616811,fas,ab0056,NA,hba1c,change from baseline,adjusted mean change,y,-0.54,se,0.12,percentage,24,weeks,manual,NA
+resb0248,NCT00616811,fas,ab0055,NA,hba1c,change from baseline,adjusted mean change,y,-0.56,se,0.13,percentage,24,weeks,manual,NA
+resb0249,NCT00717457,itt,ab0061,NA,hba1c,change from baseline,adjusted mean change,y,-1.24,se,0.09,percentage,24,weeks,manual,NA
+resb0250,NCT00717457,itt,ab0062,NA,hba1c,change from baseline,adjusted mean change,y,-1.31,se,0.08,percentage,24,weeks,manual,NA
+resb0251,NCT00717457,itt,ab0060,NA,hba1c,change from baseline,adjusted mean change,y,-0.98,se,0.08,percentage,24,weeks,manual,NA
+resb0257,NCT00728351,fas,ab0064,NA,hba1c,change from baseline,adjusted mean change,y,-0.35,se,0.07,percentage,24,weeks,manual,NA
+resb0258,NCT00728351,fas,ab0063,NA,hba1c,change from baseline,adjusted mean change,y,-0.02,se,0.08,percentage,24,weeks,manual,NA
+resb0263,NCT00744367,itt,ab0066,NA,hba1c,change from baseline,adjusted mean change,y,-1.35,se,0.09,percentage,24,weeks,manual,NA
+resb0264,NCT00744367,itt,ab0067,NA,hba1c,change from baseline,adjusted mean change,y,-1.4,se,0.09,percentage,24,weeks,manual,NA
+resb0265,NCT00744367,itt,ab0065,NA,hba1c,change from baseline,adjusted mean change,y,-0.45,se,0.1,percentage,24,weeks,manual,NA
+resb0271,NCT00744926,itt,ab0069,NA,hba1c,change from baseline,adjusted mean change,y,-1.01,se,0.07,percentage,24,weeks,manual,NA
+resb0272,NCT00744926,itt,ab0070,NA,hba1c,change from baseline,adjusted mean change,y,-1.18,se,0.06,percentage,24,weeks,manual,NA
+resb0273,NCT00744926,itt,ab0068,NA,hba1c,change from baseline,adjusted mean change,y,-0.09,se,0.07,percentage,24,weeks,manual,NA
+resb0275,NCT00754988,itt,ab0073,NA,hba1c,change from baseline,adjusted mean change,y,-1.23,se,0.06,percentage,24,weeks,manual,NA
+resb0276,NCT00754988,itt,ab0074,NA,hba1c,change from baseline,adjusted mean change,y,-1.3,se,0.06,percentage,24,weeks,manual,NA
+resb0277,NCT00754988,itt,ab0072,NA,hba1c,change from baseline,adjusted mean change,y,-0.89,se,0.06,percentage,24,weeks,manual,NA
+resb0278,NCT00754988,itt,ab0071,NA,hba1c,change from baseline,adjusted mean change,y,-0.1,se,0.08,percentage,24,weeks,manual,NA
+resb0287,NCT00755287,itt,ab0076,NA,hba1c,change from baseline,adjusted mean change,y,-0.77,se,0.05,percentage,24,weeks,manual,NA
+resb0288,NCT00755287,itt,ab0077,NA,hba1c,change from baseline,adjusted mean change,y,-0.98,se,0.05,percentage,24,weeks,manual,NA
+resb0289,NCT00755287,itt,ab0075,NA,hba1c,change from baseline,adjusted mean change,y,-0.84,se,0.05,percentage,24,weeks,manual,NA
+resb0295,NCT00822211,fas,ab0083,NA,hba1c,change from baseline,adjusted mean change,y,-1.05,se,0.08,percentage,24,weeks,manual,NA
+resb0296,NCT00822211,fas,ab0084,NA,hba1c,change from baseline,adjusted mean change,y,-0.92,se,0.08,percentage,24,weeks,manual,NA
+resb0297,NCT00822211,fas,ab0082,NA,hba1c,change from baseline,adjusted mean change,y,-0.54,se,0.08,percentage,24,weeks,manual,NA
+resb0302,NCT00823992,itt,ab0086,NA,hba1c,change from baseline,adjusted mean change,y,-0.81,se,0.06,percentage,24,weeks,manual,NA
+resb0303,NCT00823992,itt,ab0085,NA,hba1c,change from baseline,adjusted mean change,y,-0.09,se,0.06,percentage,24,weeks,manual,NA
+resb0315,NCT00909597,itt,ab0092,NA,hba1c,change from baseline,adjusted mean change,y,-1.18,se,0.08,percentage,24,weeks,manual,NA
+resb0316,NCT00909597,itt,ab0093,NA,hba1c,change from baseline,adjusted mean change,y,-1.36,se,0.08,percentage,24,weeks,manual,NA
+resb0317,NCT00909597,itt,ab0091,NA,hba1c,change from baseline,adjusted mean change,y,-1.3,se,0.08,percentage,24,weeks,manual,NA
+resb0337,NCT01099137,per protocol,ab0106,NA,hba1c,change from baseline,adjusted mean change,y,-1.2,95%ci,"-1.4,-1.0",percentage,24,weeks,manual,NA
+resb0338,NCT01099137,per protocol,ab0105,NA,hba1c,change from baseline,adjusted mean change,y,-0.5,95%ci,"-0.6,-0.3",percentage,24,weeks,manual,NA
+resb0343,NCT01100125,itt,ab0108,NA,hba1c,change from baseline,adjusted mean change,y,-0.63,95%ci,"-0.93,-0.38",percentage,24,weeks,manual,NA
+resb0344,NCT01100125,itt,ab0107,NA,hba1c,change from baseline,adjusted mean change,y,-0.22,95%ci,"-0.55,0.31",percentage,24,weeks,manual,NA
+resb0349,NCT01135433,fas,ab0109,NA,hba1c,change from baseline,adjusted mean change,y,-0.87,sd,0.655,percentage,24,weeks,manual,NA
+resb0350,NCT01135433,fas,ab0110,NA,hba1c,change from baseline,adjusted mean change,y,0.38,sd,0.703,percentage,24,weeks,manual,NA
+resb0359,NCT01224366,fas,ab0114,NA,hba1c,change from baseline,adjusted mean change,y,-0.77,se,0.08,percentage,24,weeks,manual,NA
+resb0360,NCT01224366,fas,ab0113,NA,hba1c,change from baseline,adjusted mean change,y,-0.05,se,0.08,percentage,24,weeks,manual,NA
+resb0362,NCT01225081,fas,ab0115,NA,hba1c,change from baseline,mean change,y,-0.64,sd,0.609,percentage,24,weeks,manual,NA
+resb0363,NCT01225081,fas,ab0116,NA,hba1c,change from baseline,mean change,y,0.22,sd,0.811,percentage,24,weeks,manual,NA
+resb0368,NCT01233622,fas,ab0118,NA,hba1c,change from baseline,adjusted mean change,y,-1.01,NA,NA,percentage,24,weeks,manual,NA
+resb0369,NCT01233622,fas,ab0117,NA,hba1c,change from baseline,adjusted mean change,y,-0.25,NA,NA,percentage,24,weeks,manual,NA
+resb0375,NCT01242215,fas,ab0119,NA,hba1c,change from baseline,mean change,y,-0.83,sd,0.717,percentage,24,weeks,manual,NA
+resb0376,NCT01242215,fas,ab0120,NA,hba1c,change from baseline,mean change,y,0.32,sd,0.963,percentage,24,weeks,manual,NA
+resb0381,NCT01257451,itt,ab0122,NA,hba1c,change from baseline,mean change,y,-0.9,NA,NA,percentage,24,weeks,manual,NA
+resb0382,NCT01257451,itt,ab0121,NA,hba1c,change from baseline,mean change,y,-0.3,NA,NA,percentage,24,weeks,manual,NA
+resb0388,NCT01316094,fas,ab0125,NA,hba1c,change from baseline,mean change,n,-0.42,sd,0.514,percentage,24,weeks,manual,NA
+resb0389,NCT01316094,fas,ab0126,NA,hba1c,change from baseline,mean change,n,-0.17,sd,0.516,percentage,24,weeks,manual,NA
+resb0394,NCT01341717,per protocol,ab0128,NA,hba1c,change from baseline,mean change,y,-0.7,sd,0.15,percentage,24,weeks,manual,NA
+resb0395,NCT01341717,per protocol,ab0127,NA,hba1c,change from baseline,mean change,y,-0.31,sd,0.15,percentage,24,weeks,manual,NA
+resb0398,NCT01357252,fas,ab0130,NA,hba1c,change from baseline,adjusted mean change,y,-0.7,se,0.1,percentage,24,weeks,manual,NA
+resb0399,NCT01357252,fas,ab0129,NA,hba1c,change from baseline,adjusted mean change,y,-0.2,se,0.1,percentage,24,weeks,manual,NA
+resb0431,NCT01505426,fas,ab0146,NA,hba1c,change from baseline,mean change,y,-0.94,sd,0.75,percentage,24,weeks,manual,NA
+resb0432,NCT01505426,fas,ab0147,NA,hba1c,change from baseline,mean change,y,-0.47,sd,0.81,percentage,24,weeks,manual,NA
+resb0454,NCT01541956,fas,ab0160,NA,hba1c,change from baseline,LS mean change,y,-0.54,se,0.88,percentage,24,weeks,manual,NA
+resb0455,NCT01541956,fas,ab0159,NA,hba1c,change from baseline,LS mean change,y,-0.4,se,0.83,percentage,24,weeks,manual,NA
+resb0463,NCT01582230,fas,ab0164,NA,hba1c,change from baseline,adjusted mean change,y,-1.08,se,0.12,percentage,24,weeks,manual,NA
+resb0464,NCT01582230,fas,ab0163,NA,hba1c,change from baseline,adjusted mean change,y,-0.38,se,0.12,percentage,24,weeks,manual,NA
+resb0469,NCT01602003,fas,ab0167,NA,hba1c,change from baseline,adjusted mean change,y,-0.81,se,0.85,percentage,24,weeks,manual,NA
+resb0470,NCT01602003,fas,ab0168,NA,hba1c,change from baseline,adjusted mean change,y,-0.77,se,0.8,percentage,24,weeks,manual,NA
+resb0471,NCT01602003,fas,ab0169,NA,hba1c,change from baseline,adjusted mean change,y,-0.8,se,0.85,percentage,24,weeks,manual,NA
+resb0474,NCT01632007,fas,ab0172,NA,hba1c,change from baseline,LS mean change,y,-0.33,se,0.059,percentage,24,weeks,manual,NA
+resb0475,NCT01632007,fas,ab0170,NA,hba1c,change from baseline,LS mean change,y,-0.45,se,0.061,percentage,24,weeks,manual,NA
+resb0482,NCT01632163,mITT,ab0173,NA,hba1c,change from baseline,LS mean change,y,-0.62,se,0.09,percentage,24,weeks,manual,NA
+resb0483,NCT01632163,mITT,ab0174,NA,hba1c,change from baseline,LS mean change,y,-0.11,se,0.09,percentage,24,weeks,manual,NA
+resb0488,NCT01649466,fas,ab0176,NA,hba1c,change from baseline,mean change,n,-0.5,NA,NA,percentage,24,weeks,manual,NA
+resb0489,NCT01649466,fas,ab0175,NA,hba1c,change from baseline,mean change,n,-0.8,NA,NA,percentage,24,weeks,manual,NA
+resb0497,NCT01761318,itt,ab0186,NA,hba1c,change from baseline,mean change,y,-11.6,sd,11.1,mmol/mol,24,weeks,manual,NA
+resb0498,NCT01761318,itt,ab0187,NA,hba1c,change from baseline,mean change,y,-7.7,sd,9.4,mmol/mol,24,weeks,manual,NA
+resb0502,NCT01787396,fas,ab0188,NA,hba1c,change from baseline,adjusted mean change,y,-1.24,NA,NA,percentage,24,weeks,manual,NA
+resb0503,NCT01787396,fas,ab0189,NA,hba1c,change from baseline,adjusted mean change,y,-2.06,NA,NA,percentage,24,weeks,manual,NA
+resb0504,NCT01787396,fas,ab0190,NA,hba1c,change from baseline,adjusted mean change,y,-1.47,NA,NA,percentage,24,weeks,manual,NA
+resb0512,NCT01798238,fas,ab0196,NA,hba1c,change from baseline,LS mean change,n,-0.9,se,0.09,percentage,24,weeks,manual,NA
+resb0513,NCT01798238,fas,ab0195,NA,hba1c,change from baseline,LS mean change,n,0.03,se,0.12,percentage,24,weeks,manual,NA
+resb0526,NCT01990469,fas,ab0203,NA,hba1c,change from baseline,adjusted mean change,y,-0.88,95%ci,"-1.21,-0.55",percentage,24,weeks,manual,NA
+resb0527,NCT01990469,fas,ab0204,NA,hba1c,change from baseline,adjusted mean change,y,-0.01,95%ci,"-0.37,0.34",percentage,24,weeks,manual,NA
+resb0593,NCT02343926,mitt,ab0236,NA,hba1c,change from baseline,LS mean change,y,-0.75,95%ci,"-0.9,-0.61",percentage,24,weeks,manual,NA
+resb0594,NCT02343926,mitt,ab0237,NA,hba1c,change from baseline,LS mean change,y,-0.7,95%ci,"-0.85,-0.55",percentage,24,weeks,manual,NA
+resb0603,NCT02452632,fas,ab0240,NA,hba1c,change from baseline,mean change,y,-0.79,sd,0.59,percentage,24,weeks,manual,NA
+resb0604,NCT02452632,fas,ab0241,NA,hba1c,change from baseline,mean change,y,0.03,sd,0.84,percentage,24,weeks,manual,NA
+resb0619,NCT02567994,per protocol,ab0247,NA,hba1c,change from baseline,LS mean change,y,-1.03,se,0.1,percentage,24,weeks,manual,NA
+resb0620,NCT02567994,per protocol,ab0246,NA,hba1c,change from baseline,LS mean change,y,-1.02,se,0.1,percentage,24,weeks,manual,NA
+resb0649,NCT02831361,fas,ab0260,NA,hba1c,change from baseline,LS mean change,y,-0.8,se,0.1,percentage,24,weeks,manual,NA
+resb0650,NCT02831361,fas,ab0261,NA,hba1c,change from baseline,LS mean change,y,-0.1,se,0.1,percentage,24,weeks,manual,NA
+resb0662,NCT02946541,fas,ab0270,NA,hba1c,change from baseline,mean change,n,-0.23,NA,NA,percentage,24,weeks,manual,NA
+resb0663,NCT02946541,fas,ab0271,NA,hba1c,change from baseline,mean change,n,0.05,NA,NA,percentage,24,weeks,manual,NA
+resb0666,NCT02949193,fas,ab0272,NA,hba1c,change from baseline,mean change,y,-0.59,sd,0.61,percentage,24,weeks,manual,NA
+resb0667,NCT02949193,fas,ab0273,NA,hba1c,change from baseline,mean change,y,-0.65,sd,0.61,percentage,24,weeks,manual,NA
+resb0677,NCT02974504,fas,ab0276,NA,hba1c,change from baseline,mean change,n,-0.85,sd,0.67,percentage,24,weeks,manual,NA
+resb0678,NCT02974504,fas,ab0277,NA,hba1c,change from baseline,mean change,n,-0.75,sd,0.87,percentage,24,weeks,manual,NA
+resb0696,NCT03068065,itt,ab0285,NA,hba1c,change from baseline,mean change,n,-3,se,0.4,percentage,24,weeks,manual,NA
+resb0697,NCT03068065,itt,ab0284,NA,hba1c,change from baseline,mean change,n,-2.6,se,0.3,percentage,24,weeks,manual,NA
+resb0698,NCT03068065,itt,ab0286,NA,hba1c,change from baseline,mean change,n,-3.3,se,0.4,percentage,24,weeks,manual,NA
+resb0729,UMIN000003784,fas,ac0102,NA,hba1c,change from baseline,mean change,n,-0.7,sd,0.6,percentage,24,weeks,manual,NA
+resb0730,UMIN000003784,fas,ac0103,NA,hba1c,change from baseline,mean change,n,-0.3,sd,0.4,percentage,24,weeks,manual,NA
+resb0735,UMIN000004243,unclear,ac0106,NA,hba1c,change from baseline,mean change,n,-0.95,sd,0.8,percentage,24,weeks,manual,NA
+resb0736,UMIN000004243,unclear,ac0107,NA,hba1c,change from baseline,mean change,n,-0.8,sd,0.88,percentage,24,weeks,manual,NA
+resb0751,UMIN000004678,unclear,ac0114,NA,hba1c,change from baseline,mean change,n,-0.9,sd,1,percentage,24,weeks,manual,NA
+resb0752,UMIN000004678,unclear,ac0115,NA,hba1c,change from baseline,mean change,n,0.1,sd,1,percentage,24,weeks,manual,NA
+resb0756,UMIN000004716,itt,ac0116,NA,hba1c,change from baseline,mean change,n,-0.86,sd,0.63,percentage,24,weeks,manual,NA
+resb0757,UMIN000004716,itt,ac0117,NA,hba1c,change from baseline,mean change,n,-0.58,sd,0.68,percentage,24,weeks,manual,NA
+resb0812,UMIN000007009,itt,ac0138,NA,hba1c,change from baseline,mean change,n,0.1,sd,0.9,percentage,24,weeks,manual,NA
+resb0813,UMIN000007009,itt,ac0139,NA,hba1c,change from baseline,mean change,n,0.3,sd,0.8,percentage,24,weeks,manual,NA
+resb0839,UMIN000010176,unclear,ac0152,NA,hba1c,change from baseline,mean change,n,-0.58,se,0.16,percentage,24,months,manual,NA
+resb0840,UMIN000010176,unclear,ac0153,NA,hba1c,change from baseline,mean change,n,0.19,se,0.19,percentage,24,months,manual,NA
+resb0857,UMIN000012224,fas,ac0162,NA,hba1c,change from baseline,mean,n,-0.6,sd,0.8,percentage,24,weeks,manual,NA
+resb0858,UMIN000012224,fas,ac0163,NA,hba1c,change from baseline,mean,n,-1,sd,0.9,percentage,24,weeks,manual,NA
+resb0877,UMIN000015170,unclear,ac0172,NA,hba1c,change from baseline,mean change,n,-0.692,NA,NA,percentage,24,weeks,manual,NA
+resb0878,UMIN000015170,unclear,ac0173,NA,hba1c,change from baseline,mean change,n,-1.03,NA,NA,percentage,24,weeks,manual,NA
+resb0887,UMIN000018445,unclear,ac0176,NA,hba1c,change from baseline,mean change,n,-0.6,NA,NA,percentage,24,weeks,manual,NA
+resb0888,UMIN000018445,unclear,ac0177,NA,hba1c,change from baseline,mean change,n,-0.1,NA,NA,percentage,24,weeks,manual,NA
+resb0897,UMIN000018839,itt,ac0180,NA,hba1c,change from baseline,mean change,y,-0.15,sd,0.17,percentage,24,weeks,manual,NA
+resb0898,UMIN000018839,itt,ac0181,NA,hba1c,change from baseline,mean change,y,-0.69,sd,0.18,percentage,24,weeks,manual,NA
+resb0903,UMIN000019022,unclear,ac0182,NA,hba1c,change from baseline,mean change,n,-0.5,sd,0.7,percentage,24,weeks,manual,NA
+resb0904,UMIN000019022,unclear,ac0183,NA,hba1c,change from baseline,mean change,n,-0.7,sd,0.9,percentage,24,weeks,manual,NA
+resb0953,UMIN000022953,fas,ac0198,NA,hba1c,change from baseline,mean change,y,-0.5,sd,0.4,percentage,24,weeks,manual,NA
+resb0954,UMIN000022953,fas,ac0199,NA,hba1c,change from baseline,mean change,y,-0.5,sd,0.9,percentage,24,weeks,manual,NA
+resb0960,UMIN000026161,unclear,ac0204,NA,hba1c,change from baseline,mean change,n,-0.4,sd,0.8,percentage,24,weeks,manual,NA
+resb0961,UMIN000026161,unclear,ac0205,NA,hba1c,change from baseline,mean change,n,-0.6,sd,0.6,percentage,24,weeks,manual,NA
+resb0972,UMIN000030343,fas,ac0208,NA,hba1c,change from baseline,mean change,n,-0.65,sd,0.06,percentage,24,weeks,manual,NA
+resb0973,UMIN000030343,fas,ac0209,NA,hba1c,change from baseline,mean change,n,-0.67,sd,0.06,percentage,24,weeks,manual,NA
+resb1016,ChiCTR-IPR-17011120,per protocol,ac0011,NA,hba1c,change from baseline,mean change,n,-1.1,sd,0.4,percentage,24,weeks,manual,NA
+resb1017,ChiCTR-IPR-17011120,per protocol,ac0012,NA,hba1c,change from baseline,mean change,n,-1.1,sd,4,percentage,24,weeks,manual,NA
+resb1018,ChiCTR-IPR-17011120,per protocol,ac0013,NA,hba1c,change from baseline,mean change,n,-1.3,sd,0.3,percentage,24,weeks,manual,NA
+resb1036,ChiCTR-TRC-13003858,unclear,ac0021,NA,hba1c,change from baseline,mean change,n,-1.22,sd,0.4,percentage,24,weeks,manual,NA
+resb1037,ChiCTR-TRC-13003858,unclear,ac0020,NA,hba1c,change from baseline,mean change,n,-1.07,sd,0.36,percentage,24,weeks,manual,NA
+resb1054,JapicCTI-111543,fas,ac0030,NA,hba1c,change from baseline,mean change,y,-0.11,95% ci,"-0.2,0.0",percentage,24,weeks,manual,NA
+resb1055,JapicCTI-111543,fas,ac0031,NA,hba1c,change from baseline,mean change,y,0.09,95% ci,"-0.1,0.3",percentage,24,weeks,manual,NA
+resb1060,JapicCTI-111661,fas,ac0032,NA,hba1c,change from baseline,LS mean change,y,-0.63,95% ci,"-0.79,-0.46",percentage,24,weeks,manual,NA
+resb1061,JapicCTI-111661,fas,ac0033,NA,hba1c,change from baseline,LS mean change,y,0.13,95% ci,"-0.04,0.29",percentage,24,weeks,manual,NA
+resb0151,NCT00318422,itt,ac0073,NA,hba1c,change from baseline,adjusted mean change,y,-0.6,NA,NA,percentage,26,weeks,manual,NA
+resb0152,NCT00318422,itt,ac0074,NA,hba1c,change from baseline,adjusted mean change,y,-1.1,NA,NA,percentage,26,weeks,manual,NA
+resb0153,NCT00318422,itt,ac0075,NA,hba1c,change from baseline,adjusted mean change,y,-1.1,NA,NA,percentage,26,weeks,manual,NA
+resb0154,NCT00318422,itt,ac0077,NA,hba1c,change from baseline,adjusted mean change,y,-0.4,NA,NA,percentage,26,weeks,manual,NA
+resb0155,NCT00318422,itt,ac0076,NA,hba1c,change from baseline,adjusted mean change,y,0.2,NA,NA,percentage,26,weeks,manual,NA
+resb0176,NCT00331851,itt,ac0081,NA,hba1c,change from baseline,adjusted mean change,y,-1.33,se,0.09,percentage,26,weeks,manual,NA
+resb0177,NCT00331851,itt,ac0082,NA,hba1c,change from baseline,adjusted mean change,y,-0.24,se,0.11,percentage,26,weeks,manual,NA
+resb0178,NCT00331851,itt,ac0080,NA,hba1c,change from baseline,adjusted mean change,y,-1.09,se,0.09,percentage,26,weeks,manual,NA
+resb0186,NCT00333151,itt,ac0083,NA,hba1c,change from baseline,adjusted mean change,y,-1.5,se,0.1,percentage,26,weeks,manual,NA
+resb0187,NCT00333151,itt,ac0084,NA,hba1c,change from baseline,adjusted mean change,y,-1.5,se,0.1,percentage,26,weeks,manual,NA
+resb0188,NCT00333151,itt,ac0085,NA,hba1c,change from baseline,adjusted mean change,y,-0.5,se,0.1,percentage,26,weeks,manual,NA
+resb0408,NCT01392898,itt,ab0132,NA,hba1c,change from baseline,mean change,NA,-0.77,se,0.11,percentage,26,weeks,manual,NA
+resb0409,NCT01392898,itt,ab0131,NA,hba1c,change from baseline,mean change,NA,0.01,se,0.12,percentage,26,weeks,manual,NA
+resb0541,NCT02043054,itt,ab0207,NA,hba1c,change from baseline,LS mean change,n,-0.89,95%ci,"-1.18,-0.6",percentage,26,weeks,manual,NA
+resb0542,NCT02043054,itt,ab0208,NA,hba1c,change from baseline,LS mean change,n,-0.48,95%ci,"-0.76,-0.18",percentage,26,weeks,manual,NA
+resb0559,NCT02147925,itt,ab0213,NA,hba1c,change from baseline,mean change,n,-1,sd,0.9,percentage,26,weeks,manual,NA
+resb0560,NCT02147925,itt,ab0214,NA,hba1c,change from baseline,mean change,n,-1,sd,1,percentage,26,weeks,manual,NA
+resb0561,NCT02147925,itt,ab0212,NA,hba1c,change from baseline,mean change,n,-0.7,sd,1.3,percentage,26,weeks,manual,NA
+resb0625,NCT02660047,itt,ab0252,NA,hba1c,change from baseline,mean change,y,-0.8,sd,1,percentage,26,weeks,manual,NA
+resb0626,NCT02660047,itt,ab0253,NA,hba1c,change from baseline,mean change,y,-0.6,sd,0.8,percentage,26,weeks,manual,NA
+resb0631,NCT02752412,mitt,ab0254,NA,hba1c,change from baseline,LS mean change,y,-1.27,se,0.059,percentage,26,weeks,manual,NA
+resb0632,NCT02752412,mitt,ab0255,NA,hba1c,change from baseline,LS mean change,y,-0.53,se,0.063,percentage,26,weeks,manual,NA
+resb0637,NCT02752828,mitt,ab0256,NA,hba1c,change from baseline,LS mean change,y,-1.4,se,0.042,percentage,26,weeks,manual,NA
+resb0638,NCT02752828,mitt,ab0257,NA,hba1c,change from baseline,LS mean change,y,-0.76,se,0.043,percentage,26,weeks,manual,NA
+resb0001,NCT00035984,itt,ab0001,NA,hba1c,change from baseline,mean change,NA,-0.77,se,0.08,percentage,30,weeks,manual,NA
+resb0002,NCT00035984,itt,ab0002,NA,hba1c,change from baseline,mean change,NA,-0.55,se,0.07,percentage,30,weeks,manual,NA
+resb0003,NCT00035984,itt,ab0003,NA,hba1c,change from baseline,mean change,NA,0.23,se,0.07,percentage,30,weeks,manual,NA
+resb0007,NCT00039013,itt,ab0005,NA,hba1c,change from baseline,mean change,NA,-0.78,se,0.1,percentage,30,weeks,manual,NA
+resb0008,NCT00039013,itt,ab0006,NA,hba1c,change from baseline,mean change,NA,-0.4,se,0.11,percentage,30,weeks,manual,NA
+resb0009,NCT00039013,itt,ab0007,NA,hba1c,change from baseline,mean change,NA,0.08,se,0.1,percentage,30,weeks,manual,NA
+resb0984,NCT00039026,itt,ab0009,NA,hba1c,change from baseline,mean change,n,-0.86,sd,0.11,percentage,30,weeks,manual,NA
+resb0985,NCT00039026,itt,ab0010,NA,hba1c,change from baseline,mean change,n,-0.46,sd,0.12,percentage,30,weeks,manual,NA
+resb0986,NCT00039026,itt,ab0011,NA,hba1c,change from baseline,mean change,n,0.12,sd,0.09,percentage,30,weeks,manual,NA
+resb0411,NCT01455857,mITT,ab0137,NA,hba1c,change from baseline,LS mean change,y,-1.1,NA,NA,percentage,39,weeks,manual,NA
+resb0412,NCT01455857,mITT,ab0138,NA,hba1c,change from baseline,LS mean change,y,-1.2,NA,NA,percentage,39,weeks,manual,NA
+resb0413,NCT01455857,mITT,ab0139,NA,hba1c,change from baseline,LS mean change,y,-0.1,NA,NA,percentage,39,weeks,manual,NA
+resb0579,NCT02280486,fas,ab0227,NA,hba1c,change from baseline,adjusted mean change,y,-0.93,se,0.06,percentage,48,weeks,manual,NA
+resb0580,NCT02280486,fas,ab0226,NA,hba1c,change from baseline,adjusted mean change,y,-0.99,se,0.06,percentage,48,weeks,manual,NA
+resb0022,NCT00099866,itt,ab0021,NA,hba1c,change from baseline,adjusted mean change,y,-1,se,0.1,percentage,52,weeks,manual,NA
+resb0023,NCT00099866,itt,ab0020,NA,hba1c,change from baseline,adjusted mean change,y,-1.4,se,0.1,percentage,52,weeks,manual,NA
+resb0091,NCT00102466,per protocol,ab0030,NA,hba1c,change from baseline,mean change,y,-0.81,se,0.06,percentage,52,weeks,manual,NA
+resb0092,NCT00102466,per protocol,ab0029,NA,hba1c,change from baseline,mean change,y,-0.85,se,0.06,percentage,52,weeks,manual,NA
+resb0095,NCT00106340,per protocol,ab0032,NA,hba1c,change from baseline,adjusted mean change,y,-0.44,se,0.02,percentage,52,weeks,manual,NA
+resb0096,NCT00106340,per protocol,ab0031,NA,hba1c,change from baseline,adjusted mean change,y,-0.53,se,0.02,percentage,52,weeks,manual,NA
+resb0590,NCT02330406,fas,ab0234,NA,hba1c,change from baseline,mean change,n,0.02,NA,NA,percentage,52,weeks,manual,NA
+resb0591,NCT02330406,fas,ab0235,NA,hba1c,change from baseline,mean change,n,0.12,NA,NA,percentage,52,weeks,manual,NA
+resb0705,NCT03125694,itt,ab0290,NA,hba1c,change from baseline,mean change,n,-1.8,sd,1,percentage,52,weeks,manual,NA
+resb0706,NCT03125694,itt,ab0289,NA,hba1c,change from baseline,mean change,n,-1.9,sd,1.2,percentage,52,weeks,manual,NA
+resb1046,JapicCTI-101351,fas,ac0026,NA,hba1c,change from baseline,mean change,n,-0.67,sd,0.67,percentage,52,weeks,manual,NA
+resb1047,JapicCTI-101351,fas,ac0027,NA,hba1c,change from baseline,mean change,n,-0.66,sd,0.71,percentage,52,weeks,manual,NA
+resb1050,JapicCTI-101352,fas,ac0028,NA,hba1c,change from baseline,mean change,n,-0.77,sd,0.72,percentage,52,weeks,manual,NA
+resb1051,JapicCTI-101352,fas,ac0029,NA,hba1c,change from baseline,mean change,n,-0.87,sd,0.75,percentage,52,weeks,manual,NA
+resb0086,NCT00102388,per protocol,ab0028,NA,hba1c,change from baseline,adjusted mean change,y,-0.5,NA,NA,percentage,104,weeks,manual,NA
+resb0087,NCT00102388,per protocol,ab0027,NA,hba1c,change from baseline,adjusted mean change,y,-0.6,NA,NA,percentage,104,weeks,manual,NA
+resb0121,NCT00138567,itt,ac0061,NA,hba1c,change from baseline,adjusted mean change,y,-1,se,0.1,percentage,104,weeks,manual,NA
+resb0122,NCT00138567,itt,ac0060,NA,hba1c,change from baseline,adjusted mean change,y,-1.5,se,0.1,percentage,104,weeks,manual,NA
+resb0130,NCT00138619,itt,ac0065,NA,hba1c,change from baseline,adjusted mean change,y,-0.82,NA,NA,percentage,104,weeks,manual,NA
+resb0131,NCT00138619,itt,ac0064,NA,hba1c,change from baseline,adjusted mean change,y,-1.44,NA,NA,percentage,104,weeks,manual,NA
+resb0782,UMIN000005311,itt,ac0124,NA,hba1c,change from baseline,mean change,n,-0.3,sd,0.7,percentage,104,weeks,manual,NA
+resb0783,UMIN000005311,itt,ac0125,NA,hba1c,change from baseline,mean change,n,-0.1,sd,0.8,percentage,104,weeks,manual,NA
+resb0826,UMIN000007396,fas,ac0142,NA,hba1c,change from baseline,mean change,n,-0.5,sd,1,percentage,104,weeks,manual,NA
+resb0827,UMIN000007396,fas,ac0143,NA,hba1c,change from baseline,mean change,n,-0.2,sd,0.9,percentage,104,weeks,manual,NA
+resb0883,UMIN000017607,itt,ac0174,NA,hba1c,change from baseline,mean change,n,-0.3,sd,0.8,percentage,104,weeks,manual,NA
+resb0884,UMIN000017607,itt,ac0175,NA,hba1c,change from baseline,mean change,n,0.1,sd,0.7,percentage,104,weeks,manual,NA
+resb0999,2004-004559-21,itt,ac0002,NA,hba1c,change from baseline,LS mean change,y,-0.03,sd,0.02,percentage,104,weeks,manual,NA
+resb1000,2004-004559-21,itt,ac0001,NA,hba1c,change from baseline,LS mean change,y,-0.13,sd,0.02,percentage,104,weeks,manual,NA
+resb0140,NCT00300287,fas,ac0069,NA,hba1c,change from baseline,adjusted mean change,y,0.1,se,0.1,percentage,108,weeks,manual,NA
+resb0141,NCT00300287,fas,ac0068,NA,hba1c,change from baseline,adjusted mean change,y,0.5,se,0.1,percentage,108,weeks,manual,NA
+resb0013,NCT00099853,primary itt,ab0018,NA,hba1c,baseline,mean,NA,8.7,sd,0.1,percentage,0,weeks,manual,NA
+resb0014,NCT00099853,primary itt,ab0019,NA,hba1c,baseline,mean,NA,8.6,sd,0.1,percentage,0,weeks,manual,NA
+resb0015,NCT00099853,primary itt,ab0017,NA,hba1c,baseline,mean,NA,8.7,sd,0.1,percentage,0,weeks,manual,NA
+resb0325,NCT00957060,per protocol,ab0094,NA,hba1c,baseline,mean,n,9.84,sd,0.74,percentage,0,weeks,manual,NA
+resb0327,NCT00957060,per protocol,ab0095,NA,hba1c,baseline,mean,n,9.81,sd,0.71,percentage,0,weeks,manual,NA
+resb0355,NCT01193296,per protocol,ab0112,NA,hba1c,baseline,mean,n,7.14,sd,0.4,percentage,0,weeks,manual,NA
+resb0357,NCT01193296,per protocol,ab0111,NA,hba1c,baseline,mean,n,7.12,sd,0.45,percentage,0,weeks,manual,NA
+resb0532,NCT02015299,fas,ab0205,NA,hba1c,baseline,mean,n,6.3,sd,0.4,percentage,0,weeks,manual,NA
+resb0533,NCT02015299,fas,ab0206,NA,hba1c,baseline,mean,n,6.2,sd,0.5,percentage,0,weeks,manual,NA
+resb0760,UMIN000004721,unclear,ac0118,NA,hba1c,baseline,mean,n,7.5,se,0.2,percentage,3,months,manual,NA
+resb0761,UMIN000004721,unclear,ac0119,NA,hba1c,baseline,mean,n,7.8,se,0.4,percentage,3,months,manual,NA
+resb0762,UMIN000004721,unclear,ac0118,NA,hba1c,endpoint,mean,n,6.8,se,0.2,percentage,3,months,manual,NA
+resb0763,UMIN000004721,unclear,ac0119,NA,hba1c,endpoint,mean,n,7,se,0.2,percentage,3,months,manual,NA
+resb0976,UMINR000006517,unclear,ac0210,NA,hba1c,baseline,mean,n,8.2,sd,0.2,percentage,3,months,manual,NA
+resb0977,UMINR000006517,unclear,ac0211,NA,hba1c,baseline,mean,n,8.3,sd,0.2,percentage,3,months,manual,NA
+resb0978,UMINR000006517,unclear,ac0210,NA,hba1c,endpoint,mean,n,7.9,sd,0.2,percentage,3,months,manual,NA
+resb0979,UMINR000006517,unclear,ac0211,NA,hba1c,endpoint,mean,n,7.2,sd,0.2,percentage,3,months,manual,NA
+resb1022,ChiCTR-OPC-16008152,unclear,ac0015,NA,hba1c,baseline,mean,n,9.72,sd,1.38,percentage,3,months,manual,NA
+resb1023,ChiCTR-OPC-16008152,unclear,ac0014,NA,hba1c,baseline,mean,n,9.46,sd,1.25,percentage,3,months,manual,NA
+resb1024,ChiCTR-OPC-16008152,unclear,ac0015,NA,hba1c,endpoint,mean,n,7.43,sd,0.83,percentage,3,months,manual,NA
+resb1025,ChiCTR-OPC-16008152,unclear,ac0014,NA,hba1c,endpoint,mean,n,7.75,sd,0.87,percentage,3,months,manual,NA
+resb0547,NCT02097342,unclear,ab0209,NA,hba1c,baseline,median,n,6.8,iqr,"6.4,7.1",percentage,6,months,manual,NA
+resb0548,NCT02097342,unclear,ab0211,NA,hba1c,baseline,median,n,7,iqr,"6.8,7.4",percentage,6,months,manual,NA
+resb0549,NCT02097342,unclear,ab0210,NA,hba1c,baseline,median,n,7,iqr,"6.8,7.1",percentage,6,months,manual,NA
+resb0550,NCT02097342,unclear,ab0209,NA,hba1c,endpoint,median,n,6.6,iqr,"6.3,6.9",percentage,6,months,manual,NA
+resb0551,NCT02097342,unclear,ab0211,NA,hba1c,endpoint,median,n,6.6,iqr,"6.5,6.6",percentage,6,months,manual,NA
+resb0552,NCT02097342,unclear,ab0210,NA,hba1c,endpoint,median,n,7,iqr,"6.8,7.4",percentage,6,months,manual,NA
+resb0849,UMIN000010871,per protocol,ac0161,NA,hba1c,baseline,mean,n,7,sd,0.7,percentage,6,months,manual,NA
+resb0850,UMIN000010871,per protocol,ac0160,NA,hba1c,baseline,mean,n,6.9,sd,0.7,percentage,6,months,manual,NA
+resb0851,UMIN000010871,per protocol,ac0161,NA,hba1c,endpoint,mean,n,6.4,sd,0.7,percentage,6,months,manual,NA
+resb0852,UMIN000010871,per protocol,ac0160,NA,hba1c,endpoint,mean,n,6.6,sd,0.7,percentage,6,months,manual,NA
+resb0356,NCT01193296,per protocol,ab0112,NA,hba1c,endpoint,mean,n,6.65,sd,0.51,percentage,8,weeks,manual,NA
+resb0358,NCT01193296,per protocol,ab0111,NA,hba1c,endpoint,mean,n,6.78,sd,0.55,percentage,8,weeks,manual,NA
+resb0615,NCT02467478,unclear,ab0244,NA,hba1c,baseline,mean,n,7.14,sd,0.67,percentage,12,weeks,manual,NA
+resb0616,NCT02467478,unclear,ab0245,NA,hba1c,baseline,mean,n,7.35,sd,0.97,percentage,12,weeks,manual,NA
+resb0617,NCT02467478,unclear,ab0244,NA,hba1c,endpoint,mean,n,6.66,sd,0.4,percentage,12,weeks,manual,NA
+resb0618,NCT02467478,unclear,ab0245,NA,hba1c,endpoint,mean,n,7.27,sd,0.73,percentage,12,weeks,manual,NA
+resb0652,NCT02920801,unclear,ab0267,NA,hba1c,baseline,mean,n,8.4,sd,1.6,percentage,12,weeks,manual,NA
+resb0653,NCT02920801,unclear,ab0266,NA,hba1c,baseline,mean,n,8.6,sd,1.7,percentage,12,weeks,manual,NA
+resb0654,NCT02920801,unclear,ab0267,NA,hba1c,endpoint,mean,n,6.9,sd,1.1,percentage,12,weeks,manual,NA
+resb0655,NCT02920801,unclear,ab0266,NA,hba1c,endpoint,mean,n,6.6,sd,0.4,percentage,12,weeks,manual,NA
+resb0686,NCT03050229,fas,ab0282,NA,hba1c,baseline,mean,n,6.64,NA,NA,percentage,12,weeks,manual,NA
+resb0687,NCT03050229,fas,ab0283,NA,hba1c,baseline,mean,n,6.63,NA,NA,percentage,12,weeks,manual,NA
+resb0688,NCT03050229,fas,ab0284,NA,hba1c,endpoint,mean,n,6.39,NA,NA,percentage,12,weeks,manual,NA
+resb0689,NCT03050229,fas,ab0285,NA,hba1c,endpoint,mean,n,6.7,NA,NA,percentage,12,weeks,manual,NA
+resb0792,UMIN000006278,fas,ac0130,NA,hba1c,baseline,mean,n,7.2,sd,0.7,percentage,12,weeks,manual,NA
+resb0793,UMIN000006278,fas,ac0131,NA,hba1c,baseline,mean,n,7.2,sd,0.4,percentage,12,weeks,manual,NA
+resb0794,UMIN000006278,fas,ac0130,NA,hba1c,endpoint,mean,n,7,sd,0.8,percentage,12,weeks,manual,NA
+resb0795,UMIN000006278,fas,ac0131,NA,hba1c,endpoint,mean,n,6.8,sd,0.5,percentage,12,weeks,manual,NA
+resb0913,UMIN000020984,unclear,ac0186,NA,hba1c,baseline,mean,n,7.61,sd,1.15,percentage,12,weeks,manual,NA
+resb0914,UMIN000020984,unclear,ac0187,NA,hba1c,baseline,mean,n,7.55,sd,1.64,percentage,12,weeks,manual,NA
+resb0915,UMIN000020984,unclear,ac0186,NA,hba1c,endpoint,mean,n,6.86,sd,0.81,percentage,12,weeks,manual,NA
+resb0916,UMIN000020984,unclear,ac0187,NA,hba1c,endpoint,mean,n,6.92,sd,1.2,percentage,12,weeks,manual,NA
+resb0921,UMIN000021552,unclear,ac0188,NA,hba1c,baseline,mean,n,7.01,sd,1.1.,percentage,12,months,manual,NA
+resb0922,UMIN000021552,unclear,ac0189,NA,hba1c,baseline,mean,n,6.84,sd,0.85,percentage,12,months,manual,NA
+resb0923,UMIN000021552,unclear,ac0188,NA,hba1c,endpoint,mean,n,6.9,sd,0.96,percentage,12,months,manual,NA
+resb0924,UMIN000021552,unclear,ac0189,NA,hba1c,endpoint,mean,n,6.88,sd,0.76,percentage,12,months,manual,NA
+resb0818,UMIN000007051,completers,ac0140,NA,hba1c,baseline,mean,n,6.6,sd,0.5,percentage,16,weeks,manual,NA
+resb0819,UMIN000007051,completers,ac0141,NA,hba1c,baseline,mean,n,7,sd,0.8,percentage,16,weeks,manual,NA
+resb0820,UMIN000007051,completers,ac0140,NA,hba1c,endpoint,mean,n,7.2,sd,0.9,percentage,16,weeks,manual,NA
+resb0821,UMIN000007051,completers,ac0141,NA,hba1c,endpoint,mean,n,7.9,sd,1.5,percentage,16,weeks,manual,NA
+resb0016,NCT00099853,primary itt,ab0018,NA,hba1c,endpoint,mean,NA,7.5,sd,0.1,percentage,24,weeks,manual,NA
+resb0017,NCT00099853,primary itt,ab0019,NA,hba1c,endpoint,mean,NA,7.7,sd,0.1,percentage,24,weeks,manual,NA
+resb0018,NCT00099853,primary itt,ab0017,NA,hba1c,endpoint,mean,NA,8.1,sd,0.1,percentage,24,weeks,manual,NA
+resb0326,NCT00957060,per protocol,ab0094,NA,hba1c,endpoint,mean,n,7.78,sd,1.9,percentage,24,weeks,manual,NA
+resb0328,NCT00957060,per protocol,ab0095,NA,hba1c,endpoint,mean,n,8.12,sd,2.08,percentage,24,weeks,manual,NA
+resb0861,UMIN000013356,unclear,ac0164,NA,hba1c,baseline,median,n,7.2,iqr,"7.0,7.5",percentage,24,weeks,manual,NA
+resb0862,UMIN000013356,unclear,ac0165,NA,hba1c,baseline,median,n,7.3,iqr,"6.8,7.4",percentage,24,weeks,manual,NA
+resb0863,UMIN000013356,unclear,ac0166,NA,hba1c,endpoint,median,n,6.6,iqr,"6.4,6.8",percentage,24,weeks,manual,NA
+resb0864,UMIN000013356,unclear,ac0167,NA,hba1c,endpoint,median,n,6.6,iqr,"6.3,6.7",percentage,24,weeks,manual,NA
+resb0933,UMIN000022155,unclear,ac0192,NA,hba1c,baseline,mean,n,8.37,sd,1.48,percentage,24,weeks,manual,NA
+resb0934,UMIN000022155,unclear,ac0193,NA,hba1c,baseline,mean,n,7.7,sd,1.24,percentage,24,weeks,manual,NA
+resb0935,UMIN000022155,unclear,ac0192,NA,hba1c,endpoint,mean,n,7.36,sd,1.22,percentage,24,weeks,manual,NA
+resb0936,UMIN000022155,unclear,ac0193,NA,hba1c,endpoint,mean,n,7.22,sd,1.11,percentage,24,weeks,manual,NA
+resb0941,UMIN000022804,fas,ac0194,NA,hba1c,baseline,mean,n,6.9,sd,0.6,percentage,24,weeks,manual,NA
+resb0942,UMIN000022804,fas,ac0195,NA,hba1c,baseline,mean,n,6.9,sd,0.6,percentage,24,weeks,manual,NA
+resb0943,UMIN000022804,fas,ac0194,NA,hba1c,endpoint,mean,n,7,sd,0.7,percentage,24,weeks,manual,NA
+resb0944,UMIN000022804,fas,ac0195,NA,hba1c,endpoint,mean,n,7.1,sd,0.8,percentage,24,weeks,manual,NA
+resb0964,UMIN000030158,fas,ac0206,NA,hba1c,baseline,mean,n,6.8,sd,1,percentage,24,weeks,manual,NA
+resb0965,UMIN000030158,fas,ac0207,NA,hba1c,baseline,mean,n,6.9,sd,0.9,percentage,24,weeks,manual,NA
+resb0966,UMIN000030158,fas,ac0206,NA,hba1c,endpoint,mean,n,6.6,sd,0.9,percentage,24,weeks,manual,NA
+resb0967,UMIN000030158,fas,ac0207,NA,hba1c,endpoint,mean,n,6.8,sd,1,percentage,24,weeks,manual,NA
+resb1008,ChiCTR-IPR-16008578,fas,ac0009,NA,hba1c,baseline,mean,n,9,sd,1.3,percentage,24,weeks,manual,NA
+resb1009,ChiCTR-IPR-16008578,fas,ac0010,NA,hba1c,baseline,mean,n,9.1,sd,1.1,percentage,24,weeks,manual,NA
+resb1010,ChiCTR-IPR-16008578,fas,ac0009,NA,hba1c,endpoint,mean,n,6.8,sd,0.8,percentage,24,weeks,manual,NA
+resb1011,ChiCTR-IPR-16008578,fas,ac0010,NA,hba1c,endpoint,mean,n,6.9,sd,0.7,percentage,24,weeks,manual,NA
+resb0534,NCT02015299,fas,ab0205,NA,hba1c,endpoint,mean,n,6,sd,0.3,percentage,26,weeks,manual,NA
+resb0535,NCT02015299,fas,ab0206,NA,hba1c,endpoint,mean,n,6.3,sd,0.5,percentage,26,weeks,manual,NA
+resb1087,NCT01270789,itt,ab0123,NA,hba1c,baseline,mean,y,6.4,sd,0.5,percentage,48,weeks,manual,NA
+resb1088,NCT01270789,itt,ab0124,NA,hba1c,baseline,mean,y,6.2,sd,0.4,percentage,48,weeks,manual,NA
+resb1089,NCT01270789,itt,ab0123,NA,hba1c,endpoint,mean,y,6.2,sd,0.1,percentage,48,weeks,manual,NA
+resb1090,NCT01270789,itt,ab0124,NA,hba1c,endpoint,mean,y,6.6,sd,0.1,percentage,48,weeks,manual,NA
+resb0768,UMIN000004791,fas,ac0120,NA,hba1c,baseline,mean,n,7.4,sd,0.5,percentage,52,weeks,manual,NA
+resb0769,UMIN000004791,fas,ac0121,NA,hba1c,baseline,mean,n,7.5,sd,0.5,percentage,52,weeks,manual,NA
+resb0770,UMIN000004791,fas,ac0120,NA,hba1c,endpoint,mean,n,6.8,95% ci,"6.7,7.0",percentage,52,weeks,manual,NA
+resb0771,UMIN000004791,fas,ac0121,NA,hba1c,endpoint,mean,n,6.8,95% ci,"6.7,7.0",percentage,52,weeks,manual,NA
+resb0494,NCT01744236,per protocol,NA,compb0090,hba1c,between treatment difference in mean change,mean difference,n,-0.8,95%ci,"-1.2,-0.4",percentage,12,weeks,manual,NA
+resb0495,NCT01744236,per protocol,NA,compb0091,hba1c,between treatment difference in mean change,mean difference,n,-1.3,95%ci,"-1.7,-0.9",percentage,12,weeks,manual,NA
+resb0468,NCT01601990,fas,NA,compb0084,hba1c,between treatment difference in adjusted mean change,adjusted mean difference,y,-0.71,95%ci,"-1.04,-0.37",percentage,24,weeks,manual,NA
+resb0682,NCT03007329,unclear,NA,compb0120,hba1c,between treatment difference in mean change,adjusted mean difference,y,-0.55,95% ci,"-0.88,0.20",percentage,24,weeks,manual,NA
+resb0739,UMIN000004490,fas,NA,compb0124,hba1c,between treatment difference in mean change,difference in baseline adjusted mean,y,-0.159,95% ci,"-0.278,-0.041",percentage,24,months,manual,NA
+resb1006,2014-003923-23,completers,NA,compb0138,hba1c,between treatment difference in mean change,adjusted mean difference,n,-1.22,95% ci,"-1.8,-0.64",percentage,26,weeks,manual,NA
+resb0424,NCT01455896,itt,NA,compb0076,hba1c,LS mean between treatment difference,LS mean absolute difference,n,-0.84,95%ci,"-0.98, -0.70",percentage,16,months,manual,NA
+49209820,NCT00082381,NA,uaa10001,NA,hba1c,baseline,LS mean,NA,8.13,se,0.07,percentage,0,weeks,aact,NA
+49209822,NCT00082381,NA,uaa10001,NA,hba1c,change from baseline,LS mean change,NA,-1,se,0.06,percentage,26,weeks,aact,NA
+49209821,NCT00082381,NA,uaa10002,NA,hba1c,baseline,LS mean,NA,8.19,se,0.07,percentage,0,weeks,aact,NA
+49209823,NCT00082381,NA,uaa10002,NA,hba1c,change from baseline,LS mean change,NA,-1.05,se,0.06,percentage,26,weeks,aact,NA
+49209868,NCT00082407,NA,uaa10004,NA,hba1c,baseline,LS mean,NA,8.59,se,0.07,percentage,0,weeks,aact,NA
+49209870,NCT00082407,NA,uaa10004,NA,hba1c,change from baseline,LS mean change,NA,-0.98,se,0.07,percentage,52,weeks,aact,NA
+49209869,NCT00082407,NA,uaa10005,NA,hba1c,baseline,LS mean,NA,8.65,se,0.07,percentage,0,weeks,aact,NA
+49209871,NCT00082407,NA,uaa10005,NA,hba1c,change from baseline,LS mean change,NA,-0.88,se,0.07,percentage,52,weeks,aact,NA
+49212777,NCT00086502,NA,uaa10007,NA,hba1c,change from baseline,LS mean change,NA,-0.15,95%ci,-0.28;-0.03,percentage,24,weeks,aact,NA
+49212776,NCT00086502,NA,uaa10008,NA,hba1c,change from baseline,LS mean change,NA,-0.85,95%ci,-0.98;-0.72,percentage,24,weeks,aact,NA
+49212781,NCT00086515,NA,uaa10010,NA,hba1c,change from baseline,LS mean change,NA,-0.02,95%ci,-0.15;0.1,percentage,24,weeks,aact,NA
+49212780,NCT00086515,NA,uaa10011,NA,hba1c,change from baseline,LS mean change,NA,-0.67,95%ci,-0.77;-0.57,percentage,24,weeks,aact,NA
+49213340,NCT00087516,NA,uaa10013,NA,hba1c,change from baseline,LS mean change,NA,0.18,95%ci,0.06;0.3,percentage,24,weeks,aact,NA
+49213338,NCT00087516,NA,uaa10014,NA,hba1c,change from baseline,LS mean change,NA,-0.61,95%ci,-0.74;-0.49,percentage,24,weeks,aact,NA
+49213339,NCT00087516,NA,uaa10015,NA,hba1c,change from baseline,LS mean change,NA,-0.76,95%ci,-0.88;-0.64,percentage,24,weeks,aact,NA
+49218411,NCT00094757,NA,uaa10017,NA,hba1c,change from baseline,LS mean change,NA,0.12,95%ci,-0.05;0.3,percentage,18,weeks,aact,NA
+49218409,NCT00094757,NA,uaa10018,NA,hba1c,change from baseline,LS mean change,NA,-0.48,95%ci,-0.61;-0.35,percentage,18,weeks,aact,NA
+49218410,NCT00094757,NA,uaa10019,NA,hba1c,change from baseline,LS mean change,NA,-0.36,95%ci,-0.48;-0.23,percentage,18,weeks,aact,NA
+49218422,NCT00094770,NA,uaa10021,NA,hba1c,change from baseline,LS mean change,NA,-0.67,95%ci,-0.75;-0.59,percentage,52,weeks,aact,NA
+49218421,NCT00094770,NA,uaa10022,NA,hba1c,change from baseline,LS mean change,NA,-0.67,95%ci,-0.75;-0.59,percentage,52,weeks,aact,NA
+49221483,NCT00097500,NA,uaa10024,NA,hba1c,change from baseline,LS mean change,NA,-0.97,se,0.14,percentage,52,weeks,aact,NA
+49221484,NCT00097500,NA,uaa10025,NA,hba1c,change from baseline,LS mean change,NA,-0.87,se,0.15,percentage,52,weeks,aact,NA
+49224585,NCT00103857,NA,uaa10028,NA,hba1c,change from baseline,LS mean change,NA,-1.13,95%ci,-1.29;-0.97,percentage,24,weeks,aact,NA
+49224584,NCT00103857,NA,uaa10029,NA,hba1c,change from baseline,LS mean change,NA,-0.82,95%ci,-0.98;-0.66,percentage,24,weeks,aact,NA
+49224588,NCT00103857,NA,uaa10030,NA,hba1c,change from baseline,LS mean change,NA,0.17,95%ci,0;0.33,percentage,24,weeks,aact,NA
+49224587,NCT00103857,NA,uaa10031,NA,hba1c,change from baseline,LS mean change,NA,-1.9,95%ci,-2.06;-1.74,percentage,24,weeks,aact,NA
+49224586,NCT00103857,NA,uaa10032,NA,hba1c,change from baseline,LS mean change,NA,-1.4,95%ci,-1.56;-1.24,percentage,24,weeks,aact,NA
+49224583,NCT00103857,NA,uaa10033,NA,hba1c,change from baseline,LS mean change,NA,-0.66,95%ci,-0.83;-0.5,percentage,24,weeks,aact,NA
+49227725,NCT00106704,NA,uaa10035,NA,hba1c,change from baseline,LS mean change,NA,0.28,95%ci,0.17;0.4,percentage,24,weeks,aact,NA
+49227724,NCT00106704,NA,uaa10036,NA,hba1c,change from baseline,LS mean change,NA,-0.45,95%ci,-0.57;-0.34,percentage,24,weeks,aact,NA
+49241470,NCT00121641,NA,uaa10039,NA,hba1c,baseline,mean,NA,7.88,se,0.1,percentage,0,weeks,aact,NA
+49241474,NCT00121641,NA,uaa10039,NA,hba1c,change from baseline,adjusted mean change,NA,0.19,se,0.1,percentage,24,weeks,aact,NA
+49241469,NCT00121641,NA,uaa10040,NA,hba1c,baseline,mean,NA,7.85,se,0.09,percentage,0,weeks,aact,NA
+49241473,NCT00121641,NA,uaa10040,NA,hba1c,change from baseline,adjusted mean change,NA,-0.54,se,0.1,percentage,24,weeks,aact,NA
+49241467,NCT00121641,NA,uaa10041,NA,hba1c,baseline,mean,NA,7.91,se,0.09,percentage,0,weeks,aact,NA
+49241471,NCT00121641,NA,uaa10041,NA,hba1c,change from baseline,adjusted mean change,NA,-0.43,se,0.1,percentage,24,weeks,aact,NA
+49241468,NCT00121641,NA,uaa10042,NA,hba1c,baseline,mean,NA,7.98,se,0.11,percentage,0,weeks,aact,NA
+49241472,NCT00121641,NA,uaa10042,NA,hba1c,change from baseline,adjusted mean change,NA,-0.46,se,0.1,percentage,24,weeks,aact,NA
+49243425,NCT00121667,NA,uaa10044,NA,hba1c,baseline,mean,NA,8.06,se,0.07,percentage,0,weeks,aact,NA
+49243429,NCT00121667,NA,uaa10044,NA,hba1c,change from baseline,adjusted mean change,NA,0.13,se,0.07,percentage,24,weeks,aact,NA
+49243424,NCT00121667,NA,uaa10045,NA,hba1c,baseline,mean,NA,7.98,se,0.08,percentage,0,weeks,aact,NA
+49243428,NCT00121667,NA,uaa10045,NA,hba1c,change from baseline,adjusted mean change,NA,-0.58,se,0.07,percentage,24,weeks,aact,NA
+49243422,NCT00121667,NA,uaa10046,NA,hba1c,baseline,mean,NA,8.08,se,0.07,percentage,0,weeks,aact,NA
+49243426,NCT00121667,NA,uaa10046,NA,hba1c,change from baseline,adjusted mean change,NA,-0.59,se,0.07,percentage,24,weeks,aact,NA
+49243423,NCT00121667,NA,uaa10047,NA,hba1c,baseline,mean,NA,8.07,se,0.06,percentage,0,weeks,aact,NA
+49243427,NCT00121667,NA,uaa10047,NA,hba1c,change from baseline,adjusted mean change,NA,-0.69,se,0.07,percentage,24,weeks,aact,NA
+49257124,NCT00135330,NA,uaa10049,NA,hba1c,baseline,LS mean,NA,7.79,se,0.116,percentage,0,weeks,aact,NA
+49257127,NCT00135330,NA,uaa10049,NA,hba1c,change from baseline,LS mean change,NA,-0.908,se,0.118,percentage,20,weeks,aact,NA
+49257125,NCT00135330,NA,uaa10050,NA,hba1c,baseline,LS mean,NA,7.84,se,0.115,percentage,0,weeks,aact,NA
+49257128,NCT00135330,NA,uaa10050,NA,hba1c,change from baseline,LS mean change,NA,-1.31,se,0.116,percentage,20,weeks,aact,NA
+49257126,NCT00135330,NA,uaa10051,NA,hba1c,baseline,LS mean,NA,7.92,se,0.116,percentage,0,weeks,aact,NA
+49257129,NCT00135330,NA,uaa10051,NA,hba1c,change from baseline,LS mean change,NA,-0.968,se,0.118,percentage,20,weeks,aact,NA
+49339463,NCT00286429,NA,uaa10053,NA,hba1c,change from baseline,LS mean change,NA,-0.63,se,0.076,percentage,26,weeks,aact,NA
+49339464,NCT00286429,NA,uaa10054,NA,hba1c,change from baseline,LS mean change,NA,-0.71,se,0.078,percentage,26,weeks,aact,NA
+49339462,NCT00286429,NA,uaa10055,NA,hba1c,change from baseline,LS mean change,NA,-0.13,se,0.077,percentage,26,weeks,aact,NA
+49339561,NCT00286442,NA,uaa10057,NA,hba1c,change from baseline,LS mean change,NA,-0.61,se,0.053,percentage,26,weeks,aact,NA
+49339562,NCT00286442,NA,uaa10058,NA,hba1c,change from baseline,LS mean change,NA,-0.59,se,0.054,percentage,26,weeks,aact,NA
+49339563,NCT00286442,NA,uaa10059,NA,hba1c,change from baseline,LS mean change,NA,-0.1,se,0.076,percentage,26,weeks,aact,NA
+49339715,NCT00286455,NA,uaa10061,NA,hba1c,change from baseline,LS mean change,NA,-0.56,se,0.065,percentage,26,weeks,aact,NA
+49339716,NCT00286455,NA,uaa10062,NA,hba1c,change from baseline,LS mean change,NA,-0.59,se,0.066,percentage,26,weeks,aact,NA
+49339714,NCT00286455,NA,uaa10063,NA,hba1c,change from baseline,LS mean change,NA,-0.02,se,0.094,percentage,26,weeks,aact,NA
+49339886,NCT00286468,NA,uaa10065,NA,hba1c,change from baseline,LS mean change,NA,-0.38,se,0.058,percentage,26,weeks,aact,NA
+49339887,NCT00286468,NA,uaa10066,NA,hba1c,change from baseline,LS mean change,NA,-0.52,se,0.058,percentage,26,weeks,aact,NA
+49339885,NCT00286468,NA,uaa10067,NA,hba1c,change from baseline,LS mean change,NA,0.01,se,0.084,percentage,26,weeks,aact,NA
+49340039,NCT00286494,NA,uaa10069,NA,hba1c,change from baseline,LS mean change,NA,-0.66,se,0.056,percentage,26,weeks,aact,NA
+49340040,NCT00286494,NA,uaa10070,NA,hba1c,change from baseline,LS mean change,NA,-0.8,se,0.056,percentage,26,weeks,aact,NA
+49340038,NCT00286494,NA,uaa10071,NA,hba1c,change from baseline,LS mean change,NA,-0.19,se,0.081,percentage,26,weeks,aact,NA
+49342422,NCT00289848,NA,uaa10073,NA,hba1c,change from baseline,LS mean change,NA,0.31,95%ci,0.14;0.48,percentage,18,weeks,aact,NA
+49342421,NCT00289848,NA,uaa10074,NA,hba1c,change from baseline,LS mean change,NA,-0.71,95%ci,-0.84;-0.59,percentage,18,weeks,aact,NA
+49347053,NCT00294723,NA,uaa10076,NA,hba1c,change from baseline,LS mean change,NA,-0.51,se,0.08,percentage,52,weeks,aact,NA
+49347052,NCT00294723,NA,uaa10078,NA,hba1c,change from baseline,LS mean change,NA,-0.84,se,0.08,percentage,52,weeks,aact,NA
+49347051,NCT00294723,NA,uaa10079,NA,hba1c,change from baseline,LS mean change,NA,-1.14,se,0.08,percentage,52,weeks,aact,NA
+49347450,NCT00295633,NA,uaa10081,NA,hba1c,baseline,mean,NA,8.19,se,0.08,percentage,0,weeks,aact,NA
+49347456,NCT00295633,NA,uaa10081,NA,hba1c,change from baseline,adjusted mean change,NA,-0.3,se,0.076,percentage,24,weeks,aact,NA
+49347453,NCT00295633,NA,uaa10081,NA,hba1c,endpoint,mean,NA,7.91,se,0.1,percentage,24,weeks,aact,NA
+49347448,NCT00295633,NA,uaa10082,NA,hba1c,baseline,mean,NA,8.25,se,0.08,percentage,0,weeks,aact,NA
+49347454,NCT00295633,NA,uaa10082,NA,hba1c,change from baseline,adjusted mean change,NA,-0.66,se,0.074,percentage,24,weeks,aact,NA
+49347451,NCT00295633,NA,uaa10082,NA,hba1c,endpoint,mean,NA,7.59,se,0.098,percentage,24,weeks,aact,NA
+49347449,NCT00295633,NA,uaa10083,NA,hba1c,baseline,mean,NA,8.35,se,0.08,percentage,0,weeks,aact,NA
+49347455,NCT00295633,NA,uaa10083,NA,hba1c,change from baseline,adjusted mean change,NA,-0.94,se,0.075,percentage,24,weeks,aact,NA
+49347452,NCT00295633,NA,uaa10083,NA,hba1c,endpoint,mean,NA,7.39,se,0.086,percentage,24,weeks,aact,NA
+49356502,NCT00305604,NA,uaa10085,NA,hba1c,change from baseline,LS mean change,NA,0.23,95%ci,0;0.47,percentage,24,weeks,aact,NA
+49356501,NCT00305604,NA,uaa10086,NA,hba1c,change from baseline,LS mean change,NA,-0.47,95%ci,-0.69;-0.25,percentage,24,weeks,aact,NA
+49357612,NCT00306384,NA,uaa10088,NA,hba1c,change from baseline,mean change,NA,1.63,sd,1.31,percentage,48,months,aact,NA
+49357564,NCT00306384,NA,uaa10088,NA,hba1c,baseline,mean,NA,7.21,sd,0.815,percentage,0,weeks,aact,NA
+49357613,NCT00306384,NA,uaa10089,NA,hba1c,change from baseline,mean change,NA,0.61,sd,1.261,percentage,48,months,aact,NA
+49357565,NCT00306384,NA,uaa10089,NA,hba1c,baseline,mean,NA,7.22,sd,0.814,percentage,0,weeks,aact,NA
+49360885,NCT00308139,NA,uaa10091,NA,hba1c,change from baseline,LS mean change,NA,-1.54,se,0.082,percentage,30,weeks,aact,NA
+49360884,NCT00308139,NA,uaa10092,NA,hba1c,change from baseline,LS mean change,NA,-1.87,se,0.082,percentage,30,weeks,aact,NA
+49365827,NCT00313313,NA,uaa10095,NA,hba1c,baseline,mean,NA,8.44,se,0.055,percentage,0,weeks,aact,NA
+49365833,NCT00313313,NA,uaa10095,NA,hba1c,change from baseline,adjusted mean change,NA,0.08,se,0.057,percentage,24,weeks,aact,NA
+49365830,NCT00313313,NA,uaa10095,NA,hba1c,endpoint,mean,NA,8.52,se,0.077,percentage,24,weeks,aact,NA
+49365825,NCT00313313,NA,uaa10096,NA,hba1c,baseline,mean,NA,8.36,se,0.057,percentage,0,weeks,aact,NA
+49365831,NCT00313313,NA,uaa10096,NA,hba1c,change from baseline,adjusted mean change,NA,-0.54,se,0.059,percentage,24,weeks,aact,NA
+49365828,NCT00313313,NA,uaa10096,NA,hba1c,endpoint,mean,NA,7.83,se,0.074,percentage,24,weeks,aact,NA
+49365826,NCT00313313,NA,uaa10097,NA,hba1c,baseline,mean,NA,8.48,se,0.056,percentage,0,weeks,aact,NA
+49365832,NCT00313313,NA,uaa10097,NA,hba1c,change from baseline,adjusted mean change,NA,-0.64,se,0.059,percentage,24,weeks,aact,NA
+49365829,NCT00313313,NA,uaa10097,NA,hba1c,endpoint,mean,NA,7.83,se,0.074,percentage,24,weeks,aact,NA
+49367536,NCT00316082,NA,uaa10099,NA,hba1c,baseline,mean,NA,7.79,se,0.112,percentage,0,weeks,aact,NA
+49367544,NCT00316082,NA,uaa10099,NA,hba1c,change from baseline,adjusted mean change,NA,-0.26,se,0.103,percentage,24,weeks,aact,NA
+49367540,NCT00316082,NA,uaa10099,NA,hba1c,endpoint,mean,NA,7.57,se,0.141,percentage,24,weeks,aact,NA
+49367533,NCT00316082,NA,uaa10100,NA,hba1c,baseline,mean,NA,8.04,se,0.105,percentage,0,weeks,aact,uaa10100a
+49367541,NCT00316082,NA,uaa10100,NA,hba1c,change from baseline,adjusted mean change,NA,-0.71,se,0.103,percentage,24,weeks,aact,uaa10100a
+49367537,NCT00316082,NA,uaa10100,NA,hba1c,endpoint,mean,NA,7.3,se,0.106,percentage,24,weeks,aact,uaa10100a
+49367545,NCT00316082,NA,uaa10101,NA,hba1c,baseline,mean,NA,7.88,se,0.111,percentage,0,weeks,aact,uaa10101b
+49367534,NCT00316082,NA,uaa10101,NA,hba1c,baseline,mean,NA,7.93,se,0.106,percentage,0,weeks,aact,uaa10101a
+49367549,NCT00316082,NA,uaa10101,NA,hba1c,change from baseline,adjusted mean change,NA,-0.61,se,0.101,percentage,24,weeks,aact,uaa10101b
+49367547,NCT00316082,NA,uaa10101,NA,hba1c,endpoint,mean,NA,7.29,se,0.124,percentage,24,weeks,aact,uaa10101b
+49367542,NCT00316082,NA,uaa10101,NA,hba1c,change from baseline,adjusted mean change,NA,-0.66,se,0.102,percentage,24,weeks,aact,uaa10101a
+49367538,NCT00316082,NA,uaa10101,NA,hba1c,endpoint,mean,NA,7.27,se,0.129,percentage,24,weeks,aact,uaa10101a
+49371064,NCT00318461,NA,uaa10103,NA,hba1c,change from baseline,LS mean change,NA,-0.98,se,0.07,percentage,26,weeks,aact,NA
+49371060,NCT00318461,NA,uaa10104,NA,hba1c,change from baseline,LS mean change,NA,-0.69,se,0.07,percentage,26,weeks,aact,NA
+49371061,NCT00318461,NA,uaa10105,NA,hba1c,change from baseline,LS mean change,NA,-0.97,se,0.07,percentage,26,weeks,aact,NA
+49371062,NCT00318461,NA,uaa10106,NA,hba1c,change from baseline,LS mean change,NA,-1,se,0.07,percentage,26,weeks,aact,NA
+49371063,NCT00318461,NA,uaa10107,NA,hba1c,change from baseline,LS mean change,NA,0.09,se,0.09,percentage,26,weeks,aact,NA
+49377889,NCT00327015,NA,uaa10109,NA,hba1c,baseline,mean,NA,9.43,se,0.073,percentage,0,weeks,aact,NA
+49377895,NCT00327015,NA,uaa10109,NA,hba1c,change from baseline,adjusted mean change,NA,-1.99,se,0.069,percentage,24,weeks,aact,NA
+49377892,NCT00327015,NA,uaa10109,NA,hba1c,endpoint,mean,NA,7.48,se,0.084,percentage,24,weeks,aact,NA
+49377888,NCT00327015,NA,uaa10110,NA,hba1c,baseline,mean,NA,9.53,se,0.069,percentage,0,weeks,aact,NA
+49377894,NCT00327015,NA,uaa10110,NA,hba1c,change from baseline,adjusted mean change,NA,-2.49,se,0.069,percentage,24,weeks,aact,NA
+49377891,NCT00327015,NA,uaa10110,NA,hba1c,endpoint,mean,NA,7.02,se,0.067,percentage,24,weeks,aact,NA
+49377887,NCT00327015,NA,uaa10111,NA,hba1c,baseline,mean,NA,9.41,se,0.072,percentage,0,weeks,aact,NA
+49377893,NCT00327015,NA,uaa10111,NA,hba1c,change from baseline,adjusted mean change,NA,-2.53,se,0.07,percentage,24,weeks,aact,NA
+49377890,NCT00327015,NA,uaa10111,NA,hba1c,endpoint,mean,NA,6.93,se,0.066,percentage,24,weeks,aact,NA
+49377847,NCT00327015,NA,uaa10112,NA,hba1c,baseline,mean,NA,9.61,se,0.075,percentage,0,weeks,aact,NA
+49377853,NCT00327015,NA,uaa10112,NA,hba1c,change from baseline,adjusted mean change,NA,-1.69,se,0.069,percentage,24,weeks,aact,NA
+49377850,NCT00327015,NA,uaa10112,NA,hba1c,endpoint,mean,NA,7.86,se,0.085,percentage,24,weeks,aact,NA
+49378447,NCT00328627,NA,uaa10115,NA,hba1c,change from baseline,LS mean change,NA,-0.9,se,0.081,percentage,26,weeks,aact,NA
+49378449,NCT00328627,NA,uaa10116,NA,hba1c,change from baseline,LS mean change,NA,-1.34,se,0.078,percentage,26,weeks,aact,NA
+49378128,NCT00328627,NA,uaa10117,NA,hba1c,change from baseline,LS mean change,NA,-1.43,se,0.046,percentage,26,weeks,aact,NA
+49378452,NCT00328627,NA,uaa10118,NA,hba1c,change from baseline,LS mean change,NA,-1.39,se,0.079,percentage,26,weeks,aact,NA
+49378455,NCT00328627,NA,uaa10119,NA,hba1c,change from baseline,LS mean change,NA,-1.55,se,0.079,percentage,26,weeks,aact,NA
+49378450,NCT00328627,NA,uaa10120,NA,hba1c,change from baseline,LS mean change,NA,-1.27,se,0.079,percentage,26,weeks,aact,NA
+49378129,NCT00328627,NA,uaa10121,NA,hba1c,change from baseline,LS mean change,NA,-1.42,se,0.046,percentage,26,weeks,aact,NA
+49378453,NCT00328627,NA,uaa10122,NA,hba1c,change from baseline,LS mean change,NA,-1.39,se,0.08,percentage,26,weeks,aact,NA
+49378456,NCT00328627,NA,uaa10123,NA,hba1c,change from baseline,LS mean change,NA,-1.6,se,0.08,percentage,26,weeks,aact,NA
+49378448,NCT00328627,NA,uaa10124,NA,hba1c,change from baseline,LS mean change,NA,-0.75,se,0.079,percentage,26,weeks,aact,NA
+49378127,NCT00328627,NA,uaa10125,NA,hba1c,change from baseline,LS mean change,NA,-0.89,se,0.046,percentage,26,weeks,aact,NA
+49378451,NCT00328627,NA,uaa10126,NA,hba1c,change from baseline,LS mean change,NA,-0.92,se,0.081,percentage,26,weeks,aact,NA
+49378454,NCT00328627,NA,uaa10127,NA,hba1c,change from baseline,LS mean change,NA,-1,se,0.08,percentage,26,weeks,aact,NA
+49378445,NCT00328627,NA,uaa10128,NA,hba1c,change from baseline,LS mean change,NA,-0.13,se,0.08,percentage,26,weeks,aact,NA
+49385493,NCT00337610,NA,uaa10130,NA,hba1c,change from baseline,LS mean change,NA,0.02,95%ci,-0.23;0.27,percentage,18,weeks,aact,NA
+49385492,NCT00337610,NA,uaa10131,NA,hba1c,change from baseline,LS mean change,NA,-1,95%ci,-1.24;-0.75,percentage,18,weeks,aact,NA
+49393146,NCT00350779,NA,uaa10133,NA,hba1c,change from baseline,LS mean change,NA,-0.31,95%ci,-0.5;-0.13,percentage,18,weeks,aact,NA
+49393145,NCT00350779,NA,uaa10134,NA,hba1c,change from baseline,LS mean change,NA,-1.03,95%ci,-1.17;-0.9,percentage,18,weeks,aact,NA
+49398558,NCT00359762,NA,uaa10136,NA,hba1c,change from baseline,LS mean change,NA,-0.3,se,0.051,percentage,36,months,aact,NA
+49398559,NCT00359762,NA,uaa10139,NA,hba1c,change from baseline,LS mean change,NA,-0.12,se,0.049,percentage,36,months,aact,NA
+49415206,NCT00372060,NA,uaa10147,NA,hba1c,change from baseline,LS mean change,NA,0.4,95%ci,0.3;0.5,percentage,12,weeks,aact,NA
+49415205,NCT00372060,NA,uaa10148,NA,hba1c,change from baseline,LS mean change,NA,-0.4,95%ci,-0.6;-0.3,percentage,12,weeks,aact,NA
+49419917,NCT00375492,NA,uaa10150,NA,hba1c,change from baseline,LS mean change,NA,-1.21,se,0.09,percentage,24,weeks,aact,NA
+49419918,NCT00375492,NA,uaa10151,NA,hba1c,change from baseline,LS mean change,NA,-0.73,se,0.09,percentage,24,weeks,aact,NA
+49439277,NCT00393718,NA,uaa10153,NA,hba1c,endpoint,LS mean change,NA,7.5,se,0.09,percentage,24,weeks,aact,NA
+49439276,NCT00393718,NA,uaa10154,NA,hba1c,endpoint,LS mean change,NA,6.99,se,0.07,percentage,24,weeks,aact,NA
+49440797,NCT00395343,NA,uaa10156,NA,hba1c,change from baseline,LS mean change,NA,-0.03,95%ci,-0.14;0.08,percentage,24,weeks,aact,NA
+49440796,NCT00395343,NA,uaa10157,NA,hba1c,change from baseline,LS mean change,NA,-0.59,95%ci,-0.7;-0.48,percentage,24,weeks,aact,NA
+49440906,NCT00395512,NA,uaa10159,NA,hba1c,change from baseline,LS mean change,NA,-0.96,se,0.081,percentage,26,weeks,aact,NA
+49440909,NCT00395512,NA,uaa10160,NA,hba1c,change from baseline,LS mean change,NA,-1.56,se,0.081,percentage,26,weeks,aact,NA
+49440908,NCT00395512,NA,uaa10161,NA,hba1c,change from baseline,LS mean change,NA,-1.71,se,0.081,percentage,26,weeks,aact,NA
+49440907,NCT00395512,NA,uaa10162,NA,hba1c,change from baseline,LS mean change,NA,-1.15,se,0.083,percentage,26,weeks,aact,NA
+49441864,NCT00395746,NA,uaa10164,NA,hba1c,endpoint,LS mean change,NA,7.02,se,0.1,percentage,24,weeks,aact,NA
+49441865,NCT00395746,NA,uaa10165,NA,hba1c,endpoint,LS mean change,NA,6.75,se,0.11,percentage,24,weeks,aact,NA
+49441866,NCT00395746,NA,uaa10166,NA,hba1c,endpoint,LS mean change,NA,8.02,se,0.1,percentage,24,weeks,aact,NA
+49444206,NCT00397631,NA,uaa10168,NA,hba1c,change from baseline,LS mean change,NA,-1.49,95%ci,-1.66;-1.32,percentage,24,weeks,aact,NA
+49444205,NCT00397631,NA,uaa10169,NA,hba1c,change from baseline,LS mean change,NA,-2.38,95%ci,-2.55;-2.21,percentage,24,weeks,aact,NA
+49458855,NCT00411554,NA,uaa10174,NA,hba1c,change from baseline,LS mean change,NA,-0.7,95%ci,-0.78;-0.62,percentage,12,weeks,aact,NA
+49458856,NCT00411554,NA,uaa10176,NA,hba1c,change from baseline,LS mean change,NA,-0.3,95%ci,-0.39;-0.22,percentage,12,weeks,aact,NA
+49489596,NCT00432276,NA,uaa10177,NA,hba1c,change from baseline,LS mean change,NA,-0.89,se,0.042,percentage,26,weeks,aact,NA
+49489597,NCT00432276,NA,uaa10178,NA,hba1c,change from baseline,LS mean change,NA,-0.42,se,0.042,percentage,26,weeks,aact,NA
+49499631,NCT00434954,NA,uaa10180,NA,hba1c,change from baseline,LS mean change,NA,-1,se,0.05,percentage,26,weeks,aact,NA
+49499632,NCT00434954,NA,uaa10181,NA,hba1c,change from baseline,LS mean change,NA,-1.14,se,0.05,percentage,26,weeks,aact,NA
+49514371,NCT00449930,NA,uaa10183,NA,hba1c,change from baseline,LS mean change,NA,-0.57,95%ci,-0.62;-0.51,percentage,24,weeks,aact,NA
+49514370,NCT00449930,NA,uaa10184,NA,hba1c,change from baseline,LS mean change,NA,-0.43,95%ci,-0.48;-0.38,percentage,24,weeks,aact,NA
+49549618,NCT00482729,NA,uaa10186,NA,hba1c,change from baseline,LS mean change,NA,-1.76,95%ci,-1.88;-1.64,percentage,18,weeks,aact,NA
+49549617,NCT00482729,NA,uaa10187,NA,hba1c,change from baseline,LS mean change,NA,-2.37,95%ci,-2.49;-2.24,percentage,18,weeks,aact,NA
+49577469,NCT00509236,NA,uaa10189,NA,hba1c,change from baseline,LS mean change,NA,-0.87,95%ci,-1.11;-0.63,percentage,54,weeks,aact,NA
+49577468,NCT00509236,NA,uaa10190,NA,hba1c,change from baseline,LS mean change,NA,-0.72,95%ci,-0.95;-0.48,percentage,54,weeks,aact,NA
+49577472,NCT00509262,NA,uaa10192,NA,hba1c,baseline,mean,NA,7.79,sd,0.7,percentage,0,weeks,aact,NA
+49577474,NCT00509262,NA,uaa10192,NA,hba1c,change from baseline,NA,NA,-0.62,sd,0.91,percentage,54,weeks,aact,NA
+49577471,NCT00509262,NA,uaa10193,NA,hba1c,baseline,mean,NA,7.76,sd,0.65,percentage,0,weeks,aact,NA
+49577473,NCT00509262,NA,uaa10193,NA,hba1c,change from baseline,NA,NA,-0.7,sd,0.8,percentage,54,weeks,aact,NA
+49582669,NCT00516074,NA,uaa10195,NA,hba1c,baseline,LS mean,NA,7.5,se,0.16,percentage,0,weeks,aact,NA
+49582671,NCT00516074,NA,uaa10195,NA,hba1c,change from baseline,LS mean change,NA,-0.15,se,0.16,percentage,12,weeks,aact,NA
+49582670,NCT00516074,NA,uaa10196,NA,hba1c,baseline,LS mean,NA,7.11,se,0.17,percentage,0,weeks,aact,NA
+49582672,NCT00516074,NA,uaa10196,NA,hba1c,change from baseline,LS mean change,NA,0.12,se,0.17,percentage,12,weeks,aact,NA
+49586942,NCT00518882,NA,uaa10198,NA,hba1c,change from baseline,LS mean change,NA,-0.79,se,0.08,percentage,26,weeks,aact,NA
+49586941,NCT00518882,NA,uaa10199,NA,hba1c,change from baseline,LS mean change,NA,-1.12,se,0.08,percentage,26,weeks,aact,NA
+49595028,NCT00528372,NA,uaa10201,NA,hba1c,change from baseline,adjusted mean change,NA,-0.89,se,0.1099,percentage,24,weeks,aact,NA
+49595026,NCT00528372,NA,uaa10202,NA,hba1c,change from baseline,adjusted mean change,NA,-0.58,se,0.1107,percentage,24,weeks,aact,NA
+49595027,NCT00528372,NA,uaa10203,NA,hba1c,change from baseline,adjusted mean change,NA,-0.77,se,0.1134,percentage,24,weeks,aact,NA
+49595025,NCT00528372,NA,uaa10204,NA,hba1c,change from baseline,adjusted mean change,NA,-0.23,se,0.1044,percentage,24,weeks,aact,NA
+49595806,NCT00528879,NA,uaa10206,NA,hba1c,change from baseline,adjusted mean change,NA,-0.84,se,0.0724,percentage,24,weeks,aact,NA
+49595804,NCT00528879,NA,uaa10207,NA,hba1c,change from baseline,adjusted mean change,NA,-0.67,se,0.0715,percentage,24,weeks,aact,NA
+49595805,NCT00528879,NA,uaa10208,NA,hba1c,change from baseline,adjusted mean change,NA,-0.7,se,0.0722,percentage,24,weeks,aact,NA
+49595803,NCT00528879,NA,uaa10209,NA,hba1c,change from baseline,adjusted mean change,NA,-0.3,se,0.0718,percentage,24,weeks,aact,NA
+49614827,NCT00541775,NA,uaa10211,NA,hba1c,change from baseline,LS mean change,NA,-0.22,95%ci,-0.36;-0.08,percentage,18,weeks,aact,NA
+49614826,NCT00541775,NA,uaa10212,NA,hba1c,change from baseline,LS mean change,NA,-0.79,95%ci,-0.92;-0.65,percentage,18,weeks,aact,NA
+49614825,NCT00541775,NA,uaa10213,NA,hba1c,change from baseline,LS mean change,NA,-0.73,95%ci,-0.87;-0.6,percentage,18,weeks,aact,NA
+49665997,NCT00575588,NA,uaa10215,NA,hba1c,baseline,mean,NA,7.53,se,0.045,percentage,0,weeks,aact,NA
+49666001,NCT00575588,NA,uaa10215,NA,hba1c,change from baseline,adjusted mean change,NA,-0.8,se,0.038,percentage,52,weeks,aact,NA
+49665999,NCT00575588,NA,uaa10215,NA,hba1c,endpoint,mean,NA,6.71,se,0.042,percentage,52,weeks,aact,NA
+49665996,NCT00575588,NA,uaa10216,NA,hba1c,baseline,mean,NA,7.46,se,0.045,percentage,0,weeks,aact,NA
+49666000,NCT00575588,NA,uaa10216,NA,hba1c,change from baseline,adjusted mean change,NA,-0.74,se,0.038,percentage,52,weeks,aact,NA
+49665998,NCT00575588,NA,uaa10216,NA,hba1c,endpoint,mean,NA,6.74,se,0.042,percentage,52,weeks,aact,NA
+49667260,NCT00577824,NA,uaa10218,NA,hba1c,change from baseline,LS mean change,NA,-1.62,se,0.11,percentage,24,weeks,aact,NA
+49667259,NCT00577824,NA,uaa10219,NA,hba1c,change from baseline,LS mean change,NA,-1.34,se,0.11,percentage,24,weeks,aact,NA
+49667261,NCT00577824,NA,uaa10220,NA,hba1c,change from baseline,LS mean change,NA,-0.28,se,0.15,percentage,24,weeks,aact,NA
+49690372,NCT00601250,NA,uaa10222,NA,hba1c,change from baseline,adjusted mean change,NA,-0.49,se,0.04,percentage,24,weeks,aact,NA
+49690371,NCT00601250,NA,uaa10223,NA,hba1c,change from baseline,adjusted mean change,NA,0.15,se,0.06,percentage,24,weeks,aact,NA
+49691504,NCT00602472,NA,uaa10225,NA,hba1c,change from baseline,adjusted mean change,NA,-0.72,se,0.03,percentage,24,weeks,aact,NA
+49691503,NCT00602472,NA,uaa10226,NA,hba1c,change from baseline,adjusted mean change,NA,-0.1,se,0.05,percentage,24,weeks,aact,NA
+49691655,NCT00603239,NA,uaa10228,NA,hba1c,change from baseline,LS mean change,NA,-0.84,se,0.2,percentage,26,weeks,aact,NA
+49691656,NCT00603239,NA,uaa10229,NA,hba1c,change from baseline,LS mean change,NA,-0.1,se,0.23,percentage,26,weeks,aact,NA
+49706398,NCT00614120,NA,uaa10231,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,0.98,percentage,16,weeks,aact,NA
+49706395,NCT00614120,NA,uaa10232,NA,hba1c,change from baseline,mean change,NA,-1,sd,1.04,percentage,16,weeks,aact,NA
+49706396,NCT00614120,NA,uaa10233,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,1.09,percentage,16,weeks,aact,NA
+49706397,NCT00614120,NA,uaa10234,NA,hba1c,change from baseline,mean change,NA,-1.4,sd,1.23,percentage,16,weeks,aact,NA
+49707060,NCT00614939,NA,uaa10236,NA,hba1c,baseline,mean,NA,8.09,se,0.119,percentage,0,weeks,aact,NA
+49707064,NCT00614939,NA,uaa10236,NA,hba1c,change from baseline,adjusted mean change,NA,-0.44,se,0.109,percentage,12,weeks,aact,NA
+49707062,NCT00614939,NA,uaa10236,NA,hba1c,endpoint,mean,NA,7.8,se,0.137,percentage,12,weeks,aact,NA
+49707061,NCT00614939,NA,uaa10237,NA,hba1c,baseline,mean,NA,8.45,se,0.135,percentage,0,weeks,aact,NA
+49707065,NCT00614939,NA,uaa10237,NA,hba1c,change from baseline,adjusted mean change,NA,-0.86,se,0.112,percentage,12,weeks,aact,NA
+49707063,NCT00614939,NA,uaa10237,NA,hba1c,endpoint,mean,NA,7.63,se,0.132,percentage,12,weeks,aact,NA
+49712926,NCT00620282,NA,uaa10239,NA,hba1c,change from baseline,LS mean change,NA,-0.552,se,0.112,percentage,12,weeks,aact,NA
+49712924,NCT00620282,NA,uaa10240,NA,hba1c,change from baseline,LS mean change,NA,-0.629,se,0.109,percentage,12,weeks,aact,NA
+49712925,NCT00620282,NA,uaa10241,NA,hba1c,change from baseline,LS mean change,NA,-0.094,se,0.121,percentage,12,weeks,aact,NA
+49713574,NCT00621140,NA,uaa10243,NA,hba1c,change from baseline,adjusted mean change,NA,-0.44,se,0.05,percentage,24,weeks,aact,NA
+49713573,NCT00621140,NA,uaa10244,NA,hba1c,change from baseline,adjusted mean change,NA,0.25,se,0.07,percentage,24,weeks,aact,NA
+49716747,NCT00622284,NA,uaa10246,NA,hba1c,change from baseline,mean change,NA,-0.63,sd,0.85,percentage,52,weeks,aact,NA
+49716746,NCT00622284,NA,uaa10247,NA,hba1c,change from baseline,mean change,NA,-0.41,sd,0.82,percentage,52,weeks,aact,NA
+49729635,NCT00637273,NA,uaa10249,NA,hba1c,change from baseline,LS mean change,NA,-1.55,se,0.1,percentage,26,weeks,aact,NA
+49729637,NCT00637273,NA,uaa10250,NA,hba1c,change from baseline,LS mean change,NA,-1.23,se,0.099,percentage,26,weeks,aact,NA
+49729636,NCT00637273,NA,uaa10251,NA,hba1c,change from baseline,LS mean change,NA,-0.92,se,0.099,percentage,26,weeks,aact,NA
+49733596,NCT00641043,NA,uaa10253,NA,hba1c,change from baseline,adjusted mean change,NA,-1.06,se,0.06,percentage,24,weeks,aact,NA
+49733595,NCT00641043,NA,uaa10254,NA,hba1c,change from baseline,adjusted mean change,NA,-0.56,se,0.09,percentage,24,weeks,aact,NA
+49733621,NCT00641056,NA,uaa10256,NA,hba1c,change from baseline,LS mean change,NA,-1.47,se,0.05,percentage,26,weeks,aact,NA
+49733622,NCT00641056,NA,uaa10257,NA,hba1c,change from baseline,LS mean change,NA,-1.31,se,0.06,percentage,26,weeks,aact,NA
+49735971,NCT00643851,NA,uaa10259,NA,hba1c,change from baseline,adjusted mean change,NA,-1.19,se,0.0866,percentage,24,weeks,aact,NA
+49735970,NCT00643851,NA,uaa10260,NA,hba1c,change from baseline,adjusted mean change,NA,-2.05,se,0.0892,percentage,24,weeks,aact,NA
+49735972,NCT00643851,NA,uaa10261,NA,hba1c,change from baseline,adjusted mean change,NA,-1.35,se,0.0868,percentage,24,weeks,aact,NA
+49744214,NCT00654381,NA,uaa10263,NA,hba1c,change from baseline,LS mean change,NA,-0.25,se,0.06,percentage,12,weeks,aact,NA
+49744213,NCT00654381,NA,uaa10264,NA,hba1c,change from baseline,LS mean change,NA,-0.24,se,0.06,percentage,12,weeks,aact,NA
+49744212,NCT00654381,NA,uaa10265,NA,hba1c,change from baseline,LS mean change,NA,0.63,se,0.08,percentage,12,weeks,aact,NA
+49745449,NCT00655863,NA,uaa10268,NA,hba1c,change from baseline,LS mean change,NA,-0.39,se,0.129,percentage,16,weeks,aact,NA
+49745450,NCT00655863,NA,uaa10269,NA,hba1c,change from baseline,LS mean change,NA,-0.95,se,0.14,percentage,16,weeks,aact,NA
+49745448,NCT00655863,NA,uaa10270,NA,hba1c,change from baseline,LS mean change,NA,0.38,se,0.131,percentage,16,weeks,aact,NA
+49750408,NCT00660907,NA,uaa10272,NA,hba1c,change from baseline,LS mean change,NA,-0.52,95%ci,-0.6;-0.44,percentage,52,weeks,aact,NA
+49750409,NCT00660907,NA,uaa10273,NA,hba1c,change from baseline,LS mean change,NA,-0.52,95%ci,-0.6;-0.44,percentage,52,weeks,aact,NA
+49750711,NCT00661362,NA,uaa10275,NA,hba1c,baseline,mean,NA,7.94,se,0.05,percentage,0,weeks,aact,NA
+49750713,NCT00661362,NA,uaa10275,NA,hba1c,endpoint,mean,NA,7.55,se,0.062,percentage,24,weeks,aact,NA
+49750710,NCT00661362,NA,uaa10276,NA,hba1c,baseline,mean,NA,7.9,se,0.049,percentage,0,weeks,aact,NA
+49750712,NCT00661362,NA,uaa10276,NA,hba1c,endpoint,mean,NA,7.1,se,0.056,percentage,24,weeks,aact,NA
+49756786,NCT00666458,NA,uaa10278,NA,hba1c,baseline,mean,NA,7.68,se,0.052,percentage,0,weeks,aact,NA
+49756788,NCT00666458,NA,uaa10278,NA,hba1c,endpoint,mean,NA,7.16,se,0.052,percentage,18,weeks,aact,NA
+49756787,NCT00666458,NA,uaa10279,NA,hba1c,baseline,mean,NA,7.69,se,0.047,percentage,0,weeks,aact,NA
+49756789,NCT00666458,NA,uaa10279,NA,hba1c,endpoint,mean,NA,7.07,se,0.051,percentage,18,weeks,aact,NA
+49762077,NCT00673231,NA,uaa10285,NA,hba1c,change from baseline,LS mean change,NA,-0.9,95%ci,-1;-0.8,percentage,24,weeks,aact,NA
+49762075,NCT00673231,NA,uaa10286,NA,hba1c,change from baseline,LS mean change,NA,-0.75,95%ci,-0.85;-0.65,percentage,24,weeks,aact,NA
+49762076,NCT00673231,NA,uaa10287,NA,hba1c,change from baseline,LS mean change,NA,-0.82,95%ci,-0.92;-0.73,percentage,24,weeks,aact,NA
+49762074,NCT00673231,NA,uaa10288,NA,hba1c,change from baseline,LS mean change,NA,-0.3,95%ci,-0.4;-0.2,percentage,24,weeks,aact,NA
+49764606,NCT00676338,NA,uaa10290,NA,hba1c,change from baseline,LS mean change,NA,-1.53,se,0.07,percentage,26,weeks,aact,NA
+49764607,NCT00676338,NA,uaa10291,NA,hba1c,change from baseline,LS mean change,NA,-1.48,se,0.07,percentage,26,weeks,aact,NA
+49764608,NCT00676338,NA,uaa10292,NA,hba1c,change from baseline,LS mean change,NA,-1.63,se,0.08,percentage,26,weeks,aact,NA
+49764609,NCT00676338,NA,uaa10293,NA,hba1c,change from baseline,LS mean change,NA,-1.15,se,0.08,percentage,26,weeks,aact,NA
+49769213,NCT00680745,NA,uaa10295,NA,hba1c,change from baseline,LS mean change,NA,-0.82,95%ci,-0.94;-0.7,percentage,24,weeks,aact,NA
+49769211,NCT00680745,NA,uaa10296,NA,hba1c,change from baseline,LS mean change,NA,-0.58,95%ci,-0.69;-0.46,percentage,24,weeks,aact,NA
+49769212,NCT00680745,NA,uaa10297,NA,hba1c,change from baseline,LS mean change,NA,-0.63,95%ci,-0.75;-0.5,percentage,24,weeks,aact,NA
+49769214,NCT00680745,NA,uaa10298,NA,hba1c,change from baseline,LS mean change,NA,-0.13,95%ci,-0.26;-0.01,percentage,24,weeks,aact,NA
+49771063,NCT00683878,NA,uaa10300,NA,hba1c,change from baseline,adjusted mean change,NA,-0.97,se,0.0828,percentage,24,weeks,aact,NA
+49771062,NCT00683878,NA,uaa10301,NA,hba1c,change from baseline,adjusted mean change,NA,-0.82,se,0.0828,percentage,24,weeks,aact,NA
+49771061,NCT00683878,NA,uaa10302,NA,hba1c,change from baseline,adjusted mean change,NA,-0.42,se,0.0834,percentage,24,weeks,aact,NA
+49776035,NCT00688701,NA,uaa10304,NA,hba1c,change from baseline,LS mean change,NA,-0.85,se,0.119,percentage,12,weeks,aact,uaa10304a
+49776034,NCT00688701,NA,uaa10304,NA,hba1c,change from baseline,LS mean change,NA,-0.73,se,0.116,percentage,12,weeks,aact,uaa10304b
+49776033,NCT00688701,NA,uaa10305,NA,hba1c,change from baseline,LS mean change,NA,-0.19,se,0.121,percentage,12,weeks,aact,NA
+49783245,NCT00698932,NA,uaa10307,NA,hba1c,baseline,mean,NA,8.14,se,0.05,percentage,0,weeks,aact,NA
+49783247,NCT00698932,NA,uaa10307,NA,hba1c,endpoint,mean,NA,7.75,se,0.076,percentage,24,weeks,aact,NA
+49783244,NCT00698932,NA,uaa10308,NA,hba1c,baseline,mean,NA,8.15,se,0.05,percentage,0,weeks,aact,NA
+49783246,NCT00698932,NA,uaa10308,NA,hba1c,endpoint,mean,NA,7.25,se,0.063,percentage,24,weeks,aact,NA
+49785283,NCT00700817,NA,uaa10310,NA,hba1c,change from baseline,LS mean change,NA,-1.24,se,0.07,percentage,26,weeks,aact,NA
+49785284,NCT00700817,NA,uaa10311,NA,hba1c,change from baseline,LS mean change,NA,-1.5,se,0.06,percentage,26,weeks,aact,NA
+49785285,NCT00700817,NA,uaa10312,NA,hba1c,change from baseline,LS mean change,NA,-0.9,se,0.07,percentage,26,weeks,aact,NA
+49785588,NCT00701090,NA,uaa10314,NA,hba1c,change from baseline,LS mean change,NA,-0.54,95%ci,-0.62;-0.45,percentage,30,weeks,aact,NA
+49785587,NCT00701090,NA,uaa10315,NA,hba1c,change from baseline,LS mean change,NA,-0.47,95%ci,-0.55;-0.39,percentage,30,weeks,aact,NA
+49790969,NCT00707031,NA,uaa10317,NA,hba1c,change from baseline,LS mean change,NA,-0.96,se,0.054,percentage,24,weeks,aact,NA
+49790968,NCT00707031,NA,uaa10318,NA,hba1c,change from baseline,LS mean change,NA,-0.79,se,0.053,percentage,24,weeks,aact,NA
+49792441,NCT00707993,NA,uaa10320,NA,hba1c,change from baseline,LS mean change,NA,-0.14,se,0.063,percentage,52,weeks,aact,NA
+49792442,NCT00707993,NA,uaa10321,NA,hba1c,change from baseline,LS mean change,NA,-0.09,se,0.067,percentage,52,weeks,aact,NA
+49797625,NCT00712673,NA,uaa10323,NA,hba1c,change from baseline,LS mean change,NA,-0.87,se,0.065,percentage,24,weeks,aact,uaa10323a
+49797626,NCT00712673,NA,uaa10323,NA,hba1c,change from baseline,LS mean change,NA,-0.75,se,0.066,percentage,24,weeks,aact,uaa10323b
+49797624,NCT00712673,NA,uaa10324,NA,hba1c,change from baseline,LS mean change,NA,-0.38,se,0.075,percentage,24,weeks,aact,NA
+49798322,NCT00713830,NA,uaa10326,NA,hba1c,change from baseline,LS mean change,NA,-0.85,se,0.061,percentage,24,weeks,aact,NA
+49798321,NCT00713830,NA,uaa10327,NA,hba1c,change from baseline,LS mean change,NA,-0.1,se,0.071,percentage,24,weeks,aact,NA
+49800253,NCT00715624,NA,uaa10329,NA,hba1c,change from baseline,LS mean change,NA,-0.74,se,0.09,percentage,24,weeks,aact,NA
+49800252,NCT00715624,NA,uaa10330,NA,hba1c,change from baseline,LS mean change,NA,-0.38,se,0.107,percentage,24,weeks,aact,NA
+49807265,NCT00722371,NA,uaa10332,NA,hba1c,change from baseline,LS mean change,NA,-0.88,95%ci,-1.09;-0.68,percentage,24,weeks,aact,NA
+49807266,NCT00722371,NA,uaa10333,NA,hba1c,change from baseline,LS mean change,NA,-1.21,95%ci,-1.41;-1.02,percentage,24,weeks,aact,NA
+49807267,NCT00722371,NA,uaa10334,NA,hba1c,change from baseline,LS mean change,NA,-1.2,95%ci,-1.4;-1,percentage,24,weeks,aact,NA
+49807268,NCT00722371,NA,uaa10335,NA,hba1c,change from baseline,LS mean change,NA,-1.53,95%ci,-1.73;-1.34,percentage,24,weeks,aact,NA
+49807269,NCT00722371,NA,uaa10336,NA,hba1c,change from baseline,LS mean change,NA,-1.63,95%ci,-1.82;-1.43,percentage,24,weeks,aact,NA
+49807270,NCT00722371,NA,uaa10337,NA,hba1c,change from baseline,LS mean change,NA,-1.81,95%ci,-2;-1.62,percentage,24,weeks,aact,NA
+49807264,NCT00722371,NA,uaa10338,NA,hba1c,change from baseline,LS mean change,NA,-1.09,95%ci,-1.29;-0.89,percentage,24,weeks,aact,NA
+49828220,NCT00740051,NA,uaa10340,NA,hba1c,change from baseline,mean change,NA,-0.38,sd,0.87,percentage,18,weeks,aact,NA
+49828219,NCT00740051,NA,uaa10341,NA,hba1c,change from baseline,mean change,NA,0.1,sd,1.06,percentage,18,weeks,aact,NA
+49836204,NCT00751114,NA,uaa10343,NA,hba1c,change from baseline,LS mean change,NA,-1.72,se,0.06,percentage,24,weeks,aact,NA
+49836205,NCT00751114,NA,uaa10344,NA,hba1c,change from baseline,LS mean change,NA,-1.13,se,0.06,percentage,24,weeks,aact,NA
+49840577,NCT00757588,NA,uaa10346,NA,hba1c,change from baseline,adjusted mean change,NA,-0.32,se,0.074,percentage,24,weeks,aact,NA
+49840576,NCT00757588,NA,uaa10347,NA,hba1c,change from baseline,adjusted mean change,NA,-0.73,se,0.054,percentage,24,weeks,aact,NA
+49846466,NCT00763451,NA,uaa10349,NA,hba1c,change from baseline,LS mean change,NA,-0.92,se,0.101,percentage,24,weeks,aact,uaa10349a
+49846465,NCT00763451,NA,uaa10349,NA,hba1c,change from baseline,LS mean change,NA,-0.83,se,0.099,percentage,24,weeks,aact,uaa10349b
+49846464,NCT00763451,NA,uaa10350,NA,hba1c,change from baseline,LS mean change,NA,-0.42,se,0.099,percentage,24,weeks,aact,NA
+49846502,NCT00763815,NA,uaa10352,NA,hba1c,change from baseline,LS mean change,NA,-0.9,se,0.089,percentage,24,weeks,aact,NA
+49846501,NCT00763815,NA,uaa10353,NA,hba1c,change from baseline,LS mean change,NA,-0.34,se,0.1,percentage,24,weeks,aact,NA
+49848225,NCT00765817,NA,uaa10355,NA,hba1c,change from baseline,LS mean change,NA,-1.71,se,0.09,percentage,30,weeks,aact,NA
+49848226,NCT00765817,NA,uaa10356,NA,hba1c,change from baseline,LS mean change,NA,-1,se,0.09,percentage,30,weeks,aact,NA
+49870175,NCT00790205,NA,uaa10358,NA,hba1c,change from baseline,mean change,NA,0.1,sd,1.2,percentage,48,months,aact,NA
+49870174,NCT00790205,NA,uaa10359,NA,hba1c,change from baseline,mean change,NA,0,sd,1.1,percentage,48,months,aact,NA
+49878022,NCT00798161,NA,uaa10361,NA,hba1c,change from baseline,adjusted mean change,NA,-0.45,se,0.08,percentage,24,weeks,aact,NA
+49878024,NCT00798161,NA,uaa10362,NA,hba1c,change from baseline,adjusted mean change,NA,-1.59,se,0.08,percentage,24,weeks,aact,NA
+49878023,NCT00798161,NA,uaa10363,NA,hba1c,change from baseline,adjusted mean change,NA,-1.22,se,0.08,percentage,24,weeks,aact,NA
+49878021,NCT00798161,NA,uaa10364,NA,hba1c,change from baseline,adjusted mean change,NA,-1.07,se,0.08,percentage,24,weeks,aact,NA
+49878020,NCT00798161,NA,uaa10365,NA,hba1c,change from baseline,adjusted mean change,NA,-0.64,se,0.08,percentage,24,weeks,aact,NA
+49878019,NCT00798161,NA,uaa10366,NA,hba1c,change from baseline,adjusted mean change,NA,0.13,se,0.11,percentage,24,weeks,aact,NA
+49879570,NCT00800683,NA,uaa10368,NA,hba1c,change from baseline,LS mean change,NA,-0.76,se,0.14,percentage,12,weeks,aact,NA
+49879569,NCT00800683,NA,uaa10369,NA,hba1c,change from baseline,LS mean change,NA,-0.15,se,0.15,percentage,12,weeks,aact,NA
+49902199,NCT00813995,NA,uaa10371,NA,hba1c,change from baseline,LS mean change,NA,-0.14,95%ci,1.22,percentage,24,weeks,aact,NA
+49902198,NCT00813995,NA,uaa10372,NA,hba1c,change from baseline,LS mean change,NA,-1.02,95%ci,0.99,percentage,24,weeks,aact,NA
+49912192,NCT00819091,NA,uaa10374,NA,hba1c,change from baseline,LS mean change,NA,-0.54,se,0.07,percentage,18,weeks,aact,NA
+49912191,NCT00819091,NA,uaa10375,NA,hba1c,change from baseline,LS mean change,NA,-0.07,se,0.1,percentage,18,weeks,aact,NA
+49931642,NCT00837577,NA,uaa10378,NA,hba1c,change from baseline,LS mean change,NA,0.16,95%ci,0.64,percentage,12,weeks,aact,NA
+49931641,NCT00837577,NA,uaa10379,NA,hba1c,change from baseline,LS mean change,NA,-0.76,95%ci,0.42,percentage,12,weeks,aact,NA
+49935187,NCT00839527,NA,uaa10389,NA,hba1c,change from baseline,LS mean change,NA,-0.55,se,0.055,percentage,52,weeks,aact,NA
+49935186,NCT00839527,NA,uaa10390,NA,hba1c,change from baseline,LS mean change,NA,-0.8,se,0.055,percentage,52,weeks,aact,NA
+49935185,NCT00839527,NA,uaa10391,NA,hba1c,change from baseline,LS mean change,NA,0.33,se,0.083,percentage,52,weeks,aact,NA
+49943535,NCT00849017,NA,uaa10393,NA,hba1c,change from baseline,LS mean change,NA,-0.7,se,0.096,percentage,52,weeks,aact,NA
+49943536,NCT00849017,NA,uaa10394,NA,hba1c,change from baseline,LS mean change,NA,-0.89,se,0.097,percentage,52,weeks,aact,NA
+49943534,NCT00849017,NA,uaa10395,NA,hba1c,change from baseline,LS mean change,NA,0.15,se,0.097,percentage,52,weeks,aact,NA
+49943601,NCT00849056,NA,uaa10397,NA,hba1c,change from baseline,LS mean change,NA,-0.81,se,0.071,percentage,52,weeks,aact,NA
+49943600,NCT00849056,NA,uaa10398,NA,hba1c,change from baseline,LS mean change,NA,-0.05,se,0.071,percentage,52,weeks,aact,NA
+49952422,NCT00856284,NA,uaa10403,NA,hba1c,change from baseline,LS mean change,NA,-0.81,se,0.027,percentage,52,weeks,aact,NA
+49952423,NCT00856284,NA,uaa10404,NA,hba1c,change from baseline,LS mean change,NA,-0.76,se,0.027,percentage,52,weeks,aact,NA
+49952424,NCT00856284,NA,uaa10405,NA,hba1c,change from baseline,LS mean change,NA,-0.73,se,0.029,percentage,52,weeks,aact,NA
+49958134,NCT00859898,NA,uaa10407,NA,hba1c,change from baseline,adjusted mean change,NA,-1.45,se,0.0734,percentage,24,weeks,aact,NA
+49958133,NCT00859898,NA,uaa10408,NA,hba1c,change from baseline,adjusted mean change,NA,-1.98,se,0.0759,percentage,24,weeks,aact,NA
+49958135,NCT00859898,NA,uaa10409,NA,hba1c,change from baseline,adjusted mean change,NA,-1.44,se,0.0757,percentage,24,weeks,aact,NA
+49966683,NCT00866658,NA,uaa10411,NA,hba1c,change from baseline,LS mean change,NA,-0.77,se,0.137,percentage,24,weeks,aact,NA
+49966682,NCT00866658,NA,uaa10412,NA,hba1c,change from baseline,LS mean change,NA,0.11,se,0.131,percentage,24,weeks,aact,NA
+49968324,NCT00870194,NA,uaa10414,NA,hba1c,change from baseline,LS mean change,NA,-0.38,se,0.09,percentage,20,weeks,aact,NA
+49968325,NCT00870194,NA,uaa10415,NA,hba1c,change from baseline,LS mean change,NA,-0.68,se,0.08,percentage,20,weeks,aact,NA
+49975001,NCT00877890,NA,uaa10421,NA,hba1c,change from baseline,LS mean change,NA,-0.9,se,0.11,percentage,24,weeks,aact,NA
+49975000,NCT00877890,NA,uaa10422,NA,hba1c,change from baseline,LS mean change,NA,-1.57,se,0.104,percentage,24,weeks,aact,NA
+49982311,NCT00885352,NA,uaa10424,NA,hba1c,change from baseline,LS mean change,NA,-0.4,95%ci,1,percentage,26,weeks,aact,NA
+49982310,NCT00885352,NA,uaa10425,NA,hba1c,change from baseline,LS mean change,NA,-1.15,95%ci,0.93,percentage,26,weeks,aact,NA
+49982485,NCT00885378,NA,uaa10427,NA,hba1c,baseline,mean,NA,7.97,se,0.09,percentage,0,weeks,aact,NA
+49982487,NCT00885378,NA,uaa10427,NA,hba1c,change from baseline,adjusted mean change,NA,-0.22,se,0.08,percentage,12,weeks,aact,NA
+49982484,NCT00885378,NA,uaa10428,NA,hba1c,baseline,mean,NA,7.92,se,0.11,percentage,0,weeks,aact,NA
+49982486,NCT00885378,NA,uaa10428,NA,hba1c,change from baseline,adjusted mean change,NA,-0.56,se,0.09,percentage,12,weeks,aact,NA
+50006609,NCT00915772,NA,uaa10430,NA,hba1c,change from baseline,mean change,NA,-0.06,sd,0.77,percentage,54,weeks,aact,NA
+50006610,NCT00915772,NA,uaa10432,NA,hba1c,change from baseline,mean change,NA,-0.28,sd,0.86,percentage,54,weeks,aact,NA
+50007445,NCT00917267,NA,uaa10434,NA,hba1c,change from baseline,LS mean change,NA,-1.12,se,0.07,percentage,26,weeks,aact,NA
+50007444,NCT00917267,NA,uaa10435,NA,hba1c,change from baseline,LS mean change,NA,-1.43,se,0.07,percentage,26,weeks,aact,NA
+50008122,NCT00918879,NA,uaa10437,NA,hba1c,baseline,mean,NA,8.33,se,0.072,percentage,0,weeks,aact,NA
+50008124,NCT00918879,NA,uaa10437,NA,hba1c,endpoint,mean,NA,8.28,se,0.114,percentage,24,weeks,aact,NA
+50008121,NCT00918879,NA,uaa10438,NA,hba1c,baseline,mean,NA,8.33,se,0.08,percentage,0,weeks,aact,NA
+50008123,NCT00918879,NA,uaa10438,NA,hba1c,endpoint,mean,NA,7.82,se,0.116,percentage,24,weeks,aact,NA
+50027819,NCT00935532,NA,uaa10440,NA,hba1c,change from baseline,LS mean change,NA,-1.11,se,0.06,percentage,26,weeks,aact,NA
+50027820,NCT00935532,NA,uaa10441,NA,hba1c,change from baseline,LS mean change,NA,-0.68,se,0.06,percentage,26,weeks,aact,NA
+50050033,NCT00954447,NA,uaa10443,NA,hba1c,change from baseline,adjusted mean change,NA,-0.58,se,0.08,percentage,24,weeks,aact,NA
+50050032,NCT00954447,NA,uaa10444,NA,hba1c,change from baseline,adjusted mean change,NA,0.07,se,0.08,percentage,24,weeks,aact,NA
+50055555,NCT00960076,NA,uaa10446,NA,hba1c,baseline,mean,NA,8.28,se,0.077,percentage,0,weeks,aact,NA
+50055557,NCT00960076,NA,uaa10446,NA,hba1c,endpoint,mean,NA,7.93,se,0.111,percentage,18,weeks,aact,NA
+50055554,NCT00960076,NA,uaa10447,NA,hba1c,baseline,mean,NA,8.41,se,0.076,percentage,0,weeks,aact,NA
+50055556,NCT00960076,NA,uaa10447,NA,hba1c,endpoint,mean,NA,7.53,se,0.093,percentage,18,weeks,aact,NA
+50056961,NCT00960661,NA,uaa10449,NA,hba1c,change from baseline,LS mean change,NA,-1.13,se,0.053,percentage,30,weeks,aact,NA
+50056962,NCT00960661,NA,uaa10451,NA,hba1c,change from baseline,LS mean change,NA,-1.1,se,0.051,percentage,30,weeks,aact,NA
+50066260,NCT00968812,NA,uaa10456,NA,hba1c,change from baseline,LS mean change,NA,-0.82,se,0.039,percentage,52,weeks,aact,NA
+50066261,NCT00968812,NA,uaa10457,NA,hba1c,change from baseline,LS mean change,NA,-0.93,se,0.039,percentage,52,weeks,aact,NA
+50066262,NCT00968812,NA,uaa10458,NA,hba1c,change from baseline,LS mean change,NA,-0.81,se,0.039,percentage,52,weeks,aact,NA
+50075265,NCT00974090,NA,uaa10461,NA,hba1c,change from baseline,LS mean change,NA,0.29,se,0.06,percentage,12,weeks,aact,NA
+50075266,NCT00974090,NA,uaa10462,NA,hba1c,change from baseline,LS mean change,NA,-0.71,se,0.06,percentage,12,weeks,aact,NA
+50078069,NCT00975286,NA,uaa10464,NA,hba1c,change from baseline,LS mean change,NA,-0.71,se,0.091,percentage,24,weeks,aact,NA
+50078068,NCT00975286,NA,uaa10465,NA,hba1c,change from baseline,LS mean change,NA,-0.4,se,0.092,percentage,24,weeks,aact,NA
+50080261,NCT00976391,NA,uaa10467,NA,hba1c,change from baseline,LS mean change,NA,-0.82,se,0.058,percentage,26,weeks,aact,NA
+50080262,NCT00976391,NA,uaa10468,NA,hba1c,change from baseline,LS mean change,NA,-0.66,se,0.058,percentage,26,weeks,aact,NA
+50086988,NCT00976937,NA,uaa10470,NA,hba1c,change from baseline,LS mean change,NA,-0.66,se,0.094,percentage,24,weeks,aact,NA
+50086989,NCT00976937,NA,uaa10471,NA,hba1c,change from baseline,LS mean change,NA,-0.72,se,0.097,percentage,24,weeks,aact,NA
+50096273,NCT00984867,NA,uaa10473,NA,hba1c,change from baseline,LS mean change,NA,-0.45,95%ci,0.0509,percentage,24,weeks,aact,NA
+50096272,NCT00984867,NA,uaa10474,NA,hba1c,change from baseline,LS mean change,NA,0.04,95%ci,0.0509,percentage,24,weeks,aact,NA
+50121297,NCT00996658,NA,uaa10476,NA,hba1c,change from baseline,LS mean change,NA,-0.84,se,0.11,percentage,24,weeks,aact,NA
+50121296,NCT00996658,NA,uaa10477,NA,hba1c,change from baseline,LS mean change,NA,-0.27,se,0.13,percentage,24,weeks,aact,NA
+50124828,NCT00998881,NA,uaa10479,NA,hba1c,change from baseline,LS mean change,NA,0.17,se,0.05,percentage,12,weeks,aact,NA
+50124829,NCT00998881,NA,uaa10480,NA,hba1c,change from baseline,LS mean change,NA,-0.62,se,0.05,percentage,12,weeks,aact,NA
+50132568,NCT01003184,NA,uaa10482,NA,hba1c,change from baseline,LS mean change,NA,-1.32,se,0.076,percentage,26,weeks,aact,NA
+50132569,NCT01003184,NA,uaa10483,NA,hba1c,change from baseline,LS mean change,NA,-0.91,se,0.077,percentage,26,weeks,aact,NA
+50134946,NCT01006590,NA,uaa10485,NA,hba1c,change from baseline,mean change,NA,-0.38,se,0.06,percentage,24,weeks,aact,NA
+50134945,NCT01006590,NA,uaa10486,NA,hba1c,change from baseline,mean change,NA,-0.47,se,0.06,percentage,24,weeks,aact,NA
+50134966,NCT01006603,NA,uaa10488,NA,hba1c,change from baseline,mean change,NA,-0.64,95%ci,-0.71;-0.57,percentage,52,weeks,aact,NA
+50134965,NCT01006603,NA,uaa10489,NA,hba1c,change from baseline,mean change,NA,-0.44,95%ci,-0.51;-0.37,percentage,52,weeks,aact,NA
+50150306,NCT01023581,NA,uaa10491,NA,hba1c,change from baseline,LS mean change,NA,-0.56,se,0.093,percentage,26,weeks,aact,NA
+50150305,NCT01023581,NA,uaa10492,NA,hba1c,change from baseline,LS mean change,NA,-0.52,se,0.094,percentage,26,weeks,aact,NA
+50150310,NCT01023581,NA,uaa10493,NA,hba1c,change from baseline,LS mean change,NA,-1.55,se,0.09,percentage,26,weeks,aact,NA
+50150309,NCT01023581,NA,uaa10494,NA,hba1c,change from baseline,LS mean change,NA,-1.22,se,0.094,percentage,26,weeks,aact,NA
+50150308,NCT01023581,NA,uaa10495,NA,hba1c,change from baseline,LS mean change,NA,-1.11,se,0.092,percentage,26,weeks,aact,NA
+50150307,NCT01023581,NA,uaa10496,NA,hba1c,change from baseline,LS mean change,NA,-0.65,se,0.094,percentage,26,weeks,aact,NA
+50150304,NCT01023581,NA,uaa10497,NA,hba1c,change from baseline,LS mean change,NA,0.15,se,0.094,percentage,26,weeks,aact,NA
+50153072,NCT01026194,NA,uaa10500,NA,hba1c,change from baseline,LS mean change,NA,-0.2,se,0.05,percentage,12,weeks,aact,NA
+50153073,NCT01026194,NA,uaa10501,NA,hba1c,change from baseline,LS mean change,NA,-0.94,se,0.04,percentage,12,weeks,aact,NA
+50155868,NCT01028391,NA,uaa10503,NA,hba1c,change from baseline,LS mean change,NA,-1.86,95%ci,-2.04;-1.68,percentage,54,weeks,aact,NA
+50155867,NCT01028391,NA,uaa10504,NA,hba1c,change from baseline,LS mean change,NA,-2.37,95%ci,-2.54;-2.19,percentage,54,weeks,aact,NA
+50157087,NCT01029886,NA,uaa10506,NA,hba1c,change from baseline,LS mean change,NA,-1.28,se,0.05,percentage,26,weeks,aact,NA
+50157088,NCT01029886,NA,uaa10507,NA,hba1c,change from baseline,LS mean change,NA,-1.48,se,0.05,percentage,26,weeks,aact,NA
+50160939,NCT01031680,NA,uaa10509,NA,hba1c,change from baseline,LS mean change,NA,-0.38,95%ci,-0.46;-0.3,percentage,24,weeks,aact,NA
+50160940,NCT01031680,NA,uaa10510,NA,hba1c,change from baseline,LS mean change,NA,0.08,95%ci,0.01;0.16,percentage,24,weeks,aact,NA
+50161659,NCT01032629,NA,uaa10512,NA,hba1c,change from baseline,LS mean change,NA,-0.26,se,0.032,percentage,338,weeks,aact,NA
+50161660,NCT01032629,NA,uaa10514,NA,hba1c,change from baseline,LS mean change,NA,-0.31,se,0.032,percentage,338,weeks,aact,NA
+50161658,NCT01032629,NA,uaa10515,NA,hba1c,change from baseline,LS mean change,NA,0.01,se,0.032,percentage,338,weeks,aact,NA
+50177970,NCT01042977,NA,uaa10517,NA,hba1c,change from baseline,LS mean change,NA,-0.33,95%ci,0.0434,percentage,24,weeks,aact,NA
+50177971,NCT01042977,NA,uaa10518,NA,hba1c,change from baseline,LS mean change,NA,0.07,95%ci,-0.02;0.15,percentage,24,weeks,aact,NA
+50179007,NCT01046110,NA,uaa10520,NA,hba1c,change from baseline,mean change,NA,-1.56,sd,1.09,percentage,26,weeks,aact,NA
+50179008,NCT01046110,NA,uaa10521,NA,hba1c,change from baseline,mean change,NA,-1.22,sd,1.16,percentage,26,weeks,aact,NA
+50197932,NCT01064414,NA,uaa10523,NA,hba1c,change from baseline,LS mean change,NA,-0.33,se,0.09,percentage,26,weeks,aact,NA
+50197933,NCT01064414,NA,uaa10524,NA,hba1c,change from baseline,LS mean change,NA,-0.44,se,0.089,percentage,26,weeks,aact,NA
+50197931,NCT01064414,NA,uaa10525,NA,hba1c,change from baseline,LS mean change,NA,-0.03,se,0.09,percentage,26,weeks,aact,NA
+50198205,NCT01064687,NA,uaa10527,NA,hba1c,change from baseline,LS mean change,NA,-1.3,se,0.06,percentage,26,weeks,aact,NA
+50198204,NCT01064687,NA,uaa10529,NA,hba1c,change from baseline,LS mean change,NA,-1.51,se,0.06,percentage,26,weeks,aact,NA
+50198206,NCT01064687,NA,uaa10530,NA,hba1c,change from baseline,LS mean change,NA,-0.99,se,0.06,percentage,26,weeks,aact,NA
+50198207,NCT01064687,NA,uaa10531,NA,hba1c,change from baseline,LS mean change,NA,-0.46,se,0.08,percentage,26,weeks,aact,NA
+50207903,NCT01075282,NA,uaa10533,NA,hba1c,change from baseline,LS mean change,NA,-0.76,se,0.06,percentage,52,weeks,aact,NA
+50207902,NCT01075282,NA,uaa10535,NA,hba1c,change from baseline,LS mean change,NA,-1.08,se,0.06,percentage,52,weeks,aact,NA
+50207904,NCT01075282,NA,uaa10536,NA,hba1c,change from baseline,LS mean change,NA,-0.63,se,0.06,percentage,52,weeks,aact,NA
+50208844,NCT01076075,NA,uaa10538,NA,hba1c,change from baseline,LS mean change,NA,-0.16,95%ci,0.84,percentage,24,weeks,aact,NA
+50208843,NCT01076075,NA,uaa10539,NA,hba1c,change from baseline,LS mean change,NA,-0.84,95%ci,0.82,percentage,24,weeks,aact,NA
+50208855,NCT01076088,NA,uaa10541,NA,hba1c,change from baseline,LS mean change,NA,-1.29,95%ci,-1.54;-1.04,percentage,24,weeks,aact,NA
+50208856,NCT01076088,NA,uaa10542,NA,hba1c,change from baseline,LS mean change,NA,-1.56,95%ci,-1.8;-1.32,percentage,24,weeks,aact,NA
+50208858,NCT01076088,NA,uaa10543,NA,hba1c,change from baseline,LS mean change,NA,-0.59,95%ci,-0.84;-0.34,percentage,24,weeks,aact,NA
+50208853,NCT01076088,NA,uaa10544,NA,hba1c,change from baseline,LS mean change,NA,-1.67,95%ci,-1.92;-1.43,percentage,24,weeks,aact,NA
+50208854,NCT01076088,NA,uaa10545,NA,hba1c,change from baseline,LS mean change,NA,-1.83,95%ci,-2.07;-1.58,percentage,24,weeks,aact,NA
+50208857,NCT01076088,NA,uaa10546,NA,hba1c,change from baseline,LS mean change,NA,-0.99,95%ci,-1.24;-0.75,percentage,24,weeks,aact,NA
+50216572,NCT01081834,NA,uaa10548,NA,hba1c,change from baseline,LS mean change,NA,-0.77,se,0.065,percentage,26,weeks,aact,NA
+50216573,NCT01081834,NA,uaa10549,NA,hba1c,change from baseline,LS mean change,NA,-1.03,se,0.064,percentage,26,weeks,aact,NA
+50216571,NCT01081834,NA,uaa10550,NA,hba1c,change from baseline,LS mean change,NA,0.14,se,0.065,percentage,26,weeks,aact,NA
+50218730,NCT01084005,NA,uaa10552,NA,hba1c,change from baseline,adjusted mean change,NA,-0.61,se,0.06,percentage,24,weeks,aact,NA
+50218729,NCT01084005,NA,uaa10553,NA,hba1c,change from baseline,adjusted mean change,NA,0.04,se,0.07,percentage,24,weeks,aact,NA
+50221597,NCT01087502,NA,uaa10555,NA,hba1c,change from baseline,mean change,NA,-0.5,sd,0.59,percentage,12,weeks,aact,NA
+50221596,NCT01087502,NA,uaa10556,NA,hba1c,change from baseline,mean change,NA,-0.08,sd,0.79,percentage,12,weeks,aact,NA
+50228520,NCT01095653,NA,uaa10558,NA,hba1c,change from baseline,adjusted mean change,NA,-1.11,se,0.068,percentage,24,weeks,aact,NA
+50228519,NCT01095653,NA,uaa10559,NA,hba1c,change from baseline,adjusted mean change,NA,-1.04,se,0.0695,percentage,24,weeks,aact,NA
+50228518,NCT01095653,NA,uaa10560,NA,hba1c,change from baseline,adjusted mean change,NA,-0.29,se,0.0681,percentage,24,weeks,aact,NA
+50228535,NCT01095666,NA,uaa10562,NA,hba1c,change from baseline,adjusted mean change,NA,-0.85,se,0.0601,percentage,24,weeks,aact,NA
+50228534,NCT01095666,NA,uaa10563,NA,hba1c,change from baseline,adjusted mean change,NA,-0.82,se,0.0607,percentage,24,weeks,aact,NA
+50228533,NCT01095666,NA,uaa10564,NA,hba1c,change from baseline,adjusted mean change,NA,-0.23,se,0.0622,percentage,24,weeks,aact,NA
+50234504,NCT01098539,NA,uaa10566,NA,hba1c,change from baseline,mean change,NA,-0.93,sd,0.806,percentage,26,weeks,aact,NA
+50234505,NCT01098539,NA,uaa10567,NA,hba1c,change from baseline,mean change,NA,-0.8,sd,0.887,percentage,26,weeks,aact,NA
+50240174,NCT01106625,NA,uaa10569,NA,hba1c,change from baseline,LS mean change,NA,-0.85,se,0.075,percentage,26,weeks,aact,NA
+50240175,NCT01106625,NA,uaa10570,NA,hba1c,change from baseline,LS mean change,NA,-1.06,se,0.076,percentage,26,weeks,aact,NA
+50240173,NCT01106625,NA,uaa10571,NA,hba1c,change from baseline,LS mean change,NA,-0.13,se,0.075,percentage,26,weeks,aact,NA
+50240195,NCT01106651,NA,uaa10573,NA,hba1c,change from baseline,LS mean change,NA,-0.6,se,0.063,percentage,26,weeks,aact,NA
+50240196,NCT01106651,NA,uaa10574,NA,hba1c,change from baseline,LS mean change,NA,-0.73,se,0.064,percentage,26,weeks,aact,NA
+50240194,NCT01106651,NA,uaa10575,NA,hba1c,change from baseline,LS mean change,NA,-0.03,se,0.063,percentage,26,weeks,aact,NA
+50240237,NCT01106677,NA,uaa10577,NA,hba1c,change from baseline,LS mean change,NA,-0.79,se,0.044,percentage,26,weeks,aact,NA
+50240238,NCT01106677,NA,uaa10578,NA,hba1c,change from baseline,LS mean change,NA,-0.94,se,0.044,percentage,26,weeks,aact,NA
+50240236,NCT01106677,NA,uaa10579,NA,hba1c,change from baseline,LS mean change,NA,-0.17,se,0.06,percentage,26,weeks,aact,NA
+50240239,NCT01106677,NA,uaa10580,NA,hba1c,change from baseline,LS mean change,NA,-0.82,se,0.044,percentage,26,weeks,aact,NA
+50240287,NCT01106690,NA,uaa10582,NA,hba1c,change from baseline,LS mean change,NA,-0.89,se,0.069,percentage,26,weeks,aact,NA
+50240288,NCT01106690,NA,uaa10583,NA,hba1c,change from baseline,LS mean change,NA,-1.03,se,0.07,percentage,26,weeks,aact,NA
+50240286,NCT01106690,NA,uaa10584,NA,hba1c,change from baseline,LS mean change,NA,-0.26,se,0.069,percentage,26,weeks,aact,NA
+50245950,NCT01117350,NA,uaa10590,NA,hba1c,change from baseline,mean change,NA,-1.92,sd,1.22,percentage,12,weeks,aact,NA
+50245951,NCT01117350,NA,uaa10591,NA,hba1c,change from baseline,mean change,NA,-1.81,sd,1.33,percentage,12,weeks,aact,NA
+50259736,NCT01126580,NA,uaa10593,NA,hba1c,change from baseline,LS mean change,NA,-0.71,se,0.06,percentage,26,weeks,aact,NA
+50259735,NCT01126580,NA,uaa10595,NA,hba1c,change from baseline,LS mean change,NA,-0.78,se,0.06,percentage,26,weeks,aact,NA
+50259737,NCT01126580,NA,uaa10596,NA,hba1c,change from baseline,LS mean change,NA,-0.56,se,0.06,percentage,26,weeks,aact,NA
+50260610,NCT01128153,NA,uaa10598,NA,hba1c,change from baseline,adjusted mean change,NA,-0.08,95%ci,-0.23;0.07,percentage,24,weeks,aact,NA
+50260609,NCT01128153,NA,uaa10599,NA,hba1c,change from baseline,adjusted mean change,NA,-0.74,95%ci,-0.89;-0.6,percentage,24,weeks,aact,NA
+50263281,NCT01128894,NA,uaa10601,NA,hba1c,change from baseline,LS mean change,NA,-0.78,se,0.047,percentage,32,weeks,aact,NA
+50263282,NCT01128894,NA,uaa10602,NA,hba1c,change from baseline,LS mean change,NA,-0.99,se,0.046,percentage,32,weeks,aact,NA
+50272122,NCT01137474,NA,uaa10609,NA,hba1c,change from baseline,adjusted mean change,NA,-0.56,se,0.0633,percentage,12,weeks,aact,NA
+50272121,NCT01137474,NA,uaa10612,NA,hba1c,change from baseline,adjusted mean change,NA,-0.1,se,0.0631,percentage,12,weeks,aact,NA
+50272917,NCT01137812,NA,uaa10614,NA,hba1c,change from baseline,LS mean change,NA,-1.03,se,0.048,percentage,52,weeks,aact,NA
+50272918,NCT01137812,NA,uaa10615,NA,hba1c,change from baseline,LS mean change,NA,-0.66,se,0.049,percentage,52,weeks,aact,NA
+50280038,NCT01147627,NA,uaa10623,NA,hba1c,change from baseline,mean change,NA,-1.8,sd,1.29,percentage,48,weeks,aact,NA
+50280039,NCT01147627,NA,uaa10624,NA,hba1c,change from baseline,mean change,NA,-1.74,sd,1.16,percentage,48,weeks,aact,NA
+50280040,NCT01147627,NA,uaa10625,NA,hba1c,change from baseline,mean change,NA,-1.47,sd,1.3,percentage,48,weeks,aact,NA
+50293726,NCT01159600,NA,uaa10627,NA,hba1c,change from baseline,adjusted mean change,NA,-0.7,se,0.05,percentage,24,weeks,aact,uaa10627a
+50293730,NCT01159600,NA,uaa10627,NA,hba1c,change from baseline,adjusted mean change,NA,-0.82,se,0.05,percentage,24,weeks,aact,uaa10627b
+50293727,NCT01159600,NA,uaa10628,NA,hba1c,change from baseline,adjusted mean change,NA,-0.77,se,0.05,percentage,24,weeks,aact,uaa10628a
+50293731,NCT01159600,NA,uaa10628,NA,hba1c,change from baseline,adjusted mean change,NA,-0.77,se,0.05,percentage,24,weeks,aact,uaa10628b
+50293725,NCT01159600,NA,uaa10629,NA,hba1c,change from baseline,adjusted mean change,NA,-0.13,se,0.05,percentage,24,weeks,aact,uaa10629a
+50293729,NCT01159600,NA,uaa10629,NA,hba1c,change from baseline,adjusted mean change,NA,-0.17,se,0.05,percentage,24,weeks,aact,uaa10629b
+50298964,NCT01164501,NA,uaa10632,NA,hba1c,change from baseline,adjusted mean change,NA,-0.46,se,0.04,percentage,24,weeks,aact,NA
+50298963,NCT01164501,NA,uaa10633,NA,hba1c,change from baseline,adjusted mean change,NA,0.05,se,0.04,percentage,24,weeks,aact,NA
+50303703,NCT01167881,NA,uaa10635,NA,hba1c,change from baseline,mean change,NA,-0.66,se,0.03,percentage,104,weeks,aact,NA
+50303704,NCT01167881,NA,uaa10636,NA,hba1c,change from baseline,mean change,NA,-0.55,se,0.03,percentage,104,weeks,aact,NA
+50306825,NCT01169779,NA,uaa10638,NA,hba1c,change from baseline,LS mean change,NA,-0.83,se,0.102,percentage,24,weeks,aact,NA
+50306824,NCT01169779,NA,uaa10639,NA,hba1c,change from baseline,LS mean change,NA,-0.47,se,0.104,percentage,24,weeks,aact,NA
+50317059,NCT01177384,NA,uaa10641,NA,hba1c,change from baseline,LS mean change,NA,-0.14,95%ci,-0.32;0.03,percentage,24,weeks,aact,NA
+50317058,NCT01177384,NA,uaa10642,NA,hba1c,change from baseline,LS mean change,NA,-0.76,95%ci,-0.93;-0.59,percentage,24,weeks,aact,NA
+50317466,NCT01177813,NA,uaa10644,NA,hba1c,change from baseline,adjusted mean change,NA,-0.66,se,0.06,percentage,24,weeks,aact,NA
+50317467,NCT01177813,NA,uaa10645,NA,hba1c,change from baseline,adjusted mean change,NA,-0.77,se,0.06,percentage,24,weeks,aact,NA
+50317465,NCT01177813,NA,uaa10646,NA,hba1c,change from baseline,adjusted mean change,NA,0.06,se,0.05,percentage,24,weeks,aact,NA
+50317468,NCT01177813,NA,uaa10647,NA,hba1c,change from baseline,adjusted mean change,NA,-0.65,se,0.05,percentage,24,weeks,aact,NA
+50320969,NCT01183013,NA,uaa10652,NA,hba1c,change from baseline,mean change,NA,-0.39,se,0.09,percentage,30,weeks,aact,NA
+50320970,NCT01183013,NA,uaa10653,NA,hba1c,change from baseline,mean change,NA,-0.83,se,0.09,percentage,30,weeks,aact,NA
+50320971,NCT01183013,NA,uaa10654,NA,hba1c,change from baseline,mean change,NA,-1.06,se,0.09,percentage,30,weeks,aact,NA
+50320972,NCT01183013,NA,uaa10655,NA,hba1c,change from baseline,mean change,NA,-1.28,se,0.09,percentage,30,weeks,aact,NA
+50320966,NCT01183013,NA,uaa10656,NA,hba1c,change from baseline,mean change,NA,-0.66,se,0.09,percentage,30,weeks,aact,NA
+50320967,NCT01183013,NA,uaa10657,NA,hba1c,change from baseline,mean change,NA,-0.69,se,0.09,percentage,30,weeks,aact,NA
+50320968,NCT01183013,NA,uaa10658,NA,hba1c,change from baseline,mean change,NA,-0.87,se,0.09,percentage,30,weeks,aact,NA
+50321101,NCT01183104,NA,uaa10660,NA,hba1c,change from baseline,LS mean change,NA,-0.77,95%ci,-0.88;-0.66,percentage,52,weeks,aact,NA
+50321100,NCT01183104,NA,uaa10661,NA,hba1c,change from baseline,LS mean change,NA,-0.66,95%ci,-0.77;-0.54,percentage,52,weeks,aact,NA
+50328202,NCT01189890,NA,uaa10663,NA,hba1c,change from baseline,LS mean change,NA,-0.51,95%ci,0.89,percentage,30,weeks,aact,NA
+50328201,NCT01189890,NA,uaa10664,NA,hba1c,change from baseline,LS mean change,NA,-0.32,95%ci,0.78,percentage,30,weeks,aact,NA
+50329225,NCT01191268,NA,uaa10666,NA,hba1c,change from baseline,LS mean change,NA,-1.59,se,0.07,percentage,26,weeks,aact,NA
+50329224,NCT01191268,NA,uaa10668,NA,hba1c,change from baseline,LS mean change,NA,-1.64,se,0.07,percentage,26,weeks,aact,NA
+50329226,NCT01191268,NA,uaa10669,NA,hba1c,change from baseline,LS mean change,NA,-1.41,se,0.07,percentage,26,weeks,aact,NA
+50335281,NCT01194830,NA,uaa10671,NA,hba1c,change from baseline,LS mean change,NA,-0.84,se,0.15,percentage,24,weeks,aact,NA
+50335280,NCT01194830,NA,uaa10672,NA,hba1c,change from baseline,LS mean change,NA,-0.25,se,0.16,percentage,24,weeks,aact,NA
+50335366,NCT01195090,NA,uaa10674,NA,hba1c,baseline,mean,NA,8.54,sd,0.97,percentage,0,weeks,aact,NA
+50335336,NCT01195090,NA,uaa10674,NA,hba1c,change from baseline,LS mean change,NA,-0.94,se,0.12,percentage,24,weeks,aact,NA
+50335365,NCT01195090,NA,uaa10675,NA,hba1c,baseline,mean,NA,8.27,sd,0.86,percentage,0,weeks,aact,NA
+50335335,NCT01195090,NA,uaa10675,NA,hba1c,change from baseline,LS mean change,NA,-0.71,se,0.12,percentage,24,weeks,aact,NA
+50335538,NCT01195662,NA,uaa10677,NA,hba1c,change from baseline,adjusted mean change,NA,-0.63,se,0.0668,percentage,12,weeks,aact,NA
+50335537,NCT01195662,NA,uaa10679,NA,hba1c,change from baseline,adjusted mean change,NA,-0.02,se,0.0673,percentage,12,weeks,aact,NA
+50345084,NCT01204294,NA,uaa10681,NA,hba1c,baseline,mean,NA,7.87,sd,0.75,percentage,0,weeks,aact,NA
+50345091,NCT01204294,NA,uaa10681,NA,hba1c,endpoint,mean,NA,6.96,sd,0.75,percentage,52,weeks,aact,NA
+50345098,NCT01204294,NA,uaa10681,NA,hba1c,change from baseline,mean change,NA,-0.91,sd,0.61,percentage,52,weeks,aact,NA
+50345081,NCT01204294,NA,uaa10682,NA,hba1c,baseline,mean,NA,7.92,sd,0.82,percentage,0,weeks,aact,NA
+50345088,NCT01204294,NA,uaa10682,NA,hba1c,endpoint,mean,NA,7.19,sd,0.75,percentage,52,weeks,aact,NA
+50345095,NCT01204294,NA,uaa10682,NA,hba1c,change from baseline,mean change,NA,-0.73,sd,0.65,percentage,52,weeks,aact,NA
+50345080,NCT01204294,NA,uaa10683,NA,hba1c,baseline,mean,NA,7.98,sd,0.75,percentage,0,weeks,aact,NA
+50345087,NCT01204294,NA,uaa10683,NA,hba1c,endpoint,mean,NA,7.1,sd,0.82,percentage,52,weeks,aact,NA
+50345094,NCT01204294,NA,uaa10683,NA,hba1c,change from baseline,mean change,NA,-0.88,sd,0.64,percentage,52,weeks,aact,NA
+50345083,NCT01204294,NA,uaa10684,NA,hba1c,baseline,mean,NA,8.12,sd,0.78,percentage,0,weeks,aact,NA
+50345090,NCT01204294,NA,uaa10684,NA,hba1c,endpoint,mean,NA,7.42,sd,0.91,percentage,52,weeks,aact,NA
+50345097,NCT01204294,NA,uaa10684,NA,hba1c,change from baseline,mean change,NA,-0.7,sd,0.7,percentage,52,weeks,aact,NA
+50345082,NCT01204294,NA,uaa10685,NA,hba1c,baseline,mean,NA,7.86,sd,0.83,percentage,0,weeks,aact,NA
+50345089,NCT01204294,NA,uaa10685,NA,hba1c,endpoint,mean,NA,7.07,sd,0.74,percentage,52,weeks,aact,NA
+50345096,NCT01204294,NA,uaa10685,NA,hba1c,change from baseline,mean change,NA,-0.79,sd,0.5,percentage,52,weeks,aact,NA
+50345086,NCT01204294,NA,uaa10686,NA,hba1c,baseline,mean,NA,8.07,sd,1.04,percentage,0,weeks,aact,NA
+50345093,NCT01204294,NA,uaa10686,NA,hba1c,endpoint,mean,NA,6.98,sd,0.75,percentage,52,weeks,aact,NA
+50345100,NCT01204294,NA,uaa10686,NA,hba1c,change from baseline,mean change,NA,-1.09,sd,0.87,percentage,52,weeks,aact,NA
+50345085,NCT01204294,NA,uaa10687,NA,hba1c,baseline,mean,NA,8.01,sd,0.64,percentage,0,weeks,aact,NA
+50345092,NCT01204294,NA,uaa10687,NA,hba1c,endpoint,mean,NA,7.19,sd,0.72,percentage,52,weeks,aact,NA
+50345099,NCT01204294,NA,uaa10687,NA,hba1c,change from baseline,mean change,NA,-0.82,sd,0.78,percentage,52,weeks,aact,NA
+50350956,NCT01210001,NA,uaa10689,NA,hba1c,change from baseline,adjusted mean change,NA,-0.59,se,0.07,percentage,24,weeks,aact,NA
+50350957,NCT01210001,NA,uaa10690,NA,hba1c,change from baseline,adjusted mean change,NA,-0.72,se,0.07,percentage,24,weeks,aact,NA
+50350955,NCT01210001,NA,uaa10691,NA,hba1c,change from baseline,adjusted mean change,NA,-0.11,se,0.07,percentage,24,weeks,aact,NA
+50356118,NCT01214239,NA,uaa10693,NA,hba1c,change from baseline,LS mean change,NA,-0.68,se,0.07,percentage,24,weeks,aact,NA
+50356117,NCT01214239,NA,uaa10694,NA,hba1c,change from baseline,LS mean change,NA,-0.18,se,0.1,percentage,24,weeks,aact,NA
+50357465,NCT01215097,NA,uaa10696,NA,hba1c,change from baseline,LS mean change,NA,-0.66,se,0.05,percentage,24,weeks,aact,NA
+50357464,NCT01215097,NA,uaa10697,NA,hba1c,change from baseline,LS mean change,NA,-0.14,se,0.07,percentage,24,weeks,aact,NA
+50360106,NCT01217892,NA,uaa10699,NA,hba1c,change from baseline,LS mean change,NA,-0.59,se,0.0598,percentage,16,weeks,aact,NA
+50360104,NCT01217892,NA,uaa10700,NA,hba1c,change from baseline,LS mean change,NA,-0.52,se,0.0594,percentage,16,weeks,aact,NA
+50360105,NCT01217892,NA,uaa10701,NA,hba1c,change from baseline,LS mean change,NA,-0.65,se,0.06,percentage,16,weeks,aact,NA
+50360107,NCT01217892,NA,uaa10702,NA,hba1c,change from baseline,LS mean change,NA,-0.3,se,0.0593,percentage,16,weeks,aact,NA
+50395422,NCT01243424,NA,uaa10704,NA,hba1c,change from baseline,LS mean change,NA,0.15,se,0.02,percentage,432,weeks,aact,NA
+50395421,NCT01243424,NA,uaa10705,NA,hba1c,change from baseline,LS mean change,NA,0.06,se,0.02,percentage,432,weeks,aact,NA
+50428606,NCT01272232,NA,uaa10707,NA,hba1c,change from baseline,mean change,NA,-1.1,sd,1,percentage,56,weeks,aact,NA
+50428605,NCT01272232,NA,uaa10708,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,0.9,percentage,56,weeks,aact,NA
+50428607,NCT01272232,NA,uaa10709,NA,hba1c,change from baseline,mean change,NA,-0.3,sd,0.9,percentage,56,weeks,aact,NA
+50445799,NCT01289119,NA,uaa10711,NA,hba1c,change from baseline,LS mean change,NA,-0.99,se,0.074,percentage,16,weeks,aact,NA
+50445801,NCT01289119,NA,uaa10712,NA,hba1c,change from baseline,LS mean change,NA,-0.91,se,0.065,percentage,16,weeks,aact,NA
+50445803,NCT01289119,NA,uaa10713,NA,hba1c,change from baseline,LS mean change,NA,-0.76,se,0.101,percentage,16,weeks,aact,NA
+50445800,NCT01289119,NA,uaa10714,NA,hba1c,change from baseline,LS mean change,NA,-0.22,se,0.065,percentage,16,weeks,aact,NA
+50445802,NCT01289119,NA,uaa10715,NA,hba1c,change from baseline,LS mean change,NA,-0.25,se,0.097,percentage,16,weeks,aact,NA
+50445798,NCT01289119,NA,uaa10716,NA,hba1c,change from baseline,LS mean change,NA,-0.42,se,0.074,percentage,16,weeks,aact,NA
+50448918,NCT01294423,NA,uaa10718,NA,hba1c,change from baseline,LS mean change,NA,-0.45,95%ci,-0.57;-0.33,percentage,24,weeks,aact,NA
+50448917,NCT01294423,NA,uaa10719,NA,hba1c,change from baseline,LS mean change,NA,-0.41,95%ci,-0.53;-0.29,percentage,24,weeks,aact,NA
+50448919,NCT01294423,NA,uaa10720,NA,hba1c,change from baseline,LS mean change,NA,-0.06,95%ci,-0.18;0.06,percentage,24,weeks,aact,NA
+50450201,NCT01296412,NA,uaa10722,NA,hba1c,change from baseline,LS mean change,NA,-1.42,95%ci,1.04,percentage,26,weeks,aact,NA
+50450200,NCT01296412,NA,uaa10723,NA,hba1c,change from baseline,LS mean change,NA,-1.32,95%ci,1.06,percentage,26,weeks,aact,NA
+50457723,NCT01306214,NA,uaa10725,NA,hba1c,change from baseline,LS mean change,NA,-0.94,se,0.05,percentage,18,weeks,aact,NA
+50457724,NCT01306214,NA,uaa10726,NA,hba1c,change from baseline,LS mean change,NA,-1.02,se,0.05,percentage,18,weeks,aact,NA
+50457722,NCT01306214,NA,uaa10727,NA,hba1c,change from baseline,LS mean change,NA,-0.5,se,0.05,percentage,18,weeks,aact,NA
+50488276,NCT01336023,NA,uaa10729,NA,hba1c,change from baseline,mean change,NA,-1.44,sd,1.03,percentage,26,weeks,aact,NA
+50488277,NCT01336023,NA,uaa10730,NA,hba1c,change from baseline,mean change,NA,-1.91,sd,1.07,percentage,26,weeks,aact,NA
+50488278,NCT01336023,NA,uaa10731,NA,hba1c,change from baseline,mean change,NA,-1.28,sd,1.13,percentage,26,weeks,aact,NA
+50521529,NCT01368081,NA,uaa10733,NA,hba1c,change from baseline,LS mean change,NA,-1,se,0.06,percentage,52,weeks,aact,uaa10733e
+50521531,NCT01368081,NA,uaa10733,NA,hba1c,change from baseline,LS mean change,NA,-0.98,se,0.08,percentage,52,weeks,aact,uaa10733f
+50521520,NCT01368081,NA,uaa10733,NA,hba1c,change from baseline,LS mean change,NA,-0.93,se,0.05,percentage,52,weeks,aact,uaa10733a
+50521525,NCT01368081,NA,uaa10733,NA,hba1c,change from baseline,LS mean change,NA,-0.9,se,0.05,percentage,52,weeks,aact,uaa10733c
+50521527,NCT01368081,NA,uaa10733,NA,hba1c,change from baseline,LS mean change,NA,-0.87,se,0.06,percentage,52,weeks,aact,uaa10733d
+50521523,NCT01368081,NA,uaa10733,NA,hba1c,change from baseline,LS mean change,NA,-0.81,se,0.06,percentage,52,weeks,aact,uaa10733b
+50521524,NCT01368081,NA,uaa10734,NA,hba1c,change from baseline,LS mean change,NA,-0.98,se,0.06,percentage,52,weeks,aact,uaa10734b
+50521532,NCT01368081,NA,uaa10734,NA,hba1c,change from baseline,LS mean change,NA,-0.98,se,0.08,percentage,52,weeks,aact,uaa10734f
+50521521,NCT01368081,NA,uaa10734,NA,hba1c,change from baseline,LS mean change,NA,-0.96,se,0.05,percentage,52,weeks,aact,uaa10734a
+50521526,NCT01368081,NA,uaa10734,NA,hba1c,change from baseline,LS mean change,NA,-0.96,se,0.05,percentage,52,weeks,aact,uaa10734c
+50521530,NCT01368081,NA,uaa10734,NA,hba1c,change from baseline,LS mean change,NA,-0.83,se,0.06,percentage,52,weeks,aact,uaa10734e
+50521528,NCT01368081,NA,uaa10734,NA,hba1c,change from baseline,LS mean change,NA,-0.77,se,0.06,percentage,52,weeks,aact,uaa10734d
+50521522,NCT01368081,NA,uaa10735,NA,hba1c,change from baseline,LS mean change,NA,-0.97,se,0.08,percentage,52,weeks,aact,uaa10735a
+50522765,NCT01370005,NA,uaa10737,NA,hba1c,change from baseline,mean change,NA,-0.59,sd,0.63,percentage,12,weeks,aact,NA
+50522766,NCT01370005,NA,uaa10738,NA,hba1c,change from baseline,mean change,NA,-0.63,sd,0.62,percentage,12,weeks,aact,NA
+50522764,NCT01370005,NA,uaa10739,NA,hba1c,change from baseline,mean change,NA,0.03,sd,0.6,percentage,12,weeks,aact,NA
+50531959,NCT01381900,NA,uaa10741,NA,hba1c,change from baseline,LS mean change,NA,-0.97,se,0.095,percentage,18,weeks,aact,NA
+50531960,NCT01381900,NA,uaa10742,NA,hba1c,change from baseline,LS mean change,NA,-1.06,se,0.095,percentage,18,weeks,aact,NA
+50531958,NCT01381900,NA,uaa10743,NA,hba1c,change from baseline,LS mean change,NA,-0.47,se,0.096,percentage,18,weeks,aact,NA
+50535054,NCT01388361,NA,uaa10749,NA,hba1c,change from baseline,mean change,NA,-0.39,sd,0.72,percentage,26,weeks,aact,NA
+50535053,NCT01388361,NA,uaa10750,NA,hba1c,change from baseline,mean change,NA,-0.74,sd,0.73,percentage,26,weeks,aact,NA
+50538772,NCT01392573,NA,uaa10752,NA,hba1c,change from baseline,mean change,NA,-1.9,sd,1.09,percentage,26,weeks,aact,NA
+50538773,NCT01392573,NA,uaa10753,NA,hba1c,change from baseline,mean change,NA,-0.89,sd,1.18,percentage,26,weeks,aact,NA
+50538823,NCT01392677,NA,uaa10755,NA,hba1c,change from baseline,LS mean change,NA,-0.86,95%ci,-1;-0.72,percentage,24,weeks,aact,NA
+50538822,NCT01392677,NA,uaa10756,NA,hba1c,change from baseline,LS mean change,NA,-0.17,95%ci,-0.31;-0.02,percentage,24,weeks,aact,NA
+50547155,NCT01406717,NA,uaa10761,NA,hba1c,change from baseline,LS mean change,NA,-0.227,se,0.243,percentage,24,weeks,aact,NA
+50547156,NCT01406717,NA,uaa10762,NA,hba1c,change from baseline,LS mean change,NA,-0.227,se,0.254,percentage,24,weeks,aact,NA
+50552206,NCT01413204,NA,uaa10764,NA,hba1c,change from baseline,LS mean change,NA,-0.74,se,0.07,percentage,24,weeks,aact,NA
+50552207,NCT01413204,NA,uaa10765,NA,hba1c,change from baseline,LS mean change,NA,-0.76,se,0.07,percentage,24,weeks,aact,NA
+50552208,NCT01413204,NA,uaa10766,NA,hba1c,change from baseline,LS mean change,NA,0.29,se,0.07,percentage,24,weeks,aact,NA
+50556876,NCT01422876,NA,uaa10768,NA,hba1c,change from baseline,LS mean change,NA,-0.66,se,0.06,percentage,24,weeks,aact,uaa10768b
+50556896,NCT01422876,NA,uaa10768,NA,hba1c,change from baseline,LS mean change,NA,-0.83,se,0.07,percentage,24,weeks,aact,uaa10768a
+50556875,NCT01422876,NA,uaa10769,NA,hba1c,change from baseline,LS mean change,NA,-0.62,se,0.06,percentage,24,weeks,aact,uaa10769b
+50556895,NCT01422876,NA,uaa10769,NA,hba1c,change from baseline,LS mean change,NA,-0.95,se,0.07,percentage,24,weeks,aact,uaa10769a
+50556874,NCT01422876,NA,uaa10770,NA,hba1c,change from baseline,LS mean change,NA,-1.08,se,0.06,percentage,24,weeks,aact,uaa10770b
+50556894,NCT01422876,NA,uaa10770,NA,hba1c,change from baseline,LS mean change,NA,-1.24,se,0.07,percentage,24,weeks,aact,uaa10770a
+50556873,NCT01422876,NA,uaa10771,NA,hba1c,change from baseline,LS mean change,NA,-1.19,se,0.06,percentage,24,weeks,aact,uaa10771b
+50556893,NCT01422876,NA,uaa10771,NA,hba1c,change from baseline,LS mean change,NA,-1.08,se,0.07,percentage,24,weeks,aact,uaa10771a
+50556877,NCT01422876,NA,uaa10772,NA,hba1c,change from baseline,LS mean change,NA,-0.7,se,0.06,percentage,24,weeks,aact,uaa10772b
+50556897,NCT01422876,NA,uaa10772,NA,hba1c,change from baseline,LS mean change,NA,-0.67,se,0.07,percentage,24,weeks,aact,uaa10772a
+50569516,NCT01438814,NA,uaa10774,NA,hba1c,change from baseline,adjusted mean change,NA,-0.99,se,0.05,percentage,14,weeks,aact,NA
+50569517,NCT01438814,NA,uaa10775,NA,hba1c,change from baseline,adjusted mean change,NA,-0.98,se,0.04,percentage,14,weeks,aact,NA
+50589557,NCT01462266,NA,uaa10777,NA,hba1c,change from baseline,LS mean change,NA,-0.87,95%ci,1.1,percentage,24,weeks,aact,NA
+50589556,NCT01462266,NA,uaa10778,NA,hba1c,change from baseline,LS mean change,NA,-1.31,95%ci,0.98,percentage,24,weeks,aact,NA
+50620939,NCT01505673,NA,uaa10780,NA,hba1c,endpoint,mean,NA,7.9,sd,1.1,percentage,6,months,aact,NA
+50620940,NCT01505673,NA,uaa10781,NA,hba1c,endpoint,mean,NA,8.9,sd,1.3,percentage,6,months,aact,NA
+50627486,NCT01512108,NA,uaa10783,NA,hba1c,change from baseline,mean change,NA,-1.21,se,0.05,percentage,52,weeks,aact,NA
+50627487,NCT01512108,NA,uaa10784,NA,hba1c,change from baseline,mean change,NA,-0.94,se,0.07,percentage,52,weeks,aact,NA
+50632405,NCT01519674,NA,uaa10786,NA,hba1c,change from baseline,LS mean change,NA,-1.27,se,0.07,percentage,24,weeks,aact,NA
+50632406,NCT01519674,NA,uaa10787,NA,hba1c,change from baseline,LS mean change,NA,-1.51,se,0.07,percentage,24,weeks,aact,NA
+50632407,NCT01519674,NA,uaa10788,NA,hba1c,change from baseline,LS mean change,NA,-1.15,se,0.07,percentage,24,weeks,aact,NA
+50651098,NCT01541215,NA,uaa10793,NA,hba1c,change from baseline,LS mean change,NA,-0.643,se,0.215,percentage,26,weeks,aact,NA
+50651099,NCT01541215,NA,uaa10794,NA,hba1c,change from baseline,LS mean change,NA,0.415,se,0.216,percentage,26,weeks,aact,NA
+50663198,NCT01558271,NA,uaa10796,NA,hba1c,change from baseline,LS mean change,NA,-1.43,se,0.05,percentage,26,weeks,aact,NA
+50663200,NCT01558271,NA,uaa10797,NA,hba1c,change from baseline,LS mean change,NA,-1.33,se,0.07,percentage,26,weeks,aact,NA
+50663199,NCT01558271,NA,uaa10798,NA,hba1c,change from baseline,LS mean change,NA,0.14,se,0.1,percentage,26,weeks,aact,NA
+50675752,NCT01572740,NA,uaa10800,NA,hba1c,change from baseline,mean change,NA,-1.73,se,0.06,percentage,16,weeks,aact,NA
+50675753,NCT01572740,NA,uaa10801,NA,hba1c,change from baseline,mean change,NA,-0.43,se,0.06,percentage,16,weeks,aact,NA
+50682913,NCT01584232,NA,uaa10803,NA,hba1c,change from baseline,LS mean change,NA,-1.44,se,0.05,percentage,26,weeks,aact,NA
+50682914,NCT01584232,NA,uaa10804,NA,hba1c,change from baseline,LS mean change,NA,-0.9,se,0.05,percentage,26,weeks,aact,NA
+50692293,NCT01590771,NA,uaa10806,NA,hba1c,change from baseline,LS mean change,NA,-0.27,95%ci,-0.38;-0.15,percentage,24,weeks,aact,NA
+50692292,NCT01590771,NA,uaa10807,NA,hba1c,change from baseline,LS mean change,NA,-0.88,95%ci,-0.99;-0.76,percentage,24,weeks,aact,NA
+50692315,NCT01590797,NA,uaa10809,NA,hba1c,change from baseline,LS mean change,NA,-0.32,95%ci,-0.44;-0.2,percentage,24,weeks,aact,NA
+50692314,NCT01590797,NA,uaa10810,NA,hba1c,change from baseline,LS mean change,NA,-0.67,95%ci,-0.79;-0.55,percentage,24,weeks,aact,NA
+50707613,NCT01606007,NA,uaa10812,NA,hba1c,change from baseline,adjusted mean change,NA,-1.2,95%ci,-1.35;-1.04,percentage,24,weeks,aact,NA
+50707614,NCT01606007,NA,uaa10813,NA,hba1c,change from baseline,adjusted mean change,NA,-1.47,95%ci,-1.62;-1.31,percentage,24,weeks,aact,NA
+50707612,NCT01606007,NA,uaa10814,NA,hba1c,change from baseline,adjusted mean change,NA,-0.88,95%ci,-1.03;-0.72,percentage,24,weeks,aact,NA
+50715872,NCT01617434,NA,uaa10816,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,1.015,percentage,26,weeks,aact,NA
+50715873,NCT01617434,NA,uaa10817,NA,hba1c,change from baseline,mean change,NA,-0.11,sd,1.088,percentage,26,weeks,aact,NA
+50716889,NCT01619059,NA,uaa10819,NA,hba1c,change from baseline,adjusted mean change,NA,-0.16,se,0.0605,percentage,24,weeks,aact,NA
+50716888,NCT01619059,NA,uaa10820,NA,hba1c,change from baseline,adjusted mean change,NA,-0.51,se,0.0624,percentage,24,weeks,aact,NA
+50717401,NCT01620489,NA,uaa10822,NA,hba1c,change from baseline,mean change,NA,-1.05,sd,0.8944,percentage,26,weeks,aact,NA
+50717402,NCT01620489,NA,uaa10823,NA,hba1c,change from baseline,mean change,NA,-0.38,sd,0.8797,percentage,26,weeks,aact,NA
+50717918,NCT01621178,NA,uaa10825,NA,hba1c,change from baseline,LS mean change,NA,-1.12,se,0.12,percentage,26,weeks,aact,NA
+50717919,NCT01621178,NA,uaa10826,NA,hba1c,change from baseline,LS mean change,NA,-1.19,se,0.13,percentage,26,weeks,aact,NA
+50717917,NCT01621178,NA,uaa10827,NA,hba1c,change from baseline,LS mean change,NA,-1.13,se,0.12,percentage,26,weeks,aact,NA
+50721756,NCT01624259,NA,uaa10829,NA,hba1c,change from baseline,LS mean change,NA,-1.42,se,0.05,percentage,26,weeks,aact,NA
+50721757,NCT01624259,NA,uaa10830,NA,hba1c,change from baseline,LS mean change,NA,-1.36,se,0.05,percentage,26,weeks,aact,NA
+50749067,NCT01644500,NA,uaa10832,NA,hba1c,change from baseline,LS mean change,NA,-1.22,se,0.069,percentage,26,weeks,aact,NA
+50749066,NCT01644500,NA,uaa10833,NA,hba1c,change from baseline,LS mean change,NA,-1.48,se,0.069,percentage,26,weeks,aact,NA
+50749068,NCT01644500,NA,uaa10834,NA,hba1c,change from baseline,LS mean change,NA,-0.92,se,0.069,percentage,26,weeks,aact,NA
+50750875,NCT01646320,NA,uaa10836,NA,hba1c,change from baseline,LS mean change,NA,-0.82,se,0.0686,percentage,24,weeks,aact,NA
+50750876,NCT01646320,NA,uaa10837,NA,hba1c,change from baseline,LS mean change,NA,-0.1,se,0.0704,percentage,24,weeks,aact,NA
+50753362,NCT01648582,NA,uaa10839,NA,hba1c,change from baseline,LS mean change,NA,-1.33,se,0.067,percentage,26,weeks,aact,NA
+50753361,NCT01648582,NA,uaa10840,NA,hba1c,change from baseline,LS mean change,NA,-1.73,se,0.067,percentage,26,weeks,aact,NA
+50753363,NCT01648582,NA,uaa10841,NA,hba1c,change from baseline,LS mean change,NA,-1.16,se,0.067,percentage,26,weeks,aact,NA
+50756060,NCT01652716,NA,uaa10843,NA,hba1c,change from baseline,LS mean change,NA,-1.02,se,0.1147,percentage,28,weeks,aact,NA
+50756059,NCT01652716,NA,uaa10844,NA,hba1c,change from baseline,LS mean change,NA,-1.39,se,0.093,percentage,28,weeks,aact,NA
+50756077,NCT01652729,NA,uaa10846,NA,hba1c,change from baseline,LS mean change,NA,-1.13,se,0.1093,percentage,28,weeks,aact,NA
+50756079,NCT01652729,NA,uaa10847,NA,hba1c,change from baseline,LS mean change,NA,-0.4,se,0.1945,percentage,28,weeks,aact,NA
+50756078,NCT01652729,NA,uaa10848,NA,hba1c,change from baseline,LS mean change,NA,-0.75,se,0.1324,percentage,28,weeks,aact,NA
+50782498,NCT01676116,NA,uaa10850,NA,hba1c,change from baseline,LS mean change,NA,-1.32,se,0.05,percentage,26,weeks,aact,NA
+50782499,NCT01676116,NA,uaa10851,NA,hba1c,change from baseline,LS mean change,NA,-0.37,se,0.07,percentage,26,weeks,aact,NA
+50786554,NCT01682759,NA,uaa10853,NA,hba1c,change from baseline,LS mean change,NA,-0.48,95%ci,-0.57;-0.39,percentage,54,weeks,aact,NA
+50786553,NCT01682759,NA,uaa10854,NA,hba1c,change from baseline,LS mean change,NA,-0.3,95%ci,-0.39;-0.21,percentage,54,weeks,aact,NA
+50797360,NCT01697592,NA,uaa10856,NA,hba1c,change from baseline,LS mean change,NA,-0.94,95%ci,-1.1;-0.78,percentage,24,weeks,aact,uaa10856a
+50797361,NCT01697592,NA,uaa10856,NA,hba1c,change from baseline,LS mean change,NA,-0.88,95%ci,-1.04;-0.73,percentage,24,weeks,aact,uaa10856e
+50797358,NCT01697592,NA,uaa10856,NA,hba1c,change from baseline,LS mean change,NA,-0.84,95%ci,-0.94;-0.73,percentage,24,weeks,aact,uaa10856d
+50797362,NCT01697592,NA,uaa10856,NA,hba1c,change from baseline,LS mean change,NA,-0.74,95%ci,-0.89;-0.59,percentage,24,weeks,aact,uaa10856c
+50797359,NCT01697592,NA,uaa10856,NA,hba1c,change from baseline,LS mean change,NA,-0.68,95%ci,-0.89;-0.48,percentage,24,weeks,aact,uaa10856b
+50797365,NCT01697592,NA,uaa10857,NA,hba1c,change from baseline,LS mean change,NA,-0.02,95%ci,-0.35;0.31,percentage,24,weeks,aact,uaa10857a
+50797367,NCT01697592,NA,uaa10857,NA,hba1c,change from baseline,LS mean change,NA,0.06,95%ci,-0.16;0.28,percentage,24,weeks,aact,uaa10857c
+50797363,NCT01697592,NA,uaa10857,NA,hba1c,change from baseline,LS mean change,NA,0.09,95%ci,-0.06;0.24,percentage,24,weeks,aact,uaa10857d
+50797366,NCT01697592,NA,uaa10857,NA,hba1c,change from baseline,LS mean change,NA,0.28,95%ci,0.03;0.53,percentage,24,weeks,aact,uaa10857e
+50797364,NCT01697592,NA,uaa10857,NA,hba1c,change from baseline,LS mean change,NA,0.3,95%ci,-0.04;0.64,percentage,24,weeks,aact,uaa10857b
+50797903,NCT01698775,NA,uaa10859,NA,hba1c,change from baseline,LS mean change,NA,-0.77,95%ci,-1;-0.54,percentage,24,weeks,aact,NA
+50797904,NCT01698775,NA,uaa10860,NA,hba1c,change from baseline,LS mean change,NA,-0.44,95%ci,-0.67;-0.21,percentage,24,weeks,aact,NA
+50801366,NCT01703208,NA,uaa10862,NA,hba1c,change from baseline,LS mean change,NA,-0.58,95%ci,0.82,percentage,18,weeks,aact,NA
+50801367,NCT01703208,NA,uaa10863,NA,hba1c,change from baseline,LS mean change,NA,-0.16,95%ci,0.88,percentage,18,weeks,aact,NA
+50801404,NCT01703221,NA,uaa10865,NA,hba1c,change from baseline,LS mean change,NA,-0.66,95%ci,-0.76;-0.57,percentage,24,weeks,aact,NA
+50801406,NCT01703221,NA,uaa10866,NA,hba1c,change from baseline,LS mean change,NA,0.13,95%ci,0;0.27,percentage,24,weeks,aact,NA
+50801405,NCT01703221,NA,uaa10867,NA,hba1c,change from baseline,LS mean change,NA,-0.65,95%ci,-0.74;-0.55,percentage,24,weeks,aact,NA
+50801933,NCT01704261,NA,uaa10869,NA,hba1c,change from baseline,LS mean change,NA,-0.67,95%ci,-0.84;-0.5,percentage,24,weeks,aact,NA
+50801934,NCT01704261,NA,uaa10870,NA,hba1c,change from baseline,LS mean change,NA,-0.06,95%ci,-0.23;0.12,percentage,24,weeks,aact,NA
+50804437,NCT01708902,NA,uaa10873,NA,hba1c,change from baseline,adjusted mean change,NA,-1.29,se,0.08,percentage,24,weeks,aact,NA
+50804441,NCT01708902,NA,uaa10874,NA,hba1c,change from baseline,adjusted mean change,NA,-2.29,se,0.08,percentage,24,weeks,aact,NA
+50804440,NCT01708902,NA,uaa10875,NA,hba1c,change from baseline,adjusted mean change,NA,-2.15,se,0.08,percentage,24,weeks,aact,NA
+50804439,NCT01708902,NA,uaa10876,NA,hba1c,change from baseline,adjusted mean change,NA,-2.07,se,0.08,percentage,24,weeks,aact,NA
+50804438,NCT01708902,NA,uaa10877,NA,hba1c,change from baseline,adjusted mean change,NA,-1.64,se,0.08,percentage,24,weeks,aact,NA
+50810693,NCT01717313,NA,uaa10879,NA,hba1c,change from baseline,LS mean change,NA,-0.54,95%ci,-0.68;-0.39,percentage,24,weeks,aact,NA
+50810694,NCT01717313,NA,uaa10880,NA,hba1c,change from baseline,LS mean change,NA,0,95%ci,-0.17;0.16,percentage,24,weeks,aact,NA
+50812751,NCT01719003,NA,uaa10882,NA,hba1c,change from baseline,adjusted mean change,NA,-1.35,se,0.08,percentage,24,weeks,aact,NA
+50812750,NCT01719003,NA,uaa10883,NA,hba1c,change from baseline,adjusted mean change,NA,-1.36,se,0.08,percentage,24,weeks,aact,NA
+50812746,NCT01719003,NA,uaa10884,NA,hba1c,change from baseline,adjusted mean change,NA,-2.08,se,0.08,percentage,24,weeks,aact,NA
+50812747,NCT01719003,NA,uaa10885,NA,hba1c,change from baseline,adjusted mean change,NA,-1.93,se,0.08,percentage,24,weeks,aact,NA
+50812748,NCT01719003,NA,uaa10886,NA,hba1c,change from baseline,adjusted mean change,NA,-2.07,se,0.08,percentage,24,weeks,aact,NA
+50812749,NCT01719003,NA,uaa10887,NA,hba1c,change from baseline,adjusted mean change,NA,-1.98,se,0.08,percentage,24,weeks,aact,NA
+50812752,NCT01719003,NA,uaa10888,NA,hba1c,change from baseline,adjusted mean change,NA,-1.75,se,0.09,percentage,24,weeks,aact,NA
+50812753,NCT01719003,NA,uaa10889,NA,hba1c,change from baseline,adjusted mean change,NA,-1.18,se,0.08,percentage,24,weeks,aact,NA
+50813613,NCT01720446,NA,uaa10891,NA,hba1c,change from baseline,LS mean change,NA,-0.44,se,0.05,percentage,104,weeks,aact,uaa10891a
+50813614,NCT01720446,NA,uaa10891,NA,hba1c,change from baseline,LS mean change,NA,-0.36,se,0.05,percentage,104,weeks,aact,uaa10891b
+50813611,NCT01720446,NA,uaa10892,NA,hba1c,change from baseline,LS mean change,NA,-1.09,se,0.05,percentage,104,weeks,aact,NA
+50813612,NCT01720446,NA,uaa10894,NA,hba1c,change from baseline,LS mean change,NA,-1.41,se,0.05,percentage,104,weeks,aact,NA
+50826219,NCT01733758,NA,uaa10899,NA,hba1c,baseline,mean,NA,8.06,sd,0.783,percentage,0,weeks,aact,NA
+50826227,NCT01733758,NA,uaa10899,NA,hba1c,change from baseline,mean change,NA,-1.08,sd,0.619,percentage,24,weeks,aact,NA
+50826223,NCT01733758,NA,uaa10899,NA,hba1c,endpoint,mean,NA,6.98,sd,0.735,percentage,24,weeks,aact,NA
+50826220,NCT01733758,NA,uaa10900,NA,hba1c,baseline,mean,NA,8.15,sd,0.825,percentage,0,weeks,aact,NA
+50826228,NCT01733758,NA,uaa10900,NA,hba1c,change from baseline,mean change,NA,-1.32,sd,0.702,percentage,24,weeks,aact,NA
+50826224,NCT01733758,NA,uaa10900,NA,hba1c,endpoint,mean,NA,6.83,sd,0.659,percentage,24,weeks,aact,NA
+50826221,NCT01733758,NA,uaa10901,NA,hba1c,baseline,mean,NA,8.07,sd,0.787,percentage,0,weeks,aact,NA
+50826229,NCT01733758,NA,uaa10901,NA,hba1c,change from baseline,mean change,NA,-1.19,sd,0.636,percentage,24,weeks,aact,NA
+50826225,NCT01733758,NA,uaa10901,NA,hba1c,endpoint,mean,NA,6.87,sd,0.642,percentage,24,weeks,aact,NA
+50826218,NCT01733758,NA,uaa10902,NA,hba1c,baseline,mean,NA,8.16,sd,0.877,percentage,0,weeks,aact,NA
+50826226,NCT01733758,NA,uaa10902,NA,hba1c,change from baseline,mean change,NA,0.24,sd,0.715,percentage,24,weeks,aact,NA
+50826222,NCT01733758,NA,uaa10902,NA,hba1c,endpoint,mean,NA,8.39,sd,1.066,percentage,24,weeks,aact,NA
+50826836,NCT01734785,NA,uaa10904,NA,hba1c,change from baseline,LS mean change,NA,-0.65,se,0.08,percentage,24,weeks,aact,NA
+50826835,NCT01734785,NA,uaa10905,NA,hba1c,change from baseline,LS mean change,NA,-0.56,se,0.08,percentage,24,weeks,aact,NA
+50826837,NCT01734785,NA,uaa10907,NA,hba1c,change from baseline,LS mean change,NA,0.14,se,0.09,percentage,24,weeks,aact,NA
+50844211,NCT01755156,NA,uaa10909,NA,hba1c,change from baseline,LS mean change,NA,-0.54,95%ci,-0.69;-0.4,percentage,24,weeks,aact,NA
+50844212,NCT01755156,NA,uaa10910,NA,hba1c,change from baseline,LS mean change,NA,0,95%ci,-0.14;0.15,percentage,24,weeks,aact,NA
+50852531,NCT01766778,NA,uaa10913,NA,hba1c,change from baseline,mean change,NA,-1,sd,1.24,percentage,12,months,aact,NA
+50852530,NCT01766778,NA,uaa10914,NA,hba1c,change from baseline,mean change,NA,-0.8,sd,1.01,percentage,12,months,aact,NA
+50853607,NCT01768559,NA,uaa10915,NA,hba1c,change from baseline,LS mean change,NA,-0.58,se,0.054,percentage,26,weeks,aact,NA
+50853608,NCT01768559,NA,uaa10916,NA,hba1c,change from baseline,LS mean change,NA,-0.84,se,0.053,percentage,26,weeks,aact,NA
+50853606,NCT01768559,NA,uaa10917,NA,hba1c,change from baseline,LS mean change,NA,-0.63,se,0.054,percentage,26,weeks,aact,NA
+50854023,NCT01769378,NA,uaa10919,NA,hba1c,change from baseline,LS mean change,NA,-1.38,se,0.08,percentage,24,weeks,aact,NA
+50854024,NCT01769378,NA,uaa10920,NA,hba1c,change from baseline,LS mean change,NA,-0.11,se,0.14,percentage,24,weeks,aact,NA
+50861797,NCT01778049,NA,uaa10922,NA,hba1c,change from baseline,LS mean change,NA,-0.1,se,0.07,percentage,24,weeks,aact,NA
+50861795,NCT01778049,NA,uaa10923,NA,hba1c,change from baseline,LS mean change,NA,-0.21,se,0.07,percentage,24,weeks,aact,NA
+50861794,NCT01778049,NA,uaa10924,NA,hba1c,change from baseline,LS mean change,NA,-0.53,se,0.07,percentage,24,weeks,aact,NA
+50861796,NCT01778049,NA,uaa10925,NA,hba1c,change from baseline,LS mean change,NA,-0.58,se,0.07,percentage,24,weeks,aact,NA
+50872931,NCT01792518,NA,uaa10927,NA,hba1c,change from baseline,LS mean change,NA,-0.63,se,0.06,percentage,24,weeks,aact,NA
+50872930,NCT01792518,NA,uaa10928,NA,hba1c,change from baseline,LS mean change,NA,-0.03,se,0.06,percentage,24,weeks,aact,NA
+50877451,NCT01798706,NA,uaa10930,NA,hba1c,change from baseline,LS mean change,NA,-0.57,se,0.075,percentage,24,weeks,aact,NA
+50877452,NCT01798706,NA,uaa10931,NA,hba1c,change from baseline,LS mean change,NA,0.06,se,0.072,percentage,24,weeks,aact,NA
+50885584,NCT01809327,NA,uaa10933,NA,hba1c,change from baseline,LS mean change,NA,-1.37,se,0.071,percentage,26,weeks,aact,NA
+50885585,NCT01809327,NA,uaa10934,NA,hba1c,change from baseline,LS mean change,NA,-1.42,se,0.07,percentage,26,weeks,aact,NA
+50885586,NCT01809327,NA,uaa10935,NA,hba1c,change from baseline,LS mean change,NA,-1.77,se,0.069,percentage,26,weeks,aact,NA
+50885587,NCT01809327,NA,uaa10936,NA,hba1c,change from baseline,LS mean change,NA,-1.78,se,0.07,percentage,26,weeks,aact,NA
+50885583,NCT01809327,NA,uaa10937,NA,hba1c,change from baseline,LS mean change,NA,-1.3,se,0.071,percentage,26,weeks,aact,NA
+50888772,NCT01814748,NA,uaa10939,NA,hba1c,change from baseline,LS mean change,NA,-0.33,95%ci,-0.6;-0.06,percentage,24,weeks,aact,NA
+50888773,NCT01814748,NA,uaa10940,NA,hba1c,change from baseline,LS mean change,NA,-0.45,95%ci,-0.72;-0.18,percentage,24,weeks,aact,NA
+50894840,NCT01822548,NA,uaa10942,NA,hba1c,endpoint,median,NA,6.8,iqr,6.4;7.3,percentage,4,months,aact,NA
+50894839,NCT01822548,NA,uaa10944,NA,hba1c,endpoint,median,NA,6.8,iqr,6.4;7.3,percentage,4,months,aact,NA
+50906564,NCT01841697,NA,uaa10945,NA,hba1c,change from baseline,LS mean change,NA,-0.47,95%ci,-0.55;-0.38,percentage,24,weeks,aact,NA
+50906565,NCT01841697,NA,uaa10946,NA,hba1c,change from baseline,LS mean change,NA,-0.43,95%ci,-0.51;-0.35,percentage,24,weeks,aact,NA
+50924419,NCT01871558,NA,uaa10948,NA,hba1c,baseline,mean,NA,8.2,sd,0.42,percentage,0,weeks,aact,NA
+50924421,NCT01871558,NA,uaa10948,NA,hba1c,endpoint,mean,NA,7.4,sd,0.89,percentage,24,weeks,aact,NA
+50924418,NCT01871558,NA,uaa10950,NA,hba1c,baseline,mean,NA,8.2,sd,0.56,percentage,0,weeks,aact,NA
+50924420,NCT01871558,NA,uaa10950,NA,hba1c,endpoint,mean,NA,7.2,sd,0.71,percentage,24,weeks,aact,NA
+50934286,NCT01882907,NA,uaa10951,NA,hba1c,change from baseline,mean,NA,-0.6,sd,1.12,percentage,16,weeks,aact,NA
+50934285,NCT01882907,NA,uaa10953,NA,hba1c,change from baseline,mean,NA,-0.94,sd,0.79,percentage,16,weeks,aact,NA
+50935846,NCT01885208,NA,uaa10954,NA,hba1c,change from baseline,LS mean change,NA,-0.92,se,0.06,percentage,56,weeks,aact,NA
+50935845,NCT01885208,NA,uaa10955,NA,hba1c,change from baseline,LS mean change,NA,-1.54,se,0.06,percentage,56,weeks,aact,NA
+50938115,NCT01890122,NA,uaa10957,NA,hba1c,change from baseline,mean change,NA,-1.23,sd,0.877,percentage,26,weeks,aact,NA
+50938116,NCT01890122,NA,uaa10958,NA,hba1c,change from baseline,mean change,NA,-1.06,sd,0.97,percentage,26,weeks,aact,NA
+50938114,NCT01890122,NA,uaa10959,NA,hba1c,change from baseline,mean change,NA,-0.32,sd,1.067,percentage,26,weeks,aact,NA
+50938117,NCT01890122,NA,uaa10960,NA,hba1c,change from baseline,mean change,NA,-1.72,sd,1.024,percentage,26,weeks,aact,NA
+50949620,NCT01907854,NA,uaa10965,NA,hba1c,change from baseline,mean change,NA,-1.146,sd,0.9748,percentage,26,weeks,aact,NA
+50949621,NCT01907854,NA,uaa10966,NA,hba1c,change from baseline,mean change,NA,-0.529,sd,1.0148,percentage,26,weeks,aact,NA
+50970136,NCT01930188,NA,uaa10968,NA,hba1c,change from baseline,LS mean change,NA,-1.32,se,0.05,percentage,56,weeks,aact,NA
+50970137,NCT01930188,NA,uaa10969,NA,hba1c,change from baseline,LS mean change,NA,-1.61,se,0.05,percentage,56,weeks,aact,NA
+50970138,NCT01930188,NA,uaa10970,NA,hba1c,change from baseline,LS mean change,NA,-0.55,se,0.05,percentage,56,weeks,aact,NA
+51003899,NCT01958671,NA,uaa10976,NA,hba1c,change from baseline,LS mean change,NA,-0.96,95%ci,-1.12;-0.8,percentage,26,weeks,aact,NA
+51003898,NCT01958671,NA,uaa10977,NA,hba1c,change from baseline,LS mean change,NA,-0.79,95%ci,-0.95;-0.63,percentage,26,weeks,aact,NA
+51003900,NCT01958671,NA,uaa10978,NA,hba1c,change from baseline,LS mean change,NA,0.2,95%ci,0.02;0.37,percentage,26,weeks,aact,NA
+51013941,NCT01966978,NA,uaa10980,NA,hba1c,change from baseline,mean change,NA,3.4,95%ci,2.4;3.7,percentage,26,weeks,aact,NA
+51013942,NCT01966978,NA,uaa10981,NA,hba1c,change from baseline,mean change,NA,4.1,95%ci,3.5;4.8,percentage,26,weeks,aact,NA
+51020605,NCT01973231,NA,uaa10983,NA,hba1c,change from baseline,mean change,NA,-1.809,sd,0.9159,percentage,26,weeks,aact,NA
+51020606,NCT01973231,NA,uaa10984,NA,hba1c,change from baseline,mean change,NA,-1.238,sd,1.0085,percentage,26,weeks,aact,NA
+51030059,NCT01986855,NA,uaa10986,NA,hba1c,change from baseline,LS mean change,NA,-0.41,95%ci,-0.56;-0.27,percentage,26,weeks,aact,NA
+51030058,NCT01986855,NA,uaa10987,NA,hba1c,change from baseline,LS mean change,NA,-0.29,95%ci,-0.44;-0.14,percentage,26,weeks,aact,NA
+51030060,NCT01986855,NA,uaa10988,NA,hba1c,change from baseline,LS mean change,NA,-0.26,95%ci,-0.41;-0.11,percentage,26,weeks,aact,NA
+51030163,NCT01986881,NA,uaa10990,NA,hba1c,change from baseline,mean change,NA,-0.13,95%ci,-0.99;0.74,percentage,72,months,aact,NA
+51030162,NCT01986881,NA,uaa10991,NA,hba1c,change from baseline,mean change,NA,-0.35,95%ci,-0.89;0.2,percentage,72,months,aact,NA
+51030164,NCT01986881,NA,uaa10992,NA,hba1c,change from baseline,mean change,NA,0.24,95%ci,-0.74;1.23,percentage,72,months,aact,NA
+51040888,NCT01999218,NA,uaa10997,NA,hba1c,change from baseline,LS mean change,NA,-0.64,95%ci,-0.73;-0.55,percentage,52,weeks,aact,NA
+51040887,NCT01999218,NA,uaa10998,NA,hba1c,change from baseline,LS mean change,NA,-0.56,95%ci,-0.65;-0.47,percentage,52,weeks,aact,NA
+51040889,NCT01999218,NA,uaa10999,NA,hba1c,change from baseline,LS mean change,NA,-0.74,95%ci,-0.83;-0.65,percentage,52,weeks,aact,NA
+51044076,NCT02002221,NA,uaa11001,NA,hba1c,change from baseline,LS mean change,NA,-0.11,se,0.06,percentage,12,weeks,aact,NA
+51044075,NCT02002221,NA,uaa11003,NA,hba1c,change from baseline,LS mean change,NA,-1.01,se,0.06,percentage,12,weeks,aact,NA
+51045998,NCT02007278,NA,uaa11004,NA,hba1c,change from baseline,mean change,NA,2.28,sd,0.79,percentage,12,weeks,aact,NA
+51045997,NCT02007278,NA,uaa11006,NA,hba1c,change from baseline,mean change,NA,1.92,sd,1.1,percentage,12,weeks,aact,NA
+51048614,NCT02008682,NA,uaa11007,NA,hba1c,change from baseline,mean change,NA,-1.666,sd,0.9982,percentage,26,weeks,aact,NA
+51048615,NCT02008682,NA,uaa11008,NA,hba1c,change from baseline,mean change,NA,-0.969,sd,0.9742,percentage,26,weeks,aact,NA
+51059318,NCT02024477,NA,uaa11010,NA,hba1c,endpoint,mean,NA,6.5,sd,0.1,percentage,12,weeks,aact,NA
+51059319,NCT02024477,NA,uaa11011,NA,hba1c,endpoint,mean,NA,6.7,sd,0.2,percentage,12,weeks,aact,NA
+51059757,NCT02025907,NA,uaa11013,NA,hba1c,change from baseline,LS mean change,NA,-0.91,se,0.113,percentage,26,weeks,aact,NA
+51059756,NCT02025907,NA,uaa11014,NA,hba1c,change from baseline,LS mean change,NA,-0.01,se,0.119,percentage,26,weeks,aact,NA
+51063854,NCT02033889,NA,uaa11016,NA,hba1c,change from baseline,LS mean change,NA,-0.91,95%ci,-1.03;-0.78,percentage,26,weeks,aact,NA
+51063853,NCT02033889,NA,uaa11017,NA,hba1c,change from baseline,LS mean change,NA,-0.73,95%ci,-0.85;-0.61,percentage,26,weeks,aact,NA
+51063852,NCT02033889,NA,uaa11018,NA,hba1c,change from baseline,LS mean change,NA,-0.03,95%ci,-0.15;0.1,percentage,26,weeks,aact,NA
+51065220,NCT02036515,NA,uaa11020,NA,hba1c,change from baseline,LS mean change,NA,-0.86,95%ci,-0.99;-0.72,percentage,26,weeks,aact,NA
+51065219,NCT02036515,NA,uaa11021,NA,hba1c,change from baseline,LS mean change,NA,-0.78,95%ci,-0.91;-0.65,percentage,26,weeks,aact,NA
+51065221,NCT02036515,NA,uaa11022,NA,hba1c,change from baseline,LS mean change,NA,-0.09,95%ci,-0.23;-0.04,percentage,26,weeks,aact,NA
+51079889,NCT02054897,NA,uaa11024,NA,hba1c,change from baseline,mean change,NA,0,sd,0.9,percentage,30,weeks,aact,NA
+51079887,NCT02054897,NA,uaa11025,NA,hba1c,change from baseline,mean change,NA,-1.47,sd,1.02,percentage,30,weeks,aact,NA
+51079888,NCT02054897,NA,uaa11026,NA,hba1c,change from baseline,mean change,NA,-1.56,sd,1.26,percentage,30,weeks,aact,NA
+51085778,NCT02058147,NA,uaa11028,NA,hba1c,change from baseline,LS mean change,NA,-1.34,se,0.039,percentage,30,weeks,aact,NA
+51085777,NCT02058147,NA,uaa11029,NA,hba1c,change from baseline,LS mean change,NA,-1.63,se,0.038,percentage,30,weeks,aact,NA
+51085779,NCT02058147,NA,uaa11030,NA,hba1c,change from baseline,LS mean change,NA,-0.85,se,0.052,percentage,30,weeks,aact,NA
+51085825,NCT02058160,NA,uaa11032,NA,hba1c,change from baseline,LS mean change,NA,-0.62,se,0.055,percentage,30,weeks,aact,NA
+51085824,NCT02058160,NA,uaa11033,NA,hba1c,change from baseline,LS mean change,NA,-1.13,se,0.057,percentage,30,weeks,aact,NA
+51089279,NCT02061969,NA,uaa11035,NA,hba1c,endpoint,mean,NA,6.58,sd,0.7,percentage,6,months,aact,NA
+51089280,NCT02061969,NA,uaa11036,NA,hba1c,endpoint,mean,NA,6.82,sd,0.6,percentage,6,months,aact,NA
+51101919,NCT02081599,NA,uaa11041,NA,hba1c,change from baseline,LS mean change,NA,-0.07,se,0.08,percentage,16,weeks,aact,NA
+51101920,NCT02081599,NA,uaa11042,NA,hba1c,change from baseline,LS mean change,NA,-0.87,se,0.08,percentage,16,weeks,aact,NA
+51111810,NCT02096705,NA,uaa11044,NA,hba1c,change from baseline,adjusted mean change,NA,-0.87,se,0.0666,percentage,24,weeks,aact,NA
+51111809,NCT02096705,NA,uaa11045,NA,hba1c,change from baseline,adjusted mean change,NA,0.03,se,0.0707,percentage,24,weeks,aact,NA
+51114148,NCT02099110,NA,uaa11047,NA,hba1c,change from baseline,LS mean change,NA,-1.08,95%ci,-1.2;-0.96,percentage,26,weeks,aact,NA
+51114151,NCT02099110,NA,uaa11048,NA,hba1c,change from baseline,LS mean change,NA,-1.52,95%ci,-1.64;-1.4,percentage,26,weeks,aact,NA
+51114147,NCT02099110,NA,uaa11049,NA,hba1c,change from baseline,LS mean change,NA,-1.02,95%ci,-1.14;-0.9,percentage,26,weeks,aact,NA
+51114150,NCT02099110,NA,uaa11050,NA,hba1c,change from baseline,LS mean change,NA,-1.49,95%ci,-1.61;-1.36,percentage,26,weeks,aact,NA
+51114149,NCT02099110,NA,uaa11051,NA,hba1c,change from baseline,LS mean change,NA,-1.05,95%ci,-1.17;-0.93,percentage,26,weeks,aact,NA
+51117073,NCT02104804,NA,uaa11053,NA,hba1c,change from baseline,LS mean change,NA,-0.06,95%ci,-0.16;0.04,percentage,24,NA,aact,NA
+51117072,NCT02104804,NA,uaa11054,NA,hba1c,change from baseline,LS mean change,NA,-0.64,95%ci,-0.74;-0.55,percentage,24,NA,aact,NA
+51135826,NCT02128932,NA,uaa11056,NA,hba1c,change from baseline,LS mean change,NA,-0.83,se,0.05,percentage,30,weeks,aact,NA
+51135824,NCT02128932,NA,uaa11057,NA,hba1c,change from baseline,LS mean change,NA,-1.21,se,0.05,percentage,30,weeks,aact,NA
+51135825,NCT02128932,NA,uaa11058,NA,hba1c,change from baseline,LS mean change,NA,-1.64,se,0.05,percentage,30,weeks,aact,NA
+51153124,NCT02152371,NA,uaa11060,NA,hba1c,change from baseline,LS mean change,NA,-1.44,se,0.09,percentage,28,weeks,aact,NA
+51153125,NCT02152371,NA,uaa11061,NA,hba1c,change from baseline,LS mean change,NA,-0.67,se,0.09,percentage,28,weeks,aact,NA
+51156817,NCT02157298,NA,uaa11063,NA,hba1c,change from baseline,LS mean change,NA,-0.55,95%ci,-0.67;-0.42,percentage,16,weeks,aact,NA
+51156818,NCT02157298,NA,uaa11064,NA,hba1c,change from baseline,LS mean change,NA,0.05,95%ci,-0.13;0.23,percentage,16,weeks,aact,NA
+51173835,NCT02182830,NA,uaa11066,NA,hba1c,change from baseline,adjusted mean change,NA,-0.71,se,0.14,percentage,24,weeks,aact,NA
+51173834,NCT02182830,NA,uaa11067,NA,hba1c,change from baseline,adjusted mean change,NA,0.07,se,0.14,percentage,24,weeks,aact,NA
+51192047,NCT02207374,NA,uaa11069,NA,hba1c,change from baseline,LS mean change,NA,-0.67,se,0.07,percentage,56,weeks,aact,NA
+51192045,NCT02207374,NA,uaa11070,NA,hba1c,change from baseline,LS mean change,NA,-1.74,se,0.05,percentage,56,weeks,aact,NA
+51192046,NCT02207374,NA,uaa11071,NA,hba1c,change from baseline,LS mean change,NA,-2.03,se,0.05,percentage,56,weeks,aact,NA
+51204483,NCT02220920,NA,uaa11073,NA,hba1c,change from baseline,LS mean change,NA,-0.97,se,0.08,percentage,16,weeks,aact,NA
+51204484,NCT02220920,NA,uaa11074,NA,hba1c,change from baseline,LS mean change,NA,0.13,se,0.08,percentage,16,weeks,aact,NA
+51208047,NCT02226003,NA,uaa11076,NA,hba1c,change from baseline,LS mean change,NA,-1.68,95%ci,-1.9;-1.46,percentage,26,weeks,aact,NA
+51208046,NCT02226003,NA,uaa11077,NA,hba1c,change from baseline,LS mean change,NA,-1.6,95%ci,-1.82;-1.39,percentage,26,weeks,aact,NA
+51208048,NCT02226003,NA,uaa11078,NA,hba1c,change from baseline,LS mean change,NA,-0.44,95%ci,-0.69;-0.19,percentage,26,weeks,aact,NA
+51210406,NCT02229227,NA,uaa11080,NA,hba1c,change from baseline,LS mean change,NA,-1.04,se,0.041,percentage,26,weeks,aact,NA
+51210407,NCT02229227,NA,uaa11081,NA,hba1c,change from baseline,LS mean change,NA,-1.1,se,0.04,percentage,26,weeks,aact,NA
+51210827,NCT02229383,NA,uaa11083,NA,hba1c,change from baseline,LS mean change,NA,-0.96,95%ci,-1.12;-0.81,percentage,28,weeks,aact,NA
+51210828,NCT02229383,NA,uaa11084,NA,hba1c,change from baseline,LS mean change,NA,-0.22,95%ci,-0.38;-0.07,percentage,28,weeks,aact,NA
+51210841,NCT02229396,NA,uaa11086,NA,hba1c,change from baseline,LS mean change,NA,-1.39,95%ci,-1.57;-1.21,percentage,28,weeks,aact,NA
+51210842,NCT02229396,NA,uaa11087,NA,hba1c,change from baseline,LS mean change,NA,-1.98,95%ci,-2.16;-1.79,percentage,28,weeks,aact,NA
+51210843,NCT02229396,NA,uaa11088,NA,hba1c,change from baseline,LS mean change,NA,-1.6,95%ci,-1.79;-1.41,percentage,28,weeks,aact,NA
+51218533,NCT02240680,NA,uaa11090,NA,hba1c,change from baseline,LS mean change,NA,-1.01,se,0.06,percentage,24,weeks,aact,NA
+51218532,NCT02240680,NA,uaa11091,NA,hba1c,change from baseline,LS mean change,NA,-0.38,se,0.07,percentage,24,weeks,aact,NA
+51220137,NCT02243176,NA,uaa11093,NA,hba1c,change from baseline,LS mean change,NA,-0.78,se,0.06,percentage,24,weeks,aact,NA
+51220136,NCT02243176,NA,uaa11094,NA,hba1c,change from baseline,LS mean change,NA,-0.82,se,0.06,percentage,24,weeks,aact,NA
+51225196,NCT02254291,NA,uaa11096,NA,hba1c,change from baseline,LS mean change,NA,-1.87,se,0.07,percentage,30,weeks,aact,NA
+51225197,NCT02254291,NA,uaa11097,NA,hba1c,change from baseline,LS mean change,NA,-2.18,se,0.07,percentage,30,weeks,aact,NA
+51225198,NCT02254291,NA,uaa11098,NA,hba1c,change from baseline,LS mean change,NA,-0.74,se,0.07,percentage,30,weeks,aact,NA
+51233296,NCT02273050,NA,uaa11100,NA,hba1c,change from baseline,LS mean change,NA,-2.794,se,0.0715,percentage,24,weeks,aact,NA
+51233294,NCT02273050,NA,uaa11101,NA,hba1c,change from baseline,LS mean change,NA,-3.007,se,0.0706,percentage,24,weeks,aact,NA
+51233295,NCT02273050,NA,uaa11102,NA,hba1c,change from baseline,LS mean change,NA,-2.123,se,0.0701,percentage,24,weeks,aact,NA
+51238923,NCT02284893,NA,uaa11104,NA,hba1c,change from baseline,LS mean change,NA,-1.41,se,0.0696,percentage,26,weeks,aact,NA
+51238924,NCT02284893,NA,uaa11105,NA,hba1c,change from baseline,LS mean change,NA,-1.07,se,0.0719,percentage,26,weeks,aact,NA
+51242299,NCT02288273,NA,uaa11107,NA,hba1c,change from baseline,LS mean change,NA,-0.92,se,0.102,percentage,70,days,aact,NA
+51242300,NCT02288273,NA,uaa11108,NA,hba1c,change from baseline,LS mean change,NA,-0.2,se,0.108,percentage,70,days,aact,NA
+51256404,NCT02305381,NA,uaa11110,NA,hba1c,change from baseline,LS mean change,NA,-0.09,se,0.09,percentage,30,weeks,aact,NA
+51256402,NCT02305381,NA,uaa11111,NA,hba1c,change from baseline,LS mean change,NA,-1.45,se,0.09,percentage,30,weeks,aact,NA
+51256403,NCT02305381,NA,uaa11112,NA,hba1c,change from baseline,LS mean change,NA,-1.85,se,0.09,percentage,30,weeks,aact,NA
+51277119,NCT02324569,NA,uaa11114,NA,hba1c,change from baseline,mean change,NA,0.07,sd,0.788,percentage,12,weeks,aact,NA
+51277118,NCT02324569,NA,uaa11116,NA,hba1c,change from baseline,mean change,NA,-0.56,sd,0.71,percentage,12,weeks,aact,NA
+51294224,NCT02354222,NA,uaa11117,NA,hba1c,change from baseline,LS mean change,NA,0,se,0.08,percentage,24,weeks,aact,NA
+51294223,NCT02354222,NA,uaa11118,NA,hba1c,change from baseline,LS mean change,NA,-0.94,se,0.08,percentage,24,weeks,aact,NA
+51294233,NCT02354235,NA,uaa11120,NA,hba1c,change from baseline,LS mean change,NA,-0.97,se,0.1,percentage,24,weeks,aact,NA
+51294234,NCT02354235,NA,uaa11121,NA,hba1c,change from baseline,LS mean change,NA,-0.1,se,0.1,percentage,24,weeks,aact,NA
+51299976,NCT02360774,NA,uaa11123,NA,hba1c,change from baseline,mean change,NA,-0.4,se,0.1,percentage,18,weeks,aact,NA
+51299977,NCT02360774,NA,uaa11124,NA,hba1c,change from baseline,mean change,NA,-0.1,se,0.2,percentage,18,weeks,aact,NA
+51329455,NCT02413398,NA,uaa11126,NA,hba1c,change from baseline,adjusted mean change,NA,-0.37,se,0.1,percentage,24,weeks,aact,NA
+51329456,NCT02413398,NA,uaa11127,NA,hba1c,change from baseline,adjusted mean change,NA,-0.03,se,0.1,percentage,24,weeks,aact,NA
+51336884,NCT02429258,NA,uaa11129,NA,hba1c,change from baseline,LS mean change,NA,-0.51,se,0.07,percentage,4,weeks,aact,NA
+51336885,NCT02429258,NA,uaa11130,NA,hba1c,change from baseline,LS mean change,NA,-0.28,se,0.07,percentage,4,weeks,aact,NA
+51361106,NCT02453555,NA,uaa11132,NA,hba1c,change from baseline,LS mean change,NA,-0.93,se,0.06,percentage,24,weeks,aact,NA
+51361107,NCT02453555,NA,uaa11133,NA,hba1c,change from baseline,LS mean change,NA,0.21,se,0.09,percentage,24,weeks,aact,NA
+51362985,NCT02455076,NA,uaa11135,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,1.5,percentage,12,weeks,aact,NA
+51362987,NCT02455076,NA,uaa11136,NA,hba1c,change from baseline,mean change,NA,-1.4,sd,1.1,percentage,12,weeks,aact,NA
+51362986,NCT02455076,NA,uaa99999,NA,hba1c,change from baseline,mean change,NA,-1.1,sd,2.2,percentage,12,weeks,aact,NA
+51368214,NCT02465515,NA,uaa11138,NA,hba1c,change from baseline,LS mean change,NA,-0.92,se,0.019,percentage,8,months,aact,NA
+51368213,NCT02465515,NA,uaa11139,NA,hba1c,change from baseline,LS mean change,NA,-0.28,se,0.02,percentage,8,months,aact,NA
+51371775,NCT02471404,NA,uaa11141,NA,hba1c,change from baseline,LS mean change,NA,-0.82,se,0.049,percentage,52,weeks,aact,NA
+51371776,NCT02471404,NA,uaa11142,NA,hba1c,change from baseline,LS mean change,NA,-1.2,se,0.046,percentage,52,weeks,aact,NA
+51371777,NCT02471404,NA,uaa11143,NA,hba1c,change from baseline,LS mean change,NA,-0.99,se,0.048,percentage,52,weeks,aact,NA
+51383083,NCT02489968,NA,uaa11145,NA,hba1c,change from baseline,LS mean change,NA,-0.12,se,0.06,percentage,24,weeks,aact,NA
+51383085,NCT02489968,NA,uaa11146,NA,hba1c,change from baseline,LS mean change,NA,-0.33,se,0.05,percentage,24,weeks,aact,NA
+51383082,NCT02489968,NA,uaa11147,NA,hba1c,change from baseline,LS mean change,NA,-0.94,se,0.05,percentage,24,weeks,aact,NA
+51383084,NCT02489968,NA,uaa11148,NA,hba1c,change from baseline,LS mean change,NA,-0.91,se,0.05,percentage,24,weeks,aact,NA
+51402039,NCT02505334,NA,uaa11150,NA,hba1c,change from baseline,LS mean change,NA,0.17,se,0.06,percentage,26,weeks,aact,NA
+51402038,NCT02505334,NA,uaa11151,NA,hba1c,change from baseline,LS mean change,NA,-0.23,se,0.06,percentage,26,weeks,aact,NA
+51406920,NCT02512068,NA,uaa11153,NA,hba1c,change from baseline,mean change,NA,0,sd,0.731,percentage,12,weeks,aact,NA
+51406919,NCT02512068,NA,uaa11155,NA,hba1c,change from baseline,mean change,NA,-0.7,sd,0.555,percentage,12,weeks,aact,NA
+51440112,NCT02532855,NA,uaa11156,NA,hba1c,change from baseline,LS mean change,NA,-0.36,95%ci,-0.45;-0.27,percentage,24,weeks,aact,NA
+51440111,NCT02532855,NA,uaa11157,NA,hba1c,change from baseline,LS mean change,NA,-0.51,95%ci,-0.6;-0.43,percentage,24,weeks,aact,NA
+51479513,NCT02564926,NA,uaa11159,NA,hba1c,change from baseline,LS mean change,NA,-1,95%ci,-1.259;-0.745,percentage,52,weeks,aact,NA
+51479514,NCT02564926,NA,uaa11160,NA,hba1c,change from baseline,LS mean change,NA,-0.54,95%ci,-0.802;-0.287,percentage,52,weeks,aact,NA
+51488729,NCT02577003,NA,uaa11162,NA,hba1c,change from baseline,LS mean change,NA,-0.84,95%ci,-0.99;-0.69,percentage,24,weeks,aact,NA
+51488730,NCT02577003,NA,uaa11163,NA,hba1c,change from baseline,LS mean change,NA,-0.07,95%ci,-0.22;0.09,percentage,24,weeks,aact,NA
+51488744,NCT02577016,NA,uaa11165,NA,hba1c,change from baseline,LS mean change,NA,0.14,95%ci,-0.02;0.29,percentage,24,weeks,aact,NA
+51488743,NCT02577016,NA,uaa11166,NA,hba1c,change from baseline,LS mean change,NA,-0.69,95%ci,-0.85;-0.53,percentage,24,weeks,aact,NA
+51496058,NCT02589626,NA,uaa11168,NA,hba1c,change from baseline,adjusted mean change,NA,-0.55,sd,0.15,percentage,52,weeks,aact,NA
+51496059,NCT02589626,NA,uaa11169,NA,hba1c,change from baseline,adjusted mean change,NA,-0.77,sd,0.14,percentage,52,weeks,aact,NA
+51496061,NCT02589639,NA,uaa11171,NA,hba1c,change from baseline,mean change,NA,-0.92,se,0.07,percentage,16,weeks,aact,NA
+51496062,NCT02589639,NA,uaa11172,NA,hba1c,change from baseline,mean change,NA,-1,se,0.07,percentage,16,weeks,aact,NA
+51496060,NCT02589639,NA,uaa11173,NA,hba1c,change from baseline,mean change,NA,0,se,0.07,percentage,16,weeks,aact,NA
+51504772,NCT02597049,NA,uaa11175,NA,hba1c,change from baseline,LS mean change,NA,-1.19,se,0.063,percentage,24,weeks,aact,NA
+51504771,NCT02597049,NA,uaa11176,NA,hba1c,change from baseline,LS mean change,NA,-1.33,se,0.063,percentage,24,weeks,aact,NA
+51504773,NCT02597049,NA,uaa11177,NA,hba1c,change from baseline,LS mean change,NA,-0.51,se,0.065,percentage,24,weeks,aact,NA
+51510314,NCT02607306,NA,uaa11179,NA,hba1c,change from baseline,mean change,NA,-1.8,sd,1.02,percentage,52,weeks,aact,NA
+51510313,NCT02607306,NA,uaa11180,NA,hba1c,change from baseline,mean change,NA,-2.42,sd,1.04,percentage,52,weeks,aact,NA
+51510315,NCT02607306,NA,uaa11181,NA,hba1c,change from baseline,mean change,NA,-1.8,sd,0.92,percentage,52,weeks,aact,NA
+51510624,NCT02607865,NA,uaa11183,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,1,percentage,26,weeks,aact,NA
+51510622,NCT02607865,NA,uaa11184,NA,hba1c,change from baseline,mean change,NA,-0.6,sd,1,percentage,26,weeks,aact,NA
+51510623,NCT02607865,NA,uaa11185,NA,hba1c,change from baseline,mean change,NA,-1.1,sd,1.1,percentage,26,weeks,aact,NA
+51510625,NCT02607865,NA,uaa11186,NA,hba1c,change from baseline,mean change,NA,-0.8,sd,0.9,percentage,26,weeks,aact,NA
+51523621,NCT02630706,NA,uaa11188,NA,hba1c,change from baseline,LS mean change,NA,-0.89,95%ci,-1.01;-0.77,percentage,26,weeks,aact,NA
+51523620,NCT02630706,NA,uaa11189,NA,hba1c,change from baseline,LS mean change,NA,-1,95%ci,-1.12;-0.88,percentage,26,weeks,aact,NA
+51523622,NCT02630706,NA,uaa11190,NA,hba1c,change from baseline,LS mean change,NA,-0.2,95%ci,-0.33;-0.08,percentage,26,weeks,aact,NA
+51542009,NCT02648204,NA,uaa11192,NA,hba1c,change from baseline,LS mean change,NA,-1.11,se,0.05,percentage,40,weeks,aact,NA
+51542010,NCT02648204,NA,uaa11193,NA,hba1c,change from baseline,LS mean change,NA,-1.37,se,0.06,percentage,40,weeks,aact,NA
+51542007,NCT02648204,NA,uaa11194,NA,hba1c,change from baseline,LS mean change,NA,-1.51,se,0.06,percentage,40,weeks,aact,NA
+51542008,NCT02648204,NA,uaa11195,NA,hba1c,change from baseline,LS mean change,NA,-1.78,se,0.06,percentage,40,weeks,aact,NA
+51561904,NCT02681094,NA,uaa11197,NA,hba1c,change from baseline,LS mean change,NA,-0.63,se,0.056,percentage,24,weeks,aact,NA
+51561903,NCT02681094,NA,uaa11198,NA,hba1c,change from baseline,LS mean change,NA,-1.03,se,0.0558,percentage,24,weeks,aact,NA
+51561905,NCT02681094,NA,uaa11199,NA,hba1c,change from baseline,LS mean change,NA,-0.69,se,0.0551,percentage,24,weeks,aact,NA
+51573010,NCT02692716,NA,uaa11206,NA,hba1c,change from baseline,mean change,NA,-0.3,sd,1.3,percentage,83,weeks,aact,NA
+51573009,NCT02692716,NA,uaa11207,NA,hba1c,change from baseline,mean change,NA,-1,sd,1.4,percentage,83,weeks,aact,NA
+51590757,NCT02715258,NA,uaa11209,NA,hba1c,change from baseline,LS mean change,NA,-0.51,se,0.082,percentage,24,weeks,aact,NA
+51590758,NCT02715258,NA,uaa11210,NA,hba1c,change from baseline,LS mean change,NA,-0.1,se,0.108,percentage,24,weeks,aact,NA
+51599118,NCT02730377,NA,uaa11212,NA,hba1c,change from baseline,mean change,NA,-1.4,sd,1.06,percentage,104,weeks,aact,NA
+51599119,NCT02730377,NA,uaa11213,NA,hba1c,change from baseline,mean change,NA,-1.1,sd,1.04,percentage,104,weeks,aact,NA
+51603812,NCT02738879,NA,uaa11215,NA,hba1c,change from baseline,LS mean change,NA,-1.42,95%ci,-1.52,percentage,30,weeks,aact,NA
+51603811,NCT02738879,NA,uaa11216,NA,hba1c,change from baseline,LS mean change,NA,-1.88,95%ci,-1.98,percentage,30,weeks,aact,NA
+51608129,NCT02750410,NA,uaa11218,NA,hba1c,change from baseline,LS mean change,NA,-1.45,se,0.057,percentage,16,weeks,aact,NA
+51608128,NCT02750410,NA,uaa11219,NA,hba1c,change from baseline,LS mean change,NA,0.06,se,0.099,percentage,16,weeks,aact,NA
+51617876,NCT02769481,NA,uaa11221,NA,hba1c,change from baseline,LS mean change,NA,-0.7,se,0.058,percentage,60,weeks,aact,NA
+51617877,NCT02769481,NA,uaa11222,NA,hba1c,change from baseline,LS mean change,NA,-0.66,se,0.058,percentage,60,weeks,aact,NA
+51630773,NCT02791490,NA,uaa11224,NA,hba1c,change from baseline,LS mean change,NA,-0.69,95%ci,-0.88;-0.51,percentage,20,weeks,aact,NA
+51630772,NCT02791490,NA,uaa11225,NA,hba1c,change from baseline,LS mean change,NA,-1.1,95%ci,-1.28;-0.93,percentage,20,weeks,aact,NA
+51655971,NCT02827708,NA,uaa11227,NA,hba1c,change from baseline,mean change,NA,-0.2,sd,0.9,percentage,26,weeks,aact,NA
+51655970,NCT02827708,NA,uaa11228,NA,hba1c,change from baseline,mean change,NA,-1.1,sd,1,percentage,26,weeks,aact,NA
+51658782,NCT02836873,NA,uaa11230,NA,hba1c,change from baseline,LS mean change,NA,-0.59,se,0.065,percentage,24,weeks,aact,NA
+51658783,NCT02836873,NA,uaa11231,NA,hba1c,change from baseline,LS mean change,NA,-0.31,se,0.066,percentage,24,weeks,aact,NA
+51662462,NCT02849080,NA,uaa11233,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,0.9,percentage,52,weeks,aact,NA
+51662463,NCT02849080,NA,uaa11234,NA,hba1c,change from baseline,mean change,NA,-0.8,sd,1,percentage,52,weeks,aact,NA
+51671310,NCT02863328,NA,uaa11236,NA,hba1c,change from baseline,mean change,NA,-0.9,sd,0.9,percentage,26,weeks,aact,NA
+51671309,NCT02863328,NA,uaa11237,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,1.1,percentage,26,weeks,aact,NA
+51671860,NCT02863419,NA,uaa11239,NA,hba1c,change from baseline,mean change,NA,-1.1,sd,0.9,percentage,26,weeks,aact,NA
+51671861,NCT02863419,NA,uaa11240,NA,hba1c,change from baseline,mean change,NA,-0.1,sd,0.7,percentage,26,weeks,aact,NA
+51671859,NCT02863419,NA,uaa11241,NA,hba1c,change from baseline,mean change,NA,-1.2,sd,0.9,percentage,26,weeks,aact,NA
+51699870,NCT02897349,NA,uaa11243,NA,hba1c,change from baseline,LS mean change,NA,-0.61,se,0.09,percentage,24,weeks,aact,NA
+51699869,NCT02897349,NA,uaa11244,NA,hba1c,change from baseline,LS mean change,NA,-0.2,se,0.09,percentage,24,weeks,aact,NA
+51707105,NCT02906709,NA,uaa11246,NA,hba1c,change from baseline,mean change,NA,-0.57,95%ci,-0.73;-0.42,percentage,52,weeks,aact,NA
+51707106,NCT02906709,NA,uaa11247,NA,hba1c,change from baseline,mean change,NA,-0.57,95%ci,-0.81;-0.32,percentage,52,weeks,aact,NA
+51707207,NCT02906930,NA,uaa11249,NA,hba1c,change from baseline,mean change,NA,-0.3,sd,1.2,percentage,26,weeks,aact,NA
+51707206,NCT02906930,NA,uaa11250,NA,hba1c,change from baseline,mean change,NA,-1.5,sd,1,percentage,26,weeks,aact,NA
+51707204,NCT02906930,NA,uaa11251,NA,hba1c,change from baseline,mean change,NA,-0.9,sd,1.2,percentage,26,weeks,aact,NA
+51707205,NCT02906930,NA,uaa11252,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,1,percentage,26,weeks,aact,NA
+51713406,NCT02911948,NA,uaa11254,NA,hba1c,change from baseline,mean change,NA,-1.95,sd,1.01,percentage,26,weeks,aact,NA
+51713407,NCT02911948,NA,uaa11255,NA,hba1c,change from baseline,mean change,NA,-0.65,sd,0.98,percentage,26,weeks,aact,NA
+52189901,NCT02916706,NA,uaa11257,NA,hba1c,change from baseline,LS mean change,NA,-0.14,se,0.06,percentage,24,weeks,aact,NA
+52189900,NCT02916706,NA,uaa11258,NA,hba1c,change from baseline,LS mean change,NA,-0.95,se,0.06,percentage,24,weeks,aact,NA
+52189897,NCT02924064,NA,uaa11260,NA,hba1c,change from baseline,LS mean change,NA,-0.01,se,0.07,percentage,24,weeks,aact,NA
+52189896,NCT02924064,NA,uaa11261,NA,hba1c,change from baseline,LS mean change,NA,-0.72,se,0.07,percentage,24,weeks,aact,NA
+51721485,NCT02926937,NA,uaa11263,NA,hba1c,change from baseline,LS mean change,NA,-0.34,se,0.12,percentage,26,weeks,aact,NA
+51721508,NCT02926937,NA,uaa11264,NA,hba1c,change from baseline,LS mean change,NA,-0.93,se,0.148,percentage,26,weeks,aact,NA
+51721486,NCT02926937,NA,uaa11265,NA,hba1c,change from baseline,LS mean change,NA,-1.03,se,0.122,percentage,26,weeks,aact,NA
+51721521,NCT02926950,NA,uaa11267,NA,hba1c,change from baseline,LS mean change,NA,-0.29,se,0.079,percentage,26,weeks,aact,NA
+51721522,NCT02926950,NA,uaa11268,NA,hba1c,change from baseline,LS mean change,NA,-0.77,se,0.077,percentage,26,weeks,aact,NA
+51751093,NCT02963922,NA,uaa11270,NA,hba1c,change from baseline,mean change,NA,-1.1,sd,1.2,percentage,56,weeks,aact,NA
+51751094,NCT02963922,NA,uaa11271,NA,hba1c,change from baseline,mean change,NA,-0.5,sd,1.2,percentage,56,weeks,aact,NA
+51751953,NCT02964247,NA,uaa11273,NA,hba1c,change from baseline,mean change,NA,-1,sd,0.86,percentage,26,weeks,aact,NA
+51751954,NCT02964247,NA,uaa11274,NA,hba1c,change from baseline,mean change,NA,-0.32,sd,0.83,percentage,26,weeks,aact,NA
+51785072,NCT03015220,NA,uaa11276,NA,hba1c,change from baseline,mean change,NA,-1.4,sd,0.9,percentage,52,weeks,aact,NA
+51785071,NCT03015220,NA,uaa11277,NA,hba1c,change from baseline,mean change,NA,-1.8,sd,1,percentage,52,weeks,aact,NA
+51785069,NCT03015220,NA,uaa11278,NA,hba1c,change from baseline,mean change,NA,-0.8,sd,1,percentage,52,weeks,aact,NA
+51785070,NCT03015220,NA,uaa11279,NA,hba1c,change from baseline,mean change,NA,-1.4,sd,1,percentage,52,weeks,aact,NA
+51787197,NCT03018028,NA,uaa11281,NA,hba1c,change from baseline,mean change,NA,-1.4,sd,1.1,percentage,26,weeks,aact,NA
+51787198,NCT03018028,NA,uaa11282,NA,hba1c,change from baseline,mean change,NA,-0.4,sd,1,percentage,26,weeks,aact,NA
+51787196,NCT03018028,NA,uaa11283,NA,hba1c,change from baseline,mean change,NA,-1.7,sd,0.9,percentage,26,weeks,aact,NA
+51787194,NCT03018028,NA,uaa11284,NA,hba1c,change from baseline,mean change,NA,-1.1,sd,0.8,percentage,26,weeks,aact,NA
+51787195,NCT03018028,NA,uaa11285,NA,hba1c,change from baseline,mean change,NA,-1.6,sd,0.8,percentage,26,weeks,aact,NA
+51791933,NCT03021187,NA,uaa11287,NA,hba1c,change from baseline,mean change,NA,-0.1,sd,0.9,percentage,26,weeks,aact,NA
+51791932,NCT03021187,NA,uaa11288,NA,hba1c,change from baseline,mean change,NA,-1.3,sd,1.1,percentage,26,weeks,aact,NA
+51791930,NCT03021187,NA,uaa11289,NA,hba1c,change from baseline,mean change,NA,-0.5,sd,1,percentage,26,weeks,aact,NA
+51791931,NCT03021187,NA,uaa11290,NA,hba1c,change from baseline,mean change,NA,-1,sd,1.1,percentage,26,weeks,aact,NA
+51816017,NCT03061214,NA,uaa11292,NA,hba1c,change from baseline,mean change,NA,-1.5,sd,1.1,percentage,30,weeks,aact,NA
+51816018,NCT03061214,NA,uaa11293,NA,hba1c,change from baseline,mean change,NA,-1.7,sd,1,percentage,30,weeks,aact,NA
+51816019,NCT03061214,NA,uaa11294,NA,hba1c,change from baseline,mean change,NA,-0.9,sd,0.9,percentage,30,weeks,aact,NA
+51817734,NCT03066830,NA,uaa11296,NA,hba1c,change from baseline,LS mean change,NA,0.06,se,0.082,percentage,26,weeks,aact,NA
+51817735,NCT03066830,NA,uaa11297,NA,hba1c,change from baseline,LS mean change,NA,-0.7,se,0.068,percentage,26,weeks,aact,NA
+51826429,NCT03086330,NA,uaa11299,NA,hba1c,change from baseline,mean change,NA,-0.2,sd,0.9,percentage,30,weeks,aact,NA
+51826428,NCT03086330,NA,uaa11300,NA,hba1c,change from baseline,mean change,NA,-1.6,sd,0.8,percentage,30,weeks,aact,NA
+51838614,NCT03115112,NA,uaa11302,NA,hba1c,change from baseline,LS mean change,NA,-0.74,95%ci,-0.86;-0.62,percentage,24,weeks,aact,NA
+51838615,NCT03115112,NA,uaa11303,NA,hba1c,change from baseline,LS mean change,NA,-0.82,95%ci,-0.93;-0.71,percentage,24,weeks,aact,NA
+51844331,NCT03136484,NA,uaa11305,NA,hba1c,change from baseline,mean change,NA,-1,sd,1.1,percentage,52,weeks,aact,NA
+51844330,NCT03136484,NA,uaa11306,NA,hba1c,change from baseline,mean change,NA,-1.5,sd,1.3,percentage,52,weeks,aact,NA
+51858934,NCT03172494,NA,uaa11308,NA,hba1c,change from baseline,mean change,NA,-1.2,sd,0.99,percentage,26,weeks,aact,NA
+51858933,NCT03172494,NA,uaa11309,NA,hba1c,change from baseline,mean change,NA,-1.71,sd,0.88,percentage,26,weeks,aact,NA
+51858935,NCT03172494,NA,uaa11310,NA,hba1c,change from baseline,mean change,NA,-1.16,sd,0.89,percentage,26,weeks,aact,NA
+51860889,NCT03175120,NA,uaa11312,NA,hba1c,change from baseline,mean change,NA,-1.93,sd,1.14,percentage,26,weeks,aact,NA
+51860890,NCT03175120,NA,uaa11313,NA,hba1c,change from baseline,mean change,NA,-1.06,sd,1.19,percentage,26,weeks,aact,NA
+51868026,NCT03191396,NA,uaa11315,NA,hba1c,change from baseline,mean change,NA,-1.1,sd,1,percentage,30,weeks,aact,NA
+51868025,NCT03191396,NA,uaa11316,NA,hba1c,change from baseline,mean change,NA,-1.7,sd,0.9,percentage,30,weeks,aact,NA
+51896636,NCT03242018,NA,uaa11318,NA,hba1c,change from baseline,LS mean change,NA,-0.11,se,0.151,percentage,26,weeks,aact,NA
+51896639,NCT03242018,NA,uaa11319,NA,hba1c,change from baseline,LS mean change,NA,-0.07,se,0.162,percentage,26,weeks,aact,NA
+51896637,NCT03242018,NA,uaa11320,NA,hba1c,change from baseline,LS mean change,NA,-0.4,se,0.131,percentage,26,weeks,aact,NA
+51896686,NCT03242252,NA,uaa11322,NA,hba1c,change from baseline,LS mean change,NA,-0.22,se,0.061,percentage,26,weeks,aact,NA
+51896687,NCT03242252,NA,uaa11323,NA,hba1c,change from baseline,LS mean change,NA,-0.32,se,0.06,percentage,26,weeks,aact,NA
+51896688,NCT03242252,NA,uaa11324,NA,hba1c,change from baseline,LS mean change,NA,-0.46,se,0.06,percentage,26,weeks,aact,NA
+51902225,NCT03259789,NA,uaa11326,NA,hba1c,change from baseline,LS mean change,NA,-1.09,se,0.076,percentage,24,weeks,aact,NA
+51902226,NCT03259789,NA,uaa11327,NA,hba1c,change from baseline,LS mean change,NA,-0.56,se,0.075,percentage,24,weeks,aact,NA
+51952887,NCT03332771,NA,uaa11329,NA,hba1c,change from baseline,LS mean change,NA,-0.61,se,0.093,percentage,52,weeks,aact,NA
+51952884,NCT03332771,NA,uaa11330,NA,hba1c,change from baseline,LS mean change,NA,-0.4,se,0.187,percentage,52,weeks,aact,NA
+51952886,NCT03332771,NA,uaa11331,NA,hba1c,change from baseline,LS mean change,NA,-0.49,se,0.114,percentage,52,weeks,aact,NA
+51952885,NCT03332771,NA,uaa11332,NA,hba1c,change from baseline,LS mean change,NA,-0.65,se,0.101,percentage,52,weeks,aact,NA
+51960071,NCT03351478,NA,uaa11334,NA,hba1c,change from baseline,adjusted mean change,NA,-0.8,se,0.1,percentage,26,weeks,aact,NA
+51960072,NCT03351478,NA,uaa11335,NA,hba1c,change from baseline,adjusted mean change,NA,-0.3,se,0.1,percentage,26,weeks,aact,NA
+51960070,NCT03351478,NA,uaa11336,NA,hba1c,change from baseline,adjusted mean change,NA,-0.7,se,0.1,percentage,26,weeks,aact,NA
+52000652,NCT03495102,NA,uaa11338,NA,hba1c,change from baseline,LS mean change,NA,-1.53,se,0.04,percentage,36,weeks,aact,NA
+52000653,NCT03495102,NA,uaa11339,NA,hba1c,change from baseline,LS mean change,NA,-1.71,se,0.04,percentage,36,weeks,aact,NA
+52000654,NCT03495102,NA,uaa11340,NA,hba1c,change from baseline,LS mean change,NA,-1.87,se,0.04,percentage,36,weeks,aact,NA
+52014049,NCT03552757,NA,uaa11342,NA,hba1c,change from baseline,mean change,NA,-0.3,sd,1.3,percentage,68,weeks,aact,NA
+52014047,NCT03552757,NA,uaa11343,NA,hba1c,change from baseline,mean change,NA,-1.5,sd,1.1,percentage,68,weeks,aact,NA
+52014048,NCT03552757,NA,uaa11344,NA,hba1c,change from baseline,mean change,NA,-1.7,sd,1.2,percentage,68,weeks,aact,NA
+49933023,NCT00838916,NA,uaa10386,NA,hba1c,change from baseline,mean change,NA,-0.67,se,0.044,percentage,52,weeks,aact,NA
+49933024,NCT00838916,NA,uaa10387,NA,hba1c,change from baseline,mean change,NA,-0.79,se,0.064,percentage,52,weeks,aact,NA
+49932971,NCT00838903,NA,uaa10383,NA,hba1c,change from baseline,mean change,NA,0.27,se,0.27,percentage,104,weeks,aact,NA
+49932972,NCT00838903,NA,uaa10384,NA,hba1c,change from baseline,mean change,NA,-0.28,se,-0.28,percentage,104,weeks,aact,NA
+49932973,NCT00838903,NA,uaa10382,NA,hba1c,change from baseline,mean change,NA,-0.36,se,-0.36,percentage,104,weeks,aact,NA
+49932974,NCT00838903,NA,uaa10381,NA,hba1c,change from baseline,mean change,NA,-0.63,se,-0.63,percentage,104,weeks,aact,NA

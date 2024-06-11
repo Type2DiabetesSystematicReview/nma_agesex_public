@@ -1,0 +1,415 @@
+result_id,trial_id,analysis_population,arm_id_unq,comp_id,outcome_harm_label,result_description,result_type,ancova,result,dispersion_type,dispersion,units_label,timepoint,timepoint_units,source,arm_id_subgroup
+updresb00303,100-IRMI/PRI 16/6/2 (007/2017),NA,updac0092,NA,hba1c,change from baseline,mean change,n,-0.16,sd,1.26,percentage,12,weeks,manual_extraction,NA
+updresb00686,100-IRMI/PRI 16/6/2 (007/2017),NA,updac0091,NA,hba1c,change from baseline,mean change,NA,-0.83,sd,1.47,percentage,12,weeks,manual_extraction,NA
+updresb00556,2008-008367-95,itt,updac0222,NA,hba1c,baseline,mean,n,63.5,sd,12.5,mmol/mol,0,weeks,manual_extraction,NA
+updresb00557,2008-008367-95,itt,updac0222,NA,hba1c,endpoint,mean,n,60.7,sd,14.2,mmol/mol,12,weeks,manual_extraction,NA
+updresb00558,2008-008367-95,itt,updac0222,NA,hba1c,change from baseline,mean change,n,-2.8,not reported,NA,mmol/mol,12,weeks,manual_extraction,NA
+updresb00559,2008-008367-95,itt,updac0223,NA,hba1c,baseline,mean,n,60.2,sd,9.3,mmol/mol,0,weeks,manual_extraction,NA
+updresb00560,2008-008367-95,itt,updac0223,NA,hba1c,endpoint,mean,n,59.9,sd,14,mmol/mol,12,weeks,manual_extraction,NA
+updresb00561,2008-008367-95,itt,updac0223,NA,hba1c,change from baseline,mean change,n,-0.3,not reported,NA,mmol/mol,12,weeks,manual_extraction,NA
+updresb00336,2012-001941-42,itt,updac0121,NA,hba1c,baseline,mean,n,8.98,sd,0.99,percentage,0,weeks,manual_extraction,NA
+updresb00337,2012-001941-42,itt,updac0121,NA,hba1c,endpoint,mean,n,8.89,sd,1,percentage,24,weeks,manual_extraction,NA
+updresb00338,2012-001941-42,itt,updac0122,NA,hba1c,baseline,mean,n,8.96,sd,1.1,percentage,0,weeks,manual_extraction,NA
+updresb00339,2012-001941-42,itt,updac0122,NA,hba1c,endpoint,mean,n,8.97,sd,1.11,percentage,24,weeks,manual_extraction,NA
+updresb00654,2016-000172-19,NA,updac0123,NA,hba1c,baseline,mean,n,7.5,sd,0.9,percentage,0,months,manual_extraction,NA
+updresb00655,2016-000172-19,NA,updac0123,NA,hba1c,endpoint,mean,n,7.1,sd,0.7,percentage,3,months,manual_extraction,NA
+updresb00656,2016-000172-19,NA,updac0124,NA,hba1c,baseline,mean,n,7.9,sd,1.3,percentage,0,months,manual_extraction,NA
+updresb00657,2016-000172-19,NA,updac0124,NA,hba1c,endpoint,mean,n,7.8,sd,1.5,percentage,3,months,manual_extraction,NA
+updresb00329,2016-000574-38,itt,updac0119,NA,hba1c,change from baseline,mean change,n,-1.63,95%ci,"-2.27,-0.98",percentage,24,weeks,manual_extraction,NA
+updresb00330,2016-000574-38,itt,updac0120,NA,hba1c,change from baseline,mean change,n,-0.63,95%ci,"-0.96,-0.3",percentage,24,weeks,manual_extraction,NA
+updresb00333,2016-000574-38,itt,NA,updcompb0001,hba1c,between treatment difference in adjusted mean change,adjusted mean difference,y,-0.55,95%ci,"-0.88,-0.2",percentage,24,weeks,manual_extraction,NA
+updresb00634,2016-002225-10,NA,updac0087,NA,hba1c,change from baseline,mean change,n,-4.6,95%ci,"-7.4,-1.8",mmol/mol,6,months,manual_extraction,NA
+updresb00635,2016-002225-10,NA,updac0088,NA,hba1c,change from baseline,mean change,n,-4.9,95%ci,"-8.8,-0.9",mmol/mol,6,months,manual_extraction,NA
+updresb00665,"2017-001,454-33",per protocol,updac0125,NA,hba1c,change from baseline,mean change,n,-1.6,95%ci,"-2,-1.3",percentage,24,weeks,manual_extraction,NA
+updresb00666,"2017-001,454-33",per protocol,updac0126,NA,hba1c,change from baseline,mean change,n,-1.5,95%ci,"-1.9,-1",percentage,24,weeks,manual_extraction,NA
+updresb00667,"2017-001,454-33",per protocol,NA,updcompb0047,hba1c,between treatment difference in mean change,mean difference,n,-0.1,95%ci,"-0.7,0.4",percentage,24,weeks,manual_extraction,NA
+updresb00304,ACTRN12616001059459,per protocol,updac0093,NA,hba1c,change from baseline,mean change,y,-0.58,sd,0.25,percentage,56,days,manual_extraction,NA
+updresb00306,ACTRN12616001059459,per protocol,NA,updcompb0002,hba1c,between treatment difference in adjusted mean change,adjsuted mean difference,y,-0.48,95%ci,"-0.7,-0.26",percentage,56,days,manual_extraction,NA
+updresb00308,ACTRN12616001059459,per protocol,updac0094,NA,hba1c,change from baseline,mean change,y,-0.13,sd,0.29,percentage,56,days,manual_extraction,NA
+updresb00313,ChiCTR1800015296,NA,updac0096,NA,hba1c,change from baseline,mean change,n,-0.82,sd,0.73,percentage,12,weeks,manual_extraction,NA
+updresb00624,ChiCTR-1800015658,fas,updac0078,NA,hba1c,change from baseline,mean change,n,-1.31,sd,1.42,percentage,52,weeks,manual_extraction,NA
+updresb00625,ChiCTR-1800015658,fas,updac0079,NA,hba1c,change from baseline,mean change,n,-1.09,sd,1.42,percentage,52,weeks,manual_extraction,NA
+updresb00292,ChiCTR2000035091,NA,updac0080,NA,hba1c,change from baseline,adjusted mean change,y,-0.7,sd,1.1,percentage,26,weeks,manual_extraction,NA
+updresb00293,ChiCTR2000035091,NA,updac0081,NA,hba1c,change from baseline,adjusted mean change,y,-0.5,sd,1,percentage,26,weeks,manual_extraction,NA
+updresb00294,ChiCTR2000035091,NA,updac0082,NA,hba1c,change from baseline,adjusted mean change,y,-0.1,sd,0.6,percentage,26,weeks,manual_extraction,NA
+updresb00295,ChiCTR2000037951,NA,updac0083,NA,hba1c,change from baseline,mean change,n,-1.4,95%ci,"-2.28,-1.05",percentage,24,weeks,manual_extraction,NA
+updresb00296,ChiCTR2000037951,NA,updac0084,NA,hba1c,change from baseline,mean change,n,-1.81,sd,0.89,percentage,24,weeks,manual_extraction,NA
+updresb00636,ChiCTR2100054678,NA,updac0103,NA,hba1c,change from baseline,adjusted mean change,y,-0.5,se,0.09,percentage,12,weeks,manual_extraction,NA
+updresb00637,ChiCTR2100054678,NA,updac0104,NA,hba1c,change from baseline,adjusted mean change,y,0.1,se,0.09,percentage,12,weeks,manual_extraction,NA
+updresb00638,ChiCTR2100054678,NA,NA,updcompb0046,hba1c,between treatment difference in adjusted mean change,adjusted mean difference,y,-0.6,95%ci,"-0.83,-0.42",percentage,12,weeks,manual_extraction,NA
+updresb00646,ChiCTR-IPR-14005568,NA,updac0105,NA,hba1c,baseline,mean,n,8.43,sd,1.06,percentage,0,weeks,manual_extraction,NA
+updresb00647,ChiCTR-IPR-14005568,NA,updac0105,NA,hba1c,endpoint,mean,n,7.05,sd,1.04,percentage,24,weeks,manual_extraction,NA
+updresb00648,ChiCTR-IPR-14005568,NA,updac0106,NA,hba1c,baseline,mean,n,8.41,sd,0.91,percentage,0,weeks,manual_extraction,NA
+updresb00649,ChiCTR-IPR-14005568,NA,updac0106,NA,hba1c,endpoint,mean,n,7.42,sd,0.83,percentage,24,weeks,manual_extraction,NA
+updresb00630,ChiCTR-IPR-17010825,itt,updac0085,NA,hba1c,change from baseline,mean change,n,-2.574,sd,2.02,percentage,24,weeks,manual_extraction,NA
+updresb00631,ChiCTR-IPR-17010825,itt,updac0086,NA,hba1c,change from baseline,mean change,n,-1.562,sd,1.513,percentage,24,weeks,manual_extraction,NA
+updresb00650,CTR20131268,NA,updac0107,NA,hba1c,change from baseline,median change,n,-1.3,not reported,NA,percentage,24,weeks,manual_extraction,NA
+updresb00651,CTR20131268,NA,updac0108,NA,hba1c,change from baseline,median change,n,-0.41,not reported,NA,percentage,24,weeks,manual_extraction,NA
+updresb00314,CTRI/2017/02/007766,NA,updac0109,NA,hba1c,baseline,mean,n,7.8,sd,1.22,percentage,0,weeks,manual_extraction,NA
+updresb00315,CTRI/2017/02/007766,NA,updac0109,NA,hba1c,endpoint,mean,n,6.63,sd,0.68,percentage,24,weeks,manual_extraction,NA
+updresb00316,CTRI/2017/02/007766,NA,updac0110,NA,hba1c,baseline,mean,n,7.63,sd,1.12,percentage,0,weeks,manual_extraction,NA
+updresb00317,CTRI/2017/02/007766,NA,updac0110,NA,hba1c,endpoint,mean,n,6.42,sd,0.84,percentage,24,weeks,manual_extraction,NA
+updresb00318,CTRI/2017/07/009121,mitt,updac0111,NA,hba1c,change from baseline,LS mean change,n,-0.68,se,0.087,percentage,24,weeks,manual_extraction,NA
+updresb00319,CTRI/2017/07/009121,mitt,updac0112,NA,hba1c,change from baseline,LS mean change,n,-0.73,se,0.083,percentage,24,weeks,manual_extraction,NA
+updresb00320,CTRI/2017/07/009121,mitt,updac0113,NA,hba1c,change from baseline,LS mean change,n,-0.62,se,0.109,percentage,24,weeks,manual_extraction,NA
+updresb00324,CTRI/2017/07/009121,mitt,NA,updcompb0003,hba1c,between treament difference in mean change,LS mean difference,n,-0.07,95%ci,"-0.33,0.2",percentage,24,weeks,manual_extraction,NA
+updresb00325,CTRI/2017/07/009121,mitt,NA,updcompb0004,hba1c,between treament difference in mean change,LS mean difference,n,-0.11,95%ci,"-0.37,0.15",percentage,24,weeks,manual_extraction,NA
+updresb00681,EudraCT 2017-000240-17,NA,updac0236,NA,hba1c,change from baseline,mean change,n,-12.7,sd,10.4,mmol/mol,12,weeks,manual_extraction,NA
+updresb00682,EudraCT 2017-000240-17,NA,updac0237,NA,hba1c,change from baseline,mean change,n,0.8,sd,17.3,mmol/mol,12,weeks,manual_extraction,NA
+updresb00580,Hawler Medical University records of the clinical trials: No.276,NA,updac0229,NA,hba1c,baseline,mean,n,9.4,sd,1.1,percentage,0,weeks,manual_extraction,NA
+updresb00581,Hawler Medical University records of the clinical trials: No.276,NA,updac0229,NA,hba1c,endpoint,mean,n,7.1,sd,0.9,percentage,12,weeks,manual_extraction,NA
+updresb00582,Hawler Medical University records of the clinical trials: No.276,NA,updac0230,NA,hba1c,baseline,mean,n,9.2,sd,1.1,percentage,0,weeks,manual_extraction,NA
+updresb00583,Hawler Medical University records of the clinical trials: No.276,NA,updac0230,NA,hba1c,endpoint,mean,n,7.8,sd,1.2,percentage,12,weeks,manual_extraction,NA
+updresb00584,Hawler Medical University records of the clinical trials: No.276,NA,updac0231,NA,hba1c,baseline,mean,n,9.1,sd,1.3,percentage,0,weeks,manual_extraction,NA
+updresb00585,Hawler Medical University records of the clinical trials: No.276,NA,updac0231,NA,hba1c,endpoint,mean,n,7.2,sd,1,percentage,12,weeks,manual_extraction,NA
+updresb00342,IRCT20090905002417N23,NA,updac0127,NA,hba1c,baseline,mean,n,7.28,sd,1.63,percentage,0,months,manual_extraction,NA
+updresb00343,IRCT20090905002417N23,NA,updac0127,NA,hba1c,endpoint,mean,n,7.13,sd,1.2,percentage,6,months,manual_extraction,NA
+updresb00346,IRCT20090905002417N23,NA,updac0128,NA,hba1c,baseline,mean,n,7.35,sd,1.41,percentage,0,months,manual_extraction,NA
+updresb00347,IRCT20090905002417N23,NA,updac0128,NA,hba1c,endpoint,mean,n,7.27,sd,1.92,percentage,6,months,manual_extraction,NA
+updresb00354,IRCT20190122042450N3,itt,updac0129,NA,hba1c,baseline,mean,n,8.08,sd,0.92,percentage,0,weeks,manual_extraction,NA
+updresb00355,IRCT20190122042450N3,itt,updac0129,NA,hba1c,endpoint,mean,n,7.66,sd,0.86,percentage,24,weeks,manual_extraction,NA
+updresb00356,IRCT20190122042450N3,itt,updac0130,NA,hba1c,baseline,mean,n,8.23,sd,0.79,percentage,0,weeks,manual_extraction,NA
+updresb00357,IRCT20190122042450N3,itt,updac0130,NA,hba1c,endpoint,mean,n,7.25,sd,0.94,percentage,24,weeks,manual_extraction,NA
+updresb00358,IRCT20190122042450N3,itt,updac0131,NA,hba1c,baseline,mean,n,7.96,sd,0.62,percentage,0,weeks,manual_extraction,NA
+updresb00359,IRCT20190122042450N3,itt,updac0131,NA,hba1c,endpoint,mean,n,7.95,sd,0.96,percentage,24,weeks,manual_extraction,NA
+updresb00360,IRCT20190412043247N2,itt,updac0132,NA,hba1c,baseline,mean,n,8.05,sd,0.97,percentage,0,weeks,manual_extraction,NA
+updresb00362,IRCT20190412043247N2,itt,updac0133,NA,hba1c,baseline,mean,n,7.75,sd,0.94,percentage,0,weeks,manual_extraction,NA
+updresb00364,IRCT20190412043247N2,itt,updac0132,NA,hba1c,endpoint,mean,n,7.35,sd,1.04,percentage,26,weeks,manual_extraction,NA
+updresb00366,IRCT20190412043247N2,itt,updac0133,NA,hba1c,endpoint,mean,n,7.82,sd,0.91,percentage,26,weeks,manual_extraction,NA
+updresb00367,IRCT20190412043247N2,itt,NA,updcompb0005,hba1c,between treatment difference in adjusted mean change,adjusted mean difference,y,-0.65,95%ci,"-0.83,-0.48",percentage,26,weeks,manual_extraction,NA
+updresb00368,IRCT20200722048176N1,NA,updac0135,NA,hba1c,endpoint,mean,n,7.66,sd,1.57,percentage,12,weeks,manual_extraction,NA
+updresb00373,IRCT20201028049174N1,NA,updac0136,NA,hba1c,baseline,mean,y,7.89,not specified,0.39,percentage,0,months,manual_extraction,NA
+updresb00374,IRCT20201028049174N1,NA,updac0136,NA,hba1c,endpoint,mean,y,7.37,not specified,0.61,percentage,3,months,manual_extraction,NA
+updresb00375,IRCT20201028049174N1,NA,updac0137,NA,hba1c,baseline,mean,y,7.79,not specified,0.3,percentage,0,months,manual_extraction,NA
+updresb00376,IRCT20201028049174N1,NA,updac0137,NA,hba1c,endpoint,mean,y,7.8,not specified,0.67,percentage,3,months,manual_extraction,NA
+updresb00562,IRSCTN 2013L01573,NA,updac0224,NA,hba1c,baseline,mean,n,8.31,sd,0.74,percentage,0,weeks,manual_extraction,NA
+updresb00563,IRSCTN 2013L01573,NA,updac0225,NA,hba1c,baseline,mean,n,8.48,sd,0.44,percentage,0,weeks,manual_extraction,NA
+updresb00564,IRSCTN 2013L01573,NA,updac0226,NA,hba1c,baseline,mean,n,8.52,sd,0.6,percentage,0,weeks,manual_extraction,NA
+updresb00565,IRSCTN 2013L01573,NA,updac0224,NA,hba1c,endpoint,mean,n,7.01,sd,0.7,percentage,24,weeks,manual_extraction,NA
+updresb00566,IRSCTN 2013L01573,NA,updac0225,NA,hba1c,endpoint,mean,n,7.58,sd,0.53,percentage,24,weeks,manual_extraction,NA
+updresb00567,IRSCTN 2013L01573,NA,updac0226,NA,hba1c,endpoint,mean,n,8.82,sd,0.68,percentage,24,weeks,manual_extraction,NA
+updresb00377,JapicCTI-111507,NA,updac0138,NA,hba1c,change from baseline,mean change,y,-0.63,not reported,NA,percentage,52,weeks,manual_extraction,NA
+updresb00382,JapicCTI-111507,NA,NA,updcompb0006,hba1c,between treament difference in mean change,mean difference,y,-0.88,not reported,NA,percentage,24,weeks,manual_extraction,NA
+updresb00384,jRCTs031180159,NA,updac0141,NA,hba1c,change from baseline,mean change,n,-0.73,sd,0.75,percentage,24,weeks,manual_extraction,NA
+updresb00387,jRCTs031180205,fas,updac0142,NA,hba1c,change from baseline,mean change,n,-0.51,sd,0.61,percentage,52,weeks,manual_extraction,NA
+updresb00388,jRCTs031180205,fas,updac0143,NA,hba1c,change from baseline,mean change,n,-0.43,sd,0.76,percentage,52,weeks,manual_extraction,NA
+updresb00546,KCT0005169,fas,updac0221,NA,hba1c,change from baseline,mean change,n,-0.8,sd,0.6,percentage,24,weeks,manual_extraction,NA
+updresb00548,KCT0005169,fas,updac0220,NA,hba1c,change from baseline,mean change,n,-0.9,sd,0.6,percentage,24,weeks,manual_extraction,NA
+updresb00550,KCT0005169,fas,NA,updcompb0013,hba1c,between treatment difference in mean change,mean difference,n,-0.17,95%ci,"-0.41,0.07",percentage,24,weeks,manual_extraction,NA
+updresb00060,NCT02106104,NA,updab0003,NA,hba1c,change from baseline,mean change,n,-0.65,sem,0.1,percentage,8,weeks,manual_extraction,NA
+updresb00061,NCT02106104,NA,updab0004,NA,hba1c,change from baseline,mean change,n,-0.45,sem,0.09,percentage,8,weeks,manual_extraction,NA
+updresb00062,NCT02106104,NA,NA,updcompb0017,hba1c,between treament difference in mean change,mean difference,n,0.17,95%ci,"-0.03,0.36",percentage,8,weeks,manual_extraction,NA
+updresb00606,NCT02145611,NA,updab0005,NA,hba1c,baseline,mean,n,7.9,sd,0.9,percentage,0,weeks,manual_extraction,NA
+updresb00607,NCT02145611,NA,updab0005,NA,hba1c,endpoint,mean,n,7.5,sd,1.4,percentage,12,weeks,manual_extraction,NA
+updresb00608,NCT02145611,NA,updab0006,NA,hba1c,baseline,mean,n,8.3,sd,1,percentage,0,weeks,manual_extraction,NA
+updresb00609,NCT02145611,NA,updab0006,NA,hba1c,endpoint,mean,n,8,sd,1.34,percentage,12,weeks,manual_extraction,NA
+updresb00064,NCT02194595,NA,updab0009,NA,hba1c,baseline adjusted mean,mean,y,6.6,se,0.09,percentage,20,weeks,manual_extraction,NA
+updresb00066,NCT02194595,NA,updab0010,NA,hba1c,baseline adjusted mean,mean,y,6.7,se,0.1,percentage,20,weeks,manual_extraction,NA
+updresb00068,NCT02194595,NA,updab0011,NA,hba1c,baseline adjusted mean,mean,y,6.6,se,0.1,percentage,20,weeks,manual_extraction,NA
+updresb00005,NCT02235298,itt,unq_updaa10007,NA,hba1c,baseline,mean,n,6.9,sd,0.9,percentage,0,weeks,manual_extraction,NA
+updresb00006,NCT02235298,itt,unq_updaa10007,NA,hba1c,endpoint,mean,n,6.4,sd,0.6,percentage,24,weeks,manual_extraction,NA
+updresb00007,NCT02235298,itt,unq_updaa10008,NA,hba1c,baseline,mean,n,6.7,sd,0.8,percentage,0,weeks,manual_extraction,NA
+updresb00008,NCT02235298,itt,unq_updaa10008,NA,hba1c,endpoint,mean,n,6.7,sd,0.9,percentage,24,weeks,manual_extraction,NA
+updresb00013,NCT02433678,NA,unq_updaa10018,NA,hba1c,baseline,mean,n,6.9,se,0.1,percentage,0,weeks,manual_extraction,NA
+updresb00014,NCT02433678,NA,unq_updaa10018,NA,hba1c,endpoint,mean,n,6.6,se,0.1,percentage,12,weeks,manual_extraction,NA
+updresb00015,NCT02433678,NA,unq_updaa10019,NA,hba1c,baseline,mean,n,6.7,se,0.2,percentage,0,weeks,manual_extraction,NA
+updresb00016,NCT02433678,NA,unq_updaa10019,NA,hba1c,endpoint,mean,n,6.8,se,0.2,percentage,12,weeks,manual_extraction,NA
+updresb00018,NCT02433678,NA,NA,updcompb0018,hba1c,between treatment difference in adjusted mean change,mean change,n,-0.4,95%ci,"-0.7,-0.1",percentage,12,weeks,manual_extraction,NA
+updresb00070,NCT02477865,NA,updab0012,NA,hba1c,change from baseline,LS mean change,y,-1.02,95%ci,"-1.21,-0.83",percentage,24,weeks,manual_extraction,NA
+updresb00071,NCT02477865,NA,updab0013,NA,hba1c,change from baseline,LS mean change,y,-1.34,95%ci,"-1.54,-1.15",percentage,24,weeks,manual_extraction,NA
+updresb00074,NCT02477969,fas,updab0015,NA,hba1c,change from baseline,LS mean change,y,-1.16,se,0.08,percentage,24,weeks,manual_extraction,NA
+updresb00075,NCT02477969,fas,updab0016,NA,hba1c,change from baseline,LS mean change,y,-1.14,se,0.08,percentage,24,weeks,manual_extraction,NA
+updresb00080,NCT02480465,fas,updab0018,NA,hba1c,change from baseline,mean,n,-0.85878,p value,<0.0001,percentage,24,weeks,manual_extraction,NA
+updresb00081,NCT02480465,fas,updab0019,NA,hba1c,change from baseline,mean,n,-0.779,p value,<0.0001,percentage,24,weeks,manual_extraction,NA
+updresb00082,NCT02501616,NA,updab0020,NA,hba1c,change from baseline,median change,n,-0.5,IQR,"-0.8,0",percentage,8,weeks,manual_extraction,NA
+updresb00083,NCT02501616,NA,updab0021,NA,hba1c,change from baseline,median change,n,-0.5,IQR,"-0.8,-0.2",percentage,8,weeks,manual_extraction,NA
+updresb00019,NCT02613897,NA,unq_updaa10026,NA,hba1c,baseline,mean,n,8.9,sem,0.2,percentage,0,weeks,manual_extraction,NA
+updresb00020,NCT02613897,NA,unq_updaa10026,NA,hba1c,endpoint,mean,n,7.5,sem,0.2,percentage,16,weeks,manual_extraction,NA
+updresb00021,NCT02613897,NA,unq_updaa10026,NA,hba1c,change from baseline,mean change,n,-1.4,sem,0.2,percentage,16,weeks,manual_extraction,NA
+updresb00025,NCT02613897,NA,unq_updaa10027,NA,hba1c,baseline,mean,n,9,sem,0.2,percentage,0,weeks,manual_extraction,NA
+updresb00026,NCT02613897,NA,unq_updaa10027,NA,hba1c,endpoint,mean,n,7,sem,0.2,percentage,16,weeks,manual_extraction,NA
+updresb00027,NCT02613897,NA,unq_updaa10027,NA,hba1c,change from baseline,mean change,n,-2,sem,0.3,percentage,16,weeks,manual_extraction,NA
+updresb00031,NCT02613897,NA,unq_updaa10028,NA,hba1c,baseline,mean,n,8.7,sem,0.3,percentage,0,weeks,manual_extraction,NA
+updresb00032,NCT02613897,NA,unq_updaa10028,NA,hba1c,endpoint,mean,n,8.8,sem,0.4,percentage,16,weeks,manual_extraction,NA
+updresb00035,NCT02613897,NA,unq_updaa10028,NA,hba1c,change from baseline,mean change,n,0.1,sem,0.3,percentage,16,weeks,manual_extraction,NA
+updresb00088,NCT02649465,NA,updab0022,NA,hba1c,change from baseline,median change,n,-1,IQR,"-2,-0.2",percentage,48,weeks,manual_extraction,NA
+updresb00089,NCT02649465,NA,updab0023,NA,hba1c,change from baseline,median change,n,-1,IQR,"-1.9,-0.1",percentage,48,weeks,manual_extraction,NA
+updresb00090,NCT02655770,NA,updab0024,NA,hba1c,change from baseline,mean change,n,-0.65,sd,0.73,percentage,18,weeks,manual_extraction,NA
+updresb00091,NCT02655770,NA,updab0025,NA,hba1c,change from baseline,mean change,n,-0.18,sd,0.51,percentage,18,weeks,manual_extraction,NA
+updresb00092,NCT02655770,NA,NA,updcompb0019,hba1c,between treament difference in mean change,median difference,n,-0.47,IQR,"-0.88,0.06",percentage,18,weeks,manual_extraction,NA
+updresb00096,NCT02690883,fas,updab0026,NA,hba1c,change from baseline,mean change,n,-1.78,se,0.24,percentage,24,weeks,manual_extraction,NA
+updresb00097,NCT02690883,fas,updab0027,NA,hba1c,change from baseline,mean change,n,-1.56,se,0.23,percentage,24,weeks,manual_extraction,NA
+updresb00098,NCT02690883,fas,NA,updcompb0020,hba1c,between treament difference in mean change,mean difference,n,0.21,95%ci,"-0.4,0.82",percentage,24,weeks,manual_extraction,NA
+updresb00105,NCT02752113,NA,updab0030,NA,hba1c,change from baseline,mean change,y,-0.4,sd,0.7,percentage,12,weeks,manual_extraction,NA
+updresb00106,NCT02752113,NA,updab0031,NA,hba1c,change from baseline,mean change,y,-0.8,sd,0.57,percentage,12,weeks,manual_extraction,NA
+updresb00115,NCT02798744,NA,updab0032,NA,hba1c,change from baseline,beta coefficient,n,-0.03,95%ci,"-0.46,0.4",percentage,24,weeks,manual_extraction,NA
+updresb00116,NCT02798744,NA,updab0033,NA,hba1c,change from baseline,beta coefficient,n,-0.33,95%ci,"-0.57,-0.08",percentage,24,weeks,manual_extraction,NA
+updresb00117,NCT02798744,NA,updab0034,NA,hba1c,change from baseline,beta coefficient,n,-0.35,95%ci,"-0.5,-0.2",percentage,24,weeks,manual_extraction,NA
+updresb00118,NCT02798744,NA,updab0035,NA,hba1c,change from baseline,beta coefficient,n,-0.02,95%ci,"-0.28,0.24",percentage,24,weeks,manual_extraction,NA
+updresb00123,NCT02798744,NA,NA,updcompb0022,hba1c,between treament difference in mean change,beta coefficient,n,-0.38,95%ci,"-0.74,-0.02",percentage,24,weeks,manual_extraction,NA
+updresb00125,NCT02851745,NA,updab0036,NA,hba1c,baseline,mean,y,6.4,sd,0.7,percentage,0,weeks,manual_extraction,NA
+updresb00126,NCT02851745,NA,updab0036,NA,hba1c,endline,mean,y,6,sd,0.6,percentage,48,weeks,manual_extraction,NA
+updresb00127,NCT02851745,NA,updab0037,NA,hba1c,baseline,mean,y,6.5,sd,0.8,percentage,0,weeks,manual_extraction,NA
+updresb00128,NCT02851745,NA,updab0037,NA,hba1c,endpoint,mean,y,6.3,sd,0.9,percentage,48,weeks,manual_extraction,NA
+updresb00620,NCT02875821,NA,updab0039,NA,hba1c,change from baseline,adjusted mean change,y,-0.1,sd,0.2,percentage,24,weeks,manual_extraction,NA
+updresb00133,NCT02887677,itt,updab0040,NA,hba1c,baseline,mean,n,7.75,sd,0.57,percentage,0,weeks,manual_extraction,NA
+updresb00134,NCT02887677,itt,updab0040,NA,hba1c,endpoint,mean,n,7.18,sd,0.64,percentage,12,weeks,manual_extraction,NA
+updresb00135,NCT02887677,itt,updab0041,NA,hba1c,baseline,mean,n,7.75,sd,0.42,percentage,0,weeks,manual_extraction,NA
+updresb00136,NCT02887677,itt,updab0041,NA,hba1c,endpoint,mean,n,7.66,sd,0.71,percentage,12,weeks,manual_extraction,NA
+updresb00037,NCT02889510,NA,unq_updaa10036,NA,hba1c,change from baseline,mean change,n,-0.9,95%ci,"-1.1, -0.7",percentage,7,weeks,manual_extraction,NA
+updresb00038,NCT02889510,NA,unq_updaa10037,NA,hba1c,change from baseline,mean change,n,0.2,95%ci,"0, -0.5",percentage,7,weeks,manual_extraction,NA
+updresb00039,NCT02889510,NA,NA,updcompb0023,hba1c,between treatment mean difference,mean difference,n,-1.2,95%ci,"-1.5,-0.9",percentage,7,weeks,manual_extraction,NA
+updresb00138,NCT02914691,NA,NA,updcompb0024,hba1c,between treatment difference in adjusted mean change,coefficient,n,-0.7,ci,"-0.9,-0.4",percentage,12,weeks,manual_extraction,NA
+updresb00281,NCT02932436,itt,NA,updcompb0025,hba1c,between treatment difference in adjusted mean change,beta estimate,n,-0.43,95%ci,"-0.62,-0.23",percentage,12,weeks,manual_extraction,NA
+updresb00040,NCT02973477,NA,NA,updcompb0026,hba1c,between treatment difference in adjusted mean change,coefficient,n,0.04,95%ci,0.01-0.08,percentage,12,weeks,manual_extraction,NA
+updresb00610,NCT02998970,itt,updab0044,NA,hba1c,change from baseline,mean change,n,-0.4,sd,1,percentage,6,months,manual_extraction,NA
+updresb00614,NCT02998970,itt,updab0045,NA,hba1c,change from baseline,mean change,n,-0.3,sd,0.9,percentage,6,months,manual_extraction,NA
+updresb00615,NCT02998970,itt,NA,updcompb0027,hba1c,between treatment difference in adjusted mean change,adjusted mean difference,y,-0.2,95%ci,"-0.5,0.2",percentage,6,months,manual_extraction,NA
+updresb00139,NCT02999841,NA,updab0046,NA,hba1c,change from baseline,adjusted mean change,y,-1.4,sd,0.7,percentage,6,months,manual_extraction,NA
+updresb00140,NCT02999841,NA,updab0047,NA,hba1c,change from baseline,adjusted mean change,y,-1.32,sd,0.61,percentage,6,months,manual_extraction,NA
+updresb00143,NCT03151343,NA,updab0048,NA,hba1c,change from baseline,mean change,y,-0.68,95%ci,"-0.86,-0.49",percentage,13,weeks,manual_extraction,NA
+updresb00145,NCT03151343,NA,updab0049,NA,hba1c,change from baseline,mean change,y,0.08,95%ci,"-0.11,0.27",percentage,13,weeks,manual_extraction,NA
+updresb00147,NCT03159052,fas,NA,updcompb0028,hba1c,between treament difference in mean change,LS mean difference,y,-0.94,95%ci,"-1.13,-0.75",percentage,24,weeks,manual_extraction,NA
+updresb00148,NCT03159052,fas,NA,updcompb0029,hba1c,between treament difference in mean change,LS mean difference,y,-0.91,95%ci,"-1.11,-0.72",percentage,24,weeks,manual_extraction,NA
+updresb00042,NCT03231709,fas,unq_updaa10047,NA,hba1c,baseline,mean,n,7.41,sd,0.84,percentage,0,weeks,manual_extraction,NA
+updresb00043,NCT03231709,fas,unq_updaa10047,NA,hba1c,endpoint,mean,n,7.45,sd,0.814,percentage,8,weeks,manual_extraction,NA
+updresb00044,NCT03231709,fas,unq_updaa10051,NA,hba1c,baseline,mean,n,7.34,sd,0.63,percentage,0,weeks,manual_extraction,NA
+updresb00045,NCT03231709,fas,unq_updaa10051,NA,hba1c,endpoint,mean,n,7.47,sd,0.773,percentage,8,weeks,manual_extraction,NA
+updresb00046,NCT03315143,itt,unq_updaa10052,NA,hba1c,change from baseline,LS mean change,n,-0.17,95%ci,"-0.21, -0.14",percentage,14,months,manual_extraction,NA
+updresb00047,NCT03315143,itt,unq_updaa10053,NA,hba1c,change from baseline,LS mean change,n,-0.6,95%ci,"-0.63, -0.56",percentage,14,months,manual_extraction,NA
+updresb00050,NCT03315143,itt,NA,updcompb0030,hba1c,between treatment difference in mean change,difference in LS mean,n,-0.42,95%ci,"-0.47, -0.38",percentage,14,months,manual_extraction,NA
+updresb00053,NCT03338855,NA,NA,updcompb0031,hba1c,between treament difference in mean change,difference in LS mean,n,-0.07,95%ci,"-0.22, 0.08",percentage,5,weeks,manual_extraction,NA
+updresb00151,NCT03361098,NA,updab0055,NA,hba1c,change from baseline,mean change,n,-11.9,95%ci,"-15.2,-8.5",mmol/mol,16,weeks,manual_extraction,NA
+updresb00152,NCT03361098,NA,updab0056,NA,hba1c,change from baseline,mean change,n,-8.6,95%ci,"-12.1,-5.2",mmol/mol,16,weeks,manual_extraction,NA
+updresb00153,NCT03361098,NA,updab0057,NA,hba1c,change from baseline,mean change,n,-15.5,95%ci,"-19,-12",mmol/mol,16,weeks,manual_extraction,NA
+updresb00154,NCT03361098,NA,updab0058,NA,hba1c,change from baseline,mean change,n,-3.4,95%ci,"-7,0.1",mmol/mol,16,weeks,manual_extraction,NA
+updresb00057,NCT03387683,NA,unq_updaa10064,NA,hba1c,change from baseline,LS mean change,y,-0.27,95%ci,"-0.37, -0.17",percentage,6,weeks,manual_extraction,NA
+updresb00160,NCT03436693,fas,NA,updcompb0033,hba1c,between treament difference in mean change,mean difference,n,-0.23,95%ci,"-0.46,0",percentage,104,weeks,manual_extraction,NA
+updresb00161,NCT03449654,NA,updab0061,NA,hba1c,change from baseline,mean change,n,-5.1,95%ci,"-8.1,2",mmol/mol,26,weeks,manual_extraction,NA
+updresb00162,NCT03449654,NA,updab0062,NA,hba1c,change from baseline,mean change,n,-0.1,95%ci,"-1.9,1.7",mmol/mol,26,weeks,manual_extraction,NA
+updresb00166,NCT03458715,fas,updab0063,NA,hba1c,change from baseline,mean change,y,-0.06,se,0.17,percentage,24,weeks,manual_extraction,NA
+updresb00167,NCT03458715,fas,updab0064,NA,hba1c,change from baseline,mean change,y,-1.01,se,0.16,percentage,24,weeks,manual_extraction,NA
+updresb00168,NCT03458715,fas,NA,updcompb0035,hba1c,between treament difference in mean change,mean difference,y,-0.88,95%ci,"-1.33,-0.43",percentage,24,weeks,manual_extraction,NA
+updresb00172,NCT03508323,fas,NA,updcompb0036,hba1c,between treament difference in mean change,LS mean difference,y,-0.76,95%ci,"-1.08,-0.44",percentage,24,weeks,manual_extraction,NA
+updresb00176,NCT03590626,per protocol,updab0067,NA,hba1c,change from baseline,mean change,y,-1.6,se,0.2,percentage,24,weeks,manual_extraction,NA
+updresb00177,NCT03590626,per protocol,updab0068,NA,hba1c,change from baseline,mean change,y,-1.3,se,0.2,percentage,24,weeks,manual_extraction,NA
+updresb00178,NCT03590626,per protocol,NA,updcompb0037,hba1c,between treament difference in mean change,mean difference,y,-0.3,95%ci,"-0.9,0.2",percentage,24,weeks,manual_extraction,NA
+updresb00179,NCT03794336,itt,updab0069,NA,hba1c,change from baseline,LS mean change,y,-11.4,se,0.5,mmol/mol,16,weeks,manual_extraction,NA
+updresb00180,NCT03794336,itt,updab0070,NA,hba1c,change from baseline,LS mean change,y,-11.9,se,0.4,mmol/mol,16,weeks,manual_extraction,NA
+updresb00181,NCT03794336,itt,NA,updcompb0038,hba1c,between treament difference in mean change,LS mean difference,y,-0.5,se,0.7,mmol/mol,16,weeks,manual_extraction,NA
+updresb00182,NCT03798054,itt,updab0071,NA,hba1c,change from baseline,LS mean change,n,-1.4,se,0.04,percentage,24,weeks,manual_extraction,NA
+updresb00183,NCT03798054,itt,updab0072,NA,hba1c,change from baseline,LS mean change,n,-0.9,se,0.06,percentage,24,weeks,manual_extraction,NA
+updresb00184,NCT03798054,itt,updab0073,NA,hba1c,change from baseline,LS mean change,n,-1.9,se,0.04,percentage,24,weeks,manual_extraction,NA
+updresb00185,NCT03798054,itt,NA,updcompb0039,hba1c,between treament difference in mean change,LS mean difference,n,-0.45,95%ci,"-0.55,-0.35",percentage,24,weeks,manual_extraction,NA
+updresb00192,NCT03798080,mitt,updab0074,NA,hba1c,change from baseline,LS mean change,n,-0.7,se,0.1,percentage,30,weeks,manual_extraction,NA
+updresb00193,NCT03798080,mitt,updab0075,NA,hba1c,change from baseline,LS mean change,n,-1.4,se,0.1,percentage,30,weeks,manual_extraction,NA
+updresb00194,NCT03798080,mitt,NA,updcompb0040,hba1c,between treament difference in mean change,LS mean difference,n,-0.7,95%ci,"-0.9,-0.6",percentage,30,weeks,manual_extraction,NA
+updresb00200,NCT03819790,itt,updab0076,NA,hba1c,baseline,mean,n,8.6,sd,1.1,percentage,0,weeks,manual_extraction,NA
+updresb00201,NCT03819790,itt,updab0076,NA,hba1c,endpoint,mean,n,7.7,sd,1.3,percentage,13,weeks,manual_extraction,NA
+updresb00204,NCT03819790,itt,updab0077,NA,hba1c,baseline,mean,n,8.3,sd,1.4,percentage,0,weeks,manual_extraction,NA
+updresb00205,NCT03819790,itt,updab0077,NA,hba1c,endpoint,mean,n,7.5,sd,0.9,percentage,13,weeks,manual_extraction,NA
+updresb00598,NCT03824002,NA,updac0248,NA,hba1c,baseline,mean,n,7.4,sd,0.7,percentage,0,months,manual_extraction,NA
+updresb00599,NCT03824002,NA,updac0249,NA,hba1c,baseline,mean,n,7.2,sd,0.6,percentage,0,months,manual_extraction,NA
+updresb00600,NCT03824002,NA,updac0248,NA,hba1c,endpoint,mean,n,6.2,sd,0.3,percentage,9,months,manual_extraction,NA
+updresb00601,NCT03824002,NA,updac0249,NA,hba1c,endpoint,mean,n,6.9,sd,0.5,percentage,9,months,manual_extraction,NA
+updresb00206,NCT03961659,NA,updab0082,NA,hba1c,baseline,mean,n,7.9,sd,0.9,percentage,0,weeks,manual_extraction,NA
+updresb00207,NCT03961659,NA,updab0082,NA,hba1c,endpoint,mean,n,7.1,sd,0.7,percentage,16,weeks,manual_extraction,NA
+updresb00210,NCT03961659,NA,updab0083,NA,hba1c,baseline,mean,n,8.2,sd,1,percentage,0,weeks,manual_extraction,NA
+updresb00211,NCT03961659,NA,updab0083,NA,hba1c,endpoint,mean,n,7,sd,1.2,percentage,16,weeks,manual_extraction,NA
+updresb00214,NCT03961659,NA,updab0084,NA,hba1c,baseline,mean,n,8.5,sd,1,percentage,0,weeks,manual_extraction,NA
+updresb00215,NCT03961659,NA,updab0084,NA,hba1c,endpoint,mean,n,7.1,sd,0.7,percentage,16,weeks,manual_extraction,NA
+updresb00218,NCT04013581,fas,updab0085,NA,hba1c,change from baseline,mean change,n,-0.98,sd,0.81,percentage,24,weeks,manual_extraction,NA
+updresb00219,NCT04013581,fas,updab0086,NA,hba1c,change from baseline,mean change,n,-0.78,sd,0.99,percentage,24,weeks,manual_extraction,NA
+updresb00222,NCT04120623,NA,updab0087,NA,hba1c,change from baseline,mean change,n,-2.4,sd,1.2,percentage,5,weeks,manual_extraction,NA
+updresb00223,NCT04120623,NA,updab0088,NA,hba1c,change from baseline,mean change,n,-2.5,sd,1.2,percentage,5,weeks,manual_extraction,NA
+updresb00224,NCT04183868,NA,updab0089,NA,hba1c,change from baseline,mean change,y,-0.46,sd,0.6,percentage,26,weeks,manual_extraction,NA
+updresb00225,NCT04183868,NA,updab0090,NA,hba1c,change from baseline,mean change,y,-0.52,sd,0.7,percentage,26,weeks,manual_extraction,NA
+updresb00226,NCT04196231,NA,updab0091,NA,hba1c,change from baseline,mean change,y,-0.6,sd,0.8,percentage,6,months,manual_extraction,NA
+updresb00227,NCT04196231,NA,updab0092,NA,hba1c,change from baseline,mean change,y,-0.6,sd,0.8,percentage,6,months,manual_extraction,NA
+updresb00228,NCT04196231,NA,updab0093,NA,hba1c,change from baseline,mean change,y,-0.7,sd,0.9,percentage,6,months,manual_extraction,NA
+updresb00232,NCT04218734,fas,updab0094,NA,hba1c,change from baseline,LS mean change,y,-0.7,se,0.09,percentage,24,weeks,manual_extraction,NA
+updresb00233,NCT04218734,fas,updab0095,NA,hba1c,change from baseline,LS mean change,y,-0.07,se,0.11,percentage,24,weeks,manual_extraction,NA
+updresb00268,NCT04233801,mitt,updac0035,NA,hba1c,change from baseline,adjusted mean change,y,-1.12,95%ci,"-1.33,-0.92",percentage,24,weeks,manual_extraction,NA
+updresb00269,NCT04233801,mitt,updac0036,NA,hba1c,change from baseline,adjusted mean change,y,-1.12,95%ci,"-1.32,-0.91",percentage,24,weeks,manual_extraction,NA
+updresb00270,NCT04233801,mitt,updac0037,NA,hba1c,change from baseline,adjusted mean change,y,-0.13,95%ci,"-0.32,0.06",percentage,24,weeks,manual_extraction,NA
+updresb00271,NCT04233801,mitt,NA,updcompb0041,hba1c,between treatment difference in adjusted mean change,adjusted mean difference,y,-0.99,95%ci,"-1.28,-0.71",percentage,24,weeks,manual_extraction,NA
+updresb00272,NCT04233801,mitt,NA,updcompb0042,hba1c,between treatment difference in adjusted mean change,adjusted mean difference,y,-0.98,95%ci,"-1.26,-0.7",percentage,24,weeks,manual_extraction,NA
+updresb00236,NCT04470310,fas,updab0096,NA,hba1c,adjusted mean change from baseline,mean change,y,-0.18,se,0.2,percentage,24,weeks,manual_extraction,NA
+updresb00237,NCT04470310,fas,updab0097,NA,hba1c,adjusted mean change from baseline,mean change,y,-1.13,se,0.19,percentage,24,weeks,manual_extraction,NA
+updresb00238,NCT04470310,fas,updab0098,NA,hba1c,adjusted mean change from baseline,mean change,y,-0.66,se,0.18,percentage,24,weeks,manual_extraction,NA
+updresb00260,NCT04632862,fas,NA,updcompb0043,hba1c,between treatment difference in adjusted mean change,LS mean difference,y,-0.99,95%ci,"-1.24,-0.74",percentage,24,weeks,manual_extraction,NA
+updresb00279,NCT04634500,per protocol,updac0064,NA,hba1c,change from baseline,LS mean change,y,-0.75,se,0.06,percentage,24,weeks,manual_extraction,NA
+updresb00283,NCT04634500,per protocol,updac0065,NA,hba1c,change from baseline,LS mean change,y,-0.8,se,0.06,percentage,24,weeks,manual_extraction,NA
+updresb00284,NCT04634500,per protocol,NA,updcompb0044,hba1c,between treament difference in mean change,LS mean difference,y,-0.04,95%ci,"-0.21,0.12",percentage,24,weeks,manual_extraction,NA
+updresb00254,NCT04654390,per protocol,updac0001,NA,hba1c,change from baseline,adjusted LS mean change,y,-0.92,se,0.05,percentage,24,weeks,manual_extraction,NA
+updresb00255,NCT04654390,per protocol,updac0002,NA,hba1c,change from baseline,adjusted LS mean change,y,-0.86,se,0.05,percentage,24,weeks,manual_extraction,NA
+updresb00256,NCT04654390,per protocol,NA,updcompb0045,hba1c,between treament difference in mean change,LS mean difference,y,-0.06,95%ci,"-0.19,0.06",percentage,24,weeks,manual_extraction,NA
+updresb00262,NCT04916093,NA,updac0024,NA,hba1c,change from baseline,mean change,n,-1.02,95%ci,"-1.37,-0.67",percentage,3,months,manual_extraction,NA
+updresb00263,NCT04916093,NA,updac0025,NA,hba1c,change from baseline,mean change,n,-0.96,95%ci,"-1.21,-0.71",percentage,3,months,manual_extraction,NA
+updresb00264,NCT04916093,NA,updac0026,NA,hba1c,change from baseline,mean change,n,-0.9,95%ci,"-1.09,-0.7",percentage,3,months,manual_extraction,NA
+updresb00242,NCT05359432,NA,updab0103,NA,hba1c,change from baseline,mean change,n,-0.97,sd,0.68,percentage,24,weeks,manual_extraction,NA
+updresb00243,NCT05359432,NA,updab0104,NA,hba1c,change from baseline,mean change,n,-0.82,sd,1.57,percentage,24,weeks,manual_extraction,NA
+updresb00246,NCT05480007,NA,updab0105,NA,hba1c,baseline,mean,n,7.93,sd,0.91,percentage,0,weeks,manual_extraction,NA
+updresb00247,NCT05480007,NA,updab0105,NA,hba1c,endpoint,mean,n,6.95,sd,0.86,percentage,24,weeks,manual_extraction,NA
+updresb00248,NCT05480007,NA,updab0106,NA,hba1c,baseline,mean,n,8.6,sd,1.17,percentage,0,weeks,manual_extraction,NA
+updresb00249,NCT05480007,NA,updab0106,NA,hba1c,endpoint,mean,n,8.38,sd,0.61,percentage,24,weeks,manual_extraction,NA
+updresb00250,NCT05480007,NA,updab0107,NA,hba1c,baseline,mean,n,7.83,sd,0.58,percentage,0,weeks,manual_extraction,NA
+updresb00251,NCT05480007,NA,updab0107,NA,hba1c,endpoint,mean,n,7.04,sd,0.48,percentage,24,weeks,manual_extraction,NA
+updresb00252,NCT05480007,NA,updab0108,NA,hba1c,baseline,mean,n,8.08,sd,1.13,percentage,0,weeks,manual_extraction,NA
+updresb00253,NCT05480007,NA,updab0108,NA,hba1c,endpoint,mean,n,8.16,sd,1.37,percentage,24,weeks,manual_extraction,NA
+updresb00393,Netherlands Trial Register (NTR 4439),mitt,updac0148,NA,hba1c,change from baseline,mean change,n,-0.8,95%ci,"-3.7,1.7",mmol/mol,6,weeks,manual_extraction,NA
+updresb00394,Netherlands Trial Register (NTR 4439),mitt,updac0149,NA,hba1c,change from baseline,mean change,n,1.7,95%ci,"-0.7,4.2",mmol/mol,6,weeks,manual_extraction,NA
+updresb00400,Netherlands Trial Register (NTR 4439),mitt,NA,updcompb0016,hba1c,between treament difference in mean change,mean change,n,-2.5,95%ci,"-4.7,-0.3",mmol/mol,6,weeks,manual_extraction,NA
+updresb00402,Netherlands Trial Register NTR6709,NA,updac0150,NA,hba1c,baseline,mean,n,66.6,sd,10.7,mmol/mol,0,weeks,manual_extraction,NA
+updresb00403,Netherlands Trial Register NTR6709,NA,updac0150,NA,hba1c,endpoint,mean,n,64.6,sd,13.1,mmol/mol,12,weeks,manual_extraction,NA
+updresb00404,Netherlands Trial Register NTR6709,NA,updac0151,NA,hba1c,baseline,mean,n,65.2,sd,14.9,mmol/mol,0,weeks,manual_extraction,NA
+updresb00405,Netherlands Trial Register NTR6709,NA,updac0151,NA,hba1c,endpoint,mean,n,61,sd,15,mmol/mol,12,weeks,manual_extraction,NA
+updresb00406,Netherlands Trial Register NTR6709,NA,NA,updcompb0015,hba1c,percentage median change from baseline,percentage median change,n,1.7,not reported,NA,mmol/mol,12,weeks,manual_extraction,NA
+updresb00412,TCTR20170511001,NA,updac0153,NA,hba1c,change from baseline,mean change,n,-0.2,sd,1.1,mmol/mol,12,weeks,manual_extraction,NA
+updresb00415,UMIN000006511,NA,updac0154,NA,hba1c,change from baseline,mean change,n,-0.4,sd,0.7,percentage,3,months,manual_extraction,NA
+updresb00416,UMIN000006511,NA,updac0155,NA,hba1c,change from baseline,mean change,n,0.1,sd,0.9,percentage,3,months,manual_extraction,NA
+updresb00417,UMIN000010830,itt,updac0156,NA,hba1c,change from baseline,mean change,n,-0.3,sd,0.9,percentage,156,weeks,manual_extraction,NA
+updresb00418,UMIN000010830,itt,updac0157,NA,hba1c,change from baseline,mean change,n,-0.3,sd,0.8,percentage,156,weeks,manual_extraction,NA
+updresb00419,UMIN000014140,fas,updac0158,NA,hba1c,baseline,median,n,9.8,IQR,"9,11.2",percentage,0,weeks,manual_extraction,NA
+updresb00420,UMIN000014140,fas,updac0158,NA,hba1c,endpoint,median,n,6.5,IQR,"6,7.5",percentage,24,weeks,manual_extraction,NA
+updresb00421,UMIN000014140,fas,updac0159,NA,hba1c,baseline,median,n,9.7,IQR,"8.8,11",percentage,0,weeks,manual_extraction,NA
+updresb00422,UMIN000014140,fas,updac0159,NA,hba1c,endpoint,median,n,6.8,IQR,"5.9,8.1",percentage,24,weeks,manual_extraction,NA
+updresb00431,UMIN000014531,NA,updac0160,NA,hba1c,baseline,mean,n,7.1,sd,0.5,percentage,0,weeks,manual_extraction,NA
+updresb00432,UMIN000014531,NA,updac0160,NA,hba1c,endpoint,mean,n,6.8,sd,0.6,percentage,24,weeks,manual_extraction,NA
+updresb00433,UMIN000014531,NA,updac0161,NA,hba1c,baseline,mean,n,7.3,sd,0.5,percentage,0,weeks,manual_extraction,NA
+updresb00434,UMIN000014531,NA,updac0161,NA,hba1c,endpoint,mean,n,7.1,sd,0.6,percentage,24,weeks,manual_extraction,NA
+updresb00437,UMIN000014864,fas,updac0162,NA,hba1c,change from baseline,spearmans correlation coefficient,n,-0.06,95%ci,"-0.46,0.37",percentage,52,weeks,manual_extraction,NA
+updresb00438,UMIN000014864,fas,updac0163,NA,hba1c,change from baseline,spearmans correlation coefficient,n,-0.53,95%ci,"-0.76,-0.16",percentage,52,weeks,manual_extraction,NA
+updresb00443,UMIN000015727,NA,updac0164,NA,hba1c,baseline,median,n,6.5,IQR,"6.1,7.1",percentage,0,weeks,manual_extraction,NA
+updresb00444,UMIN000015727,NA,updac0164,NA,hba1c,endpoint,median,n,6,IQR,"5.9,6.3",percentage,72,weeks,manual_extraction,NA
+updresb00445,UMIN000015727,NA,updac0165,NA,hba1c,baseline,median,n,6.8,IQR,"6.3,7",percentage,0,weeks,manual_extraction,NA
+updresb00446,UMIN000015727,NA,updac0165,NA,hba1c,endpoint,median,n,6.6,IQR,"6.3,7.5",percentage,72,weeks,manual_extraction,NA
+updresb00447,UMIN000016563,itt,updac0166,NA,hba1c,change from baseline,mean change,n,-0.2,95%ci,"-0.3,0",percentage,12,weeks,manual_extraction,NA
+updresb00451,UMIN000016563,itt,updac0167,NA,hba1c,change from baseline,mean change,n,-0.1,95%ci,"-0.3,0",percentage,12,weeks,manual_extraction,NA
+updresb00452,UMIN000016563,itt,NA,updcompb0014,hba1c,between treament difference in mean change,mean difference,n,-0.1,95%ci,"-0.3,0.2",percentage,12,weeks,manual_extraction,NA
+updresb00453,UMIN000018395,fas,updac0171,NA,hba1c,change from baseline,percentage change,y,-1.19,95%ci,"-3.18,-0.81",percentage,12,weeks,manual_extraction,NA
+updresb00454,UMIN000019382,fas,updac0172,NA,hba1c,change from baseline,mean change,n,-0.1,sd,0.6,percentage,24,weeks,manual_extraction,NA
+updresb00455,UMIN000019382,fas,updac0173,NA,hba1c,change from baseline,mean change,n,-0.2,sd,0.6,percentage,24,weeks,manual_extraction,NA
+updresb00464,UMIN000020239,itt,updac0174,NA,hba1c,change from baseline,mean change,n,-0.37,sd,0.85,percentage,24,weeks,manual_extraction,NA
+updresb00465,UMIN000020239,itt,updac0175,NA,hba1c,change from baseline,mean change,n,-0.37,sd,0.69,percentage,24,weeks,manual_extraction,NA
+updresb00466,UMIN000020239,itt,NA,updcompb0012,hba1c,between treatment difference in adjusted mean change,adjusted LS mean difference,y,0,95%ci,"-0.45,0.44",percentage,24,weeks,manual_extraction,NA
+updresb00467,UMIN000021177,fas,updac0177,NA,hba1c,change from baseline,mean change,y,0.11,sd,0.57,percentage,24,weeks,manual_extraction,NA
+updresb00471,UMIN000021291,NA,updac0178,NA,hba1c,change from baseline,mean,n,-0.52,se,0.12,percentage,28,weeks,manual_extraction,NA
+updresb00472,UMIN000021291,NA,updac0179,NA,hba1c,change from baseline,mean,n,-0.3,se,0.18,percentage,28,weeks,manual_extraction,NA
+updresb00473,UMIN000021291,NA,updac0180,NA,hba1c,change from baseline,mean,n,-0.48,se,0.18,percentage,28,weeks,manual_extraction,NA
+updresb00474,UMIN000023834,fas,updac0181,NA,hba1c,change from baseline,mean,n,-0.5,sd,0.7,percentage,6,months,manual_extraction,NA
+updresb00475,UMIN000023834,fas,updac0182,NA,hba1c,change from baseline,mean,n,-0.8,sd,0.6,percentage,6,months,manual_extraction,NA
+updresb00476,UMIN000024284,fas,updac0183,NA,hba1c,change from baseline,mean,n,-0.2,sd,0.6,percentage,24,weeks,manual_extraction,NA
+updresb00477,UMIN000024284,fas,updac0184,NA,hba1c,change from baseline,mean,n,0.4,sd,0.8,percentage,24,weeks,manual_extraction,NA
+updresb00481,UMIN000024284,fas,NA,updcompb0011,hba1c,between treatment difference in mean change,mean change,n,-0.61,95%ci,"-1.14,-0.09",percentage,24,weeks,manual_extraction,NA
+updresb00482,UMIN000024284,fas,NA,updcompb0011,hba1c,between treatment difference in adjusted mean change,adjusted mean change,n,-0.62,95%ci,"-1.2,-0.04",percentage,24,weeks,manual_extraction,NA
+updresb00492,UMIN000024502,NA,updac0188,NA,hba1c,change from baseline,mean change,n,-0.25,sd,0.49,percentage,24,weeks,manual_extraction,NA
+updresb00493,UMIN000024502,NA,updac0189,NA,hba1c,change from baseline,mean change,n,0.07,sd,0.71,percentage,24,weeks,manual_extraction,NA
+updresb00494,UMIN000024502,NA,NA,updcompb0010,hba1c,between treatment difference in mean change,mean difference,n,-0.32,95%ci,"-0.56,-0.07",percentage,24,weeks,manual_extraction,NA
+updresb00496,UMIN000024663,NA,updac0190,NA,hba1c,baseline,mean,n,7.57,sd,0.8,percentage,0,weeks,manual_extraction,NA
+updresb00497,UMIN000024663,NA,updac0190,NA,hba1c,endpoint,mean,n,6.86,sd,1.2,percentage,12,weeks,manual_extraction,NA
+updresb00498,UMIN000024663,NA,updac0191,NA,hba1c,baseline,mean,n,7.57,sd,0.8,percentage,0,weeks,manual_extraction,NA
+updresb00499,UMIN000024663,NA,updac0191,NA,hba1c,endpoint,mean,n,7.12,sd,0.8,percentage,12,weeks,manual_extraction,NA
+updresb00500,UMIN000024865,NA,updac0192,NA,hba1c,change from baseline,percentage decrease,n,-0.3,not reported,NA,percentage,52,weeks,manual_extraction,NA
+updresb00501,UMIN000024865,NA,updac0193,NA,hba1c,change from baseline,percentage decrease,n,-0.7,not reported,NA,percentage,52,weeks,manual_extraction,NA
+updresb00508,UMIN000025418,NA,updac0194,NA,hba1c,baseline,mean,n,8,sd,0.9,percentage,0,weeks,manual_extraction,NA
+updresb00509,UMIN000025418,NA,updac0194,NA,hba1c,endpoint,mean,n,7.2,sd,0.6,percentage,12,weeks,manual_extraction,NA
+updresb00510,UMIN000025418,NA,updac0195,NA,hba1c,baseline,mean,n,7.6,sd,0.6,percentage,0,weeks,manual_extraction,NA
+updresb00511,UMIN000025418,NA,updac0195,NA,hba1c,endpoint,mean,n,7.8,sd,0.9,percentage,12,weeks,manual_extraction,NA
+updresb00670,UMIN000026340,fas,updac0196,NA,hba1c,change from baseline,mean change,n,-0.5,sd,0.4,percentage,12,weeks,manual_extraction,NA
+updresb00671,UMIN000026340,fas,updac0197,NA,hba1c,change from baseline,mean change,n,-0.4,sd,0.4,percentage,12,weeks,manual_extraction,NA
+updresb00302,UMIN000027095,NA,NA,updcompb0009,hba1c,between treatment difference in adjusted mean change,adjusted mean difference,y,-0.068,95%ci,"-0.4,0.27",percentage,24,weeks,manual_extraction,NA
+updresb00514,UMIN000027614,fas,updac0198,NA,hba1c,change from baseline,mean change,n,-1.24,se,0.15,percentage,24,weeks,manual_extraction,NA
+updresb00515,UMIN000027614,fas,updac0199,NA,hba1c,change from baseline,mean change,n,-0.35,se,0.11,percentage,24,weeks,manual_extraction,NA
+updresb00522,UMIN000028014,fas,updac0200,NA,hba1c,change from baseline,adjusted mean change,y,-0.9,se,0.1,percentage,24,weeks,manual_extraction,NA
+updresb00523,UMIN000028014,fas,updac0201,NA,hba1c,change from baseline,adjusted mean change,y,-0.9,se,0.1,percentage,24,weeks,manual_extraction,NA
+updresb00524,UMIN000028014,fas,NA,updcompb0008,hba1c,between treatment difference in adjusted mean change,adjusted mean difference,y,0,95%ci,"-0.1,0.2",percentage,24,weeks,manual_extraction,NA
+updresb00525,UMIN000028293,NA,updac0202,NA,hba1c,change from baseline,mean change,n,-0.38,95%ci,"-0.57,-0.2",percentage,4,weeks,manual_extraction,NA
+updresb00526,UMIN000028293,NA,updac0203,NA,hba1c,change from baseline,mean change,n,-0.35,95%ci,"-0.51,0.19",percentage,4,weeks,manual_extraction,NA
+updresb00527,UMIN000028293,NA,NA,updcompb0007,hba1c,between treatment difference in mean change,mean difference,n,-0.03,95%ci,"-0.29,0.23",percentage,4,weeks,manual_extraction,NA
+updresb00674,UMIN000030514,fas,updac0206,NA,hba1c,change from baseline,mean change,n,-0.8,sd,1.1,percentage,24,weeks,manual_extraction,NA
+updresb00675,UMIN000030514,fas,updac0207,NA,hba1c,change from baseline,mean change,n,-0.9,sd,1.4,percentage,24,weeks,manual_extraction,NA
+updresb00528,UMIN000031451,fas,updac0209,NA,hba1c,change from baseline,mean change,n,0,sd,0.3,percentage,8,weeks,manual_extraction,NA
+updresb00676,UMIN000034951,itt,updac0210,NA,hba1c,change from baseline,adjusted mean change,y,-0.65,se,0.109,percentage,12,weeks,manual_extraction,NA
+updresb00677,UMIN000034951,itt,updac0211,NA,hba1c,change from baseline,adjusted mean change,y,-0.75,se,0.109,percentage,12,weeks,manual_extraction,NA
+updresb00391,UMIN000035660,NA,updac0146,NA,hba1c,change from baseline,mean change,n,-0.41,sd,0.21,percentage,6,months,manual_extraction,NA
+updresb00392,UMIN000035660,NA,updac0147,NA,hba1c,change from baseline,mean change,n,-0.19,sd,0.25,percentage,6,months,manual_extraction,NA
+updresb00529,UMIN000038459,NA,updac0212,NA,hba1c,baseline,mean,n,6.9,sd,0.92,percentage,0,months,manual_extraction,NA
+updresb00530,UMIN000038459,NA,updac0212,NA,hba1c,endpoint,mean,n,6.3,sd,0.16,percentage,120,months,manual_extraction,NA
+updresb00531,UMIN000038459,NA,updac0213,NA,hba1c,baseline,mean,n,6.8,sd,0.25,percentage,0,months,manual_extraction,NA
+updresb00532,UMIN000038459,NA,updac0213,NA,hba1c,endpoint,mean,n,6.4,sd,0.26,percentage,120,months,manual_extraction,NA
+updresb00594,UMIN000038503,NA,updac0238,NA,hba1c,baseline,mean,n,7.2,sd,0.4,percentage,0,weeks,manual_extraction,NA
+updresb00595,UMIN000038503,NA,updac0239,NA,hba1c,baseline,mean,n,7.2,sd,0.4,percentage,0,weeks,manual_extraction,NA
+updresb00596,UMIN000038503,NA,updac0238,NA,hba1c,endpoint,mean,n,7,sd,0.5,percentage,24,weeks,manual_extraction,NA
+updresb00597,UMIN000038503,NA,updac0239,NA,hba1c,endpoint,mean,n,7.4,sd,0.8,percentage,24,weeks,manual_extraction,NA
+updresb00533,UMIN000039079,NA,updac0214,NA,hba1c,baseline,mean,n,8.3,sd,1.3,percentage,0,months,manual_extraction,NA
+updresb00534,UMIN000039079,NA,updac0214,NA,hba1c,endpoint,mean,n,7.2,sd,0.8,percentage,12,months,manual_extraction,NA
+updresb00535,UMIN000039079,NA,updac0215,NA,hba1c,baseline,mean,n,8.1,sd,0.5,percentage,0,months,manual_extraction,NA
+updresb00536,UMIN000039079,NA,updac0215,NA,hba1c,endpoint,mean,n,7.3,sd,0.9,percentage,12,months,manual_extraction,NA
+updresb00586,UMIN000041551,NA,updac0234,NA,hba1c,baseline,mean,n,8.3,sd,1,percentage,0,days,manual_extraction,NA
+updresb00587,UMIN000041551,NA,updac0234,NA,hba1c,endpoint,mean,n,7.7,sd,0.8,percentage,1113,days,manual_extraction,NA
+updresb00588,UMIN000041551,NA,updac0235,NA,hba1c,baseline,mean,n,8.8,sd,1.2,percentage,0,days,manual_extraction,NA
+updresb00589,UMIN000041551,NA,updac0235,NA,hba1c,endpoint,mean,n,8,sd,1.1,percentage,1113,days,manual_extraction,NA
+updresb00541,UTN 1111-1181-9567,itt,updac0218,NA,hba1c,baseline,not specified,n,6.9,not specified,1.1,percentage,0,months,manual_extraction,NA
+updresb00542,UTN 1111-1181-9567,itt,updac0218,NA,hba1c,endpoint,not specified,n,5.9,not specified,0.4,percentage,6,months,manual_extraction,NA
+updresb00543,UTN 1111-1181-9567,itt,updac0219,NA,hba1c,baseline,not specified,n,7.6,not specified,0.9,percentage,0,months,manual_extraction,NA
+updresb00544,UTN 1111-1181-9567,itt,updac0219,NA,hba1c,endpoint,not specified,n,7,not specified,0.6,percentage,12,months,manual_extraction,NA
+154527286,NCT01919489,NA,unq_updaa10001,NA,hba1c,endpoint,mean,NA,7.68,sd,1.69,percentage,6,months,aact,NA
+154527285,NCT01919489,NA,unq_updaa10002,NA,hba1c,endpoint,mean,NA,7.13,sd,1.3,percentage,6,months,aact,NA
+154274919,NCT01952145,NA,unq_updaa10004,NA,hba1c,change from baseline,mean change,NA,-1.13,sd,0.98,percentage,26,weeks,aact,NA
+154274918,NCT01952145,NA,unq_updaa10005,NA,hba1c,change from baseline,mean change,NA,-1.81,sd,1.08,percentage,26,weeks,aact,NA
+153887589,NCT02324842,NA,unq_updaa10010,NA,hba1c,endpoint,mean,NA,8.2,sd,0.3,percentage,4,months,aact,NA
+153887591,NCT02324842,NA,unq_updaa10011,NA,hba1c,endpoint,mean,NA,8.1,sd,0.3,percentage,4,months,aact,NA
+153887590,NCT02324842,NA,unq_updaa10012,NA,hba1c,endpoint,mean,NA,8.4,sd,0.3,percentage,4,months,aact,NA
+155012190,NCT02420262,NA,unq_updaa10014,NA,hba1c,change from baseline,LS mean change,NA,-1.46,se,0.05,percentage,26,weeks,aact,NA
+155012189,NCT02420262,NA,unq_updaa10015,NA,hba1c,change from baseline,LS mean change,NA,-1.48,se,0.05,percentage,26,weeks,aact,NA
+154084044,NCT02501161,NA,unq_updaa10020,NA,hba1c,change from baseline,mean change,NA,-1.69,sd,1.1,percentage,26,weeks,aact,NA
+154084043,NCT02501161,NA,unq_updaa10021,NA,hba1c,change from baseline,mean change,NA,-1.99,sd,1.14,percentage,26,weeks,aact,NA
+153870997,NCT02551874,NA,unq_updaa10023,NA,hba1c,change from baseline,LS mean change,NA,-1.67,95%ci,-1.79;-1.55,percentage,24,weeks,aact,NA
+153870998,NCT02551874,NA,unq_updaa10024,NA,hba1c,change from baseline,LS mean change,NA,-1.54,95%ci,-1.66;-1.42,percentage,24,weeks,aact,NA
+153671194,NCT02773368,NA,unq_updaa10030,NA,hba1c,baseline,mean,NA,8.36,sd,1.08,percentage,0,weeks,aact,NA
+153671196,NCT02773368,NA,unq_updaa10030,NA,hba1c,change from baseline,mean change,NA,-1.68,sd,1.05,percentage,26,weeks,aact,NA
+153671193,NCT02773368,NA,unq_updaa10031,NA,hba1c,baseline,mean,NA,8.2,sd,0.93,percentage,0,weeks,aact,NA
+153671195,NCT02773368,NA,unq_updaa10031,NA,hba1c,change from baseline,mean change,NA,-1.94,sd,0.95,percentage,26,weeks,aact,NA
+151900800,NCT02787551,NA,unq_updaa10033,NA,hba1c,change from baseline,LS mean change,NA,-0.38,se,0.048,percentage,26,weeks,aact,NA
+151900799,NCT02787551,NA,unq_updaa10034,NA,hba1c,change from baseline,LS mean change,NA,-1.02,se,0.048,percentage,26,weeks,aact,NA
+153753011,NCT02912455,NA,unq_updaa10039,NA,hba1c,change from baseline,mean change,NA,-0.31,95%ci,-0.72;0.1,percentage,6,months,aact,NA
+153753012,NCT02912455,NA,unq_updaa10040,NA,hba1c,change from baseline,mean change,NA,0.11,95%ci,-0.71;0.93,percentage,6,months,aact,NA
+152242299,NCT02964585,NA,updac0007,NA,hba1c,endpoint,mean,NA,7.85,sd,1.66,percentage,16,weeks,aact,NA
+152242300,NCT02964585,NA,updac0008,NA,hba1c,endpoint,mean,NA,8.26,sd,1.52,percentage,16,weeks,aact,NA
+153203197,NCT03353350,NA,unq_updaa10059,NA,hba1c,change from baseline,mean change,NA,-1.18,sd,0.79,percentage,56,weeks,aact,NA
+153203198,NCT03353350,NA,unq_updaa10060,NA,hba1c,change from baseline,mean change,NA,-1.51,sd,0.99,percentage,56,weeks,aact,NA
+153203199,NCT03353350,NA,unq_updaa10061,NA,hba1c,change from baseline,mean change,NA,-1.51,sd,0.18,percentage,56,weeks,aact,NA
+153203196,NCT03353350,NA,unq_updaa10062,NA,hba1c,change from baseline,mean change,NA,-0.52,sd,1.18,percentage,56,weeks,aact,NA
+153087453,NCT03689374,NA,unq_updaa10075,NA,hba1c,change from baseline,mean change,NA,-1.2,sd,1,percentage,52,weeks,aact,NA
+153087452,NCT03689374,NA,unq_updaa10076,NA,hba1c,change from baseline,mean change,NA,-1.5,sd,1,percentage,52,weeks,aact,NA
+154565577,NCT03730662,NA,unq_updaa10078,NA,hba1c,change from baseline,LS mean change,NA,-1.44,se,0.03,percentage,52,weeks,aact,NA
+154565573,NCT03730662,NA,unq_updaa10079,NA,hba1c,change from baseline,LS mean change,NA,-2.43,se,0.053,percentage,52,weeks,aact,NA
+154565574,NCT03730662,NA,unq_updaa10080,NA,hba1c,change from baseline,LS mean change,NA,-2.58,se,0.053,percentage,52,weeks,aact,NA
+153801334,NCT03861039,NA,unq_updaa10083,NA,hba1c,change from baseline,LS mean change,NA,-2.98,se,0.075,percentage,52,weeks,aact,NA
+153801335,NCT03861039,NA,unq_updaa10084,NA,hba1c,change from baseline,LS mean change,NA,-3.02,se,0.077,percentage,52,weeks,aact,NA
+153801333,NCT03861039,NA,unq_updaa10085,NA,hba1c,change from baseline,LS mean change,NA,-2.57,se,0.075,percentage,52,weeks,aact,NA
+152744996,NCT03861052,NA,unq_updaa10087,NA,hba1c,change from baseline,LS mean change,NA,-1.29,se,0.065,percentage,52,weeks,aact,NA
+152744994,NCT03861052,NA,unq_updaa10088,NA,hba1c,change from baseline,LS mean change,NA,-2.55,se,0.067,percentage,52,weeks,aact,NA
+152744995,NCT03861052,NA,unq_updaa10089,NA,hba1c,change from baseline,LS mean change,NA,-2.82,se,0.066,percentage,52,weeks,aact,NA
+152744993,NCT03861052,NA,unq_updaa10090,NA,hba1c,change from baseline,LS mean change,NA,-2.37,se,0.066,percentage,52,weeks,aact,NA
+153201193,NCT03882970,NA,unq_updaa10092,NA,hba1c,change from baseline,LS mean change,NA,-1.34,se,0.049,percentage,52,weeks,aact,NA
+153201189,NCT03882970,NA,unq_updaa10093,NA,hba1c,change from baseline,LS mean change,NA,-2.2,se,0.051,percentage,52,weeks,aact,NA
+153201190,NCT03882970,NA,unq_updaa10094,NA,hba1c,change from baseline,LS mean change,NA,-2.37,se,0.05,percentage,52,weeks,aact,NA
+152804812,NCT03954834,NA,unq_updaa10097,NA,hba1c,change from baseline,LS mean change,NA,0.04,se,0.105,percentage,40,weeks,aact,NA
+152804810,NCT03954834,NA,unq_updaa10098,NA,hba1c,change from baseline,LS mean change,NA,-1.89,se,0.096,percentage,40,weeks,aact,NA
+152804811,NCT03954834,NA,unq_updaa10099,NA,hba1c,change from baseline,LS mean change,NA,-2.07,se,0.098,percentage,40,weeks,aact,NA
+152804809,NCT03954834,NA,unq_updaa10100,NA,hba1c,change from baseline,LS mean change,NA,-1.87,se,0.094,percentage,40,weeks,aact,NA
+153929740,NCT03987919,NA,unq_updaa10102,NA,hba1c,change from baseline,LS mean change,NA,-1.86,se,0.048,percentage,40,weeks,aact,NA
+153929736,NCT03987919,NA,unq_updaa10103,NA,hba1c,change from baseline,LS mean change,NA,-2.37,se,0.048,percentage,40,weeks,aact,NA
+153929737,NCT03987919,NA,unq_updaa10104,NA,hba1c,change from baseline,LS mean change,NA,-2.46,se,0.048,percentage,40,weeks,aact,NA
+153708785,NCT03989232,NA,unq_updaa10107,NA,hba1c,change from baseline,mean change,NA,-1.9,sd,1,percentage,40,weeks,aact,NA
+153708786,NCT03989232,NA,unq_updaa10108,NA,hba1c,change from baseline,mean change,NA,-2.2,sd,1.1,percentage,40,weeks,aact,NA
+153484469,NCT04039503,NA,unq_updaa10110,NA,hba1c,change from baseline,LS mean change,NA,-0.93,se,0.079,percentage,40,weeks,aact,NA
+153484467,NCT04039503,NA,unq_updaa10111,NA,hba1c,change from baseline,LS mean change,NA,-2.59,se,0.081,percentage,40,weeks,aact,NA
+153484468,NCT04039503,NA,unq_updaa10112,NA,hba1c,change from baseline,LS mean change,NA,-2.59,se,0.083,percentage,40,weeks,aact,NA
+153484470,NCT04039503,NA,unq_updaa10113,NA,hba1c,change from baseline,LS mean change,NA,-2.23,se,0.081,percentage,40,weeks,aact,NA
+152745751,NCT04093752,NA,updac0049,NA,hba1c,change from baseline,LS mean change,NA,-2.44,se,0.073,percentage,40,weeks,aact,NA
+152745752,NCT04093752,NA,updac0050,NA,hba1c,change from baseline,LS mean change,NA,-2.49,se,0.072,percentage,40,weeks,aact,NA
+152745753,NCT04093752,NA,updac0051,NA,hba1c,change from baseline,LS mean change,NA,-0.95,se,0.073,percentage,40,weeks,aact,NA
+152745754,NCT04093752,NA,updac0048,NA,hba1c,change from baseline,LS mean change,NA,-2.24,se,0.07,percentage,40,weeks,aact,NA

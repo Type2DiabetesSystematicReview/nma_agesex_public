@@ -1,0 +1,187 @@
+repo,nct_id,models,row,col,r
+6115,NCT00968708,f2,arm_falogliptin,age10c,-0.004
+6115,NCT00968708,f2,arm_falogliptin,sexMALE,0.006
+6115,NCT00968708,f2,age10c,sexMALE,0.172
+6115,NCT00968708,f3,age10c,arm_falogliptin,0.224
+6115,NCT00968708,f3,age10c,age10c:arm_falogliptin,-0.695
+6115,NCT00968708,f3,arm_falogliptin,age10c:arm_falogliptin,-0.369
+6115,NCT00968708,f4,sexMALE,arm_falogliptin,0.536
+6115,NCT00968708,f4,sexMALE,sexMALE:arm_falogliptin,-0.694
+6115,NCT00968708,f4,arm_falogliptin,sexMALE:arm_falogliptin,-0.795
+6115,NCT00968708,f5,age10c,arm_falogliptin,0.228
+6115,NCT00968708,f5,age10c,sexMALE,0.175
+6115,NCT00968708,f5,arm_falogliptin,sexMALE,0.532
+6115,NCT00968708,f5,age10c,age10c:arm_falogliptin,-0.695
+6115,NCT00968708,f5,arm_falogliptin,age10c:arm_falogliptin,-0.358
+6115,NCT00968708,f5,sexMALE,age10c:arm_falogliptin,-0.122
+6115,NCT00968708,f5,age10c,arm_falogliptin:sexMALE,-0.121
+6115,NCT00968708,f5,arm_falogliptin,arm_falogliptin:sexMALE,-0.793
+6115,NCT00968708,f5,sexMALE,arm_falogliptin:sexMALE,-0.694
+6115,NCT00968708,f5,age10c:arm_falogliptin,arm_falogliptin:sexMALE,0.172
+8697,NCT01131676,f1,arm_fbi 10773 10mg,arm_fbi 10773 25mg,0.465
+8697,NCT01032629,f1,arm_fjnj-28431754-300 mg,arm_fjnj-28431754-100 mg,0.476
+8697,NCT02465515,f2,arm_falbiglutide,age10c,0.006
+8697,NCT02465515,f2,arm_falbiglutide,sexM,-0.009
+8697,NCT02465515,f2,age10c,sexM,0.003
+8697,NCT01131676,f2,arm_fbi 10773 10mg,arm_fbi 10773 25mg,0.465
+8697,NCT01131676,f2,arm_fbi 10773 10mg,age10c,0.011
+8697,NCT01131676,f2,arm_fbi 10773 25mg,age10c,0.009
+8697,NCT01131676,f2,arm_fbi 10773 10mg,sexM,0.018
+8697,NCT01131676,f2,arm_fbi 10773 25mg,sexM,0
+8697,NCT01131676,f2,age10c,sexM,0.04
+8697,NCT01032629,f2,arm_fjnj-28431754-300 mg,arm_fjnj-28431754-100 mg,0.476
+8697,NCT01032629,f2,arm_fjnj-28431754-300 mg,age10c,-0.031
+8697,NCT01032629,f2,arm_fjnj-28431754-100 mg,age10c,0.004
+8697,NCT01032629,f2,arm_fjnj-28431754-300 mg,sexM,0.006
+8697,NCT01032629,f2,arm_fjnj-28431754-100 mg,sexM,-0.004
+8697,NCT01032629,f2,age10c,sexM,0.013
+8697,NCT01989754,f2,arm_fcanagliflozin,age10c,-0.004
+8697,NCT01989754,f2,arm_fcanagliflozin,sexM,-0.025
+8697,NCT01989754,f2,age10c,sexM,0.004
+8697,NCT02065791,f2,arm_fcana 100 mg,age10c,0.003
+8697,NCT02065791,f2,arm_fcana 100 mg,sexM,0.011
+8697,NCT02065791,f2,age10c,sexM,-0.01
+8697,NCT02465515,f3,age10c,arm_falbiglutide,0.352
+8697,NCT02465515,f3,age10c,age10c:arm_falbiglutide,-0.667
+8697,NCT02465515,f3,arm_falbiglutide,age10c:arm_falbiglutide,-0.556
+8697,NCT01131676,f3,age10c,arm_fbi 10773 10mg,0.401
+8697,NCT01131676,f3,age10c,arm_fbi 10773 25mg,0.39
+8697,NCT01131676,f3,arm_fbi 10773 10mg,arm_fbi 10773 25mg,0.501
+8697,NCT01131676,f3,age10c,age10c:arm_fbi 10773 10mg,-0.678
+8697,NCT01131676,f3,arm_fbi 10773 10mg,age10c:arm_fbi 10773 10mg,-0.473
+8697,NCT01131676,f3,arm_fbi 10773 25mg,age10c:arm_fbi 10773 10mg,-0.264
+8697,NCT01131676,f3,age10c,age10c:arm_fbi 10773 25mg,-0.675
+8697,NCT01131676,f3,arm_fbi 10773 10mg,age10c:arm_fbi 10773 25mg,-0.271
+8697,NCT01131676,f3,arm_fbi 10773 25mg,age10c:arm_fbi 10773 25mg,-0.528
+8697,NCT01131676,f3,age10c:arm_fbi 10773 10mg,age10c:arm_fbi 10773 25mg,0.458
+8697,NCT01032629,f3,age10c,arm_fjnj-28431754-300 mg,0.25
+8697,NCT01032629,f3,age10c,arm_fjnj-28431754-100 mg,0.261
+8697,NCT01032629,f3,arm_fjnj-28431754-300 mg,arm_fjnj-28431754-100 mg,0.487
+8697,NCT01032629,f3,age10c,age10c:arm_fjnj-28431754-300 mg,-0.68
+8697,NCT01032629,f3,arm_fjnj-28431754-300 mg,age10c:arm_fjnj-28431754-300 mg,-0.356
+8697,NCT01032629,f3,arm_fjnj-28431754-100 mg,age10c:arm_fjnj-28431754-300 mg,-0.177
+8697,NCT01032629,f3,age10c,age10c:arm_fjnj-28431754-100 mg,-0.698
+8697,NCT01032629,f3,arm_fjnj-28431754-300 mg,age10c:arm_fjnj-28431754-100 mg,-0.175
+8697,NCT01032629,f3,arm_fjnj-28431754-100 mg,age10c:arm_fjnj-28431754-100 mg,-0.317
+8697,NCT01032629,f3,age10c:arm_fjnj-28431754-300 mg,age10c:arm_fjnj-28431754-100 mg,0.475
+8697,NCT01989754,f3,age10c,arm_fcanagliflozin,0.399
+8697,NCT01989754,f3,age10c,age10c:arm_fcanagliflozin,-0.683
+8697,NCT01989754,f3,arm_fcanagliflozin,age10c:arm_fcanagliflozin,-0.513
+8697,NCT02065791,f3,age10c,arm_fcana 100 mg,-0.161
+8697,NCT02065791,f3,age10c,age10c:arm_fcana 100 mg,-0.66
+8697,NCT02065791,f3,arm_fcana 100 mg,age10c:arm_fcana 100 mg,0.232
+8697,NCT02465515,f4,sexM,arm_falbiglutide,0.535
+8697,NCT02465515,f4,sexM,sexM:arm_falbiglutide,-0.642
+8697,NCT02465515,f4,arm_falbiglutide,sexM:arm_falbiglutide,-0.864
+8697,NCT01131676,f4,sexM,arm_fbi 10773 10mg,0.592
+8697,NCT01131676,f4,sexM,arm_fbi 10773 25mg,0.594
+8697,NCT01131676,f4,arm_fbi 10773 10mg,arm_fbi 10773 25mg,0.468
+8697,NCT01131676,f4,sexM,sexM:arm_fbi 10773 10mg,-0.682
+8697,NCT01131676,f4,arm_fbi 10773 10mg,sexM:arm_fbi 10773 10mg,-0.867
+8697,NCT01131676,f4,arm_fbi 10773 25mg,sexM:arm_fbi 10773 10mg,-0.405
+8697,NCT01131676,f4,sexM,sexM:arm_fbi 10773 25mg,-0.685
+8697,NCT01131676,f4,arm_fbi 10773 10mg,sexM:arm_fbi 10773 25mg,-0.405
+8697,NCT01131676,f4,arm_fbi 10773 25mg,sexM:arm_fbi 10773 25mg,-0.866
+8697,NCT01131676,f4,sexM:arm_fbi 10773 10mg,sexM:arm_fbi 10773 25mg,0.467
+8697,NCT01032629,f4,sexM,arm_fjnj-28431754-300 mg,0.589
+8697,NCT01032629,f4,sexM,arm_fjnj-28431754-100 mg,0.596
+8697,NCT01032629,f4,arm_fjnj-28431754-300 mg,arm_fjnj-28431754-100 mg,0.49
+8697,NCT01032629,f4,sexM,sexM:arm_fjnj-28431754-300 mg,-0.69
+8697,NCT01032629,f4,arm_fjnj-28431754-300 mg,sexM:arm_fjnj-28431754-300 mg,-0.839
+8697,NCT01032629,f4,arm_fjnj-28431754-100 mg,sexM:arm_fjnj-28431754-300 mg,-0.411
+8697,NCT01032629,f4,sexM,sexM:arm_fjnj-28431754-100 mg,-0.703
+8697,NCT01032629,f4,arm_fjnj-28431754-300 mg,sexM:arm_fjnj-28431754-100 mg,-0.414
+8697,NCT01032629,f4,arm_fjnj-28431754-100 mg,sexM:arm_fjnj-28431754-100 mg,-0.845
+8697,NCT01032629,f4,sexM:arm_fjnj-28431754-300 mg,sexM:arm_fjnj-28431754-100 mg,0.485
+8697,NCT01989754,f4,sexM,arm_fcanagliflozin,0.533
+8697,NCT01989754,f4,sexM,sexM:arm_fcanagliflozin,-0.644
+8697,NCT01989754,f4,arm_fcanagliflozin,sexM:arm_fcanagliflozin,-0.864
+8697,NCT02065791,f4,sexM,arm_fcana 100 mg,0.58
+8697,NCT02065791,f4,sexM,sexM:arm_fcana 100 mg,-0.68
+8697,NCT02065791,f4,arm_fcana 100 mg,sexM:arm_fcana 100 mg,-0.828
+8697,NCT02465515,f5,age10c,arm_falbiglutide,0.202
+8697,NCT02465515,f5,age10c,sexM,0.002
+8697,NCT02465515,f5,arm_falbiglutide,sexM,0.506
+8697,NCT02465515,f5,age10c,age10c:arm_falbiglutide,-0.668
+8697,NCT02465515,f5,arm_falbiglutide,age10c:arm_falbiglutide,-0.32
+8697,NCT02465515,f5,sexM,age10c:arm_falbiglutide,-0.001
+8697,NCT02465515,f5,age10c,arm_falbiglutide:sexM,-0.001
+8697,NCT02465515,f5,arm_falbiglutide,arm_falbiglutide:sexM,-0.819
+8697,NCT02465515,f5,sexM,arm_falbiglutide:sexM,-0.642
+8697,NCT02465515,f5,age10c:arm_falbiglutide,arm_falbiglutide:sexM,0.003
+8697,NCT01131676,f5,age10c,arm_fbi 10773 10mg,0.232
+8697,NCT01131676,f5,age10c,arm_fbi 10773 25mg,0.23
+8697,NCT01131676,f5,arm_fbi 10773 10mg,arm_fbi 10773 25mg,0.477
+8697,NCT01131676,f5,age10c,sexM,0.024
+8697,NCT01131676,f5,arm_fbi 10773 10mg,sexM,0.571
+8697,NCT01131676,f5,arm_fbi 10773 25mg,sexM,0.568
+8697,NCT01131676,f5,age10c,age10c:arm_fbi 10773 10mg,-0.677
+8697,NCT01131676,f5,arm_fbi 10773 10mg,age10c:arm_fbi 10773 10mg,-0.289
+8697,NCT01131676,f5,arm_fbi 10773 25mg,age10c:arm_fbi 10773 10mg,-0.156
+8697,NCT01131676,f5,sexM,age10c:arm_fbi 10773 10mg,-0.016
+8697,NCT01131676,f5,age10c,age10c:arm_fbi 10773 25mg,-0.674
+8697,NCT01131676,f5,arm_fbi 10773 10mg,age10c:arm_fbi 10773 25mg,-0.156
+8697,NCT01131676,f5,arm_fbi 10773 25mg,age10c:arm_fbi 10773 25mg,-0.322
+8697,NCT01131676,f5,sexM,age10c:arm_fbi 10773 25mg,-0.016
+8697,NCT01131676,f5,age10c:arm_fbi 10773 10mg,age10c:arm_fbi 10773 25mg,0.456
+8697,NCT01131676,f5,age10c,arm_fbi 10773 10mg:sexM,-0.016
+8697,NCT01131676,f5,arm_fbi 10773 10mg,arm_fbi 10773 10mg:sexM,-0.838
+8697,NCT01131676,f5,arm_fbi 10773 25mg,arm_fbi 10773 10mg:sexM,-0.387
+8697,NCT01131676,f5,sexM,arm_fbi 10773 10mg:sexM,-0.682
+8697,NCT01131676,f5,age10c:arm_fbi 10773 10mg,arm_fbi 10773 10mg:sexM,0.037
+8697,NCT01131676,f5,age10c:arm_fbi 10773 25mg,arm_fbi 10773 10mg:sexM,0.011
+8697,NCT01131676,f5,age10c,arm_fbi 10773 25mg:sexM,-0.016
+8697,NCT01131676,f5,arm_fbi 10773 10mg,arm_fbi 10773 25mg:sexM,-0.391
+8697,NCT01131676,f5,arm_fbi 10773 25mg,arm_fbi 10773 25mg:sexM,-0.83
+8697,NCT01131676,f5,sexM,arm_fbi 10773 25mg:sexM,-0.684
+8697,NCT01131676,f5,age10c:arm_fbi 10773 10mg,arm_fbi 10773 25mg:sexM,0.011
+8697,NCT01131676,f5,age10c:arm_fbi 10773 25mg,arm_fbi 10773 25mg:sexM,0.034
+8697,NCT01131676,f5,arm_fbi 10773 10mg:sexM,arm_fbi 10773 25mg:sexM,0.467
+8697,NCT01032629,f5,age10c,arm_fjnj-28431754-300 mg,0.16
+8697,NCT01032629,f5,age10c,arm_fjnj-28431754-100 mg,0.163
+8697,NCT01032629,f5,arm_fjnj-28431754-300 mg,arm_fjnj-28431754-100 mg,0.496
+8697,NCT01032629,f5,age10c,sexM,0.031
+8697,NCT01032629,f5,arm_fjnj-28431754-300 mg,sexM,0.58
+8697,NCT01032629,f5,arm_fjnj-28431754-100 mg,sexM,0.59
+8697,NCT01032629,f5,age10c,age10c:arm_fjnj-28431754-300 mg,-0.68
+8697,NCT01032629,f5,arm_fjnj-28431754-300 mg,age10c:arm_fjnj-28431754-300 mg,-0.218
+8697,NCT01032629,f5,arm_fjnj-28431754-100 mg,age10c:arm_fjnj-28431754-300 mg,-0.111
+8697,NCT01032629,f5,sexM,age10c:arm_fjnj-28431754-300 mg,-0.021
+8697,NCT01032629,f5,age10c,age10c:arm_fjnj-28431754-100 mg,-0.697
+8697,NCT01032629,f5,arm_fjnj-28431754-300 mg,age10c:arm_fjnj-28431754-100 mg,-0.111
+8697,NCT01032629,f5,arm_fjnj-28431754-100 mg,age10c:arm_fjnj-28431754-100 mg,-0.186
+8697,NCT01032629,f5,sexM,age10c:arm_fjnj-28431754-100 mg,-0.022
+8697,NCT01032629,f5,age10c:arm_fjnj-28431754-300 mg,age10c:arm_fjnj-28431754-100 mg,0.474
+8697,NCT01032629,f5,age10c,arm_fjnj-28431754-300 mg:sexM,-0.021
+8697,NCT01032629,f5,arm_fjnj-28431754-300 mg,arm_fjnj-28431754-300 mg:sexM,-0.823
+8697,NCT01032629,f5,arm_fjnj-28431754-100 mg,arm_fjnj-28431754-300 mg:sexM,-0.407
+8697,NCT01032629,f5,sexM,arm_fjnj-28431754-300 mg:sexM,-0.69
+8697,NCT01032629,f5,age10c:arm_fjnj-28431754-300 mg,arm_fjnj-28431754-300 mg:sexM,0.02
+8697,NCT01032629,f5,age10c:arm_fjnj-28431754-100 mg,arm_fjnj-28431754-300 mg:sexM,0.015
+8697,NCT01032629,f5,age10c,arm_fjnj-28431754-100 mg:sexM,-0.022
+8697,NCT01032629,f5,arm_fjnj-28431754-300 mg,arm_fjnj-28431754-100 mg:sexM,-0.407
+8697,NCT01032629,f5,arm_fjnj-28431754-100 mg,arm_fjnj-28431754-100 mg:sexM,-0.832
+8697,NCT01032629,f5,sexM,arm_fjnj-28431754-100 mg:sexM,-0.703
+8697,NCT01032629,f5,age10c:arm_fjnj-28431754-300 mg,arm_fjnj-28431754-100 mg:sexM,0.015
+8697,NCT01032629,f5,age10c:arm_fjnj-28431754-100 mg,arm_fjnj-28431754-100 mg:sexM,0.012
+8697,NCT01032629,f5,arm_fjnj-28431754-300 mg:sexM,arm_fjnj-28431754-100 mg:sexM,0.485
+8697,NCT01989754,f5,age10c,arm_fcanagliflozin,0.227
+8697,NCT01989754,f5,age10c,sexM,0.007
+8697,NCT01989754,f5,arm_fcanagliflozin,sexM,0.512
+8697,NCT01989754,f5,age10c,age10c:arm_fcanagliflozin,-0.681
+8697,NCT01989754,f5,arm_fcanagliflozin,age10c:arm_fcanagliflozin,-0.289
+8697,NCT01989754,f5,sexM,age10c:arm_fcanagliflozin,-0.005
+8697,NCT01989754,f5,age10c,arm_fcanagliflozin:sexM,-0.005
+8697,NCT01989754,f5,arm_fcanagliflozin,arm_fcanagliflozin:sexM,-0.827
+8697,NCT01989754,f5,sexM,arm_fcanagliflozin:sexM,-0.644
+8697,NCT01989754,f5,age10c:arm_fcanagliflozin,arm_fcanagliflozin:sexM,0.001
+8697,NCT02065791,f5,age10c,arm_fcana 100 mg,-0.107
+8697,NCT02065791,f5,age10c,sexM,-0.026
+8697,NCT02065791,f5,arm_fcana 100 mg,sexM,0.577
+8697,NCT02065791,f5,age10c,age10c:arm_fcana 100 mg,-0.659
+8697,NCT02065791,f5,arm_fcana 100 mg,age10c:arm_fcana 100 mg,0.138
+8697,NCT02065791,f5,sexM,age10c:arm_fcana 100 mg,0.017
+8697,NCT02065791,f5,age10c,arm_fcana 100 mg:sexM,0.018
+8697,NCT02065791,f5,arm_fcana 100 mg,arm_fcana 100 mg:sexM,-0.821
+8697,NCT02065791,f5,sexM,arm_fcana 100 mg:sexM,-0.68
+8697,NCT02065791,f5,age10c:arm_fcana 100 mg,arm_fcana 100 mg:sexM,-0.006

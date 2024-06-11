@@ -1,0 +1,8 @@
+exclude_id,trial_id,exclusion_reason,exclusion_detail,exclude_from
+1,NCT02683746,trial doesn't meet criteria,same drug and dose but different preparation only,all analyses
+2,UMIN000013689,insufficient data,crossover trial n=5 only individual results presented at 8 weeks,all analyses
+3,UMIN000013878,trial doesn't meet criteria,non randomised,all analyses
+4,NCT01541215,trial doesn't meet criteria,<18 years old population,all analyses
+5,NCT01018173,insufficient data,no published results,all analyses
+6,NCT02251431,trial doesn't meet criteria,study protocol states phase 2 trial (although pahse 3 on ctg_,all analyses
+7,NCT03313752,insufficient data,only reports results for single treatment arm,all analyses

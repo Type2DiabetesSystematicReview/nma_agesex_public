@@ -1,0 +1,23 @@
+00_readme
+
+This export request contains the results of regression models of MACE events as well as summary statistics for a single trial - NCT00968708 - sponsor Takeda. In case it is the same person looking at this within Vivli, I also want to mention that this export is in the same format as the export from 8697 approved yesterday.
+
+Tiff files
+ lm_event_time_fit.tiff - shows density times of event times by treatment arm and sex. Compares actual events times (having divided by the maximum follow-up time and transformed by a logit transformation) to a normal distribution whit the same mean and standard deviation. Mean estimated using linear models. 
+  
+  censoring_time_fit.tiff  - Compares density plots of censoring times. Compares density plots based on observed data to simulation based on summary statistics.
+  
+PDF file
+   test_for_non_ph_cox.pdf - diagnostic plots of non-proportional hazards for Cox models. removed residuals to prevent possibility of identifying true event times.
+   
+CSV files
+
+ age_sex_model_coefs.csv - regression model output. One row per model and term. Contains term, estimate, standard error, test statistic, p-value and lower and upper confidence intervals.
+ age_sex_model_diags.csv - regression model output. One row per model. Contains log likelihood, AIC, BIC, number of observations and number of events.
+ age_sex_model_vcov.csv  - regression model output. Shows correlation between coefficients (not variables) for coefficients in model. Obtained from vcov function in R.
+ censoring_distribution_fp.csv - Summary of censoring times. One row per arm and sex. Gives mean age, standard deviation, number of participants, rank correlation between age and censoring time and selected quantiles for the distribution of censoring times.
+
+ event_time_distribution_fp.csv  - Summary of event times. One row per arm and sex. Among those with an event gives number of participants, age (as a mean and standard deviation) and the outputs of a linear regression model predicting censoring times on the logit scale. The power 1 and power2 columns indicate transformations used for age and the columns starting whit "est" and "se" indicate the model coefficients and standard errors respectively. r indicates the correlation between the coefficients (not variables).
+
+ 
+ 

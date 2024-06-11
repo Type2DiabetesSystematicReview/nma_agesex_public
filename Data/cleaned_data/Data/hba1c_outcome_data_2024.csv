@@ -1,0 +1,13 @@
+trial_id,result_id,analysis_population,arm_id_unq,comp_id,outcome_harm_label,result_description,result_type,ancova,result,dispersion_type,dispersion,units_label,timepoint,timepoint_units,source
+ChiCTR1800015296,manfeb24_1,NA,updac0095,NA,hba1c,change from baseline,mean change,n,-1.07,sd,1.75,percentage,12,weeks,resolve_dropped_feb2024
+IRCT20200722048176N1,manfeb24_2,NA,updac0134,NA,hba1c,baseline,mean,n,8.99,sd,1.42,mmol/mol,0,weeks,resolve_dropped_feb2024
+IRCT20200722048176N1,manfeb24_3,NA,updac0134,NA,hba1c,endpoint,mean,n,8.18,sd,1.39,mmol/mol,12,weeks,resolve_dropped_feb2024
+IRCT20200722048176N1,manfeb24_4,NA,updac0135,NA,hba1c,baseline,mean,n,8.14,sd,0.9,mmol/mol,0,weeks,resolve_dropped_feb2024
+IRCT20200722048176N1,manfeb24_5,NA,updac0135,NA,hba1c,endpoint,mean,n,7.66,sd,1.57,mmol/mol,12,weeks,resolve_dropped_feb2024
+jRCTs031180159,manfeb24_6,NA,updac0140,NA,hba1c,change from baseline,mean change,n,-0.36,sd,0.47,percentage,24,weeks,resolve_dropped_feb2024
+NCT02875821,manfeb24_7,NA,updab0038,NA,hba1c,change from baseline,adjusted mean change,y,0.2,sd,0.1,percentage,24,weeks,resolve_dropped_feb2024
+NCT03387683,manfeb24_8,NA,unq_updaa10065,NA,hba1c,change from baseline,LS mean change,y,-0.01,95%ci,"-0.11, 0.09",percentage,6,weeks,resolve_dropped_feb2024
+TCTR20170511001,manfeb24_9,NA,updac0152,NA,hba1c,change from baseline,mean change,n,-1.3,sd,0.8,mmol/mol,12,weeks,resolve_dropped_feb2024
+UMIN000018395,manfeb24_10,fas,updac0170,NA,hba1c,change from baseline,percentage change,y,-1.87,95%ci,-3.31.-0.44,percentage,12,weeks,resolve_dropped_feb2024
+UMIN000021177,manfeb24_11,fas,updac0176,NA,hba1c,change from baseline,mean change,y,-0.38,sd,0.59,percentage,24,weeks,resolve_dropped_feb2024
+UMIN000031451,manfeb24_12,fas,updac0208,NA,hba1c,change from baseline,mean change,n,0.3,sd,0.4,percentage,8,weeks,resolve_dropped_feb2024

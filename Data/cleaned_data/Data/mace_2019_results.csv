@@ -1,0 +1,250 @@
+result_id,trial_id,trial_name,data_source,analysis_population,arm_id_unq,comparison_id,arm_description,comparison_label,outcome,outcome_definition,result_description,result_type,result,dispersion_type,dispersion,median_follow_up,max_follow_up,timepoint_unit,notes
+mace00227,NCT00790205,TECOS,results paper,itt,NA,compb0146,NA,sitagliptin_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI, nonfatal stroke or unstable angina",between arm comparison,hazard ratio,0.99,95%ci,0.89;1.10,3,5,years,NA
+mace00230,NCT00790205,TECOS,results paper,itt,NA,compb0146,NA,sitagliptin_placebo,CV mortality,NA,between arm comparison,hazard ratio,1.03,95%ci,0.89;1.19,3,5,years,NA
+mace00233,NCT00790205,TECOS,results paper,itt,NA,compb0146,NA,sitagliptin_placebo,Fatal or nonfatal MI,NA,between arm comparison,hazard ratio,0.95,95%ci,0.81;1.11,3,5,years,NA
+mace00236,NCT00790205,TECOS,results paper,itt,NA,compb0146,NA,sitagliptin_placebo,Fatal or nonfatal stroke,NA,between arm comparison,hazard ratio,0.97,95%ci,0.79;1.19,3,5,years,NA
+mace00239,NCT00790205,TECOS,results paper,itt,NA,compb0146,NA,sitagliptin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,1,95%ci,0.83;1.2,3,5,years,NA
+mace00228,NCT00790205,TECOS,results paper,itt,uaa10359,NA,sitagliptin,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI, nonfatal stroke or unstable angina",events per 100 patient-years,rate,3.58,NA,NA,3,5,years,NA
+mace00229,NCT00790205,TECOS,results paper,itt,uaa10358,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI, nonfatal stroke or unstable angina",events per 100 patient-years,rate,3.62,NA,NA,3,5,years,NA
+mace00231,NCT00790205,TECOS,results paper,itt,uaa10359,NA,sitagliptin,NA,CV mortality,NA,events per 100 patient-years,rate,1.72,NA,NA,3,5,years,NA
+mace00232,NCT00790205,TECOS,results paper,itt,uaa10358,NA,placebo,NA,CV mortality,NA,events per 100 patient-years,rate,1.67,NA,NA,3,5,years,NA
+mace00234,NCT00790205,TECOS,results paper,itt,uaa10359,NA,sitagliptin,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,1.42,NA,NA,3,5,years,NA
+mace00235,NCT00790205,TECOS,results paper,itt,uaa10358,NA,placebo,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,1.51,NA,NA,3,5,years,NA
+mace00237,NCT00790205,TECOS,results paper,itt,uaa10359,NA,sitagliptin,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,0.83,NA,NA,3,5,years,NA
+mace00238,NCT00790205,TECOS,results paper,itt,uaa10358,NA,placebo,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,0.87,NA,NA,3,5,years,NA
+mace00240,NCT00790205,TECOS,results paper,itt,uaa10359,NA,sitagliptin,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1.07,NA,NA,3,5,years,NA
+mace00241,NCT00790205,TECOS,results paper,itt,uaa10358,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1.09,NA,NA,3,5,years,NA
+mace00043,NCT00968708,EXAMINE,results paper,NA,NA,compb0147,NA,alogliptin_placebo,Percentage of participants with MACE outcome,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.96,97.5% ci one sided,<=1.16,18,40,months,NA
+mace00044,NCT00968708,EXAMINE,results paper,NA,NA,compb0147,NA,alogliptin_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.79,95%ci,0.60;1.04,18,40,months,NA
+mace00045,NCT00968708,EXAMINE,results paper,NA,NA,compb0147,NA,alogliptin_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,1.08,95%ci,0.88;1.33,18,40,months,NA
+mace00046,NCT00968708,EXAMINE,results paper,NA,NA,compb0147,NA,alogliptin_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,0.91,95%ci,0.55;1.5,18,40,months,NA
+mace00242,NCT00968708,EXAMINE,ctg,itt,uaa10454,NA,placebo,NA,Percentage of participants with MACE outcome,"CV mortality, nonfatal MI or nonfatal stroke",percentage of participants,percentage,11.8,NA,NA,18,40,months,n=2679
+mace00243,NCT00968708,EXAMINE,ctg,itt,uaa10453,NA,alogliptin,NA,Percentage of participants with MACE outcome,"CV mortality, nonfatal MI or nonfatal stroke",percentage of participants,percentage,11.3,NA,NA,18,40,months,n=2701
+mace00018,NCT01032629,CANVAS,paper supp appendix,itt,NA,compb0148,NA,canagliflozin_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.88,95%ci,0.75;1.03,295.9,416,weeks,NA
+mace00021,NCT01032629,CANVAS,paper supp appendix,itt,NA,compb0148,NA,canagliflozin_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.88,95%ci,0.7;1.10,295.9,416,weeks,NA
+mace00024,NCT01032629,CANVAS,paper supp appendix,itt,NA,compb0148,NA,canagliflozin_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,0.85,95%ci,0.65;1.11,295.9,416,weeks,NA
+mace00027,NCT01032629,CANVAS,paper supp appendix,itt,NA,compb0148,NA,canagliflozin_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,0.97,95%ci,0.7;1.35,295.9,416,weeks,NA
+mace00030,NCT01032629,CANVAS,paper supp appendix,itt,NA,compb0148,NA,canagliflozin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.77,95%ci,0.55;1.08,295.9,416,weeks,NA
+mace00016,NCT01032629,CANVAS,paper supp appendix,itt,uaa10513,NA,canagliflozin (pooled),NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 1000 patient-years,rate,26.89,NA,NA,295.9,416,weeks,NA
+mace00017,NCT01032629,CANVAS,paper supp appendix,itt,uaa10515,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 1000 patient-years,rate,30.36,NA,NA,295.9,416,weeks,NA
+mace00019,NCT01032629,CANVAS,paper supp appendix,itt,uaa10513,NA,canagliflozin (pooled),NA,CV mortality,NA,events per 1000 patient-years,rate,12.15,NA,NA,295.9,416,weeks,NA
+mace00020,NCT01032629,CANVAS,paper supp appendix,itt,uaa10515,NA,placebo,NA,CV mortality,NA,events per 1000 patient-years,rate,13.73,NA,NA,295.9,416,weeks,NA
+mace00022,NCT01032629,CANVAS,paper supp appendix,itt,uaa10513,NA,canagliflozin (pooled),NA,Nonfatal MI,NA,events per 1000 patient-years,rate,9.44,NA,NA,295.9,416,weeks,NA
+mace00023,NCT01032629,CANVAS,paper supp appendix,itt,uaa10515,NA,placebo,NA,Nonfatal MI,NA,events per 1000 patient-years,rate,11.06,NA,NA,295.9,416,weeks,NA
+mace00025,NCT01032629,CANVAS,paper supp appendix,itt,uaa10513,NA,canagliflozin (pooled),NA,Nonfatal stroke,NA,events per 1000 patient-years,rate,6.54,NA,NA,295.9,416,weeks,NA
+mace00026,NCT01032629,CANVAS,paper supp appendix,itt,uaa10515,NA,placebo,NA,Nonfatal stroke,NA,events per 1000 patient-years,rate,6.72,NA,NA,295.9,416,weeks,NA
+mace00028,NCT01032629,CANVAS,paper supp appendix,itt,uaa10513,NA,canagliflozin (pooled),NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,5.19,NA,NA,295.9,416,weeks,NA
+mace00029,NCT01032629,CANVAS,paper supp appendix,itt,uaa10515,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,6.71,NA,NA,295.9,416,weeks,NA
+mace00244,NCT01107886,SAVOR-TIMI-53,ctg,itt,uaa10587,NA,saxagliptin,NA,MACE occurrence,"CV mortality, nonfatal MI or nonfatal stroke",events,count,613,NA,NA,2.1,2.9,years,n=8280
+mace00245,NCT01107886,SAVOR-TIMI-53,ctg,itt,uaa10586,NA,placebo,NA,MACE occurrence,"CV mortality, nonfatal MI or nonfatal stroke",events,count,609,NA,NA,2.1,2.9,years,n=8212
+mace00222,NCT01107886,SAVOR-TIMI-53,results paper,itt,NA,compb0149,NA,saxaliptin_placebo,MACE occurrence,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,1,95%ci,0.89;1.12,2.1,2.9,years,NA
+mace00223,NCT01107886,SAVOR-TIMI-53,results paper,itt,NA,compb0149,NA,saxaliptin_placebo,CV mortality,NA,between arm comparison,hazard ratio,1.03,95%ci,0.87;1.22,2.1,2.9,years,NA
+mace00224,NCT01107886,SAVOR-TIMI-53,results paper,itt,NA,compb0149,NA,saxaliptin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,1.27,95%ci,1.07;1.51,2.1,2.9,years,NA
+mace00225,NCT01107886,SAVOR-TIMI-53,results paper,itt,NA,compb0149,NA,saxaliptin_placebo,Fatal or nonfatal MI,NA,between arm comparison,hazard ratio,0.95,95%ci,0.80;1.12,2.1,2.9,years,NA
+mace00226,NCT01107886,SAVOR-TIMI-53,results paper,itt,NA,compb0149,NA,saxaliptin_placebo,Fatal or nonfatal ischaemic stroke,NA,between arm comparison,hazard ratio,1.11,95%ci,0.96;1.27,2.1,2.9,years,NA
+mace00207,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,NA,compb0150,NA,empagliflozin_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI, nonfatal stroke or unstable angina",between arm comparison,hazard ratio,0.86,95%ci,0.74;0.99,3.1,4.6,years,NA
+mace00210,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,NA,compb0150,NA,empagliflozin_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.62,95%ci,0.49;0.77,3.1,4.6,years,NA
+mace00213,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,NA,compb0150,NA,empagliflozin_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,0.87,95%ci,0.70;1.09,3.1,4.6,years,NA
+mace00216,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,NA,compb0150,NA,empagliflozin_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,1.24,95%ci,0.92;1.67,3.1,4.6,years,NA
+mace00219,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,NA,compb0150,NA,empagliflozin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.65,95%ci,0.5;0.85,3.1,4.6,years,NA
+mace00208,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10605,NA,empagliflozin,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI, nonfatal stroke or unstable angina",events per 1000 patient-years,rate,37.4,NA,NA,3.1,4.6,years,NA
+mace00209,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10607,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI, nonfatal stroke or unstable angina",events per 1000 patient-years,rate,43.9,NA,NA,3.1,4.6,years,NA
+mace00211,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10605,NA,empagliflozin,NA,CV mortality,NA,events per 1000 patient-years,rate,12.4,NA,NA,3.1,4.6,years,NA
+mace00212,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10607,NA,placebo,NA,CV mortality,NA,events per 1000 patient-years,rate,20.2,NA,NA,3.1,4.6,years,NA
+mace00214,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10605,NA,empagliflozin,NA,Nonfatal MI,NA,events per 1000 patient-years,rate,16,NA,NA,3.1,4.6,years,NA
+mace00215,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10607,NA,placebo,NA,Nonfatal MI,NA,events per 1000 patient-years,rate,18.5,NA,NA,3.1,4.6,years,NA
+mace00217,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10605,NA,empagliflozin,NA,Nonfatal stroke,NA,events per 1000 patient-years,rate,11.2,NA,NA,3.1,4.6,years,NA
+mace00218,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10607,NA,placebo,NA,Nonfatal stroke,NA,events per 1000 patient-years,rate,9.1,NA,NA,3.1,4.6,years,NA
+mace00220,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10605,NA,empagliflozin,NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,9.4,NA,NA,3.1,4.6,years,NA
+mace00221,NCT01131676,EMPA-REG OUTCOME,results paper,treated set,uaa10607,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,14.5,NA,NA,3.1,4.6,years,NA
+mace00192,NCT01144338,EXSCEL,results paper,itt,NA,compb0151,NA,exenatide_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or fatal and nonfatal stroke",between arm comparison,hazard ratio,0.91,95%ci,0.83;1.00,3.2,7.5,years,NA
+mace00195,NCT01144338,EXSCEL,results paper,itt,NA,compb0151,NA,exenatide_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.88,95%ci,0.76;1.02,3.2,7.5,years,NA
+mace00198,NCT01144338,EXSCEL,results paper,itt,NA,compb0151,NA,exenatide_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.94,95%ci,0.78;1.13,3.2,7.5,years,NA
+mace00201,NCT01144338,EXSCEL,results paper,itt,NA,compb0151,NA,exenatide_placebo,Fatal or nonfatal MI,NA,between arm comparison,hazard ratio,0.97,95%ci,0.85;1.10,3.2,7.5,years,NA
+mace00204,NCT01144338,EXSCEL,results paper,itt,NA,compb0151,NA,exenatide_placebo,Fatal or nonfatal stroke,NA,between arm comparison,hazard ratio,0.85,95%ci,0.7;1.03,3.2,7.5,years,NA
+mace00193,NCT01144338,EXSCEL,results paper,itt,uaa10617,NA,exenatide,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or fatal and nonfatal stroke",events per 100 patient-years,rate,3.7,NA,NA,3.2,7.5,years,NA
+mace00194,NCT01144338,EXSCEL,results paper,itt,uaa10618,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or fatal and nonfatal stroke",events per 100 patient-years,rate,4,NA,NA,3.2,7.5,years,NA
+mace00196,NCT01144338,EXSCEL,results paper,itt,uaa10617,NA,exenatide,NA,CV mortality,NA,events per 100 patient-years,rate,1.4,NA,NA,3.2,7.5,years,NA
+mace00197,NCT01144338,EXSCEL,results paper,itt,uaa10618,NA,placebo,NA,CV mortality,NA,events per 100 patient-years,rate,1.5,NA,NA,3.2,7.5,years,NA
+mace00199,NCT01144338,EXSCEL,results paper,itt,uaa10617,NA,exenatide,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.9,NA,NA,3.2,7.5,years,NA
+mace00200,NCT01144338,EXSCEL,results paper,itt,uaa10618,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1,NA,NA,3.2,7.5,years,NA
+mace00202,NCT01144338,EXSCEL,results paper,itt,uaa10617,NA,exenatide,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,2.1,NA,NA,3.2,7.5,years,NA
+mace00203,NCT01144338,EXSCEL,results paper,itt,uaa10618,NA,placebo,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,2.1,NA,NA,3.2,7.5,years,NA
+mace00205,NCT01144338,EXSCEL,results paper,itt,uaa10617,NA,exenatide,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,0.8,NA,NA,3.2,7.5,years,NA
+mace00206,NCT01144338,EXSCEL,results paper,itt,uaa10618,NA,placebo,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,0.9,NA,NA,3.2,7.5,years,NA
+mace00183,NCT01147250,ELIXA,results paper,itt,NA,compb0152,NA,lixisenatide_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,1.03,95%ci,0.87;1.22,25,47,months,NA
+mace00186,NCT01147250,ELIXA,results paper,itt,NA,compb0152,NA,lixisenatide_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,1.12,95%ci,0.79;1.58,25,47,months,NA
+mace00189,NCT01147250,ELIXA,results paper,itt,NA,compb0152,NA,lixisenatide_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.96,95%ci,0.75;1.23,25,47,months,NA
+mace00184,NCT01147250,ELIXA,results paper,itt,uaa10620,NA,lixisenatide,NA,Nonfatal MI,NA,events per 100 patient-years,rate,4.2,NA,NA,25,47,months,NA
+mace00185,NCT01147250,ELIXA,results paper,itt,uaa10621,NA,placebo,NA,Nonfatal MI,NA,events per 100 patient-years,rate,4.1,NA,NA,25,47,months,NA
+mace00187,NCT01147250,ELIXA,results paper,itt,uaa10620,NA,lixisenatide,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,1,NA,NA,25,47,months,NA
+mace00188,NCT01147250,ELIXA,results paper,itt,uaa10621,NA,placebo,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,0.9,NA,NA,25,47,months,NA
+mace00190,NCT01147250,ELIXA,results paper,itt,uaa10620,NA,lixisenatide,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1.8,NA,NA,25,47,months,NA
+mace00191,NCT01147250,ELIXA,results paper,itt,uaa10621,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1.9,NA,NA,25,47,months,NA
+mace00180,NCT01147250,ELIXA,results paper,itt,NA,compb0152,NA,lixisenatide_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI, nonfatal stroke or unstable angina",between arm comparison,hazard ratio,1.02,95%ci,0.89;1.17,25,47,months,NA
+mace00181,NCT01147250,ELIXA,results paper,itt,uaa10620,NA,lixisenatide,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI, nonfatal stroke or unstable angina",events per 100 patient-years,rate,6.4,NA,NA,25,47,months,NA
+mace00182,NCT01147250,ELIXA,results paper,itt,uaa10621,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI, nonfatal stroke or unstable angina",events per 100 patient-years,rate,6.3,NA,NA,25,47,months,NA
+mace00165,NCT01179048,LEADER,results paper,fas,NA,compb0153,NA,liraglutide_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.87,95%ci,0.78;0.97,3.8,5,years,NA
+mace00168,NCT01179048,LEADER,results paper,fas,NA,compb0153,NA,liraglutide_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.78,95%ci,0.66;0.93,3.8,5,years,NA
+mace00171,NCT01179048,LEADER,results paper,fas,NA,compb0153,NA,liraglutide_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,0.88,95%ci,0.75;1.03,3.8,5,years,NA
+mace00174,NCT01179048,LEADER,results paper,fas,NA,compb0153,NA,liraglutide_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,0.89,95%ci,0.72;1.11,3.8,5,years,NA
+mace00177,NCT01179048,LEADER,results paper,fas,NA,compb0153,NA,liraglutide_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.87,95%ci,0.73;0.97,3.8,5,years,NA
+mace00166,NCT01179048,LEADER,results paper,fas,uaa10649,NA,liraglutide,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,3.4,NA,NA,3.8,5,years,NA
+mace00167,NCT01179048,LEADER,results paper,fas,uaa10650,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,3.9,NA,NA,3.8,5,years,NA
+mace00169,NCT01179048,LEADER,results paper,fas,uaa10649,NA,liraglutide,NA,CV mortality,NA,events per 100 patient-years,rate,1.2,NA,NA,3.8,5,years,NA
+mace00170,NCT01179048,LEADER,results paper,fas,uaa10650,NA,placebo,NA,CV mortality,NA,events per 100 patient-years,rate,1.6,NA,NA,3.8,5,years,NA
+mace00172,NCT01179048,LEADER,results paper,fas,uaa10649,NA,liraglutide,NA,Nonfatal MI,NA,events per 100 patient-years,rate,1.6,NA,NA,3.8,5,years,NA
+mace00173,NCT01179048,LEADER,results paper,fas,uaa10650,NA,placebo,NA,Nonfatal MI,NA,events per 100 patient-years,rate,1.8,NA,NA,3.8,5,years,NA
+mace00175,NCT01179048,LEADER,results paper,fas,uaa10649,NA,liraglutide,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,0.9,NA,NA,3.8,5,years,NA
+mace00176,NCT01179048,LEADER,results paper,fas,uaa10650,NA,placebo,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,1,NA,NA,3.8,5,years,NA
+mace00178,NCT01179048,LEADER,results paper,fas,uaa10649,NA,liraglutide,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1.2,NA,NA,3.8,5,years,NA
+mace00179,NCT01179048,LEADER,results paper,fas,uaa10650,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1.4,NA,NA,3.8,5,years,NA
+mace00150,NCT01243424,CAROLINA,results paper,treated set,NA,compb0154,NA,linagliptin_glimepiride,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.98,95%ci,0.84;1.14,6.3,8.3,years,NA
+mace00153,NCT01243424,CAROLINA,results paper,treated set,NA,compb0154,NA,linagliptin_glimepiride,CV mortality,NA,between arm comparison,hazard ratio,1,95%ci,0.81;1.24,6.3,8.3,years,NA
+mace00156,NCT01243424,CAROLINA,results paper,treated set,NA,compb0154,NA,linagliptin_glimepiride,Nonfatal MI,NA,between arm comparison,hazard ratio,1.01,95%ci,0.8;1.28,6.3,8.3,years,NA
+mace00159,NCT01243424,CAROLINA,results paper,treated set,NA,compb0154,NA,linagliptin_glimepiride,Nonfatal stroke,NA,between arm comparison,hazard ratio,0.87,95%ci,0.66;1.15,6.3,8.3,years,NA
+mace00162,NCT01243424,CAROLINA,results paper,treated set,NA,compb0154,NA,linagliptin_glimepiride,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,1.21,95%ci,0.92;1.59,6.3,8.3,years,NA
+mace00151,NCT01243424,CAROLINA,results paper,treated set,uaa10705,NA,linagliptin,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,2.1,NA,NA,6.3,8.3,years,NA
+mace00152,NCT01243424,CAROLINA,results paper,treated set,uaa10704,NA,glimepiride,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,2.1,NA,NA,6.3,8.3,years,NA
+mace00154,NCT01243424,CAROLINA,results paper,treated set,uaa10705,NA,linagliptin,NA,CV mortality,NA,events per 100 patient-years,rate,0.9,NA,NA,6.3,8.3,years,NA
+mace00155,NCT01243424,CAROLINA,results paper,treated set,uaa10704,NA,glimepiride,NA,CV mortality,NA,events per 100 patient-years,rate,0.9,NA,NA,6.3,8.3,years,NA
+mace00157,NCT01243424,CAROLINA,results paper,treated set,uaa10705,NA,linagliptin,NA,Nonfatal MI,NA,events per 100 patient-years,rate,0.5,NA,NA,6.3,8.3,years,NA
+mace00158,NCT01243424,CAROLINA,results paper,treated set,uaa10704,NA,glimepiride,NA,Nonfatal MI,NA,events per 100 patient-years,rate,0.6,NA,NA,6.3,8.3,years,NA
+mace00160,NCT01243424,CAROLINA,results paper,treated set,uaa10705,NA,linagliptin,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,0.5,NA,NA,6.3,8.3,years,NA
+mace00161,NCT01243424,CAROLINA,results paper,treated set,uaa10704,NA,glimepiride,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,0.6,NA,NA,6.3,8.3,years,NA
+mace00163,NCT01243424,CAROLINA,results paper,treated set,uaa10705,NA,linagliptin,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.6,NA,NA,6.3,8.3,years,NA
+mace00164,NCT01243424,CAROLINA,results paper,treated set,uaa10704,NA,glimepiride,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.5,NA,NA,6.3,8.3,years,NA
+mace00135,NCT01394952,REWIND,results paper,itt,NA,compb0155,NA,dulaglutide_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.88,95%ci,0.79;0.99,5.4,8,years,NA
+mace00138,NCT01394952,REWIND,results paper,itt,NA,compb0155,NA,dulaglutide_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.91,95%ci,0.78;1.06,5.4,8,years,NA
+mace00141,NCT01394952,REWIND,results paper,itt,NA,compb0155,NA,dulaglutide_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,0.96,95%ci,0.79;1.16,5.4,8,years,NA
+mace00144,NCT01394952,REWIND,results paper,itt,NA,compb0155,NA,dulaglutide_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,0.76,95%ci,0.61;0.95,5.4,8,years,NA
+mace00147,NCT01394952,REWIND,results paper,itt,NA,compb0155,NA,dulaglutide_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.93,95%ci,0.77;1.12,5.4,8,years,NA
+mace00136,NCT01394952,REWIND,results paper,itt,uaa10758,NA,dulaglutide,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,2.35,NA,NA,5.4,8,years,NA
+mace00137,NCT01394952,REWIND,results paper,itt,uaa10759,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,2.66,NA,NA,5.4,8,years,NA
+mace00139,NCT01394952,REWIND,results paper,itt,uaa10758,NA,dulaglutide,NA,CV mortality,NA,events per 100 patient-years,rate,1.22,NA,NA,5.4,8,years,NA
+mace00140,NCT01394952,REWIND,results paper,itt,uaa10759,NA,placebo,NA,CV mortality,NA,events per 100 patient-years,rate,1.34,NA,NA,5.4,8,years,NA
+mace00142,NCT01394952,REWIND,results paper,itt,uaa10758,NA,dulaglutide,NA,Nonfatal MI,NA,events per 100 patient-years,rate,0.8,NA,NA,5.4,8,years,NA
+mace00143,NCT01394952,REWIND,results paper,itt,uaa10759,NA,placebo,NA,Nonfatal MI,NA,events per 100 patient-years,rate,0.84,NA,NA,5.4,8,years,NA
+mace00145,NCT01394952,REWIND,results paper,itt,uaa10758,NA,dulaglutide,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,0.52,NA,NA,5.4,8,years,NA
+mace00146,NCT01394952,REWIND,results paper,itt,uaa10759,NA,placebo,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,0.69,NA,NA,5.4,8,years,NA
+mace00148,NCT01394952,REWIND,results paper,itt,uaa10758,NA,dulaglutide,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.83,NA,NA,5.4,8,years,NA
+mace00149,NCT01394952,REWIND,results paper,itt,uaa10759,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.89,NA,NA,5.4,8,years,NA
+mace00120,NCT01455896,FREEDOM CVO,results paper,itt,NA,compb0076,NA,itca650_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,1.24,95%ci,0.90;1.70,1.33,2,years,NA
+mace00123,NCT01455896,FREEDOM CVO,results paper,itt,NA,compb0076,NA,itca650_placebo,CV mortality,NA,between arm comparison,hazard ratio,1.22,95%ci,0.7;2.12,1.33,2,years,NA
+mace00126,NCT01455896,FREEDOM CVO,results paper,itt,NA,compb0076,NA,itca650_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,1.33,95%ci,0.82;2.17,1.33,2,years,NA
+mace00129,NCT01455896,FREEDOM CVO,results paper,itt,NA,compb0076,NA,itca650_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,1,95%ci,0.56;1.79,1.33,2,years,NA
+mace00132,NCT01455896,FREEDOM CVO,results paper,itt,NA,compb0076,NA,itca650_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.95,95%ci,0.48;1.88,1.33,2,years,NA
+mace00121,NCT01455896,FREEDOM CVO,results paper,itt,ab0142,NA,itca650,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,2.9,NA,NA,1.33,2,years,NA
+mace00122,NCT01455896,FREEDOM CVO,results paper,itt,ab0143,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,2.4,NA,NA,1.33,2,years,NA
+mace00124,NCT01455896,FREEDOM CVO,results paper,itt,ab0142,NA,itca650,NA,CV mortality,NA,events per 100 patient-years,rate,1,NA,NA,1.33,2,years,NA
+mace00125,NCT01455896,FREEDOM CVO,results paper,itt,ab0143,NA,placebo,NA,CV mortality,NA,events per 100 patient-years,rate,0.8,NA,NA,1.33,2,years,NA
+mace00127,NCT01455896,FREEDOM CVO,results paper,itt,ab0142,NA,itca650,NA,Nonfatal MI,NA,events per 100 patient-years,rate,1.3,NA,NA,1.33,2,years,NA
+mace00128,NCT01455896,FREEDOM CVO,results paper,itt,ab0143,NA,placebo,NA,Nonfatal MI,NA,events per 100 patient-years,rate,1,NA,NA,1.33,2,years,NA
+mace00130,NCT01455896,FREEDOM CVO,results paper,itt,ab0142,NA,itca650,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,0.8,NA,NA,1.33,2,years,NA
+mace00131,NCT01455896,FREEDOM CVO,results paper,itt,ab0143,NA,placebo,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,0.8,NA,NA,1.33,2,years,NA
+mace00133,NCT01455896,FREEDOM CVO,results paper,itt,ab0142,NA,itca650,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.6,NA,NA,1.33,2,years,NA
+mace00134,NCT01455896,FREEDOM CVO,results paper,itt,ab0143,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.6,NA,NA,1.33,2,years,NA
+mace00105,NCT01703208,NA,ctg,treated set,NA,compb0156,NA,omarigliptin_placebo,MACE occurrence,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,1,95%ci,0.77;1.29,96,179,weeks,NA
+mace00108,NCT01703208,NA,ctg,treated set,NA,compb0156,NA,omarigliptin_placebo,CV mortality,NA,between arm comparison,hazard ratio,1.06,95%ci,0.66;1.68,96,179,weeks,NA
+mace00111,NCT01703208,NA,ctg,treated set,NA,compb0156,NA,omarigliptin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.6,95%ci,0.35;1.05,96,179,weeks,NA
+mace00114,NCT01703208,NA,ctg,treated set,NA,compb0156,NA,omarigliptin_placebo,Fatal or nonfatal MI,NA,between arm comparison,hazard ratio,0.87,95%ci,0.6;1.26,96,179,weeks,NA
+mace00117,NCT01703208,NA,ctg,treated set,NA,compb0156,NA,omarigliptin_placebo,Fatal or nonfatal stroke,NA,between arm comparison,hazard ratio,0.94,95%ci,0.58;1.52,96,179,weeks,NA
+mace00106,NCT01703208,NA,ctg,treated set,uaa10862,NA,omarigliptin,NA,MACE occurrence,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,2.96,NA,NA,96,179,weeks,NA
+mace00107,NCT01703208,NA,ctg,treated set,uaa10863,NA,placebo,NA,MACE occurrence,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,2.97,NA,NA,96,179,weeks,NA
+mace00109,NCT01703208,NA,ctg,treated set,uaa10862,NA,omarigliptin,NA,CV mortality,NA,events per 100 patient-years,rate,0.94,NA,NA,96,179,weeks,NA
+mace00110,NCT01703208,NA,ctg,treated set,uaa10863,NA,placebo,NA,CV mortality,NA,events per 100 patient-years,rate,0.89,NA,NA,96,179,weeks,NA
+mace00112,NCT01703208,NA,ctg,treated set,uaa10862,NA,omarigliptin,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.51,NA,NA,96,179,weeks,NA
+mace00113,NCT01703208,NA,ctg,treated set,uaa10863,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.85,NA,NA,96,179,weeks,NA
+mace00115,NCT01703208,NA,ctg,treated set,uaa10862,NA,omarigliptin,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,1.34,NA,NA,96,179,weeks,NA
+mace00116,NCT01703208,NA,ctg,treated set,uaa10863,NA,placebo,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,1.55,NA,NA,96,179,weeks,NA
+mace00118,NCT01703208,NA,ctg,treated set,uaa10862,NA,omarigliptin,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,0.82,NA,NA,96,179,weeks,NA
+mace00119,NCT01703208,NA,ctg,treated set,uaa10863,NA,placebo,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,0.88,NA,NA,96,179,weeks,NA
+mace00090,NCT01720446,SUSTAIN 6,results paper,fas,NA,compb0157,NA,semaglutide_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.74,95%ci,0.58;0.95,2.1,2.1,years,NA
+mace00093,NCT01720446,SUSTAIN 6,results paper,fas,NA,compb0157,NA,semaglutide_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.98,95%ci,0.65;1.48,2.1,2.1,years,NA
+mace00096,NCT01720446,SUSTAIN 6,results paper,fas,NA,compb0157,NA,semaglutide_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,0.74,95%ci,0.51;1.08,2.1,2.1,years,NA
+mace00099,NCT01720446,SUSTAIN 6,results paper,fas,NA,compb0157,NA,semaglutide_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,0.61,95%ci,0.38;0.99,2.1,2.1,years,NA
+mace00102,NCT01720446,SUSTAIN 6,results paper,fas,NA,compb0157,NA,semaglutide_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,1.11,95%ci,0.77;1.61,2.1,2.1,years,NA
+mace00091,NCT01720446,SUSTAIN 6,results paper,fas,uaa10893,NA,semaglutide,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,3.24,NA,NA,2.1,2.1,years,NA
+mace00092,NCT01720446,SUSTAIN 6,results paper,fas,uaa10891,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,4.44,NA,NA,2.1,2.1,years,NA
+mace00094,NCT01720446,SUSTAIN 6,results paper,fas,uaa10893,NA,semaglutide,NA,CV mortality,NA,events per 100 patient-years,rate,1.29,NA,NA,2.1,2.1,years,NA
+mace00095,NCT01720446,SUSTAIN 6,results paper,fas,uaa10891,NA,placebo,NA,CV mortality,NA,events per 100 patient-years,rate,1.35,NA,NA,2.1,2.1,years,NA
+mace00097,NCT01720446,SUSTAIN 6,results paper,fas,uaa10893,NA,semaglutide,NA,Nonfatal MI,NA,events per 100 patient-years,rate,1.4,NA,NA,2.1,2.1,years,NA
+mace00098,NCT01720446,SUSTAIN 6,results paper,fas,uaa10891,NA,placebo,NA,Nonfatal MI,NA,events per 100 patient-years,rate,1.92,NA,NA,2.1,2.1,years,NA
+mace00100,NCT01720446,SUSTAIN 6,results paper,fas,uaa10893,NA,semaglutide,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,0.8,NA,NA,2.1,2.1,years,NA
+mace00101,NCT01720446,SUSTAIN 6,results paper,fas,uaa10891,NA,placebo,NA,Nonfatal stroke,NA,events per 100 patient-years,rate,1.31,NA,NA,2.1,2.1,years,NA
+mace00103,NCT01720446,SUSTAIN 6,results paper,fas,uaa10893,NA,semaglutide,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1.76,NA,NA,2.1,2.1,years,NA
+mace00104,NCT01720446,SUSTAIN 6,results paper,fas,uaa10891,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1.61,NA,NA,2.1,2.1,years,NA
+mace00081,NCT01730534,DECLARE-TIMI58,results paper,NA,NA,compb0158,NA,dapagliflozin_placebo,MACE occurrence,"CV mortality, nonfatal MI or nonfatal ischaemic stroke",between arm comparison,hazard ratio,0.93,95%ci,0.84;1.03,4.2,5.2,years,NA
+mace00082,NCT01730534,DECLARE-TIMI58,results paper,NA,NA,compb0158,NA,dapagliflozin_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.98,95%ci,0.82;1.17,4.2,5.2,years,NA
+mace00083,NCT01730534,DECLARE-TIMI58,results paper,NA,NA,compb0158,NA,dapagliflozin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.73,95%ci,0.61;0.88,4.2,5.2,years,NA
+mace00084,NCT01730534,DECLARE-TIMI58,results paper,NA,uaa10896,NA,dapagliflozin,NA,MACE occurrence,"CV mortality, nonfatal MI or nonfatal ischaemic stroke",events per 1000 patient-years,rate,22.6,NA,NA,4.2,5.2,years,NA
+mace00085,NCT01730534,DECLARE-TIMI58,results paper,NA,uaa10896,NA,dapagliflozin,NA,CV mortality,NA,events per 1000 patient-years,rate,7,NA,NA,4.2,5.2,years,NA
+mace00086,NCT01730534,DECLARE-TIMI58,results paper,NA,uaa10896,NA,dapagliflozin,NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,6.2,NA,NA,4.2,5.2,years,NA
+mace00087,NCT01730534,DECLARE-TIMI58,results paper,NA,uaa10897,NA,placebo,NA,MACE occurrence,"CV mortality, nonfatal MI or nonfatal ischaemic stroke",events per 1000 patient-years,rate,24.2,NA,NA,4.2,5.2,years,NA
+mace00088,NCT01730534,DECLARE-TIMI58,results paper,NA,uaa10897,NA,placebo,NA,CV mortality,NA,events per 1000 patient-years,rate,7.1,NA,NA,4.2,5.2,years,NA
+mace00089,NCT01730534,DECLARE-TIMI58,results paper,NA,uaa10897,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,8.5,NA,NA,4.2,5.2,years,NA
+mace00076,NCT01897532,CARMELINA,results paper,treated set,NA,compb0159,NA,linagliptin_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,1.02,95%ci,0.89;1.17,2.2,4.3,years,NA
+mace00077,NCT01897532,CARMELINA,results paper,treated set,NA,compb0159,NA,linagliptin_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.96,95%ci,0.81;1.14,2.2,4.3,years,NA
+mace00078,NCT01897532,CARMELINA,results paper,treated set,NA,compb0159,NA,linagliptin_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,1.15,95%ci,0.91;1.45,2.2,4.3,years,NA
+mace00079,NCT01897532,CARMELINA,results paper,treated set,NA,compb0159,NA,linagliptin_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,0.88,95%ci,0.63;1.23,2.2,4.3,years,NA
+mace00080,NCT01897532,CARMELINA,results paper,treated set,NA,compb0159,NA,linagliptin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.9,95%ci,0.74;1.08,2.2,4.3,years,NA
+mace00246,NCT01897532,CARMELINA,ctg,treated set,uaa10962,NA,placebo,NA,Percentage of participants with MACE outcome,"CV mortality, nonfatal MI or nonfatal stroke",percentage of participants,percentage,12.1,NA,NA,2.2,4.3,years,n=3485
+mace00247,NCT01897532,CARMELINA,ctg,treated set,uaa10963,NA,linagliptin,NA,Percentage of participants with MACE outcome,"CV mortality, nonfatal MI or nonfatal stroke",percentage of participants,percentage,12.4,NA,NA,2.2,4.3,years,n=3494
+mace00063,NCT01986881,VERTIS CV,ctg,itt,NA,compb0160,NA,ertugliflozin_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.97,95%ci,0.848;1.114,3,6,years,NA
+mace00066,NCT01986881,VERTIS CV,ctg,itt,NA,compb0160,NA,ertugliflozin_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.92,95%ci,0.767;1.113,3,6,years,NA
+mace00069,NCT01986881,VERTIS CV,ctg,itt,NA,compb0160,NA,ertugliflozin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.7,95%ci,0.539;0.902,3,6,years,NA
+mace00072,NCT01986881,VERTIS CV,ctg,itt,NA,compb0160,NA,ertugliflozin_placebo,Fatal or nonfatal MI,NA,between arm comparison,hazard ratio,1.04,95%ci,0.861;1.259,3,6,years,NA
+mace00075,NCT01986881,VERTIS CV,ctg,itt,NA,compb0160,NA,ertugliflozin_placebo,Fatal or nonfatal stroke,NA,between arm comparison,hazard ratio,1.06,95%ci,0.820;1.365,3,6,years,NA
+mace00061,NCT01986881,VERTIS CV,ctg,itt,uaa10992,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,4.01,NA,NA,3,6,years,NA
+mace00062,NCT01986881,VERTIS CV,ctg,itt,uaa77777,NA,ertugliflozin,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,3.9,NA,NA,3,6,years,NA
+mace00064,NCT01986881,VERTIS CV,ctg,itt,uaa10992,NA,placebo,NA,CV mortality,NA,events per 100 patient-years,rate,1.9,NA,NA,3,6,years,NA
+mace00065,NCT01986881,VERTIS CV,ctg,itt,uaa77777,NA,ertugliflozin,NA,CV mortality,NA,events per 100 patient-years,rate,1.76,NA,NA,3,6,years,NA
+mace00067,NCT01986881,VERTIS CV,ctg,itt,uaa10992,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,1.05,NA,NA,3,6,years,NA
+mace00068,NCT01986881,VERTIS CV,ctg,itt,uaa77777,NA,ertugliflozin,NA,Hospitalisation for heart failure,NA,events per 100 patient-years,rate,0.73,NA,NA,3,6,years,NA
+mace00070,NCT01986881,VERTIS CV,ctg,itt,uaa10992,NA,placebo,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,1.7,NA,NA,3,6,years,NA
+mace00071,NCT01986881,VERTIS CV,ctg,itt,uaa77777,NA,ertugliflozin,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,1.77,NA,NA,3,6,years,NA
+mace00073,NCT01986881,VERTIS CV,ctg,itt,uaa10992,NA,placebo,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,0.93,NA,NA,3,6,years,NA
+mace00074,NCT01986881,VERTIS CV,ctg,itt,uaa77777,NA,ertugliflozin,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,0.98,NA,NA,3,6,years,NA
+mace00003,NCT01989754,CANVAS-R,paper supp appendix,itt,NA,compb0161,NA,canagliflozin_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.82,95%ci,0.66;1.01,108,156,weeks,NA
+mace00006,NCT01989754,CANVAS-R,paper supp appendix,itt,NA,compb0161,NA,canagliflozin_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.86,95%ci,0.61;1.22,108,156,weeks,NA
+mace00009,NCT01989754,CANVAS-R,paper supp appendix,itt,NA,compb0161,NA,canagliflozin_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,0.85,95%ci,0.61;1.19,108,156,weeks,NA
+mace00012,NCT01989754,CANVAS-R,paper supp appendix,itt,NA,compb0161,NA,canagliflozin_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,0.82,95%ci,0.57;1.18,108,156,weeks,NA
+mace00015,NCT01989754,CANVAS-R,paper supp appendix,itt,NA,compb0161,NA,canagliflozin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.56,95%ci,0.38;0.83,108,156,weeks,NA
+mace00001,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10994,NA,canagliflozin,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 1000 patient-years,rate,27.05,NA,NA,108,156,weeks,NA
+mace00002,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10995,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 1000 patient-years,rate,32.95,NA,NA,108,156,weeks,NA
+mace00004,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10994,NA,canagliflozin,NA,CV mortality,NA,events per 1000 patient-years,rate,10.06,NA,NA,108,156,weeks,NA
+mace00005,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10995,NA,placebo,NA,CV mortality,NA,events per 1000 patient-years,rate,11.6,NA,NA,108,156,weeks,NA
+mace00007,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10994,NA,canagliflozin,NA,Nonfatal MI,NA,events per 1000 patient-years,rate,10.55,NA,NA,108,156,weeks,NA
+mace00008,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10995,NA,placebo,NA,Nonfatal MI,NA,events per 1000 patient-years,rate,12.34,NA,NA,108,156,weeks,NA
+mace00010,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10994,NA,canagliflozin,NA,Nonfatal stroke,NA,events per 1000 patient-years,rate,8.71,NA,NA,108,156,weeks,NA
+mace00011,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10995,NA,placebo,NA,Nonfatal stroke,NA,events per 1000 patient-years,rate,10.62,NA,NA,108,156,weeks,NA
+mace00013,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10994,NA,canagliflozin,NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,6.34,NA,NA,108,156,weeks,NA
+mace00014,NCT01989754,CANVAS-R,paper supp appendix,itt,uaa10995,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,11.29,NA,NA,108,156,weeks,NA
+mace00054,NCT02065791,CREDENCE,ctg,itt,NA,compb0162,NA,canagliflozin_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.8,95%ci,0.67;0.95,2.62,4.6,years,NA
+mace00057,NCT02065791,CREDENCE,ctg,itt,NA,compb0162,NA,canagliflozin_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.61,95%ci,0.47;0.80,2.62,4.6,years,NA
+mace00060,NCT02065791,CREDENCE,ctg,itt,NA,compb0162,NA,canagliflozin_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.78,95%ci,0.61;1.00,2.62,4.6,years,NA
+mace00052,NCT02065791,CREDENCE,ctg,itt,uaa11039,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 1000 patient-years,rate,48.67,NA,NA,2.62,4.6,years,NA
+mace00053,NCT02065791,CREDENCE,ctg,itt,uaa11038,NA,canagliflozin,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 1000 patient-years,rate,38.71,NA,NA,2.62,4.6,years,NA
+mace00055,NCT02065791,CREDENCE,ctg,itt,uaa11039,NA,placebo,NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,25.33,NA,NA,2.62,4.6,years,NA
+mace00056,NCT02065791,CREDENCE,ctg,itt,uaa11038,NA,canagliflozin,NA,Hospitalisation for heart failure,NA,events per 1000 patient-years,rate,15.65,NA,NA,2.62,4.6,years,NA
+mace00058,NCT02065791,CREDENCE,ctg,itt,uaa11039,NA,placebo,NA,CV mortality,NA,events per 1000 patient-years,rate,24.38,NA,NA,2.62,4.6,years,NA
+mace00059,NCT02065791,CREDENCE,ctg,itt,uaa11038,NA,canagliflozin,NA,CV mortality,NA,events per 1000 patient-years,rate,19.01,NA,NA,2.62,4.6,years,NA
+mace00033,NCT02465515,HARMONY,ctg,itt,NA,compb0163,NA,albiglutide_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.78,95%ci,0.68;0.90,1.65,2.7,years,NA
+mace00036,NCT02465515,HARMONY,ctg,itt,NA,compb0163,NA,albiglutide_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.93,95%ci,0.73;1.19,1.65,2.7,years,NA
+mace00039,NCT02465515,HARMONY,ctg,itt,NA,compb0163,NA,albiglutide_placebo,Fatal or nonfatal MI,NA,between arm comparison,hazard ratio,0.75,95%ci,0.61;0.90,1.65,2.7,years,NA
+mace00042,NCT02465515,HARMONY,ctg,itt,NA,compb0163,NA,albiglutide_placebo,Fatal or nonfatal stroke,NA,between arm comparison,hazard ratio,0.86,95%ci,0.66;1.14,1.65,2.7,years,NA
+mace00031,NCT02465515,HARMONY,ctg,itt,uaa11139,NA,placebo,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,5.87,95%ci,5.33;6.45,1.65,2.7,years,NA
+mace00032,NCT02465515,HARMONY,ctg,itt,uaa11138,NA,albiglutide,NA,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",events per 100 patient-years,rate,4.57,95%ci,4.10;5.08,1.65,2.7,years,NA
+mace00034,NCT02465515,HARMONY,ctg,itt,uaa11139,NA,placebo,NA,CV mortality,NA,events per 100 patient-years,rate,1.72,95%ci,1.44;2.04,1.65,2.7,years,NA
+mace00035,NCT02465515,HARMONY,ctg,itt,uaa11138,NA,albiglutide,NA,CV mortality,NA,events per 100 patient-years,rate,1.61,95%ci,1.33;1.92,1.65,2.7,years,NA
+mace00037,NCT02465515,HARMONY,ctg,itt,uaa11139,NA,placebo,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,3.26,95%ci,2.86;3.7,1.65,2.7,years,NA
+mace00038,NCT02465515,HARMONY,ctg,itt,uaa11138,NA,albiglutide,NA,Fatal or nonfatal MI,NA,events per 100 patient-years,rate,2.43,95%ci,2.09;2.81,1.65,2.7,years,NA
+mace00040,NCT02465515,HARMONY,ctg,itt,uaa11139,NA,placebo,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,1.45,95%ci,1.19;1.74,1.65,2.7,years,NA
+mace00041,NCT02465515,HARMONY,ctg,itt,uaa11138,NA,albiglutide,NA,Fatal or nonfatal stroke,NA,events per 100 patient-years,rate,1.25,95%ci,1.01;1.53,1.65,2.7,years,NA
+mace00248,NCT02692716,PIONEER 6,ctg,fas,uaa11207,NA,semaglutide,NA,MACE occurrence,"CV mortality, nonfatal MI or nonfatal stroke",events,count,61,NA,NA,15.9,19,months,n=1591
+mace00249,NCT02692716,PIONEER 6,ctg,as,uaa11206,NA,placebo,NA,MACE occurrence,"CV mortality, nonfatal MI or nonfatal stroke",events,count,76,NA,NA,15.9,19,months,n=1592
+mace00047,NCT02692716,PIONEER 6,results paper,fas,NA,compb0164,NA,semaglutide_placebo,Time to first occurrence of MACE,"CV mortality, nonfatal MI or nonfatal stroke",between arm comparison,hazard ratio,0.79,95%ci,0.57:1.11,15.9,19,months,NA
+mace00048,NCT02692716,PIONEER 6,results paper,fas,NA,compb0164,NA,semaglutide_placebo,CV mortality,NA,between arm comparison,hazard ratio,0.49,95%ci,0.27;0.92,15.9,19,months,NA
+mace00049,NCT02692716,PIONEER 6,results paper,fas,NA,compb0164,NA,semaglutide_placebo,Nonfatal MI,NA,between arm comparison,hazard ratio,1.18,95%ci,0.73:1.90,15.9,19,months,NA
+mace00050,NCT02692716,PIONEER 6,results paper,fas,NA,compb0164,NA,semaglutide_placebo,Nonfatal stroke,NA,between arm comparison,hazard ratio,0.74,95%ci,0.35;1.57,15.9,19,months,NA
+mace00051,NCT02692716,PIONEER 6,results paper,fas,NA,compb0164,NA,semaglutide_placebo,Hospitalisation for heart failure,NA,between arm comparison,hazard ratio,0.86,95%ci,0.48;1.55,15.9,19,months,NA

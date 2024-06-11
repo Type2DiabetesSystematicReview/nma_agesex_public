@@ -1,0 +1,183 @@
+nct_id,trial_lbl,arm_id_unq,arm_label
+NCT00286429,12.5 mg SYR110322,uaa10053,alogliptin
+NCT00286429,25 mg SYR110322,uaa10054,alogliptin
+NCT00286429,Placebo,uaa10055,placebo
+NCT00286442,12.5 mg SYR110322,uaa10057,alogliptin
+NCT00286442,25 mg SYR110322,uaa10058,alogliptin
+NCT00286442,Placebo,uaa10059,placebo
+NCT00286455,12.5 mg SYR110322,uaa10061,alogliptin
+NCT00286455,25 mg SYR110322,uaa10062,alogliptin
+NCT00286455,Placebo,uaa10063,placebo
+NCT00286468,12.5 mg SYR110322,uaa10065,alogliptin
+NCT00286468,25 mg SYR110322,uaa10066,alogliptin
+NCT00286468,Placebo,uaa10067,placebo
+NCT00286494,12.5 mg SYR110322,uaa10069,alogliptin
+NCT00286494,25 mg SYR110322,uaa10070,alogliptin
+NCT00286494,Placebo,uaa10071,placebo
+NCT00306384,25 mg SYR110322 (Rescued from Double-blind Study),drop,drop
+NCT00306384,25 mg syr110322 (rescued from double-blind study),drop,drop
+NCT00306384,12.5 mg SYR110322 (Completed Double-blind Study),uaa10088,alogliptin
+NCT00306384,25 mg SYR110322 (Completed Double-blind Study),uaa10089,alogliptin
+NCT00601250,LINA,uaa10222,linagliptin
+NCT00601250,PLACEBO,uaa10223,placebo
+NCT00602472,LINA,uaa10225,linagliptin
+NCT00602472,PLACEBO,uaa10226,placebo
+NCT00621140,LINA,uaa10243,linagliptin
+NCT00621140,PLACEBO,uaa10244,placebo
+NCT00622284,GLIME,uaa10246,glimepiride
+NCT00622284,LINA,uaa10247,linagliptin
+NCT00641043,LINA + PIO,uaa10253,linagliptin
+NCT00641043,PIO + PLACEBO,uaa10254,placebo
+NCT00707993,Alogliptin,uaa10320,alogliptin
+NCT00707993,Glipizide,uaa10321,glipizide
+NCT00798161,(OL) LINA 2.5MG + MET 1000MG,drop,drop
+NCT00798161,LINA 5MG,uaa10361,linagliptin
+NCT00798161,LINA 2.5MG + MET 1000MG,uaa10362,linagliptin_metformin
+NCT00798161,LINA 2.5MG + MET 500MG,uaa10363,linagliptin_metformin
+NCT00798161,MET 1000MG,uaa10364,metformin
+NCT00798161,MET 500MG,uaa10365,metformin
+NCT00798161,PLACEBO,uaa10366,placebo
+NCT00856284,Alogliptin 12.5 mg,uaa10403,alogliptin
+NCT00856284,Alogliptin 25 mg,uaa10404,alogliptin
+NCT00856284,Glipizide,uaa10405,glipizide
+NCT00915772,MET 1000MG,uaa10430,metformin
+NCT00915772,LINA 2.5MG + MET 500MG,uaa10431,linagliptin
+NCT00915772,LINA 2.5MG + MET 1000MG,uaa10432,linagliptin_metformin
+NCT00954447,LINA,uaa10443,linagliptin
+NCT00954447,PLACEBO,uaa10444,placebo
+NCT00968708,Alogliptin,uaa10453,alogliptin
+NCT00968708,alogliptin,uaa10453,alogliptin
+NCT00968708,Placebo,uaa10454,placebo
+NCT00968708,placebo,uaa10454,placebo
+NCT01023581,ALOGLIPTIN 12.5 mg BID,uaa10491,alogliptin
+NCT01023581,ALOGLIPTIN 25 mg QD,uaa10492,alogliptin
+NCT01023581,ALOGLIPTIN 12.5 mg BID + METFORMIN 1000 mg BID,uaa10493,alogliptin_metformin
+NCT01023581,ALOGLIPTIN 12.5 mg BID + METFORMIN 500 mg BID,uaa10494,alogliptin_metformin
+NCT01023581,METFORMIN 1000 mg BID,uaa10495,metformin
+NCT01023581,METFORMIN 500 mg BID,uaa10496,metformin
+NCT01023581,PLACEBO,uaa10497,placebo
+NCT01064687,LY2189265 0.75 mg,uaa10527,dulaglutide
+NCT01064687,LY2189265 1.5 mg,uaa10529,dulaglutide
+NCT01064687,Exenatide,uaa10530,exenatide
+NCT01064687,Placebo,uaa10531,placebo
+NCT01075282,Dula 0.75,uaa10533,dulaglutide
+NCT01075282,Dula 1.5,uaa10535,dulaglutide
+NCT01075282,Insulin Glargine,uaa10536,insulin_glargine
+NCT01126580,Dula 0.75,uaa10593,dulaglutide
+NCT01126580,Dula 1.5,uaa10595,dulaglutide
+NCT01126580,Metformin,uaa10596,metformin
+NCT01159600,EMPA 10MG,uaa10627,empagliflozin
+NCT01159600,A,uaa10627,empagliflozin
+NCT01159600,EMPA 25MG,uaa10628,empagliflozin
+NCT01159600,B,uaa10628,empagliflozin
+NCT01159600,PLACEBO,uaa10629,placebo
+NCT01164501,EMPA 10MG,uaa10631,empagliflozin
+NCT01164501,EMPA 25MG,uaa10632,empagliflozin
+NCT01164501,PLACEBO,uaa10633,placebo
+NCT01167881,EMPA 25MG,uaa10635,empagliflozin
+NCT01167881,GLIME,uaa10636,glimepiride
+NCT01177813,(OL) EMPA 25MG,drop,drop
+NCT01177813,EMPA 10MG,uaa10644,empagliflozin
+NCT01177813,EMPA 25MG,uaa10645,empagliflozin
+NCT01177813,PLACEBO,uaa10646,placebo
+NCT01177813,SITA 100MG,uaa10647,sitagliptin
+NCT01191268,Dula 0.75,uaa10666,dulaglutide
+NCT01191268,Dula 1.5,uaa10668,dulaglutide
+NCT01191268,Glargine,uaa10669,insulin_glargine
+NCT01204294,ALPHA-GLUCO + LINA 5MG,uaa10681,linagliptin_alpha
+NCT01204294,GLIN + LINA 5MG,uaa10682,linagliptin_glinide
+NCT01204294,BIGU + LINA 5MG,uaa10683,linagliptin_metformin
+NCT01204294,SU + LINA 5MG,uaa10684,linagliptin_su
+NCT01204294,GLIT + LINA 5MG,uaa10685,linagliptin_tzd
+NCT01204294,ALPHA-GLUCO + MET,uaa10686,metformin_alpha
+NCT01204294,SU + MET,uaa10687,metformin_su
+NCT01210001,EMPA 10MG,uaa10689,empagliflozin
+NCT01210001,EMPA 25MG,uaa10690,empagliflozin
+NCT01210001,PLACEBO,uaa10691,placebo
+NCT01214239,LINA 5MG,uaa10693,linagliptin
+NCT01214239,PLACEBO,uaa10694,placebo
+NCT01215097,LINA 5MG,uaa10696,linagliptin
+NCT01215097,PLACEBO,uaa10697,placebo
+NCT01217892,DAPA 10mg OD + Metformin,uaa10699,dapagliflozin
+NCT01217892,DAPA 2.5mg BID + Metformin,uaa10700,dapagliflozin
+NCT01217892,DAPA 5mg BID + Metformin,uaa10701,dapagliflozin
+NCT01217892,Placebo + Metformin,uaa10702,placebo
+NCT01289119,"SYR-322, 25 mg",uaa10711,alogliptin
+NCT01289119,Placebo,uaa10716,placebo
+NCT01306214,EMPA 10MG,uaa10725,empagliflozin
+NCT01306214,EMPA 25MG,uaa10726,empagliflozin
+NCT01306214,PLACEBO,uaa10727,placebo
+NCT01368081,OPEN-LABEL,drop,drop
+NCT01368081,EMPA 10MG,uaa10733,empagliflozin
+NCT01368081,EMPA 25MG,uaa10734,empagliflozin
+NCT01370005,EMPA 10MG,uaa10737,empagliflozin
+NCT01370005,EMPA 25MG,uaa10738,empagliflozin
+NCT01370005,PLACEBO,uaa10739,placebo
+NCT01422876,AA010,uaa10768,empagliflozin
+NCT01422876,AA025,uaa10769,empagliflozin
+NCT01422876,LA020,uaa10770,empagliflozin_linagliptin
+NCT01422876,LA049,uaa10771,empagliflozin_linagliptin
+NCT01422876,AL005,uaa10772,linagliptin
+NCT01438814,LINA 5MG + MET,uaa10774,linagliptin
+NCT01438814,MET,uaa10775,metformin
+NCT01606007,DAPA + MET,uaa10812,dapagliflozin
+NCT01606007,SAXA + DAPA + MET,uaa10813,dapagliflozin_saxagliptin
+NCT01606007,SAXA + MET,uaa10814,saxagliptin
+NCT01621178,Dula_0.75,uaa10825,dulaglutide
+NCT01621178,Dula_1.5,uaa10826,dulaglutide
+NCT01621178,Glargine,uaa10827,insulin_glargine
+NCT01624259,Dula 1.5,uaa10829,dulaglutide
+NCT01624259,Lira 1.8,uaa10830,liraglutide
+NCT01708902,LINA 5MG,uaa10873,linagliptin
+NCT01708902,LINA 2.5MG + MET 1000MG,uaa10874,linagliptin_metformin
+NCT01708902,LINA 2.5MG + MET 500MG,uaa10875,linagliptin_metformin
+NCT01708902,MET 1000MG,uaa10876,metformin
+NCT01708902,MET 500MG,uaa10877,metformin
+NCT01719003,EMPA 10MG,uaa10882,empagliflozin
+NCT01719003,EMPA 25MG,uaa10883,empagliflozin
+NCT01719003,EMPA 12.5MG + MET 1000MG,uaa10884,empagliflozin_metformin
+NCT01719003,EMPA 12.5MG + MET 500MG,uaa10885,empagliflozin_metformin
+NCT01719003,EMPA 5MG + MET 1000MG,uaa10886,empagliflozin_metformin
+NCT01719003,EMPA 5MG + MET 500MG,uaa10887,empagliflozin_metformin
+NCT01719003,MET 1000MG,uaa10888,metformin
+NCT01719003,MET 500MG,uaa10889,metformin
+NCT01734785,(OL) LINA 5MG + (DB) EMPA 10MG,uaa10904,empagliflozin
+NCT01734785,(OL) LINA 5MG + (DB) EMPA 25MG,uaa10905,empagliflozin
+NCT01734785,(OL) LINA 5MG + (DB) PLACEBO,uaa10907,placebo
+NCT01769378,Dula 1.5,uaa10919,dulaglutide
+NCT01769378,Placebo,uaa10920,placebo
+NCT01778049,(DB) PLACEBO 25MG,ipd00002,placebo_populationA
+NCT01778049,(DB) PLACEBO 10MG,ipd00004,placebo_populationB
+NCT01778049,(DB) LINA 5MG + EMPA 10MG,ipd00003,linagliptin_populationB
+NCT01778049,(DB) LINA 5MG + EMPA 25MG,ipd00001,linagliptin_populationA
+NCT01792518,LINA 5MG,uaa10927,linagliptin
+NCT01792518,PLACEBO,uaa10928,placebo
+NCT01890122,Alogliptin 12.5 mg BID,uaa10957,alogliptin
+NCT01890122,Alogliptin 12.5 mg BID and Metformin HCl 500 mg FDC BID,uaa10958,alogliptin_metformin
+NCT01890122,Metformin HCl 500 mg BID,uaa10959,metformin
+NCT01890122,Placebo BID,uaa10960,placebo
+NCT02152371,TR1_LY2189265-1.5mg,uaa11060,dulaglutide
+NCT02152371,TR2_PLACEBO,uaa11061,placebo
+NCT02284893,SAXA + DAPA + MET,uaa11104,dapagliflozin_saxagliptin
+NCT02284893,SITA + MET,uaa11105,sitagliptin
+NCT02471404,Dapagliflozin 10mg,uaa11141,dapagliflozin
+NCT02471404,Saxagliptin 5mg and Dapagliflozin 10mg,uaa11142,dapagliflozin_saxagliptin
+NCT02471404,Glimepiride 1mg/2mg/4mg,uaa11143,glimepiride
+NCT02489968,(DB) EMPA 10MG + PLACEBO,uaa11145,empagliflozin
+NCT02489968,(DB) EMPA 25MG + PLACEBO,uaa11146,empagliflozin
+NCT02489968,(DB) EMPA 10MG + LINA 5MG,uaa11147,empagliflozin_linagliptin
+NCT02489968,(DB) EMPA 25MG + LINA 5MG,uaa11148,empagliflozin_linagliptin
+NCT02597049,TR2_LY2189265-0.75mg,uaa11175,dulaglutide
+NCT02597049,TR1_LY2189265-1.5mg,uaa11176,dulaglutide
+NCT02597049,TR3_PLACEBO,uaa11177,placebo
+NCT02681094,Dapagliflozin 5mg + saxagliptin placebo + metformin,uaa11197,dapagliflozin
+NCT02681094,Dapagliflozin 5mg + saxagliptin 5mg + metformin,uaa11198,dapagliflozin_saxagliptin
+NCT02681094,Saxagliptin 5mg + dapagliflozin placebo + metformin,uaa11199,saxagliptin
+NCT00654381,VOG - VOG - LINA 5MG,uaa10267,voglibose
+NCT00654381,PLACEBO - LINA 5MG - LINA 5MG,uaa10265,placebo
+NCT00654381,PLACEBO - LINA 10MG - LINA 10MG,uaa10265,placebo
+NCT00654381,VOG - VOG - LINA 10MG,uaa10267,voglibose
+NCT00654381,LINA 10MG - LINA 10MG - LINA 10MG,uaa10263,linagliptin
+NCT00654381,LINA 5MG - LINA 5MG - LINA 5MG,uaa10264,linagliptin
+NCT01064687,Placebo/LY2189265 0.75 mg,uaa10531,placebo
+NCT01064687,Placebo/LY2189265 1.5 mg,uaa10531,placebo

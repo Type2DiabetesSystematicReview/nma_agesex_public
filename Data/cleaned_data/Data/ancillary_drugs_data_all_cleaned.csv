@@ -1,0 +1,786 @@
+ancillary_id,trial_id,drug_regime,mandatory_yn,mandatory_ancillary1,manadatory_and_or,mandatory_ancillary2,mandatory_ancillary3,mandatory_ancillary4,mandatory_ancillary5,mandatory_ancillary6,min_oad_number,optional_yn,optional_ancillary1,optional_and_or,optional_ancillary2,optional_ancillary3,optional_ancillary4,optional_ancillary5,optional_ancillary6,optional_ancillary7,any_oad_exceptions,max_oad_number,notes,mandatory_and_or2,ancillary_notes
+ana293,NCT02240680,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,alpha_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana312,NCT02512068,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,insulin_any,or,alpha_any,repaglinide,mitiglinide,miglitol,NA,NA,NA,NA,all other oads and glp1a not allowed,NA,NA
+anc0070,NCT01455896,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_basal,NA,NA,NA,NA,NA,dpp4i| sglt2i,NA,no GLP1a or rapid insulin or dpp4 or sglt2i,NA,NA
+anc0202,UMIN000012224,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,glimepiride,glinide_any,alpha_any,tzd_any,NA,NA,NA,NA,"optional metformin, glimpeiride, glinides, alpha-glucosidase inhibitors, or thiazolidinediones.",NA,NA
+ana157,NCT01117350,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,or,glinide_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana287,NCT02207374,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,or,glinide_any,alpha_any,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA
+ana259,NCT01939496,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,sglt2i,3,NA,NA,NA
+anc0172,NCT01761318,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,"mand metformin, optional su and optional insulin",NA,NA
+anc0184,NCT01968044,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,or,insulin_any,NA,NA,NA,NA,NA,NA,NA,"nil mand, insulin or su allowed, all else washed out",NA,NA
+ana138,NCT01032629,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,insulin_any,sulfonylurea_any,dpp4i_any,glp1ra_any,NA,NA,NA,NA,could be on either insulin or multiple oads or combination,NA,NA
+anc0077,NCT02330406,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,0,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,any optionals except glp1a and dpp4i.. Insulin allowed,NA,NA
+anc0189,UMIN000022858,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,optional any except dpp4i. insulin allowed,NA,NA
+anc0190,UMIN000022804,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,sglt2i|tzd,NA,"optional any except sglt2i, pio. insulin allowed",NA,NA
+anc0194,NCT01394341,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,su,NA,"optional insulin, oads excluding su",NA,NA
+anc0213,UMIN000018445,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,"optional oads excpet ddp4i, or insulin (not glp1ra)",NA,NA
+anc0217,NCT01018173,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,"optional standard of care antidiabetics, no glp1ra",NA,NA
+anc0230,NCT00765830,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,"untreated, insulin, oral antidiabetic drugs (OADs allowed",NA,NA
+anc0054,NCT00894868,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i |tzd,NA,"if pt was on su, dose of intervention drug was halfed",NA,NA
+anc0193,NCT02956811,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,"optional conventional treatment except sglt2i, insulin allowed but down titrated to avoid hypos",NA,NA
+anc0218,TCTR20180424002,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,optional standard treatment except sglt2i,NA,NA
+anc0198,NCT02660047,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,insulin_any,sulfonylurea_any,NA,NA,NA,NA,NA,NA,optional metformin and/or insulin and/or SU,NA,NA
+ana137,NCT01031680,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,rosiglitazone,NA,could be on either insulin or multiple oads or combination,NA,NA
+ana139,NCT01042977,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,rosiglitazone,NA,could be on either insulin or multiple oads or combination,NA,NA
+ana141,NCT01064414,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,rosiglitazone,NA,"could be on mono or combi therapy of insulin, mf, su, dpp4, alpha, glp1,pio",NA,NA
+ana156,NCT01107886,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,could be on either insulin or one or mulitple oadsor  combination (not dpp4i or glp1a),NA,NA
+ana161,NCT01131676,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,pioglitazone,NA,"could be on mono or combi therapy of insulin, any other agents except pio in Japan",NA,NA
+ana201,NCT01406717,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,any single or combination apart from glp1a/dpp4,NA,NA
+ana237,NCT01720446,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,2,NA,NA,NA
+ana256,NCT01897532,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,"any standard regime, no DPP4i or GLP1ra allowed",NA,NA
+ana277,NCT02061969,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,NA
+ana327,NCT02692716,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,NA
+ana60,NCT00614939,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,metformin|dpp4i,NA,NA,NA,NA
+ana230,NCT01698775,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,or,insulin_any,NA,NA,NA,NA,NA,dpp4i|tzd,NA,either insulin alone or mono or dual oad,NA,NA
+ana153,NCT01106651,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,rosiglitazone,NA,could be on either insulin or one or mulitple oads orglp1a  combination,NA,NA
+ana168,NCT01164501,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,any single or combination apart from sglt2i,NA,NA
+ana263,NCT01986855,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,metformin|tzd|sglt2i,NA,NA,NA,NA
+ana264,NCT01986881,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,NA
+ana265,NCT01989754,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,glinide|sglt2i,NA,NA,NA,NA
+ana278,NCT02065791,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,NA
+ana335,NCT02836873,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,NA
+ana360,NCT03242018,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,NA
+ana361,NCT03242252,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,NA
+ana164,NCT01144338,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,NA,3|2 with insulin,NA,NA,NA
+ana165,NCT01147250,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,NA
+ana308,NCT02465515,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana194,NCT01370005,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,"allowed to be on any oad, insulin or glp1a or combo",NA,NA
+anc0177,UMIN000009544,triple+,y,sitagliptin,and,glimepiride,NA,NA,NA,NA,NA,y,metformin,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,"mand sitagliptin and glimepiride,  optional metformin and insulin",NA,NA
+anc0203,UMIN000007051,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,insulin_basal,pioglitazone,NA,NA,NA,NA,NA,NA,"optional metformin, pioglitazone, insulin (rapid insulin discontinued)",NA,NA
+ana173,NCT01179048,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_basal,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,NA
+ana304,NCT02413398,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_basal,NA,NA,NA,NA,NA,sglt2i,NA,NA,NA,NA
+ana200,NCT01394952,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_basal,NA,NA,NA,NA,NA,dpp4i,2,NA,NA,NA
+ana181,NCT01204294,dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana310,NCT02489968,dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana193,NCT01368081,dual,y,metformin,or,sulphonylurea_any,tzd_any,dpp4i_any,alpha_any,glinide_any,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,NA,NA,NA
+ana349,NCT03015220,dual,y,sulphonylurea_any,or,sglt2i_any,tzd_any,alpha_any,glinide_any,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana171,NCT01177384,dual,y,acarbose,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0104,UMIN000009525,dual,y,acarbose,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand acarbose,NA,NA
+anc0174,JapicCTI-101352,dual,y,any_oad,NA,NA,NA,NA,NA,NA,1,n,NA,NA,NA,NA,NA,NA,NA,NA,sglt2i|glinide,1,"mand one of SU, metofmrin, tzd, alpha, dpp4i",NA,NA
+anc0175,UMIN000023487,dual,y,any_oad,NA,NA,NA,NA,NA,NA,1,n,NA,NA,NA,NA,NA,NA,NA,NA,sglt2i,1,mand single agent oad excpet sglti2 (no insulin or glp1ra allowed),NA,NA
+ana301,NCT02354222,dual,y,canagliflozin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana76,NCT00680745,dual,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0013,NCT00099944,dual,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0028,NCT00318422,dual,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,all else washed out,NA,NA
+anc0030,NCT00325117,dual,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0034,NCT00363519,dual,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0068,NCT01357252,dual,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0110,UMIN000004674,dual,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand glimepiride monotherapy,NA,NA
+anc0111,NCT01649466,dual,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand glimepriide monotherapy,NA,NA
+ana17,NCT00286468,dual,y,glyburide,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana25,NCT00313313,dual,y,glyburide,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana212,NCT01572740,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana279,NCT02081599,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana288,NCT02220920,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana300,NCT02324569,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana318,NCT02589639,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana340,NCT02906709,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0012,NCT00099931,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0023,NCT00138606,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0053,NCT00854035,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0113,NCT02176681,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand insulin alone,NA,NA
+anc0120,JapicCTI-132348,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand insulin monotherapy,NA,NA
+anc0121,NCT01521962,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand insulin monotherapy,NA,NA
+anc0122,UMIN000008155,dual,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand insulin monotherapy,NA,NA
+anc0105,UMIN000010769,dual,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand basal insulin, all else discontinued",NA,NA
+anc0179,UMIN000004678,dual,y,insulin_biphasic,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand twice daily insulin,NA,NA
+anc0108,UMIN000010199,dual,y,insulin_csii,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand csii insulin,NA,NA
+anc0115,ChiCTR-PPR-15007045,dual,y,insulin_csii,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand insulin csii,NA,NA
+anc0116,ChiCTR-TRC-14005224,dual,y,insulin_csii,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin csii, otherwise naÃ¯ve",NA,NA
+ana316,NCT02577016,dual,y,ipragliflozin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana306,NCT02453555,dual,y,linagliptin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana317,NCT02589626,dual,y,liraglutide,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana100,NCT00838903,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana105,NCT00855166,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana106,NCT00856284,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana110,NCT00875394,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana113,NCT00885378,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana114,NCT00915772,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"500mg mand mf in each arm, some arms have more mf as per arm info",NA,NA
+ana12,NCT00121667,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana122,NCT00968812,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana126,NCT00976937,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana132,NCT01006603,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana15,NCT00286442,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana150,NCT01095666,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana154,NCT01106677,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana169,NCT01167881,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana184,NCT01215097,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana185,NCT01217892,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana190,NCT01296412,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana207,NCT01512108,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana209,NCT01528254,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana221,NCT01624259,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana226,NCT01652729,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana228,NCT01682759,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana241,NCT01755156,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana242,NCT01766778,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana245,NCT01778049,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana250,NCT01822548,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana251,NCT01841697,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana253,NCT01882907,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana257,NCT01907854,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana262,NCT01973231,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana266,NCT01999218,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana268,NCT02007278,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana269,NCT02008682,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana27,NCT00318461,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana270,NCT02024477,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana272,NCT02033889,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana275,NCT02058147,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana294,NCT02243176,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana298,NCT02288273,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana30,NCT00337610,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana314,NCT02564926,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana322,NCT02630706,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana323,NCT02648204,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana325,NCT02682563,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana326,NCT02683746,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana329,NCT02730377,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana332,NCT02769481,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana333,NCT02791490,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana337,NCT02863328,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana344,NCT02924064,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana346,NCT02926950,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana352,NCT03061214,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana355,NCT03115112,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana356,NCT03136484,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana362,NCT03259789,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana363,NCT03332771,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana365,NCT03495102,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana4,NCT00086515,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana41,NCT00411411,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana44,NCT00434954,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana46,NCT00482729,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana52,NCT00528879,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana53,NCT00541775,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana54,NCT00575588,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana56,NCT00601250,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana59,NCT00614120,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana63,NCT00622284,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana64,NCT00637273,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana7,NCT00094770,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana70,NCT00660907,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana71,NCT00661362,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana72,NCT00666458,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana8,NCT00097500,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana80,NCT00700817,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana81,NCT00701090,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana82,NCT00707031,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana84,NCT00712673,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana89,NCT00751114,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana91,NCT00763451,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana97,NCT00813995,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0003,NCT00039013,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0009,NCT00099892,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0018,NCT00102466,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0019,NCT00106340,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0025,NCT00237237,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0033,NCT00351884,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0035,NCT00363948,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0043,NCT00494884,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0046,NCT00728351,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0049,NCT00754988,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0050,NCT00755287,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,su dc pre rand,NA,NA
+anc0051,NCT00822211,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0052,NCT00823992,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0059,NCT01135433,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0060,NCT01193296,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0071,NCT01497522,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0132,NCT00396227,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin,NA,NA
+anc0133,NCT02231021,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin,NA,NA
+anc0134,NCT02280486,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin,NA,NA
+anc0135,NCT02794792,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin,NA,NA
+anc0136,NCT03693560,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin,NA,NA
+anc0149,2004-004559-21,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0150,ChiCTR-OPC-16008152,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0151,CTRI/2017/06/008891,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0152,NCT01455870,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0153,NCT01505426,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0154,NCT01518101,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0155,NCT01529541,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0156,NCT01541956,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0157,NCT01547104,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0158,NCT01602003,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0159,NCT01794143,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0160,NCT01805830,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0161,NCT02097342,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0162,NCT02147925,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0163,NCT02325960,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0164,NCT02343926,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0165,NCT02449603,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0166,NCT02949193,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0167,NCT03089333,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy,NA,NA
+anc0171,NCT02919345,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand metformin, all else washed out",NA,NA
+ana134,NCT01026194,dual,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana135,NCT01028391,dual,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana3,NCT00086502,dual,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana34,NCT00372060,dual,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana40,NCT00397631,dual,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana65,NCT00641043,dual,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana77,NCT00683878,dual,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0007,NCT00099853,dual,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0062,NCT01225081,dual,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana315,NCT02577003,dual,y,sitagliptin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0176,UMIN000015170,dual,y,sitagliptin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand sitagliptin  monotherapy,NA,NA
+anc0004,NCT00039026,dual,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0064,NCT01242215,dual,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0178,NCT01517321,dual,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand su montherapy,NA,NA
+ana123,NCT00974090,dual,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana244,NCT01769378,dual,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana39,NCT00395746,dual,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana98,NCT00819091,dual,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana302,NCT02354235,dual,y,tenegliptin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana99,NCT00837577,dual,y,voglibose,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0168,UMIN000004675,dual,y,metformin,or,pioglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin or pioglitazone monotherapy,NA,NA
+ana21,NCT00295633,dual,y,pioglitazone,or,rosiglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana353,NCT03066830,dual,y,metformin,or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0006,NCT00099619,dual,y,metformin,or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana305,NCT02429258,dual|triple+,y,metformin,or,insulin_basal,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,metformin|sglt2i,2,NA,NA,NA
+anc0073,2013-002348-99,dual|triple+,y,any_oad,NA,NA,NA,NA,NA,NA,1,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,"at least one of any agent apart from dpp4i, glp1 or insulin",NA,NA
+anc0075,ChiCTR-TRC-12002676,dual|triple+,y,any_oad,NA,NA,NA,NA,NA,NA,1,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,1 or more oads except dppi. Glp1a not allowed,NA,NA
+ana206,NCT01505673,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,NA
+ana280,NCT02096705,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,2,NA,NA,NA
+ana74,NCT00673231,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,2,NA,NA,NA
+anc0123,NCT01100125,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,"mand insulin, optional any oads excpet dpp4i",NA,NA
+anc0129,UMIN000007396,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,"mand insulin, optional oads excpet dppi. No glp1a allowed",NA,NA
+anc0130,UMIN000010176,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,"mand insulin, optional oads excpet dppi. No glp1a allowed",NA,NA
+anc0131,UMIN000018839,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,"mand insulin, optional oads excpet sglt2i. No glp1a allowed",NA,NA
+ana347,NCT02963922,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,2,NA,NA,NA
+anc0137,UMIN000018754,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,"mand metformin 750mg, metformin arm has 750mg extra =1500mg, optional other oad except sglt2i, no insulin or glp1ra allowed",NA,NA
+ana285,NCT02157298,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,dpp4i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0124,NCT02175784,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,dpp4i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin, optional dpp4i",NA,NA
+anc0125,NCT02201004,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,dpp4i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin, optional dpp4i",NA,NA
+anc0103,UMIN000022155,dual|triple+,y,any_oad,NA,NA,NA,NA,NA,NA,1,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,sglt2i,3,"mand 1-3 oads, optional insulin, no sglt2i allowed",NA,NA
+ana210,NCT01541215,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana364,NCT03351478,dual|triple+,y,dpp4i_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana10,NCT00106704,dual|triple+,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana14,NCT00286429,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana215,NCT01590797,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana267,NCT02002221,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana282,NCT02104804,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana339,NCT02897349,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana351,NCT03021187,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana37,NCT00395343,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0061,NCT01224366,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0112,NCT01654120,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin >100 units, metformin optional",NA,NA
+anc0126,NCT01582230,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin, optional metformin",NA,NA
+anc0127,NCT02831361,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin, optional metformin",NA,NA
+ana205,NCT01462266,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana217,NCT01617434,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana243,NCT01768559,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana284,NCT02152371,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana290,NCT02229227,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana291,NCT02229383,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana299,NCT02305381,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana86,NCT00715624,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana90,NCT00757588,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0106,NCT01632163,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand basal insulin, optional metformin",NA,NA
+anc0107,NCT02276196,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand basal insulin, optional metformin",NA,NA
+anc0118,NCT03529123,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin glargine, optional metformin",NA,NA
+ana177,NCT01191268,dual|triple+,y,insulin_bolus,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana191,NCT01306214,dual|triple+,y,insulin_mdi,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana104,NCT00849056,dual|triple+,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana182,NCT01210001,dual|triple+,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana92,NCT00763815,dual|triple+,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana348,NCT02964247,dual|triple+,y,sglt2i_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana319,NCT02597049,dual|triple+,y,sglt2i_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana127,NCT00984867,dual|triple+,y,sitagliptin,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0055,NCT00909597,dual|triple+,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana214,NCT01590771,dual|triple+,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana85,NCT00713830,dual|triple+,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana58,NCT00603239,dual|triple+,y,tzd_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0005,NCT00099320,dual|triple+,y,tzd_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana320,NCT02607306,dual|triple+,y,metformin,or,sulphonylurea_any,tzd_any,alpha_any,sglt2i_any,glinide_any,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana247,NCT01798706,dual|triple+,y,metformin,and_or,sulphonylurea_any,insulin_basal,pioglitazone,glinide_any,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,had to be on at least one of insulin or oads from list metformin|SU|glinides|pioglitazone,NA,NA
+ana140,NCT01046110,dual|triple+,y,metformin,and_or,sulphonylurea_any,tzd_any,glinide_any,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,NA,NA,NA
+ana147,NCT01084005,dual|triple+,y,metformin,and_or,sulphonylurea_any,insulin_any,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"one or combo of mf, su , insulin",NA,NA
+ana334,NCT02827708,dual|triple+,y,metformin,and_or,sulphonylurea_any,insulin_basal,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana162,NCT01137474,dual|triple+,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,at least one oad or insulin or combo,NA,NA
+anc0074,2014-003923-23,dual|triple+,y,metformin,and_or,insulin_any,NA,NA,NA,NA,NA,y,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"any as per NICE guidelines except GLP1a, note had protcol amendement to say any other drug could be the mandatory ancillary",NA,NA
+ana121,NCT00968708,dual|triple+,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,1,n,NA,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,had to be on at least one oad(not dpp4) or insulin or combination thereof,NA,NA
+anc0147,ChiCTR-IPR-15006558,dual|triple+,y,metformin,and_or,insulin_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and/or insulin,NA,NA
+anc0148,NCT02467478,dual|triple+,y,metformin,and_or,insulin_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and/or insulin,NA,NA
+ana180,NCT01195662,dual|triple+,y,any_oad,and_or,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,sglt2i,1,had to be on at least one oad or insulin or combo thereof,NA,NA
+ana13,NCT00135330,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana208,NCT01519674,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana216,NCT01606007,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana276,NCT02058160,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana281,NCT02099110,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana29,NCT00328627,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana292,NCT02229396,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana297,NCT02284893,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana309,NCT02471404,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana32,NCT00359762,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana324,NCT02681094,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana342,NCT02911948,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana142,NCT01064687,dual|triple+,y,metformin,and_or,pioglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0058,NCT01099137,dual|triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,extra su in comparator arm,NA,NA
+anc0138,UMIN000004716,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and /or su,NA,NA
+anc0169,NCT01744236,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin or su or both,NA,NA
+anc0170,NCT02043054,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin or su or both,NA,NA
+anc0173,UMIN000005331,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf and or su,NA,NA
+ana213,NCT01584232,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana224,NCT01648582,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana35,NCT00375492,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana50,NCT00518882,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana258,NCT01930188,dual|triple+,y,metformin,and_or,tzd_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana49,NCT00516074,dual|triple+,y,metformin,and_or,tzd_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana359,NCT03191396,dual|triple+,y,metformin,and_or,sulphonylurea_any,sglt2i_any,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,1-2 of mandatories in any combo,NA,NA
+ana115,NCT00917267,dual|triple+,y,metformin,and_or,sulphonylurea_any,tzd_any,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,NA,NA,NA
+ana160,NCT01128894,dual|triple+,y,metformin,and_or,sulphonylurea_any,tzd_any,NA,NA,NA,1,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"had to be on at least one of mf, su, tzd or any combo thereof",NA,NA
+ana254,NCT01885208,dual|triple+,y,metformin,and_or,sulphonylurea_any,tzd_any,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,NA,NA,NA
+ana94,NCT00790205,dual|triple+,y,metformin,and_or,sulphonylurea_any,insulin_any,pioglitazone,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,had to be on one or two of mf/pio/su or insulin +/-MF,NA,NA
+ana336,NCT02849080,dual|triple+,y,metformin,and_or,sulphonylurea_any,tzd_any,sglt2i_any,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,1-2 of mandatory drugs in any combo,NA,NA
+ana220,NCT01621178,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,NA
+ana331,NCT02750410,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i|su|glinide,2,NA,NA,NA
+ana112,NCT00885352,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana192,NCT01336023,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana338,NCT02863419,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sglt2i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0027,NCT00313001,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,"if rand to insulin, su was discontinued",NA,NA
+anc0029,NCT00324363,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana108,NCT00866658,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana101,NCT00838916,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana130,NCT01003184,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana167,NCT01159600,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana170,NCT01169779,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana195,NCT01381900,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana283,NCT02128932,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana313,NCT02532855,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana321,NCT02607865,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana66,NCT00641056,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0045,NCT00717457,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana136,NCT01029886,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,y,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA,2,NA,NA,NA
+ana103,NCT00849017,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana11,NCT00121641,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana116,NCT00918879,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana129,NCT00998881,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana146,NCT01081834,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana149,NCT01095653,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana158,NCT01126580,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana16,NCT00286455,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana166,NCT01147627,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana172,NCT01177813,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana175,NCT01183104,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana176,NCT01189890,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana183,NCT01214239,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana189,NCT01294423,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana19,NCT00289848,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana20,NCT00294723,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana202,NCT01413204,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana203,NCT01422876,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana211,NCT01558271,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana22,NCT00305604,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana232,NCT01703221,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana235,NCT01717313,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana239,NCT01733758,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana249,NCT01814748,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana26,NCT00316082,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana260,NCT01958671,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana274,NCT02054897,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana289,NCT02226003,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana295,NCT02254291,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana311,NCT02505334,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana328,NCT02715258,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana341,NCT02906930,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana343,NCT02916706,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana345,NCT02926937,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana350,NCT03018028,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana36,NCT00393718,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana42,NCT00411554,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana45,NCT00449930,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana47,NCT00509236,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana48,NCT00509262,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana5,NCT00087516,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana51,NCT00528372,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana6,NCT00094757,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana62,NCT00621140,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana68,NCT00654381,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana75,NCT00676338,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana78,NCT00688701,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana79,NCT00698932,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana83,NCT00707993,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana88,NCT00740051,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0008,NCT00099866,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0010,NCT00099905,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0011,NCT00099918,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0014,NCT00101673,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0015,NCT00101712,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0017,NCT00102388,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0020,NCT00110240,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0021,NCT00120536,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0022,NCT00138567,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0024,NCT00138619,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0026,NCT00300287,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0036,NCT00368134,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0037,NCT00381342,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0039,NCT00383578,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0040,NCT00390520,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0048,NCT00744926,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0056,NCT00957060,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0057,NCT01057628,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0076,UMIN000007009,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,all prev meds washed out,NA,NA
+anc0078,ChiCTR-IPR-16008578,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0079,ChiCTR-IPR-17011120,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0080,JapicCTI-101351,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0081,JapicCTI-111661,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0082,NCT00351832,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0083,NCT00690638,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0084,NCT01529528,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0085,NCT01601990,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0086,NCT01632007,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0087,NCT01787396,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0088,NCT01798238,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0089,NCT02015299,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0090,NCT02303730,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0091,NCT02853630,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0092,NCT02920801,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0093,NCT02946541,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0094,NCT02974504,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0095,NCT03068065,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0096,UMIN000004243,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0097,UMIN000004791,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0098,UMIN000006278,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0099,UMIN000006860,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0100,UMIN000006986,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0101,UMIN000007635,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0102,UMIN000022953,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve,NA,NA
+anc0185,NCT01270789,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"nil, all oads stopped",NA,NA
+anc0225,UMIN000004953,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,switched from sitagliptin monotherpay,NA,NA
+anc0181,NCT00138541,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana178,NCT01194830,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,1,NA,NA,NA
+anc0216,UMIN000030158,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,1,optional single oad except sglt2i (no insulin or glp1a allowed),NA,NA
+ana148,NCT01087502,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0228,NCT02655757,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,"other oads discontinued, insulin allowed",NA,NA
+ana61,NCT00620282,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0195,NCT02925559,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional metformin,NA,NA
+anc0196,NCT03202563,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional metformin,NA,NA
+anc0197,UMIN000013356,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional metformin,NA,NA
+anc0200,UMIN000030343,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional metformin monotherapy,NA,NA
+ana107,NCT00859898,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana133,NCT01023581,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana145,NCT01076088,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana174,NCT01183013,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana188,NCT01289119,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana234,NCT01708902,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana236,NCT01719003,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana248,NCT01809327,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana255,NCT01890122,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana28,NCT00327015,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana296,NCT02273050,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana38,NCT00395512,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana67,NCT00643851,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana87,NCT00722371,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana9,NCT00103857,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana95,NCT00798161,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+anc0016,NCT00101803,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+anc0038,NCT00382096,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana222,NCT01644500,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i|tzd,NA,oad had to be less than 50%max dose,NA,NA
+ana119,NCT00960076,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,comparator arm is mf at higher dose,NA,NA
+ana131,NCT01006590,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,comparator arm is mf at higher dose,NA,NA
+ana204,NCT01438814,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,comparator arm is mf at higher dose,NA,NA
+anc0042,NCT00396357,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,extra metformin in comaprator arm,NA,NA
+anc0180,NCT00975065,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"metformin 1500mg in both arms, extra mf in mf arm",NA,NA
+ana238,NCT01730534,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,at discretion of investigator,NA,NA
+anc0186,JapicCTI-111543,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,2,optional 1 or 2 oads excpet sglt2i,NA,NA
+anc0187,UMIN000017607,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,optional antidiabetics except sglt2i,NA,NA
+anc0188,UMIN000021658,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i| dpp4i,NA,optional any except dpp4i or sglt2i,NA,NA
+anc0191,NCT03050229,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i|su,NA,"optional any except sglt2i, su or insulin",NA,NA
+anc0192,NCT01847144,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i|su|glinide,NA,"optional any excpet  insulin, GLP-1 agonists, DPP-IV inhibitors, glinides. SU washout prior to rand",NA,NA
+anc0206,UMIN000019022,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,optional oad except dpp4i,NA,NA
+anc0207,UMIN000004490,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,optional oads except dpp4i (insulin and glp1ra not allowed),NA,NA
+anc0208,UMIN000005311,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,optional oads except dpp4i (insulin and glp1ra not allowed),NA,NA
+anc0209,UMIN000005627,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,optional oads except dpp4i (insulin and glp1ra not allowed),NA,NA
+anc0210,UMIN000005681,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,optional oads except dpp4i (insulin and glp1ra not allowed),NA,NA
+anc0211,UMIN000014738,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i|dpp4i,NA,optional oads except dpp4i and sglt2i(insulin and glp1ra not allowed),NA,NA
+anc0212,NCT01755572,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,"optional oads except dppi, no insulin or glp1ra allowed",NA,NA
+anc0215,UMIN000025102,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,"optional oral antidiabetics except sglt2i, no insulin",NA,NA
+anc0224,UMIN000019253,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,3,optional up to 3 oads excpet sglt2i,NA,NA
+anc0182,NCT00425490,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i|tzd,2,NA,NA,NA
+anc0065,NCT01257451,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,no GLP1a or insulin allowed at baseline,NA,NA
+anc0072,UMINR000006517,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,any except metformin or insulin,NA,NA
+anc0226,NCT01076842,triple+,y,any_oad,NA,NA,NA,NA,NA,NA,2,y,any_oad,NA,NA,NA,NA,NA,NA,NA,NA,NA,two or more oads,NA,NA
+ana218,NCT01619059,triple+,y,metformin,and,dapagliflozin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0109,NCT03007329,triple+,y,metformin,and,dapagliflozin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand dapagliflozin and metformin,NA,NA
+anc0139,NCT02304081,triple+,y,metformin,and,dapagliflozin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and dapagliflozin,NA,NA
+anc0140,UMIN000026161,triple+,y,metformin,and,dpp4i_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and dpp4i,NA,NA
+ana109,NCT00870194,triple+,y,metformin,and,exenatide,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0141,ChiCTR-TRC-13003858,triple+,y,metformin,and,gliclazide,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and gliclazide,NA,NA
+anc0142,NCT03125694,triple+,y,metformin,and,gliclazide,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and gliclazide,NA,NA
+ana102,NCT00839527,triple+,y,metformin,and,glimepiride,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana233,NCT01704261,triple+,y,metformin,and,glimepiride,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0143,NCT01990469,triple+,y,metformin,and,glimepiride,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and glimepiride,NA,NA
+anc0144,NCT02567994,triple+,y,metformin,and,glimepiride,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and glimepiride,NA,NA
+anc0145,NCT02607410,triple+,y,metformin,and,glyburide,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and glyburide,NA,NA
+anc0067,NCT01341717,triple+,y,metformin,and,insulin_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0114,NCT01757587,triple+,y,metformin,and,insulin_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand insulin and metformin,NA,NA
+anc0183,UMIN000013689,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana120,NCT00960661,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana197,NCT01388361,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana198,NCT01392573,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana252,NCT01871558,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana330,NCT02738879,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana73,NCT00667732,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0117,NCT02752412,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin glargine and metformin, all else washed out",NA,NA
+ana261,NCT01966978,triple+,y,metformin,and,insulin_bolus,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana240,NCT01734785,triple+,y,metformin,and,linagliptin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana128,NCT00996658,triple+,y,metformin,and,pioglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana155,NCT01106690,triple+,y,metformin,and,pioglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana43,NCT00432276,triple+,y,metformin,and,pioglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0047,NCT00744367,triple+,y,metformin,and,pioglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana31,NCT00350779,triple+,y,metformin,and,rosiglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0032,NCT00333151,triple+,y,metformin,and,rosiglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana223,NCT01646320,triple+,y,metformin,and,saxagliptin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana271,NCT02025907,triple+,y,metformin,and,sitagliptin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana273,NCT02036515,triple+,y,metformin,and,sitagliptin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0146,NCT02452632,triple+,y,metformin,and,sitagliptin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and sitagliptin,NA,NA
+anc0031,NCT00331851,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0063,NCT01233622,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana1,NCT00082381,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana143,NCT01075282,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana144,NCT01076075,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana152,NCT01106625,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana159,NCT01128153,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana163,NCT01137812,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana179,NCT01195090,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana199,NCT01392677,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana2,NCT00082407,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana57,NCT00602472,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0002,NCT00035984,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana33,NCT00360334,triple+,y,metformin,and,sulphonylurea_any,tzd_any,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,NA,NA,NA
+ana124,NCT00975286,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,y,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0227,NCT00770081,unclear,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,unclear,NA,NA
+anc0229,NCT03011177,unclear,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,unclear,NA,NA
+ana93,NCT00765817,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,pioglitazone,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana227,NCT01676116,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,and_or,pioglitazone,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana125,NCT00976391,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,pioglitazone,alpha_any,NA,NA,NA,NA,su|glinides|dpp4i,3,NA,NA,NA
+anc0066,NCT01316094,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,or,pioglitazone,alpha_any,NA,NA,NA,NA,NA,NA,any one of optionals allowed,NA,NA
+anc0201,UMIN000003479,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,pioglitazone,NA,NA,NA,NA,NA,NA,NA,optional metformin or pioglitazone,NA,NA
+anc0219,UMIN000010871,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,or,pioglitazone,NA,NA,NA,NA,NA,NA,NA,optional su or pioglitazone,NA,NA
+anc0222,UMIN000020984,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,alpha_any,NA,NA,NA,NA,NA,NA,"optional sulfonylureas, metformin, or an ?-glucosidase 
+inhibitor",NA,NA
+anc0223,UMIN000021552,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,alpha_any,NA,NA,NA,NA,NA,NA,"optional sulfonylureas, metformin, or an ?-glucosidase 
+inhibitor",NA,NA
+anc0204,UMIN000014422,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,dpp4i_any,NA,NA,NA,NA,NA,NA,"optional metformin, su, dpp4i",NA,NA
+anc0220,UMIN000003951,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,pioglitazone,NA,NA,NA,NA,NA,NA,"optional su, tzd or metformin",NA,NA
+anc0221,UMIN000003784,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,tzd_any,NA,NA,NA,NA,NA,NA,"optional su, tzd,metformin",NA,NA
+anc0205,UMIN000010451,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,tzd_any,alpha_any,NA,NA,NA,NA,NA,"optional metformin, su, tzds, alpha glucosidase inhibitors",NA,NA
+anc0069,NCT01455857,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,pioglitazone,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0214,UMIN000003503,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,tzd_any,NA,NA,NA,NA,NA,1,"optional one of su, metformin, tzd",NA,NA
+anc0044,NCT00616811,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,insulin_any,and_or,sulphonylurea_any,tzd_any,glinide_any,NA,NA,NA,NA,NA,any one or combo of optionals allowed,NA,NA
+ana246,NCT01792518,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,insulin_any,NA,NA,NA,NA,NA,2,any mono or dual therapy combo,NA,NA
+ana111,NCT00877890,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0001,NCT01392898,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana18,NCT00286494,dual|triple+,y,pioglitazone,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana354,NCT03086330,dual|triple+,y,sglt2i_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+anc0128,NCT02459353,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,"mand insulin, optional metformin and/or su",NA,NA
+anc0199,UMIN000004721,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,optional metformin and/or su,NA,NA
+ana286,NCT02182830,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,dpp4i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana186,NCT01243424,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,alpha_any,glinide_any,NA,NA,NA,dpp4i|tzd,NA,"allowed to be on mf, su, alpha or glinide or combo thereof, no dpp4, glp1a, tzd or insulin allowed",NA,NA
+ana196,NCT01387737,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,dpp4i_any,tzd_any,glinide_any,alpha_any,NA,NA,NA,NA,NA,NA
+ana96,NCT00800683,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,insulin_basal,and_or,sulphonylurea_any,pioglitazone,glinide_any,NA,NA,NA,NA,NA,NA,NA,NA
+ana229,NCT01697592,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,tzd_any,glinide_any,alpha_any,NA,NA,NA,2,any mono or dual therapy combo,NA,NA
+ana303,NCT02360774,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana69,NCT00655863,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,sulphonylurea_any,glinide_any,NA,NA,NA,NA,NA,NA,multidrug arms,NA,NA
+ana219,NCT01620489,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,insulin_any,pioglitazone,NA,NA,NA,NA,2,any mono or dual therapy combo,NA,NA
+ana225,NCT01652716,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,insulin_any,pioglitazone,NA,NA,NA,NA,2,any mono or dual therapy combo,NA,NA
+ana151,NCT01098539,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,tzd_any,NA,NA,NA,NA,NA,3,"could be on any of the three or combo, mf washed out if egfr less than 60",NA,NA
+ana187,NCT01272232,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,tzd_any,NA,NA,NA,NA,NA,NA,"allowed to be on mf, su, tzd as mono or in combo",NA,NA
+ana24,NCT00308139,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,tzd_any,NA,NA,NA,NA,NA,2,NA,NA,NA
+ana307,NCT02455076,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,insulin_any,dpp4i_any,tzd_any,NA,NA,NA,NA,any combination,NA,NA
+ana23,NCT00306384,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,insulin_any,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA
+ana366,NCT03552757,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,sglt2i_any,tzd_any,NA,NA,NA,NA,3,NA,NA,NA
+ana118,NCT00954447,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana55,NCT00577824,dual|triple+,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,or,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana117,NCT00935532,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,and_or,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ana357,NCT03172494,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,or,tzd|alpha|glinide,glinide_any,alpha_any,NA,NA,NA,NA,NA,NA,NA,NA
+ana358,NCT03175120,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,y,sulphonylurea_any,or,tzd|alpha|glinide,glinide_any,alpha_any,NA,NA,NA,NA,NA,NA,NA,NA
+anc0119,NCT02752828,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,dpp4i_any,sglt2i_any,tzd_any,glinide_any,alpha_any,NA,NA,"mand insulin glargine, optional mf, tzd, alpha, sglt2i,su, glinide, dpp4i",NA,NA
+ana231,NCT01703208,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,insulin_any,sglt2i_any,tzd_any,alpha_any,NA,NA,2,any mono or dual therapy combo of oads| insulin either alone or with MF,NA,NA
+NA,UMIN000013878,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,to be excluded,NA,NA
+upanc0019,ChiCTR-IPR-14005568,dual|triple+,y,any_oad,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i|tzd,NA,NA,NA,at least one of standard care oads except dpp4i or tzd. No insulin or glp1ra
+upanc0007,"2017-001,454-33",mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0021,CTR20131268,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0051,NCT02477865,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0055,NCT02501616,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0077,NCT02999841,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0080,NCT03159052,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0118,NCT04109547,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0120,NCT04161430,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0131,NCT04556851,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0139,NCT04916093,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0165,UMIN000024427,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0177,UMIN000030514,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve
+upanc0107,NCT03940183,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve or all else washed out
+upanc0128,NCT04470310,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve or all else washed out
+upanc0134,NCT04632862,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,drug naïve or all else washed out
+upanc0170,UMIN000025418,dual|triple+,y,any_oad,NA,NA,NA,NA,NA,NA,1,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,sglt2i,1,NA,NA,"mand 1- oads excluding sglt2i, optional insulin"
+upanc0163,UMIN000023834,dual|triple+,y,any_oad,NA,NA,NA,NA,NA,NA,1,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,3,NA,NA,"mand 1-3 of su, mf, alpha, glinide, tzd, dpp4i"
+upanc0167,UMIN000024663,triple+,y,metformin,and,insulin_mdi,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand 750mg od mf both arms and mand basal bolus insulin
+upanc0033,JapicCTI-111507,dual,y,glimepiride,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand add on to glimepiride
+upanc0173,UMIN000027614,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i|sglt2i,NA,NA,NA,"mand any insulin, optional oads excpet sglt2i, dpp4i, and no glp1ra allowed"
+upanc0146,Netherlands Trial Register NTR6709,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand basal bolus insulin and metformin in both arms
+upanc0185,UMIN000041551,dual|triple+,y,insulin_mdi,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,"mand basal bolus insulin both arms, glargine given as combo in lixisenatide arm, optional oads excpet dpp4i"
+upanc0123,NCT04196231,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand basal insulin all arms, in glp1ra arms given as fixed ration combo injection, optional mf"
+upanc0159,UMIN000019382,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i|sglt2i,NA,NA,NA,"mand basal insulin, optional standard care except dpp4i, sglt2i or glp1ra"
+upanc0090,NCT03458715,dual,y,insulin_biphasic,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand biphasic insulin
+upanc0176,UMIN000029628,dual|triple+,y,canagliflozin,NA,NA,NA,NA,NA,NA,NA,y,oads,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,"mand canagliflozin both arms, optional concominant oads excpet other sglt2i and dpp4i"
+upanc0005,2016-000574-38,triple+,y,metformin,and,dapagliflozin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand dapa and mf both arms
+upanc0121,NCT04170998,triple+,y,metformin,and,dapagliflozin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand dual therapy mf and dapagliflozin
+upanc0126,NCT04356742,triple+,y,metformin,and,evogliptin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand dual therapy mf and evogliptin
+upanc0048,NCT02338921,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand dual therapy with mf and su
+upanc0059,NCT02653209,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand dual therapy with mf and su
+upanc0078,NCT03076112,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand dual therapy with mf and su
+upanc0125,NCT04233801,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,NA,2,NA,NA,mand insulin (basal or biphasic) optional oads up to 2
+upanc0119,NCT04120623,dual,y,insulin_csii,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand insulin aspart in csii in both arms
+upanc0168,UMIN000024865,triple+,y,any_oad,and,insulin_basal,NA,NA,NA,NA,1,y,any_oad,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin degludec, in combo injection in aspart arm, mand 1 or more oads (metformin, sulfonylureas, glinides, dipeptidyl peptidase 4 inhibitors, sodium-glucose co-transporter 2 inhibitors, thiazolidinedi-ones or a-glucosidase inhibitors)"
+upanc0097,NCT03737240,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin degludec, in combo injection in glp1ra arm, optional mf"
+upanc0044,NCT02194595,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin glargine all arms, optional oads (no glp1ra)"
+upanc0061,NCT02690883,dual,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand insulin glargine both arms
+upanc0133,NCT04591626,triple+,y,insulin_basal,and,metformin,pioglitazone,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,or,"mand insulin glargine, mand meformin or acarbose"
+upanc0130,NCT04537923,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin glargine, optional mf"
+upanc0151,UMIN000010830,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i|sglt2i|alpha,NA,NA,NA,"mand insulin, optional oads (excpet dpp4i, alphas or sglt2is)"
+upanc0109,NCT03959501,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand insulin, optional mf"
+upanc0032,IRSCTN 2013L01573,dual|triple+,y,insulin_any,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i|sglt2i,NA,NA,NA,"mand insulin, optional up to 2 oads except sglt2i, dpp4i. No glp1ra allowed"
+upanc0003,2012-001941-42,dual|triple+,y,insulin_mdi,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand mdi basal bolus insulin, optional mf"
+upanc0013,ChiCTR1800015822,dual,y,insulin_mdi,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mdi both arms (glargine and aspart)
+upanc0010,ACTRN12616001059459,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin
+upanc0068,NCT02875821,triple+,y,metformin,and,pioglitazone,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin and pio in both arms
+upanc0041,NCT02106104,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy
+upanc0042,NCT02145611,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy
+upanc0052,NCT02477969,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy
+upanc0053,NCT02480465,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin monotherapy
+upanc0062,NCT02751398,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand metformin or su or combo
+upanc0011,ChiCTR1800015296,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,and_or,dpp4i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand metformin, optional su, optional dpp4i"
+upanc0002,2008-008367-95,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,and_or,glinide_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand metformin, optional su, optional glinide"
+upanc0015,ChiCTR1900021861,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf
+upanc0025,Hawler Medical University records of the clinical trials: No.276,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf
+upanc0038,NCT01595789,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf
+upanc0135,NCT04634500,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf
+upanc0154,UMIN000014864,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand mf 750mg both arms, increased mf in control arm"
+upanc0136,NCT04654390,triple+,y,metformin,and,gemigliptin,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf and gemigliptin dual therapy
+upanc0027,IRCT201306100,triple+,y,metformin,and,glibenclamide,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf and glibenclamide
+upanc0148,researchregistry6306,triple+,y,metformin,and,glimepiride,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf and glimepiride dual therapy
+upanc0006,2016-002225-10,dual|triple+,y,metformin,and_or,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf and or basal insulin
+upanc0001,100-IRMI/PRI 16/6/2 (007/2017),dual,y,metformin,or,insulin_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf and or insulin
+upanc0086,NCT03361098,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf and or su
+upanc0140,NCT05147896,triple+,y,metformin,and,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf and su
+upanc0179,UMIN000034951,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,"mand mf as combo tablet, optional standard care exept dpp4i, glp1ra or insulin"
+upanc0008,2017-001779-22,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0016,ChiCTR2000035091,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0022,CTRI/2017/02/007766,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0023,CTRI/2017/07/009121,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0110,NCT03961659,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0111,NCT03970044,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0115,NCT04017832,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0122,NCT04183868,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0124,NCT04218734,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0132,NCT04564872,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0141,NCT05359432,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf monotherapy
+upanc0020,ChiCTR-IPR-17010825,dual|triple+,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand mf or su or both
+upanc0035,jRCTs031180205,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,alpha_any,and_or,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand mf, optional alpha or tzd"
+upanc0014,ChiCTR1800019864,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,insulin_bisphasic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand mf, optional biphasic insulin"
+upanc0100,NCT03798054,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sglt2i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand mf, optional sglt2i"
+upanc0102,NCT03819790,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sglt2i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand mf, optional sglt2i"
+upanc0117,NCT04093752,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand mf, optional su"
+upanc0069,NCT02887677,dual|triple+,y,metformin,and_or,insulin_any,sulphonylurea_any,dpp4i_any,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,and_or,"mand monotherapy or combo of  two of metformin, sulphonylurea, DPP-4 inhibitor, or insulin for the past 3 months"
+upanc0160,UMIN000020239,dual,y,any_oad,NA,NA,NA,NA,NA,NA,1,n,NA,NA,NA,NA,NA,NA,NA,NA,sglt2i,1,NA,NA,mand oad excpet sglt2i
+upanc0060,NCT02655770,dual|triple+,y,any_oad,or,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,mand one or more oad or long acting insulin (no glp1ra or dpp4i allowed)
+upanc0186,UMIN000045003,dual,y,semaglutide,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"mand semaglutide monotherapy both arms,"
+upanc0094,NCT03590626,dual|triple+,y,metformin,and_or,insulin_any,sulphonylurea_any,dpp4i_any,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,and_or,"mand standard care metformin, DPP-4 inhibitors, sulphonylureas or insulin, in any combination"
+upanc0150,UMIN000006511,dual,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mand su monotherapy
+upanc0037,KCT0005169,triple+,y,metformin,and,sulphonylurea_any,sglt2i_any,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,and,"mand triple therapy mf, su and sglt2i"
+upanc0127,NCT04446026,triple+,y,metformin,and,sulphonylurea_any,sglt2i_any,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,and,"mand triple therapy mf, su and sglt2i"
+upanc0114,NCT04013581,triple+,y,metformin,and,sulphonylurea_any,dpp4i_any,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,and,"mand triple therapy with Metformin, DPP-4 inhibitors, Sulfonylurea"
+upanc0039,NCT01919489,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,insulin_basal,sulphonylurea_any,glinide_any,NA,NA,NA,NA,NA,NA,NA,"diet and/or OADs including sulphonylureas, repaglinide, nateglinide, or metformin, either as monotherapy or in combination therapy, or taking a low total daily dose of insulin"
+upanc0040,NCT01952145,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0045,NCT02235298,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0047,NCT02324842,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0049,NCT02420262,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0050,NCT02433678,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,NA
+upanc0054,NCT02501161,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,dpp4i_any,glinide_any,pioglitazone,NA,NA,NA,NA,NA,NA,"metformin ?1500 mg or maximum tolerated dose), sulphonylureas, glinides, pioglitazone, or dipeptidyl peptidase 4 inhibitors "
+upanc0056,NCT02551874,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0057,NCT02613897,dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms
+upanc0064,NCT02773368,dual|triple+,y,sglt2i_any,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,dpp4i_any,pioglitazone,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0065,NCT02787551,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sglt2i_any,and_or,pioglitazone,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0070,NCT02889510,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,insulin_any,and_or,sulphonylurea_any,tzd_any,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0071,NCT02912455,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0075,NCT02973477,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0081,NCT03231709,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0083,NCT03315143,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,insulin_any,sulphonylurea_any,dpp4i_any,glp1ra_any,NA,NA,NA,NA,NA,NA,NA
+upanc0084,NCT03338855,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0085,NCT03353350,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0087,NCT03387683,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0091,NCT03496298,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,NA
+upanc0093,NCT03521934,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,insulin_any,sulphonylurea_any,dpp4i_any,glp1ra_any,NA,NA,NA,NA,NA,NA,NA
+upanc0095,NCT03689374,triple+,y,metformin,and,insulin_basal,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0096,NCT03730662,dual|triple+,y,metformin,and_or,sulphonylurea_any,sglt2i_any,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,and_or,NA
+upanc0104,NCT03861039,dual,y,metformin,or,sulphonylurea_any,sglt2i_any,alpha_any,glinide_any,tzd_any,1,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,NA,or,NA
+upanc0105,NCT03861052,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0106,NCT03882970,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sglt2i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0108,NCT03954834,mono,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0112,NCT03987919,dual,y,metformin,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0113,NCT03989232,dual|triple+,y,metformin,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0116,NCT04039503,dual|triple+,y,insulin_basal,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+upanc0144,NCT05480007,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,n,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,multidrug arms
+upanc0138,NCT04801199,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,2,NA,NA,"optional 2 oads, except dpp4i, no insulin allowed"
+upanc0147,researchregistry5987,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional establiahed standard care excpet sglt2i
+upanc0066,NCT02798744,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional metformin monotherapy
+upanc0074,NCT02964585,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional mf and insulin
+upanc0017,ChiCTR2000037951,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional mf both arms depending on bg levels
+upanc0092,NCT03508323,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional mf monotherapy
+upanc0099,NCT03794336,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional mf monotherapy
+upanc0174,UMIN000028014,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional mf monotherapy only
+upanc0175,UMIN000028293,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional mf monotherapy only
+upanc0101,NCT03798080,mono|dual,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"optional mf monotherapy, all else washed out"
+upanc0181,UMIN000036202,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,dpp4i_any,alpha_any,NA,NA,NA,NA,NA,NA,NA,NA,"optional mf, dp4i andor alpha"
+upanc0143,NCT05360537,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sulphonylurea_any,repaglinide,NA,NA,NA,NA,NA,NA,NA,NA,"optional mf, repaglinide and sus"
+upanc0009,2017-003370-13,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,sglt2i_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,"optional mf, sglt2i"
+upanc0098,NCT03782259,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,insul;in_any,sulphonylurea_any,NA,NA,NA,NA,NA,NA,NA,NA,"optional mf, su andor insulin"
+upanc0043,NCT02162550,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional oads and long acting insulin
+upanc0188,UTN 1111-1181-9567,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i|sglt2i,NA,NA,NA,"optional oads except sglt21i and dpp4i. Glp1ra not allowed. Basal insulin, nph or biphasic insulin allowed"
+upanc0164,UMIN000024284,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,"optional oads, no dppi, no glp1ra, no insulin"
+upanc0058,NCT02649465,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional stable oads
+upanc0004,2016-000172-19,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,metformin,and_or,insulin_any,dpp4i,NA,NA,NA,NA,NA,NA,NA,NA,"optional standard card including mf, insulin, dpp4i"
+upanc0166,UMIN000024502,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional standard care all except sglt2i
+upanc0031,IRCT20201028049174N1,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,dpp4i,NA,NA,NA,optional standard care except dpp4i
+upanc0089,NCT03449654,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,optional standard care except dpp4i or glp1ra
+upanc0187,UMIN000045270,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional standard care except glp1ra.
+upanc0162,UMIN000021291,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,glp1ra_any,NA,NA,NA,NA,NA,sglt2i|tzd|sulphonylurea_any,NA,NA,NA,"optional standard care except insulin, SGLT2 inhibitor, thiazolidinediones or sulfonylurea)"
+upanc0073,NCT02932436,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional standard care except sglt2i
+upanc0161,UMIN000021177,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional standard care except sglt2i
+upanc0030,IRCT20200722048176N1,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,dpp4i|sglt2i,NA,NA,NA,optional standard care except sglt2i and dpp4i
+upanc0137,NCT04665284,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional standard care except sglt2i and glp1ra
+upanc0029,IRCT20190412043247N2,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i|tzd,NA,NA,NA,optional standard care except sglt2i and tzds
+upanc0012,ChiCTR-1800015658,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sulphonylurea_any|glinide_any,NA,NA,NA,optional standard care except su or glinides. No insulin or glp1ra allowed other than study drugs
+upanc0145,Netherlands Trial Register (NTR 4439),mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i|sglt2i|tzd,NA,NA,NA,"optional standard care except tzd, glp1ra, dpp4i or sglt2i"
+upanc0034,jRCTs031180159,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i|tzd,NA,NA,NA,"optional standard care excet sglt2i, tzds, insuilin or glp1ra"
+upanc0158,UMIN000018395,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i|sulphonylurea|alpha|glinide,NA,NA,NA,"optional standard care excpet alpha, sglt2i, glinides, high dose su"
+upanc0067,NCT02851745,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i|tzd,NA,NA,NA,"optional standard care excpet dp4i, glp1ra or tzd"
+upanc0036,jRCTs071190054,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional standard care excpet sglt2i
+upanc0178,UMIN000031451,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,glp1ra_any,NA,NA,NA,NA,dpp4i|sglt2i,NA,NA,NA,optional standard care including insulin. Except sglt2i and dpp4i
+upanc0018,ChiCTR2100054678,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,"optional standard care including mf, insulin, su and dpp4i"
+upanc0082,NCT03313752,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_basal,glp1ra_any,NA,NA,NA,NA,sglt2i|tzd,NA,NA,NA,"optional standard care including mf,su, glinides, dpp4i, glp1ra, basal insulin. No sglt2i, basal blous insulin or tzd."
+upanc0183,UMIN000038503,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional standard care including oads and insulin. No glp1ra allowed
+upanc0076,NCT02998970,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,sglt2i|saxagliptin,NA,NA,NA,optional standard care oad or insulin excpet sglt2i or saxagliptin. No glp1ra allowed.
+upanc0184,UMIN000039079,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional standard care oads except sglt2i
+upanc0129,NCT04531462,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional standard care oads except sglt2i. No glp1ra or insulin allowed
+upanc0155,UMIN000015727,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i|tzd,NA,NA,NA,"optional standard care oads excluding sglt2i, tzd. No insulin or glp1ra allowed.."
+upanc0156,UMIN000016563,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional standard care oads excluding sglt2i. No insulin or glp1ra allowed..
+upanc0149,TCTR20170511001,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,NA,NA,"optional standard care oads incl mf, su, dpp4i and tzds. No sglt21i, insulin or glp1ra allowed"
+upanc0072,NCT02914691,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i|tzd,NA,NA,NA,optional standard care oads or insulin excpet sglt2i or tzd
+upanc0026,IRCT20090905002417N23,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,optional standard care with insulin and oads excpet dpp4i. No glp1ra allowed
+upanc0182,UMIN000038459,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,dpp4i,NA,NA,NA,optional standard care with oads except dpp4i
+upanc0157,UMIN000017669,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_basal,glp1ra_any,NA,NA,NA,NA,sglt2i|sulphonylurea,NA,NA,NA,optional standard care with oads excpet su and sglt2i. allowed insulin or glp1ra
+upanc0152,UMIN000014140,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,optional standard care with oads only
+upanc0153,UMIN000014531,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sulphonylurea,NA,NA,NA,optional standard care with oads only (except high dose sus)
+upanc0079,NCT03151343,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional standard care with oads or insulin except sglt2i
+upanc0180,UMIN000035660,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,NA,NA,NA,NA,NA,NA,NA,sglt2i,NA,NA,NA,optional stnadard care oads except sglt2i
+upanc0171,UMIN000026340,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,sulphonylurea_any,and_or,alpha_any,glinide_any,NA,NA,NA,NA,NA,NA,NA,NA,"optional su, alpha or glinides"
+upanc0103,NCT03824002,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_basal,NA,NA,NA,NA,NA,NA,2,NA,NA,"optional upt to 2 oads, optional insulin"
+upanc0142,NCT05360147,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,NA,NA,NA,NA,standard care oads or insulin excpet glp1ra
+upanc0172,UMIN000027095,mono|dual|triple+,n,NA,NA,NA,NA,NA,NA,NA,NA,y,any_oad,and_or,insulin_any,NA,NA,NA,NA,NA,sglt2i,NA,NA,NA,standard care oads or insulin excpet sglt2i
+upanc0024,EudraCT 2017-000240-17,unclear,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,unclear
+upanc0028,IRCT20190122042450N3,unclear,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,unclear
+upanc0046,NCT02251431,unclear,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,unclear
+upanc0063,NCT02752113,unclear,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,unclear
+upanc0088,NCT03436693,unclear,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,unclear

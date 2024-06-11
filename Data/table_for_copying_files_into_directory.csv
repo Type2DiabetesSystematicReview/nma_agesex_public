@@ -1,0 +1,46 @@
+filename,content,pre,within,moveup,top_level,subsequent,post
+01a_process_agg_outcome.R,"source(""../common_functions/Scripts/misc.R"")",source(,../common_functions/Scripts/misc.R,..,common_functions,Scripts/misc.R,)
+01a_process_agg_outcome.R,"droplist <- read_csv(""../cleaned_data/Data/excluded_trials_look_up.csv"")",droplist <- read_csv(,../cleaned_data/Data/excluded_trials_look_up.csv,..,cleaned_data,Data/excluded_trials_look_up.csv,)
+01a_process_agg_outcome.R,"hba1c_agg1 <- read_csv(""../cleaned_data/Data/hba1c_outcome_data_2019.csv"") %>% ",hba1c_agg1 <- read_csv(,../cleaned_data/Data/hba1c_outcome_data_2019.csv,..,cleaned_data,Data/hba1c_outcome_data_2019.csv,) %>% 
+01a_process_agg_outcome.R,"hba1c_agg2 <- read_csv(""../cleaned_data/Data/hba1c_outcome_data_2022.csv"") %>% ",hba1c_agg2 <- read_csv(,../cleaned_data/Data/hba1c_outcome_data_2022.csv,..,cleaned_data,Data/hba1c_outcome_data_2022.csv,) %>% 
+01a_process_agg_outcome.R,"hba1c_agg3 <- read_csv(""../cleaned_data/Data/hba1c_outcome_data_2024.csv"") %>% ",hba1c_agg3 <- read_csv(,../cleaned_data/Data/hba1c_outcome_data_2024.csv,..,cleaned_data,Data/hba1c_outcome_data_2024.csv,) %>% 
+01a_process_agg_outcome.R,"arm <- read_csv(""../cleaned_data/Data/arm_data_all_cleaned.csv"")",arm <- read_csv(,../cleaned_data/Data/arm_data_all_cleaned.csv,..,cleaned_data,Data/arm_data_all_cleaned.csv,)
+01b_process_agg_agesex.R,"source(""../common_functions/Scripts/combine_sd.R"")",source(,../common_functions/Scripts/combine_sd.R,..,common_functions,Scripts/combine_sd.R,)
+01b_process_agg_agesex.R,"source(""../common_functions/Scripts/convert_iqr_to_sd.R"")",source(,../common_functions/Scripts/convert_iqr_to_sd.R,..,common_functions,Scripts/convert_iqr_to_sd.R,)
+01b_process_agg_agesex.R,"base_dsp <- readRDS(""../cleaned_data/Processed_data/base_dsp.Rds"")",base_dsp <- readRDS(,../cleaned_data/Processed_data/base_dsp.Rds,..,cleaned_data,Processed_data/base_dsp.Rds,)
+01b_process_agg_agesex.R,"base_rng <- readRDS(""../cleaned_data/Processed_data/base_rng.Rds"")",base_rng <- readRDS(,../cleaned_data/Processed_data/base_rng.Rds,..,cleaned_data,Processed_data/base_rng.Rds,)
+01b_process_agg_agesex.R,"comporig <- read_csv(""../cleaned_data/Data/example_comparisons.csv"")",comporig <- read_csv(,../cleaned_data/Data/example_comparisons.csv,..,cleaned_data,Data/example_comparisons.csv,)
+01b_process_agg_agesex.R,"comp2019 <- read_csv(""../cleaned_data/Data/comparisons_2019.csv"")",comp2019 <- read_csv(,../cleaned_data/Data/comparisons_2019.csv,..,cleaned_data,Data/comparisons_2019.csv,)
+01b_process_agg_agesex.R,"comp2022 <- read_csv(""../cleaned_data/Data/comparisons_2022_update.csv"")",comp2022 <- read_csv(,../cleaned_data/Data/comparisons_2022_update.csv,..,cleaned_data,Data/comparisons_2022_update.csv,)
+01b_process_agg_agesex.R,"arm <- read_csv(""../cleaned_data/Data/arm_data_all_cleaned.csv"")",arm <- read_csv(,../cleaned_data/Data/arm_data_all_cleaned.csv,..,cleaned_data,Data/arm_data_all_cleaned.csv,)
+02_process_agg_standard_errors.R,"source(""../common_functions/Scripts/misc.R"")",source(,../common_functions/Scripts/misc.R,..,common_functions,Scripts/misc.R,)
+02_process_agg_standard_errors.R,"droptrial <- read_csv(""../cleaned_data/Data/excluded_trials_look_up.csv"")",droptrial <- read_csv(,../cleaned_data/Data/excluded_trials_look_up.csv,..,cleaned_data,Data/excluded_trials_look_up.csv,)
+02_process_agg_standard_errors.R,"comporig <- read_csv(""../cleaned_data/Data/example_comparisons.csv"")",comporig <- read_csv(,../cleaned_data/Data/example_comparisons.csv,..,cleaned_data,Data/example_comparisons.csv,)
+02_process_agg_standard_errors.R,"comp2019 <- read_csv(""../cleaned_data/Data/comparisons_2019.csv"")",comp2019 <- read_csv(,../cleaned_data/Data/comparisons_2019.csv,..,cleaned_data,Data/comparisons_2019.csv,)
+02_process_agg_standard_errors.R,"comp2022 <- read_csv(""../cleaned_data/Data/comparisons_2022_update.csv"")",comp2022 <- read_csv(,../cleaned_data/Data/comparisons_2022_update.csv,..,cleaned_data,Data/comparisons_2022_update.csv,)
+02_process_agg_standard_errors.R,"arm <- read_csv(""../cleaned_data/Data/arm_data_all_cleaned.csv"")",arm <- read_csv(,../cleaned_data/Data/arm_data_all_cleaned.csv,..,cleaned_data,Data/arm_data_all_cleaned.csv,)
+04_process_arm_labels.R,"source(""../common_functions/Scripts/misc.R"")",source(,../common_functions/Scripts/misc.R,..,common_functions,Scripts/misc.R,)
+04_process_arm_labels.R,"whichnwork <- read_csv(""../cleaned_data/Data/ancillary_drugs_data_all_cleaned.csv"")",whichnwork <- read_csv(,../cleaned_data/Data/ancillary_drugs_data_all_cleaned.csv,..,cleaned_data,Data/ancillary_drugs_data_all_cleaned.csv,)
+04_process_arm_labels.R,"arm_meta_orig <- read_csv(""../cleaned_data/Data/arm_data_all_cleaned.csv"") %>% ",arm_meta_orig <- read_csv(,../cleaned_data/Data/arm_data_all_cleaned.csv,..,cleaned_data,Data/arm_data_all_cleaned.csv,) %>% 
+05_join_armlabels_agg_ipd.R,"source(""../common_functions/Scripts/combine_sd.R"")",source(,../common_functions/Scripts/combine_sd.R,..,common_functions,Scripts/combine_sd.R,)
+05_join_armlabels_agg_ipd.R,"source(""../common_functions/Scripts/misc.R"")",source(,../common_functions/Scripts/misc.R,..,common_functions,Scripts/misc.R,)
+05_join_armlabels_agg_ipd.R,"msng <- msng %>% left_join(readRDS(""../cleaned_data/Processed_data/base_dsp.Rds"") %>% ",msng <- msng %>% left_join(readRDS(,../cleaned_data/Processed_data/base_dsp.Rds,..,cleaned_data,Processed_data/base_dsp.Rds,) %>% 
+06a_setup_hba1c_reg.R,"source(""../common_functions/Scripts/misc.R"")",source(,../common_functions/Scripts/misc.R,..,common_functions,Scripts/misc.R,)
+07_create_mace_pseudoipd.R,"source(""../common_functions/Scripts/fractional_polynomial.R"")",source(,../common_functions/Scripts/fractional_polynomial.R,..,common_functions,Scripts/fractional_polynomial.R,)
+08_process_mace_trials.R,"source(""../common_functions/Scripts/convert_iqr_to_sd.R"")",source(,../common_functions/Scripts/convert_iqr_to_sd.R,..,common_functions,Scripts/convert_iqr_to_sd.R,)
+08_process_mace_trials.R,"source(""../common_functions/Scripts/combine_sd.R"")",source(,../common_functions/Scripts/combine_sd.R,..,common_functions,Scripts/combine_sd.R,)
+08_process_mace_trials.R,"source(""../common_functions/Scripts/truncated_normal.R"")",source(,../common_functions/Scripts/truncated_normal.R,..,common_functions,Scripts/truncated_normal.R,)
+08_process_mace_trials.R,"age_elig <- read_csv(""../cleaned_data/Data/age_max_min_elig.csv"")",age_elig <- read_csv(,../cleaned_data/Data/age_max_min_elig.csv,..,cleaned_data,Data/age_max_min_elig.csv,)
+08_process_mace_trials.R,"arm_meta <- read_csv(""../cleaned_data/Data/arm_data_all_cleaned.csv"") %>% ",arm_meta <- read_csv(,../cleaned_data/Data/arm_data_all_cleaned.csv,..,cleaned_data,Data/arm_data_all_cleaned.csv,) %>% 
+08_process_mace_trials.R,"maceout <- bind_rows(`19` = read_csv(""../cleaned_data/Data/mace_2019_results.csv""),",maceout <- bind_rows(`19` = read_csv(,../cleaned_data/Data/mace_2019_results.csv,..,cleaned_data,Data/mace_2019_results.csv,"),"
+08_process_mace_trials.R,"                     `22` = read_csv(""../cleaned_data/Data/mace_2022_results.csv""),",                     `22` = read_csv(,../cleaned_data/Data/mace_2022_results.csv,..,cleaned_data,Data/mace_2022_results.csv,"),"
+08_process_mace_trials.R,"base_dsp <- readRDS(""../cleaned_data/Processed_data/base_dsp.Rds"") %>% ",base_dsp <- readRDS(,../cleaned_data/Processed_data/base_dsp.Rds,..,cleaned_data,Processed_data/base_dsp.Rds,) %>% 
+08_process_mace_trials.R,"base_rng <- readRDS(""../cleaned_data/Processed_data/base_rng.Rds"") %>% ",base_rng <- readRDS(,../cleaned_data/Processed_data/base_rng.Rds,..,cleaned_data,Processed_data/base_rng.Rds,) %>% 
+08_process_mace_trials.R,"mace_sg <- read_csv(""../cleaned_data/Data/mace_subgroups_age_sex.csv"")",mace_sg <- read_csv(,../cleaned_data/Data/mace_subgroups_age_sex.csv,..,cleaned_data,Data/mace_subgroups_age_sex.csv,)
+10a_summarise_plot_ages_hba1c.R,"source(""../common_functions/Scripts/truncated_normal.R"")",source(,../common_functions/Scripts/truncated_normal.R,..,common_functions,Scripts/truncated_normal.R,)
+10a_summarise_plot_ages_hba1c.R,"elig <- read_csv(""../cleaned_data/Data/age_max_min_elig.csv"")",elig <- read_csv(,../cleaned_data/Data/age_max_min_elig.csv,..,cleaned_data,Data/age_max_min_elig.csv,)
+10a_summarise_plot_ages_hba1c.R,"source(""../common_functions/Scripts/combine_sd.R"")",source(,../common_functions/Scripts/combine_sd.R,..,common_functions,Scripts/combine_sd.R,)
+10b_summarise_plot_ages_mace.R,"source(""../common_functions/Scripts/truncated_normal.R"")",source(,../common_functions/Scripts/truncated_normal.R,..,common_functions,Scripts/truncated_normal.R,)
+10b_summarise_plot_ages_mace.R,"elig <- read_csv(""../cleaned_data/Data/age_max_min_elig.csv"")",elig <- read_csv(,../cleaned_data/Data/age_max_min_elig.csv,..,cleaned_data,Data/age_max_min_elig.csv,)
+10b_summarise_plot_ages_mace.R,"source(""../common_functions/Scripts/combine_sd.R"")",source(,../common_functions/Scripts/combine_sd.R,..,common_functions,Scripts/combine_sd.R,)
+13a_tables_hba1c.R,"source(""../common_functions/Scripts/misc.R"")",source(,../common_functions/Scripts/misc.R,..,common_functions,Scripts/misc.R,)
