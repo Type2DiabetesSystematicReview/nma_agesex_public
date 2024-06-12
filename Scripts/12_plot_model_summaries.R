@@ -1,5 +1,6 @@
 library(tidyverse)
 beta <- read_csv("Outputs/betas_meta_analysis.csv")
+priors <- read_csv("Scratch_data/priors_meta_analysis.csv")
 source("Scripts/04b_arm_label_reverse.R")
 source("Scripts/00_functions.R")
 ## read in data to label trials ----
@@ -35,6 +36,30 @@ hba1c <- beta %>%
          nct_id = "none")
 hba1c <- hba1c %>% 
   mutate(params = str_replace(params, "age10", "age"))
+## relabel prior outputs for tabulating
+hba1c_priors <- priors %>% 
+  filter(str_detect(tosep, "^hba1c")) %>% 
+  separate(tosep, into = c("outcome",
+                           "mainorinter",
+                           "modelnum",
+                           "datalevel",
+                           "fixedrand",
+                           "network"),
+           sep = "_", remove = TRUE)  %>% 
+  mutate(modelnum = if_else(str_length(modelnum) ==2, 
+                            str_replace(modelnum, "m", "m0"),
+                            modelnum))
+hba1c_priors <- hba1c_priors %>% 
+  mutate(mainorinter = if_else(mainorinter == "nointer", "Baseline Hba1c only", "Baseline Hba1c, age, sex and treatment interactions"),
+         datalevel = if_else(datalevel == "aggipd", "Aggregate data and IPD", "IPD alone")) %>% 
+  rename(covariates = mainorinter,
+         data_used = datalevel,
+         fe_or_re = fixedrand,
+         treatment = network) %>% 
+  select(-outcome) %>% 
+  select(modelnum, fe_or_re, everything()) %>% 
+  arrange(modelnum, fe_or_re, data_used)
+write_csv(hba1c_priors, "Outputs/priors_meta_analysis_hba1c.csv", na = "")
 
 mace <- beta %>% 
   filter(str_detect(tosep, "mace")) %>% 
@@ -48,7 +73,42 @@ mace <- beta %>%
                            "sg",
                            "nct_id"),
            sep = "_|\\.", remove = FALSE)  %>% 
-  mutate(nct_id = if_else(is.na(nct_id), "none", nct_id))
+  mutate(nct_id = if_else(is.na(nct_id), "none", nct_id))  
+
+## Mace priors tabulation ----
+mace_priors <- priors %>% 
+  filter(str_detect(tosep, "mace")) %>% 
+  mutate(modelnum = paste0("m", cumsum(!duplicated(tosep))+1),
+         network = "triple",
+         datalevel = "aggipd") %>% 
+  separate(tosep, into = c("fixedrand",
+                           "outcome",
+                           "mainorinter",
+                           "sg",
+                           "nct_id"),
+           sep = "_|\\.", remove = TRUE)  %>% 
+  mutate(nct_id = if_else(is.na(nct_id), "none", nct_id)) %>% 
+  select(-outcome) %>% 
+  mutate(modelnum = if_else(str_length(modelnum) ==2, 
+                            str_replace(modelnum, "m", "m0"),
+                            modelnum))
+
+mace_priors <- mace_priors %>% 
+  mutate(`C: Covariates main effects and treatment interactions` = if_else(mainorinter == "nointer", "", 
+                                                                           `C: Covariates main effects and treatment interactions`),
+         mainorinter = if_else(mainorinter == "nointer", "No covariates", "Age, sex and treatment interactions"),
+         sg = case_when(
+           sg == "age" ~ "IPD, age-subgroup and aggregate",
+           sg == "sex" ~ "IPD, sex-subgroup and aggregate",
+           TRUE ~ "IPD and aggregate")) %>% 
+  rename(covariates = mainorinter,
+         fe_or_re = fixedrand,
+         data_used = sg, 
+         trials_dropped_or_downgraded = nct_id) %>% 
+  select(modelnum, everything()) %>% 
+  arrange(modelnum, fe_or_re, data_used)
+write_csv(mace_priors, "Outputs/priors_meta_analysis_mace.csv", na = "")
+
 
 x <- names(mace)
 y <- names(hba1c)

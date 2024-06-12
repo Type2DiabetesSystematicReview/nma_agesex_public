@@ -1,0 +1,22 @@
+cmpr,nct_id,arm_id_unq,drug_code,ltr,drug_regime,mandatory_ancillary1,data_type,n,drug_name,drug_dose,drug_unit,drug_freq,drug2_name,drug2_dose,drug2_unit,drug2_freq
+"A,AB",NCT01952145,unq_updaa10004,A10A,A,triple+,metformin,agg,279,insulin_glargine,as per bm,units,od,NA,NA,NA,NA
+"A,AB",NCT01952145,unq_updaa10005,A10A_A10BJ02,AB,triple+,metformin,agg,278,liraglutide,0.6,mg,od,insulin_degludec,16,units,id
+"A,AB",NCT02058160,uaa11032,A10A,A,dual|triple+,metformin,agg,364,insulin glargine,as per bm,units,NA,NA,NA,NA,NA
+"A,AB",NCT02058160,uaa11033,A10A_A10BJ03,AB,dual|triple+,metformin,agg,364,lixisenatide,as per bm,microgram,od,insulin glargine,as per bm,units,od
+"A,AB",NCT02420262,unq_updaa10014,A10A,A,triple+,metformin,agg,254,insulin_glargine,as per bm,units,od,insulin_aspart,as per bm,units,od
+"A,AB",NCT02420262,unq_updaa10015,A10A_A10BJ02,AB,triple+,metformin,agg,252,liraglutide,0.6,mg,od,insulin_degludec,16,units,id
+"A,AB",NCT02501161,unq_updaa10020,A10A,A,mono|dual|triple+,NA,agg,506,insulin_glargine,as per bm,units,od,NA,NA,NA,NA
+"A,AB",NCT02501161,unq_updaa10021,A10A_A10BJ02,AB,mono|dual|triple+,NA,agg,506,liraglutide,0.36,mg,od,insulin_degludec,10,units,id
+"A,AB",NCT02773368,unq_updaa10030,A10A,A,dual|triple+,sglt2i_any,agg,210,insulin_glargine,as per bm,units,od,NA,NA,NA,NA
+"A,AB",NCT02773368,unq_updaa10031,A10A_A10BJ02,AB,dual|triple+,sglt2i_any,agg,210,liraglutide,0.36,mg,od,insulin_degludec,10,units,id
+"A,AB",NCT03798080,updab0074,A10A,A,mono|dual,NA,agg,214,insulin_glargine,as per bm,units,od,NA,NA,NA,NA
+"A,AB",NCT03798080,updab0075,A10A_A10BJ03,AB,mono|dual,NA,agg,212,lixisenatide,5,microgram,od,insulin_glargine,10,units,od
+"AB,AB,B,B",NCT02489968,uaa11145,A10BK03,B,dual,NA,ipd,108,empagliflozin,10,milligram,od,NA,NA,NA,NA
+"AB,AB,B,B",NCT02489968,uaa11146,A10BK03,B,dual,NA,ipd,116,empagliflozin,25,milligram,od,NA,NA,NA,NA
+"AB,AB,B,B",NCT02489968,uaa11147,A10BH05_A10BK03,AB,dual,NA,ipd,107,empagliflozin,10,milligram,od,linagliptin,5,milligram,od
+"AB,AB,B,B",NCT02489968,uaa11148,A10BH05_A10BK03,AB,dual,NA,ipd,116,empagliflozin,25,milligram,od,linagliptin,5,milligram,od
+"A,AB,AB",NCT01519674,uaa10786,A10A,A,dual|triple+,metformin,agg,183,insulin aspart,as per bm,units,bd,NA,NA,NA,NA
+"A,AB,AB",NCT01519674,uaa10787,A10A_A10BH01,AB,dual|triple+,metformin,agg,189,sitagliptin,100,milligram,od,insulin aspart,as per bm,units,bd
+"A,AB,AB",NCT01519674,uaa10788,A10A_A10BH01,AB,dual|triple+,metformin,agg,187,sitagliptin,100,milligram,od,insulin aspart,as per bm,units,od
+"AB,AC",NCT03819790,updab0076,A10A_A10BB09,AB,dual|triple+,metformin,agg,53,insulin_glargine,as per bm,units,od,gliclazide,60,mg,od
+"AB,AC",NCT03819790,updab0077,A10A_A10BJ03,AC,dual|triple+,metformin,agg,51,lixisenatide,5,microgram,od,insulin_glargine,15,units,od

@@ -1,0 +1,13 @@
+model_n,data_lvl,fe_re,nwork
+1,aggipd,fixed,mono
+2,aggipd,fixed,dual
+3,aggipd,fixed,triple
+4,aggipd,random,mono
+5,aggipd,random,dual
+6,aggipd,random,triple
+7,ipd,fixed,mono
+8,ipd,fixed,dual
+9,ipd,fixed,triple
+10,ipd,random,mono
+11,ipd,random,dual
+12,ipd,random,triple

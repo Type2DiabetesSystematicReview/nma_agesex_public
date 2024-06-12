@@ -758,11 +758,14 @@ ipdandagg <- lst$mace_arms %>%
 lst$mace_arms <- lst$mace_arms  %>% 
   semi_join(ipdandagg)
 ## checked no change in exiting subgroup data when update code to include two trials with SG data that also have IPD
+## note only runs if existing file
 ipdwsggot <- c("NCT00968708", "NCT02465515", "NCT01131676")
+if (file.exists("Scratch_data/mace_arms_agg_data.Rds")){
  xmn <- readRDS("Scratch_data/mace_arms_agg_data.Rds")
  identical(lst$mace_agg_age %>% filter(!nct_id %in% ipdwsggot) ,xmn$mace_agg_age)
  identical(lst$mace_agg_sex %>% filter(!nct_id %in% ipdwsggot) ,xmn$mace_agg_sex)
  # separate subgroup data into separate table when there is IPD
+}
 
 lst$mace_agg_age_sens <- lst$mace_agg_age 
 lst$mace_agg_age <- lst$mace_agg_age %>% 
@@ -770,8 +773,10 @@ lst$mace_agg_age <- lst$mace_agg_age %>%
 lst$mace_agg_sex_sens <- lst$mace_agg_sex 
 lst$mace_agg_sex <- lst$mace_agg_sex %>% 
   filter(!nct_id %in% ipdwsggot)
+if (file.exists("Scratch_data/mace_arms_agg_data.Rds")){
 identical(lst$mace_agg_age, xmn$mace_agg_age)
 identical(lst$mace_agg_sex, xmn$mace_agg_sex)
+}
 
 ## set HR in placebo to NA rather than 1 (so consistent with other trials)
 lst$mace_agg_sex_sens <- lst$mace_agg_sex_sens  %>% 

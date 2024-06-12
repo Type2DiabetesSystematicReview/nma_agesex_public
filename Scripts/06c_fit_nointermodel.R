@@ -6,8 +6,10 @@ library(multinma)
 
 ## allow passing arguments
 args <- commandArgs(trailingOnly=TRUE)
+if(length(args) == 0) stop("Need to pass argument  (eg in terminal via Rscript Scripts/06c_fit_nointermodel.R 1) to indicate which model wish to run")
+
 if(length(args) ==2) testrun <- TRUE else testrun <- FALSE
-rowchoose <- args[1]
+rowchoose <- as.integer(args[1])
 
 dropdisconnect <- c("NCT02477865", "JapicCTI-101351",
                     "NCT02477969", "JapicCTI-101352", "NCT03508323",

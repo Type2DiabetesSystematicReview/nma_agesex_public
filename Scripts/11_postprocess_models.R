@@ -77,8 +77,27 @@ write_csv(beta, "Outputs/betas_meta_analysis.csv")
 
 ## Divergent transitions for random mace no inter. Nothing else concerning. Reviewed all models interactively with shinystan
 
-
-
-
-
-
+## produce table of priors
+priors <- map(res, ~ tibble(nm = names(.x$priors), value = .x$priors))
+priors <- bind_rows(priors, .id = "tosep")
+priors$value <- map_chr(priors$value, capture.output)
+priors <- priors %>% 
+  filter(!value == "NULL")
+priors <- priors %>% 
+  mutate(value = str_replace(value, '\\[1\\] \\\"sd\\\"', "standard deviation."))
+priors <- priors %>% 
+  mutate(value = if_else(nm %in% c("prior_het"), str_sub(value, 1, -2), value),
+         nm = if_else(nm %in% c("prior_het", "prior_het_type"), "prior_het", nm)) %>% 
+  group_by(tosep, nm) %>% 
+  summarise(value = paste(value, collapse = ", on the ")) %>% 
+  ungroup() %>% 
+  arrange(tosep, nm)
+rnm <- c("prior_het" = "D: Heterogeneity", 
+         "prior_intercept" = "A: Intercept", 
+         "prior_reg" = "C: Covariates main effects and treatment interactions", 
+         "prior_trt" = "B: Main treatment effects")
+priors <- priors %>% 
+  mutate(nm = rnm[nm])
+priors <- priors %>% 
+  spread(nm, value, fill = "")
+write_csv(priors, "Scratch_data/priors_meta_analysis.csv")

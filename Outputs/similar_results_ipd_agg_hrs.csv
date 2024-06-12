@@ -1,0 +1,9 @@
+repo,nct_id,term,f1_est,f1_se,drug_name,drug_dose,treat_cmpr,agg_est,agg_se,note
+6115,NCT00968708,alogliptin,-0.049,0.08,alogliptin,25,treat,-0.040821994520255166,NA,Some arms collapsed for aggregate hence identical
+8697,NCT01032629,jnj-28431754-300 mg,-0.183,0.096,canagliflozin,300,treat,-0.12783337150988489,0.08092879456462382,Some arms collapsed for aggregate hence identical
+8697,NCT01032629,jnj-28431754-100 mg,-0.068,0.094,canagliflozin,100,treat,-0.12783337150988489,0.08092879456462382,Some arms collapsed for aggregate hence identical
+8697,NCT01131676,bi 10773 10mg,-0.163,0.087,empagliflozin,10,treat,-0.15082288973458366,0.07424866248225004,Some arms collapsed for aggregate hence identical
+8697,NCT01131676,bi 10773 25mg,-0.152,0.087,empagliflozin,25,treat,-0.15082288973458366,0.07424866248225004,Some arms collapsed for aggregate hence identical
+8697,NCT01989754,canagliflozin,-0.232,0.11,canagliflozin,100,treat,-0.19845093872383832,0.10853718745276375,Some arms collapsed for aggregate hence identical
+8697,NCT02065791,cana 100 mg,-0.23,0.091,canagliflozin,100,treat,-0.2231435513142097,0.08907762046162619,Some arms collapsed for aggregate hence identical
+8697,NCT02465515,albiglutide,-0.249,0.073,albiglutide,30,treat,-0.2484613592984996,0.07150560335565263,Some arms collapsed for aggregate hence identical

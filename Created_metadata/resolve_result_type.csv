@@ -1,0 +1,45 @@
+result_type,result_description,result_type_smry
+mean change,adjusted mean change from baseline,mean_change
+mean,baseline,mean_base
+median,baseline,mean_base
+LS mean,baseline,mean_base
+not specified,baseline,other_base
+mean,baseline adjusted mean,mean_change
+LS mean difference,between treament difference in mean change,between_arm_mean
+mean difference,between treament difference in mean change,between_arm_mean
+median difference,between treament difference in mean change,between_arm_mean
+beta coefficient,between treament difference in mean change,between_arm_mean
+difference in LS mean,between treament difference in mean change,between_arm_mean
+mean change,between treament difference in mean change,between_arm_mean
+adjusted mean difference,between treatment difference in adjusted mean change,between_arm_mean
+adjsuted mean difference,between treatment difference in adjusted mean change,between_arm_mean
+mean change,between treatment difference in adjusted mean change,between_arm_mean
+coefficient,between treatment difference in adjusted mean change,between_arm_mean
+beta estimate,between treatment difference in adjusted mean change,between_arm_mean
+LS mean difference,between treatment difference in adjusted mean change,between_arm_mean
+adjusted LS mean difference,between treatment difference in adjusted mean change,between_arm_mean
+adjusted mean change,between treatment difference in adjusted mean change,between_arm_mean
+mean difference,between treatment difference in mean change,between_arm_mean
+adjusted mean difference,between treatment difference in mean change,between_arm_mean
+difference in baseline adjusted mean,between treatment difference in mean change,between_arm_mean
+difference in LS mean,between treatment difference in mean change,between_arm_mean
+mean change,between treatment difference in mean change,between_arm_mean
+mean difference,between treatment mean difference,between_arm_mean
+mean change,change from baseline,mean_change
+adjusted mean change,change from baseline,mean_change
+LS mean change,change from baseline,mean_change
+mean,change from baseline,mean_change
+NA,change from baseline,other_change
+median change,change from baseline,other_change
+beta coefficient,change from baseline,mean_change
+adjusted LS mean change,change from baseline,mean_change
+spearmans correlation coefficient,change from baseline,other_change
+percentage change,change from baseline,other_change
+percentage decrease,change from baseline,other_change
+mean,endline,mean_end
+mean,endpoint,mean_end
+median,endpoint,other_end
+LS mean change,endpoint,mean_end
+not specified,endpoint,other_end
+LS mean absolute difference,LS mean between treatment difference,between_arm_mean
+percentage median change,percentage median change from baseline,other_change

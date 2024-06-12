@@ -1,0 +1,17 @@
+tosep,params,n
+hba1c_agesex_m10_ipd_random_mono,delta[],22
+hba1c_agesex_m11_ipd_random_dual,delta[],45
+hba1c_agesex_m12_ipd_random_triple,delta[],58
+hba1c_agesex_m4_aggipd_random_mono,delta[NA],22
+hba1c_agesex_m5_aggipd_random_dual,delta[NA],45
+hba1c_agesex_m6_aggipd_random_triple,delta[NA],58
+hba1c_nointer_m10_ipd_random_mono,delta[],22
+hba1c_nointer_m11_ipd_random_dual,delta[],45
+hba1c_nointer_m12_ipd_random_triple,delta[],58
+hba1c_nointer_m4_aggipd_random_mono,delta[NA],22
+hba1c_nointer_m5_aggipd_random_dual,delta[NA],45
+hba1c_nointer_m6_aggipd_random_triple,delta[NA],58
+random_mace_agesex_age,delta[NA],8
+random_mace_agesex_main,delta[NA],8
+random_mace_agesex_sex,delta[NA],8
+random_mace_nointer,delta[NA],8

@@ -7,6 +7,7 @@ library(multinma)
 
 ## allow passing arguments
 args <- commandArgs(trailingOnly=TRUE)
+if(length(args) == 0) stop("Need to pass argument  (eg in terminal via Rscript Scripts/06b_fit_hba1c_reg.R 1) to indicate which model wish to run")
 if(length(args) ==2) testrun <- TRUE else testrun <- FALSE
 rowchoose <- args[1]
 
