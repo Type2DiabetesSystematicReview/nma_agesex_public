@@ -191,3 +191,6 @@ file.copy("../from_vivli/Data/agesexmacecentred_6115/00_readme.txt",
           "Data/vivli_mace/6115_centred_readme.txt", overwrite = TRUE)
 file.copy("../from_vivli/Data/agesexmacecentred_8697/00_readme.txt",
           "Data/vivli_mace/8697_centred_readme.txt", overwrite = TRUE)
+
+## pull in rob
+file.copy("../cleaned_data/Data/robs.csv", to = "Data/robs.csv")
