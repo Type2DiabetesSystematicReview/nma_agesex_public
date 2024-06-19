@@ -49,5 +49,27 @@ Analysis code. Summary of scripts below.
 
 Contains some additional exports from the trial-level analysis and summaries, illustrating, for example, how well the summaries of age and censoring time fitted true distributions.
 
+# Running the code
+
+The analysis code was written on Ubuntu 22.04.03, on a machine running Windows 11 Pro. The ML-NMR models were run on the [MVLS Advanced Research System (MARS) high performance computing resource](https://mars.ice.gla.ac.uk/).
+
+The R version used was 4.4.0.
+
+The following versions of R packages were used:- 
+
+- broom - 1.0.5
+- cowplot - 1.1.2
+- dplyr - 1.1.4
+- multinma - development version install from  devtools::install_github("dmphillippo/multinma", ref = "feature/set_agd_regression")
+- patchwork - 1.2.0
+- purrr - 1.0.2
+- rstan - 2.32.6
+- stringr - 1.5.1
+- survival - 3.2-13
+- tidyr - 1.3.1
+- tidyverse - 2.0.0
+- truncnorm - 1.0.9
+
+
 
 
