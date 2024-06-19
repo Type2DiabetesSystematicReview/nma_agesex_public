@@ -10,6 +10,10 @@ exclusions <- read_csv("Data/exclusions.csv")
 droplist <- exclusions %>% 
   filter(exclude == 1L)
 
+## Create folder structure if it does already not exist ----
+foldermake <- c("Outputs2", "FromVM", "Scratch_data")
+walk(foldermake, ~ if (!file.exists(.x)) dir.create(.x))
+
 ## read in ipd so can drop from aggregate ----
 ipd1 <- read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
 ipd2 <- read.csv("Data/gsk/hba1c_base_change_overall.csv")
