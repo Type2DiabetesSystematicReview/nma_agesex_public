@@ -1,0 +1,280 @@
+trials,outcome,nct_id,nct_id2,models,row,col,r,outcome_method
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),sex,-0.853,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),age10,-0.991,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,age10,0.846,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),arm_f_2_BI 10773 10mg,-0.722,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,arm_f_2_BI 10773 10mg,0.616,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10,arm_f_2_BI 10773 10mg,0.715,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),arm_f_2_BI 10773 25mg,-0.713,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,arm_f_2_BI 10773 25mg,0.609,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10,arm_f_2_BI 10773 25mg,0.706,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 10mg,arm_f_2_BI 10773 25mg,0.514,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),sex:age10,0.843,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,sex:age10,-0.991,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10,sex:age10,-0.851,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 10mg,sex:age10,-0.608,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 25mg,sex:age10,-0.601,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),sex:arm_f_2_BI 10773 10mg,0.608,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,sex:arm_f_2_BI 10773 10mg,-0.713,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10,sex:arm_f_2_BI 10773 10mg,-0.603,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 10mg,sex:arm_f_2_BI 10773 10mg,-0.843,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 25mg,sex:arm_f_2_BI 10773 10mg,-0.434,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:age10,sex:arm_f_2_BI 10773 10mg,0.706,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),sex:arm_f_2_BI 10773 25mg,0.603,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,sex:arm_f_2_BI 10773 25mg,-0.706,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10,sex:arm_f_2_BI 10773 25mg,-0.597,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 10mg,sex:arm_f_2_BI 10773 25mg,-0.435,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 25mg,sex:arm_f_2_BI 10773 25mg,-0.845,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:age10,sex:arm_f_2_BI 10773 25mg,0.7,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:arm_f_2_BI 10773 10mg,sex:arm_f_2_BI 10773 25mg,0.504,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),age10:arm_f_2_BI 10773 10mg,0.714,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,age10:arm_f_2_BI 10773 10mg,-0.609,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10,age10:arm_f_2_BI 10773 10mg,-0.72,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 10mg,-0.991,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 25mg,age10:arm_f_2_BI 10773 10mg,-0.509,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:age10,age10:arm_f_2_BI 10773 10mg,0.613,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 10mg,0.835,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:arm_f_2_BI 10773 25mg,age10:arm_f_2_BI 10773 10mg,0.43,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),age10:arm_f_2_BI 10773 25mg,0.706,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,age10:arm_f_2_BI 10773 25mg,-0.603,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10,age10:arm_f_2_BI 10773 25mg,-0.713,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 25mg,-0.509,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 25mg,age10:arm_f_2_BI 10773 25mg,-0.991,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:age10,age10:arm_f_2_BI 10773 25mg,0.606,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 25mg,0.43,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:arm_f_2_BI 10773 25mg,age10:arm_f_2_BI 10773 25mg,0.837,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10:arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 25mg,0.513,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),sex:age10:arm_f_2_BI 10773 10mg,-0.6,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,sex:age10:arm_f_2_BI 10773 10mg,0.705,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10,sex:age10:arm_f_2_BI 10773 10mg,0.605,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 10mg,sex:age10:arm_f_2_BI 10773 10mg,0.833,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 25mg,sex:age10:arm_f_2_BI 10773 10mg,0.428,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:age10,sex:age10:arm_f_2_BI 10773 10mg,-0.712,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:arm_f_2_BI 10773 10mg,sex:age10:arm_f_2_BI 10773 10mg,-0.991,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:arm_f_2_BI 10773 25mg,sex:age10:arm_f_2_BI 10773 10mg,-0.498,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10:arm_f_2_BI 10773 10mg,sex:age10:arm_f_2_BI 10773 10mg,-0.841,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10:arm_f_2_BI 10773 25mg,sex:age10:arm_f_2_BI 10773 10mg,-0.431,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,(Intercept),sex:age10:arm_f_2_BI 10773 25mg,-0.595,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex,sex:age10:arm_f_2_BI 10773 25mg,0.699,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10,sex:age10:arm_f_2_BI 10773 25mg,0.6,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 10mg,sex:age10:arm_f_2_BI 10773 25mg,0.429,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,arm_f_2_BI 10773 25mg,sex:age10:arm_f_2_BI 10773 25mg,0.835,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:age10,sex:age10:arm_f_2_BI 10773 25mg,-0.706,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:arm_f_2_BI 10773 10mg,sex:age10:arm_f_2_BI 10773 25mg,-0.499,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:arm_f_2_BI 10773 25mg,sex:age10:arm_f_2_BI 10773 25mg,-0.991,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10:arm_f_2_BI 10773 10mg,sex:age10:arm_f_2_BI 10773 25mg,-0.432,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,age10:arm_f_2_BI 10773 25mg,sex:age10:arm_f_2_BI 10773 25mg,-0.843,baseline
+42,hba1c,NCT01131676,NCT01131676,b1,sex:age10:arm_f_2_BI 10773 10mg,sex:age10:arm_f_2_BI 10773 25mg,0.502,baseline
+42,hba1c,NCT01131676,NCT01131676,f1,(Intercept),value_1,-0.984,locf
+42,hba1c,NCT01131676,NCT01131676,f1,(Intercept),arm_f_2_BI 10773 10mg,-0.136,locf
+42,hba1c,NCT01131676,NCT01131676,f1,value_1,arm_f_2_BI 10773 10mg,0.01,locf
+42,hba1c,NCT01131676,NCT01131676,f1,(Intercept),arm_f_2_BI 10773 25mg,-0.142,locf
+42,hba1c,NCT01131676,NCT01131676,f1,value_1,arm_f_2_BI 10773 25mg,0.016,locf
+42,hba1c,NCT01131676,NCT01131676,f1,arm_f_2_BI 10773 10mg,arm_f_2_BI 10773 25mg,0.5,locf
+42,hba1c,NCT01131676,NCT01131676,f2,(Intercept),value_1,-0.631,locf
+42,hba1c,NCT01131676,NCT01131676,f2,(Intercept),age10,-0.802,locf
+42,hba1c,NCT01131676,NCT01131676,f2,value_1,age10,0.055,locf
+42,hba1c,NCT01131676,NCT01131676,f2,(Intercept),arm_f_2_BI 10773 10mg,-0.55,locf
+42,hba1c,NCT01131676,NCT01131676,f2,value_1,arm_f_2_BI 10773 10mg,0.011,locf
+42,hba1c,NCT01131676,NCT01131676,f2,age10,arm_f_2_BI 10773 10mg,0.693,locf
+42,hba1c,NCT01131676,NCT01131676,f2,(Intercept),arm_f_2_BI 10773 25mg,-0.544,locf
+42,hba1c,NCT01131676,NCT01131676,f2,value_1,arm_f_2_BI 10773 25mg,0.007,locf
+42,hba1c,NCT01131676,NCT01131676,f2,age10,arm_f_2_BI 10773 25mg,0.688,locf
+42,hba1c,NCT01131676,NCT01131676,f2,arm_f_2_BI 10773 10mg,arm_f_2_BI 10773 25mg,0.487,locf
+42,hba1c,NCT01131676,NCT01131676,f2,(Intercept),age10:arm_f_2_BI 10773 10mg,0.543,locf
+42,hba1c,NCT01131676,NCT01131676,f2,value_1,age10:arm_f_2_BI 10773 10mg,-0.01,locf
+42,hba1c,NCT01131676,NCT01131676,f2,age10,age10:arm_f_2_BI 10773 10mg,-0.698,locf
+42,hba1c,NCT01131676,NCT01131676,f2,arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 10mg,-0.991,locf
+42,hba1c,NCT01131676,NCT01131676,f2,arm_f_2_BI 10773 25mg,age10:arm_f_2_BI 10773 10mg,-0.481,locf
+42,hba1c,NCT01131676,NCT01131676,f2,(Intercept),age10:arm_f_2_BI 10773 25mg,0.537,locf
+42,hba1c,NCT01131676,NCT01131676,f2,value_1,age10:arm_f_2_BI 10773 25mg,-0.005,locf
+42,hba1c,NCT01131676,NCT01131676,f2,age10,age10:arm_f_2_BI 10773 25mg,-0.694,locf
+42,hba1c,NCT01131676,NCT01131676,f2,arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 25mg,-0.482,locf
+42,hba1c,NCT01131676,NCT01131676,f2,arm_f_2_BI 10773 25mg,age10:arm_f_2_BI 10773 25mg,-0.991,locf
+42,hba1c,NCT01131676,NCT01131676,f2,age10:arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 25mg,0.486,locf
+42,hba1c,NCT01131676,NCT01131676,f3,(Intercept),value_1,-0.946,locf
+42,hba1c,NCT01131676,NCT01131676,f3,(Intercept),sex,-0.3,locf
+42,hba1c,NCT01131676,NCT01131676,f3,value_1,sex,0.027,locf
+42,hba1c,NCT01131676,NCT01131676,f3,(Intercept),arm_f_2_BI 10773 10mg,-0.233,locf
+42,hba1c,NCT01131676,NCT01131676,f3,value_1,arm_f_2_BI 10773 10mg,0.001,locf
+42,hba1c,NCT01131676,NCT01131676,f3,sex,arm_f_2_BI 10773 10mg,0.609,locf
+42,hba1c,NCT01131676,NCT01131676,f3,(Intercept),arm_f_2_BI 10773 25mg,-0.236,locf
+42,hba1c,NCT01131676,NCT01131676,f3,value_1,arm_f_2_BI 10773 25mg,0.008,locf
+42,hba1c,NCT01131676,NCT01131676,f3,sex,arm_f_2_BI 10773 25mg,0.6,locf
+42,hba1c,NCT01131676,NCT01131676,f3,arm_f_2_BI 10773 10mg,arm_f_2_BI 10773 25mg,0.506,locf
+42,hba1c,NCT01131676,NCT01131676,f3,(Intercept),sex:arm_f_2_BI 10773 10mg,0.19,locf
+42,hba1c,NCT01131676,NCT01131676,f3,value_1,sex:arm_f_2_BI 10773 10mg,0.006,locf
+42,hba1c,NCT01131676,NCT01131676,f3,sex,sex:arm_f_2_BI 10773 10mg,-0.713,locf
+42,hba1c,NCT01131676,NCT01131676,f3,arm_f_2_BI 10773 10mg,sex:arm_f_2_BI 10773 10mg,-0.844,locf
+42,hba1c,NCT01131676,NCT01131676,f3,arm_f_2_BI 10773 25mg,sex:arm_f_2_BI 10773 10mg,-0.428,locf
+42,hba1c,NCT01131676,NCT01131676,f3,(Intercept),sex:arm_f_2_BI 10773 25mg,0.194,locf
+42,hba1c,NCT01131676,NCT01131676,f3,value_1,sex:arm_f_2_BI 10773 25mg,0,locf
+42,hba1c,NCT01131676,NCT01131676,f3,sex,sex:arm_f_2_BI 10773 25mg,-0.706,locf
+42,hba1c,NCT01131676,NCT01131676,f3,arm_f_2_BI 10773 10mg,sex:arm_f_2_BI 10773 25mg,-0.43,locf
+42,hba1c,NCT01131676,NCT01131676,f3,arm_f_2_BI 10773 25mg,sex:arm_f_2_BI 10773 25mg,-0.849,locf
+42,hba1c,NCT01131676,NCT01131676,f3,sex:arm_f_2_BI 10773 10mg,sex:arm_f_2_BI 10773 25mg,0.504,locf
+42,hba1c,NCT01131676,NCT01131676,f4,(Intercept),value_1,-0.622,locf
+42,hba1c,NCT01131676,NCT01131676,f4,(Intercept),age10,-0.791,locf
+42,hba1c,NCT01131676,NCT01131676,f4,value_1,age10,0.056,locf
+42,hba1c,NCT01131676,NCT01131676,f4,(Intercept),arm_f_2_BI 10773 10mg,-0.555,locf
+42,hba1c,NCT01131676,NCT01131676,f4,value_1,arm_f_2_BI 10773 10mg,0.01,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10,arm_f_2_BI 10773 10mg,0.678,locf
+42,hba1c,NCT01131676,NCT01131676,f4,(Intercept),arm_f_2_BI 10773 25mg,-0.55,locf
+42,hba1c,NCT01131676,NCT01131676,f4,value_1,arm_f_2_BI 10773 25mg,0.007,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10,arm_f_2_BI 10773 25mg,0.673,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 10mg,arm_f_2_BI 10773 25mg,0.488,locf
+42,hba1c,NCT01131676,NCT01131676,f4,(Intercept),sex,-0.214,locf
+42,hba1c,NCT01131676,NCT01131676,f4,value_1,sex,0.029,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10,sex,0.039,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 10mg,sex,0.176,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 25mg,sex,0.175,locf
+42,hba1c,NCT01131676,NCT01131676,f4,(Intercept),age10:arm_f_2_BI 10773 10mg,0.535,locf
+42,hba1c,NCT01131676,NCT01131676,f4,value_1,age10:arm_f_2_BI 10773 10mg,-0.01,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10,age10:arm_f_2_BI 10773 10mg,-0.698,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 10mg,-0.969,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 25mg,age10:arm_f_2_BI 10773 10mg,-0.471,locf
+42,hba1c,NCT01131676,NCT01131676,f4,sex,age10:arm_f_2_BI 10773 10mg,-0.027,locf
+42,hba1c,NCT01131676,NCT01131676,f4,(Intercept),age10:arm_f_2_BI 10773 25mg,0.53,locf
+42,hba1c,NCT01131676,NCT01131676,f4,value_1,age10:arm_f_2_BI 10773 25mg,-0.005,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10,age10:arm_f_2_BI 10773 25mg,-0.694,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 25mg,-0.472,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 25mg,age10:arm_f_2_BI 10773 25mg,-0.968,locf
+42,hba1c,NCT01131676,NCT01131676,f4,sex,age10:arm_f_2_BI 10773 25mg,-0.026,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10:arm_f_2_BI 10773 10mg,age10:arm_f_2_BI 10773 25mg,0.486,locf
+42,hba1c,NCT01131676,NCT01131676,f4,(Intercept),arm_f_2_BI 10773 10mg:sex,0.136,locf
+42,hba1c,NCT01131676,NCT01131676,f4,value_1,arm_f_2_BI 10773 10mg:sex,0.006,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10,arm_f_2_BI 10773 10mg:sex,-0.026,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 10mg,arm_f_2_BI 10773 10mg:sex,-0.243,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 25mg,arm_f_2_BI 10773 10mg:sex,-0.124,locf
+42,hba1c,NCT01131676,NCT01131676,f4,sex,arm_f_2_BI 10773 10mg:sex,-0.713,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10:arm_f_2_BI 10773 10mg,arm_f_2_BI 10773 10mg:sex,0.036,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10:arm_f_2_BI 10773 25mg,arm_f_2_BI 10773 10mg:sex,0.019,locf
+42,hba1c,NCT01131676,NCT01131676,f4,(Intercept),arm_f_2_BI 10773 25mg:sex,0.139,locf
+42,hba1c,NCT01131676,NCT01131676,f4,value_1,arm_f_2_BI 10773 25mg:sex,0,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10,arm_f_2_BI 10773 25mg:sex,-0.027,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 10mg,arm_f_2_BI 10773 25mg:sex,-0.124,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 25mg,arm_f_2_BI 10773 25mg:sex,-0.245,locf
+42,hba1c,NCT01131676,NCT01131676,f4,sex,arm_f_2_BI 10773 25mg:sex,-0.706,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10:arm_f_2_BI 10773 10mg,arm_f_2_BI 10773 25mg:sex,0.019,locf
+42,hba1c,NCT01131676,NCT01131676,f4,age10:arm_f_2_BI 10773 25mg,arm_f_2_BI 10773 25mg:sex,0.035,locf
+42,hba1c,NCT01131676,NCT01131676,f4,arm_f_2_BI 10773 10mg:sex,arm_f_2_BI 10773 25mg:sex,0.504,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,value_1,-0.151,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,age10,-0.989,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,age10,0.022,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,age10',0.923,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,age10',-0.014,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,age10',-0.953,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,age10'',-0.879,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,age10'',0.013,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,age10'',0.913,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',age10'',-0.993,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,arm_f=_2_BI 10773 10mg,-0.703,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,arm_f=_2_BI 10773 10mg,0.01,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,arm_f=_2_BI 10773 10mg,0.707,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',arm_f=_2_BI 10773 10mg,-0.661,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',arm_f=_2_BI 10773 10mg,0.629,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,arm_f=_2_BI 10773 25mg,-0.7,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,arm_f=_2_BI 10773 25mg,0.038,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,arm_f=_2_BI 10773 25mg,0.701,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',arm_f=_2_BI 10773 25mg,-0.655,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',arm_f=_2_BI 10773 25mg,0.624,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,arm_f=_2_BI 10773 25mg,0.499,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,sex,-0.015,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,sex,0.029,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,sex,-0.028,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',sex,0.035,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',sex,-0.035,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,sex,0.008,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 25mg,sex,0.009,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,age10 * arm_f=_2_BI 10773 10mg,0.7,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,age10 * arm_f=_2_BI 10773 10mg,-0.009,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,age10 * arm_f=_2_BI 10773 10mg,-0.709,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',age10 * arm_f=_2_BI 10773 10mg,0.676,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',age10 * arm_f=_2_BI 10773 10mg,-0.648,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,age10 * arm_f=_2_BI 10773 10mg,-0.997,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 25mg,age10 * arm_f=_2_BI 10773 10mg,-0.497,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,sex,age10 * arm_f=_2_BI 10773 10mg,0.02,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,age10' * arm_f=_2_BI 10773 10mg,-0.654,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,age10' * arm_f=_2_BI 10773 10mg,0.008,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,age10' * arm_f=_2_BI 10773 10mg,0.676,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',age10' * arm_f=_2_BI 10773 10mg,-0.709,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',age10' * arm_f=_2_BI 10773 10mg,0.704,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,age10' * arm_f=_2_BI 10773 10mg,0.932,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 25mg,age10' * arm_f=_2_BI 10773 10mg,0.464,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,sex,age10' * arm_f=_2_BI 10773 10mg,-0.025,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 10mg,age10' * arm_f=_2_BI 10773 10mg,-0.953,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,age10'' * arm_f=_2_BI 10773 10mg,0.623,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,age10'' * arm_f=_2_BI 10773 10mg,-0.008,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,age10'' * arm_f=_2_BI 10773 10mg,-0.647,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',age10'' * arm_f=_2_BI 10773 10mg,0.704,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',age10'' * arm_f=_2_BI 10773 10mg,-0.709,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,age10'' * arm_f=_2_BI 10773 10mg,-0.887,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 25mg,age10'' * arm_f=_2_BI 10773 10mg,-0.442,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,sex,age10'' * arm_f=_2_BI 10773 10mg,0.025,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 10mg,age10'' * arm_f=_2_BI 10773 10mg,0.913,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10' * arm_f=_2_BI 10773 10mg,age10'' * arm_f=_2_BI 10773 10mg,-0.993,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,age10 * arm_f=_2_BI 10773 25mg,0.699,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,age10 * arm_f=_2_BI 10773 25mg,-0.038,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,age10 * arm_f=_2_BI 10773 25mg,-0.704,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',age10 * arm_f=_2_BI 10773 25mg,0.671,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',age10 * arm_f=_2_BI 10773 25mg,-0.643,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,age10 * arm_f=_2_BI 10773 25mg,-0.498,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 25mg,age10 * arm_f=_2_BI 10773 25mg,-0.997,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,sex,age10 * arm_f=_2_BI 10773 25mg,0.019,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 10mg,age10 * arm_f=_2_BI 10773 25mg,0.499,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10' * arm_f=_2_BI 10773 10mg,age10 * arm_f=_2_BI 10773 25mg,-0.476,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'' * arm_f=_2_BI 10773 10mg,age10 * arm_f=_2_BI 10773 25mg,0.456,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,age10' * arm_f=_2_BI 10773 25mg,-0.654,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,age10' * arm_f=_2_BI 10773 25mg,0.036,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,age10' * arm_f=_2_BI 10773 25mg,0.672,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',age10' * arm_f=_2_BI 10773 25mg,-0.705,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',age10' * arm_f=_2_BI 10773 25mg,0.7,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,age10' * arm_f=_2_BI 10773 25mg,0.466,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 25mg,age10' * arm_f=_2_BI 10773 25mg,0.931,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,sex,age10' * arm_f=_2_BI 10773 25mg,-0.024,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 10mg,age10' * arm_f=_2_BI 10773 25mg,-0.477,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10' * arm_f=_2_BI 10773 10mg,age10' * arm_f=_2_BI 10773 25mg,0.5,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'' * arm_f=_2_BI 10773 10mg,age10' * arm_f=_2_BI 10773 25mg,-0.496,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 25mg,age10' * arm_f=_2_BI 10773 25mg,-0.953,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,age10'' * arm_f=_2_BI 10773 25mg,0.623,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,age10'' * arm_f=_2_BI 10773 25mg,-0.035,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,age10'' * arm_f=_2_BI 10773 25mg,-0.644,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',age10'' * arm_f=_2_BI 10773 25mg,0.7,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',age10'' * arm_f=_2_BI 10773 25mg,-0.705,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,age10'' * arm_f=_2_BI 10773 25mg,-0.444,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 25mg,age10'' * arm_f=_2_BI 10773 25mg,-0.886,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,sex,age10'' * arm_f=_2_BI 10773 25mg,0.024,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 10mg,age10'' * arm_f=_2_BI 10773 25mg,0.457,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10' * arm_f=_2_BI 10773 10mg,age10'' * arm_f=_2_BI 10773 25mg,-0.496,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'' * arm_f=_2_BI 10773 10mg,age10'' * arm_f=_2_BI 10773 25mg,0.5,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 25mg,age10'' * arm_f=_2_BI 10773 25mg,0.912,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10' * arm_f=_2_BI 10773 25mg,age10'' * arm_f=_2_BI 10773 25mg,-0.993,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,arm_f=_2_BI 10773 10mg * sex,0.007,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,arm_f=_2_BI 10773 10mg * sex,0.006,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,arm_f=_2_BI 10773 10mg * sex,0.021,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',arm_f=_2_BI 10773 10mg * sex,-0.025,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',arm_f=_2_BI 10773 10mg * sex,0.025,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,arm_f=_2_BI 10773 10mg * sex,-0.023,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 25mg,arm_f=_2_BI 10773 10mg * sex,-0.005,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,sex,arm_f=_2_BI 10773 10mg * sex,-0.713,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 10mg,arm_f=_2_BI 10773 10mg * sex,-0.014,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10' * arm_f=_2_BI 10773 10mg,arm_f=_2_BI 10773 10mg * sex,0.016,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'' * arm_f=_2_BI 10773 10mg,arm_f=_2_BI 10773 10mg * sex,-0.015,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 25mg,arm_f=_2_BI 10773 10mg * sex,-0.015,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10' * arm_f=_2_BI 10773 25mg,arm_f=_2_BI 10773 10mg * sex,0.018,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'' * arm_f=_2_BI 10773 25mg,arm_f=_2_BI 10773 10mg * sex,-0.018,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,Intercept,arm_f=_2_BI 10773 25mg * sex,0.008,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,value_1,arm_f=_2_BI 10773 25mg * sex,0,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10,arm_f=_2_BI 10773 25mg * sex,0.02,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10',arm_f=_2_BI 10773 25mg * sex,-0.025,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'',arm_f=_2_BI 10773 25mg * sex,0.025,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg,arm_f=_2_BI 10773 25mg * sex,-0.005,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 25mg,arm_f=_2_BI 10773 25mg * sex,-0.026,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,sex,arm_f=_2_BI 10773 25mg * sex,-0.706,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 10mg,arm_f=_2_BI 10773 25mg * sex,-0.014,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10' * arm_f=_2_BI 10773 10mg,arm_f=_2_BI 10773 25mg * sex,0.018,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'' * arm_f=_2_BI 10773 10mg,arm_f=_2_BI 10773 25mg * sex,-0.018,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10 * arm_f=_2_BI 10773 25mg,arm_f=_2_BI 10773 25mg * sex,-0.012,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10' * arm_f=_2_BI 10773 25mg,arm_f=_2_BI 10773 25mg * sex,0.011,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,age10'' * arm_f=_2_BI 10773 25mg,arm_f=_2_BI 10773 25mg * sex,-0.008,locf
+36,hba1c,NCT01131676,NCT01131676,rcs,arm_f=_2_BI 10773 10mg * sex,arm_f=_2_BI 10773 25mg * sex,0.504,locf

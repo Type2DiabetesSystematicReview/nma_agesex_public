@@ -1,4 +1,4 @@
-#02_process_vivli
+#03b_process__ipd_create_
 library(tidyverse)
 
 ## Functions ----
@@ -32,39 +32,9 @@ cor2cov <- function(V, sigma) {
   sigma * V * rep(sigma, each = p)
 }
 
-## read in exclusions ----
-exclusions <- read_csv("Data/exclusions_update.csv")
-
-## read in IDs where have IPD ----
-ipd1 <- read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
-ipd2 <- read.csv("Data/gsk/hba1c_base_change_overall.csv")
-ipd3 <- read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")
-ipd_nct_id <- bind_rows(ipd1, ipd2, ipd3) %>% 
-  distinct(nct_id) %>% 
-  pull()
-
-## read in vivli agesex results ----
-allvivli <- list.files("Data/agesexhba1c_6115/", patt = "csv$")
-res1 <- map(allvivli, ~ read_csv(paste0("Data/agesexhba1c_6115/", .x)))
-names(res1) <- allvivli %>% str_sub(1, -5)
-# bind categorical and continuous age data together. Only have continuous for gsk
-res1$age_distribution_baseline_continuous <- bind_rows(res1$age_distribution_baseline_continuous,
-                       res1$age_distribution_baseline_categorical) 
-## read in gsk agesex results ----
-allgsk <- list.files("Data/gsk/", patt = "csv$")
-res2 <- map(allgsk, ~ read_csv(paste0("Data/gsk/", .x)))
-names(res2) <- allgsk %>% str_sub(1, -5)
-res1 <- res1[names(res2)]
-
-## read in vivli agesex results from second vivli repository ----
-allvivli <- list.files("Data/agesexhba1c_8697/", patt = "csv$")
-res3 <- map(allvivli, ~ read_csv(paste0("Data/agesexhba1c_8697/", .x)))
-names(res3) <- allvivli %>% str_sub(1, -5)
-# drop csv only in second_vivli
-res3$reference_trial_arm_to_arm_data_all_cleaned <- NULL
-res <- pmap(list(res1, res2, res3), function(x, y, z) bind_rows(vivli1 = x, gsk = y, vivli2 = z))
+res <- readRDS("Scratch_data/ipd_consolidated.Rds")
 list2env(res, envir = .GlobalEnv)
-rm(res, res1, res2, allvivli, allgsk)
+empaarm <- read_csv("Scratch_data/empaarms.csv")
 
 ## simulate age and sex data ----
 ## Used ECDF. 6 trials still required sampling from normal distribution using mean and sd as these were too small to do so without compromising privacy
@@ -109,29 +79,42 @@ age_distribution_baseline_continuous$sim <- pmap(list(
 })
 age_distribution_baseline_continuous$splt <- NULL
 age_distr <- age_distribution_baseline_continuous %>% 
-  select(nct_id, arm_id_unq, sex, participants, sim) %>% 
+  select(nct_id, nct_id2, arm_id_unq, sex, participants, sim) %>% 
   unnest(sim) %>% 
   rename(age = sim) 
-# deal with NCT01778049 population a and population b
+
+## add in empareg which we know is normally distributed
+empa_base <- read_csv("Data/vivli_mace/censoring_distribution.csv") %>% 
+  filter(nct_id == "NCT01131676") %>% 
+  select(nct_id, arm, sex, participants, age_m, age_s) %>% 
+  mutate(trial_lbl = if_else(arm == "Placebo", "placebo", arm))
+empa_base$age <- pmap(list(empa_base$participants, empa_base$age_m, empa_base$age_s), function(n, m, s) {
+  rnorm(n, m, s)
+})
+empa_base <- empa_base %>% 
+  select(-age_m, -age_s) %>% 
+  mutate(sex = if_else(sex == "F", "female", "male"),
+         nct_id2 = nct_id) %>% 
+  unnest(age)
+empa_base <- empa_base %>% 
+  inner_join(empaarm %>% 
+               select(nct_id, trial_lbl, arm_id_unq))
+empa_base <- empa_base %>% 
+  select(nct_id, nct_id2, arm_id_unq, sex, participants, age)
+age_distr <- bind_rows(age_distr,
+                        empa_base)
+# arm_f_2_uaa10253
+
 age_distr <- age_distr %>% 
-  mutate(nct_id2 = case_when(
-    nct_id == "NCT01778049" & arm_id_unq %in% c("ipd00001", "ipd00002") ~ paste0(nct_id, "_a"),
-    nct_id == "NCT01778049" & arm_id_unq %in% c("ipd00003", "ipd00004") ~ paste0(nct_id, "_b"),
-    TRUE ~ nct_id)
-  )
-reference_arms_slct_reference <- reference_arms_slct_reference %>% 
-  mutate(nct_id2 = case_when(
-    nct_id == "NCT01778049" & arm_id_unq %in% c("ipd00001", "ipd00002") ~ paste0(nct_id, "_a"),
-    nct_id == "NCT01778049" & arm_id_unq %in% c("ipd00003", "ipd00004") ~ paste0(nct_id, "_b"),
-    TRUE ~ nct_id)
-  )
-age_distr <- age_distr %>% 
-  left_join(reference_arms_slct_reference %>% 
-              select(nct_id, nct_id2, arm_id_unq) %>% 
-              distinct() %>% 
-              mutate(reference_arm = 1)) %>% 
-  mutate(reference_arm = if_else(is.na(reference_arm), 2L, reference_arm),
-         arm_f = paste0("_", reference_arm, "_", arm_id_unq)) 
+  # left_join(reference_arms_slct_reference %>% 
+  #             select(nct_id, nct_id2, arm_id_unq) %>% 
+  #             distinct() %>% 
+  #             mutate(reference_arm = 1)) %>% 
+  mutate(reference_arm = case_when(
+    arm_id_unq %in% reference_arms_slct_reference$arm_id_unq ~ 1L,
+    TRUE ~ 2L),
+    arm_f = paste0("_", reference_arm, "_", arm_id_unq)) 
+
 age_distr_smry <- age_distr %>% 
   group_by(nct_id, sex) %>% 
   summarise(m = mean(age),
@@ -164,18 +147,20 @@ age_sex_plot2 <- ggplot(age_distr_smry2,
 saveRDS(age_sex_plot, "Scratch_data/age_comparison_by_sex_hba1c.Rds")
 saveRDS(age_sex_plot2, "Scratch_data/age_comparison_by_sex_hba1c_smry.Rds")
 
-
 ## Obtain coefficients -----
 age_sex_model_coefs <- age_sex_model_coefs %>% 
-  group_by(nct_id, nct_id2, models) %>% 
+  group_by(nct_id, nct_id2, models, outcome, outcome_method) %>% 
   nest() %>% 
   ungroup()
 ## Recover variance-covariance matrix ----
 age_sex_model_vcov <- age_sex_model_vcov %>% 
-  group_by(nct_id, nct_id2, models) %>% 
+  group_by(nct_id, nct_id2, models, outcome, outcome_method) %>% 
   nest() %>% 
   ungroup()
+# mysf <- safely(CnvrtCorrMatrix)
 age_sex_model_vcov$r <- map(age_sex_model_vcov$data, CnvrtCorrMatrix)
+# age_sex_model_vcov$error <- map_lgl(age_sex_model_vcov$r, ~ !is.null(.x$error))
+
 age_sex_model_vcov$data <- NULL
 age_sex_model_vcov <- age_sex_model_vcov %>% 
   inner_join(age_sex_model_coefs)
@@ -221,6 +206,7 @@ age_sex_model_vcov <- age_sex_model_vcov %>%
 ## note that this is the same as the count at the end
 saveRDS(age_sex_model_vcov, "Scratch_data/combined_cfs_vcov.Rds" )
 
+
 ## plot outputs of simpler age-sex treatment models ----
 ast <- age_sex_model_vcov %>% 
   filter(models == "f2")
@@ -241,32 +227,27 @@ saveRDS(ast, "Scratch_data/ipd_raw_coefs.Rds")
 ## Sample from nobs *1.5 for convenience
 age_sex_model_diags <- age_sex_model_diags %>% 
   mutate(rsd = (deviance/(nobs-1))^0.5)
+## Not got diagnostics for all models (rcs dropped), so assume is same as for other nct_id/nct_id2 with f1
+age_sex_model_diags_imp <- age_sex_model_diags %>% 
+  filter(models == "f1") %>% 
+  semi_join(age_sex_model_vcov %>% 
+              filter(models == "rcs") %>% 
+              select(nct_id, nct_id2)) %>% 
+  mutate(models = "rcs", outcome_method = "locf", outcome = "hba1c") %>% 
+  select(nct_id, nct_id2, models, outcome_method, outcome, nobs, rsd)
+age_sex_model_diags_imp <- bind_rows(age_sex_model_diags,
+                                     age_sex_model_diags_imp)
+
 age_sex_model_vcov <- age_sex_model_vcov %>% 
-  left_join(age_sex_model_diags %>% select(nct_id, nct_id2, models, nobs, rsd))
+  inner_join(age_sex_model_diags_imp %>% select(nct_id, nct_id2, models, outcome_method, outcome, nobs, rsd))
 age_sex_model_vcov$sim <- pmap(list(age_sex_model_vcov$data, 
                                     age_sex_model_vcov$vcv, 
-                                    age_sex_model_vcov$nobs), 
-                               function(.x, .y, .z) {
+                                    age_sex_model_vcov$nobs,
+                                    seq_along(age_sex_model_vcov$nct_id)), 
+                               function(.x, .y, .z, i) {
+                                 # if(i == 48) browser()
                                  smpls <- round(.z*1.5)
                                  vcv <- .y
-                                 cf <- .x$estimate
-                                 term <- .x$term
-                                 if(!all(term == rownames(vcv))) stop("Matrix and coefficients dont match")
-                                 res <- mvtnorm::rmvnorm(smpls, cf, vcv)
-                                 colnames(res) <- term
-                                 res
-})
-## Repeat mean coefficient across the range of the data. 
-## Not efficient in terms of computing but re-uses code from simulation so easier to implement
-age_sex_model_vcov$sngl_cf <- pmap(list(age_sex_model_vcov$data, 
-                                    age_sex_model_vcov$vcv, 
-                                    age_sex_model_vcov$nobs), 
-                               function(.x, .y, .z) {
-                                 # browser()
-                                 smpls <- round(.z*1.5)
-                                 
-                                 vcv <- .y
-                                 vcv[] <- 0
                                  cf <- .x$estimate
                                  term <- .x$term
                                  if(!all(term == rownames(vcv))) stop("Matrix and coefficients dont match")
@@ -274,9 +255,27 @@ age_sex_model_vcov$sngl_cf <- pmap(list(age_sex_model_vcov$data,
                                  colnames(res) <- term
                                  res
                                })
+## Repeat mean coefficient across the range of the data. 
+## Not efficient in terms of computing but re-uses code from simulation so easier to implement
+age_sex_model_vcov$sngl_cf <- pmap(list(age_sex_model_vcov$data, 
+                                        age_sex_model_vcov$vcv, 
+                                        age_sex_model_vcov$nobs), 
+                                   function(.x, .y, .z) {
+                                     # browser()
+                                     smpls <- round(.z*1.5)
+                                     
+                                     vcv <- .y
+                                     vcv[] <- 0
+                                     cf <- .x$estimate
+                                     term <- .x$term
+                                     if(!all(term == rownames(vcv))) stop("Matrix and coefficients dont match")
+                                     res <- mvtnorm::rmvnorm(smpls, cf, vcv)
+                                     colnames(res) <- term
+                                     res
+                                   })
 
 age_sex_smpl_cfs <- age_sex_model_vcov %>% 
-  select(nct_id, nct_id2, models, sim, sngl_cf, rsd) 
+  select(nct_id, nct_id2, models, sim, sngl_cf, rsd, outcome_method, outcome) 
 rm(age_sex_model_coefs, age_sex_model_vcov, age_sex_model_diags)
 
 age_distr <- age_distr %>% 
@@ -287,7 +286,6 @@ age_distr <- age_distr %>%
   nest() %>% 
   ungroup()
 
-age_distr$mm <- map(age_distr$data, ~ model.matrix(~ sex*age10*arm_f, data = .x, ))
 
 ## adds in residual standard deviation
 # In R's lm output "deviance" (as obtained from broom::glance) is the sum of squared residuals
@@ -295,9 +293,13 @@ age_distr$mm <- map(age_distr$data, ~ model.matrix(~ sex*age10*arm_f, data = .x,
 age_distr <- age_distr %>% 
   inner_join(age_sex_smpl_cfs %>% 
                filter(models == "b1"))
-# a <- age_distr$mm[[1]] %>% head(2)
-# b <- age_distr$sim[[1]] %>% head(2)
-# all(colnames(a) == colnames(b))
+age_distr$mm <- map(age_distr$data, ~ model.matrix(~ sex*age10*arm_f, data = .x, ))
+
+a <- age_distr$mm[[1]] %>% head(2)
+b <- age_distr$sim[[1]] %>% head(2)
+b <- b[ , c(intersect(colnames(a), colnames(b)), setdiff(colnames(b), colnames(a)))]
+a <- a[ , c(intersect(colnames(a), colnames(b)), setdiff(colnames(a), colnames(b)))]
+all(colnames(a) == colnames(b))
 
 ## Note that value_1 and value_1_sngl are the estimated baseline hba1c where the variation is
 ## based on the standard errors and residual standard deviation respectively. Both should have the same mean
@@ -306,44 +308,61 @@ age_distr$data <- pmap(list(age_distr$data,
                             age_distr$mm, 
                             age_distr$sim, 
                             age_distr$sngl_cf,
-                            age_distr$rsd), function(df, mm, cf, cf_sngl, rsd) {
-  cf <- cf[sample(1:nrow(cf), nrow(mm)), colnames(mm)]
-  cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm)), colnames(mm)]
-  
-  # calculate base
-  df$value_1 <- rowSums(mm * cf)
-  df$value_1_sngl <- rowSums(mm * cf_sngl)
-  df$value_1_sngl <- rnorm(length(df$value_1_sngl),
-                           mean = df$value_1_sngl,
-                           sd = rsd)
-  df
-})
-
+                            age_distr$rsd,
+                            seq_along(age_distr$nct_id)), function(df, mm, cf, cf_sngl, rsd, i) {
+                              # browser()
+                              # if(i ==108) browser()
+                              # i <<- i + 1L
+                              if(!all(colnames(mm) %in% colnames(cf))) stop("Column names don't match")
+                              if(!all(colnames(cf) %in% colnames(mm))) stop("Column names don't match")
+                              cf <- cf[, colnames(mm)]
+                              # if(nrow(cf) < nrow(mm)) stop("Not enough rows in data to match model matrix")
+                              cf <- cf[sample(1:nrow(cf), nrow(mm), replace = TRUE), colnames(mm)]
+                              if(!all(colnames(mm) %in% colnames(cf_sngl))) stop("Column names don't match")
+                              if(!all(colnames(cf_sngl) %in% colnames(mm))) stop("Column names don't match")
+                              cf_sngl <- cf_sngl[, colnames(mm)]
+                              # if(nrow(cf_sngl) < nrow(mm)) stop("Not enough rows in data to match model matrix")
+                              cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm), replace = TRUE), colnames(mm)]
+                              
+                              # calculate base
+                              df$value_1 <- rowSums(mm * cf)
+                              df$value_1_sngl <- rowSums(mm * cf_sngl)
+                              df$value_1_sngl <- rnorm(length(df$value_1_sngl),
+                                                       mean = df$value_1_sngl,
+                                                       sd = rsd)
+                              df
+                            })
+## Note needed to change prediction of value_2 to f4 model as didn't export f8 from Vivli as not needed in later modelling
 age_distr <- age_distr %>% 
-  select(-models, -sim, -sngl_cf, -rsd) %>% 
+  select(-models, -sim, -sngl_cf, -rsd, -outcome_method) %>% 
   inner_join(age_sex_smpl_cfs %>% 
-               filter(models == "f8"))
-age_distr$mm <- map(age_distr$data, ~ model.matrix(~ value_1 + age10 + arm_f + sex + age10:arm_f + arm_f:sex + value_1:arm_f, data = .x))
+               filter(models == "f4"))
+# age_distr$mm <- map(age_distr$data, ~ model.matrix(~ value_1 + age10 + arm_f + sex + age10:arm_f + arm_f:sex + value_1:arm_f, data = .x))
+age_distr$mm <- map(age_distr$data, ~ model.matrix(~ value_1 + age10 + arm_f + sex + age10:arm_f + arm_f:sex, data = .x))
+
 a <- age_distr$mm[[1]] %>% head(2)
 b <- age_distr$sim[[1]] %>% head(2)
-all(colnames(a) == colnames(b))
+all(colnames(a) %in% colnames(b))
 
 age_distr$data <- pmap(list(age_distr$data, 
                             age_distr$mm, age_distr$sim,
                             age_distr$sngl_cf,
                             age_distr$rsd), function(df, mm, cf, cf_sngl, rsd) {
-  ## deal with lower number of observation in model than in data
-  cf <- cf[sample(1:nrow(cf), nrow(mm)), colnames(mm)]
-  cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm)), colnames(mm)]
-  
-  # calculate base
-  df$value_2 <- rowSums(mm * cf)
-  df$value_2_sngl <- rowSums(mm * cf_sngl)
-  df$value_2_sngl <- rnorm(length(df$value_2_sngl),
-                           mean = df$value_2_sngl,
-                           sd = rsd)
-  df
-})
+                              
+                              ## align each column
+                              cf <- cf[ , colnames(mm)]
+                              ## deal with lower number of observation in model than in data
+                              cf <- cf[sample(1:nrow(cf), nrow(mm), replace = TRUE), colnames(mm)]
+                              cf_sngl <- cf_sngl[sample(1:nrow(cf_sngl), nrow(mm), replace = TRUE), colnames(mm)]
+                              
+                              # calculate base
+                              df$value_2 <- rowSums(mm * cf)
+                              df$value_2_sngl <- rowSums(mm * cf_sngl)
+                              df$value_2_sngl <- rnorm(length(df$value_2_sngl),
+                                                       mean = df$value_2_sngl,
+                                                       sd = rsd)
+                              df
+                            })
 
 age_distr_lng <- age_distr %>% 
   select(nct_id, nct_id2, data) %>% 
@@ -383,53 +402,54 @@ reg_frmt <- pmap(
     # vcv <- cfs_cors$vcv[[1]]
     # crl <- cfs_cors$r[[1]]
     ## add treatment variable
-  
-  ## arrange covariance and correlation matrix to match terms
-  if(!all(colnames(crl) == cfs$term )) stop("coefficient terms and correlation matrix do not match")
-  if(!all(colnames(vcv) == cfs$term )) stop("coefficient terms and correlation matrix do not match")
     
-  # crl <- crl[cfs$term, cfs$term]
-  # vcv <- vcv[cfs$term, cfs$term]
-  
-  ## add NA row for no treatments (note the correlation for this is set to NULL)
-  cfs <- cfs %>% 
-    mutate(trt = NA_character_)
-  for (i in lkp$arm_id_unq) {
+    ## arrange covariance and correlation matrix to match terms
+    if(!all(colnames(crl) == cfs$term )) stop("coefficient terms and correlation matrix do not match")
+    if(!all(colnames(vcv) == cfs$term )) stop("coefficient terms and correlation matrix do not match")
+    
+    # crl <- crl[cfs$term, cfs$term]
+    # vcv <- vcv[cfs$term, cfs$term]
+    
+    ## add NA row for no treatments (note the correlation for this is set to NULL)
     cfs <- cfs %>% 
-      mutate(trt = case_when(
-        !is.na(trt) ~ trt,
-        str_detect(term, i) ~ i,
-        TRUE ~ trt))
-  }
-  addref <- setdiff(lkp$arm_id_unq, cfs$trt)
-  cfs <- bind_rows(tibble(trt = addref),
-                   cfs)
-  cfs <- cfs %>% 
-    left_join(lkp %>% rename(trt = arm_id_unq))
-  
-  ## add covariate columns
-  ## Note than manual suggests listing as NA but example data has zeros and ones.
-  cfs <- cfs %>% 
-    mutate(sex = case_when(
-      str_detect(term, "sex") ~ TRUE,
-      reference_arm ==1 ~ FALSE,
-      TRUE ~ NA))
-  
-  ## add covariate columns
-  cfs <- cfs %>% 
-    mutate(age10 = case_when(
-      str_detect(term, "age10") ~ 10,
-      reference_arm ==1 ~ 0,
-      TRUE ~ NA_real_))
-  
-  tibble(nct_id = nct_id,
-         nct_id2 = nct_id2,
-         models = models,
-         cfs = list(cfs),
-         crl = list(crl),
-         vcv = list(vcv))
-})
+      mutate(trt = NA_character_)
+    for (i in lkp$arm_id_unq) {
+      cfs <- cfs %>% 
+        mutate(trt = case_when(
+          !is.na(trt) ~ trt,
+          str_detect(term, i) ~ i,
+          TRUE ~ trt))
+    }
+    addref <- setdiff(lkp$arm_id_unq, cfs$trt)
+    cfs <- bind_rows(tibble(trt = addref),
+                     cfs)
+    cfs <- cfs %>% 
+      left_join(lkp %>% rename(trt = arm_id_unq))
+    
+    ## add covariate columns
+    ## Note than manual suggests listing as NA but example data has zeros and ones.
+    cfs <- cfs %>% 
+      mutate(sex = case_when(
+        str_detect(term, "sex") ~ TRUE,
+        reference_arm ==1 ~ FALSE,
+        TRUE ~ NA))
+    
+    ## add covariate columns
+    cfs <- cfs %>% 
+      mutate(age10 = case_when(
+        str_detect(term, "age10") ~ 10,
+        reference_arm ==1 ~ 0,
+        TRUE ~ NA_real_))
+    
+    tibble(nct_id = nct_id,
+           nct_id2 = nct_id2,
+           models = models,
+           cfs = list(cfs),
+           crl = list(crl),
+           vcv = list(vcv))
+  })
 reg_frmt <- bind_rows(reg_frmt)
 reg_frmt <- reg_frmt %>% 
   unnest(cfs)
 saveRDS(reg_frmt, "Scratch_data/ipd_coefs_frmttd.Rds")
+

@@ -12,9 +12,19 @@ hba1c_agg <- readRDS("Scratch_data/agg_hba1c.Rds")
 comporig <- read_csv("Data/cleaned_data/Data/example_comparisons.csv")
 comp2019 <- read_csv("Data/cleaned_data/Data/comparisons_2019.csv")
 comp2022 <- read_csv("Data/cleaned_data/Data/comparisons_2022_update.csv")
+# xmn[c(1,1),] %>% 
+#   mutate(comparison_label = rep("evogliptin_placebo",2),
+#          arm_id = c("updac0060", "updac0061"),
+#          arm_label = c("evogliptin", "placebo"),
+#          treat_or_ref = c("treatment", "reference"),
+#          unique_id = 1:2) %>% 
+#   select(unique_id,comp_id, trial_id, comparison_label, arm_id, arm_label) %>% 
+#   write_csv("Data/cleaned_data/Data/comparisons_2024_update.csv")
+comp2024 <- read_csv("Data/cleaned_data/Data/comparisons_2024_update.csv")
 comp <- bind_rows(comporig = comporig,
                   comp2019 = comp2019 %>% mutate(unique_id = as.character(unique_id)),
-                  comp2022 = comp2022 %>% mutate(unique_id = as.character(unique_id)), .id = "type")
+                  comp2022 = comp2022 %>% mutate(unique_id = as.character(unique_id)),
+                  comp2024 = comp2024 %>% mutate(unique_id = as.character(unique_id)),.id = "type")
 comp %>% 
   distinct(type, comp_id, arm_id)
 comp2arm <- comp %>% 
@@ -206,6 +216,9 @@ basedata2 <- map(basedata, ~ .x %>%
                    semi_join(arm_in))
 map_int(basedata, nrow)
 map_int(basedata2, nrow)
+
+# updac0057 is insulin_lispro
+
 saveRDS(basedata2, "Scratch_data/agg_hba1c_base.Rds")
 ## Addressing missing ones n's where are using se's ----
 

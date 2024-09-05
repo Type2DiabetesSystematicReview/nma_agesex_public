@@ -8,6 +8,9 @@ exclusions <- read_csv("Data/exclusions_update.csv")
 keephba1c <- exclusions %>% 
   filter(any_hba1c ==1L, exclude ==0L) %>% 
   rename(nct_id = trial_id)
+dropdisconnect <- c("NCT02477865", "JapicCTI-101351",
+                    "NCT02477969", "JapicCTI-101352", "NCT03508323",
+                    "UMIN000007051")
 
 ## arrange into same format as summaries
 ages <- read_csv("Outputs/age_summary_hba1c.csv")
@@ -93,25 +96,35 @@ n_arms <- hba1c_cls %>%
   rename(lvls =n_arms) %>% 
   mutate(measure = "count",
          var = "arms")
+durn <- readRDS("Scratch_data/trial_duration.Rds")
+durn_smry <- hba1c_cls %>% 
+  distinct(trl_lbl, data_lvl, nct_id) %>% 
+  inner_join(durn) %>% 
+  group_by(trl_lbl, data_lvl) %>% 
+  summarise(m = mean(weeks),
+            med = median(weeks),
+            q05 = quantile(weeks, 0.05),
+            q95 = quantile(weeks, 0.95)) %>% 
+  ungroup() %>% 
+  gather("measure", "res", m:q95) %>% 
+  mutate(var = "duration")
+  
 
 tbl_lng <- bind_rows(trials,
                      n_arms,
                      male,
-                     ages ,
+                     ages,
+                     durn_smry,
                      .id = "orig_tbl") %>% 
   select(var, trl_lbl, data_lvl, lvls, measure, res)
 write_csv(tbl_lng, "Outputs/manuscript_table1a_machine_readable.csv", na = "")
-
-## Note participant count from ages summary and male summary are, as expected, identical
-tbl_lng %>% filter(var == "age" & measure == "n" | var == "participants")
 
 ## produce "Nice" format for report/paper
 tbl_lng2 <- tbl_lng %>% 
   filter(!measure == "n") %>% 
   mutate(res = case_when(
     measure %in% "count" ~ round(res) %>% formatC(digits = 0, format = "f"),
-    measure %in% c("m", "s", "q05", "q95", "percent") ~ round(res, 1)  %>% formatC(digits = 1, format = "f")
-  ))
+    measure %in% c("m", "med", "s", "q05", "q95", "percent") ~ round(res, 1)  %>% formatC(digits = 1, format = "f") ))
 age <- tbl_lng2 %>% 
   filter(var == "age") %>%
   spread(measure, res) %>% 
@@ -122,10 +135,17 @@ male <- tbl_lng2 %>%
   spread(measure, res) %>% 
   mutate(res = paste0(count, " (", percent, "%)")) %>% 
   select(var, trl_lbl, data_lvl, res)
+durn <- tbl_lng2 %>% 
+  filter(var == "duration") %>% 
+  spread(measure, res) %>% 
+  mutate(res  = paste0(med, " (", q05, "-", q95, ")")) %>% 
+  select(var, trl_lbl, data_lvl, res)
+
 tbl_lng3 <- bind_rows(tbl_lng2 %>% 
                         filter(var %in% c("trials", "arms", "participants")),
                       age,
-                      male) 
+                      male,
+                      durn) 
 tbl_wide <- tbl_lng3 %>% 
   pivot_wider(names_from = c(trl_lbl, data_lvl), values_from = res) %>% 
   arrange(match(var, c("trials",  "arms",
@@ -140,7 +160,6 @@ tbl_wide2 <- tbl_wide %>%
   select(collbl, everything())
 
 write_csv(tbl_wide2, "Outputs/manuscript_table1a.csv", na = "")
-write_lines("13 HbA1c trials are also MACE trials", "Outputs/manuscript_table1a_footnote.txt")
 
 write_csv(comparisons, "Outputs/manuscript_hba1c_comparisons.csv", na = "")
 

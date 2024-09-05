@@ -2,6 +2,7 @@ library(tidyverse)
 library(multinma)
 library(truncnorm)
 ## Functions ----
+source("Scripts/common_functions/Scripts/combine_sd.R")
 CnvrtCorrMatrix <- function(a){
   ## recovery whole matrix by duplication
   allnames <- union(a$row, a$col)
@@ -389,3 +390,42 @@ dev.off()
 saveRDS(f5, "Scratch_data/for_mace_regression_inter.Rds")
 saveRDS(f1, "Scratch_data/for_mace_regression_nointer.Rds")
 saveRDS(f2, "Scratch_data/for_mace_regression_nointercovs.Rds")
+
+## get contrasts from model wiht no age, sex or interactions
+f1 <- readRDS("Scratch_data/for_mace_regression_nointer.Rds")
+aggedipd <- f1$cfs
+aggedipd <- aggedipd %>% 
+  select(nct_id, arm_lvl, loghr = estimate, se = std.error, trt, trtcls5, ltime)
+censoring_distribution <- read_csv("Data/vivli_mace/censoring_distribution.csv")
+male <- censoring_distribution %>% 
+  select(nct_id:age_s) %>% 
+  select(nct_id:participants) %>% 
+  distinct() %>% 
+  spread(sex, participants) %>% 
+  mutate(male_p = M/(F+M),
+         participants = F + M)  %>% 
+  select(nct_id, trt = arm, male_p, participants) %>% 
+  mutate(trt = str_to_lower(trt))
+age <- censoring_distribution %>% 
+  select(nct_id:age_s) %>% 
+  group_by(nct_id, arm) %>% 
+  summarise(age_s = CombSdVectorised(participants, age_m, age_s),
+         age_m = weighted.mean(age_m, participants)) %>% 
+  ungroup() %>% 
+  select(nct_id, trt = arm, age_m, age_s) %>% 
+  mutate(min_age = 0, max_age = 100,
+         trt = str_to_lower(trt),
+         age_mu = age_m,
+         age_sigma = age_s)
+aggedipd2 <- aggedipd %>% 
+  inner_join(age) %>% 
+  inner_join(male)
+setdiff(names(f1$mace_agg), names(aggedipd2))
+## need to drop 3 arm trials from no IPD analysis as cannot accomodate without SE in control arm
+aggedipd2 <- aggedipd2 %>% 
+  filter(! (arm_lvl %in% c("empagliflozin_10","canagliflozin_100") &
+              nct_id %in% c("NCT01131676", "NCT01032629")))
+
+f1$mace_agg <- bind_rows(f1$mace_agg,
+                         aggedipd2)
+saveRDS(f1, "Scratch_data/for_mace_regression_noipd.Rds")

@@ -306,5 +306,19 @@ arm_meta <- arm_meta %>%
 ## as it is a type of GLP1 (sort of) "Tirzepatide is a GIP-analogue that activates both the GLP-1 and GIP receptors"
 arm_meta <- arm_meta %>% 
   mutate(trtcls5 = if_else(drug_name == "tirzepatide", "A10BJ", trtcls5))
+arm_meta <- arm_meta %>% 
+  mutate(across(everything(), ~ if_else(is.na(.x) | .x == "", NA_character_, .x )))
 
+## need to add arm labels for empareg hba1c
+arm_meta_2 <- arm_meta %>% filter(nct_id == "NCT01131676", is.na(drug_dose) | drug_dose != "10|25")  
+arm_meta_2 <- arm_meta_2 %>% 
+  mutate(arm_id_unq = case_when(
+    arm_lvl == "A10BK03_d10" ~ "BI 10773 10mg",
+    arm_lvl == "A10BK03_d25" ~ "BI 10773 25mg",
+    arm_lvl == "placebo" ~ "placebo"
+  ))
+arm_meta <- bind_rows(arm_meta,
+                      arm_meta_2)
 write_csv(arm_meta, "Scratch_data/arm_labels_hba1c.csv")
+## no change to arm_meta on adding bocf and rcs
+

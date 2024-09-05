@@ -196,3 +196,6 @@ file.copy("../cleaned_data/Data/example_trial_level_info.csv",
 
 file.copy("../cleaned_data/Data/exclusions.csv",
           "Data/exclusions.csv", overwrite = TRUE)
+
+## From revision
+

@@ -1,0 +1,69 @@
+sponsor,nct_id,studyid,trtgrp,trtgrp_rename,notes1,notes2,reference_arm
+astrazeneca,NCT01619059,CV181168,PLA + DAPA + MET,PLA PLUS DAPA PLUS MET,,,1
+astrazeneca,NCT01619059,CV181168,SAXA + DAPA + MET,SAXA PLUS DAPA PLUS MET,,,
+boehringer,NCT00819091,1218_0035,"Linagliptin, 5 mg tablet","Linagliptin, 5 mg tablet",,,
+boehringer,NCT00819091,1218_0035,Placebo tablet,Placebo tablet,,,1
+boehringer,NCT00800683,1218_0043,Placebo,Placebo,,,
+boehringer,NCT00800683,1218_0043,Linagliptin,Linagliptin,,,1
+boehringer,NCT00740051,1218_0050,"Linagliptin, 5mg tablet","Linagliptin, 5mg tablet",,,
+boehringer,NCT00740051,1218_0050,Placebo/Glimepiride,Placebo SLASH Glimepiride,,,1
+boehringer,NCT00996658,1218_0061,Linagliptin 5 mg tablet,Linagliptin 5 mg tablet,,,
+boehringer,NCT00996658,1218_0061,Placebo Tablet,Placebo Tablet,,,1
+boehringer,NCT01084005,1218_0063,"Linagliptin, 5mg tablet","Linagliptin, 5mg tablet",,,
+boehringer,NCT01084005,1218_0063,Placebo,Placebo,,,1
+boehringer,NCT01087502,1218_0064,"Linagliptin, 5mg tablet","Linagliptin, 5mg tablet",,,
+boehringer,NCT01087502,1218_0064,Placebo/Glimepiride,Placebo SLASH Glimepiride,,,1
+boehringer,NCT01194830,1218_0075,Linagliptin,Linagliptin,,,
+boehringer,NCT01194830,1218_0075,Placebo,Placebo,,,1
+boehringer,NCT02182830,1245_0029,10mg/25mg,10mg SLASH 25mg,,,
+boehringer,NCT02182830,1245_0029,Plac/Plac,Plac SLASH Plac,,,1
+boehringer,NCT02453555,1275_0019,Linagliptin,Linagliptin,,,1
+boehringer,NCT02453555,1275_0019,FDC EmpaLina titr,FDC EmpaLina titr,,,
+eli lilly,NCT02750410,H9X-JE-GBGF,Dula,Dula,,,
+eli lilly,NCT02750410,H9X-JE-GBGF,Plc,Plc,,,1
+sanofi,NCT01117350,1843721,Insulin glargine,Insulin glargine,,,1
+sanofi,NCT01117350,1843721,Liraglutide,Liraglutide,,,
+sanofi,NCT00976937,EFC10780,Sitagliptin,Sitagliptin,,,1
+sanofi,NCT00976937,EFC10780,Lixisenatide,Lixisenatide,,,
+sanofi,NCT00866658,EFC10887,Lixisenatide 2-step titration,Lixisenatide 2-step titration,,,
+sanofi,NCT00866658,EFC10887,Placebo 2-step titration,Placebo 2-step titration,,,1
+sanofi,NCT01169779,EFC11321,Lixisenatide,Lixisenatide,,,
+sanofi,NCT01169779,EFC11321,Placebo,Placebo,,,1
+sanofi,NCT01632163,EFC12382,Lixisenatide,Lixisenatide,,,
+sanofi,NCT01632163,EFC12382,Placebo,Placebo,,,1
+sanofi,NCT01798706,EFC12703,Lixisenatide,Lixisenatide,,,
+sanofi,NCT01798706,EFC12703,Placebo,Placebo,,,1
+sanofi,NCT00713830,EFC6015,Lixisenatide,Lixisenatide,,,
+sanofi,NCT00713830,EFC6015,Placebo,Placebo,,,1
+sanofi,NCT00715624,EFC6016,Lixisenatide,Lixisenatide,,,
+sanofi,NCT00715624,EFC6016,Placebo,Placebo,,,1
+sanofi,NCT00763815,EFC6017,Lixisenatide,Lixisenatide,,,
+sanofi,NCT00763815,EFC6017,Placebo,Placebo,,,1
+sanofi,NCT00707031,EFC6019,Exenatide BID,Exenatide BID,,,1
+sanofi,NCT00707031,EFC6019,Lixisenatide QD,Lixisenatide QD,,,
+sanofi,NCT00975286,HYPO9908,GLP1 + INSULIN BASAL,GLP1 PLUS INSULIN BASAL,,,
+sanofi,NCT00975286,HYPO9908,PLACEBO + INSULIN BASAL,PLACEBO PLUS INSULIN BASAL,,,1
+eli lilly,NCT01648582,GBDK,Dula 0.75,Dulaglutide 0.75,standard FU,,
+eli lilly,NCT01648582,GBDK,Dula 1.5,Dulaglutide 1.5,standard FU,,
+eli lilly,NCT01648582,GBDK,Glargine,Insulin glargine,standard FU,,1
+eli lilly,NCT01558271,GBDP,Liraglutide,"Liraglutide 0.3mg first week, 0.6mg second week then 0.9mg remaining",Ryan already cut to 26 weeks fu,,
+eli lilly,NCT01558271,GBDP,LY2189265 .75mg,Dulaglutide for 26 weeks blinded then 26 weeks open,Ryan already cut to 26 weeks fu,,
+eli lilly,NCT01558271,GBDP,Plc/Dula,Placebo for 26 weeks of blinded followed by dulaglutide for 26 weeks open,Ryan already cut to 26 weeks fu,,1
+sanofi,NCT01768559,HYPO9901,INSULIN BOLUS QD,insulin,Ryan already cut to 26 weeks fu,Rename to insulin for both,1
+sanofi,NCT01768559,HYPO9901,INSULIN BOLUS TID,insulin,Standard FU 26 weeks,Rename to insulin for both,1
+sanofi,NCT01768559,HYPO9901,GLP1,Lixisenatide,Standard FU 26 weeks,,
+takeda,NCT01632007,SYR-472/CCT-002,Alogliptin 25mg,Alogliptin,Standard FU 24 weeks,,
+takeda,NCT01632007,SYR-472/CCT-002,SYR-472 100mg,Trelagliptin,Standard FU 24 weeks,,
+takeda,NCT01632007,SYR-472/CCT-002,Placebo,Placebo,Standard FU 24 weeks,,1
+sanofi,NCT00763451,EFC10743,Lixisenatide 1-step titration,Lixisenatide 1-step titration,24 weeks of parallel double blind followed by double-blind extension. Ryan already cut to 24 weeks FU. Also collapse placebo to a single arm,,
+sanofi,NCT00763451,EFC10743,Lixisenatide 2-step titration,Lixisenatide 2-step titration,24 weeks of parallel double blind followed by double-blind extension. Ryan already cut to 24 weeks FU. Also collapse placebo to a single arm,,
+sanofi,NCT00763451,EFC10743,Placebo 1-step titration,placebo,24 weeks of parallel double blind followed by double-blind extension. Ryan already cut to 24 weeks FU. Also collapse placebo to a single arm,,1
+sanofi,NCT00763451,EFC10743,Placebo 2-step titration,placebo,24 weeks of parallel double blind followed by double-blind extension. Ryan already cut to 24 weeks FU. Also collapse placebo to a single arm,,1
+sanofi,NCT00712673,EFC6014,Lixisenatide evening injection,Lixisenatide evening,Standard FU 24 weeks. Collapse placebo into a single arm,,
+sanofi,NCT00712673,EFC6014,Lixisenatide morning injection,Lixisenatide morning,Standard FU 24 weeks. Collapse placebo into a single arm,,
+sanofi,NCT00712673,EFC6014,Placebo evening injection,placebo,Standard FU 24 weeks. Collapse placebo into a single arm,,1
+sanofi,NCT00712673,EFC6014,Placebo morning injection,placebo,Standard FU 24 weeks. Collapse placebo into a single arm,,1
+sanofi,NCT00688701,EFC6018,Lixisenatide 1-step titration,Lixisenatide 1-step titration,standard FU 12 weeks,Collapse placebo into a single arm,
+sanofi,NCT00688701,EFC6018,Lixisenatide 2-step titration,Lixisenatide 2-step titration,standard FU 12 weeks,Collapse placebo into a single arm,
+sanofi,NCT00688701,EFC6018,Placebo 1-step titration,placebo,standard FU 12 weeks,Collapse placebo into a single arm,1
+sanofi,NCT00688701,EFC6018,Placebo 2-step titration,placebo,standard FU 12 weeks,Collapse placebo into a single arm,1

@@ -190,6 +190,7 @@ hba1c <- hba1c %>%
 ## Drop mace trials from hba1c set to prevent double counting in plot
 forplot <- bind_rows(hba1c, 
                      mace)
+saveRDS(mace, "Scratch_data/mace_age_distribution.Rds")
 forplot <- forplot  %>% 
   mutate(category = 
            case_when(data_lvl == "agg" & outcome == "mace" ~ "MACE, aggregate",
@@ -212,3 +213,5 @@ saveRDS(age_plot, "Scratch_data/age_plots.Rds")
 pdf("Outputs/age_plots.pdf", height = 10, width = 20)
 age_plot  +   ggtitle("Age distribution by trial")
 dev.off()
+
+

@@ -11,3 +11,6 @@ TCTR20170511001,manfeb24_9,NA,updac0152,NA,hba1c,change from baseline,mean chang
 UMIN000018395,manfeb24_10,fas,updac0170,NA,hba1c,change from baseline,percentage change,y,-1.87,95%ci,-3.31.-0.44,percentage,12,weeks,resolve_dropped_feb2024
 UMIN000021177,manfeb24_11,fas,updac0176,NA,hba1c,change from baseline,mean change,y,-0.38,sd,0.59,percentage,24,weeks,resolve_dropped_feb2024
 UMIN000031451,manfeb24_12,fas,updac0208,NA,hba1c,change from baseline,mean change,n,0.3,sd,0.4,percentage,8,weeks,resolve_dropped_feb2024
+NCT04170998,manaug24_1,itt,,manaug24c1,hba1c,between treament difference in mean change,LS mean difference,y,-0.65,se,0.07,percentage,24,weeks,update_extraction_august_2024
+NCT04537923,manaug24_3,itt,updac0057,,hba1c,change from baseline,LS mean change,y,-1.13,95%ci,"-1.3,-1.0",percentage,52,weeks,update_extraction_august_2024
+NCT04537923,manaug24_4,itt,pooled54_56,,hba1c,change from baseline,LS mean change,y,-2.11,95%ci,"-2.2,-2.0",percentage,52,weeks,update_extraction_august_2024

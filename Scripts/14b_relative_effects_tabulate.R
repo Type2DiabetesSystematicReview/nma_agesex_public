@@ -44,6 +44,7 @@ hba1c <- predictfor %>%
   rename(male_predict = male, age_predict = age) %>% 
   select(-mace) %>% 
   unnest(hba1c) %>% 
+  filter(!trtcls5 == "A10BX") %>% 
   group_by(modelname, outcome, mainorinter, modelnum, datalevel, fixedrand, network, sg, 
            outcome_rel, trtcls5, d,
            trt, male_predict, age_predict) %>% 
@@ -60,7 +61,6 @@ hba1c$smry <- map(hba1c$data, ~ {
 hba1c <- hba1c %>% 
   select(-data) %>% 
   unnest(smry)
-
 
 ## get summary stats for MACE
 mace <- predictfor %>% 

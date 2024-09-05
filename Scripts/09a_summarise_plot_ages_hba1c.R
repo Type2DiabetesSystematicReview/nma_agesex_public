@@ -178,6 +178,7 @@ ages <- ages %>%
                      data_lvl == "agg" & outcome == "hba1c" ~ "HbA1c, aggregate (random sample)",
                      data_lvl == "ipd" & outcome == "mace" ~ "MACE, IPD",
                      data_lvl == "ipd" & outcome == "hba1c" ~ "HbA1c, IPD"))
+write_csv(ages %>% count(data_lvl, nct_id), "Outputs/nt_trl_lvl_hba1c.csv")
 novel <- c("A10BK", "A10BH", "A10BJ")
 ages_cls <- map(novel, ~ {
   ages %>% 
@@ -228,6 +229,12 @@ pdf("Outputs/age_plots_check_simulation.pdf", height = 10, width = 20)
 chk_sim+
   ggtitle("For IPD compare normal, truncated normal and empirical distributions")
 dev.off()
+
+chk_sim2 <- ggplot(ipd_chk %>% 
+                    filter(!nct_id == "NCT02065791", !distrb == "normal"), aes(x = age, fill = distrb)) +
+  geom_density(alpha = 0.2) +
+  facet_wrap(~nct_id, scales = "free_y") 
+ggsave(plot = chk_sim2, filename = "Outputs/age_plots_check_simulation_density_plots.pdf", height = 20, width = 20)
 
 ## Summarise ages by trial class and ipd or agg
 ages_cls2 <- bind_rows(ages_cls,

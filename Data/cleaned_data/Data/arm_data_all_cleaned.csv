@@ -1103,11 +1103,11 @@ NCT01413204,uaa10764,NA,aa1205,BG000|EG000|FG000|OG000,canagliflozin,canaglifloz
 NCT01413204,uaa10765,NA,aa1204,BG001|EG001|FG001|OG001,canagliflozin,canagliflozin,200,milligram,od,NA,NA,NA,NA,9846967|9846971|9846974|9846977,NA,NA,NA,NA,NA,NA
 NCT01413204,uaa10766,NA,aa1206,BG002|EG002|FG002|OG002,placebo,placebo,NA,NA,NA,NA,NA,NA,NA,9846968|9846972|9846975|9846978,NA,NA,NA,NA,NA,NA
 NCT01413204,uaa10767,NA,aa1207,BG003,total,NA,NA,NA,NA,NA,NA,NA,NA,9846969,NA,NA,NA,NA,NA,NA
-NCT01422876,uaa10768,NA,aa1208|aa1213|aa1214|aa1215|aa1225,BG008|FG008|OG003|BG003|OG003|FG003|OG003|EG003,empagliflozin,empagliflozin,10,milligram,od,NA,NA,NA,NA,9848241|9848252|9848263|9848236|9848259|9848247|9848257|9848268,NA,cohort treatment naïve|cohort with ancillary metformin|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
-NCT01422876,uaa10769,NA,aa1209|aa1216|aa1217|aa1226,BG007|FG007|OG002|BG002|FG002|OG002|EG002,empagliflozin,empagliflozin,25,milligram,od,NA,NA,NA,NA,9848240|9848251|9848262|9848235|9848246|9848256|9848267,NA,cohort treatment naïve|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
-NCT01422876,uaa10770,NA,aa1210|aa1218|aa1219|aa1227,BG006|FG006|OG001|BG001|FG001|OG001|EG001,empagliflozin_linagliptin,empagliflozin,10,milligram,od,linagliptin,5,milligram,od,9848239|9848250|9848261|9848234|9848245|9848255|9848266,NA,cohort treatment naïve|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
-NCT01422876,uaa10771,NA,aa1211|aa1220|aa1221|aa1222|aa1228,BG005|FG005|OG000|BG000|FG000|OG000|EG000,empagliflozin_linagliptin,empagliflozin,25,milligram,od,linagliptin,5,milligram,od,9848238|9848249|9848260|9848233|9848244|9848254|9848265,NA,cohort treatment naïve|cohort with ancillary metformin|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
-NCT01422876,uaa10772,NA,aa1212|aa1223|aa1224|aa1229,BG009|FG009|OG004|BG004|FG004|OG004|EG004,linagliptin,linagliptin,5,milligram,od,NA,NA,NA,NA,9848242|9848253|9848264|9848237|9848248|9848258|9848269,NA,cohort treatment naïve|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
+NCT01422876,uaa10768,NA,aa1208|aa1213|aa1214|aa1215|aa1225,BG008|FG008|OG003|BG003|OG003|FG003|OG003|EG003,empagliflozin,empagliflozin,10,milligram,od,NA,NA,NA,NA,9848241|9848252|9848263|9848236|9848259|9848247|9848257|9848268,NA,cohort treatment na?ve|cohort with ancillary metformin|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
+NCT01422876,uaa10769,NA,aa1209|aa1216|aa1217|aa1226,BG007|FG007|OG002|BG002|FG002|OG002|EG002,empagliflozin,empagliflozin,25,milligram,od,NA,NA,NA,NA,9848240|9848251|9848262|9848235|9848246|9848256|9848267,NA,cohort treatment na?ve|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
+NCT01422876,uaa10770,NA,aa1210|aa1218|aa1219|aa1227,BG006|FG006|OG001|BG001|FG001|OG001|EG001,empagliflozin_linagliptin,empagliflozin,10,milligram,od,linagliptin,5,milligram,od,9848239|9848250|9848261|9848234|9848245|9848255|9848266,NA,cohort treatment na?ve|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
+NCT01422876,uaa10771,NA,aa1211|aa1220|aa1221|aa1222|aa1228,BG005|FG005|OG000|BG000|FG000|OG000|EG000,empagliflozin_linagliptin,empagliflozin,25,milligram,od,linagliptin,5,milligram,od,9848238|9848249|9848260|9848233|9848244|9848254|9848265,NA,cohort treatment na?ve|cohort with ancillary metformin|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
+NCT01422876,uaa10772,NA,aa1212|aa1223|aa1224|aa1229,BG009|FG009|OG004|BG004|FG004|OG004|EG004,linagliptin,linagliptin,5,milligram,od,NA,NA,NA,NA,9848242|9848253|9848264|9848237|9848248|9848258|9848269,NA,cohort treatment na?ve|cohort with ancillary metformin|cohort with ancillary metformin|NA,NA,NA,NA,NA
 NCT01422876,uaa10773,NA,aa1230,BG010,total,NA,NA,NA,NA,NA,NA,NA,NA,9848243,NA,NA,NA,NA,NA,NA
 NCT01438814,uaa10774,NA,aa1231,BG000|EG000|FG000|OG000,linagliptin,linagliptin,5,milligram,od,NA,NA,NA,NA,9851162|9851165|9851167|9851169,NA,"all arms allowed metformin, metformin arm has 500mg extra",NA,NA,NA,NA
 NCT01438814,uaa10775,NA,aa1232,BG001|EG001|FG001|OG001,metformin,metformin,500,milligram,od,NA,NA,NA,NA,9851163|9851166|9851168|9851170,NA,"all arms allowed metformin, metformin arm has 500mg extra",NA,NA,NA,NA
@@ -1130,7 +1130,8 @@ NCT01505673,uaa10780,NA,aa1237|aa1238,BG000|FG000|OG000|EG000,liraglutide,liragl
 NCT01505673,uaa10781,NA,aa1239,BG001|EG001|FG001|OG001,placebo,placebo,NA,NA,NA,NA,NA,NA,NA,9863038|9863041|9863043|9863045,NA,NA,NA,NA,NA,NA
 NCT01505673,uaa10782,NA,aa1240,BG002,total,NA,NA,NA,NA,NA,NA,NA,NA,9863039,NA,NA,NA,NA,NA,NA
 NCT01512108,uaa10783,NA,aa1242,BG000|EG000|FG000|OG000,liraglutide,liraglutide,0.9,milligram,od,NA,NA,NA,NA,9864026|9864029|9864031|9864033,NA,standardised uptitration to this dose,NA,NA,NA,NA
-NCT01512108,uaa10784,NA,aa1241,BG001|EG001|FG001|OG001,other_oad,oad,NA,NA,NA,NA,NA,NA,NA,9864027|9864030|9864032|9864034,NA,"investigators chose additional oad from DPP-4 inhibitor, SU, glinide,
+NCT01512108,uaa10784,NA,aa1241,BG001|EG001|FG001|OG001,other_oad,oad,NA,NA,NA,NA,NA,NA,NA,9864027|9864030|9864032|9864034,NA,"investigators chose additional oad from DPP-4 inhibitor, SU, glinide,
+
 metformin, a-glucosidase inhibitor or thiazolidinedione",NA,NA,NA,NA
 NCT01512108,uaa10785,NA,aa1243,BG002,total,NA,NA,NA,NA,NA,NA,NA,NA,9864028,NA,NA,NA,NA,NA,NA
 NCT01517321,ab0148,NA,ab0148,NA,placebo,placebo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -2121,6 +2122,7 @@ NCT04531462,updab0100,NA,updab0100,NA,placebo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,N
 NCT04537923,updac0054,NA,updac0054,NA,tirzepatide,tirzepatide,5,mg,od,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NCT04537923,updac0055,NA,updac0055,NA,tirzepatide,tirzepatide,10,mg,od,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NCT04537923,updac0056,NA,updac0056,NA,tirzepatide,tirzepatide,15,mg,od,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NCT04537923,updac0056,NA,pooled54_56,NA,tirzepatide,tirzepatide,10,mg,od,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NCT04537923,updac0057,NA,updac0057,NA,insulin_lispro,insulin_lispro,as per bm,units,tid,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NCT04556851,updac0021,NA,updac0021,NA,cofrogliptin,cofrogliptin,10,mg,two weekly,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NCT04556851,updac0022,NA,updac0022,NA,cofrogliptin,cofrogliptin,25,mg,two weekly,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -2357,7 +2359,7 @@ UMIN000036202,updac0241,NA,updac0241,NA,metformin,metformin,500,mg,od,NA,NA,NA,N
 UMIN000038459,updac0212,NA,updac0212,NA,sitagliptin,sitagliptin,50,mg,od,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 UMIN000038459,updac0213,NA,updac0213,NA,placebo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 UMIN000038503,updac0238,NA,updac0238,NA,omarigliptin,omarigliptin,25,mg,weekly,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-UMIN000038503,updac0239,NA,updac0239,NA,dpp4i_daily,sitagliptin| linagliptin| alogliptin| vildagliptin |saxagliptin |teneligliptin ,50| 5| 25| 100| 5| 20,mg,od,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+UMIN000038503,updac0239,NA,updac0239,NA,dpp4i_daily,sitagliptin| linagliptin| alogliptin|?vildagliptin |saxagliptin |teneligliptin?,50| 5| 25| 100| 5| 20,mg,od,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 UMIN000039079,updac0214,NA,updac0214,NA,empagliflozin,empagliflozin,10,mg,od,NA,NA,NA,NA,NA,NA,uptitration to 25mg allowed,NA,NA,NA,NA
 UMIN000039079,updac0215,NA,updac0215,NA,control,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,control=uptitration of standard oads as needed,NA,NA,NA,NA
 UMIN000041551,updac0234,NA,updac0234,NA,lixisenatide,lixisenatide,unclear,NA,NA,NA,NA,NA,NA,NA,NA,given in combo with glargine,NA,NA,NA,NA

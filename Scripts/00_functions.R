@@ -170,3 +170,36 @@ ExcludeRun <- function(exclude, saveexclusion = TRUE) {
   }
   exclusions
 }
+
+## Create a nested dataframe using a recursive function ----
+## supply dataframe. Supply columns to nest on and a data column as character vectors
+nest_dataframe <- function(df, columns, data_col) {
+  if (length(columns) == 0) {
+    return(df[[data_col]] %>% as.list())
+  }
+  
+  split_df <- split(df, df[[columns[1]]])
+  nested_list <- lapply(split_df, function(sub_df) {
+    nest_dataframe(sub_df, columns[-1], data_col)
+  })
+  
+  return(nested_list)
+}
+
+theme_minimal5 <- function (base_size = 11, base_family = "", base_line_size = base_size/22, 
+                            base_rect_size = base_size/22) 
+{
+  theme_bw(base_size = base_size, base_family = base_family, 
+           base_line_size = base_line_size, base_rect_size = base_rect_size) %+replace% 
+    theme(
+      legend.background = element_blank(), 
+      legend.key = element_blank(), 
+      panel.background = element_blank(), 
+      panel.border = element_blank(), 
+      strip.background = element_blank(), 
+      plot.background = element_blank(),
+      panel.grid.major = element_blank(), 
+      panel.grid.minor = element_blank(),
+      legend.position = 'bottom',
+      complete = TRUE)
+}

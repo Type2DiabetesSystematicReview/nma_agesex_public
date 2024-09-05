@@ -11,14 +11,19 @@ droplist <- exclusions %>%
   filter(exclude == 1L)
 
 ## Create folder structure if it does already not exist ----
-foldermake <- c("Outputs2", "FromVM", "Scratch_data")
+foldermake <- c("Outputs", "FromVM", "Scratch_data")
 walk(foldermake, ~ if (!file.exists(.x)) dir.create(.x))
 
 ## read in ipd so can drop from aggregate ----
-ipd1 <- read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv")
-ipd2 <- read.csv("Data/gsk/hba1c_base_change_overall.csv")
-ipd3 <- read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv")
-ipd <- bind_rows(ipd1, ipd2, ipd3)
+ipd1 <- read_csv("Data/agesexhba1c_6115/hba1c_base_change_overall.csv") %>% 
+  pull(nct_id)
+ipd2 <- read.csv("Data/gsk/hba1c_base_change_overall.csv") %>% 
+  pull(nct_id)
+ipd3 <- read.csv("Data/agesexhba1c_8697/hba1c_base_change_overall.csv") %>% 
+  pull(nct_id)
+ipd4 <- read_csv("Data/agesexhba1cmaceupdate_9492/coef.csv") %>% 
+  pull(nct_id)
+ipd <- c(ipd1, ipd2, ipd3, ipd4) %>% unique()
 ## read in aggregate level data for each hba1c trials and baseline data
 hba1c_agg1 <- read_csv("Data/cleaned_data/Data/hba1c_outcome_data_2019.csv") %>% 
   rename(nct_id = trial_id)
@@ -52,9 +57,36 @@ hba1c_agg <- bind_rows(extract1 = hba1c_agg1,
                        .id = "extract")
 rm(hba1c_agg1, hba1c_agg2, hba1c_agg3)
 
+## pull duration data
+duration <- hba1c_agg %>% 
+  select(nct_id, timepoint, timepoint_units) 
+duration <- duration %>% 
+  mutate(timepoint_units = if_else(nct_id == "NCT02104804" & is.na(timepoint_units), "weeks", timepoint_units))
+setdiff(ipd, duration$nct_id)
+duration <- duration %>% 
+  mutate(weeks = case_when(
+    timepoint_units == "weeks" ~ timepoint,
+    timepoint_units == "days" ~ timepoint/7,
+    timepoint_units == "months" ~ 52*timepoint/12
+  )) 
+duration <- duration  %>% 
+  arrange(desc(weeks)) %>% 
+  distinct(nct_id, .keep_all = TRUE)
+## 4 IPD mace trials without duration recorded here
+addmis <- tibble(nct_id = c("NCT00968708", "NCT01989754", "NCT02065791", "NCT01131676"),
+                 weeks = c(3.4, 3, 4.6, 4.6)*52) 
+duration <- bind_rows(duration, addmis) %>% 
+  mutate(timeraw = paste(timepoint, timepoint_units)) %>% 
+  select(-timepoint, -timepoint_units)
+shrt <- duration %>% 
+  filter(weeks <12) %>% 
+  pull(nct_id)
+saveRDS(duration, "Scratch_data/trial_duration.Rds")
+rm(duration, addmis)
+
 # drop ipd trials from agg
 hba1c_agg <- hba1c_agg %>% 
-  filter(!nct_id %in% ipd$nct_id)
+  filter(!nct_id %in% ipd)
 # drop if on excluded list - one trial
 hba1c_agg %>% 
   filter(nct_id %in% droplist$trial_id)

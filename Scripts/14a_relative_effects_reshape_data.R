@@ -4,14 +4,15 @@ library(tidyverse)
 
 ds <- readRDS("Scratch_data/tx_samples.Rds")
 betas <- readRDS("Scratch_data/cov_nter_samples.Rds")
-lkp <- read_csv("Scratch_data/modelname_content_lkp.csv")
 
 ## select only models of interest - 4 models. HbA1c for mono, dual and triple ----
-lkp <- lkp %>% 
-  filter(mainorinter == "agesex",
-         datalevel == "aggipd",
-         fixedrand == "random",
-         sg %in% c("main", "sex"))
+lkp <- read_csv("tosep,outcome,mainorinter,modelnum,datalevel,fixedrand,network,sg
+m06_aggipd_random_mono_f4_ge12,hba1c,agesex,m06,aggipd,random,mono,main
+m02_aggipd_random_dual_f4_ge12,hba1c,agesex,m02,aggipd,random,dual,main
+m10_aggipd_random_triple_f4_ge12,hba1c,agesex,m10,aggipd,random,triple,main
+random_mace_agesex_main,mace,agesex,m6,aggipd,random,triple,main
+random_mace_agesex_sex,mace,agesex,m7,aggipd,random,triple,sex")
+
 ds <- ds[lkp$tosep]
 betas <- betas[lkp$tosep]
 

@@ -14,9 +14,12 @@ bas <- map(bas, ~ .x %>%
 comporig <- read_csv("Data/cleaned_data/Data/example_comparisons.csv")
 comp2019 <- read_csv("Data/cleaned_data/Data/comparisons_2019.csv")
 comp2022 <- read_csv("Data/cleaned_data/Data/comparisons_2022_update.csv")
+comp2024 <- read_csv("Data/cleaned_data/Data/comparisons_2024_update.csv")
 comp <- bind_rows(comporig = comporig,
-                      comp2019 = comp2019 %>% mutate(unique_id = as.character(unique_id)),
-                      comp2022 = comp2022 %>% mutate(unique_id = as.character(unique_id)), .id = "type")
+                  comp2019 = comp2019 %>% mutate(unique_id = as.character(unique_id)),
+                  comp2022 = comp2022 %>% mutate(unique_id = as.character(unique_id)),
+                  comp2024 = comp2024 %>% mutate(unique_id = as.character(unique_id)),.id = "type")
+
 comp %>% 
   distinct(type, comp_id, arm_id)
 comp <- comp %>% 
@@ -30,7 +33,6 @@ out$arm$meta <- out$arm$meta %>%
 # 2004-004559-21 is a standard error not a standard deviation (based on CTR from EUDRACT)  file:///C:/Users/David%20A%20McAllister/Downloads/CLAF237A2308_NovCTR.pdf
 out$arm$meta <- out$arm$meta %>% 
   mutate(dispersion_type = if_else(nct_id == "2004-004559-21", "se", dispersion_type))
-
 
 ## calculate standard errors for arm data (change and end) ----
 out$unav <- NULL
@@ -220,6 +222,11 @@ comp3 <- bind_rows(comp2 %>%
                    comp_msng_meta)
 
 #differences in mean outcomes between arms)."
+comp3 <- comp3 %>%
+  mutate(treat_or_ref = case_when(
+    nct_id == "NCT04170998" & arm_id_unq == "updac0060" ~ "treat",
+    nct_id == "NCT04170998" & arm_id_unq == "updac0061" ~ "reference",
+    TRUE ~ treat_or_ref))
 comp4 <- comp3 %>% 
   inner_join(hba1c_comp %>% 
                select(-arm_id_unq)) %>% 

@@ -1,0 +1,375 @@
+nct_id,old_term,new_term
+NCT01632163,arm_f_2_Lixisenatide,arm_f_2_ab0173
+NCT01632007,arm_f_2_Alogliptin,arm_f_2_ab0170
+NCT01632007,arm_f_2_Trelagliptin,arm_f_2_ab0172
+NCT01632163,arm_f=_2_Lixisenatide,arm_f=_2_ab0173
+NCT01632007,arm_f=_2_Alogliptin,arm_f=_2_ab0170
+NCT01632007,arm_f=_2_Trelagliptin,arm_f=_2_ab0172
+NCT00819091,arm_f_2_Linagliptin,arm_f_2_uaa10374
+NCT00800683,arm_f_2_Placebo,arm_f_2_uaa10369
+NCT00740051,arm_f_2_Linagliptin,arm_f_2_uaa10340
+NCT00996658,arm_f_2_Linagliptin,arm_f_2_uaa10476
+NCT01084005,arm_f_2_Linagliptin,arm_f_2_uaa10552
+NCT01087502,arm_f_2_Linagliptin,arm_f_2_uaa10555
+NCT01194830,arm_f_2_Linagliptin,arm_f_2_uaa10671
+NCT02182830,arm_f_2_Empagliflozin 10-25mg,arm_f_2_uaa11066
+NCT00976937,arm_f_2_Lixisenatide,arm_f_2_uaa10470
+NCT00866658,arm_f_2_Lixisenatide 2-step titration,arm_f_2_uaa10411
+NCT01169779,arm_f_2_Lixisenatide,arm_f_2_uaa10638
+NCT01798706,arm_f_2_Lixisenatide,arm_f_2_uaa10930
+NCT00713830,arm_f_2_Lixisenatide,arm_f_2_uaa10326
+NCT00715624,arm_f_2_Lixisenatide,arm_f_2_uaa10329
+NCT00763815,arm_f_2_Lixisenatide,arm_f_2_uaa10352
+NCT00707031,arm_f_2_Lixisenatide QD,arm_f_2_uaa10318
+NCT01648582,arm_f_2_Dulaglutide 0.75,arm_f_2_uaa10839
+NCT01648582,arm_f_2_Dulaglutide 1.5,arm_f_2_uaa10840
+NCT01558271,arm_f_2_Dulaglutide 0.75mg,arm_f_2_uaa10796
+NCT01558271,arm_f_2_Liraglutide 0.3/0.6/0.9mg,arm_f_2_uaa10797
+NCT02750410,arm_f_2_Dula 0.75mg,arm_f_2_uaa11218
+NCT01768559,arm_f_2_Lixisenatide,arm_f_2_uaa10917
+NCT00975286,arm_f_2_GLP1 PLUS INSULIN BASAL,arm_f_2_uaa10464
+NCT01619059,arm_f_2_SAXA PLUS DAPA PLUS MET,arm_f_2_uaa10820
+NCT00819091,arm_f=_2_Linagliptin,arm_f=_2_uaa10374
+NCT00800683,arm_f=_2_Placebo,arm_f=_2_uaa10369
+NCT00740051,arm_f=_2_Linagliptin,arm_f=_2_uaa10340
+NCT00996658,arm_f=_2_Linagliptin,arm_f=_2_uaa10476
+NCT01084005,arm_f=_2_Linagliptin,arm_f=_2_uaa10552
+NCT01087502,arm_f=_2_Linagliptin,arm_f=_2_uaa10555
+NCT01194830,arm_f=_2_Linagliptin,arm_f=_2_uaa10671
+NCT02182830,arm_f=_2_Empagliflozin 10-25mg,arm_f=_2_uaa11066
+NCT00763451,arm_f_2_Lixisenatide 1-step titration,arm_f_2_uaa10349a
+NCT00763451,arm_f_2_Lixisenatide 2-step titration,arm_f_2_uaa10349b
+NCT00976937,arm_f=_2_Lixisenatide,arm_f=_2_uaa10470
+NCT00866658,arm_f=_2_Lixisenatide 2-step titration,arm_f=_2_uaa10411
+NCT01169779,arm_f=_2_Lixisenatide,arm_f=_2_uaa10638
+NCT01798706,arm_f=_2_Lixisenatide,arm_f=_2_uaa10930
+NCT00712673,arm_f_2_Lixisenatide evening,arm_f_2_uaa10323b
+NCT00712673,arm_f_2_Lixisenatide morning,arm_f_2_uaa10323a
+NCT00713830,arm_f=_2_Lixisenatide,arm_f=_2_uaa10326
+NCT00715624,arm_f=_2_Lixisenatide,arm_f=_2_uaa10329
+NCT00763815,arm_f=_2_Lixisenatide,arm_f=_2_uaa10352
+NCT00688701,arm_f_2_Lixisenatide 1-step titration,arm_f_2_uaa10304a
+NCT00688701,arm_f_2_Lixisenatide 2-step titration,arm_f_2_uaa10304b
+NCT00707031,arm_f=_2_Lixisenatide QD,arm_f=_2_uaa10318
+NCT01648582,arm_f=_2_Dulaglutide 0.75,arm_f=_2_uaa10839
+NCT01648582,arm_f=_2_Dulaglutide 1.5,arm_f=_2_uaa10840
+NCT01558271,arm_f=_2_Dulaglutide 0.75mg,arm_f=_2_uaa10796
+NCT01558271,arm_f=_2_Liraglutide 0.3/0.6/0.9mg,arm_f=_2_uaa10797
+NCT02750410,arm_f=_2_Dula 0.75mg,arm_f=_2_uaa11218
+NCT01768559,arm_f=_2_Lixisenatide,arm_f=_2_uaa10917
+NCT00975286,arm_f=_2_GLP1 PLUS INSULIN BASAL,arm_f=_2_uaa10464
+NCT01619059,arm_f=_2_SAXA PLUS DAPA PLUS MET,arm_f=_2_uaa10820
+NCT00763451,arm_f=_2_Lixisenatide 1-step titration,arm_f=_2_uaa10349a
+NCT00763451,arm_f=_2_Lixisenatide 2-step titration,arm_f=_2_uaa10349b
+NCT01632163,sex:arm_f_2_Lixisenatide,sex:arm_f_2_ab0173
+NCT01632163,arm_f_2_Lixisenatide:sex,arm_f_2_ab0173:sex
+NCT00712673,arm_f=_2_Lixisenatide evening,arm_f=_2_uaa10323b
+NCT00712673,arm_f=_2_Lixisenatide morning,arm_f=_2_uaa10323a
+NCT00688701,arm_f=_2_Lixisenatide 1-step titration,arm_f=_2_uaa10304a
+NCT00688701,arm_f=_2_Lixisenatide 2-step titration,arm_f=_2_uaa10304b
+NCT01632007,sex:arm_f_2_Alogliptin,sex:arm_f_2_ab0170
+NCT01632007,arm_f_2_Alogliptin:sex,arm_f_2_ab0170:sex
+NCT01632007,sex:arm_f_2_Trelagliptin,sex:arm_f_2_ab0172
+NCT01632007,arm_f_2_Trelagliptin:sex,arm_f_2_ab0172:sex
+NCT00819091,sex:arm_f_2_Linagliptin,sex:arm_f_2_uaa10374
+NCT00819091,arm_f_2_Linagliptin:sex,arm_f_2_uaa10374:sex
+NCT00800683,sex:arm_f_2_Placebo,sex:arm_f_2_uaa10369
+NCT00800683,arm_f_2_Placebo:sex,arm_f_2_uaa10369:sex
+NCT00740051,sex:arm_f_2_Linagliptin,sex:arm_f_2_uaa10340
+NCT00740051,arm_f_2_Linagliptin:sex,arm_f_2_uaa10340:sex
+NCT00996658,sex:arm_f_2_Linagliptin,sex:arm_f_2_uaa10476
+NCT00996658,arm_f_2_Linagliptin:sex,arm_f_2_uaa10476:sex
+NCT01084005,sex:arm_f_2_Linagliptin,sex:arm_f_2_uaa10552
+NCT01084005,arm_f_2_Linagliptin:sex,arm_f_2_uaa10552:sex
+NCT01087502,sex:arm_f_2_Linagliptin,sex:arm_f_2_uaa10555
+NCT01087502,arm_f_2_Linagliptin:sex,arm_f_2_uaa10555:sex
+NCT01194830,sex:arm_f_2_Linagliptin,sex:arm_f_2_uaa10671
+NCT01194830,arm_f_2_Linagliptin:sex,arm_f_2_uaa10671:sex
+NCT02182830,sex:arm_f_2_Empagliflozin 10-25mg,sex:arm_f_2_uaa11066
+NCT02182830,arm_f_2_Empagliflozin 10-25mg:sex,arm_f_2_uaa11066:sex
+NCT00976937,sex:arm_f_2_Lixisenatide,sex:arm_f_2_uaa10470
+NCT00976937,arm_f_2_Lixisenatide:sex,arm_f_2_uaa10470:sex
+NCT00866658,sex:arm_f_2_Lixisenatide 2-step titration,sex:arm_f_2_uaa10411
+NCT00866658,arm_f_2_Lixisenatide 2-step titration:sex,arm_f_2_uaa10411:sex
+NCT01169779,sex:arm_f_2_Lixisenatide,sex:arm_f_2_uaa10638
+NCT01169779,arm_f_2_Lixisenatide:sex,arm_f_2_uaa10638:sex
+NCT01632163,age10:arm_f_2_Lixisenatide,age10:arm_f_2_ab0173
+NCT01798706,sex:arm_f_2_Lixisenatide,sex:arm_f_2_uaa10930
+NCT01798706,arm_f_2_Lixisenatide:sex,arm_f_2_uaa10930:sex
+NCT00713830,sex:arm_f_2_Lixisenatide,sex:arm_f_2_uaa10326
+NCT00713830,arm_f_2_Lixisenatide:sex,arm_f_2_uaa10326:sex
+NCT00715624,sex:arm_f_2_Lixisenatide,sex:arm_f_2_uaa10329
+NCT00715624,arm_f_2_Lixisenatide:sex,arm_f_2_uaa10329:sex
+NCT00763815,sex:arm_f_2_Lixisenatide,sex:arm_f_2_uaa10352
+NCT00763815,arm_f_2_Lixisenatide:sex,arm_f_2_uaa10352:sex
+NCT00707031,sex:arm_f_2_Lixisenatide QD,sex:arm_f_2_uaa10318
+NCT00707031,arm_f_2_Lixisenatide QD:sex,arm_f_2_uaa10318:sex
+NCT01648582,sex:arm_f_2_Dulaglutide 0.75,sex:arm_f_2_uaa10839
+NCT01648582,arm_f_2_Dulaglutide 0.75:sex,arm_f_2_uaa10839:sex
+NCT01648582,sex:arm_f_2_Dulaglutide 1.5,sex:arm_f_2_uaa10840
+NCT01648582,arm_f_2_Dulaglutide 1.5:sex,arm_f_2_uaa10840:sex
+NCT01558271,sex:arm_f_2_Dulaglutide 0.75mg,sex:arm_f_2_uaa10796
+NCT01558271,arm_f_2_Dulaglutide 0.75mg:sex,arm_f_2_uaa10796:sex
+NCT01558271,sex:arm_f_2_Liraglutide 0.3/0.6/0.9mg,sex:arm_f_2_uaa10797
+NCT01558271,arm_f_2_Liraglutide 0.3/0.6/0.9mg:sex,arm_f_2_uaa10797:sex
+NCT02750410,sex:arm_f_2_Dula 0.75mg,sex:arm_f_2_uaa11218
+NCT02750410,arm_f_2_Dula 0.75mg:sex,arm_f_2_uaa11218:sex
+NCT01768559,sex:arm_f_2_Lixisenatide,sex:arm_f_2_uaa10917
+NCT01768559,arm_f_2_Lixisenatide:sex,arm_f_2_uaa10917:sex
+NCT00975286,sex:arm_f_2_GLP1 PLUS INSULIN BASAL,sex:arm_f_2_uaa10464
+NCT00975286,arm_f_2_GLP1 PLUS INSULIN BASAL:sex,arm_f_2_uaa10464:sex
+NCT01632007,age10:arm_f_2_Alogliptin,age10:arm_f_2_ab0170
+NCT01632007,age10:arm_f_2_Trelagliptin,age10:arm_f_2_ab0172
+NCT01619059,sex:arm_f_2_SAXA PLUS DAPA PLUS MET,sex:arm_f_2_uaa10820
+NCT01619059,arm_f_2_SAXA PLUS DAPA PLUS MET:sex,arm_f_2_uaa10820:sex
+NCT00763451,sex:arm_f_2_Lixisenatide 1-step titration,sex:arm_f_2_uaa10349a
+NCT00763451,arm_f_2_Lixisenatide 1-step titration:sex,arm_f_2_uaa10349a:sex
+NCT00763451,sex:arm_f_2_Lixisenatide 2-step titration,sex:arm_f_2_uaa10349b
+NCT00763451,arm_f_2_Lixisenatide 2-step titration:sex,arm_f_2_uaa10349b:sex
+NCT01632163,arm_f=_2_Lixisenatide * sex,arm_f=_2_ab0173 * sex
+NCT00712673,sex:arm_f_2_Lixisenatide evening,sex:arm_f_2_uaa10323b
+NCT00712673,arm_f_2_Lixisenatide evening:sex,arm_f_2_uaa10323b:sex
+NCT00712673,sex:arm_f_2_Lixisenatide morning,sex:arm_f_2_uaa10323a
+NCT00712673,arm_f_2_Lixisenatide morning:sex,arm_f_2_uaa10323a:sex
+NCT00688701,sex:arm_f_2_Lixisenatide 1-step titration,sex:arm_f_2_uaa10304a
+NCT00688701,arm_f_2_Lixisenatide 1-step titration:sex,arm_f_2_uaa10304a:sex
+NCT00688701,sex:arm_f_2_Lixisenatide 2-step titration,sex:arm_f_2_uaa10304b
+NCT00688701,arm_f_2_Lixisenatide 2-step titration:sex,arm_f_2_uaa10304b:sex
+NCT01632007,arm_f=_2_Alogliptin * sex,arm_f=_2_ab0170 * sex
+NCT01632007,arm_f=_2_Trelagliptin * sex,arm_f=_2_ab0172 * sex
+NCT00819091,age10:arm_f_2_Linagliptin,age10:arm_f_2_uaa10374
+NCT00800683,age10:arm_f_2_Placebo,age10:arm_f_2_uaa10369
+NCT00740051,age10:arm_f_2_Linagliptin,age10:arm_f_2_uaa10340
+NCT00996658,age10:arm_f_2_Linagliptin,age10:arm_f_2_uaa10476
+NCT01084005,age10:arm_f_2_Linagliptin,age10:arm_f_2_uaa10552
+NCT01087502,age10:arm_f_2_Linagliptin,age10:arm_f_2_uaa10555
+NCT01194830,age10:arm_f_2_Linagliptin,age10:arm_f_2_uaa10671
+NCT02182830,age10:arm_f_2_Empagliflozin 10-25mg,age10:arm_f_2_uaa11066
+NCT00976937,age10:arm_f_2_Lixisenatide,age10:arm_f_2_uaa10470
+NCT00866658,age10:arm_f_2_Lixisenatide 2-step titration,age10:arm_f_2_uaa10411
+NCT01169779,age10:arm_f_2_Lixisenatide,age10:arm_f_2_uaa10638
+NCT01798706,age10:arm_f_2_Lixisenatide,age10:arm_f_2_uaa10930
+NCT00713830,age10:arm_f_2_Lixisenatide,age10:arm_f_2_uaa10326
+NCT00715624,age10:arm_f_2_Lixisenatide,age10:arm_f_2_uaa10329
+NCT00763815,age10:arm_f_2_Lixisenatide,age10:arm_f_2_uaa10352
+NCT00707031,age10:arm_f_2_Lixisenatide QD,age10:arm_f_2_uaa10318
+NCT01648582,age10:arm_f_2_Dulaglutide 0.75,age10:arm_f_2_uaa10839
+NCT01648582,age10:arm_f_2_Dulaglutide 1.5,age10:arm_f_2_uaa10840
+NCT01558271,age10:arm_f_2_Dulaglutide 0.75mg,age10:arm_f_2_uaa10796
+NCT01558271,age10:arm_f_2_Liraglutide 0.3/0.6/0.9mg,age10:arm_f_2_uaa10797
+NCT02750410,age10:arm_f_2_Dula 0.75mg,age10:arm_f_2_uaa11218
+NCT01768559,age10:arm_f_2_Lixisenatide,age10:arm_f_2_uaa10917
+NCT00975286,age10:arm_f_2_GLP1 PLUS INSULIN BASAL,age10:arm_f_2_uaa10464
+NCT01619059,age10:arm_f_2_SAXA PLUS DAPA PLUS MET,age10:arm_f_2_uaa10820
+NCT00819091,arm_f=_2_Linagliptin * sex,arm_f=_2_uaa10374 * sex
+NCT00800683,arm_f=_2_Placebo * sex,arm_f=_2_uaa10369 * sex
+NCT00740051,arm_f=_2_Linagliptin * sex,arm_f=_2_uaa10340 * sex
+NCT00996658,arm_f=_2_Linagliptin * sex,arm_f=_2_uaa10476 * sex
+NCT01084005,arm_f=_2_Linagliptin * sex,arm_f=_2_uaa10552 * sex
+NCT01087502,arm_f=_2_Linagliptin * sex,arm_f=_2_uaa10555 * sex
+NCT01194830,arm_f=_2_Linagliptin * sex,arm_f=_2_uaa10671 * sex
+NCT02182830,arm_f=_2_Empagliflozin 10-25mg * sex,arm_f=_2_uaa11066 * sex
+NCT00763451,age10:arm_f_2_Lixisenatide 1-step titration,age10:arm_f_2_uaa10349a
+NCT00763451,age10:arm_f_2_Lixisenatide 2-step titration,age10:arm_f_2_uaa10349b
+NCT00976937,arm_f=_2_Lixisenatide * sex,arm_f=_2_uaa10470 * sex
+NCT00866658,arm_f=_2_Lixisenatide 2-step titration * sex,arm_f=_2_uaa10411 * sex
+NCT01169779,arm_f=_2_Lixisenatide * sex,arm_f=_2_uaa10638 * sex
+NCT01632163,age10 * arm_f=_2_Lixisenatide,age10 * arm_f=_2_ab0173
+NCT01798706,arm_f=_2_Lixisenatide * sex,arm_f=_2_uaa10930 * sex
+NCT00712673,age10:arm_f_2_Lixisenatide evening,age10:arm_f_2_uaa10323b
+NCT00712673,age10:arm_f_2_Lixisenatide morning,age10:arm_f_2_uaa10323a
+NCT00713830,arm_f=_2_Lixisenatide * sex,arm_f=_2_uaa10326 * sex
+NCT00715624,arm_f=_2_Lixisenatide * sex,arm_f=_2_uaa10329 * sex
+NCT00763815,arm_f=_2_Lixisenatide * sex,arm_f=_2_uaa10352 * sex
+NCT00688701,age10:arm_f_2_Lixisenatide 1-step titration,age10:arm_f_2_uaa10304a
+NCT00688701,age10:arm_f_2_Lixisenatide 2-step titration,age10:arm_f_2_uaa10304b
+NCT00707031,arm_f=_2_Lixisenatide QD * sex,arm_f=_2_uaa10318 * sex
+NCT01648582,arm_f=_2_Dulaglutide 0.75 * sex,arm_f=_2_uaa10839 * sex
+NCT01648582,arm_f=_2_Dulaglutide 1.5 * sex,arm_f=_2_uaa10840 * sex
+NCT01558271,arm_f=_2_Dulaglutide 0.75mg * sex,arm_f=_2_uaa10796 * sex
+NCT01558271,arm_f=_2_Liraglutide 0.3/0.6/0.9mg * sex,arm_f=_2_uaa10797 * sex
+NCT02750410,arm_f=_2_Dula 0.75mg * sex,arm_f=_2_uaa11218 * sex
+NCT01768559,arm_f=_2_Lixisenatide * sex,arm_f=_2_uaa10917 * sex
+NCT00975286,arm_f=_2_GLP1 PLUS INSULIN BASAL * sex,arm_f=_2_uaa10464 * sex
+NCT01632007,age10 * arm_f=_2_Alogliptin,age10 * arm_f=_2_ab0170
+NCT01632007,age10 * arm_f=_2_Trelagliptin,age10 * arm_f=_2_ab0172
+NCT01619059,arm_f=_2_SAXA PLUS DAPA PLUS MET * sex,arm_f=_2_uaa10820 * sex
+NCT00763451,arm_f=_2_Lixisenatide 1-step titration * sex,arm_f=_2_uaa10349a * sex
+NCT00763451,arm_f=_2_Lixisenatide 2-step titration * sex,arm_f=_2_uaa10349b * sex
+NCT01632163,sex:age10:arm_f_2_Lixisenatide,sex:age10:arm_f_2_ab0173
+NCT01632163,age10' * arm_f=_2_Lixisenatide,age10' * arm_f=_2_ab0173
+NCT00712673,arm_f=_2_Lixisenatide evening * sex,arm_f=_2_uaa10323b * sex
+NCT00712673,arm_f=_2_Lixisenatide morning * sex,arm_f=_2_uaa10323a * sex
+NCT00688701,arm_f=_2_Lixisenatide 1-step titration * sex,arm_f=_2_uaa10304a * sex
+NCT00688701,arm_f=_2_Lixisenatide 2-step titration * sex,arm_f=_2_uaa10304b * sex
+NCT01632007,sex:age10:arm_f_2_Alogliptin,sex:age10:arm_f_2_ab0170
+NCT01632007,age10' * arm_f=_2_Alogliptin,age10' * arm_f=_2_ab0170
+NCT01632007,sex:age10:arm_f_2_Trelagliptin,sex:age10:arm_f_2_ab0172
+NCT01632007,age10' * arm_f=_2_Trelagliptin,age10' * arm_f=_2_ab0172
+NCT00819091,age10 * arm_f=_2_Linagliptin,age10 * arm_f=_2_uaa10374
+NCT00800683,age10 * arm_f=_2_Placebo,age10 * arm_f=_2_uaa10369
+NCT00740051,age10 * arm_f=_2_Linagliptin,age10 * arm_f=_2_uaa10340
+NCT00996658,age10 * arm_f=_2_Linagliptin,age10 * arm_f=_2_uaa10476
+NCT01084005,age10 * arm_f=_2_Linagliptin,age10 * arm_f=_2_uaa10552
+NCT01087502,age10 * arm_f=_2_Linagliptin,age10 * arm_f=_2_uaa10555
+NCT01194830,age10 * arm_f=_2_Linagliptin,age10 * arm_f=_2_uaa10671
+NCT02182830,age10 * arm_f=_2_Empagliflozin 10-25mg,age10 * arm_f=_2_uaa11066
+NCT00976937,age10 * arm_f=_2_Lixisenatide,age10 * arm_f=_2_uaa10470
+NCT00866658,age10 * arm_f=_2_Lixisenatide 2-step titration,age10 * arm_f=_2_uaa10411
+NCT01169779,age10 * arm_f=_2_Lixisenatide,age10 * arm_f=_2_uaa10638
+NCT01632163,age10'' * arm_f=_2_Lixisenatide,age10'' * arm_f=_2_ab0173
+NCT01798706,age10 * arm_f=_2_Lixisenatide,age10 * arm_f=_2_uaa10930
+NCT00713830,age10 * arm_f=_2_Lixisenatide,age10 * arm_f=_2_uaa10326
+NCT00715624,age10 * arm_f=_2_Lixisenatide,age10 * arm_f=_2_uaa10329
+NCT00763815,age10 * arm_f=_2_Lixisenatide,age10 * arm_f=_2_uaa10352
+NCT00707031,age10 * arm_f=_2_Lixisenatide QD,age10 * arm_f=_2_uaa10318
+NCT01648582,age10 * arm_f=_2_Dulaglutide 0.75,age10 * arm_f=_2_uaa10839
+NCT01648582,age10 * arm_f=_2_Dulaglutide 1.5,age10 * arm_f=_2_uaa10840
+NCT01558271,age10 * arm_f=_2_Dulaglutide 0.75mg,age10 * arm_f=_2_uaa10796
+NCT01558271,age10 * arm_f=_2_Liraglutide 0.3/0.6/0.9mg,age10 * arm_f=_2_uaa10797
+NCT02750410,age10 * arm_f=_2_Dula 0.75mg,age10 * arm_f=_2_uaa11218
+NCT01768559,age10 * arm_f=_2_Lixisenatide,age10 * arm_f=_2_uaa10917
+NCT00975286,age10 * arm_f=_2_GLP1 PLUS INSULIN BASAL,age10 * arm_f=_2_uaa10464
+NCT01632007,age10'' * arm_f=_2_Alogliptin,age10'' * arm_f=_2_ab0170
+NCT01632007,age10'' * arm_f=_2_Trelagliptin,age10'' * arm_f=_2_ab0172
+NCT01619059,age10 * arm_f=_2_SAXA PLUS DAPA PLUS MET,age10 * arm_f=_2_uaa10820
+NCT00819091,sex:age10:arm_f_2_Linagliptin,sex:age10:arm_f_2_uaa10374
+NCT00819091,age10' * arm_f=_2_Linagliptin,age10' * arm_f=_2_uaa10374
+NCT00800683,sex:age10:arm_f_2_Placebo,sex:age10:arm_f_2_uaa10369
+NCT00800683,age10' * arm_f=_2_Placebo,age10' * arm_f=_2_uaa10369
+NCT00740051,sex:age10:arm_f_2_Linagliptin,sex:age10:arm_f_2_uaa10340
+NCT00740051,age10' * arm_f=_2_Linagliptin,age10' * arm_f=_2_uaa10340
+NCT00996658,sex:age10:arm_f_2_Linagliptin,sex:age10:arm_f_2_uaa10476
+NCT00996658,age10' * arm_f=_2_Linagliptin,age10' * arm_f=_2_uaa10476
+NCT01084005,sex:age10:arm_f_2_Linagliptin,sex:age10:arm_f_2_uaa10552
+NCT01084005,age10' * arm_f=_2_Linagliptin,age10' * arm_f=_2_uaa10552
+NCT01087502,sex:age10:arm_f_2_Linagliptin,sex:age10:arm_f_2_uaa10555
+NCT01087502,age10' * arm_f=_2_Linagliptin,age10' * arm_f=_2_uaa10555
+NCT01194830,sex:age10:arm_f_2_Linagliptin,sex:age10:arm_f_2_uaa10671
+NCT01194830,age10' * arm_f=_2_Linagliptin,age10' * arm_f=_2_uaa10671
+NCT02182830,sex:age10:arm_f_2_Empagliflozin 10-25mg,sex:age10:arm_f_2_uaa11066
+NCT02182830,age10' * arm_f=_2_Empagliflozin 10-25mg,age10' * arm_f=_2_uaa11066
+NCT00763451,age10 * arm_f=_2_Lixisenatide 1-step titration,age10 * arm_f=_2_uaa10349a
+NCT00763451,age10 * arm_f=_2_Lixisenatide 2-step titration,age10 * arm_f=_2_uaa10349b
+NCT00976937,sex:age10:arm_f_2_Lixisenatide,sex:age10:arm_f_2_uaa10470
+NCT00976937,age10' * arm_f=_2_Lixisenatide,age10' * arm_f=_2_uaa10470
+NCT00866658,sex:age10:arm_f_2_Lixisenatide 2-step titration,sex:age10:arm_f_2_uaa10411
+NCT00866658,age10' * arm_f=_2_Lixisenatide 2-step titration,age10' * arm_f=_2_uaa10411
+NCT01169779,sex:age10:arm_f_2_Lixisenatide,sex:age10:arm_f_2_uaa10638
+NCT01169779,age10' * arm_f=_2_Lixisenatide,age10' * arm_f=_2_uaa10638
+NCT01632163,age10''' * arm_f=_2_Lixisenatide,age10''' * arm_f=_2_ab0173
+NCT01798706,sex:age10:arm_f_2_Lixisenatide,sex:age10:arm_f_2_uaa10930
+NCT01798706,age10' * arm_f=_2_Lixisenatide,age10' * arm_f=_2_uaa10930
+NCT00712673,age10 * arm_f=_2_Lixisenatide evening,age10 * arm_f=_2_uaa10323b
+NCT00712673,age10 * arm_f=_2_Lixisenatide morning,age10 * arm_f=_2_uaa10323a
+NCT00713830,sex:age10:arm_f_2_Lixisenatide,sex:age10:arm_f_2_uaa10326
+NCT00713830,age10' * arm_f=_2_Lixisenatide,age10' * arm_f=_2_uaa10326
+NCT00715624,sex:age10:arm_f_2_Lixisenatide,sex:age10:arm_f_2_uaa10329
+NCT00715624,age10' * arm_f=_2_Lixisenatide,age10' * arm_f=_2_uaa10329
+NCT00763815,sex:age10:arm_f_2_Lixisenatide,sex:age10:arm_f_2_uaa10352
+NCT00763815,age10' * arm_f=_2_Lixisenatide,age10' * arm_f=_2_uaa10352
+NCT00688701,age10 * arm_f=_2_Lixisenatide 1-step titration,age10 * arm_f=_2_uaa10304a
+NCT00688701,age10 * arm_f=_2_Lixisenatide 2-step titration,age10 * arm_f=_2_uaa10304b
+NCT00707031,sex:age10:arm_f_2_Lixisenatide QD,sex:age10:arm_f_2_uaa10318
+NCT00707031,age10' * arm_f=_2_Lixisenatide QD,age10' * arm_f=_2_uaa10318
+NCT01648582,sex:age10:arm_f_2_Dulaglutide 0.75,sex:age10:arm_f_2_uaa10839
+NCT01648582,age10' * arm_f=_2_Dulaglutide 0.75,age10' * arm_f=_2_uaa10839
+NCT01648582,sex:age10:arm_f_2_Dulaglutide 1.5,sex:age10:arm_f_2_uaa10840
+NCT01648582,age10' * arm_f=_2_Dulaglutide 1.5,age10' * arm_f=_2_uaa10840
+NCT01558271,sex:age10:arm_f_2_Dulaglutide 0.75mg,sex:age10:arm_f_2_uaa10796
+NCT01558271,age10' * arm_f=_2_Dulaglutide 0.75mg,age10' * arm_f=_2_uaa10796
+NCT01558271,sex:age10:arm_f_2_Liraglutide 0.3/0.6/0.9mg,sex:age10:arm_f_2_uaa10797
+NCT01558271,age10' * arm_f=_2_Liraglutide 0.3/0.6/0.9mg,age10' * arm_f=_2_uaa10797
+NCT02750410,sex:age10:arm_f_2_Dula 0.75mg,sex:age10:arm_f_2_uaa11218
+NCT02750410,age10' * arm_f=_2_Dula 0.75mg,age10' * arm_f=_2_uaa11218
+NCT01768559,sex:age10:arm_f_2_Lixisenatide,sex:age10:arm_f_2_uaa10917
+NCT01768559,age10' * arm_f=_2_Lixisenatide,age10' * arm_f=_2_uaa10917
+NCT00975286,sex:age10:arm_f_2_GLP1 PLUS INSULIN BASAL,sex:age10:arm_f_2_uaa10464
+NCT00975286,age10' * arm_f=_2_GLP1 PLUS INSULIN BASAL,age10' * arm_f=_2_uaa10464
+NCT01632007,age10''' * arm_f=_2_Alogliptin,age10''' * arm_f=_2_ab0170
+NCT01632007,age10''' * arm_f=_2_Trelagliptin,age10''' * arm_f=_2_ab0172
+NCT01619059,sex:age10:arm_f_2_SAXA PLUS DAPA PLUS MET,sex:age10:arm_f_2_uaa10820
+NCT01619059,age10' * arm_f=_2_SAXA PLUS DAPA PLUS MET,age10' * arm_f=_2_uaa10820
+NCT00819091,age10'' * arm_f=_2_Linagliptin,age10'' * arm_f=_2_uaa10374
+NCT00800683,age10'' * arm_f=_2_Placebo,age10'' * arm_f=_2_uaa10369
+NCT00740051,age10'' * arm_f=_2_Linagliptin,age10'' * arm_f=_2_uaa10340
+NCT00996658,age10'' * arm_f=_2_Linagliptin,age10'' * arm_f=_2_uaa10476
+NCT01084005,age10'' * arm_f=_2_Linagliptin,age10'' * arm_f=_2_uaa10552
+NCT01087502,age10'' * arm_f=_2_Linagliptin,age10'' * arm_f=_2_uaa10555
+NCT01194830,age10'' * arm_f=_2_Linagliptin,age10'' * arm_f=_2_uaa10671
+NCT02182830,age10'' * arm_f=_2_Empagliflozin 10-25mg,age10'' * arm_f=_2_uaa11066
+NCT00763451,sex:age10:arm_f_2_Lixisenatide 1-step titration,sex:age10:arm_f_2_uaa10349a
+NCT00763451,age10' * arm_f=_2_Lixisenatide 1-step titration,age10' * arm_f=_2_uaa10349a
+NCT00763451,sex:age10:arm_f_2_Lixisenatide 2-step titration,sex:age10:arm_f_2_uaa10349b
+NCT00763451,age10' * arm_f=_2_Lixisenatide 2-step titration,age10' * arm_f=_2_uaa10349b
+NCT00976937,age10'' * arm_f=_2_Lixisenatide,age10'' * arm_f=_2_uaa10470
+NCT00866658,age10'' * arm_f=_2_Lixisenatide 2-step titration,age10'' * arm_f=_2_uaa10411
+NCT01169779,age10'' * arm_f=_2_Lixisenatide,age10'' * arm_f=_2_uaa10638
+NCT01798706,age10'' * arm_f=_2_Lixisenatide,age10'' * arm_f=_2_uaa10930
+NCT00712673,sex:age10:arm_f_2_Lixisenatide evening,sex:age10:arm_f_2_uaa10323b
+NCT00712673,age10' * arm_f=_2_Lixisenatide evening,age10' * arm_f=_2_uaa10323b
+NCT00712673,sex:age10:arm_f_2_Lixisenatide morning,sex:age10:arm_f_2_uaa10323a
+NCT00712673,age10' * arm_f=_2_Lixisenatide morning,age10' * arm_f=_2_uaa10323a
+NCT00713830,age10'' * arm_f=_2_Lixisenatide,age10'' * arm_f=_2_uaa10326
+NCT00715624,age10'' * arm_f=_2_Lixisenatide,age10'' * arm_f=_2_uaa10329
+NCT00763815,age10'' * arm_f=_2_Lixisenatide,age10'' * arm_f=_2_uaa10352
+NCT00688701,sex:age10:arm_f_2_Lixisenatide 1-step titration,sex:age10:arm_f_2_uaa10304a
+NCT00688701,age10' * arm_f=_2_Lixisenatide 1-step titration,age10' * arm_f=_2_uaa10304a
+NCT00688701,sex:age10:arm_f_2_Lixisenatide 2-step titration,sex:age10:arm_f_2_uaa10304b
+NCT00688701,age10' * arm_f=_2_Lixisenatide 2-step titration,age10' * arm_f=_2_uaa10304b
+NCT00707031,age10'' * arm_f=_2_Lixisenatide QD,age10'' * arm_f=_2_uaa10318
+NCT01648582,age10'' * arm_f=_2_Dulaglutide 0.75,age10'' * arm_f=_2_uaa10839
+NCT01648582,age10'' * arm_f=_2_Dulaglutide 1.5,age10'' * arm_f=_2_uaa10840
+NCT01558271,age10'' * arm_f=_2_Dulaglutide 0.75mg,age10'' * arm_f=_2_uaa10796
+NCT01558271,age10'' * arm_f=_2_Liraglutide 0.3/0.6/0.9mg,age10'' * arm_f=_2_uaa10797
+NCT02750410,age10'' * arm_f=_2_Dula 0.75mg,age10'' * arm_f=_2_uaa11218
+NCT01768559,age10'' * arm_f=_2_Lixisenatide,age10'' * arm_f=_2_uaa10917
+NCT00975286,age10'' * arm_f=_2_GLP1 PLUS INSULIN BASAL,age10'' * arm_f=_2_uaa10464
+NCT01619059,age10'' * arm_f=_2_SAXA PLUS DAPA PLUS MET,age10'' * arm_f=_2_uaa10820
+NCT00819091,age10''' * arm_f=_2_Linagliptin,age10''' * arm_f=_2_uaa10374
+NCT00800683,age10''' * arm_f=_2_Placebo,age10''' * arm_f=_2_uaa10369
+NCT00740051,age10''' * arm_f=_2_Linagliptin,age10''' * arm_f=_2_uaa10340
+NCT00996658,age10''' * arm_f=_2_Linagliptin,age10''' * arm_f=_2_uaa10476
+NCT01084005,age10''' * arm_f=_2_Linagliptin,age10''' * arm_f=_2_uaa10552
+NCT01087502,age10''' * arm_f=_2_Linagliptin,age10''' * arm_f=_2_uaa10555
+NCT01194830,age10''' * arm_f=_2_Linagliptin,age10''' * arm_f=_2_uaa10671
+NCT02182830,age10''' * arm_f=_2_Empagliflozin 10-25mg,age10''' * arm_f=_2_uaa11066
+NCT00763451,age10'' * arm_f=_2_Lixisenatide 1-step titration,age10'' * arm_f=_2_uaa10349a
+NCT00763451,age10'' * arm_f=_2_Lixisenatide 2-step titration,age10'' * arm_f=_2_uaa10349b
+NCT00976937,age10''' * arm_f=_2_Lixisenatide,age10''' * arm_f=_2_uaa10470
+NCT00866658,age10''' * arm_f=_2_Lixisenatide 2-step titration,age10''' * arm_f=_2_uaa10411
+NCT01169779,age10''' * arm_f=_2_Lixisenatide,age10''' * arm_f=_2_uaa10638
+NCT01798706,age10''' * arm_f=_2_Lixisenatide,age10''' * arm_f=_2_uaa10930
+NCT00712673,age10'' * arm_f=_2_Lixisenatide evening,age10'' * arm_f=_2_uaa10323b
+NCT00712673,age10'' * arm_f=_2_Lixisenatide morning,age10'' * arm_f=_2_uaa10323a
+NCT00713830,age10''' * arm_f=_2_Lixisenatide,age10''' * arm_f=_2_uaa10326
+NCT00715624,age10''' * arm_f=_2_Lixisenatide,age10''' * arm_f=_2_uaa10329
+NCT00763815,age10''' * arm_f=_2_Lixisenatide,age10''' * arm_f=_2_uaa10352
+NCT00688701,age10'' * arm_f=_2_Lixisenatide 1-step titration,age10'' * arm_f=_2_uaa10304a
+NCT00688701,age10'' * arm_f=_2_Lixisenatide 2-step titration,age10'' * arm_f=_2_uaa10304b
+NCT00707031,age10''' * arm_f=_2_Lixisenatide QD,age10''' * arm_f=_2_uaa10318
+NCT01648582,age10''' * arm_f=_2_Dulaglutide 0.75,age10''' * arm_f=_2_uaa10839
+NCT01648582,age10''' * arm_f=_2_Dulaglutide 1.5,age10''' * arm_f=_2_uaa10840
+NCT01558271,age10''' * arm_f=_2_Dulaglutide 0.75mg,age10''' * arm_f=_2_uaa10796
+NCT01558271,age10''' * arm_f=_2_Liraglutide 0.3/0.6/0.9mg,age10''' * arm_f=_2_uaa10797
+NCT02750410,age10''' * arm_f=_2_Dula 0.75mg,age10''' * arm_f=_2_uaa11218
+NCT01768559,age10''' * arm_f=_2_Lixisenatide,age10''' * arm_f=_2_uaa10917
+NCT00975286,age10''' * arm_f=_2_GLP1 PLUS INSULIN BASAL,age10''' * arm_f=_2_uaa10464
+NCT01619059,age10''' * arm_f=_2_SAXA PLUS DAPA PLUS MET,age10''' * arm_f=_2_uaa10820
+NCT00763451,age10''' * arm_f=_2_Lixisenatide 1-step titration,age10''' * arm_f=_2_uaa10349a
+NCT00763451,age10''' * arm_f=_2_Lixisenatide 2-step titration,age10''' * arm_f=_2_uaa10349b
+NCT00712673,age10''' * arm_f=_2_Lixisenatide evening,age10''' * arm_f=_2_uaa10323b
+NCT00712673,age10''' * arm_f=_2_Lixisenatide morning,age10''' * arm_f=_2_uaa10323a
+NCT00688701,age10''' * arm_f=_2_Lixisenatide 1-step titration,age10''' * arm_f=_2_uaa10304a
+NCT00688701,age10''' * arm_f=_2_Lixisenatide 2-step titration,age10''' * arm_f=_2_uaa10304b
+NCT02453555,arm_f_2_Empagliflozin 10mg + Linagliptin 5mg,arm_f_2_uaa11132
+NCT02453555,arm_f=_2_Empagliflozin 10mg + Linagliptin 5mg,arm_f=_2_uaa11132
+NCT02453555,sex:arm_f_2_Empagliflozin 10mg + Linagliptin 5mg,sex:arm_f_2_uaa11132
+NCT02453555,arm_f_2_Empagliflozin 10mg + Linagliptin 5mg:sex,arm_f_2_uaa11132:sex
+NCT02453555,age10:arm_f_2_Empagliflozin 10mg + Linagliptin 5mg,age10:arm_f_2_uaa11132
+NCT02453555,arm_f=_2_Empagliflozin 10mg + Linagliptin 5mg * sex,arm_f=_2_uaa11132 * sex
+NCT02453555,age10 * arm_f=_2_Empagliflozin 10mg + Linagliptin 5mg,age10 * arm_f=_2_uaa11132
+NCT02453555,sex:age10:arm_f_2_Empagliflozin 10mg + Linagliptin 5mg,sex:age10:arm_f_2_uaa11132
+NCT02453555,age10' * arm_f=_2_Empagliflozin 10mg + Linagliptin 5mg,age10' * arm_f=_2_uaa11132
+NCT02453555,age10'' * arm_f=_2_Empagliflozin 10mg + Linagliptin 5mg,age10'' * arm_f=_2_uaa11132
+NCT02453555,age10''' * arm_f=_2_Empagliflozin 10mg + Linagliptin 5mg,age10''' * arm_f=_2_uaa11132

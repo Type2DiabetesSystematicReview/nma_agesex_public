@@ -1,0 +1,76 @@
+nct_id,arm_type,arm_f,arm_f_cleaned,arm_id_unq,arm_id_subgroup,arm_label,dc
+NCT00688701,ref,_1_placebo,placebo,uaa10305,NA,placebo,placebo
+NCT00688701,oth,arm_f_2_Lixisenatide 1-step titration,Lixisenatide 1-step titration,uaa10304,uaa10304a,lixisenatide,glp1
+NCT00688701,oth,arm_f_2_Lixisenatide 2-step titration,Lixisenatide 2-step titration,uaa10304,uaa10304b,lixisenatide,glp1
+NCT00707031,ref,_1_Exenatide BID,Exenatide BID,uaa10317,NA,exenatide,glp1
+NCT00707031,oth,arm_f_2_Lixisenatide QD,Lixisenatide QD,uaa10318,NA,lixisenatide,glp1
+NCT00712673,ref,_1_placebo,placebo,uaa10324,NA,placebo,placebo
+NCT00712673,oth,arm_f_2_Lixisenatide evening,Lixisenatide evening,uaa10323,uaa10323b,lixisenatide,glp1
+NCT00712673,oth,arm_f_2_Lixisenatide morning,Lixisenatide morning,uaa10323,uaa10323a,lixisenatide,glp1
+NCT00713830,ref,_1_Placebo,Placebo,uaa10327,NA,placebo,placebo
+NCT00713830,oth,arm_f_2_Lixisenatide,Lixisenatide,uaa10326,NA,lixisenatide,glp1
+NCT00715624,ref,_1_Placebo,Placebo,uaa10330,NA,placebo,placebo
+NCT00715624,oth,arm_f_2_Lixisenatide,Lixisenatide,uaa10329,NA,lixisenatide,glp1
+NCT00740051,ref,_1_Placebo SLASH Glimepiride,Placebo SLASH Glimepiride,uaa10341,NA,placebo,placebo
+NCT00740051,oth,arm_f_2_Linagliptin,Linagliptin,uaa10340,NA,linagliptin,dpp4
+NCT00740051,oth,arm_f_2_Linagliptin,"Linagliptin, 5mg tablet",uaa10340,NA,linagliptin,dpp4
+
+NCT00763451,ref,_1_placebo,placebo,uaa10350,NA,placebo,placebo
+NCT00763451,oth,arm_f_2_Lixisenatide 1-step titration,Lixisenatide 1-step titration,uaa10349,uaa10349a,lixisenatide,glp1
+NCT00763451,oth,arm_f_2_Lixisenatide 2-step titration,Lixisenatide 2-step titration,uaa10349,uaa10349b,lixisenatide,glp1
+NCT00763815,ref,_1_Placebo,Placebo,uaa10353,NA,placebo,placebo
+NCT00763815,oth,arm_f_2_Lixisenatide,Lixisenatide,uaa10352,NA,lixisenatide,glp1
+NCT00800683,ref,_1_Linagliptin,Linagliptin,uaa10368,NA,linagliptin,dpp4
+NCT00800683,oth,arm_f_2_Placebo,Placebo,uaa10369,NA,placebo,placebo
+NCT00819091,ref,_1_Placebo tablet,Placebo tablet,uaa10375,NA,placebo,placebo
+NCT00819091,oth,arm_f_2_Linagliptin,Linagliptin,uaa10374,NA,linagliptin,dpp4
+NCT00819091,oth,arm_f_2_Linagliptin,"Linagliptin, 5 mg tablet",uaa10374,NA,linagliptin,dpp4
+NCT00866658,ref,_1_Placebo 2-step titration,Placebo 2-step titration,uaa10412,NA,placebo,placebo
+NCT00866658,oth,arm_f_2_Lixisenatide 2-step titration,Lixisenatide 2-step titration,uaa10411,NA,lixisenatide,glp1
+NCT00975286,ref,_1_PLACEBO PLUS INSULIN BASAL,PLACEBO PLUS INSULIN BASAL,uaa10465,NA,placebo,placebo
+NCT00975286,oth,arm_f_2_GLP1 PLUS INSULIN BASAL,GLP1 PLUS INSULIN BASAL,uaa10464,NA,lixisenatide,glp1
+NCT00976937,ref,_1_Sitagliptin,Sitagliptin,uaa10471,NA,sitagliptin,dpp4
+NCT00976937,oth,arm_f_2_Lixisenatide,Lixisenatide,uaa10470,NA,lixisenatide,glp1
+NCT00996658,ref,_1_Placebo Tablet,Placebo Tablet,uaa10477,NA,placebo,placebo
+NCT00996658,oth,arm_f_2_Linagliptin,Linagliptin,uaa10476,NA,linagliptin,dpp4
+NCT00996658,oth,arm_f_2_Linagliptin,"Linagliptin 5 mg tablet",uaa10476,NA,linagliptin,dpp4
+NCT01084005,ref,_1_Placebo,Placebo,uaa10553,NA,placebo,placebo
+NCT01084005,oth,arm_f_2_Linagliptin,Linagliptin,uaa10552,NA,linagliptin,dpp4
+NCT01084005,oth,arm_f_2_Linagliptin,"Linagliptin, 5mg tablet",uaa10552,NA,linagliptin,dpp4
+NCT01087502,ref,_1_Placebo SLASH Glimepiride,Placebo SLASH Glimepiride,uaa10556,NA,placebo,placebo
+NCT01087502,oth,arm_f_2_Linagliptin,Linagliptin,uaa10555,NA,linagliptin,dpp4
+NCT01087502,oth,arm_f_2_Linagliptin,"Linagliptin, 5mg tablet",uaa10555,NA,linagliptin,dpp4
+NCT01169779,ref,_1_Placebo,Placebo,uaa10639,NA,placebo,placebo
+NCT01169779,oth,arm_f_2_Lixisenatide,Lixisenatide,uaa10638,NA,lixisenatide,glp1
+NCT01194830,ref,_1_Placebo,Placebo,uaa10672,NA,placebo,placebo
+NCT01194830,oth,arm_f_2_Linagliptin,Linagliptin,uaa10671,NA,linagliptin,dpp4
+NCT01558271,ref,_1_Placebo for 26 weeks of blinded followed by dulaglutide for 26 weeks open,Placebo for 26 weeks of blinded followed by dulaglutide for 26 weeks open,uaa10798,NA,placebo,placebo
+Liraglutide 0.3mg first week, 0.6mg second week then 0.9mg remaining
+NCT01558271,oth,arm_f_2_Dulaglutide 0.75mg,Dulaglutide 0.75mg,uaa10796,NA,dulaglutide,glp1
+NCT01558271,oth,arm_f_2_Dulaglutide 0.75mg,Dulaglutide for 26 weeks blinded then 26 weeks open,uaa10796,NA,dulaglutide,glp1
+NCT01558271,oth,arm_f_2_Liraglutide 0.3/0.6/0.9mg,Liraglutide 0.3/0.6/0.9mg,uaa10797,NA,liraglutide,glp1
+NCT01558271,oth,arm_f_2_Liraglutide 0.3/0.6/0.9mg,"Liraglutide 0.3mg first week, 0.6mg second week then 0.9mg remaining",uaa10797,NA,liraglutide,glp1
+NCT01619059,ref,_1_PLA PLUS DAPA PLUS MET,PLA PLUS DAPA PLUS MET,uaa10819,NA,placebo,placebo
+NCT01619059,oth,arm_f_2_SAXA PLUS DAPA PLUS MET,SAXA PLUS DAPA PLUS MET,uaa10820,NA,saxagliptin,dpp4
+NCT01632007,ref,_1_Placebo,Placebo,ab0171,NA,placebo,placebo
+NCT01632007,oth,arm_f_2_Alogliptin,Alogliptin,ab0170,NA,alogliptin,dpp4
+NCT01632007,oth,arm_f_2_Trelagliptin,Trelagliptin,ab0172,NA,trelagliptin,dpp4
+NCT01632163,ref,_1_Placebo,Placebo,ab0174,NA,placebo,placebo
+NCT01632163,oth,arm_f_2_Lixisenatide,Lixisenatide,ab0173,NA,lixisenatide,glp1
+NCT01648582,ref,_1_Insulin glargine,Insulin glargine,uaa10841,NA,insulin_glargine,insulin
+NCT01648582,oth,arm_f_2_Dulaglutide 0.75,Dulaglutide 0.75,uaa10839,NA,dulaglutide,glp1
+NCT01648582,oth,arm_f_2_Dulaglutide 1.5,Dulaglutide 1.5,uaa10840,NA,dulaglutide,glp1
+NCT01768559,ref,_1_insulin,insulin,uaa10915,NA,insulin_glulisine,insulin
+NCT01768559,oth,arm_f_2_Lixisenatide,Lixisenatide,uaa10917,NA,lixisenatide,glp1
+NCT01798706,ref,_1_Placebo,Placebo,uaa10931,NA,placebo,placebo
+NCT01798706,oth,arm_f_2_Lixisenatide,Lixisenatide,uaa10930,NA,lixisenatide,glp1
+NCT02182830,ref,_1_Plac SLASH Plac,Plac SLASH Plac,uaa11067,NA,placebo,placebo
+NCT02182830,oth,arm_f_2_Empagliflozin 10-25mg,Empagliflozin 10-25mg,uaa11066,NA,empagliflozin,sglt2
+NCT02182830,oth,arm_f_2_Empagliflozin 10-25mg,10mg SLASH 25mg,uaa11066,NA,empagliflozin,sglt2
+NCT02453555,ref,_1_Linagliptin,Linagliptin,uaa11133,NA,placebo,placebo
+NCT02453555,oth,arm_f_2_Empagliflozin 10mg + Linagliptin 5mg,Empagliflozin 10mg + Linagliptin 5mg,uaa11132,NA,empagliflozin,sglt2
+NCT02453555,oth,arm_f_2_Empagliflozin 10mg + Linagliptin 5mg,FDC EmpaLina titr,uaa11132,NA,empagliflozin,sglt2
+NCT02453555,oth,arm_f_2_Empagliflozin 10mg + Linagliptin 5mg,FDC EmpaLina titr,uaa11132,NA,empagliflozin,sglt2
+NCT02750410,ref,_1_Plc,Plc,uaa11219,NA,placebo,placebo
+NCT02750410,oth,arm_f_2_Dula 0.75mg,Dula 0.75mg,uaa11218,NA,dulaglutide,glp1
+NCT02750410,oth,arm_f_2_Dula 0.75mg,Dula,uaa11218,NA,dulaglutide,glp1
