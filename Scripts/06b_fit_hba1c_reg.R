@@ -34,6 +34,14 @@ print(as.character(mymod)[2])
 ## note want to read in data at lowest point in each loop
 tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 
+getarms <- tot %>% 
+  select(reg) 
+getarms$reg <- map(getarms$reg, ~ .x %>% select(nct_id, arm_id_unq, arm_lvl, reference_arm, trtcls5, trtcls4) %>% distinct())
+getarms <- getarms %>% 
+  unnest(reg) %>% 
+  filter(!is.na(arm_lvl))
+write_csv(getarms, "Outputs/arm_lvl_info_as_analysed.csv")
+
 ## Limit to longer duration
 if(mdl_chs$durn == "ge26") {
   tot$agg[] <- lapply(tot$agg, function(x) x %>% filter(ge26 ==1L))

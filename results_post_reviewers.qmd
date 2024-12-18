@@ -1,0 +1,81 @@
+---
+title: "results_post_reviewers"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+  cache: false
+---
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+```
+
+# Results
+
+## Systematic review results
+
+```{r overallnums}
+exclusions <- read_csv("Data/exclusions_update.csv") %>% 
+  rename(nct_id = trial_id)
+mace <- read_csv("Outputs/manuscript_table1b.csv") %>% 
+  filter(!nct_id == "UMIN000018395") %>% 
+  select(data_lvl, nct_id, n = participants) %>% 
+  mutate(data_lvl = str_to_lower(data_lvl),
+         data_lvl = if_else(data_lvl == "sg", "agg", data_lvl))
+hba1c <- read_csv("Outputs/nt_trl_lvl_hba1c.csv") 
+tot <- bind_rows(mace = mace %>% filter(!nct_id %in% hba1c$nct_id), 
+                 hba1c = hba1c, .id = "outcome") %>% 
+  mutate(mace = if_else(nct_id %in% mace$nct_id, 1L, 0L))
+## No exclusions
+tot <- tot %>% 
+  inner_join(exclusions)
+hba1cn <- sum(tot$outcome == "hba1c") 
+macen <- sum(tot$mace)
+bthn <- sum(tot$outcome == "hba1c" & tot$mace ==1) 
+aggn <- sum(tot$data_lvl == "agg")
+datalvl <- tapply(tot, tot$data_lvl, function(x) sum(!duplicated(x$nct_id)), simplify = FALSE)
+datalvln <- tapply(tot, tot$data_lvl, function(x) sum(x$n) %>% formatC(format = "d", big.mark = ","), simplify = FALSE)
+```
+
+We identified 685 eligible trials, of which `r nrow (tot)` were included in the network meta-analyses (Figure 1). Of these, `r hba1cn` reported findings for HbA1c,  `r macen` reported MACE and `r bthn` reported for both. There were a total of `r datalvl$agg` aggregate level and `r datalvl$ipd`  individual participant data trials, including `r datalvln$agg` and `r datalvln$ipd` participants, respectively. Trial-level details and risk of bias are shown in the online repository.
+
+Table 1 shows the total number of included trials reporting HbA1c for each class along with aggregate baseline characteristics. Characteristics were similar for trials with individual participant data and those with aggregate data. For trials reporting MACE, trial-level details are shown in table 2. For both HbA1c and MACE reporting trials, there were more male than female participants and almost all trial participants were in the 40 to 80 year age range, including trials targeted at older people (supplementary figures S1). For trials reporting HbA1c where individual participant data was available, age was similarly distributed.
+ 
+## Main treatment effects
+
+The main treatment effects comparing each treatment versus placebo are shown in supplementary figure S2 for HbA1c for a standard network meta-analysis without covariates. Most treatments reduced HbA1c with a range of absolute reductions of -0.5% to -1.5%.
+
+Supplementary figure S3 shows the same analysis for MACE, showing the expected result of reduced hazard of MACE for SGLT2i compared to placebo, with null findings for DPP4i and for some agents within the GLP1ra class (consistent with trial-level findings for these agents which did not show superiority to placebo).
+
+## Age-treatment and sex-treatment interactions 
+
+```{r results}
+hb <- readRDS("Scratch_data/hba1c_results_ms.Rds")
+mc <- readRDS("Scratch_data/mace_results_ms.Rds")
+```
+
+Figure 2 shows the age-treatment and sex-treatment interactions, assessing differences in the efficacy of treatment by age and sex, for HbA1c (panel a) and MACE (panel b). For HbA1c, interactions are on the absolute scale showing change in HbA1c in units of percent. Across all three networks, SGLT2-inhibitors were less efficacious with increasing age (`r hb$random$mono$age30$A10BK$fldashnopar`, `r hb$random$dual$age30$A10BK$fldashnopar` and `r hb$random$triple$age30$A10BK$fldashnopar` lower effect on HbA1c per 30-year increment in age for mono, dual and triple therapy respectively) which is equivalent to about a quarter to half of the overall treatment effect and at the lower end of estimated clinically important difference. There was no evidence for non-linearity in the age-treatment interaction (Figure S8). Results were also similar on confining the analysis to trials with greater than or equal to 6 months of follow-up (Figure S4). 
+GLP-1 inhibitors had less absolute HbA1c lowering with increasing age in monotherapy and dual-therapy but not triple therapy trials (XX HbA1c lowering per 30-year higher age for monotherapy, dual therapy, and triple therapy, respectively)   DPP-4 inhibitors had slightly less absolute HbA1c with lowering in dual-therapy for older people (), but no evidence of variation in efficacy for mono or triple therapy and no variation in efficacy by sex
+
+
+
+For MACE, there was evidence of greater relative efficacy in older people for SGLT-2i (HR `r mc$random$main$age30$A10BK$fldashnopar` per 30-year increment in age). For GLP-1ra, there was some evidence of lower efficacy in older people (HR `r mc$random$main$age30$A10BJ$fldashnopar` per 30-year increment in age). For DPP-4 inhibitors the credible interval for the age-treatment interaction included the null (HR `r mc$random$main$age30$A10BH$fldashnopar`). When modelling sex-treatment interactions in MACE trials, DPP-4i were less efficacious in male participants (HR `r mc$random$main$male$A10BH$fldashnopar` for male versus female), although this association was less evident on including sex-subgroup data in the analysis (HR `r mc$fixed$sex$male$A10BH$fldashnopar`) and absent on excluding the sole DPP-4i trial for which we had access to individual participant data (Figure S5). For GLP-1ra and SGLT-2i there was no evidence of any sex-treatment interactions (HR `r mc$random$main$male$A10BJ$fldashnopar` for male versus female). In these models, age was fitted as a linear term. On visual inspection of residual plots and restricted cubic spline trial-level models (which allow for non-linearity) there was no evidence that the association between increased age and greater efficacy was attenuated at older ages, at least within the range of ages included in the trials (Figure S9).
+
+In sensitivity analyses including/excluding age- and sex-subgroup data in the model, and dropping each trial in turn, the greater efficacy in older people for SGLT2i persisted whether or not age-subgroup data were included in the modelling, but was not found after excluding one of the four SGLT2i trials with individual participant data (NCT01131676, EMPA-REG OUTCOME, Figure S4). Less equivocally, for older people, despite the finding of attenuated effects of SGLT-2i on HbA1c, the reduction in the MACE risk was preserved or greater in all of the sensitivity analyses. Similar results for both HbA1c and MACE were obtained on repeating these analyses having restricted the data to the 14 trials which reported/had individual-level data for both HbA1c and MACE (Figure S7).
+
+Particular caution is needed in interpreting the GLP-1ra and DPP-4i findings for MACE, as results differed depending on the inclusion/exclusion of the single trials of each agent for which we had individual participant data (HARMONY NCT02465515 and EXAMINE NCT00968708 for GLP-1ra and DPP4i respectively) and/or the inclusion/exclusion of subgroup data (Supplementary figure S4).
+When assessing adverse events, there were too few events within the individual participant trial data to fit models for amputation or for ketoacidosis (Table S3). There was no age- or sex-treatment interaction between any class of medication and hypoglycaemia, urinary tract infection, or gastrointestinal adverse events. For SGLT2i (which have an overall null association with serious adverse events) there was an age interaction suggesting the risk of serious adverse events with SGLT2i’s may be slightly lower in older people (Figure S10). The other drug classes had no age- or sex- treatment interactions with serious adverse events. 
+
+## Age and sex-specific effects for MACE trials
+
+```{r macerel}
+mr <- readRDS("Scratch_data/mace_relative_results_ms.Rds")
+
+```
+
+Figure 3 shows the impact of the age-treatment and sex-treatment interactions on the overall age- and sex-specific relative efficacy versus placebo for each class. 
+The clearest finding was for SGLT2i, which were associated with reduced MACE in older people regardless of sex (HR `r mr$A10BK$female$age75$fldashnopar` and `r mr$A10BK$male$age75$fldashnopar` for 75-year old females and males respectively). For GLP1ra, our findings suggested that was no association with a significant reduction in MACE in male participants (eg HR `r mr$A10BJ$male$age65$fldashnopar` in 65 year old males) and in older people (HR `r mr$A10BJ$female$age75$fldashnopar` and `r mr$A10BJ$male$age75$fldashnopar` for 75-year old females and males respectively), but there was associated with decreased risk of MACE in younger female participants (HR `r mr$A10BJ$female$age55$fldashnopar`). This should be interpreted with caution, however, given the heterogeneity in the overall efficacy of these agents depending on agent and target population, and the fact that the age-sex interactions were pooled across these agents. There were some differences in efficacy across age and sex for DPP4i, but these should be interpreted with caution in light of the fact that these agents showed a null overall effect on MACE. Finally, for all three classes, some caution is needed in interpreting findings given the sensitivity of the interaction estimates to the inclusion of particular trials (see above). 
+

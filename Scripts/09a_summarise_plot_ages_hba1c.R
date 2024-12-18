@@ -261,7 +261,20 @@ ages_smry <- ages_cls2 %>%
             q05 = quantile(age, probs = 0.05),
             q95 = quantile(age, probs = 0.95)) %>% 
   ungroup()
+warnings("Just taking first 40 trials, need list of FI trials from PH")
+fi_trials <- exclusions$trial_id[exclusions$ipd_hba1c ==1L][1:39]
+ages_smry_fi <- ages_cls2 %>% 
+  mutate(data_lvl = if_else(nct_id %in% fi_trials, "ipd_fi", data_lvl)) %>% 
+  group_by(cls, trl_lbl, data_lvl) %>% 
+  summarise(trials = sum(!duplicated(nct_id)),
+            n = length(nct_id),
+            m = mean(age),
+            s = sd(age),
+            q05 = quantile(age, probs = 0.05),
+            q95 = quantile(age, probs = 0.95)) %>% 
+  ungroup()
 write_csv(ages_smry, "Outputs/age_summary_hba1c.csv")
+write_csv(ages_smry_fi, "Outputs/age_summary_hba1c_fi.csv")
 
 ## examine with missing ages - 10 (9 IPD and one aggregate) of the 12 are mace trials so adding later
 rv_msng <- exclusions %>% 
