@@ -1,0 +1,129 @@
+var,trl_lbl,data_lvl,lvls,measure,res
+trials,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,count,237
+trials,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,count,43
+trials,Glucagon-like peptide-1 (GLP-1) analogues,agg,,count,158
+trials,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,count,34
+trials,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,count,140
+trials,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,count,32
+trials,Total trials,agg,,count,489
+trials,Total trials,ipd,,count,103
+arms,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,2,count,204
+arms,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,3,count,25
+arms,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,4 or 5,count,8
+arms,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,2,count,27
+arms,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,3,count,10
+arms,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,4 or 5,count,6
+arms,Glucagon-like peptide-1 (GLP-1) analogues,agg,2,count,106
+arms,Glucagon-like peptide-1 (GLP-1) analogues,agg,3,count,41
+arms,Glucagon-like peptide-1 (GLP-1) analogues,agg,4 or 5,count,11
+arms,Glucagon-like peptide-1 (GLP-1) analogues,ipd,2,count,22
+arms,Glucagon-like peptide-1 (GLP-1) analogues,ipd,3,count,9
+arms,Glucagon-like peptide-1 (GLP-1) analogues,ipd,4 or 5,count,3
+arms,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,2,count,107
+arms,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,3,count,28
+arms,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,4 or 5,count,5
+arms,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,2,count,12
+arms,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,3,count,16
+arms,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,4 or 5,count,4
+arms,Total trials,agg,2,count,388
+arms,Total trials,agg,3,count,80
+arms,Total trials,agg,4 or 5,count,21
+arms,Total trials,ipd,2,count,56
+arms,Total trials,ipd,3,count,34
+arms,Total trials,ipd,4 or 5,count,13
+male,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,count,63066
+male,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,count,16724
+male,Glucagon-like peptide-1 (GLP-1) analogues,agg,,count,44780
+male,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,count,16309
+male,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,count,24776
+male,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,count,24638
+male,Total trials,agg,,count,124159
+male,Total trials,ipd,,count,54465
+participants,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,count,109293
+participants,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,count,29991
+participants,Glucagon-like peptide-1 (GLP-1) analogues,agg,,count,79184
+participants,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,count,28137
+participants,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,count,44039
+participants,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,count,40191
+participants,Total trials,agg,,count,217321
+participants,Total trials,ipd,,count,92182
+male,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,percent,57.7
+male,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,percent,55.8
+male,Glucagon-like peptide-1 (GLP-1) analogues,agg,,percent,56.6
+male,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,percent,58
+male,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,percent,56.3
+male,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,percent,61.3
+male,Total trials,agg,,percent,57.1
+male,Total trials,ipd,,percent,59.1
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,n,109293
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,n,29991
+age,Glucagon-like peptide-1 (GLP-1) analogues,agg,,n,79184
+age,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,n,28137
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,n,44039
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,n,40191
+age,Total trials,agg,,n,217321
+age,Total trials,ipd,,n,92182
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,m,58.76639992160106
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,m,57.187192132010935
+age,Glucagon-like peptide-1 (GLP-1) analogues,agg,,m,57.91283023164669
+age,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,m,59.31373747416614
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,m,61.357848139162385
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,m,57.78121392019019
+age,Total trials,agg,,m,59.12469981025299
+age,Total trials,ipd,,m,58.251460707966835
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,s,10.785615811087142
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,s,11.23868299066923
+age,Glucagon-like peptide-1 (GLP-1) analogues,agg,,s,10.356179617934853
+age,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,s,11.009739748351548
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,s,10.732558889873934
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,s,11.17884548230425
+age,Total trials,agg,,s,10.688756828791794
+age,Total trials,ipd,,s,11.165489036562317
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,q05,40.275001766970725
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,q05,36.86845451272705
+age,Glucagon-like peptide-1 (GLP-1) analogues,agg,,q05,40.38363145828527
+age,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,q05,40.01701227778733
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,q05,42.91247049201136
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,q05,36.412194053096925
+age,Total trials,agg,,q05,40.874372307595834
+age,Total trials,ipd,,q05,37.58243162037424
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,q95,75.67834241739334
+age,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,q95,75.06821560835834
+age,Glucagon-like peptide-1 (GLP-1) analogues,agg,,q95,74.26659737974805
+age,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,q95,76.06795889104069
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,q95,78.22346119641571
+age,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,q95,75.2293439605906
+age,Total trials,agg,,q95,75.95288422161752
+age,Total trials,ipd,,q95,75.57129103257911
+duration,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,m,30.91983122362869
+duration,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,m,31.599999999999998
+duration,Glucagon-like peptide-1 (GLP-1) analogues,agg,,m,32.18143459915612
+duration,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,m,31.54901960784314
+duration,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,m,26.5
+duration,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,m,56.825
+duration,Total trials,agg,,m,30.698023176550784
+duration,Total trials,ipd,,m,38.658899676375405
+duration,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,med,24
+duration,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,med,24
+duration,Glucagon-like peptide-1 (GLP-1) analogues,agg,,med,26
+duration,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,med,26
+duration,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,med,24
+duration,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,med,25
+duration,Total trials,agg,,med,24
+duration,Total trials,ipd,,med,24
+duration,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,q05,12
+duration,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,q05,12.2
+duration,Glucagon-like peptide-1 (GLP-1) analogues,agg,,q05,12
+duration,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,q05,24
+duration,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,q05,12
+duration,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,q05,17.1
+duration,Total trials,agg,,q05,12
+duration,Total trials,ipd,,q05,14.200000000000001
+duration,Dipeptidyl peptidase 4 (DPP-4) inhibitors,agg,,q95,54.39999999999998
+duration,Dipeptidyl peptidase 4 (DPP-4) inhibitors,ipd,,q95,53.8
+duration,Glucagon-like peptide-1 (GLP-1) analogues,agg,,q95,56
+duration,Glucagon-like peptide-1 (GLP-1) analogues,ipd,,q95,52
+duration,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,agg,,q95,52
+duration,Sodium-glucose co-transporter 2 (SGLT2) inhibitors,ipd,,q95,239.2
+duration,Total trials,agg,,q95,56
+duration,Total trials,ipd,,q95,104
