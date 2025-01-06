@@ -12,8 +12,16 @@ dropdisconnect <- c("NCT02477865", "JapicCTI-101351",
                     "NCT02477969", "JapicCTI-101352", "NCT03508323",
                     "UMIN000007051")
 
+## FI trials
+fi_trials <- read_lines("Data/fi_trials.txt")
+
+NewDataLvl <- function(x) {
+  x %>% 
+    mutate(data_lvl = if_else(nct_id %in% fi_trials, "ipd_fi", data_lvl))
+}
+
 ## arrange into same format as summaries
-ages <- read_csv("Outputs/age_summary_hba1c.csv")
+ages <- read_csv("Outputs/age_summary_hba1c_fi.csv")
 trials <- ages %>% 
   select(trl_lbl, data_lvl, res = trials) %>% 
   mutate(measure = "count",
@@ -65,6 +73,8 @@ hba1c_cls <- hba1c_cls %>%
   mutate(trl_lbl = if_else(is.na(trl_lbl), "Total trials", trl_lbl)) %>% 
   left_join(who_atc %>% select(trtcls5 = `ATC code`, nm = `ATC level name`)) %>% 
   mutate(nm = if_else(trtcls5 == "place", "Placebo", nm)) 
+hba1c_cls <- hba1c_cls %>% 
+  NewDataLvl() 
 comparisons <- hba1c_cls %>% 
   count(trl_lbl, nm, data_lvl) %>%
   mutate(n = if_else(trl_lbl == nm, "-", as.character(n))) %>% 
@@ -117,7 +127,7 @@ tbl_lng <- bind_rows(trials,
                      durn_smry,
                      .id = "orig_tbl") %>% 
   select(var, trl_lbl, data_lvl, lvls, measure, res)
-write_csv(tbl_lng, "Outputs/manuscript_table1a_machine_readable.csv", na = "")
+write_csv(tbl_lng, "Outputs/manuscript_table1a_machine_readable_fi.csv", na = "")
 
 ## produce "Nice" format for report/paper
 tbl_lng2 <- tbl_lng %>% 
@@ -159,25 +169,7 @@ tbl_wide2 <- tbl_wide %>%
   select(-var, -lvls, -measure) %>% 
   select(collbl, everything())
 
-write_csv(tbl_wide2, "Outputs/manuscript_table1a.csv", na = "")
+write_csv(tbl_wide2, "Outputs/manuscript_table1a_fi.csv", na = "")
 
-write_csv(comparisons, "Outputs/manuscript_hba1c_comparisons.csv", na = "")
+write_csv(comparisons, "Outputs/manuscript_hba1c_comparisons_fi.csv", na = "")
 
-## Produce summaries to check abstract ----
-a <- read_csv("Outputs/manuscript_table1a_machine_readable.csv")
-a %>% 
-  filter(var == "male") %>% 
-  filter(trl_lbl == "Total trials") %>% 
-  spread(measure, res) %>% 
-  mutate(female = count*(1-(percent/100)),
-         female_percent = 100* female/count) %>%  
-  summarise(across(c(count, female), sum)) %>% 
-  mutate(100*female/count)
-source("Scripts/common_functions/Scripts/combine_sd.R")
-a %>% 
-  filter(trl_lbl == "Total trials") %>% 
-  filter(var == "age") %>% 
-  spread(measure, res) %>% 
-  summarise(s = CombSdVectorised(n, m,s),
-            m = weighted.mean(m, n)
-            )

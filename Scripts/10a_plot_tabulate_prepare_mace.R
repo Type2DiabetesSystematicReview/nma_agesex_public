@@ -108,6 +108,15 @@ mace_tbl <- mace_tbl %>%
   mutate(data_lvl = if_else(nct_id %in% mace_agg_age$nct_id, "sg", data_lvl))
 write_csv(mace_tbl, "Outputs/manuscript_table1b_machine_readable.csv", na = "")
 
+mace_tbl %>% 
+  filter(!nct_id == "UMIN000018395") %>% 
+  summarise(n = length(nct_id),
+            age_s = CombSdVectorised(participants, age_m, age_s),
+            age_m = weighted.mean(age_m, participants),
+            male_prcnt1 = weighted.mean(male_prcnt, participants),
+            male_prcnt2 = 0.01* sum(100*male_prcnt*participants)/sum(participants)) %>% 
+  mutate(female_prcnt = 100 - male_prcnt1)
+
 mace_tbl_neat <- mace_tbl %>% 
   mutate(across(starts_with("age"), ~ round(.x, 1) %>% formatC(digits = 1, format = "f")),
         age = paste0(age_m , " (", age_s, ") [", age_q05, "-", age_q95, "]"),
