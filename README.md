@@ -1,5 +1,7 @@
 # Age and sex differences in controlling glycaemia and preventing cardiovascular events in type 2 diabetes: a clinical trials meta-analysis using aggregate-level and individual-participant data
 
+[![DOI](https://zenodo.org/badge/801956055.svg)](https://zenodo.org/badge/latestdoi/801956055)
+
 This repository contains all the code and non-individual-level data for the paper "Age and Sex Differences in Efficacy of Treatments for Type 2 Diabetes A Network Meta-Analysis paper analysing heterogeneity of treatment effects" available at  [JAMA](https://jamanetwork.com/journals/jama/fullarticle/2829848), [Europe PMC](https://europepmc.org/article/MED/39899304) and [the University of Glasgow Enlighten repository](https://eprints.gla.ac.uk/343359/). The [pubmed link is here](https://pubmed.ncbi.nlm.nih.gov/39899304/).
 
 This repository contains the entire git history of the analysis unchanged, except the first few commits which were squashed to remove an absolute path which had been included in an early iteration.
