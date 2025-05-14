@@ -51,7 +51,7 @@ pseudo <- pseudo %>%
   mutate(ipd_arm = str_to_lower(arm)) %>% 
   inner_join(mace_arms %>% select(nct_id, ipd_arm, arm_lvl, trtcls5))
 
-## Create table 1a wiht a full listing of MACE trials ----
+## Create table 1a with a full listing of MACE trials ----
 mace_tbl_name <- bind_rows(agg = mace_agg_trial_level,
                       ipd = mace_ipd_trial_level,
                       .id = "data_lvl") 

@@ -321,4 +321,3 @@ arm_meta <- bind_rows(arm_meta,
                       arm_meta_2)
 write_csv(arm_meta, "Scratch_data/arm_labels_hba1c.csv")
 ## no change to arm_meta on adding bocf and rcs
-

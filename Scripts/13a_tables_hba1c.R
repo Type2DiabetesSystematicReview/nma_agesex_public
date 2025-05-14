@@ -163,21 +163,3 @@ write_csv(tbl_wide2, "Outputs/manuscript_table1a.csv", na = "")
 
 write_csv(comparisons, "Outputs/manuscript_hba1c_comparisons.csv", na = "")
 
-## Produce summaries to check abstract ----
-a <- read_csv("Outputs/manuscript_table1a_machine_readable.csv")
-a %>% 
-  filter(var == "male") %>% 
-  filter(trl_lbl == "Total trials") %>% 
-  spread(measure, res) %>% 
-  mutate(female = count*(1-(percent/100)),
-         female_percent = 100* female/count) %>%  
-  summarise(across(c(count, female), sum)) %>% 
-  mutate(100*female/count)
-source("Scripts/common_functions/Scripts/combine_sd.R")
-a %>% 
-  filter(trl_lbl == "Total trials") %>% 
-  filter(var == "age") %>% 
-  spread(measure, res) %>% 
-  summarise(s = CombSdVectorised(n, m,s),
-            m = weighted.mean(m, n)
-            )

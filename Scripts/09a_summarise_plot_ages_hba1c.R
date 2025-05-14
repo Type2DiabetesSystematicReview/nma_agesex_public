@@ -166,8 +166,12 @@ ipd_chk <- bind_rows(truncnorm = bth %>%
                               arm_lvl,
                               trtcls5),
                      .id = "age_method")
-rm(bth, elig, hba1c_agg, ipd_agg, ipd_ecdf, pseudo_hba1c)
 
+rm(bth, elig, hba1c_agg, ipd_agg, ipd_ecdf, pseudo_hba1c)
+saveRDS(bth %>% 
+  filter(orig_data_lvl == "ipd") %>% 
+  select(nct_id, arm_lvl, n, age_m, age_sd, mu, sigma, min_age, max_age) %>% 
+  distinct(), "Scratch_data/ipd_distr_smry_age.Rds")
 ## plot age distributions where have mean, sd and (for Hba1c trials) truncations ----
 
 

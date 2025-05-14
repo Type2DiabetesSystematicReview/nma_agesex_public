@@ -1,8 +1,8 @@
 #04b_arm_label_reverse
 ## ciode to reverse who_atc lookups back to drug names
 library(tidyverse)
-who_atc <- read_csv("Data/whoatcdiabetesnodose.csv")
-who_lkp <- readRDS("Scratch_data/who_atc_lkp.Rds")
+who_atc <- read_csv("../nma_agesex_public/Data/whoatcdiabetesnodose.csv")
+who_lkp <- readRDS("../nma_agesex_public/Scratch_data/who_atc_lkp.Rds")
 
 who_lkp_rev1 <- who_atc$`ATC level name`
 names(who_lkp_rev1) <- who_atc$`ATC code`
@@ -20,3 +20,4 @@ who_lkp_rev <- c(who_lkp_rev,
                    "A10BH" = "omarigliptin"))
 who_lkp_mace <- names(who_lkp_rev)
 names(who_lkp_mace) <- who_lkp_rev
+

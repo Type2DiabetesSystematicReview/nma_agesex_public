@@ -47,6 +47,7 @@ ipd <- ipd %>%
 sum(!duplicated(ipd$nct_id))
 ## read in reg
 reg <- readRDS("Scratch_data/ipd_coefs_frmttd.Rds")
+## read in diagnostics
 
 sum(!duplicated(reg$nct_id))
 reg <- reg %>% 
