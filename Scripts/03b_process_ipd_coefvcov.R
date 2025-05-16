@@ -373,7 +373,13 @@ age_distr_lng <- age_distr_lng %>%
          value_2_se = value_2,
          value_2_rsd = value_2_sngl)
 saveRDS(age_distr_lng, "Scratch_data/simulated_ipd.Rds")
-
+age_distr_lng <- readRDS("Scratch_data/simulated_ipd.Rds")
+hba1c_base_smry <- age_distr_lng %>% 
+  group_by(nct_id, arm_f) %>% 
+  summarise(hba1cbase_m = mean(value_1_rsd),
+            hba1cbase_s = sd(value_1_rsd)) %>% 
+  ungroup()
+write_csv(hba1c_base_smry, "Outputs/hba1c_base_summary.csv")
 ## check same with correlation/covariance data and append arms
 cfs_cors <- readRDS("Scratch_data/combined_cfs_vcov.Rds")
 all(age_distr_lng$nct_id %in% cfs_cors$nct_id) && all(cfs_cors$nct_id %in% age_distr_lng$nct_id)
