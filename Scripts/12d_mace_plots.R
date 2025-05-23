@@ -343,6 +343,7 @@ main_mace <- main_mace %>%
 main_mace <- main_mace %>% 
   mutate(cls_lbl = who_lkp_rev[cls],
          cls_lbl = paste0(cls, "-", cls_lbl))
+write_csv(main_mace, "Outputs/mace_no_inter_ma_res.csv")
 mainmacecplot <- ggplot(main_mace, 
                         aes(x = lbl, y = mean, ymin = x2_5_percent, ymax = x97_5_percent, 
                             colour = fixedrand)) +
