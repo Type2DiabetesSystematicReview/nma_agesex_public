@@ -4,6 +4,7 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 library(multinma)
+library(tidyverse)
 
 ## read in metadata 
 mdl_order <- read.csv("Outputs/model_order.csv", stringsAsFactors = FALSE)
@@ -36,7 +37,7 @@ tot <- readRDS("Scratch_data/agg_ipd_hba1c.Rds")
 
 getarms <- tot %>% 
   select(reg) 
-getarms$reg <- map(getarms$reg, ~ .x %>% select(nct_id, arm_id_unq, arm_lvl, reference_arm, trtcls5, trtcls4) %>% distinct())
+getarms$reg <- map(getarms$reg, function(x) x %>% select(nct_id, arm_id_unq, arm_lvl, reference_arm, trtcls5, trtcls4) %>% distinct())
 getarms <- getarms %>% 
   unnest(reg) %>% 
   filter(!is.na(arm_lvl))
@@ -188,7 +189,7 @@ if(testrun) {
                  class_interactions = "common",
                  prior_intercept = normal(scale = 10),
                  prior_trt = normal(scale = 10),
-                 prior_reg = normal(scale = 10), chains = 4, cores = 4)
+                 prior_reg = normal(scale = 10), chains = 2, cores = 2, iter = 200)
     }
   }
 saveRDS(mdl, paste0(filename, ".Rds"))
