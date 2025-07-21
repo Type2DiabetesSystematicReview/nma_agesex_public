@@ -87,22 +87,25 @@ msng_new %>%
   count(trial_id, sort = TRUE)
 ## Compare to previous trials
 xcld <- read_csv("Data/exclusions_update.csv")
-
-a %>% 
+a_dist <- a %>% 
   distinct(trial_id)
-
-a_in <- a %>% 
+a_in <-  %>% 
   inner_join(xcld)
-## 115 already got. Can drop
+## Of 203, 58 already got. 
 a_got <- a_in %>% 
   filter(exclude ==0) 
-## remaining 26 in data
+## remaining 21 in data 
 a_in <- a_in %>% 
   filter(exclude ==1)
-## of these 4 should be excluded. Other 22 are "no results reported"
+## of these 4 should be excluded. Other 17 are "no results reported"
 a_in %>% 
   count(exclusion_reason)
-# 162 new papers (plus 22 no results reported gives 184)
-a_not <- a %>% 
+# 124 plus 17 gives 141 new trials/results from update
+a_not <- a_dist %>% 
   anti_join(xcld)
+# Of these 28 have an unreported ID and can be excluded
+a %>% 
+  semi_join(a_not) %>% 
+  count(trial_id == "Unreported ID")
+
 
